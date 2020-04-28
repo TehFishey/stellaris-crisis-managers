@@ -1,0 +1,145 @@
+
+######################################################
+######################################################
+#####                                            #####
+#####    Crisis Manager                          #####
+#####                                            #####
+#####    Global Constants for Mid-Game Crisis    #####
+#####                                            #####
+######################################################
+######################################################
+
+########################################
+###  Khan to Awakiening at Earliest  ###
+########################################
+#
+#	Change also localisation file and comment in template event file.
+#
+
+### Value
+@CmtConstKhanEarliestMgpy_V0 = -999	## Anytime
+@CmtConstKhanEarliestMgpy_V1 = -100
+@CmtConstKhanEarliestMgpy_V2 =  -75
+@CmtConstKhanEarliestMgpy_V3 =  -50
+@CmtConstKhanEarliestMgpy_V4 =  -25
+@CmtConstKhanEarliestMgpy_V5 =    0
+@CmtConstKhanEarliestMgpy_V6 =   10
+@CmtConstKhanEarliestMgpy_V7 =   25
+@CmtConstKhanEarliestMgpy_V8 =   50
+@CmtConstKhanEarliestMgpy_V9 =   75
+
+### Threshold
+@CmtConstKhanEarliestMgpy_T1 = -500
+@CmtConstKhanEarliestMgpy_T2 = -87.5
+@CmtConstKhanEarliestMgpy_T3 = -62.5
+@CmtConstKhanEarliestMgpy_T4 = -37.5
+@CmtConstKhanEarliestMgpy_T5 = -12.5
+@CmtConstKhanEarliestMgpy_T6 =   5
+@CmtConstKhanEarliestMgpy_T7 =  17.5
+@CmtConstKhanEarliestMgpy_T8 =  37.5
+@CmtConstKhanEarliestMgpy_T9 =  62.5
+@CmtConstKhanEarliestMgpy_TA = 500
+
+
+
+########################################
+###  Last Chance of Khan Awakiening  ###
+########################################
+#
+#	Change also localisation file and comment in template event file.
+#
+
+### Value
+@CmtConstKhanLatestEgpy_V1 = -100
+@CmtConstKhanLatestEgpy_V2 =  -75
+@CmtConstKhanLatestEgpy_V3 =  -50
+@CmtConstKhanLatestEgpy_V4 =  -25
+@CmtConstKhanLatestEgpy_V5 =    0
+@CmtConstKhanLatestEgpy_V6 =   25
+@CmtConstKhanLatestEgpy_V7 =   50
+@CmtConstKhanLatestEgpy_V8 =   75
+@CmtConstKhanLatestEgpy_V9 =  100
+@CmtConstKhanLatestEgpy_VA =  999	## Anytime
+
+### Threshold
+@CmtConstKhanLatestEgpy_T1 = -500
+@CmtConstKhanLatestEgpy_T2 = -87.5
+@CmtConstKhanLatestEgpy_T3 = -62.5
+@CmtConstKhanLatestEgpy_T4 = -37.5
+@CmtConstKhanLatestEgpy_T5 = -12.5
+@CmtConstKhanLatestEgpy_T6 =  12.5
+@CmtConstKhanLatestEgpy_T7 =  37.5
+@CmtConstKhanLatestEgpy_T8 =  62.5
+@CmtConstKhanLatestEgpy_T9 =  87.5
+@CmtConstKhanLatestEgpy_TA = 500
+
+
+
+
+#######################
+###  Khan Interval  ###
+#######################
+#
+#	Change also localisation file and comment in template event file.
+#
+
+### Value (Days := 360*Years- 8)
+@CmtConstKhanInterval_D1 =  3592
+@CmtConstKhanInterval_D2 =  8992
+@CmtConstKhanInterval_D3 = 17992
+@CmtConstKhanInterval_D4 = 26992
+@CmtConstKhanInterval_D5 = 35992
+
+### Value (Years)
+@CmtConstKhanInterval_V0 =   0
+@CmtConstKhanInterval_V1 =  10
+@CmtConstKhanInterval_V2 =  25
+@CmtConstKhanInterval_V3 =  50
+@CmtConstKhanInterval_V4 =  75
+@CmtConstKhanInterval_V5 = 100
+
+### Threshold (Years)
+@CmtConstKhanInterval_T0 =   7.5
+@CmtConstKhanInterval_T1 =  12.5
+@CmtConstKhanInterval_T2 =  37.5
+@CmtConstKhanInterval_T3 =  67.5
+@CmtConstKhanInterval_T4 =  87.5
+@CmtConstKhanInterval_T5 = 500
+
+
+
+
+
+########################################
+###  Uprising to Happen at Earliest  ###
+########################################
+#
+#	Change also localisation file and comment in template event file.
+#
+
+### Value
+@CmtConstUprisingEarliestMgpy_V0 = -999	## Anytime
+@CmtConstUprisingEarliestMgpy_V1 = -100
+@CmtConstUprisingEarliestMgpy_V2 =  -75
+@CmtConstUprisingEarliestMgpy_V3 =  -50
+@CmtConstUprisingEarliestMgpy_V4 =  -25
+@CmtConstUprisingEarliestMgpy_V5 =  -10
+@CmtConstUprisingEarliestMgpy_V6 =    0
+@CmtConstUprisingEarliestMgpy_V7 =   25
+@CmtConstUprisingEarliestMgpy_V8 =   50
+@CmtConstUprisingEarliestMgpy_V9 =   75
+
+### Threshold
+@CmtConstUprisingEarliestMgpy_T1 = -500
+@CmtConstUprisingEarliestMgpy_T2 = -87.5
+@CmtConstUprisingEarliestMgpy_T3 = -62.5
+@CmtConstUprisingEarliestMgpy_T4 = -37.5
+@CmtConstUprisingEarliestMgpy_T5 = -17.5
+@CmtConstUprisingEarliestMgpy_T6 =  -5
+@CmtConstUprisingEarliestMgpy_T7 =  12.5
+@CmtConstUprisingEarliestMgpy_T8 =  37.5
+@CmtConstUprisingEarliestMgpy_T9 =  62.5
+@CmtConstUprisingEarliestMgpy_TA = 500
+
+
+

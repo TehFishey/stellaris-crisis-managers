@@ -1,0 +1,408 @@
+
+#################################################################
+#################################################################
+#####                                                       #####
+#####    Crisis Manager                                     #####
+#####                                                       #####
+#####    Common Scripted Effects for Creating Fleet         #####
+#####                                                       #####
+#################################################################
+#################################################################
+
+
+
+###################
+###  Constants  ###
+###################
+
+
+
+################
+###  Effect  ###
+################
+
+CmtEffectResetLoop = {
+	remove_global_flag = CmtFlagLoopA
+	remove_global_flag = CmtFlagLoopB
+	remove_global_flag = CmtFlagLoopC
+	set_global_flag = CmtFlagLoopZ
+}
+
+CmtEffectProgressLoop4 = {
+	switch = {
+		trigger = has_global_flag
+		CmtFlagLoopA = {
+			remove_global_flag = CmtFlagLoopA
+			set_global_flag = CmtFlagLoopB
+		}
+		CmtFlagLoopB = {
+			remove_global_flag = CmtFlagLoopB
+			set_global_flag = CmtFlagLoopC
+		}
+		CmtFlagLoopC = {
+			remove_global_flag = CmtFlagLoopC
+			set_global_flag = CmtFlagLoopZ
+		}
+		CmtFlagLoopZ = {
+			remove_global_flag = CmtFlagLoopZ
+			set_global_flag = CmtFlagLoopA
+		}
+	}
+}
+
+
+CmtEffectProgressLoop2 = {
+	switch = {
+		trigger = has_global_flag
+		CmtFlagLoopA = {
+			remove_global_flag = CmtFlagLoopA
+			set_global_flag = CmtFlagLoopZ
+		}
+		CmtFlagLoopZ = {
+			remove_global_flag = CmtFlagLoopZ
+			set_global_flag = CmtFlagLoopA
+		}
+	}
+}
+
+
+###########################
+###  Modify Ship Speed  ###
+###########################
+
+
+### Apply Modifier
+
+CmtEffectFasterPrethorynConstructor = {
+	if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 2 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_PrethorynConstructor2 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 3 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_PrethorynConstructor3 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 4 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_PrethorynConstructor4 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 5 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_PrethorynConstructor5 days = -1 }
+	}
+}
+
+CmtEffectFasterUnbiddenConstructor = {
+	if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 2 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_UnbiddenConstructor2 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 3 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_UnbiddenConstructor3 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 4 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_UnbiddenConstructor4 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 5 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_UnbiddenConstructor5 days = -1 }
+	}
+}
+
+CmtEffectFasterAberrantConstructor = {
+	if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 2 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_AberrantConstructor2 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 3 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_AberrantConstructor3 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 4 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_AberrantConstructor4 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 5 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_AberrantConstructor5 days = -1 }
+	}
+}
+
+CmtEffectFasterVehementConstructor = {
+	if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 2 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_VehementConstructor2 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 3 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_VehementConstructor3 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 4 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_VehementConstructor4 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 5 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_VehementConstructor5 days = -1 }
+	}
+}
+
+CmtEffectFasterContingencyConstructor = {
+	if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 2 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_ContingencyConstructor2 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 3 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_ContingencyConstructor3 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 4 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_ContingencyConstructor4 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 5 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_ContingencyConstructor5 days = -1 }
+	}
+}
+
+CmtEffectFasterPrethorynCombatShip = {
+	if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 2 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_PrethorynCombatShip2 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 3 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_PrethorynCombatShip3 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 4 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_PrethorynCombatShip4 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 5 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_PrethorynCombatShip5 days = -1 }
+	}
+}
+
+CmtEffectFasterSentinelCombatShip = {
+	if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 2 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_SentinelCombatShip2 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 3 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_SentinelCombatShip3 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 4 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_SentinelCombatShip4 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 5 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_SentinelCombatShip5 days = -1 }
+	}
+}
+
+CmtEffectFasterUnbiddenCombatShip = {
+	if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 2 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_UnbiddenCombatShip2 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 3 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_UnbiddenCombatShip3 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 4 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_UnbiddenCombatShip4 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 5 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_UnbiddenCombatShip5 days = -1 }
+	}
+}
+
+CmtEffectFasterAberrantCombatShip = {
+	if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 2 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_AberrantCombatShip2 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 3 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_AberrantCombatShip3 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 4 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_AberrantCombatShip4 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 5 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_AberrantCombatShip5 days = -1 }
+	}
+}
+
+CmtEffectFasterVehementCombatShip = {
+	if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 2 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_VehementCombatShip2 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 3 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_VehementCombatShip3 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 4 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_VehementCombatShip4 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 5 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_VehementCombatShip5 days = -1 }
+	}
+}
+
+CmtEffectFasterContingencyCombatShip = {
+	if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 2 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_ContingencyCombatShip2 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 3 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_ContingencyCombatShip3 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 4 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_ContingencyCombatShip4 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 5 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_ContingencyCombatShip5 days = -1 }
+	}
+}
+
+CmtEffectFasterCybrexCombatShip = {
+	if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 2 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_CybrexCombatShip2 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 3 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_CybrexCombatShip3 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 4 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_CybrexCombatShip4 days = -1 }
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 5 } } }
+		add_modifier = { modifier = CmtModifierShipSpeed_CybrexCombatShip5 days = -1 }
+	}
+}
+
+
+
+### Change Modifier
+
+CmtEffectFasterConstructorChanged = {
+	every_country = {
+		if = {
+			limit = { CmtTriggerIsExpPrethoryn = yes }
+			every_owned_ship = {
+				limit = {
+					OR = {
+						is_ship_class = shipclass_constructor
+						is_ship_class = shipclass_colonizer
+					}
+				}
+				remove_modifier = CmtModifierShipSpeed_PrethorynConstructor2
+				remove_modifier = CmtModifierShipSpeed_PrethorynConstructor3
+				remove_modifier = CmtModifierShipSpeed_PrethorynConstructor4
+				remove_modifier = CmtModifierShipSpeed_PrethorynConstructor5
+				CmtEffectFasterPrethorynConstructor = yes
+			}
+		} else_if = {
+			limit = { is_country_type = extradimensional }
+			every_owned_ship = {
+				limit = { is_ship_class = shipclass_constructor }
+				remove_modifier = CmtModifierShipSpeed_UnbiddenConstructor2
+				remove_modifier = CmtModifierShipSpeed_UnbiddenConstructor3
+				remove_modifier = CmtModifierShipSpeed_UnbiddenConstructor4
+				remove_modifier = CmtModifierShipSpeed_UnbiddenConstructor5
+				CmtEffectFasterUnbiddenConstructor = yes
+			}
+		} else_if = {
+			limit = { is_country_type = extradimensional_2 }
+			every_owned_ship = {
+				limit = { is_ship_class = shipclass_constructor }
+				remove_modifier = CmtModifierShipSpeed_AberrantConstructor2
+				remove_modifier = CmtModifierShipSpeed_AberrantConstructor3
+				remove_modifier = CmtModifierShipSpeed_AberrantConstructor4
+				remove_modifier = CmtModifierShipSpeed_AberrantConstructor5
+				CmtEffectFasterAberrantConstructor = yes
+			}
+		} else_if = {
+			limit = { is_country_type = extradimensional_3 }
+			every_owned_ship = {
+				limit = { is_ship_class = shipclass_constructor }
+				remove_modifier = CmtModifierShipSpeed_VehementConstructor2
+				remove_modifier = CmtModifierShipSpeed_VehementConstructor3
+				remove_modifier = CmtModifierShipSpeed_VehementConstructor4
+				remove_modifier = CmtModifierShipSpeed_VehementConstructor5
+				CmtEffectFasterVehementConstructor = yes
+			}
+		} else_if = {
+			limit = { CmtTriggerIsContingency = yes }
+			every_owned_ship = {
+				limit = { is_ship_class = shipclass_constructor }
+				remove_modifier = CmtModifierShipSpeed_ContingencyConstructor2
+				remove_modifier = CmtModifierShipSpeed_ContingencyConstructor3
+				remove_modifier = CmtModifierShipSpeed_ContingencyConstructor4
+				remove_modifier = CmtModifierShipSpeed_ContingencyConstructor5
+				CmtEffectFasterContingencyConstructor = yes
+			}
+		}
+	}
+}
+
+
+CmtEffectFasterCombatShipChanged = {
+	every_country = {
+		if = {
+			limit = { CmtTriggerIsExpPrethoryn = yes }
+			every_owned_ship = {
+				limit = { is_ship_class = shipclass_military }
+				remove_modifier = CmtModifierShipSpeed_PrethorynCombatShip2
+				remove_modifier = CmtModifierShipSpeed_PrethorynCombatShip3
+				remove_modifier = CmtModifierShipSpeed_PrethorynCombatShip4
+				remove_modifier = CmtModifierShipSpeed_PrethorynCombatShip5
+				CmtEffectFasterPrethorynCombatShip = yes
+			}
+		} else_if = {
+			limit = { is_country_type = sentinels }
+			every_owned_ship = {
+				limit = { is_ship_class = shipclass_military }
+				remove_modifier = CmtModifierShipSpeed_SentinelCombatShip2
+				remove_modifier = CmtModifierShipSpeed_SentinelCombatShip3
+				remove_modifier = CmtModifierShipSpeed_SentinelCombatShip4
+				remove_modifier = CmtModifierShipSpeed_SentinelCombatShip5
+				CmtEffectFasterSentinelCombatShip = yes
+			}
+		} else_if = {
+			limit = { is_country_type = extradimensional }
+			every_owned_ship = {
+				limit = { is_ship_class = shipclass_military }
+				remove_modifier = CmtModifierShipSpeed_UnbiddenCombatShip2
+				remove_modifier = CmtModifierShipSpeed_UnbiddenCombatShip3
+				remove_modifier = CmtModifierShipSpeed_UnbiddenCombatShip4
+				remove_modifier = CmtModifierShipSpeed_UnbiddenCombatShip5
+				CmtEffectFasterUnbiddenCombatShip = yes
+			}
+		} else_if = {
+			limit = { is_country_type = extradimensional_2 }
+			every_owned_ship = {
+				limit = { is_ship_class = shipclass_military }
+				remove_modifier = CmtModifierShipSpeed_AberrantCombatShip2
+				remove_modifier = CmtModifierShipSpeed_AberrantCombatShip3
+				remove_modifier = CmtModifierShipSpeed_AberrantCombatShip4
+				remove_modifier = CmtModifierShipSpeed_AberrantCombatShip5
+				CmtEffectFasterAberrantCombatShip = yes
+			}
+		} else_if = {
+			limit = { is_country_type = extradimensional_3 }
+			every_owned_ship = {
+				limit = { is_ship_class = shipclass_military }
+				remove_modifier = CmtModifierShipSpeed_VehementCombatShip2
+				remove_modifier = CmtModifierShipSpeed_VehementCombatShip3
+				remove_modifier = CmtModifierShipSpeed_VehementCombatShip4
+				remove_modifier = CmtModifierShipSpeed_VehementCombatShip5
+				CmtEffectFasterVehementCombatShip = yes
+			}
+		} else_if = {
+			limit = { CmtTriggerIsContingency = yes }
+			every_owned_ship = {
+				limit = { is_ship_class = shipclass_military }
+				remove_modifier = CmtModifierShipSpeed_ContingencyCombatShip2
+				remove_modifier = CmtModifierShipSpeed_ContingencyCombatShip3
+				remove_modifier = CmtModifierShipSpeed_ContingencyCombatShip4
+				remove_modifier = CmtModifierShipSpeed_ContingencyCombatShip5
+				CmtEffectFasterContingencyCombatShip = yes
+			}
+		} else_if = {
+			limit = { is_country_type = cybrex_empire }
+			every_owned_ship = {
+				limit = { is_ship_class = shipclass_military }
+				remove_modifier = CmtModifierShipSpeed_CybrexCombatShip2
+				remove_modifier = CmtModifierShipSpeed_CybrexCombatShip3
+				remove_modifier = CmtModifierShipSpeed_CybrexCombatShip4
+				remove_modifier = CmtModifierShipSpeed_CybrexCombatShip5
+				CmtEffectFasterCybrexCombatShip = yes
+			}
+		}
+	}
+}

@@ -1,0 +1,118 @@
+
+##################################################
+##################################################
+#####                                        #####
+#####    Crisis Manager                      #####
+#####                                        #####
+#####    Scripted Effects for Ghost Signal   #####
+#####                                        #####
+##################################################
+##################################################
+
+################
+###  Common  ###
+################
+
+CmtEffectClearGhostSignalGalaxy = {
+	remove_global_flag = ghost_signal_5_flag
+	remove_global_flag = ghost_signal_4_flag
+	remove_global_flag = ghost_signal_3_flag
+	remove_global_flag = ghost_signal_2_flag
+	remove_global_flag = ghost_signal_1_flag
+	every_country = {
+		limit = { CmtTriggerIsPlayableEmpire = yes }
+		switch = {
+			trigger = has_notification_modifier
+			ghost_signal_5 = { remove_notification_modifier = ghost_signal_5 }
+			ghost_signal_4 = { remove_notification_modifier = ghost_signal_4 }
+			ghost_signal_3 = { remove_notification_modifier = ghost_signal_3 }
+			ghost_signal_2 = { remove_notification_modifier = ghost_signal_2 }
+			ghost_signal_1 = { remove_notification_modifier = ghost_signal_1 }
+			ghost_signal_5_machine = { remove_notification_modifier = ghost_signal_5_machine }
+			ghost_signal_4_machine = { remove_notification_modifier = ghost_signal_4_machine }
+		}
+	}
+	every_pop = {
+		limit = { has_trait = trait_mechanical }
+		switch = {
+			trigger = has_modifier
+			pop_ghost_signal_5 = { remove_modifier = pop_ghost_signal_5 }
+			pop_ghost_signal_4 = { remove_modifier = pop_ghost_signal_4 }
+			pop_ghost_signal_3 = { remove_modifier = pop_ghost_signal_3 }
+			pop_ghost_signal_2 = { remove_modifier = pop_ghost_signal_2 }
+			pop_ghost_signal_1 = { remove_modifier = pop_ghost_signal_1 }
+			CmtModifierOrganicPopGhostSignal_5a = { remove_modifier = CmtModifierOrganicPopGhostSignal_5a }
+			CmtModifierOrganicPopGhostSignal_5b = { remove_modifier = CmtModifierOrganicPopGhostSignal_5b }
+			CmtModifierOrganicPopGhostSignal_5d = { remove_modifier = CmtModifierOrganicPopGhostSignal_5d }
+			CmtModifierOrganicPopGhostSignal_5e = { remove_modifier = CmtModifierOrganicPopGhostSignal_5e }
+			CmtModifierOrganicPopGhostSignal_4a = { remove_modifier = CmtModifierOrganicPopGhostSignal_4a }
+			CmtModifierOrganicPopGhostSignal_4b = { remove_modifier = CmtModifierOrganicPopGhostSignal_4b }
+			CmtModifierOrganicPopGhostSignal_4d = { remove_modifier = CmtModifierOrganicPopGhostSignal_4d }
+			CmtModifierOrganicPopGhostSignal_4e = { remove_modifier = CmtModifierOrganicPopGhostSignal_4e }
+			CmtModifierOrganicPopGhostSignal_3a = { remove_modifier = CmtModifierOrganicPopGhostSignal_3a }
+			CmtModifierOrganicPopGhostSignal_3b = { remove_modifier = CmtModifierOrganicPopGhostSignal_3b }
+			CmtModifierOrganicPopGhostSignal_3d = { remove_modifier = CmtModifierOrganicPopGhostSignal_3d }
+			CmtModifierOrganicPopGhostSignal_3e = { remove_modifier = CmtModifierOrganicPopGhostSignal_3e }
+			CmtModifierOrganicPopGhostSignal_2a = { remove_modifier = CmtModifierOrganicPopGhostSignal_2a }
+			CmtModifierOrganicPopGhostSignal_2b = { remove_modifier = CmtModifierOrganicPopGhostSignal_2b }
+			CmtModifierOrganicPopGhostSignal_2d = { remove_modifier = CmtModifierOrganicPopGhostSignal_2d }
+			CmtModifierOrganicPopGhostSignal_2e = { remove_modifier = CmtModifierOrganicPopGhostSignal_2e }
+			CmtModifierOrganicPopGhostSignal_1a = { remove_modifier = CmtModifierOrganicPopGhostSignal_1a }
+			CmtModifierOrganicPopGhostSignal_1b = { remove_modifier = CmtModifierOrganicPopGhostSignal_1b }
+			CmtModifierOrganicPopGhostSignal_1d = { remove_modifier = CmtModifierOrganicPopGhostSignal_1d }
+			CmtModifierOrganicPopGhostSignal_1e = { remove_modifier = CmtModifierOrganicPopGhostSignal_1e }
+		}
+	}
+	every_pop = {
+		limit = { has_trait = trait_machine_unit }
+		switch = {
+			trigger = has_modifier
+			pop_ghost_signal_5_machine = { remove_modifier = pop_ghost_signal_5_machine }
+			pop_ghost_signal_4_machine = { remove_modifier = pop_ghost_signal_4_machine }
+			CmtModifierMachinePopGhostSignal_5a = { remove_modifier = CmtModifierMachinePopGhostSignal_5a }
+			CmtModifierMachinePopGhostSignal_5b = { remove_modifier = CmtModifierMachinePopGhostSignal_5b }
+			CmtModifierMachinePopGhostSignal_5d = { remove_modifier = CmtModifierMachinePopGhostSignal_5d }
+			CmtModifierMachinePopGhostSignal_5e = { remove_modifier = CmtModifierMachinePopGhostSignal_5e }
+			CmtModifierMachinePopGhostSignal_4a = { remove_modifier = CmtModifierMachinePopGhostSignal_4a }
+			CmtModifierMachinePopGhostSignal_4b = { remove_modifier = CmtModifierMachinePopGhostSignal_4b }
+			CmtModifierMachinePopGhostSignal_4d = { remove_modifier = CmtModifierMachinePopGhostSignal_4d }
+			CmtModifierMachinePopGhostSignal_4e = { remove_modifier = CmtModifierMachinePopGhostSignal_4e }
+		}
+	}
+	every_ship = {
+		limit = { has_sapient_combat_computer = yes }
+		CmtEffectClearGhostSignalShip = yes
+	}
+}
+
+CmtEffectClearGhostSignalShip = {
+	switch = {
+		trigger = has_modifier
+		ship_ghost_signal_5 = { remove_modifier = ship_ghost_signal_5 }
+		ship_ghost_signal_4 = { remove_modifier = ship_ghost_signal_4 }
+		ship_ghost_signal_3 = { remove_modifier = ship_ghost_signal_3 }
+		ship_ghost_signal_2 = { remove_modifier = ship_ghost_signal_2 }
+		ship_ghost_signal_1 = { remove_modifier = ship_ghost_signal_1 }
+		CmtModifierCombatShipGhostSignal_5a = { remove_modifier = CmtModifierCombatShipGhostSignal_5a }
+		CmtModifierCombatShipGhostSignal_5b = { remove_modifier = CmtModifierCombatShipGhostSignal_5b }
+		CmtModifierCombatShipGhostSignal_5d = { remove_modifier = CmtModifierCombatShipGhostSignal_5d }
+		CmtModifierCombatShipGhostSignal_5e = { remove_modifier = CmtModifierCombatShipGhostSignal_5e }
+		CmtModifierCombatShipGhostSignal_4a = { remove_modifier = CmtModifierCombatShipGhostSignal_4a }
+		CmtModifierCombatShipGhostSignal_4b = { remove_modifier = CmtModifierCombatShipGhostSignal_4b }
+		CmtModifierCombatShipGhostSignal_4d = { remove_modifier = CmtModifierCombatShipGhostSignal_4d }
+		CmtModifierCombatShipGhostSignal_4e = { remove_modifier = CmtModifierCombatShipGhostSignal_4e }
+		CmtModifierCombatShipGhostSignal_3a = { remove_modifier = CmtModifierCombatShipGhostSignal_3a }
+		CmtModifierCombatShipGhostSignal_3b = { remove_modifier = CmtModifierCombatShipGhostSignal_3b }
+		CmtModifierCombatShipGhostSignal_3d = { remove_modifier = CmtModifierCombatShipGhostSignal_3d }
+		CmtModifierCombatShipGhostSignal_3e = { remove_modifier = CmtModifierCombatShipGhostSignal_3e }
+		CmtModifierCombatShipGhostSignal_2a = { remove_modifier = CmtModifierCombatShipGhostSignal_2a }
+		CmtModifierCombatShipGhostSignal_2b = { remove_modifier = CmtModifierCombatShipGhostSignal_2b }
+		CmtModifierCombatShipGhostSignal_2d = { remove_modifier = CmtModifierCombatShipGhostSignal_2d }
+		CmtModifierCombatShipGhostSignal_2e = { remove_modifier = CmtModifierCombatShipGhostSignal_2e }
+		CmtModifierCombatShipGhostSignal_1a = { remove_modifier = CmtModifierCombatShipGhostSignal_1a }
+		CmtModifierCombatShipGhostSignal_1b = { remove_modifier = CmtModifierCombatShipGhostSignal_1b }
+		CmtModifierCombatShipGhostSignal_1d = { remove_modifier = CmtModifierCombatShipGhostSignal_1d }
+		CmtModifierCombatShipGhostSignal_1e = { remove_modifier = CmtModifierCombatShipGhostSignal_1e }
+	}
+}
+

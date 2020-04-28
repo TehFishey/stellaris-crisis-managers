@@ -1,0 +1,224 @@
+namespace = planet_destruction
+
+############################################
+############################################
+#####                                  #####
+#####    Holy World Destrutced         #####
+#####                                  #####
+#####    Replaced by Crisis Manager    #####
+#####                                  #####
+############################################
+############################################
+#
+#	Used in both of Sleeper Edition, Player Crisis Pack
+#
+
+### Holy World Fragged/shielded
+planet_event = {
+	id = planet_destruction.600
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_modifier = holy_planet
+		any_country = { has_ai_personality_behaviour = holy_planets }
+	}
+	
+	immediate = {
+		random_country = {
+			limit = { has_ai_personality_behaviour = holy_planets }
+			save_event_target_as = outraged_FE
+		}
+		from.owner = {
+			save_event_target_as = FE_outrager
+			set_country_flag = CmtFlagHolyWorldCracker
+		}
+		from.owner = {
+			if = {
+				limit = {
+					exists = event_target:CmtTargetPlayerCrisisAggressor
+					NOT = { is_same_value = event_target:CmtTargetPlayerCrisisAggressor }
+				}
+				root = { save_event_target_as = CmtTargetCrackedHolyWorld }
+				country_event = { id = CrisisManagerControl.5101 days = 360 }
+				country_event = { id = planet_destruction.610 days = 5 }
+			} else_if = {
+				limit = {
+					NOR = {
+						is_at_war_with = outraged_FE
+						exists = event_target:CmtTargetPlayerCrisisAggressor
+					}
+				}
+				country_event = { id = planet_destruction.610 days = 5 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = planet_destruction.610
+	title = planet_destruction.610.name
+	desc = {
+		text = planet_destruction.610.desc
+		trigger = { NOT = { exists = event_target:CmtTargetPlayerCrisisAggressor } }
+	}
+	desc = {
+		text = planet_destruction.610.desc.postpone
+		trigger = { exists = event_target:CmtTargetPlayerCrisisAggressor }
+	}
+	show_sound = event_ship_bridge
+	location = event_target:outraged_FE.capital_scope
+	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:outraged_FE
+		planet_background = event_target:outraged_FE
+		graphical_culture = event_target:outraged_FE
+		city_level = event_target:outraged_FE
+		room = event_target:outraged_FE.ruler
+	}
+	
+	is_triggered_only = yes
+	
+	after = {
+		hidden_effect = {
+			if = {
+				limit = {
+					NOR = {
+						AND = {
+							exists = event_target:CmtGlobalVar
+							event_target:CmtGlobalVar = { check_variable = { which = CmtVarSleeperHolyClacker value = 1 } }
+						}
+						exists = event_target:CmtTargetPlayerCrisisAggressor
+					}
+				}
+				event_target:outraged_FE = { set_country_flag = holy_world_killed }
+				if = {
+					limit = {
+						NAND = {
+							exists = event_target:CmtGlobalVar
+							event_target:CmtGlobalVar = { check_variable = { which = CmtVarSleeperHolyClacker value = 2 } }
+						}
+					}
+					event_target:outraged_FE = { country_event = { id = fallen_empires_awakening.1 } }
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = planet_destruction.610.spiri
+		trigger = {
+			OR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+	}
+	option = {
+		name = planet_destruction.610.mater
+		trigger = {
+			OR = {
+				has_ethic = ethic_materialist
+				has_ethic = ethic_fanatic_materialist
+			}
+		}
+	}
+	option = {
+		name = planet_destruction.610.milit
+		trigger = {
+			OR = {
+				has_ethic = ethic_militarist
+				has_ethic = ethic_fanatic_militarist
+			}
+		}
+	}
+	option = {
+		name = planet_destruction.610.pacif
+		trigger = {
+			OR = {
+				has_ethic = ethic_pacifist
+				has_ethic = ethic_fanatic_pacifist
+			}
+		}
+	}
+	option = {
+		name = planet_destruction.610.autho
+		trigger = {
+			OR = {
+				has_ethic = ethic_authoritarian
+				has_ethic = ethic_fanatic_authoritarian
+			}
+		}
+	}
+	option = {
+		name = planet_destruction.610.egali
+		trigger = {
+			OR = {
+				has_ethic = ethic_egalitarian
+				has_ethic = ethic_fanatic_egalitarian
+			}
+		}
+	}
+	option = {
+		name = planet_destruction.610.phile
+		trigger = {
+			OR = {
+				has_ethic = ethic_xenophile
+				has_ethic = ethic_fanatic_xenophile
+			}
+		}
+	}
+	option = {
+		name = planet_destruction.610.phobe
+		trigger = {
+			OR = {
+				has_ethic = ethic_xenophobe
+				has_ethic = ethic_fanatic_xenophobe
+			}
+		}
+	}
+	option = {
+		name = planet_destruction.610.gesta
+		trigger = { has_ethic = ethic_gestalt_consciousness }
+	}
+	option = {
+		name = planet_destruction.610.devou
+		trigger = { has_valid_civic = civic_hive_devouring_swarm }
+	}
+	option = {
+		name = planet_destruction.610.termi
+		trigger = { has_valid_civic = civic_machine_terminator }
+	}
+	option = {
+		name = planet_destruction.610.purif
+		trigger = { has_valid_civic = civic_fanatic_purifiers }
+	}
+}
+
+### Declar War
+country_event = {
+	id = planet_destruction.611
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { NOT = { exists = event_target:outraged_FE } }
+			root = { save_event_target_as = outraged_FE }
+		}
+		every_country = {
+			limit = {
+				has_country_flag = CmtFlagHolyWorldCracker
+				NOT = { is_at_war_with = root }
+			}
+			save_event_target_as = FE_outrager
+			root = {
+				declare_war = {
+					target = event_target:FE_outrager
+					name = "NAME_Holy_World_War"
+					attacker_war_goal = wg_subjugation
+				}
+			}
+		}
+	}
+}

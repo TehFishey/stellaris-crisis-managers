@@ -1,0 +1,68 @@
+namespace = CrisisManagerControl
+
+#######################################################
+#######################################################
+#####                                             #####
+#####    Crisis Manager - Player Crisis Pack      #####
+#####                                             #####
+#####    Postpone War if Player Crisis Ongoing    #####
+#####                                             #####
+#######################################################
+#######################################################
+
+
+
+###########################
+###  Postpone Holy War  ###
+###########################
+
+### Clock Event, Attension! Scope: this = Cracker (country), but not global_event
+#
+# cf. modified planet_destruction.600
+#
+
+country_event = {
+	id = CrisisManagerControl.5101
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		exists = event_target:outraged_FE
+	}
+	
+	immediate = {
+		if = {
+			limit = { exists = event_target:CmtTargetPlayerCrisisAggressor }
+			country_event = { id = CrisisManagerControl.5101 days = 360 }
+		} else = {
+			if = {
+				limit = {
+					NOR = {
+						AND = {
+							exists = event_target:CmtGlobalVar
+							event_target:CmtGlobalVar = { check_variable = { which = CmtVarSleeperHolyClacker value = 1 } }
+						}
+						exists = event_target:CmtTargetPlayerCrisisAggressor
+					}
+				}
+				event_target:outraged_FE = { set_country_flag = holy_world_killed }
+				if = {
+					limit = {
+						NAND = {
+							exists = event_target:CmtGlobalVar
+							event_target:CmtGlobalVar = { check_variable = { which = CmtVarSleeperHolyClacker value = 2 } }
+						}
+					}
+					event_target:outraged_FE = {
+						if = {
+							limit = { is_country_type = awakened_fallen_empire }
+							country_event = { id = planet_destruction.611 }
+						} else = { country_event = { id = fallen_empires_awakening.1 } }
+					}
+				}
+			}
+		}
+	}
+}
+
+

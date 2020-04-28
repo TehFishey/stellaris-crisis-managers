@@ -1,0 +1,30 @@
+
+#################################################
+#################################################
+#####                                       #####
+#####    Crisis Manager                     #####
+#####                                       #####
+#####    Species Class for Player Crisis    #####
+#####                                       #####
+#################################################
+#################################################
+
+
+CmtSpciesClassPlayerCrisisNull = {
+	archetype = OTHER
+
+	playable = { always = no }
+	randomized = no
+
+	gender = no
+
+	portraits = {
+		CmtPortraitPlayerCrisisNull
+	}
+	
+	graphical_culture = swarm_01
+	move_pop_sound_effect = "moving_pop_confirmation"
+}
+
+
+

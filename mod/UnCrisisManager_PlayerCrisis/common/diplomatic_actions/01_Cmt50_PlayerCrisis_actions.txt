@@ -1,0 +1,31 @@
+
+######################################################
+######################################################
+#####                                            #####
+#####    Crisis Manager                          #####
+#####                                            #####
+#####    Diplomatic Actions for Player Crisis    #####
+#####                                            #####
+######################################################
+######################################################
+
+action_close_borders = {	## Only closing, but not opening
+	icon = "GFX_diplomacy_status_closed_borders"
+	auto_accepted = yes
+	requires_actor_independence = no
+	requires_recipient_independence = no
+	should_show_auto_accept_message_recipient = yes
+	action_type = negative
+	
+	possible = {
+		can_control_access_for = from
+		custom_tooltip = {
+			fail_text = CmtFailTextPlayerCrisisDefenderCanNotCloseBorder
+			NAND = {
+				has_country_flag = CmtFlagPlayerCrisisDefender
+				from = { has_country_flag = CmtFlagPlayerCrisisDefender }
+			}
+		}
+	}
+}
+

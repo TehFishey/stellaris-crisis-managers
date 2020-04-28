@@ -1,0 +1,1334 @@
+namespace = CrisisManagerControl
+
+##########################################
+##########################################
+#####                                #####
+#####    Crisis Manager              #####
+#####                                #####
+#####    Events for Player Crisis    #####
+#####                                #####
+##########################################
+##########################################
+
+###################
+###  Constants  ###
+###################
+
+@CmtConstParamilitaryLiquidatingCycle = 180		## in days
+@CmtConstParamilitaryLiquidatingFlagLimit = 178		## Must 'Cycle - 2'
+
+@CmtConstSelfLiquidatingCycle = 20		## in days
+
+@CmtConstFinalLiquidationCycle = 15		## in days
+@CmtConstFinalLiquidationNumber = 5		## Number of Systems
+
+
+
+######################
+###  Outbreak War  ###
+######################
+
+### Reconfirmation to Start War
+country_event = {
+	id = CrisisManagerControl.0510
+	title = CrisisManagerControl.0510.name
+	desc = {
+		text = CrisisManagerControl.0510.desc1
+		trigger = { NOT = { any_country = { is_at_war = yes } } }
+	}
+	desc = {
+		text = CrisisManagerControl.0510.desc2
+		trigger = { any_country = { is_at_war = yes } }
+	}
+	picture = GFX_evt_city_ruins
+	is_triggered_only = yes
+	
+	trigger = {
+		is_ai = no
+		CmtTriggerIsEmpire = yes
+	}
+	
+	immediate = {
+		set_country_flag = CmtFlagNowInMenu
+	}
+	
+	option = {
+		name = CrisisManagerControl.0510a1.name
+		custom_tooltip = CrisisManagerControl.0510a1.tooltip
+		trigger = {
+			NOT = {
+				any_country = {
+					has_country_flag = CmtFlagNowInMenu
+					NOT = { is_same_value = root }
+				}
+			}
+		}
+		hidden_effect = { remove_country_flag = CmtFlagNowInMenu }
+	}
+	option = {
+		name = CrisisManagerControl.0510a2.name
+		custom_tooltip = CrisisManagerControl.0510a2.tooltip
+		trigger = {
+			NOT = {
+				any_country = {
+					has_country_flag = CmtFlagNowInMenu
+					NOT = { is_same_value = root }
+				}
+			}
+		}
+		hidden_effect = { remove_country_flag = CmtFlagNowInMenu }
+	}
+	option = {
+		name = CrisisManagerControl.0510a3.name
+		custom_tooltip = CrisisManagerControl.0510a3.tooltip
+		hidden_effect = { remove_country_flag = CmtFlagNowInMenu }
+	}
+	option = {
+		name = CrisisManagerControl.0510b.name
+		custom_tooltip = CrisisManagerControl.0510b.tooltip
+		trigger = {
+			NOT = {
+				any_country = {
+					has_country_flag = CmtFlagNowInMenu
+					NOT = { is_same_value = root }
+				}
+			}
+		}
+		hidden_effect = { country_event = { id = CrisisManagerControl.0511 } }
+	}
+}
+
+### Declare War (Notification for Aggressor)
+country_event = {
+	id = CrisisManagerControl.0511
+	title = CrisisManagerControl.0511.name
+	desc = CrisisManagerControl.0511.desc
+	picture = GFX_evt_hangar_bay
+	show_sound = event_red_alert
+	is_triggered_only = yes
+	
+	trigger = {
+		CmtTriggerIsEmpire = yes
+	}
+	
+	after = {
+		hidden_effect = {
+			CmtEffectStartPlayerCrisis = yes
+			every_country = {
+				limit = {
+					has_country_flag = CmtFlagPlayerCrisisDefender
+					is_ai = no
+				}
+				country_event = { id = CrisisManagerControl.0512 }
+			}
+			remove_country_flag = CmtFlagNowInMenu
+		}
+	}
+	
+	option = {
+		name = CrisisManagerControl.0511a.name
+		custom_tooltip = CrisisManagerControl.0511a.tooltip
+	}
+}
+
+### Declare War (Notification for Defender)
+country_event = {
+	id = CrisisManagerControl.0512
+	title = CrisisManagerControl.0512.name
+	desc = CrisisManagerControl.0512.desc
+	picture = GFX_evt_news_room
+	show_sound = event_red_alert
+	is_triggered_only = yes
+	
+	trigger = {
+		is_ai = no
+		CmtTriggerIsEmpire = yes
+	}
+	
+	option = {
+		name = CrisisManagerControl.0512a.name
+		custom_tooltip = CrisisManagerControl.0512a.tooltip
+	}
+}
+
+
+
+
+
+#############################
+###  Backup Code for War  ###
+#############################
+
+### Join War (monthly check)
+event = {
+	id = CrisisManagerControl.0521
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		exists = event_target:CmtTargetPlayerCrisisAggressor
+		any_country = {
+			OR = {
+				CmtTriggerPlayerCrisisJoinableCountry = yes
+				CmtTriggerPlayerCrisisResistibleCountry = yes
+			}
+		}
+	}
+	
+	immediate = {
+		every_country = {
+			limit = { CmtTriggerPlayerCrisisJoinableCountry = yes }
+			CmtEffectJoinWarPlayerCrisis = yes
+		}
+		every_country = {
+			limit = { CmtTriggerPlayerCrisisResistibleCountry = yes }
+			CmtEffectHostilizeToAggressor = yes
+		}
+	}
+}
+
+
+### Re-Declare War when Status Quo
+country_event = {
+	id = CrisisManagerControl.0522
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		exists = event_target:CmtTargetPlayerCrisisAggressor
+		any_country = { CmtTriggerPlayerCrisisJoinableCountry = yes }
+	}
+	
+	immediate = {
+		event_target:CmtTargetPlayerCrisisAggressor = { CmtEffectStartPlayerCrisis = yes }
+	}
+}
+
+
+
+#############################
+###  Orbital Bombardment  ###
+#############################
+#
+# cf. action.81-83
+#
+# Scope: this = Planet, from = Bombarder
+#
+
+### Change to Tumb World
+planet_event = {
+	id = CrisisManagerControl.0531
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_orbital_bombardment_stance = BombardmentPlayerCrisis
+		planet_devastation >= 100
+		num_pops < 20
+		num_pops > 0
+		NOR = {
+			has_building = building_planetary_shield_generator
+			is_planet_class = pc_nuked
+			CmtTriggerIsHabitat = yes
+			CmtTriggerIsHabitableRingWorld = yes
+		}
+		
+		from = { CmtTriggerIsEmpire = yes }
+	}
+	
+	immediate = {
+		random_list = {
+			200 = {}
+			1 = {
+				change_pc = pc_nuked
+				remove_all_buildings = yes
+				set_planet_flag = armageddon_nuked
+				remove_modifier = natural_beauty
+				remove_modifier = atmospheric_aphrodisiac
+				remove_modifier = atmospheric_hallucinogen
+				remove_modifier = lush_planet
+				remove_modifier = dangerous_wildlife
+				
+				from = { country_event = { id = CrisisManagerControl.0533 } }
+				owner = { country_event = { id = CrisisManagerControl.0534 } }
+			}
+		}
+	}
+}
+
+### All Pops Kill by Bombardment
+planet_event = {
+	id = CrisisManagerControl.0532
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_orbital_bombardment_stance = BombardmentPlayerCrisis
+		from = { CmtTriggerIsEmpire = yes }
+	}
+	immediate = {
+		if = {
+			limit = { CmtTriggerIsHabitableRingWorld = yes }
+			destroy_colony = yes
+			change_pc = pc_ringworld_habitable_damaged
+			reset_planet = yes
+		} else_if = {
+			limit = { CmtTriggerIsHabitat = yes }
+			remove_planet = yes
+		} else = { CmtEffectLiquidatePlanetBombardment = yes }
+		from = { country_event = { id = CrisisManagerControl.0533 } }
+		if = {
+			limit = { exists = owner }
+			owner = { country_event = { id = CrisisManagerControl.0534 } }
+		}
+	}
+}
+
+### Notification for Bombarder
+country_event = {
+	id = CrisisManagerControl.0533
+	title = CrisisManagerControl.0533.name
+	desc = {
+		text = CrisisManagerControl.0533.desc1
+		trigger = {
+			exists = from
+			from = {
+				is_planet_class = pc_nuked
+				num_pops > 0
+			}
+		}
+	}
+	desc = {
+		text = CrisisManagerControl.0533.desc2
+		trigger = {
+			exists = from
+			from = {
+				is_planet_class = pc_nuked
+				num_pops = 0
+			}
+		}
+	}
+	desc = {
+		text = CrisisManagerControl.0533.desc3
+		trigger = {
+			exists = from
+			from = {
+				is_planet_class = pc_toxic
+				has_modifier = terraforming_candidate
+			}
+		}
+	}
+	desc = {
+		text = CrisisManagerControl.0533.desc4
+		trigger = {
+			OR = {
+				NOT = { exists = from }
+				from = {
+					NOR = {
+						is_planet_class = pc_nuked
+						has_modifier = terraforming_candidate
+					}
+				}
+			}
+		}
+	}
+	picture = {
+		picture = GFX_evt_burning_settlement
+		trigger = {
+			exists = from
+			from = {
+				NOT = { is_planet_class = pc_ringworld_habitable_damaged }
+				num_pops > 0
+			}
+		}
+	}
+	picture = {
+		picture = GFX_evt_nuclear_explosion
+		trigger = {
+			exists = from
+			from = {
+				NOT = { is_planet_class = pc_ringworld_habitable_damaged }
+				num_pops = 0
+			}
+		}
+	}
+	picture = {
+		picture = GFX_evt_ruined_system
+		trigger = {
+			OR = {
+				NOT = { exists = from }
+				from = { is_planet_class = pc_ringworld_habitable_damaged }
+			}
+		}
+	}
+	show_sound = event_super_explosion
+	location = from
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { has_country_flag = CmtFlagNoBombardmentNotification }
+	}
+	
+	option = {
+		name = CrisisManagerControl.0533a.name
+		custom_tooltip = CrisisManagerControl.0533a.tooltip
+		trigger = {
+			exists = from
+			from = {
+				is_planet_class = pc_nuked
+				num_pops > 0
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerControl.0533b.name
+		custom_tooltip = CrisisManagerControl.0533b.tooltip
+		trigger = {
+			exists = from
+			from = {
+				is_planet_class = pc_nuked
+				num_pops = 0
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerControl.0533c.name
+		custom_tooltip = CrisisManagerControl.0533c.tooltip
+		trigger = {
+			exists = from
+			from = {
+				is_planet_class = pc_toxic
+				has_modifier = terraforming_candidate
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerControl.0533d.name
+		custom_tooltip = CrisisManagerControl.0533d.tooltip
+		trigger = {
+			OR = {
+				NOT = { exists = from }
+				from = {
+					NOR = {
+						is_planet_class = pc_nuked
+						has_modifier = terraforming_candidate
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerControl.0533z.name
+		custom_tooltip = CrisisManagerControl.0533z.tooltip
+		hidden_effect = { set_country_flag = CmtFlagNoBombardmentNotification }
+	}
+}
+
+### Notification for Planet Owner
+country_event = {
+	id = CrisisManagerControl.0534
+	title = CrisisManagerControl.0534.name
+	desc = {
+		text = CrisisManagerControl.0534.desc1
+		trigger = {
+			exists = from
+			from = {
+				is_planet_class = pc_nuked
+				num_pops > 0
+			}
+		}
+	}
+	desc = {
+		text = CrisisManagerControl.0534.desc2
+		trigger = {
+			exists = from
+			from = {
+				is_planet_class = pc_nuked
+				num_pops = 0
+			}
+		}
+	}
+	desc = {
+		text = CrisisManagerControl.0534.desc3
+		trigger = {
+			exists = from
+			from = {
+				is_planet_class = pc_toxic
+				has_modifier = terraforming_candidate
+			}
+		}
+	}
+	desc = {
+		text = CrisisManagerControl.0534.desc4
+		trigger = {
+			OR = {
+				NOT = { exists = from }
+				from = {
+					NOR = {
+						is_planet_class = pc_nuked
+						has_modifier = terraforming_candidate
+					}
+				}
+			}
+		}
+	}
+	picture = {
+		picture = GFX_evt_burning_settlement
+		trigger = {
+			exists = from
+			from = {
+				NOT = { is_planet_class = pc_ringworld_habitable_damaged }
+				num_pops > 0
+			}
+		}
+	}
+	picture = {
+		picture = GFX_evt_nuclear_explosion
+		trigger = {
+			exists = from
+			from = {
+				NOT = { is_planet_class = pc_ringworld_habitable_damaged }
+				num_pops = 0
+			}
+		}
+	}
+	picture = {
+		picture = GFX_evt_ruined_system
+		trigger = {
+			OR = {
+				NOT = { exists = from }
+				from = { is_planet_class = pc_ringworld_habitable_damaged }
+			}
+		}
+	}
+	show_sound = event_super_explosion
+	location = from
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { has_country_flag = CmtFlagNoBombardmentNotification }
+	}
+	
+	option = {
+		name = CrisisManagerControl.0534a.name
+		custom_tooltip = CrisisManagerControl.0534a.tooltip
+		trigger = {
+			exists = from
+			from = {
+				is_planet_class = pc_nuked
+				num_pops > 0
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerControl.0534b.name
+		custom_tooltip = CrisisManagerControl.0534b.tooltip
+		trigger = {
+			exists = from
+			from = {
+				is_planet_class = pc_nuked
+				num_pops = 0
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerControl.0534c.name
+		custom_tooltip = CrisisManagerControl.0534c.tooltip
+		trigger = {
+			exists = from
+			from = {
+				is_planet_class = pc_toxic
+				has_modifier = terraforming_candidate
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerControl.0534d.name
+		custom_tooltip = CrisisManagerControl.0534d.tooltip
+		trigger = {
+			OR = {
+				NOT = { exists = from }
+				from = {
+					NOR = {
+						is_planet_class = pc_nuked
+						has_modifier = terraforming_candidate
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerControl.0534z.name
+		custom_tooltip = CrisisManagerControl.0534z.tooltip
+		hidden_effect = { set_country_flag = CmtFlagNoBombardmentNotification }
+	}
+}
+
+
+#################
+###  The End  ###
+#################
+
+### End of Crisis, on_country_destroyed
+country_event = {
+	id = CrisisManagerControl.0540
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		CmtTriggerIsPlayerCrisisAggressor = yes
+	}
+	
+	immediate = {
+		every_country = {
+			limit = {
+				has_country_flag = CmtFlagPlayerCrisisDefender
+				CmtTriggerIsEmpire = yes
+			}
+			every_country = {
+				limit = {
+					has_country_flag = CmtFlagPlayerCrisisDefender
+					CmtTriggerIsEmpire = yes
+				}
+				add_opinion_modifier = { who = prev modifier = CmtOpinionPlayerCrisisWiner }
+			}
+			country_event = { id = CrisisManagerControl.0541 }
+		}
+		CmtEffectEndPlayerCrisis = yes
+	}
+}
+
+country_event = {
+	id = CrisisManagerControl.0541
+	title = CrisisManagerControl.0541.name
+	desc = CrisisManagerControl.0541.desc
+	picture = GFX_evt_metropolis
+	show_sound = event_celebration
+	is_triggered_only = yes
+	
+	option = {
+		name = CrisisManagerControl.0541a.name
+		add_monthly_resource_mult = { resource = unity value = 48 }
+	}
+}
+
+
+
+### Buckup Code for Series of End of Galaxy (on_monthly_pulse)
+event = {
+	id = CrisisManagerControl.0550
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		exists = event_target:CmtTargetPlayerCrisisAggressor
+	}
+	
+	immediate = {
+		event_target:CmtGlobalVar = { country_event = { id = CrisisManagerControl.0560 } }
+		event_target:CmtTargetPlayerCrisisAggressor = { country_event = { id = CrisisManagerControl.0552 } }
+	}
+}
+
+### End of All Empires (on_country_destroyed)
+country_event = {
+	id = CrisisManagerControl.0551
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		exists = event_target:CmtTargetPlayerCrisisAggressor
+		NOR = {
+			CmtTriggerIsPlayerCrisisAggressor = yes
+			any_country = {
+				CmtTriggerIsEmpire = yes
+				NOR = {
+					is_same_value = root
+					CmtTriggerIsPlayerCrisisAggressor = yes
+				}
+			}
+		}
+	}
+	
+	immediate = {
+		set_global_flag = CmtFlagOngoingLiquidationLv2
+		event_target:CmtGlobalVar = { country_event = { id = CrisisManagerControl.0560 } }
+		event_target:CmtTargetPlayerCrisisAggressor = { country_event = { id = CrisisManagerControl.0552 } }
+	}
+}
+
+### End of All Empires (Notification for Crisis Empire)
+country_event = {
+	id = CrisisManagerControl.0552
+	title = CrisisManagerControl.0552.name
+	desc = CrisisManagerControl.0552.desc
+	picture = GFX_evt_dead_city
+	show_sound = CmtSoundLiquidation1
+	is_triggered_only = yes
+	
+	trigger = {
+		CmtTriggerIsPlayerCrisisAggressor = yes
+		NOR = {
+			has_country_flag = CmtFlagLiquidationLv1Noticed
+			has_country_flag = CmtFlagLiquidationLv2Noticed
+			has_country_flag = CmtFlagLiquidationLv3Noticed
+			has_country_flag = CmtFlagLiquidationLv4Noticed
+			any_country = {
+				CmtTriggerIsEmpire = yes
+				NOT = { is_same_value = root }
+				NAND = {
+					exists = from
+					is_same_value = from
+				}
+			}
+		}
+		any_country = {
+			CmtTriggerIsExistence = yes
+			NOT = { is_same_value = root }
+		}
+	}
+	
+	immediate = {
+		set_country_flag = CmtFlagLiquidationLv1Noticed
+		set_global_flag = CmtFlagOngoingLiquidationLv2
+		
+		set_timed_country_flag = { flag = CmtFlagClockForLiquidationLv2 days = @CmtConstParamilitaryLiquidatingFlagLimit }
+		country_event = { id = CrisisManagerControl.0556 days = @CmtConstParamilitaryLiquidatingCycle }
+	}
+	
+	option = {
+		name = CrisisManagerControl.0552a.name
+		custom_tooltip = CrisisManagerControl.0552a.tooltip
+	}
+}
+
+
+
+### End Process of All Existences: Clock Flag Control when Fleet Destroyed, Planet Conquered
+country_event = {
+	id = CrisisManagerControl.0553
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_global_flag = CmtFlagOngoingLiquidationLv2
+		CmtTriggerIsPlayerCrisisAggressor = yes
+	}
+	
+	immediate = {
+		remove_country_flag = CmtFlagClockForLiquidationLv2
+		set_timed_country_flag = { flag = CmtFlagClockForLiquidationLv2 days = @CmtConstParamilitaryLiquidatingFlagLimit }
+		country_event = { id = CrisisManagerControl.0556 days = @CmtConstParamilitaryLiquidatingCycle }
+	}
+}
+
+### End Process of All Existences: Clock Flag Control when Colony Destroyed by Bombardment
+planet_event = {
+	id = CrisisManagerControl.0554
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_global_flag = CmtFlagOngoingLiquidationLv2
+		from = { CmtTriggerIsPlayerCrisisAggressor = yes }
+	}
+	
+	immediate = {
+		from = {
+			remove_country_flag = CmtFlagClockForLiquidationLv2
+			set_timed_country_flag = { flag = CmtFlagClockForLiquidationLv2 days = @CmtConstParamilitaryLiquidatingFlagLimit }
+			country_event = { id = CrisisManagerControl.0556 days = @CmtConstParamilitaryLiquidatingCycle }
+		}
+	}
+}
+
+### End Process of All Existences: Backup Code
+event = {
+	id = CrisisManagerControl.0555
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_global_flag = CmtFlagOngoingLiquidationLv2
+		exists = event_target:CmtTargetPlayerCrisisAggressor
+	}
+	
+	immediate = {
+		event_target:CmtTargetPlayerCrisisAggressor = {
+			country_event = { id = CrisisManagerControl.0556 }
+			country_event = { id = CrisisManagerControl.0556 days = 180 }
+		}
+	}
+}
+	
+
+### Colony/Fleet of Reminnant Destroyed by Paramilitaries
+country_event = {
+	id = CrisisManagerControl.0556
+	title = CrisisManagerControl.0556.name
+	desc = {
+		text = CrisisManagerControl.0556.desc1
+		trigger = { NOT = { has_country_flag = CmtFlagStartParamilitaryLiquidating } }
+	}
+	desc = {
+		text = CrisisManagerControl.0556.desc2
+		trigger = {
+			has_country_flag = CmtFlagStartParamilitaryLiquidating
+			NOT = { has_country_flag = CmtFlagParamilitaryLiquidatingMissRestrained }
+		}
+	}
+	desc = {
+		text = CrisisManagerControl.0556.desc3
+		trigger = {
+			has_country_flag = CmtFlagStartParamilitaryLiquidating
+			has_country_flag = CmtFlagParamilitaryLiquidatingMissRestrained
+		}
+	}
+	picture = {
+		picture =GFX_evt_burning_settlement
+		trigger = { has_country_flag = CmtFlagParamilitaryLiquidateColony }
+	}
+	picture = {
+		picture =GFX_evt_exploding_ship
+		trigger = { NOT = { has_country_flag = CmtFlagParamilitaryLiquidateColony } }
+	}
+	show_sound = event_super_explosion
+	is_triggered_only = yes
+	
+	trigger = {
+		has_global_flag = CmtFlagOngoingLiquidationLv2
+		CmtTriggerIsPlayerCrisisAggressor = yes
+		NOT = { has_country_flag = CmtFlagClockForLiquidationLv2 }
+		any_country = {
+			CmtTriggerIsExistence = yes
+			NOT = { is_same_value = root }
+		}
+	}
+	
+	immediate = {
+		random_country = {
+			limit = {
+				CmtTriggerIsExistence = yes
+				NOT = { is_same_value = root }
+			}
+			if = {
+				limit = { any_owned_planet = { is_colony = yes } }
+				random_owned_planet = {
+					limit = { is_colony = yes }
+					solar_system = { save_event_target_as = CmtTargetCheaplyLiquidatedSystem }
+				}
+			} else_if = {
+				limit = { any_owned_fleet = { always = yes } }
+				random_owned_fleet = { solar_system = { save_event_target_as = CmtTargetCheaplyLiquidatedSystem } }
+			}
+		}
+		event_target:CmtTargetCheaplyLiquidatedSystem = {
+			every_system_planet = {
+				limit = {
+					is_colony = yes
+					NOT = { owner = { is_same_value = root } }
+				}
+				if = {
+					limit = {
+						NOT = { exists = event_target:CmtTargetCheaplyLiquidatedOwner }
+						exists = owner
+						NOT = { owner = { is_same_value = root } }
+					}
+					owner = { save_event_target_as = CmtTargetCheaplyLiquidatedOwner }
+				}
+				CmtEffectLiquidatePlanetBombardment = yes
+				root = { set_timed_country_flag = { flag = CmtFlagParamilitaryLiquidateColony days = 1 } }
+			}
+			every_fleet_in_system = {
+				limit = { NOT = { owner = { is_same_value = root } } }
+				if = {
+					limit = {
+						NOT = { exists = event_target:CmtTargetCheaplyLiquidatedOwner }
+						exists = owner
+						NOT = { owner = { is_same_value = root } }
+					}
+					owner = { save_event_target_as = CmtTargetCheaplyLiquidatedOwner }
+				}
+				delete_fleet = this
+			}
+		}
+		remove_country_flag = CmtFlagClockForLiquidationLv2
+		set_timed_country_flag = { flag = CmtFlagClockForLiquidationLv2 days = @CmtConstParamilitaryLiquidatingFlagLimit }
+		country_event = { id = CrisisManagerControl.0556 days = @CmtConstParamilitaryLiquidatingCycle }
+	}
+	
+	after = {
+		hidden_effect = {
+			set_country_flag = CmtFlagStartParamilitaryLiquidating
+			remove_country_flag = CmtFlagParamilitaryLiquidateColony
+		}
+	}
+	
+	option = {
+		name = CrisisManagerControl.0556a.name
+		custom_tooltip = CrisisManagerControl.0556a.tooltip
+		trigger = { NOT = { has_country_flag = CmtFlagParamilitaryLiquidatingMissRestrained } }
+	}
+	option = {
+		name = CrisisManagerControl.0556b.name
+		custom_tooltip = CrisisManagerControl.0556b.tooltip
+		trigger = { NOT = { has_country_flag = CmtFlagParamilitaryLiquidatingMissRestrained } }
+	}
+	option = {
+		name = CrisisManagerControl.0556c.name
+		custom_tooltip = CrisisManagerControl.0556c.tooltip
+		trigger = { NOT = { has_country_flag = CmtFlagStartParamilitaryLiquidating } }
+		hidden_effect = { set_country_flag = CmtFlagParamilitaryLiquidatingMissRestrained }
+	}
+	option = {
+		name = CrisisManagerControl.0556d.name
+		custom_tooltip = CrisisManagerControl.0556d.tooltip
+		trigger = { has_country_flag = CmtFlagParamilitaryLiquidatingMissRestrained }
+	}
+}
+
+### End of All Existences (Controling Event)
+country_event = {
+	id = CrisisManagerControl.0560
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		is_country_type = global_event
+		OR = {
+			has_global_flag = CmtFlagOngoingLiquidationLv2
+		}
+		NOR = {
+			any_country = {
+				CmtTriggerIsExistence = yes
+				NOT = { is_same_value = event_target:CmtTargetPlayerCrisisAggressor }
+				NAND = {
+					exists = from
+					is_same_value = from		## Last Destroyed Empire
+				}
+			}
+		}
+	}
+	
+	immediate = {
+		remove_global_flag = CmtFlagOngoingLiquidationLv2
+		set_variable = { which = CmtVarLiquidationGroup value = 0 }
+		set_global_flag = CmtFlagOngoingLiquidationLv3
+		country_event = { id = CrisisManagerControl.0562 }
+		
+		if = {
+			limit = { exists = event_target:CmtTargetPlayerCrisisAggressor }
+			event_target:CmtTargetPlayerCrisisAggressor = { country_event = { id = CrisisManagerControl.0561 } }
+		}
+	}
+}
+
+### End of All Existences (Notification)
+country_event = {
+	id = CrisisManagerControl.0561
+	title = CrisisManagerControl.0561.name
+	desc = CrisisManagerControl.0561.desc
+	picture = GFX_evt_toxic
+	show_sound = CmtSoundLiquidation2
+	is_triggered_only = yes
+	
+	trigger = {
+		CmtTriggerIsPlayerCrisisAggressor = yes
+		NOR = {
+			has_country_flag = CmtFlagLiquidationLv2Noticed
+			has_country_flag = CmtFlagLiquidationLv3Noticed
+			has_country_flag = CmtFlagLiquidationLv4Noticed
+		}
+	}
+	
+	immediate = {
+		set_country_flag = CmtFlagLiquidationLv2Noticed
+	}
+	
+	option = {
+		name = CrisisManagerControl.0561a.name
+		custom_tooltip = CrisisManagerControl.0561a.tooltip
+	}
+}
+
+### End Process of Crisis Player
+country_event = {
+	id = CrisisManagerControl.0562
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		is_country_type = global_event
+		has_global_flag = CmtFlagOngoingLiquidationLv3
+	}
+	
+	immediate = {
+		if = {
+			limit = { exists = event_target:CmtTargetPlayerCrisisAggressor.capital_scope.solar_system }
+			event_target:CmtTargetPlayerCrisisAggressor.capital_scope.solar_system = {
+				set_variable = { which = CmtVarLiquidationGroup value = 9 }
+			}
+		}
+		if = {
+			limit = { check_variable = { which = CmtVarLiquidationGroup value < 1 } }
+			every_system = {
+				limit = {
+					NAND = {
+						exists = event_target:CmtTargetPlayerCrisisAggressor.capital_scope.solar_system
+						is_same_value = event_target:CmtTargetPlayerCrisisAggressor.capital_scope.solar_system
+					}
+				}
+				random_list = {
+					10 = { set_variable = { which = CmtVarLiquidationGroup value = 1 } }
+					10 = { set_variable = { which = CmtVarLiquidationGroup value = 2 } }
+					10 = { set_variable = { which = CmtVarLiquidationGroup value = 3 } }
+					10 = { set_variable = { which = CmtVarLiquidationGroup value = 4 } }
+					10 = { set_variable = { which = CmtVarLiquidationGroup value = 5 } }
+					10 = { set_variable = { which = CmtVarLiquidationGroup value = 6 } }
+					10 = { set_variable = { which = CmtVarLiquidationGroup value = 7 } }
+					10 = { set_variable = { which = CmtVarLiquidationGroup value = 8 } }
+				}
+			}
+		} else_if = {
+			limit = { check_variable = { which = CmtVarLiquidationGroup value < 2 } }
+			every_system = {
+				limit = { check_variable = { which = CmtVarLiquidationGroup value < 2 } }
+				CmtEffectLiquidateSystemStructure = yes
+			}
+			play_sound = CmtSoundNowLiquidating3
+		} else_if = {
+			limit = { check_variable = { which = CmtVarLiquidationGroup value < 3 } }
+			every_system = {
+				limit = { check_variable = { which = CmtVarLiquidationGroup value < 3 } }
+				CmtEffectLiquidateSystemStructure = yes
+			}
+			play_sound = CmtSoundNowLiquidating3
+		} else_if = {
+			limit = { check_variable = { which = CmtVarLiquidationGroup value < 4 } }
+			every_system = {
+				limit = { check_variable = { which = CmtVarLiquidationGroup value < 4 } }
+				CmtEffectLiquidateSystemStructure = yes
+			}
+			play_sound = CmtSoundNowLiquidating3
+		} else_if = {
+			limit = { check_variable = { which = CmtVarLiquidationGroup value < 5 } }
+			every_system = {
+				limit = { check_variable = { which = CmtVarLiquidationGroup value < 5 } }
+				CmtEffectLiquidateSystemStructure = yes
+			}
+			play_sound = CmtSoundNowLiquidating3
+		} else_if = {
+			limit = { check_variable = { which = CmtVarLiquidationGroup value < 6 } }
+			every_system = {
+				limit = { check_variable = { which = CmtVarLiquidationGroup value < 6 } }
+				CmtEffectLiquidateSystemStructure = yes
+			}
+			play_sound = CmtSoundNowLiquidating3
+		} else_if = {
+			limit = { check_variable = { which = CmtVarLiquidationGroup value < 7 } }
+			every_system = {
+				limit = { check_variable = { which = CmtVarLiquidationGroup value < 7} }
+				CmtEffectLiquidateSystemStructure = yes
+			}
+			play_sound = CmtSoundNowLiquidating3
+		} else_if = {
+			limit = { check_variable = { which = CmtVarLiquidationGroup value < 8 } }
+			every_system = {
+				limit = { check_variable = { which = CmtVarLiquidationGroup value < 8 } }
+				CmtEffectLiquidateSystemStructure = yes
+			}
+			play_sound = CmtSoundNowLiquidating3
+		} else = {
+			if = {
+				limit = { exists = event_target:CmtTargetPlayerCrisisAggressor }
+				CmtEffectLiquidateAgressor = yes
+				event_target:CmtTargetPlayerCrisisAggressor = { country_event = { id = CrisisManagerControl.0563 } }
+			}
+			
+			set_variable = { which = CmtVarLiquidationGroup value = 0 }
+			remove_global_flag = CmtFlagOngoingLiquidationLv3
+			set_global_flag = CmtFlagOngoingLiquidationLv4
+			country_event = { id = CrisisManagerControl.0564 days = @CmtConstSelfLiquidatingCycle }
+		}
+		change_variable = { which = CmtVarLiquidationGroup value = 1 }
+		country_event = { id = CrisisManagerControl.0562 days = @CmtConstSelfLiquidatingCycle }
+	}
+}
+
+### End of Crisis Player
+country_event = {
+	id = CrisisManagerControl.0563
+	title = CrisisManagerControl.0563.name
+	desc = CrisisManagerControl.0563.desc
+	picture = GFX_event_frame
+	show_sound = CmtSoundLiquidation3
+	is_triggered_only = yes
+	
+	trigger = {
+		CmtTriggerIsPlayerCrisisAggressor = yes
+		has_global_flag = CmtFlagOngoingLiquidationLv3
+		NOR = {
+			has_country_flag = CmtFlagLiquidationLv3Noticed
+			has_country_flag = CmtFlagLiquidationLv4Noticed
+		}
+	}
+	
+	immediate = {
+		set_country_flag = CmtFlagLiquidationLv3Noticed
+		every_system = { CmtEffectLiquidateSystemStructure = yes }
+	}
+	
+	option = {
+		name = CrisisManagerControl.0563a.name
+		custom_tooltip = CrisisManagerControl.0563a.tooltip
+	}
+}
+
+
+### Final End Process, 5 systems per 5 days, Heavey Load on PC
+country_event = {
+	id = CrisisManagerControl.0564
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		is_country_type = global_event
+		has_global_flag = CmtFlagOngoingLiquidationLv4
+	}
+	
+	immediate = {
+		if = {
+			limit = { any_system = { NOT = { has_star_flag = CmtFlagCompletelyLiquidatedSystem } } }
+			while = {
+				count = @CmtConstFinalLiquidationCycle
+				random_system = {
+					limit = { NOT = { has_star_flag = CmtFlagLiquidatedSystem } }
+					CmtEffectLiquidateSystemStructure = yes
+					CmtEffectLiquidateSystemCelestial = yes
+				}
+			}
+			country_event = { id = CrisisManagerControl.0564 days = @CmtConstFinalLiquidationNumber }
+		} else = {
+			every_system = { CmtEffectLiquidateSystemStructure = yes }
+			every_system = { CmtEffectLiquidateSystemCelestial = yes }
+			remove_global_flag = CmtFlagOngoingLiquidationLv4
+			play_sound = CmtSoundLiquidation4
+		}
+	}
+}
+
+
+
+
+
+################
+###  Legacy  ###
+################
+
+
+#### End of All Empires (Notification for Victims)
+#country_event = {
+#	id = CrisisManagerControl.0553
+#	title = CrisisManagerControl.0553.name
+#	desc = CrisisManagerControl.0553.desc
+#	picture = GFX_evt_dead_city
+#	show_sound = CmtSoundLiquidation1
+#	is_triggered_only = yes
+#	
+#	trigger = {
+#		CmtTriggerIsEmpire = yes
+#		NOR = {
+#			CmtTriggerIsPlayerCrisisAggressor = yes
+#			has_country_flag = CmtFlagLiquidationLv1Noticed
+#			any_country = {
+#				CmtTriggerIsEmpire = yes
+#				NOR = {
+#					is_same_value = root
+#					CmtTriggerIsPlayerCrisisAggressor = yes
+#				}
+#			}
+#		}
+#	}
+#	
+#	immediate = {
+#		set_country_flag = CmtFlagLiquidationLv1Noticed
+#	}
+#	
+#	option = {
+#		name = CrisisManagerControl.0553a.name
+#		custom_tooltip = CrisisManagerControl.0553a.tooltip
+#	}
+#}
+
+
+
+#### Final End Process, 1 system per day, Heavey Load on PC
+#country_event = {
+#	id = CrisisManagerControl.0564
+#	hide_window = yes
+#	is_triggered_only = yes
+#	
+#	trigger = {
+#		is_country_type = global_event
+#		has_global_flag = CmtFlagOngoingLiquidationLv4
+#	}
+#	
+#	immediate = {
+#		if = {
+#			limit = { any_system = { NOT = { has_star_flag = CmtFlagCompletelyLiquidatedSystem } } }
+#			random_system = {
+#				limit = { NOT = { has_star_flag = CmtFlagLiquidatedSystem } }
+#				CmtEffectLiquidateSystemStructure = yes
+#				CmtEffectLiquidateSystemCelestial = yes
+#			}
+#			#play_sound = CmtSoundNowLiquidating4
+#			country_event = { id = CrisisManagerControl.0564 days = 1 }
+#		} else = {
+#			every_system = { CmtEffectLiquidateSystemStructure = yes }
+#			every_system = { CmtEffectLiquidateSystemCelestial = yes }
+#			remove_global_flag = CmtFlagOngoingLiquidationLv4
+#			play_sound = CmtSoundLiquidation4
+#		}
+#	}
+#}
+
+
+#### Final End Process, 10% of the galaxy per 20 days, Un... loud
+#country_event = {
+#	id = CrisisManagerControl.0564
+#	hide_window = yes
+#	is_triggered_only = yes
+#	
+#	trigger = {
+#		is_country_type = global_event
+#		has_global_flag = CmtFlagOngoingLiquidationLv4
+#	}
+#	
+#	immediate = {
+#		every_system = { CmtEffectLiquidateSystemStructure = yes }
+#		if = {
+#			limit = { check_variable = { which = CmtVarLiquidationGroup value < 1 } }
+#			every_system = {
+#				random_list = {
+#					10 = { set_variable = { which = CmtVarLiquidationGroup value = 1 } }
+#					10 = { set_variable = { which = CmtVarLiquidationGroup value = 2 } }
+#					10 = { set_variable = { which = CmtVarLiquidationGroup value = 3 } }
+#					10 = { set_variable = { which = CmtVarLiquidationGroup value = 4 } }
+#					10 = { set_variable = { which = CmtVarLiquidationGroup value = 5 } }
+#					10 = { set_variable = { which = CmtVarLiquidationGroup value = 6 } }
+#					10 = { set_variable = { which = CmtVarLiquidationGroup value = 7 } }
+#					10 = { set_variable = { which = CmtVarLiquidationGroup value = 8 } }
+#				}
+#			}
+#		} else_if = {
+#			limit = { check_variable = { which = CmtVarLiquidationGroup value < 2 } }
+#			every_system = {
+#				limit = { check_variable = { which = CmtVarLiquidationGroup value < 2 } }
+#				CmtEffectLiquidateSystemCelestial = yes
+#			}
+#			play_sound = CmtSoundNowLiquidating4
+#		} else_if = {
+#			limit = { check_variable = { which = CmtVarLiquidationGroup value < 3 } }
+#			every_system = {
+#				limit = { check_variable = { which = CmtVarLiquidationGroup value < 3 } }
+#				CmtEffectLiquidateSystemCelestial = yes
+#			}
+#			play_sound = CmtSoundNowLiquidating4
+#		} else_if = {
+#			limit = { check_variable = { which = CmtVarLiquidationGroup value < 4 } }
+#			every_system = {
+#				limit = { check_variable = { which = CmtVarLiquidationGroup value < 4 } }
+#				CmtEffectLiquidateSystemCelestial = yes
+#			}
+#			play_sound = CmtSoundNowLiquidating4
+#		} else_if = {
+#			limit = { check_variable = { which = CmtVarLiquidationGroup value < 5 } }
+#			every_system = {
+#				limit = { check_variable = { which = CmtVarLiquidationGroup value < 5 } }
+#				CmtEffectLiquidateSystemCelestial = yes
+#			}
+#			play_sound = CmtSoundNowLiquidating4
+#		} else_if = {
+#			limit = { check_variable = { which = CmtVarLiquidationGroup value < 6 } }
+#			every_system = {
+#				limit = { check_variable = { which = CmtVarLiquidationGroup value < 6 } }
+#				CmtEffectLiquidateSystemCelestial = yes
+#			}
+#			play_sound = CmtSoundNowLiquidating4
+#		} else_if = {
+#			limit = { check_variable = { which = CmtVarLiquidationGroup value < 7 } }
+#			every_system = {
+#				limit = { check_variable = { which = CmtVarLiquidationGroup value < 7} }
+#				CmtEffectLiquidateSystemCelestial = yes
+#			}
+#			play_sound = CmtSoundNowLiquidating4
+#		} else_if = {
+#			limit = { check_variable = { which = CmtVarLiquidationGroup value < 8 } }
+#			every_system = {
+#				limit = { check_variable = { which = CmtVarLiquidationGroup value < 8 } }
+#				CmtEffectLiquidateSystemCelestial = yes
+#			}
+#			play_sound = CmtSoundNowLiquidating4
+#		} else = {
+#			every_system = { CmtEffectLiquidateSystemCelestial = yes }
+#			play_sound = CmtSoundLiquidation4
+#			remove_global_flag = CmtFlagOngoingLiquidationLv4
+#		}
+#		change_variable = { which = CmtVarLiquidationGroup value = 1 }
+#		country_event = { id = CrisisManagerControl.0564 days = @CmtConstSelfLiquidatingCycle }
+#	}
+#}
+#
+#
+
+#### Destroy Building with immune_to_bombardment, e.g. Planetary Shield Generator
+#planet_event = {
+#	id = CrisisManagerControl.0535
+#	hide_window = yes
+#	is_triggered_only = yes
+#	
+#	trigger = {
+#		has_orbital_bombardment_stance = BombardmentPlayerCrisis
+#		CmtTriggerAntiBomberdmentBuildings = yes
+#	}
+#	
+#	immediate = {
+#		random_list = {
+#			80 = {
+#				modifier = {
+#					factor = 0
+#					count_owned_pops = { limit = { is_growing = no } count < 3 }
+#				}
+#			}
+#			20 = {
+#				modifier = {
+#					factor = 1.5
+#					count_owned_pops = { limit = { is_growing = no } count < 6 }
+#				}
+#				modifier = {
+#					factor = 0
+#					count_owned_pops = { limit = { is_growing = no } count > 10 }
+#				}
+#				random_tile = {
+#				limit = { CmtTriggerAntiBomberdmentBuildings = yes }
+#					set_ruined = yes
+#				}
+#			}
+#		}
+#	}
+#}
+
+#### Dummy
+#country_event = {
+#	id = CrisisManagerControl.0564
+#	hide_window = yes
+#	is_triggered_only = yes
+#	
+#	trigger = { always = no }
+#}
+
+
+
+
+
+

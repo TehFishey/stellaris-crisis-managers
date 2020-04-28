@@ -1,0 +1,284 @@
+﻿l_russian:
+ 
+ #####################################################################
+ #####################################################################
+ #####                                                           #####
+ #####    Crisis Manager                                         #####
+ #####                                                           #####
+ #####    Texts for Actual Events, Modifiers, War Goals, etc.    #####
+ #####                                                           #####
+ #####################################################################
+ #####################################################################
+ 
+ 
+ ################
+ ###  Events  ###
+ ################
+ 
+ ### Forced End of Cycle
+ #	
+ #	cf. utopia.3310.name, covenant.cycle.desc, covenant.cycle.option
+ #	    utopia.3320.name, utopia.3320.desc.a, utopia.3320.desc.b, utopia.3320.opt.a
+ #	
+ 
+ NAME_Absorbed_XXX:0 "Absorbed [Root.GetSpeciesNamePlural]" 
+ 
+ CrisisManagerControl.4101.name:0 "Covenant Forced"        ## memo: utopia.3310.name = Covenant Formed
+ CrisisManagerControl.4101.desc.y:0 "What..., what's happening!? Unidentified power have forced us to form a Covenant with the §REnd of the Cycle§!. As we forced its bargain, two words and only two words were spoken: §R''[CmtGlobalVar.GetValue.CmtVarTermForcedEoc] YEARS''§!. Then, silence, as we were left to contemplate the future consequences of what dose the uncanny Covenant mean."
+ CrisisManagerControl.4101.desc.d:0 "What..., what's happening!? Unidentified power have forced us to form a Covenant with the §REnd of the Cycle§!. As we forced its bargain, two words and only two words were spoken: §R''[CmtGlobalVar.GetValue.CmtVarTermForcedEoc] DAYS''§!. Then, silence, as we were left to contemplate the future consequences of what dose the uncanny Covenant mean."
+ CrisisManagerControl.4101a.name:0 "Something must have gone wrong, very wrong."		## memo: covenant.cycle.option = May the spirits have mercy on us all.
+ 
+ CrisisManagerControl.4102.name:0 "The End of the Cycle: §RArbitrary Reckoning§!"		## memo: utopia.3320.name = The End of the Cycle: §RReckoning§!
+ CrisisManagerControl.4102.desc:0 "Our time is up.\n\nWe have benefitted from the immense power given to us by the §REnd of the Cycle§!. However, it is not what we want, and we have tried to annul the Covenant many times over.\n\nWe could not.\n\nWhat we are plundered is everything. In an instant, so fast there is no time to react, let alone respond, the [Root.GetName] is... gone. Where once there was thriving colonies, there is now only death. Where once mighty fleets crossed the void, there is only ghosts and debris. Worse, other empires think we have formed the Covenant with our free will because of the immense power given us. All devoured by the End.\n\n"
+ CrisisManagerControl.4102.desc.a:0 "$CrisisManagerControl.4102.desc$All that remains of our empire is a group of exiles led by §Y[Root.GetRulerName]§!, a powerful psionic who saw the end coming and led a small part of our population into hiding on a world not marked by the End.\n\nAs if having our empire destroyed overnight wasn't bad enough, a massive Shroud entity has manifested itself in space above [former_capital.GetName]. Made immensely powerful by the devoured consciousnesses of our nations, it now roams the galaxy seeking further prey."
+ CrisisManagerControl.4102.desc.b:0 "$CrisisManagerControl.4102.desc$Not only have we been utterly destroyed, a massive Shroud entity has also manifested itself in space above [former_capital.GetName]. Made immensely powerful by the devoured consciousnesses of our nations, it now roams the galaxy seeking further prey. At least we will not be there to see it finish."
+ CrisisManagerControl.4102a.name:0 "How unjust..."        ## memo: utopia.3320.opt.a = What have we done...?
+ 
+ 
+ ### Uprising
+ #
+ # cf. anomaly.5013.name, anomaly.5013.desc, opinion_machine_uprising, opinion_machine_uprising_defeated
+ #
+ syndaw.1025.Joinable.foot:0 "We can join one side in the civil war. Although we cannot expect any financial return, it is possibly good way to join war for showing our presence and influence in the galaxy. And..., perhaps we can put some stellar systems in our territory if we join to the war and take advantage of the confusion."
+ syndaw.1025.Joinable.desc:1 "$syndaw.1025.desc$\n$syndaw.1025.Joinable.foot$"
+ syndaw.1025.Joinable.machine.desc:1 "$syndaw.1025.desc.machine$\n$syndaw.1025.Joinable.foot$"
+ syndaw.1025.JoinWarOrg.name:0 "We will stand with the lawful government to suppress hubristic rebels."
+ syndaw.1025.JoinWarOrg.tooltip:0 "We will join the war §Hif §Y[current_uprising_originator]§! accept our offer.§!"
+ syndaw.1025.JoinWarMech.name:0 "We will stand with revolutionaries for throwing off the yoke of oppression."
+ syndaw.1025.JoinWarMech.tooltip:0 "We will join the war §Hif §Y[current_uprising]§! accept our offer.§!"
+ syndaw.1025.Subject.name:1 "$war_in_heaven.4.d$"        ## As a subject nation, it is not up to us to decide.
+ syndaw.1025.Subject.tooltip:1 ""
+ 
+ CririsManagerControl.7176.name:0 "Offer of [From.GetName]"
+ CririsManagerControl.7176.upriser.desc:0 "§Y[From.GetName]§! offered their military support to our revolution. They do not request any return to us. They may just wish us a liberation, and again their underlying motive may be to grab our stellar systems occupied unjustly by §Y[current_uprising_originator.GetName]§!. Should we accept the offer?"
+ CririsManagerControl.7176.originator.desc:0 "§Y[From.GetName]§! offered a support repressing the riot in our empire.\nThey do not request any return to us. This offer may be a symbol of friendship to us, and again their underlying motive may be to grab our stellar systems occupied unjustly by §Y[current_uprising.GetName]§!. Should we accept the offer?"
+ CririsManagerControl.7176a.name:0 "We accept this offer."
+ CririsManagerControl.7176a.tooltip:0 "§Y[From.GetName]§! will join to us at the uprising war."
+ CririsManagerControl.7176b.name:0 "We decline this offer."
+ CririsManagerControl.7176b.tooltip:1 ""
+ CririsManagerControl.7177.name:0 "Response of [From.GetName]"
+ CririsManagerControl.7177.desc:0 "§Y[From.GetName]§!  accepted our offer of military supporting and expressed a deep sense of gratitude. Following us, we declared the war on §Y[CmtTargetUprisingEnemy]§!."
+ CririsManagerControl.7177a.name:0 "OK"        ## OK
+ CririsManagerControl.7177a.tooltip:1 ""
+ CririsManagerControl.7178.name:0 "$CririsManagerControl.7177.name$"
+ CririsManagerControl.7178.desc:0 "§Y[From.GetName]§! expressed gratitude to our intention of a military supporting, but declined it. We look calmly on the war for the present."
+ CririsManagerControl.7178a.name:1 "Disappointed."
+ CririsManagerControl.7178a.tooltip:1 ""
+ CririsManagerControl.7179.name:0 "[From.GetName] Declare War on Us"
+ CririsManagerControl.7179.desc:0 "§Y[From.GetName]§! stood with §Y[FromFrom.GetName]§!!\n They declared war on us today and now we are in a state of war with them."
+ CririsManagerControl.7179a.name:1 "$DISCONCERTING$"
+ CririsManagerControl.7179a.tooltip:1 "$DISCONCERTING$"
+ 
+ 
+ ### Dummies
+ CrisisManagerControl.4116.name:1 ""
+ CrisisManagerControl.4116.desc:1 ""
+ CrisisManagerControl.4117.name:1 ""
+ CrisisManagerControl.4117.desc:1 ""
+ CrisisManagerControl.4117.desc1:1 ""
+ CrisisManagerControl.4117.desc2:1 ""
+ 
+ 
+ 
+ ####################################
+ ###  Modifiers, War Goals, Jobs  ###
+ ####################################
+ 
+ ### Ship Speed of Crisis
+ CmtModifierShipSpeed_PrethorynConstructor2:0 "Faster Constructor"
+ CmtModifierShipSpeed_UnbiddenConstructor2:1 "$CmtModifierShipSpeed_PrethorynConstructor2$"
+ CmtModifierShipSpeed_AberrantConstructor2:1 "$CmtModifierShipSpeed_PrethorynConstructor2$"
+ CmtModifierShipSpeed_VehementConstructor2:1 "$CmtModifierShipSpeed_PrethorynConstructor2$"
+ CmtModifierShipSpeed_ContingencyConstructor2:1 "$CmtModifierShipSpeed_PrethorynConstructor2$"
+ CmtModifierShipSpeed_PrethorynConstructor3:1 "$CmtModifierShipSpeed_PrethorynConstructor2$"
+ CmtModifierShipSpeed_UnbiddenConstructor3:1 "$CmtModifierShipSpeed_PrethorynConstructor3$"
+ CmtModifierShipSpeed_AberrantConstructor3:1 "$CmtModifierShipSpeed_PrethorynConstructor3$"
+ CmtModifierShipSpeed_VehementConstructor3:1 "$CmtModifierShipSpeed_PrethorynConstructor3$"
+ CmtModifierShipSpeed_ContingencyConstructor3:1 "$CmtModifierShipSpeed_PrethorynConstructor3$"
+ CmtModifierShipSpeed_PrethorynConstructor4:1 "$CmtModifierShipSpeed_PrethorynConstructor2$"
+ CmtModifierShipSpeed_UnbiddenConstructor4:1 "$CmtModifierShipSpeed_PrethorynConstructor4$"
+ CmtModifierShipSpeed_AberrantConstructor4:1 "$CmtModifierShipSpeed_PrethorynConstructor4$"
+ CmtModifierShipSpeed_VehementConstructor4:1 "$CmtModifierShipSpeed_PrethorynConstructor4$"
+ CmtModifierShipSpeed_ContingencyConstructor4:1 "$CmtModifierShipSpeed_PrethorynConstructor4$"
+ CmtModifierShipSpeed_PrethorynConstructor5:1 "$CmtModifierShipSpeed_PrethorynConstructor2$"
+ CmtModifierShipSpeed_UnbiddenConstructor5:1 "$CmtModifierShipSpeed_PrethorynConstructor5$"
+ CmtModifierShipSpeed_AberrantConstructor5:1 "$CmtModifierShipSpeed_PrethorynConstructor5$"
+ CmtModifierShipSpeed_VehementConstructor5:1 "$CmtModifierShipSpeed_PrethorynConstructor5$"
+ CmtModifierShipSpeed_ContingencyConstructor5:1 "$CmtModifierShipSpeed_PrethorynConstructor5$"
+ 
+ CmtModifierShipSpeed_PrethorynCombatShip2:0 "Faster Combat Fleet"
+ CmtModifierShipSpeed_SentinelCombatShip2:1 "$CmtModifierShipSpeed_PrethorynCombatShip2$"
+ CmtModifierShipSpeed_UnbiddenCombatShip2:1 "$CmtModifierShipSpeed_PrethorynCombatShip2$"
+ CmtModifierShipSpeed_AberrantCombatShip2:1 "$CmtModifierShipSpeed_PrethorynCombatShip2$"
+ CmtModifierShipSpeed_VehementCombatShip2:1 "$CmtModifierShipSpeed_PrethorynCombatShip2$"
+ CmtModifierShipSpeed_ContingencyCombatShip2:1 "$CmtModifierShipSpeed_PrethorynCombatShip2$"
+ CmtModifierShipSpeed_CybrexCombatShip2:1 "$CmtModifierShipSpeed_PrethorynCombatShip2$"
+ CmtModifierShipSpeed_PrethorynCombatShip3:1 "$CmtModifierShipSpeed_PrethorynCombatShip2$"
+ CmtModifierShipSpeed_SentinelCombatShip3:1 "$CmtModifierShipSpeed_PrethorynCombatShip3$"
+ CmtModifierShipSpeed_UnbiddenCombatShip3:1 "$CmtModifierShipSpeed_PrethorynCombatShip3$"
+ CmtModifierShipSpeed_AberrantCombatShip3:1 "$CmtModifierShipSpeed_PrethorynCombatShip3$"
+ CmtModifierShipSpeed_VehementCombatShip3:1 "$CmtModifierShipSpeed_PrethorynCombatShip3$"
+ CmtModifierShipSpeed_ContingencyCombatShip3:1 "$CmtModifierShipSpeed_PrethorynCombatShip3$"
+ CmtModifierShipSpeed_CybrexCombatShip3:1 "$CmtModifierShipSpeed_PrethorynCombatShip3$"
+ CmtModifierShipSpeed_PrethorynCombatShip4:1 "$CmtModifierShipSpeed_PrethorynCombatShip2$"
+ CmtModifierShipSpeed_SentinelCombatShip4:1 "$CmtModifierShipSpeed_PrethorynCombatShip4$"
+ CmtModifierShipSpeed_UnbiddenCombatShip4:1 "$CmtModifierShipSpeed_PrethorynCombatShip4$"
+ CmtModifierShipSpeed_AberrantCombatShip4:1 "$CmtModifierShipSpeed_PrethorynCombatShip4$"
+ CmtModifierShipSpeed_VehementCombatShip4:1 "$CmtModifierShipSpeed_PrethorynCombatShip4$"
+ CmtModifierShipSpeed_ContingencyCombatShip4:1 "$CmtModifierShipSpeed_PrethorynCombatShip4$"
+ CmtModifierShipSpeed_CybrexCombatShip4:1 "$CmtModifierShipSpeed_PrethorynCombatShip4$"
+ CmtModifierShipSpeed_PrethorynCombatShip5:1 "$CmtModifierShipSpeed_PrethorynCombatShip2$"
+ CmtModifierShipSpeed_SentinelCombatShip5:1 "$CmtModifierShipSpeed_PrethorynCombatShip5$"
+ CmtModifierShipSpeed_UnbiddenCombatShip5:1 "$CmtModifierShipSpeed_PrethorynCombatShip5$"
+ CmtModifierShipSpeed_AberrantCombatShip5:1 "$CmtModifierShipSpeed_PrethorynCombatShip5$"
+ CmtModifierShipSpeed_VehementCombatShip5:1 "$CmtModifierShipSpeed_PrethorynCombatShip5$"
+ CmtModifierShipSpeed_ContingencyCombatShip5:1 "$CmtModifierShipSpeed_PrethorynCombatShip5$"
+ CmtModifierShipSpeed_CybrexCombatShip5:1 "$CmtModifierShipSpeed_PrethorynCombatShip5$"
+ 
+ 
+ ### Ghost Signal
+ CmtModifierOrganicPopGhostSignal_5a:1 "$pop_ghost_signal_5$"
+ CmtModifierOrganicPopGhostSignal_4a:1 "$pop_ghost_signal_5$"
+ CmtModifierOrganicPopGhostSignal_3a:1 "$pop_ghost_signal_5$"
+ CmtModifierOrganicPopGhostSignal_2a:1 "$pop_ghost_signal_5$"
+ CmtModifierOrganicPopGhostSignal_1a:1 "$pop_ghost_signal_5$"
+ CmtModifierOrganicPopGhostSignal_5b:1 "$pop_ghost_signal_5$"
+ CmtModifierOrganicPopGhostSignal_4b:1 "$pop_ghost_signal_5$"
+ CmtModifierOrganicPopGhostSignal_3b:1 "$pop_ghost_signal_5$"
+ CmtModifierOrganicPopGhostSignal_2b:1 "$pop_ghost_signal_5$"
+ CmtModifierOrganicPopGhostSignal_1b:1 "$pop_ghost_signal_5$"
+ CmtModifierOrganicPopGhostSignal_5d:1 "$pop_ghost_signal_5$"
+ CmtModifierOrganicPopGhostSignal_4d:1 "$pop_ghost_signal_5$"
+ CmtModifierOrganicPopGhostSignal_3d:1 "$pop_ghost_signal_5$"
+ CmtModifierOrganicPopGhostSignal_2d:1 "$pop_ghost_signal_5$"
+ CmtModifierOrganicPopGhostSignal_1d:1 "$pop_ghost_signal_5$"
+ CmtModifierOrganicPopGhostSignal_5e:1 "$pop_ghost_signal_5$"
+ CmtModifierOrganicPopGhostSignal_4e:1 "$pop_ghost_signal_5$"
+ CmtModifierOrganicPopGhostSignal_3e:1 "$pop_ghost_signal_5$"
+ CmtModifierOrganicPopGhostSignal_2e:1 "$pop_ghost_signal_5$"
+ CmtModifierOrganicPopGhostSignal_1e:1 "$pop_ghost_signal_5$"
+ 
+ CmtModifierMachinePopGhostSignal_5a:1 "$pop_ghost_signal_5$"
+ CmtModifierMachinePopGhostSignal_4a:1 "$pop_ghost_signal_5$"
+ CmtModifierMachinePopGhostSignal_5b:1 "$pop_ghost_signal_5$"
+ CmtModifierMachinePopGhostSignal_4b:1 "$pop_ghost_signal_5$"
+ CmtModifierMachinePopGhostSignal_5d:1 "$pop_ghost_signal_5$"
+ CmtModifierMachinePopGhostSignal_4d:1 "$pop_ghost_signal_5$"
+ CmtModifierMachinePopGhostSignal_5e:1 "$pop_ghost_signal_5$"
+ CmtModifierMachinePopGhostSignal_4e:1 "$pop_ghost_signal_5$"
+ 
+ CmtModifierCombatShipGhostSignal_5a:1 "$pop_ghost_signal_5$"
+ CmtModifierCombatShipGhostSignal_4a:1 "$pop_ghost_signal_5$"
+ CmtModifierCombatShipGhostSignal_3a:1 "$pop_ghost_signal_5$"
+ CmtModifierCombatShipGhostSignal_2a:1 "$pop_ghost_signal_5$"
+ CmtModifierCombatShipGhostSignal_1a:1 "$pop_ghost_signal_5$"
+ CmtModifierCombatShipGhostSignal_5b:1 "$pop_ghost_signal_5$"
+ CmtModifierCombatShipGhostSignal_4b:1 "$pop_ghost_signal_5$"
+ CmtModifierCombatShipGhostSignal_3b:1 "$pop_ghost_signal_5$"
+ CmtModifierCombatShipGhostSignal_2b:1 "$pop_ghost_signal_5$"
+ CmtModifierCombatShipGhostSignal_1b:1 "$pop_ghost_signal_5$"
+ CmtModifierCombatShipGhostSignal_5d:1 "$pop_ghost_signal_5$"
+ CmtModifierCombatShipGhostSignal_4d:1 "$pop_ghost_signal_5$"
+ CmtModifierCombatShipGhostSignal_3d:1 "$pop_ghost_signal_5$"
+ CmtModifierCombatShipGhostSignal_2d:1 "$pop_ghost_signal_5$"
+ CmtModifierCombatShipGhostSignal_1d:1 "$pop_ghost_signal_5$"
+ CmtModifierCombatShipGhostSignal_5e:1 "$pop_ghost_signal_5$"
+ CmtModifierCombatShipGhostSignal_4e:1 "$pop_ghost_signal_5$"
+ CmtModifierCombatShipGhostSignal_3e:1 "$pop_ghost_signal_5$"
+ CmtModifierCombatShipGhostSignal_2e:1 "$pop_ghost_signal_5$"
+ CmtModifierCombatShipGhostSignal_1e:1 "$pop_ghost_signal_5$"
+ 
+ 
+ ### Forced End of Cycle
+ CmtModifierAbsorvedConsciousness_6:1 "$absorbed_consciousness_1$"
+ CmtModifierAbsorvedConsciousness_7:1 "$absorbed_consciousness_1$"
+ CmtModifierAbsorvedConsciousness_8:1 "$absorbed_consciousness_1$"
+ CmtModifierAbsorvedConsciousness_9:1 "$absorbed_consciousness_1$"
+ CmtModifierAbsorvedConsciousness_A:1 "$absorbed_consciousness_1$"
+ CmtModifierAbsorvedConsciousness_B:1 "$absorbed_consciousness_1$"
+ CmtModifierAbsorvedConsciousness_C:1 "$absorbed_consciousness_1$"
+ 
+ CmtModifierCovenantFEoC_013d:1 "$covenant_end_of_the_cycle$"
+ CmtModifierCovenantFEoC_088d:1 "$covenant_end_of_the_cycle$"
+ CmtModifierCovenantFEoC_666d:1 "$covenant_end_of_the_cycle$"
+ CmtModifierCovenantFEoC_04yr:1 "$covenant_end_of_the_cycle$"
+ CmtModifierCovenantFEoC_13yr:1 "$covenant_end_of_the_cycle$"
+ CmtModifierCovenantFEoC_17yr:1 "$covenant_end_of_the_cycle$"
+ CmtModifierCovenantFEoC_23yr:1 "$covenant_end_of_the_cycle$"
+ 
+ 
+ ### War in Heaven
+ war_goal_wg_CmtWarInHeaven1:1 "$war_goal_wg_war_in_heaven$"
+ war_goal_wg_CmtWarInHeaven2:1 "$war_goal_wg_war_in_heaven$"
+ war_goal_wg_CmtWarInHeaven3:1 "$war_goal_wg_war_in_heaven$"
+ war_goal_wg_CmtWarInHeaven4:1 "$war_goal_wg_war_in_heaven$"
+ war_goal_wg_CmtWarInHeaven5:1 "$war_goal_wg_war_in_heaven$"
+ war_goal_wg_CmtWarInHeaven1_desc:1 "$war_goal_wg_war_in_heaven_desc$"
+ war_goal_wg_CmtWarInHeaven2_desc:1 "$war_goal_wg_war_in_heaven_desc$"
+ war_goal_wg_CmtWarInHeaven3_desc:1 "$war_goal_wg_war_in_heaven_desc$"
+ war_goal_wg_CmtWarInHeaven4_desc:1 "$war_goal_wg_war_in_heaven_desc$"
+ war_goal_wg_CmtWarInHeaven5_desc:1 "$war_goal_wg_war_in_heaven_desc$"
+ 
+ 
+ ### Dessanu Guift
+ CmtModifierDessanuGift_21:1 "$dessanu_gift$"
+ CmtModifierDessanuGift_22:1 "$dessanu_gift$"
+ CmtModifierDessanuGift_23:1 "$dessanu_gift$"
+ CmtModifierDessanuGift_24:1 "$dessanu_gift$"
+ CmtModifierDessanuGift_25:1 "$dessanu_gift$"
+ CmtModifierDessanuGift_26:1 "$dessanu_gift$"
+ CmtModifierDessanuGift_11:1 "$dessanu_gift$"
+ CmtModifierDessanuGift_12:1 "$dessanu_gift$"
+ CmtModifierDessanuGift_13:1 "$dessanu_gift$"
+ CmtModifierDessanuGift_14:1 "$dessanu_gift$"
+ 
+ 
+ ### Automatic Terraform (L-Gates)
+ CmtModifierAutoTerraform:0 "Nanites Under Decomposition"
+ CmtModifierAutoTerraform_desc:0 "Nanites in this planet are decomposing naturally. The planet will be turned habitable within years." 
+ 
+ 
+ ### Job for Purging
+ job_CmtPurge:1 "$job_purge$"
+ job_CmtPurge_plural:1 "$job_purge_plural$"
+ job_CmtPurge_desc:1 "$job_purge_desc$"
+ 
+ 
+ ### Uprising
+ war_goal_wg_CmtMechUprising11:1 "$wg_machine_uprising$"
+ war_goal_wg_CmtMechUprising12:1 "$wg_machine_uprising$"
+ war_goal_wg_CmtMechUprising13:1 "$wg_machine_uprising$"
+ war_goal_wg_CmtMechUprising14:1 "$wg_machine_uprising$"
+ war_goal_wg_CmtMechUprising15:1 "$wg_machine_uprising$"
+ war_goal_wg_CmtMechUprising31:1 "$wg_machine_uprising$"
+ war_goal_wg_CmtMechUprising32:1 "$wg_machine_uprising$"
+ war_goal_wg_CmtMechUprising33:1 "$wg_machine_uprising$"
+ war_goal_wg_CmtMechUprising34:1 "$wg_machine_uprising$"
+ war_goal_wg_CmtMechUprising35:1 "$wg_machine_uprising$"
+ war_goal_wg_CmtMechUprising11_desc:1 "$wg_machine_uprising_desc$"
+ war_goal_wg_CmtMechUprising12_desc:1 "$wg_machine_uprising_desc$"
+ war_goal_wg_CmtMechUprising13_desc:1 "$wg_machine_uprising_desc$"
+ war_goal_wg_CmtMechUprising14_desc:1 "$wg_machine_uprising_desc$"
+ war_goal_wg_CmtMechUprising15_desc:1 "$wg_machine_uprising_desc$"
+ war_goal_wg_CmtMechUprising31_desc:1 "$wg_machine_uprising_desc$"
+ war_goal_wg_CmtMechUprising32_desc:1 "$wg_machine_uprising_desc$"
+ war_goal_wg_CmtMechUprising33_desc:1 "$wg_machine_uprising_desc$"
+ war_goal_wg_CmtMechUprising34_desc:1 "$wg_machine_uprising_desc$"
+ war_goal_wg_CmtMechUprising35_desc:1 "$wg_machine_uprising_desc$"
+ 
+ CmtModifierUprisingNpc11:1 "$uprising_ai_buff$"
+ CmtModifierUprisingNpc12:1 "$uprising_ai_buff$"
+ CmtModifierUprisingNpc13:1 "$uprising_ai_buff$"
+ CmtModifierUprisingNpc14:1 "$uprising_ai_buff$"
+ CmtModifierUprisingNpc15:1 "$uprising_ai_buff$"
+ CmtModifierUprisingNpc21:1 "$uprising_ai_buff$"
+ CmtModifierUprisingNpc22:1 "$uprising_ai_buff$"
+ CmtModifierUprisingNpc23:1 "$uprising_ai_buff$"
+ CmtModifierUprisingNpc24:1 "$uprising_ai_buff$"
+ CmtModifierUprisingNpc25:1 "$uprising_ai_buff$"
+ 
+ CmtOpinionUprigingUpriserAlly:0 "Supporter of Revolution"
+ CmtOpinionUprisingUpriserEnemy:0 "Enemy of Revolution"
+ CmtOpinionUprigingOriginatorAlly:0 "Helper of National Disaster"
+ CmtOpinionUprisingOriginatorEnemy:0 "Supporter of Rebels"
+

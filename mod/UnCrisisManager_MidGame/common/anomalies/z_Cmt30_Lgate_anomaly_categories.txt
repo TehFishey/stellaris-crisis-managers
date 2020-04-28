@@ -1,0 +1,45 @@
+
+###############################################
+###############################################
+#####                                     #####
+#####    Crisis Manager                   #####
+#####                                     #####
+#####    Anomalies for Mid-Game Crises    #####
+#####                                     #####
+###############################################
+###############################################
+
+### Gray
+disco_gray_cat = {
+	desc = "disco_gray_cat_desc"
+	picture = "GFX_evt_ship_in_orbit_2"
+	level = 3
+	
+	spawn_chance = {
+		modifier = {
+			add = 6
+			is_planet_class = pc_gray_goo
+			solar_system = { has_star_flag = lcluster }
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarLgateAloneGrayCondition value = 1 } }
+				OR = {
+					NOR = {
+						has_global_flag = dragon_season
+						has_global_flag = gray_goo_empire_set
+						has_global_flag = gray_goo_crisis_set
+					}
+					AND = {
+						check_variable = { which = CmtVarLgateAloneGrayCondition value = 3 }
+						has_global_flag = dragon_season
+					}
+					check_variable = { which = CmtVarLgateAloneGrayCondition value = 4 }
+				}
+			}
+		}
+		modifier = {
+			factor = 100
+			has_global_flag = CmtFlagDebugMode
+		}
+	}
+	on_success = graygoo.400
+}

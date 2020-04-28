@@ -1,0 +1,433 @@
+
+########################################################
+########################################################
+#####                                              #####
+#####    Crisis Manager                            #####
+#####                                              #####
+#####    Scripted Effects for Creating Warships    #####
+#####                                              #####
+########################################################
+########################################################
+#
+# Information
+#	All script in this file require following scopes
+#	this: Affiliated fleet
+#	prev: Owner country
+#	prevprev: Location for creating fleets (e.g. planet)
+#
+
+###################
+###  Constants  ###
+###################
+
+
+
+###################
+###  Prethoryn  ###
+###################
+
+CmtEffectCreateShip_SwarmQueen = {
+	create_ship = {
+		name = random
+		design = "NAME_Swarm_Queen"
+		graphical_culture = "swarm_01"
+		effect = { CmtEffectFasterPrethorynCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_SwarmLarge = {
+	create_ship = {
+		name = random
+		design = "NAME_Swarm_Large"
+		graphical_culture = "swarm_01"
+		effect = { CmtEffectFasterPrethorynCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_SwarmCarrier = {
+	create_ship = {
+		name = random
+		design = "NAME_Swarm_Carrier"
+		graphical_culture = "swarm_01"
+		effect = { CmtEffectFasterPrethorynCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_SwarmSmall = {
+	create_ship = {
+		name = random
+		design = "NAME_Swarm_Small"
+		graphical_culture = "swarm_01"
+		effect = { CmtEffectFasterPrethorynCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_SwarmArmy = {
+	create_army_transport = {
+		ship_name = "NAME_Prethoryn_Transport"
+		graphical_culture = "swarm_01"
+		army_name = "NAME_Prethoryn_Invaders"
+		army_type = "swarm_army"
+		species = event_target:prethoryn_species
+	}
+}
+
+CmtEffectCreateShip_PetQueenMother = {
+	create_ship = {
+		name = "NAME_Domesticated_Queen"
+		design = "NAME_Swarm_Queen"
+		graphical_culture = "swarm_01"
+		upgradable = no
+		effect = { CmtEffectFasterPrethorynCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_PetQueenLarge = {
+	create_ship = {
+		name = "NAME_Domesticated_Warrior"
+		design = "NAME_Swarm_Large"
+		graphical_culture = "swarm_01"
+		upgradable = no
+		effect = { CmtEffectFasterPrethorynCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_PetQueenSmall = {
+	create_ship = {
+		name = "NAME_Domesticated_Swarmling"
+		design = "NAME_Swarm_Small"
+		graphical_culture = "swarm_01"
+		upgradable = no
+		effect = { CmtEffectFasterPrethorynCombatShip = yes }
+	}
+}
+
+
+###################
+###  Sentinels  ###
+###################
+
+### From Fallen Empire
+
+CmtEffectCreateShip_SentinelAlpha = {
+	create_ship = {
+		name = random
+		design = NAME_Alpha
+		graphical_culture = "fallen_empire_01"
+		effect = { CmtEffectFasterSentinelCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_SentinelBeta = {
+	create_ship = {
+		name = random
+		design = NAME_Beta
+		graphical_culture = "fallen_empire_01"
+		effect = { CmtEffectFasterSentinelCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_SentinelGamma = {
+	create_ship = {
+		name = random
+		design = NAME_Gamma
+		graphical_culture = "fallen_empire_01"
+		effect = { CmtEffectFasterSentinelCombatShip = yes }
+	}
+}
+
+
+### Spearhead
+
+CmtEffectCreateShip_SpearheadMammalian = {
+	create_ship = {
+		name = random
+		design = "NAME_Spearhead"
+		graphical_culture = "mammalian_01"
+		effect = { CmtEffectFasterSentinelCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_SpearheadReptilian = {
+	create_ship = {
+		name = random
+		design = "NAME_Spearhead"
+		graphical_culture = "reptilian_01"
+		effect = { CmtEffectFasterSentinelCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_SpearheadArthoropoid = {
+	create_ship = {
+		name = random
+		design = NAME_Spearhead
+		graphical_culture = "arthropoid_01"
+		effect = { CmtEffectFasterSentinelCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_SpearheadAvian = {
+	create_ship = {
+		name = random
+		design = NAME_Spearhead
+		graphical_culture = "avian_01"
+		effect = { CmtEffectFasterSentinelCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_SpearheadMolluscoid = {
+	create_ship = {
+		name = random
+		design = NAME_Spearhead
+		graphical_culture = "molluscoid_01"
+		effect = { CmtEffectFasterSentinelCombatShip = yes }
+	}
+}
+
+
+### Death Head
+
+CmtEffectCreateShip_DeathsHeadMammalian = {
+	create_ship = {
+		name = random
+		design = "NAME_Deaths_Head"
+		graphical_culture = "mammalian_01"
+		effect = { CmtEffectFasterSentinelCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_DeathsHeadMolluscoid = {
+	create_ship = {
+		name = random
+		design = "NAME_Deaths_Head"
+		graphical_culture = "molluscoid_01"
+		effect = { CmtEffectFasterSentinelCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_DeathsHeadArthropoid = {
+	create_ship = {
+		name = random
+		design = "NAME_Deaths_Head"
+		graphical_culture = "arthropoid_01"
+		effect = { CmtEffectFasterSentinelCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_DeathsHeadAvian = {
+	create_ship = {
+		name = random
+		design = "NAME_Deaths_Head"
+		graphical_culture = "avian_01"
+		effect = { CmtEffectFasterSentinelCombatShip = yes }
+	}
+}
+
+
+### Bug Crusher
+
+CmtEffectCreateShip_BugCrusherAvian = {
+	create_ship = {
+		name = random
+		design = "NAME_Bug_Crusher"
+		graphical_culture = "avian_01"
+		effect = { CmtEffectFasterSentinelCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_BugCrusherMammalian = {
+	create_ship = {
+		name = random
+		design = "NAME_Bug_Crusher"
+		graphical_culture = "mammalian_01"
+		effect = { CmtEffectFasterSentinelCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_BugCrusherReptilian = {
+	create_ship = {
+		name = random
+		design = "NAME_Bug_Crusher"
+		graphical_culture = "reptilian_01"
+		effect = { CmtEffectFasterSentinelCombatShip = yes }
+	}
+}
+
+
+### Blade
+
+CmtEffectCreateShip_BladeReptilian = {
+	create_ship = {
+		name = random
+		design = "NAME_Blade"
+		graphical_culture = "reptilian_01"
+		effect = { CmtEffectFasterSentinelCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_BladeAvian = {
+	create_ship = {
+		name = random
+		design = "NAME_Blade"
+		graphical_culture = "avian_01"
+		effect = { CmtEffectFasterSentinelCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_BladeArthropoid = {
+	create_ship = {
+		name = random
+		design = "NAME_Blade"
+		graphical_culture = "arthropoid_01"
+		effect = { CmtEffectFasterSentinelCombatShip = yes }
+	}
+}
+
+
+###########################
+###  Extradimensionals  ###
+###########################
+
+### Unbidden
+
+CmtEffectCreateShip_Revenant = {
+	create_ship = {
+		name = random
+		design = "NAME_Revenant"
+		graphical_culture = "extra_dimensional_01"
+		effect = { CmtEffectFasterUnbiddenCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_Phantom = {
+	create_ship = {
+		name = random
+		design = "NAME_Phantom"
+		graphical_culture = "extra_dimensional_01"
+		effect = { CmtEffectFasterUnbiddenCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_Wraith = {
+	create_ship = {
+		name = random
+		design = "NAME_Wraith"
+		graphical_culture = "extra_dimensional_01"
+		effect = { CmtEffectFasterUnbiddenCombatShip = yes }
+	}
+}
+
+
+### Aberrant
+
+CmtEffectCreateShip_Huntress = {
+	create_ship = {
+		name = random
+		design = "NAME_Huntress"
+		graphical_culture = "extra_dimensional_02"
+		effect = { CmtEffectFasterAberrantCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_Assassin = {
+	create_ship = {
+		name = random
+		design = "NAME_Assassin"
+		graphical_culture = "extra_dimensional_02"
+		effect = { CmtEffectFasterAberrantCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_Predator = {
+	create_ship = {
+		name = random
+		design = "NAME_Predator"
+		graphical_culture = "extra_dimensional_02"
+		effect = { CmtEffectFasterAberrantCombatShip = yes }
+	}
+}
+
+
+### Vehement
+
+CmtEffectCreateShip_Eradicator = {
+	create_ship = {
+		name = random
+		design = "NAME_Eradicator"
+		graphical_culture = "extra_dimensional_03"
+		effect = { CmtEffectFasterVehementCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_Annihilator = {
+	create_ship = {
+		name = random
+		design = "NAME_Annihilator"
+		graphical_culture = "extra_dimensional_03"
+		effect = { CmtEffectFasterVehementCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_Obliterator = {
+	create_ship = {
+		name = random
+		design = "NAME_Obliterator"
+		graphical_culture = "extra_dimensional_03"
+		effect = { CmtEffectFasterVehementCombatShip = yes }
+	}
+}
+
+
+
+#####################
+###  Contingency  ###
+#####################
+
+CmtEffectCreateShip_Euthanizer = {
+	create_ship = {
+		name = random
+		design = "NAME_Euthanizer"
+		graphical_culture = "ai_01"
+		effect = { CmtEffectFasterContingencyCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_Sterilizer = {
+	create_ship = {
+		name = random
+		design = "NAME_Sterilizer"
+		graphical_culture = "ai_01"
+		effect = { CmtEffectFasterContingencyCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_ContingencyArmy = {
+	create_army_transport = {
+		graphical_culture = "ai_01"
+		army_type = robotic_army
+	}
+}
+
+################
+###  Cybrex  ###
+################
+
+CmtEffectCreateShip_Taciturn = {
+	create_ship = {
+		name = random
+		design = "NAME_Taciturn"
+		graphical_culture = "ai_01"
+		effect = { CmtEffectFasterCybrexCombatShip = yes }
+	}
+}
+
+CmtEffectCreateShip_Reticent = {
+	create_ship = {
+		name = random
+		design = "NAME_Reticent"
+		graphical_culture = "ai_01"
+		effect = { CmtEffectFasterCybrexCombatShip = yes }
+	}
+}
+
+

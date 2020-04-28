@@ -1,0 +1,222 @@
+namespace = CrisisManagerMenu
+
+#####################################
+#####################################
+#####                           #####
+#####    Crisis Manager         #####
+#####                           #####
+#####    Initializing Events    #####
+#####                           #####
+#####################################
+#####################################
+
+
+### Activation on Game Start
+event = {
+	id = CrisisManagerMenu.0001
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		CmtEffectSetDetectedEdition = yes
+		random_country = {
+			limit = { is_country_type = global_event }
+			country_event = { id = CrisisManagerMenu.0021 }		## Initializing Variables
+		}
+		if = {
+			limit = { NOT = { has_global_flag = CmtFlagNoCall } }
+			random_country = {
+				limit = { is_ai = no }
+				country_event = { id = CrisisManagerMenu.0100 }		## Main Menu
+			}
+		}
+	}
+}
+
+
+
+### Activation for Saved Game
+country_event = {
+	id = CrisisManagerMenu.0002
+	hide_window = yes
+	
+	trigger = {
+		NOT = { has_global_flag = CmtFlagActivated }
+		is_country_type = global_event
+	}
+	
+	immediate = {
+		CmtEffectSetDetectedEdition = yes
+		if = {
+			limit = { CmtTriggerAnyManagedEventTriggered = yes }
+			every_country = {
+				limit = { is_ai = no }
+				country_event = { id = CrisisManagerMenu.0012 }		## Waning: Crisis Happened Already
+			}
+		} else = {
+			country_event = { id = CrisisManagerMenu.0021 }		## Initializing Variables
+			random_country = {
+				limit = { is_ai = no }
+				country_event = { id = CrisisManagerMenu.0011 }		## Activating Notification
+			}
+		}
+	}
+}
+
+
+### Manual Call Up (Called from ''!Mod Menu'')
+country_event = {
+	id = CrisisManagerMenu.0003
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = { is_ai = no }
+	
+	immediate = {
+		if = {
+			limit = { any_country = { has_country_flag = CmtFlagNowInMenu } }
+			country_event = { id = CrisisManagerMenu.0013 }
+		} else = { country_event = { id = CrisisManagerMenu.0100 } }
+	}
+}
+
+
+
+### Activating Notification (for only in-game install)
+country_event = {
+	id = CrisisManagerMenu.0011
+	title = CrisisManagerMenu.0011.name
+	desc = CrisisManagerMenu.0011.desc
+	picture = GFX_evt_CmtMenuA
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = CmtTextOK.name
+		custom_tooltip = CmtTextOK.tooltip
+	}
+	
+	after = {
+		hidden_effect = {
+			if = {
+				limit = { NOT = { has_global_flag = CmtFlagNoCall } }
+				country_event = { id = CrisisManagerMenu.0100 }
+			}
+		}
+	}
+}
+
+
+
+### Error: Crisis Happened Already (for only in-game install)
+country_event = {
+	id = CrisisManagerMenu.0012
+	title = CrisisManagerMenu.0012.name
+	desc = CrisisManagerMenu.0012.desc
+	picture = GFX_evt_nuclear_explosion
+	is_triggered_only = yes
+
+	option = {
+		name = CmtTextOK.name
+		custom_tooltip = CmtTextOK.tooltip
+	}
+}
+
+
+
+### Caution: Someone Opening Menu (for Manual Callup)
+country_event = {
+	id = CrisisManagerMenu.0013
+	title = CrisisManagerMenu.0013.name
+	desc = CrisisManagerMenu.0013.desc
+	picture = GFX_evt_galactic_senate
+
+	is_triggered_only = yes
+	trigger = {
+		is_ai = no
+		any_country = { has_country_flag = CmtFlagNowInMenu }
+	}
+	
+	option = {
+		name = CmtTextOK.name
+		custom_tooltip = CmtTextOK.tooltip
+	}
+	option = {
+		name = CrisisManagerMenu.0013b.name
+		custom_tooltip = CrisisManagerMenu.0013b.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.0100 } }
+	}
+}
+
+
+
+### Warning: Do Not Advance Time
+country_event = {
+	id = CrisisManagerMenu.0014
+	title = CrisisManagerMenu.0014.name
+	desc = CrisisManagerMenu.0014.desc
+	picture = GFX_evt_galactic_senate
+
+	trigger = {
+		has_country_flag = CmtFlagNowInMenu
+		NOT = { has_country_flag = CmtFlagNeverWarn14 }
+		is_ai = no
+	}
+	
+	option = {
+		name = CmtTextOK.name
+		custom_tooltip = CmtTextOK.tooltip
+	}
+	option = {
+		name = CrisisManagerMenu.0014b.name
+		custom_tooltip = CrisisManagerMenu.0014b.tooltip
+		hidden_effect = { set_country_flag = CmtFlagNeverWarn14 }
+	}
+}
+
+
+
+### Initializing Variables & Flags
+country_event = {
+	id = CrisisManagerMenu.0021
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		random_country = {
+			limit = { is_country_type = global_event }
+			
+			set_global_flag = CmtFlagActivated
+			save_global_event_target_as = CmtGlobalVar
+			
+			CmtEffectHardCoatedSettings = yes
+			country_event = { id = CrisisManagerControl.9011 }		## For only debugging
+			
+			country_event = { id = CrisisManagerMenu.2000 }		## Apply Vanilla Templete
+			country_event = { id = CrisisManagerMenu.2001 }		## Automanic Apply of Template
+			if = {
+				limit = {
+					always = @CmtT201_ConstSleeperFleet_ApplyOnStart
+					has_global_flag = CmtFlagSleeperEdition
+				}
+				CmtEffectApplyTemplate201 = yes		## Apply Template for Initialization for Fleets of  Sleepers
+			}
+		}
+	}
+}
+
+
+### Redirect from Console Command
+country_event = {
+	id = CrisisManagerMenu.0900
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = { is_ai = no }
+	
+	immediate = {
+		country_event = { id = CrisisManagerMenu.0003 }
+	}
+}
+
+

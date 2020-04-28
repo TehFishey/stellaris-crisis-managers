@@ -1,0 +1,341 @@
+namespace = crisis
+
+########################################################
+########################################################
+#####                                              #####
+#####    Crisis Events                             #####
+#####                                              #####
+#####    Replaced by Crisis Manager                #####
+#####    For Disabling Sound Control of Vanilla    #####
+#####                                              #####
+########################################################
+########################################################
+
+
+####################
+###  Prethoryn   ###
+####################
+
+country_event = {
+	id = crisis.230
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		always = no
+		has_crisis_stage_3 = yes
+		is_country_type = swarm
+		galaxy_percentage < 0.15
+	}
+	
+	immediate = {
+		set_crisis_sound = swarm_crisis_ambient_stage_2
+		set_crisis_stage_2 = yes
+	}
+}
+
+country_event = {
+	id = crisis.231
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		always = no
+		has_crisis_stage_2 = yes
+		is_country_type = swarm
+		galaxy_percentage > 0.20
+	}
+	
+	immediate = {
+		set_crisis_sound = swarm_crisis_ambient_stage_3
+		set_crisis_stage_3 = yes
+	}
+}
+
+country_event = {
+	id = crisis.232
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		always = no
+		has_crisis_stage_4 = yes
+		is_country_type = swarm
+		galaxy_percentage < 0.30
+	}
+	
+	immediate = {
+		set_crisis_sound = swarm_crisis_ambient_stage_3
+		set_crisis_stage_3 = yes
+	}
+}
+
+country_event = {
+	id = crisis.233
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		always = no
+		has_crisis_stage_3 = yes
+		is_country_type = swarm
+		galaxy_percentage > 0.40
+	}
+	
+	immediate = {
+		set_crisis_sound = swarm_crisis_ambient_stage_final
+		set_crisis_stage_4 = yes
+	}
+}
+
+
+
+###########################
+###  Extradimensionals  ###
+###########################
+
+country_event = {
+	id = crisis.1230
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		always = no
+		has_crisis_stage_3 = yes
+		OR = {
+			is_country_type = extradimensional
+			is_country_type = extradimensional_2
+			is_country_type = extradimensional_3
+		}
+		NOT = {
+			any_country = {
+				OR = {
+					is_country_type = extradimensional
+					is_country_type = extradimensional_2
+					is_country_type = extradimensional_3
+				}
+				galaxy_percentage > 0.10
+			}
+		}
+	}
+	
+	immediate = {
+		set_crisis_sound = extradimensional_crisis_ambient_stage_2
+		set_crisis_stage_2 = yes
+	}
+}
+
+country_event = {
+	id = crisis.1231
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		always = no
+		has_crisis_stage_2 = yes
+		OR = {
+			is_country_type = extradimensional
+			is_country_type = extradimensional_2
+			is_country_type = extradimensional_3
+		}
+		any_country = {
+			OR = {
+				is_country_type = extradimensional
+				is_country_type = extradimensional_2
+				is_country_type = extradimensional_3
+			}
+			galaxy_percentage > 0.15
+		}
+	}
+	
+	immediate = {
+		set_crisis_sound = extradimensional_crisis_ambient_stage_3
+		set_crisis_stage_3 = yes
+	}
+}
+
+country_event = {
+	id = crisis.1232
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		always = no
+		has_crisis_stage_4 = yes
+		OR = {
+			is_country_type = extradimensional
+			is_country_type = extradimensional_2
+			is_country_type = extradimensional_3
+		}
+		NOT = {
+			any_country = {
+				OR = {
+					is_country_type = extradimensional
+					is_country_type = extradimensional_2
+					is_country_type = extradimensional_3
+				}
+				galaxy_percentage > 0.25
+			}
+		}
+	}
+	
+	immediate = {
+		set_crisis_sound = extradimensional_crisis_ambient_stage_3
+		set_crisis_stage_3 = yes
+	}
+}
+
+country_event = {
+	id = crisis.1233
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		always = no
+		has_crisis_stage_3 = yes
+		OR = {
+			is_country_type = extradimensional
+			is_country_type = extradimensional_2
+			is_country_type = extradimensional_3
+		}
+		any_country = {
+			OR = {
+				is_country_type = extradimensional
+				is_country_type = extradimensional_2
+				is_country_type = extradimensional_3
+			}
+			galaxy_percentage > 0.30
+		}
+	}
+	
+	immediate = {
+		set_crisis_sound = extradimensional_crisis_ambient_stage_final
+		set_crisis_stage_4 = yes
+	}
+}
+
+country_event = {
+	id = crisis.1234
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		always = no
+		has_crisis_stage_1 = yes
+		OR = {
+			is_country_type = extradimensional
+			is_country_type = extradimensional_2
+			is_country_type = extradimensional_3
+		}
+		any_country = {
+			OR = {
+				is_country_type = extradimensional
+				is_country_type = extradimensional_2
+				is_country_type = extradimensional_3
+			}
+			galaxy_percentage > 0.05
+		}
+	}
+	
+	immediate = {
+		set_crisis_sound = extradimensional_crisis_ambient_stage_2
+		set_crisis_stage_2 = yes
+	}
+}
+
+
+
+#####################
+###  Contingency  ###
+#####################
+
+country_event = {
+	id = crisis.2230
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		always = no
+		has_crisis_stage_3 = yes
+		is_country_type = ai_empire
+		galaxy_percentage < 0.15
+	}
+	
+	immediate = {
+		set_crisis_sound = ai_empire_ambient_stage_2
+		set_crisis_stage_2 = yes
+	}
+}
+
+country_event = {
+	id = crisis.2231
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		always = no
+		has_crisis_stage_2 = yes
+		is_country_type = ai_empire
+		galaxy_percentage > 0.20
+	}
+	
+	immediate = {
+		set_crisis_sound = ai_empire_ambient_stage_3
+		set_crisis_stage_3 = yes
+	}
+}
+
+country_event = {
+	id = crisis.2232
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		always = no
+		has_crisis_stage_4 = yes
+		is_country_type = ai_empire
+		galaxy_percentage < 0.30
+	}
+	
+	immediate = {
+		set_crisis_sound = ai_empire_ambient_stage_3
+		set_crisis_stage_3 = yes
+	}
+}
+
+country_event = {
+	id = crisis.2233
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		always = no
+		has_crisis_stage_3 = yes
+		is_country_type = ai_empire
+		galaxy_percentage > 0.40
+	}
+	
+	immediate = {
+		set_crisis_sound = ai_empire_ambient_stage_final
+		set_crisis_stage_4 = yes
+	}
+}
+
+country_event = {
+	id = crisis.2234
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		always = no
+		has_crisis_stage_1 = yes
+		is_country_type = ai_empire
+		galaxy_percentage > 0.05
+	}
+	
+	immediate = {
+		set_crisis_sound = ai_empire_ambient_stage_2
+		set_crisis_stage_2 = yes
+	}
+}
+

@@ -1,0 +1,15 @@
+
+########################################################
+########################################################
+#####                                              #####
+#####    Crisis Manager                            #####
+#####                                              #####
+#####    Scripted Effect for Compatibility Test    #####
+#####    Check if FIOS or LIOS                     #####
+#####                                              #####
+########################################################
+########################################################
+
+CmtEffectFiosLiosTest = {
+	event_target:CmtGlobalVar = { change_variable = { which = CmtVarFiosLios value = 2 } }
+}

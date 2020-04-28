@@ -1,0 +1,29 @@
+﻿
+CmtSpciesClassPlayerCrisisNull = {
+	selectable = { always = no }
+	randomized = no
+	
+	ship_names = { generic = { "-" "_" "." "," "'" "~" "^" } }
+	fleet_names = { random_names = { "-" "_" "." "," "'" "~" "^" } }
+	
+	planet_names = { generic = { names = { "-" "_" "." "," "'" "~" "^" } } }
+	character_names = { default = { full_names = { "-" "_" "." "," "'" "~" "^" } } }
+}
+
+
+################
+###  Legacy  ###
+################
+#
+#CmtSpciesClassPlayerCrisisNull = {
+#	selectable = { always = no }
+#	randomized = no
+#	
+#	ship_names = { generic = { "-" "_" "." "," "'" "~" "^" } }
+#	fleet_names = { random_names = { "-" "_" "." "," "'" "~" "^" } }
+#	army_names = { generic = { "-" "_" "." "," "'" "~" "^" } }
+#	
+#	planet_names = { generic = { names = { "-" "_" "." "," "'" "~" "^" } } }
+#	character_names = { default = { full_names = { "-" "_" "." "," "'" "~" "^" } } }
+#}
+#

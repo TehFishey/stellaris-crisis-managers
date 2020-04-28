@@ -1,0 +1,275 @@
+namespace = CrisisManagerMenu
+
+######################################
+######################################
+#####                            #####
+#####    Crisis Manager          #####
+#####                            #####
+#####    Configutation Viewer    #####
+#####                            #####
+######################################
+######################################
+
+
+##############
+###  Menu  ###
+##############
+
+
+country_event = {
+	id = CrisisManagerMenu.1000
+	title = CrisisManagerMenu.1000.name
+	desc = {
+		text = CrisisManagerMenu.1000.desc1
+		trigger = { NOT = { has_global_flag = galactic_crisis_happened } }
+	}
+	desc = {
+		text = CrisisManagerMenu.1000.desc2
+		trigger = { has_global_flag = galactic_crisis_happened }
+	}
+	picture = GFX_evt_CmtMenuA
+	is_triggered_only = yes
+	
+	immediate = {
+		set_country_flag = CmtFlagIndividual
+		remove_country_flag = CmtFlagConfigViewerSeq
+		remove_country_flag = CmtFlagConfigViewerShowing1010
+		remove_country_flag = CmtFlagConfigViewerShowing1021
+		remove_country_flag = CmtFlagConfigViewerShowing1022
+		remove_country_flag = CmtFlagConfigViewerShowing1023
+		remove_country_flag = CmtFlagConfigViewerShowing1024
+		remove_country_flag = CmtFlagConfigViewerShowing1025
+		remove_country_flag = CmtFlagConfigViewerShowing1026
+		remove_country_flag = CmtFlagConfigViewerShowing1027
+		remove_country_flag = CmtFlagConfigViewerShowing1028
+		remove_country_flag = CmtFlagConfigViewerShowing1031
+		remove_country_flag = CmtFlagConfigViewerShowing1032
+		remove_country_flag = CmtFlagConfigViewerShowing1033
+		CmtEffectTransferCrisisPower = yes
+	}
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	option = {
+		name = CrisisManagerMenu.1000a.name
+		custom_tooltip = CrisisManagerMenu.1000a.tooltip
+		trigger = {
+			OR = {
+				has_global_flag = CmtFlagEndGameEdition
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		hidden_effect = {
+			set_country_flag = CmtFlagConfigViewerSeq
+			if = {
+				limit = { has_global_flag = CmtFlagEndGameEdition }
+				country_event = { id = CrisisManagerMenu.1010 }
+			}else_if = {
+				limit = { has_global_flag = CmtFlagSleeperEdition }
+				country_event = { id = CrisisManagerMenu.1024 }
+			} else_if = {
+				limit = { has_global_flag = CmtFlagMidGameEdition }
+				country_event = { id = CrisisManagerMenu.1026 }
+			} else_if = {
+				limit = { has_global_flag = CmtFlagUprisingEdition }
+				country_event = { id = CrisisManagerMenu.1028 }
+			} else = { country_event = { id = CrisisManagerMenu.1000 } }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.1000b.name
+		custom_tooltip = CrisisManagerMenu.1000b.tooltip
+		trigger = {
+			OR = {
+				has_global_flag = CmtFlagEndGameEdition
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					OR = {
+						has_global_flag = CmtFlagMidGameEdition
+						has_global_flag = CmtFlagEndGameEdition
+					}
+				}
+				country_event = { id = CrisisManagerMenu.1033 }
+				country_event = { id = CrisisManagerMenu.1032 }
+				country_event = { id = CrisisManagerMenu.1031 }
+			}
+			if = {
+				limit = { has_global_flag = CmtFlagMidGameEdition }
+				country_event = { id = CrisisManagerMenu.1027 }
+				country_event = { id = CrisisManagerMenu.1026 }
+			}
+			if = {
+				limit = {
+					OR = {
+						has_global_flag = CmtFlagSleeperEdition
+						has_global_flag = CmtFlagEndGameEdition
+					}
+				}
+				country_event = { id = CrisisManagerMenu.1024 }
+			}
+			if = {
+				limit = { has_global_flag = CmtFlagEndGameEdition }
+				country_event = { id = CrisisManagerMenu.1023 }
+				country_event = { id = CrisisManagerMenu.1022 }
+				country_event = { id = CrisisManagerMenu.1021 }
+				country_event = { id = CrisisManagerMenu.1010 }
+			}
+		}
+	}
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = {
+			NOT = { has_global_flag = CmtFlagNoSeparator }
+			OR = {
+				has_global_flag = CmtFlagEndGameEdition
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	option = {
+		name = CrisisManagerMenu.1000.1010.name
+		custom_tooltip = CrisisManagerMenu.1000.1010.tooltip
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.1010 } }
+	}
+	option = {
+		name = CrisisManagerMenu.1000.1021.name
+		custom_tooltip = CrisisManagerMenu.1000.1021.tooltip
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.1021 } }
+	}
+	option = {
+		name = CrisisManagerMenu.1000.1022.name
+		custom_tooltip = CrisisManagerMenu.1000.1022.tooltip
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.1022 } }
+	}
+	option = {
+		name = CrisisManagerMenu.1000.1023.name
+		custom_tooltip = CrisisManagerMenu.1000.1023.tooltip
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.1023 } }
+	}
+	
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = {
+			has_global_flag = CmtFlagEndGameEdition
+			has_global_flag = CmtFlagMidGameEdition
+			NOT = { has_global_flag = CmtFlagNoSeparator }
+		}
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	option = {
+		name = CrisisManagerMenu.1000.1024.name
+		custom_tooltip = CrisisManagerMenu.1000.1024.tooltip
+		trigger = {
+			OR = {
+				has_global_flag = CmtFlagEndGameEdition
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.1024 } }
+	}
+	option = {
+		name = CrisisManagerMenu.1000.1026.name
+		custom_tooltip = CrisisManagerMenu.1000.1026.tooltip
+		trigger = { has_global_flag = CmtFlagMidGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.1026 } }
+	}
+	option = {
+		name = CrisisManagerMenu.1000.1027.name
+		custom_tooltip = CrisisManagerMenu.1000.1027.tooltip
+		trigger = { has_global_flag = CmtFlagMidGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.1027 } }
+	}
+	option = {
+		name = CrisisManagerMenu.1000.1028.name
+		custom_tooltip = CrisisManagerMenu.1000.1028.tooltip
+		trigger = { has_global_flag = CmtFlagUprisingEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.1028 } }
+	}
+	
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = {
+			has_global_flag = CmtFlagEndGameEdition
+			NOT = { has_global_flag = CmtFlagNoSeparator }
+		}
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	
+	option = {
+		name = CrisisManagerMenu.1000.1031.name
+		custom_tooltip = CrisisManagerMenu.1000.1031.tooltip
+		trigger = {
+			OR = {
+				has_global_flag = CmtFlagMidGameEdition
+				has_global_flag = CmtFlagEndGameEdition
+			}
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.1031 } }
+	}
+	option = {
+		name = CrisisManagerMenu.1000.1032.name
+		custom_tooltip = CrisisManagerMenu.1000.1032.tooltip
+		trigger = {
+			OR = {
+				has_global_flag = CmtFlagMidGameEdition
+				has_global_flag = CmtFlagEndGameEdition
+			}
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.1032 } }
+	}
+	option = {
+		name = CrisisManagerMenu.1000.1033.name
+		custom_tooltip = CrisisManagerMenu.1000.1033.tooltip
+		trigger = {
+			OR = {
+				has_global_flag = CmtFlagMidGameEdition
+				has_global_flag = CmtFlagEndGameEdition
+			}
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.1033 } }
+	}
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	option = {
+		name = CmtTextGoBack.name
+		custom_tooltip = CmtTextGoBack.tooltip
+		hidden_effect = {
+			remove_country_flag = CmtFlagIndividual
+			country_event = { id = CrisisManagerMenu.0100 }
+		}
+	}
+	option = {
+		name = CmtTextExit.name
+		custom_tooltip = CmtTextExit.tooltip
+		hidden_effect = { CmtEffectExitMenu = yes }
+	}
+}
+	

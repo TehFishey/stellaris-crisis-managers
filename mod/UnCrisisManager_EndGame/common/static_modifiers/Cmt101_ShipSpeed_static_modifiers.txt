@@ -1,0 +1,305 @@
+
+###################################################
+###################################################
+#####                                         #####
+#####    Crisis Manager                       #####
+#####                                         #####
+#####    Modifiers for Faster Constructors    #####
+#####                                         #####
+###################################################
+###################################################
+#
+#### Memo: List of Ship Speed in Vanilla 2.1.2.beta
+#
+#	Constructor Speed
+#		Default Empire:	140, 175, 210, 245, 280
+#		Prethoryn     :	100
+#		Exds          :	100
+#		Contingency   :	175
+#		Khan          :	210
+#		
+#	Combat Ship Speed
+#		Default Empire:	{ 100, 100, 120, 140, 160 } * { 1.00; 1.25; 1.50; 1.75; 2.00 }
+#		Prethoryn     :	100, 100, 100, 140
+#		Sentinels     :	200, 200, 280; 180, 214, 250, 284
+#		Exds          :	100, 120, 140
+#		Contingency   :	175, 210
+#		Cybrex        ;	175, 210
+#		Khan          :	
+#		
+#	FTL Charge
+#		Default Empire: 15 d * { 1.00, 0.75, 0.50, 0.30, 0.20 }
+#		Prethoryn     :	15 d * 1.00
+#		Sentinels     :	15 d * 0.50
+#		Exds          :	15 d * 0.20
+#		Contingency   :	15 d * 0.50
+#		Cybrex        ;	15 d * 0.50
+#		Khan          :	15 d * 0.75
+#		
+#		
+#		
+#
+
+##############
+###  Slow  ###
+##############
+#
+# a little faster than primitive FTL empires.
+#
+
+### Constructor
+CmtModifierShipSpeed_PrethorynConstructor2 = {
+	ship_speed_mult = 0.50
+}
+
+CmtModifierShipSpeed_UnbiddenConstructor2 = {
+	ship_speed_mult = 0.50
+}
+
+CmtModifierShipSpeed_AberrantConstructor2 = {
+	ship_speed_mult = 0.50
+}
+
+CmtModifierShipSpeed_VehementConstructor2 = {
+	ship_speed_mult = 0.50
+}
+
+CmtModifierShipSpeed_ContingencyConstructor2 = {
+	ship_speed_mult = 0.25
+}
+
+
+### Combat Ship
+CmtModifierShipSpeed_PrethorynCombatShip2 = {
+	ship_speed_mult = 0.10
+}
+
+CmtModifierShipSpeed_SentinelCombatShip2 = {
+}
+
+CmtModifierShipSpeed_UnbiddenCombatShip2 = {
+	ship_speed_mult = 0.10
+}
+
+CmtModifierShipSpeed_AberrantCombatShip2 = {
+	ship_speed_mult = 0.10
+}
+
+CmtModifierShipSpeed_VehementCombatShip2 = {
+	ship_speed_mult = 0.10
+}
+
+CmtModifierShipSpeed_ContingencyCombatShip2 = {
+}
+
+CmtModifierShipSpeed_CybrexCombatShip2 = {
+}
+
+
+
+################
+###  Middle  ###
+################
+#
+# similar to constructor of mature FTL empire
+#
+
+### Constructor
+CmtModifierShipSpeed_PrethorynConstructor3 = {
+	ship_speed_mult = 1.40
+	ship_windup_mult = -0.60
+}
+
+CmtModifierShipSpeed_UnbiddenConstructor3 = {
+	ship_speed_mult = 1.40
+}
+
+CmtModifierShipSpeed_AberrantConstructor3 = {
+	ship_speed_mult = 1.40
+}
+
+CmtModifierShipSpeed_VehementConstructor3 = {
+	ship_speed_mult = 1.40
+}
+
+CmtModifierShipSpeed_ContingencyConstructor3 = {
+	ship_speed_mult = 0.50
+	ship_windup_mult = -0.15
+}
+
+
+### Combat Ship
+CmtModifierShipSpeed_PrethorynCombatShip3 = {
+	ship_speed_mult = 0.70
+	ship_windup_mult = -0.60
+}
+
+CmtModifierShipSpeed_SentinelCombatShip3 = {
+	ship_speed_mult = 0.10
+	ship_windup_mult = -0.15
+}
+
+CmtModifierShipSpeed_UnbiddenCombatShip3 = {
+	ship_speed_mult = 0.70
+}
+
+CmtModifierShipSpeed_AberrantCombatShip3 = {
+	ship_speed_mult = 0.70
+}
+
+CmtModifierShipSpeed_VehementCombatShip3 = {
+	ship_speed_mult = 0.70
+}
+
+CmtModifierShipSpeed_ContingencyCombatShip3 = {
+	ship_speed_mult = 0.10
+	ship_windup_mult = -0.15
+}
+
+CmtModifierShipSpeed_CybrexCombatShip3 = {
+	ship_speed_mult = 0.10
+	ship_windup_mult = -0.15
+}
+
+
+
+##############
+###  Fast  ###
+##############
+#
+# faster then fallen empires
+#
+
+### Constructor
+CmtModifierShipSpeed_PrethorynConstructor4 = {
+	ship_speed_mult = 2.50
+	ship_windup_mult = -0.80
+}
+
+CmtModifierShipSpeed_UnbiddenConstructor4 = {
+	ship_speed_mult = 2.50
+	ship_windup_mult = -0.15
+}
+
+CmtModifierShipSpeed_AberrantConstructor4 = {
+	ship_speed_mult = 2.50
+	ship_windup_mult = -0.15
+}
+
+CmtModifierShipSpeed_VehementConstructor4 = {
+	ship_speed_mult = 2.50
+	ship_windup_mult = -0.15
+}
+
+CmtModifierShipSpeed_ContingencyConstructor4 = {
+	ship_speed_mult = 2.00
+	ship_windup_mult = -0.40
+}
+
+
+### Combat Ship
+CmtModifierShipSpeed_PrethorynCombatShip4 = {
+	ship_speed_mult = 1.50
+	ship_windup_mult = -0.80
+}
+
+CmtModifierShipSpeed_SentinelCombatShip4 = {
+	ship_speed_mult = 0.50
+	ship_windup_mult = -0.40
+}
+
+CmtModifierShipSpeed_UnbiddenCombatShip4 = {
+	ship_speed_mult = 1.50
+	ship_windup_mult = -0.15
+}
+
+CmtModifierShipSpeed_AberrantCombatShip4 = {
+	ship_speed_mult = 1.50
+	ship_windup_mult = -0.15
+}
+
+CmtModifierShipSpeed_VehementCombatShip4 = {
+	ship_speed_mult = 1.50
+	ship_windup_mult = -0.15
+}
+
+CmtModifierShipSpeed_ContingencyCombatShip4 = {
+	ship_speed_mult = 0.50
+	ship_windup_mult = -0.40
+}
+
+CmtModifierShipSpeed_CybrexCombatShip4 = {
+	ship_speed_mult = 0.50
+	ship_windup_mult = -0.40
+}
+
+
+
+###############
+###  Crazy  ###
+###############
+
+### Constructor
+CmtModifierShipSpeed_PrethorynConstructor5 = {
+	ship_speed_mult = 14.00
+	ship_windup_mult = -0.99
+}
+
+CmtModifierShipSpeed_UnbiddenConstructor5 = {
+	ship_speed_mult = 14.00
+	ship_windup_mult = -0.99
+}
+
+CmtModifierShipSpeed_AberrantConstructor5 = {
+	ship_speed_mult = 14.00
+	ship_windup_mult = -0.99
+}
+
+CmtModifierShipSpeed_VehementConstructor5 = {
+	ship_speed_mult = 14.00
+	ship_windup_mult = -0.99
+}
+
+CmtModifierShipSpeed_ContingencyConstructor5 = {
+	ship_speed_mult = 8.00
+	ship_windup_mult = -0.99
+}
+
+
+### Combat Ship
+CmtModifierShipSpeed_PrethorynCombatShip5 = {
+	ship_speed_mult = 14.00
+	ship_windup_mult = -0.99
+}
+
+CmtModifierShipSpeed_SentinelCombatShip5 = {
+	ship_speed_mult = 8.00
+	ship_windup_mult = -0.99
+}
+
+CmtModifierShipSpeed_UnbiddenCombatShip5 = {
+	ship_speed_mult = 14.00
+	ship_windup_mult = -0.99
+}
+
+CmtModifierShipSpeed_AberrantCombatShip5 = {
+	ship_speed_mult = 14.00
+	ship_windup_mult = -0.99
+}
+
+CmtModifierShipSpeed_VehementCombatShip5 = {
+	ship_speed_mult = 14.00
+	ship_windup_mult = -0.99
+}
+
+CmtModifierShipSpeed_ContingencyCombatShip5 = {
+	ship_speed_mult = 8.00
+	ship_windup_mult = -0.99
+}
+
+CmtModifierShipSpeed_CybrexCombatShip5 = {
+	ship_speed_mult = 8.00
+	ship_windup_mult = -0.99
+}
+
+

@@ -1,0 +1,56 @@
+namespace = fallen_empires_awakening
+
+############################################
+############################################
+#####                                  #####
+#####    Awakening of Fallen Empire    #####
+#####                                  #####
+#####    Replaced by Crisis Manager    #####
+#####                                  #####
+############################################
+############################################
+
+country_event = {
+	id = fallen_empires_awakening.1
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		CmtTriggerIsOrganicSleeper = yes
+	}
+	
+	immediate = {
+		set_global_flag = sleepers_awake_happened
+		country_event = { id = fallen_empires_awakening.3 }		### Do this process at FIRST
+		every_country = {
+			limit = { is_ai = no }
+			country_event = { id = fallen_empires_awakening.2 }
+		}
+		observer_event = { id = observer.73 }
+
+		### Declare War Because of Fragged Holy World
+		if = {
+			limit = {
+				has_country_flag = holy_world_killed
+				NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSleeperHolyClacker value = 1 } } }
+			}
+			country_event = { id = planet_destruction.611 days = 5 }
+		}
+		
+		### War in Heaven
+		if = {
+			limit = {
+				host_has_dlc = "Leviathans Story Pack"
+				NOR = {
+					has_global_flag = CmtFlagWarInHeavenTriggered
+					AND = {
+						exists = event_target:CmtTargetManualSleeperA		## Triggered Manually
+						exists = event_target:CmtTargetManualSleeperB
+					}
+				}
+			}
+			CmtEffectSelectAncientRival = yes
+		}
+	}
+}
+

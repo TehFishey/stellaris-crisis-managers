@@ -1,0 +1,321 @@
+namespace = distar
+
+###############################################
+###############################################
+#####                                     #####
+#####    L-Gates Events except Graygoo    #####
+#####                                     #####
+#####    Replaced by Crisis Manager       #####
+#####                                     #####
+###############################################
+###############################################
+
+
+
+################
+###  Common  ###
+################
+
+
+### L-Gate Technology Researched
+country_event = {
+	id = distar.10903
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		last_increased_tech = tech_lgate_activation
+		NOR = {
+			has_global_flag = l_cluster_opened
+			has_country_flag = CmtFlagGetLgateTechNow
+		}
+	}
+	
+	immediate = {
+		set_timed_country_flag = { flag = CmtFlagGetLgateTechNow days = 3 }		## Kill Double Calling
+		country_event = { id = distar.10900 }
+	}
+}
+
+
+### Open L-Gate
+country_event = {
+	id = distar.10950
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { has_global_flag = l_cluster_opened }
+	}
+	
+	immediate = {
+		set_global_flag = l_cluster_opened
+		set_global_flag = lgates_activated_globally
+		set_timed_global_flag = { flag = CmtFlagLgateOpenedNow days = 3 }
+		set_country_flag = lcluster_opener
+		country_event = { id = distar.11000 }		## Spawn L-Cluster
+		
+		### Set 1st L-Gate as Target 
+		if = {
+			limit = { NOT = { exists = event_target:CmtTargetLgateOrininatingSystem } }
+			from.solar_system = { save_global_event_target_as = CmtTargetLgateOrininatingSystem }
+		}
+		
+		### Change Outcome
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						has_global_flag = CmtFlagLgateForbidSilence
+						NOR = {
+							has_global_flag = dragon_season
+							has_global_flag = gray_goo_empire_set
+							has_global_flag = gray_goo_crisis_set
+						}
+					}
+					AND = {
+						has_global_flag = CmtFlagLgateForbidLdrake
+						has_global_flag = dragon_season
+					}
+					AND = {
+						has_global_flag = CmtFlagLgateForbidDessanu
+						has_global_flag = gray_goo_empire_set
+					}
+					AND = {
+						has_global_flag = CmtFlagLgateForbidGraygoo
+						has_global_flag = gray_goo_crisis_set
+					}
+				}
+			}
+			remove_global_flag = dragon_season
+			remove_global_flag = gray_goo_empire_set
+			remove_global_flag = gray_goo_crisis_set
+			remove_global_flag = active_gray_goo
+			
+			random_list = {
+				30 = {
+					modifier = {
+						factor = 0
+						has_global_flag = CmtFlagLgateForbidSilence
+						NAND = {
+							has_global_flag = CmtFlagLgateForbidSilence
+							has_global_flag = CmtFlagLgateForbidLdrake
+							has_global_flag = CmtFlagLgateForbidDessanu
+							has_global_flag = CmtFlagLgateForbidGraygoo
+						}
+					}
+				}
+				30 = {
+					modifier = {
+						factor = 0
+						has_global_flag = CmtFlagLgateForbidLdrake
+					}
+					set_global_flag = dragon_season
+				}
+				30 = {
+					modifier = {
+						factor = 0
+						has_global_flag = CmtFlagLgateForbidDessanu
+					}
+					set_global_flag = gray_goo_empire_set
+				}
+				50 = {
+					modifier = {
+						factor = 0
+						has_global_flag = CmtFlagLgateForbidGraygoo
+					}
+					set_global_flag = gray_goo_crisis_set
+					set_global_flag = active_gray_goo
+				}
+			}
+		}
+		
+		### Activate L-Gate
+		country_event = { id = CrisisManagerControl.6201 }		## Open Other L-Gates
+		event_target:CmtTargetLgateOrininatingSystem = {
+			if = {
+				limit = {		## 2 or More L-Gates Exist in Galaxy
+					any_system = {
+						CmtTriggerIsGalaxyLgateSystem = yes
+						NOT = { is_same_value = prev }
+						any_system_megastructure = { CmtTriggerIsOpenedLgate = yes }
+					}
+				}
+				set_star_flag = lgate_originating_system		## For Graygoo (Non-spawn from Here)
+			} else = { root = { set_country_flag = only_one_lgate } }
+			every_system_megastructure = {
+				limit = { CmtTriggerIsClosedLgate = yes }
+				CmtEffectOpenLgate = yes
+			}
+		}
+		event_target:lcluster1 = {
+			every_system_megastructure = {
+				limit = { CmtTriggerIsClosedLgate = yes }
+				CmtEffectOpenLgate = yes
+			}
+		}
+		
+		### Call Outcome
+		if = {
+			limit = { has_global_flag = gray_goo_crisis_set }
+			country_event = { id = graygoo.1 }
+		} else_if = {
+			limit = { has_global_flag = gray_goo_empire_set }
+			country_event = { id = graygoo.100 }
+		} else_if = {
+			limit = { has_global_flag = dragon_season }
+			country_event = { id = distar.13000 }
+		} else = { country_event = { id = distar.10951 } }
+		
+		### Terraformablity
+		if = {
+			limit = {
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarLgateTerraformNanite value = 6 } }
+				NOR = {
+					has_global_flag = gray_goo_crisis_set
+					has_global_flag = gray_goo_empire_set
+				}
+			}
+			every_planet = {
+				limit = { is_planet_class = pc_gray_goo }
+				add_modifier = { modifier = terraforming_candidate days = -1 }
+			}
+		}
+		
+		### Technology Control: Put AFTER graygoo.100
+		every_playable_country = {
+			if = {
+				limit = { is_researching_technology = tech_lgate_activation }
+				give_technology = { tech = tech_lgate_activation message = no }
+			}
+		}
+	}
+}
+
+
+
+#################
+###  L-Drake  ###
+#################
+
+country_event = {
+	id = distar.13000
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		
+		### Create Country
+		create_country = {
+			name = "NAME_Spawning_Dragons"
+			type = ldragon_country
+			effect = {
+				save_global_event_target_as = spawning_dragons
+				every_playable_country = { establish_communications_no_message = prev }
+			}
+		}
+		
+		### Set Target for L-Drake
+		every_system = {
+			limit = { CmtTriggerIsGalaxyLgateSystem = yes }
+			closest_system = {
+				min_steps = 3
+				limit = {
+					NOR = {
+						has_star_flag = dragon_point
+						any_system_planet = { is_colony = yes }
+					}
+				}
+				set_star_flag = dragon_point
+			}
+		}
+		
+		
+		### Create L-Drake
+		while = {
+			limit = {
+				any_system = {
+					CmtTriggerIsGalaxyLgateSystem = yes
+					NOT = { has_star_flag = young_dragon_spawned }
+				}
+			}
+			random_system = {
+				limit = {
+					CmtTriggerIsGalaxyLgateSystem = yes
+					NOT = { has_star_flag = young_dragon_spawned }
+					any_system_megastructure = { CmtTriggerIsOpenedLgate = yes }
+				}
+				set_star_flag = young_dragon_spawned
+				
+				random_system_megastructure = {
+					limit = { CmtTriggerIsOpenedLgate = yes }
+					closest_system = {
+						min_steps = 3
+						limit = {
+							has_star_flag = dragon_point
+							NOT = { has_star_flag = dragon_point_picked }
+						}
+						set_star_flag = dragon_point_picked
+						
+						# notify re: destination
+						if = {
+							limit = { prevprev = { exists = owner } }		## prevprev = L-Gate System
+							save_event_target_as = dragons_target
+							prevprev = {
+								save_event_target_as = dragons_current_system
+								owner = {
+									if = {
+										limit = { NOT = { has_country_flag = knows_ldragon } }
+										set_country_flag = knows_ldragon
+									}
+									country_event = { id = distar.13010 }		## Notification 1
+								}
+							}
+						}
+						star = {
+							create_fleet = {
+								name = "NAME_Young_Dragon"
+								settings = {
+									is_boss = yes
+									spawn_debris = no
+									can_upgrade = no
+									can_disband = yes
+									can_change_composition = no
+									can_change_leader = no
+									uses_naval_capacity = no
+								}
+								effect = {
+									set_owner = event_target:spawning_dragons
+									create_ship = {
+										design = "NAME_Nanite_Dragon"
+										name = "NAME_Young_Dragon"
+										prefix = no
+										upgradable = no
+									}
+									set_location = prevprevprev		### L-Gate
+									set_fleet_stance = passive
+									set_aggro_range_measure_from = self
+									auto_move_to_planet = {
+										target = prev
+										clear_auto_move_on_arrival = yes
+									}
+								}
+							}
+						}
+					}
+					create_ambient_object = {
+						location = this
+						type = horror_spawn_object
+					}
+				}
+			}
+		}
+		
+		### Notification 2
+		every_playable_country = {
+			limit = { NOT = { any_system_within_border = { CmtTriggerIsGalaxyLgateSystem = yes } } }
+			country_event = { id = distar.13011 }
+		}
+	}
+}
+

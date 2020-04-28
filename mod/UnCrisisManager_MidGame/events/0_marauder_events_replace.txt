@@ -1,0 +1,1700 @@
+namespace = marauder
+
+############################################
+############################################
+#####                                  #####
+#####    Khan (Horde Crisis) Events    #####
+#####                                  #####
+#####    Replaced by Crisis Manager    #####
+#####                                  #####
+############################################
+############################################
+#
+# Check all events: has_country_flag = marauder_x (x = 1 - 3)
+#
+
+
+###################
+###  Constants  ###
+###################
+
+### Critical (Lifespan of Khan, debug code)
+@CmtConstKhanLifespan_1a =     1		### Minimun Lifespan / day
+@CmtConstKhanLifespan_1b =  0.025		### Probability of Death (2%/month for 1)
+@CmtConstKhanLifespan_1c =    35		### Maximun Lifespan / day (days = 1c)
+@CmtConstKhanLifespan_1d =     5		### Maximun Lifespan / day (random = 1d)
+@CmtConstKhanLifespan_1e =     8		### Time-Lag of Post-Death Process (days = 1e)
+@CmtConstKhanLifespan_1f =     4		### Time-Lag of Post-Death Process (random = 1f)
+
+### Fleeting (Lifespan of Khan)
+@CmtConstKhanLifespan_2a =  4320		### Minimun Lifespan / day
+@CmtConstKhanLifespan_2b =  0.75		### Probability of Death (2%/month for 1)
+@CmtConstKhanLifespan_2c =  7200		### Maximun Lifespan / day (days = 1c)
+@CmtConstKhanLifespan_2d =  2880		### Maximun Lifespan / day (random = 1d)
+@CmtConstKhanLifespan_2e =    90		### Time-Lag of Post-Death Process (days = 1e)
+@CmtConstKhanLifespan_2f =    60		### Time-Lag of Post-Death Process (random = 1f)
+
+### Standard (Lifespan of Khan)
+@CmtConstKhanLifespan_3a =  7200		### Minimun Lifespan / day
+@CmtConstKhanLifespan_3b =  1.00		### Probability of Death (2%/month for 1)
+@CmtConstKhanLifespan_3c = 10800		### Maximun Lifespan / day (days = 1c)
+@CmtConstKhanLifespan_3d =  5000		### Maximun Lifespan / day (random = 1d)
+@CmtConstKhanLifespan_3e =   200		### Time-Lag of Post-Death Process (days = 1e)
+@CmtConstKhanLifespan_3f =   100		### Time-Lag of Post-Death Process (random = 1f)
+
+### Enduring (Lifespan of Khan)
+@CmtConstKhanLifespan_4a = 10800		### Minimun Lifespan / day
+@CmtConstKhanLifespan_4b =  3.00		### Probability of Death (2%/month for 1)
+@CmtConstKhanLifespan_4c = 16200		### Maximun Lifespan / day (days = 1c)
+@CmtConstKhanLifespan_4d =  5400		### Maximun Lifespan / day (random = 1d)
+@CmtConstKhanLifespan_4e =   270		### Time-Lag of Post-Death Process (days = 1e)
+@CmtConstKhanLifespan_4f =   180		### Time-Lag of Post-Death Process (random = 1f)
+
+### Venerable (Lifespan of Khan)
+@CmtConstKhanLifespan_5a = 18000		### Minimun Lifespan / day
+@CmtConstKhanLifespan_5b =  5.00		### Probability of Death (2%/month for 1)
+@CmtConstKhanLifespan_5c = 27000		### Maximun Lifespan / day (days = 1c)
+@CmtConstKhanLifespan_5d =  9000		### Maximun Lifespan / day (random = 1d)
+@CmtConstKhanLifespan_5e =   360		### Time-Lag of Post-Death Process (days = 1e)
+@CmtConstKhanLifespan_5f =   360		### Time-Lag of Post-Death Process (random = 1f)
+
+### Immortality (Lifespan of Khan): Directly Written in Event/Effect
+@CmtConstKhanLifespan_6e =   360		### Time-Lag of Post-Death Process (days = 1e)
+@CmtConstKhanLifespan_6f =   360		### Time-Lag of Post-Death Process (random = 1f)
+
+
+
+#######################################
+###  Main Effect of Khan Awakening  ###
+#######################################
+
+country_event = {
+	id = marauder.500
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		CmtTriggerHasPotentialKhanAwaking = yes
+		NOT = { CmtTriggerNowInKhanCrisis = yes }
+	}
+	
+	immediate = {
+		set_global_flag = CmtFlagKhanTriggered
+		set_global_flag = marauder_crisis_started
+		set_global_flag = marauder_crisis_ongoing
+		if = {
+			limit = { exists = event_target:raider_khanate }
+			clear_global_event_target = raider_khanate
+		}
+		save_global_event_target_as = raider_khanate
+		
+		### Rally Point of Fleets 1/3: Set Event Targets; Set Owner Species to Target
+		random_country = {
+			limit = { has_country_flag = marauder_1 }
+			owner_species = { save_global_event_target_as = CmtTargetSpecies_Marauder1 }
+			if = {
+				limit = { any_system_within_border = { has_star_flag = marauder_capital_1 } }
+				random_system_within_border = {
+					limit = { has_star_flag = marauder_capital_1 }
+					if = {
+						limit = { any_system_planet = { has_planet_flag = raid_source } }
+						random_system_planet = {
+							limit = { has_planet_flag = raid_source }
+							save_global_event_target_as = CmtTargetMarauderRallyPoint1
+						}
+					} else = {		## Backup Code: raid_source NOT Found in Capital System
+						random_system_planet = {
+							limit = { is_star = no }
+							save_global_event_target_as = CmtTargetMarauderRallyPoint1
+						}
+						log = "Backup Code for CmtTargetMarauderRallyPoint1 - 1 Processed"
+					}
+				}
+			} else = {		## Backup Code: Capital System NOT Found
+				random_planet_within_border = {
+					limit = { is_star = no }
+					save_global_event_target_as = CmtTargetMarauderRallyPoint1
+				}
+				log = "Backup Code for CmtTargetMarauderRallyPoint1 - 2 Processed"
+			}
+		}
+		random_country = {
+			limit = { has_country_flag = marauder_2 }
+			owner_species = { save_global_event_target_as = CmtTargetSpecies_Marauder2 }
+			if = {
+				limit = { any_system_within_border = { has_star_flag = marauder_capital_2 } }
+				random_system_within_border = {
+					limit = { has_star_flag = marauder_capital_2 }
+					if = {
+						limit = { any_system_planet = { has_planet_flag = raid_source } }
+						random_system_planet = {
+							limit = { has_planet_flag = raid_source }
+							save_global_event_target_as = CmtTargetMarauderRallyPoint2
+						}
+					} else = {		## Backup Code: raid_source NOT Found in Capital System
+						random_system_planet = {
+							limit = { is_star = no }
+							save_global_event_target_as = CmtTargetMarauderRallyPoint2
+						}
+						log = "Backup Code for CmtTargetMarauderRallyPoint2 - 1 Processed"
+					}
+				}
+			} else = {		## Backup Code: Capital System NOT Found
+				random_planet_within_border = {
+					limit = { is_star = no }
+					save_global_event_target_as = CmtTargetMarauderRallyPoint2
+				}
+				log = "Backup Code for CmtTargetMarauderRallyPoint2 - 2 Processed"
+			}
+		}
+		random_country = {
+			limit = { has_country_flag = marauder_3 }
+			owner_species = { save_global_event_target_as = CmtTargetSpecies_Marauder3 }
+			if = {
+				limit = { any_system_within_border = { has_star_flag = marauder_capital_3 } }
+				random_system_within_border = {
+					limit = { has_star_flag = marauder_capital_3 }
+					if = {
+						limit = { any_system_planet = { has_planet_flag = raid_source } }
+						random_system_planet = {
+							limit = { has_planet_flag = raid_source }
+							save_global_event_target_as = CmtTargetMarauderRallyPoint3
+						}
+					} else = {		## Backup Code: raid_source NOT Found in Capital System
+						random_system_planet = {
+							limit = { is_star = no }
+							save_global_event_target_as = CmtTargetMarauderRallyPoint3
+						}
+						log = "Backup Code for CmtTargetMarauderRallyPoint3 - 1 Processed"
+					}
+				}
+			} else = {		## Backup Code: Capital System NOT Found
+				random_planet_within_border = {
+					limit = { is_star = no }
+					save_global_event_target_as = CmtTargetMarauderRallyPoint3
+				}
+				log = "Backup Code for CmtTargetMarauderRallyPoint3 - 2 Processed"
+			}
+		}
+		
+		### Rally Point of Fleets 2/3: Set Event Targets, Flags
+		if = {
+			limit = { exists = event_target:CmtTargetMarauderRallyPoint1 }
+			event_target:CmtTargetMarauderRallyPoint1 = {
+				set_planet_flag = CmtFlagMarauderExpRallyPoint
+				if = {
+					limit = {
+						exists = solar_system.owner
+						solar_system.owner = { is_same_value = root }
+					}
+					save_global_event_target_as = marauder_rally_point
+					set_planet_flag = marauder_rally_point
+				}
+			}
+		}
+		if = {
+			limit = { exists = event_target:CmtTargetMarauderRallyPoint2 }
+			event_target:CmtTargetMarauderRallyPoint2 = {
+				set_planet_flag = CmtFlagMarauderExpRallyPoint
+				if = {
+					limit = {
+						exists = solar_system.owner
+						solar_system.owner = { is_same_value = root }
+					}
+					save_global_event_target_as = marauder_rally_point
+					set_planet_flag = marauder_rally_point
+				}
+			}
+		}
+		if = {
+			limit = { exists = event_target:CmtTargetMarauderRallyPoint3 }
+			event_target:CmtTargetMarauderRallyPoint3 = {
+				set_planet_flag = CmtFlagMarauderExpRallyPoint
+				if = {
+					limit = {
+						exists = solar_system.owner
+						solar_system.owner = { is_same_value = root }
+					}
+					save_global_event_target_as = marauder_rally_point
+					set_planet_flag = marauder_rally_point
+				}
+			}
+		}
+		
+		
+		### Unify All Marauders if Great Great Khan
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanMultiple value = 5 } } }
+			every_country = {
+				limit = {
+					is_country_type = dormant_marauders
+					NOT = { is_same_value = root }
+				}
+				every_owned_fleet = { set_owner = root }
+				destroy_country = yes
+			}
+		}
+		
+		
+		### Rally Point of Fleets 3/3: Backup Code
+		if = {
+			limit = { NOT = { exists = event_target:marauder_rally_point } }
+			random_planet_within_border = {
+				limit = { is_star = no }
+				save_global_event_target_as = marauder_rally_point
+				set_planet_flag = marauder_rally_point
+				log = "Backup Code for marauder_rally_point Processed"
+			}
+		}
+		
+		### Modify Country
+		set_country_type = awakened_marauders
+		set_name = random
+		change_country_flag = {
+			icon = {
+				category = "pirate"
+				file = "flag_pirate_11.dds"
+			}
+			background= {
+				category = "backgrounds"
+				file = "00_solid.dds"
+			}
+			colors={ "red" "red" "null" "null" }
+		}
+		change_government = {
+			civics = { civic = civic_great_khans_vision }
+		}
+		create_ship_design = { design = "NAME_Pirate_Transport" }
+		add_ship_design = last_created_design
+		create_ship_design = { design = "NAME_Clan_Builder" }
+		add_ship_design = last_created_design
+		
+		
+		
+		### Ruler Khan
+		create_leader = {
+			class = ruler
+			species = owner_main_species
+			name = random
+			skill = 10
+			leader_age_min = 22
+			leader_age_max = 40
+			traits = {
+				trait = leader_trait_ruler_great_khan
+			}
+		}
+		last_created_leader = {
+			set_leader_flag = great_khan
+			save_global_event_target_as = great_khan_ruler
+		}
+		assign_leader = last_created_leader
+		
+		### Lifespan, Remaining Live of Khan
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLifespan value = 1 } } }
+			set_timed_global_flag = { flag = khan_no_die days = @CmtConstKhanLifespan_1a }
+			set_timed_country_flag = { flag = CmtFlagKhanNoDieCountry days = @CmtConstKhanLifespan_1a }
+			country_event = { id = marauder.514 days = @CmtConstKhanLifespan_1c random = @CmtConstKhanLifespan_1d }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLifespan value = 2 } } }
+			set_timed_global_flag = { flag = khan_no_die days = @CmtConstKhanLifespan_2a }
+			set_timed_country_flag = { flag = CmtFlagKhanNoDieCountry days = @CmtConstKhanLifespan_2a }
+			country_event = { id = marauder.514 days = @CmtConstKhanLifespan_2c random = @CmtConstKhanLifespan_2d }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLifespan value = 4 } } }
+			set_timed_global_flag = { flag = khan_no_die days = @CmtConstKhanLifespan_4a }
+			set_timed_country_flag = { flag = CmtFlagKhanNoDieCountry days = @CmtConstKhanLifespan_4a }
+			country_event = { id = marauder.514 days = @CmtConstKhanLifespan_4c random = @CmtConstKhanLifespan_4d }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLifespan value = 5 } } }
+			set_timed_global_flag = { flag = khan_no_die days = @CmtConstKhanLifespan_5a }
+			set_timed_country_flag = { flag = CmtFlagKhanNoDieCountry days = @CmtConstKhanLifespan_5a }
+			country_event = { id = marauder.514 days = @CmtConstKhanLifespan_5c random = @CmtConstKhanLifespan_5d }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLifespan value = 6 } } }
+			set_global_flag = khan_no_die
+			set_country_flag = CmtFlagKhanNoDieCountry
+		} else = {
+			set_timed_global_flag = { flag = khan_no_die days = @CmtConstKhanLifespan_3a }
+			set_timed_country_flag = { flag = CmtFlagKhanNoDieCountry days = @CmtConstKhanLifespan_3a }
+			country_event = { id = marauder.514 days = @CmtConstKhanLifespan_3c random = @CmtConstKhanLifespan_3d }
+		}
+		CmtEffectTransferKhanRemainingLive = yes
+		
+		### Admiral Khan
+		clone_leader = {
+			target = event_target:great_khan_ruler
+			class = admiral
+			skill = 10
+			traits = { trait = leader_trait_great_khan }
+			effect = {
+				set_leader_flag = great_khan
+				save_global_event_target_as = great_khan
+			}
+		}
+		
+		### Create Fleets
+		event_target:marauder_rally_point = { CmtEffectCreateAdmiralty_Khan1stFleet = yes }
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanMultiple value = 5 } } }
+			every_planet_within_border = {
+				limit = { has_planet_flag = CmtFlagMarauderExpRallyPoint }
+				CmtEffectCreateAdmiralty_KhanStarterPack = yes
+			}
+		} else = { event_target:marauder_rally_point = { CmtEffectCreateAdmiralty_KhanStarterPack = yes } }
+		country_event = { id = marauder.78 days = 20 }		## Mercenaries
+		country_event = { id = marauder.520 days = 180 }		 ## Reinforcement Cycle
+		event_target:CmtGlobalVar = { set_variable = { which = CmtVarKhanReinforcementCounter value = 10 } }
+		
+		### Should not attack Enclaves
+		every_country = {
+			limit = { is_country_type = enclave }
+			event_target:raider_khanate = {
+				set_faction_hostility = {
+					target = prev
+					set_hostile = no
+					set_neutral = no
+					set_friendly = yes
+				}
+			}
+		}
+		
+		### Notifications
+		if = {
+			limit = { has_country_flag = CmtFlagKhanVengeanceCountry }
+			every_country = {
+				limit = { is_ai = no }
+				establish_communications_no_message = root
+				country_event = { id = marauder.526 }
+				observer_event = { id = observer.18 }
+			}
+		} else = {
+			every_country = {
+				limit = { is_ai = no }
+				establish_communications_no_message = root
+				country_event = { id = marauder.501 }
+				observer_event = { id = observer.13 }
+			}
+		}
+		
+		### Mercenaries Defect
+		if = {
+			limit = {
+				OR = {
+					has_country_flag = marauder_1
+					AND = {
+						exists = event_target:CmtTargetMarauderRallyPoint1.solar_system.owner
+						event_target:CmtTargetMarauderRallyPoint1.solar_system.owner = { is_same_value = root }
+					}
+				}
+			}
+			every_country = {
+				limit = { CmtTriggerCountryHiringMarauder1 = yes }
+				set_country_flag = CmtFlagHiringMarauder1
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					has_country_flag = marauder_2
+					AND = {
+						exists = event_target:CmtTargetMarauderRallyPoint2.solar_system.owner
+						event_target:CmtTargetMarauderRallyPoint2.solar_system.owner = { is_same_value = root }
+					}
+				}
+			}
+			every_country = {
+				limit = { CmtTriggerCountryHiringMarauder2 = yes }
+				set_country_flag = CmtFlagHiringMarauder2
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					has_country_flag = marauder_3
+					AND = {
+						exists = event_target:CmtTargetMarauderRallyPoint3.solar_system.owner
+						event_target:CmtTargetMarauderRallyPoint3.solar_system.owner = { is_same_value = root }
+					}
+				}
+			}
+			every_country = {
+				limit = { CmtTriggerCountryHiringMarauder3 = yes }
+				set_country_flag = CmtFlagHiringMarauder3
+			}
+		}
+		every_country = {
+			limit = {
+				OR = {
+					has_country_flag = CmtFlagHiringMarauder1
+					has_country_flag = CmtFlagHiringMarauder2
+					has_country_flag = CmtFlagHiringMarauder3
+				}
+			}
+			country_event = { id = marauder.77 days = 20 }
+		}
+	}
+}
+
+### Mercenaries Leave
+country_event = {
+	id = marauder.77
+	title = "marauder.77.name"
+	desc = "marauder.77.desc"
+	picture = GFX_evt_pirate_armada
+	show_sound = event_radio_chatter
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_country_flag = CmtFlagHiringMarauder1 }
+			every_owned_fleet = {
+				limit = { CmtTriggerHiredMarauderFleet1 = yes }
+				leader = {
+					remove_leader_flag = marauder_merc_leader
+					kill_leader = { show_notification = no }
+				}
+				delete_fleet = this
+			}
+			every_owned_leader = {
+				limit = { has_leader_flag = hired_merc_leader_1 }
+				kill_leader = { show_notification = no }
+			}
+			remove_country_flag = CmtFlagHiringMarauder1
+		}
+		if = {
+			limit = { has_country_flag = CmtFlagHiringMarauder2 }
+			every_owned_fleet = {
+				limit = { CmtTriggerHiredMarauderFleet2 = yes }
+				leader = {
+					remove_leader_flag = marauder_merc_leader
+					kill_leader = { show_notification = no }
+				}
+				delete_fleet = this
+			}
+			every_owned_leader = {
+				limit = { has_leader_flag = hired_merc_leader_2 }
+				kill_leader = { show_notification = no }
+			}
+			remove_country_flag = CmtFlagHiringMarauder2
+		}
+		if = {
+			limit = { has_country_flag = CmtFlagHiringMarauder3 }
+			every_owned_fleet = {
+				limit = { CmtTriggerHiredMarauderFleet3 = yes }
+				leader = {
+					remove_leader_flag = marauder_merc_leader
+					kill_leader = { show_notification = no }
+				}
+				delete_fleet = this
+			}
+			every_owned_leader = {
+				limit = { has_leader_flag = hired_merc_leader_3 }
+				kill_leader = { show_notification = no }
+			}
+			remove_country_flag = CmtFlagHiringMarauder3
+		}
+	}
+	
+	option = { name = marauder.76.a }
+}
+
+
+###########################################################
+###  Awakening for Vengeance: on_ship_destroyed_victim  ###
+###########################################################
+
+country_event = {
+	id = marauder.525
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_country_type = dormant_marauders
+		fromfrom = { is_ship_size = marauder_void_dwelling }
+		from = { CmtTriggerIsPlayableEmpire = yes }
+		
+		NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanVengeance value = 1 } } }
+		OR = {
+			count_owned_ships = {
+				limit = { is_ship_size = marauder_void_dwelling }
+				count >= 3
+			}
+			AND = {
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanVengeance value = 5 } }
+				count_owned_ships = {
+					limit = { is_ship_size = marauder_void_dwelling }
+					count >= 1
+				}
+			}
+		}
+		CmtTriggerKhanAwakingMultipleCheck = yes
+	}
+	
+	immediate = {
+		from = { save_event_target_as = awakened_horde }
+		random_list = {
+			2 = {
+				modifier = {		## 9.9%
+					factor = 5.5
+					event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanVengeance value = 3 } }
+				}
+				modifier = {		## 28.6%
+					factor = 20
+					event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanVengeance value = 4 } }
+				}
+				
+				set_global_flag = horde_triggered
+				set_country_flag = CmtFlagKhanVengeanceCountry
+				country_event = { id = marauder.500 }
+			}
+			100 = {
+				modifier = {
+					factor = 0
+					event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanVengeance value = 5 } }
+				}
+			}
+		}
+	}
+}
+
+
+
+#############################
+###  While Khan Reigning  ###
+#############################
+
+### NPC Submits to Marauder
+country_event = {
+	id = marauder.555
+	hide_window = yes
+	
+	trigger = {
+		has_global_flag = marauder_crisis_ongoing
+		exists = event_target:raider_khanate
+		CmtTriggerExistKhanCountry = yes
+		CmtTriggerIsPlayableEmpire = yes
+		is_subject = no
+		is_ai = yes
+		NOR = {
+			has_valid_civic = "civic_fanatic_purifiers"
+			has_valid_civic = "civic_hive_devouring_swarm"
+			has_valid_civic = "civic_machine_terminator"
+		}
+		check_variable = { which = "planets_lost_to_marauder" value > 2 }
+		OR = {
+			relative_power = {
+				who = event_target:raider_khanate
+				category = fleet
+				value = inferior
+			}
+			relative_power = {
+				who = event_target:raider_khanate
+				category = fleet
+				value = pathetic
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		years = 5
+		modifier = {
+			factor = 0.5
+			check_variable = { which = "planets_lost_to_marauder" value > 10 }
+		}
+		modifier = {
+			factor = 0.1
+			check_variable = { which = "planets_lost_to_marauder" value > 20 }
+		}
+		modifier = {
+			factor = 3
+			has_ai_personality = honorbound_warriors
+		}
+		modifier = {
+			factor = 2
+			has_ai_personality = xenophobic_isolationists
+		}
+		modifier = {
+			factor = 0.5
+			has_ai_personality = peaceful_traders
+		}
+		modifier = {
+			factor = 0.1
+			has_ai_personality = fanatic_befrienders
+		}
+	}
+	
+	immediate = {
+		save_event_target_as = new_satrapy
+		if = {
+			limit = { is_overlord = yes }
+			every_subject = {
+				set_subject_of = {
+					who = event_target:raider_khanate
+					subject_type = satrapy
+				}
+				hidden_effect = {
+					country_event = { id = marauder.553 days = 10 }
+					add_modifier = { modifier = "satrapy_of_horde" days = -1 }
+					event_target:raider_khanate = {
+						set_faction_hostility = {
+							target = prev
+							set_hostile = no
+							set_neutral = no
+							set_friendly = yes
+						}
+					}
+				}
+			}
+		}
+		set_subject_of = {
+			who = event_target:raider_khanate
+			subject_type = satrapy
+		}
+		country_event = { id = marauder.553 days = 10 }
+		add_modifier = { modifier = "satrapy_of_horde" days = -1 }
+		event_target:raider_khanate = {
+			set_faction_hostility = {
+				target = event_target:new_satrapy
+				set_hostile = no
+				set_neutral = no
+				set_friendly = yes
+			}
+		}
+		every_country = {
+			limit = {
+				is_ai = no
+				has_communications = event_target:new_satrapy
+			}
+			country_event = { id = marauder.552 }
+		}
+		observer_event = { id = observer.19 }
+	}
+}
+
+### Return of Khan
+country_event = {
+	id = marauder.507
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		event_target:marauder_rally_point = { CmtEffectCreateAdmiralty_Khan2ndFleetSet = yes }
+		every_country = {
+			limit = { is_ai = no }
+			country_event = { id = marauder.508 }
+		}
+		observer_event = { id = observer.15 }
+	}
+}
+
+
+#######################
+###  Death of Khan  ###
+#######################
+
+### Khan Defeated in Combat But NOT Die
+country_event = {
+	id = marauder.505
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		CmtTriggerIsKhanCountry = yes
+		fromfrom = {
+			exists = leader
+			fleet = { num_ships = 0 }
+			leader = { has_leader_flag = great_khan }
+		}
+		check_variable = { which = CmtVarKhanRemainingLive value > -0.5 }		## Not CmtGlobalVar
+		OR = {
+			NOT = { has_country_flag = CmtFlagKhanDefeatCountry }
+			check_variable = { which = CmtVarKhanRemainingLive value > 0.5 }		## Not CmtGlobalVar
+		}
+	}
+
+	immediate = {
+		set_global_flag = great_khan_defeated_once
+		set_country_flag = CmtFlagKhanDefeatCountry
+		change_variable = { which = CmtVarKhanRemainingLive value = -1 }		## Not CmtGlobalVar
+		
+		from = { save_event_target_as = khan_destroyer }
+		fromfrom = {
+			solar_system = { save_event_target_as = khan_death_system }
+			leader = {
+				save_event_target_as = great_khan
+				exile_leader_as = exiled_khan
+			}
+		}
+		every_country = {
+			limit = { is_ai = no }
+			country_event = { id = marauder.506 }
+		}
+		observer_event = { id = observer.14 }
+		
+		if = {
+			limit = { has_global_flag = CmtFlagDebugMode }
+			country_event = { id = marauder.507 days = 5 random = 3 }
+		} else = { country_event = { id = marauder.507 days = 180 random = 180 } }
+	}
+}
+
+
+
+### Khan Defeated in Combat And Die
+country_event = {
+	id = marauder.509
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		CmtTriggerIsKhanCountry = yes
+		fromfrom = {
+			exists = leader
+			fleet = { num_ships = 0 }
+			leader = { has_leader_flag = great_khan }
+		}
+		OR = {
+			check_variable = { which = CmtVarKhanRemainingLive value < -0.5 }		## Not CmtGlobalVar
+			AND = {
+				has_country_flag = CmtFlagKhanDefeatCountry
+				check_variable = { which = CmtVarKhanRemainingLive value < 0.5 }		## Not CmtGlobalVar
+			}
+		}
+	}
+
+	immediate = {
+		set_global_flag = great_khan_dead
+		set_country_flag = CmtFlagKhanDeadCountry
+		set_variable = { which = CmtVarKhanRemainingLive value = 0 }		## Not CmtGlobalVar
+		
+		event_target:great_khan_ruler = { kill_leader = { show_notification = no } }
+		event_target:great_khan = { kill_leader = { show_notification = no } }
+		
+		from = {
+			save_event_target_as = khan_destroyer
+			set_country_flag = no_khan_do
+			if = {
+				limit = { is_ai = no }
+				country_event = { id = marauder.710 days = 10 random = 10 }
+			}
+		}
+		fromfrom = { solar_system = { save_event_target_as = khan_death_system } }
+		every_country = {
+			limit = { is_ai = no }
+			country_event = { id = marauder.510 }
+		}
+		observer_event = { id = observer.16 }
+		
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLifespan value = 1 } } }
+			country_event = { id = marauder.600 days = @CmtConstKhanLifespan_1e random = @CmtConstKhanLifespan_1f }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLifespan value = 2 } } }
+			country_event = { id = marauder.600 days = @CmtConstKhanLifespan_2e random = @CmtConstKhanLifespan_2f }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLifespan value = 4 } } }
+			country_event = { id = marauder.600 days = @CmtConstKhanLifespan_4e random = @CmtConstKhanLifespan_4f }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLifespan value = 5 } } }
+			country_event = { id = marauder.600 days = @CmtConstKhanLifespan_5e random = @CmtConstKhanLifespan_5f }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLifespan value = 6 } } }
+			country_event = { id = marauder.600 days = @CmtConstKhanLifespan_6e random = @CmtConstKhanLifespan_6f }
+		} else = { country_event = { id = marauder.600 days = @CmtConstKhanLifespan_3e random = @CmtConstKhanLifespan_3f } }
+	}
+}
+
+
+### Sudden Death of Khan (on_monthly_pulse)
+event = {
+	id = marauder.511
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		any_country = {
+			CmtTriggerIsKhanCountry = yes
+			NOT = { has_country_flag = CmtFlagKhanNoDieCountry }
+		}
+	}
+	
+	immediate = {
+		every_country = {
+			limit = {
+				CmtTriggerIsKhanCountry = yes
+				NOT = { has_country_flag = CmtFlagKhanNoDieCountry }
+			}
+			random_list = {
+				2 = {
+					event_target:raider_khanate = { country_event = { id = marauder.512 } }
+					modifier = {
+						factor = 0
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLifespan value = 6 } }
+					}
+				}
+				98 = {
+					modifier = {
+						factor = @CmtConstKhanLifespan_1b
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLifespan value = 1 } }
+					}
+					modifier = {
+						factor = @CmtConstKhanLifespan_2b
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLifespan value = 2 } }
+					}
+					modifier = {
+						factor = @CmtConstKhanLifespan_3b
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLifespan value = 3 } }
+					}
+					modifier = {
+						factor = @CmtConstKhanLifespan_4b
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLifespan value = 4 } }
+					}
+					modifier = {
+						factor = @CmtConstKhanLifespan_5b
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLifespan value = 5 } }
+					}
+				}
+			}
+		}
+	}
+}
+
+### Great Khan Dies for Other Reasons
+country_event = {
+	id = marauder.512
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = great_khan_dead
+		set_country_flag = CmtFlagKhanDeadCountry
+		random_list = {
+			10 = { set_country_flag = khan_dead_poison }
+			10 = { set_country_flag = khan_dead_disease }
+			10 = { set_country_flag = khan_dead_assassin }
+			10 = { set_country_flag = khan_dead_concubine }
+		}
+		
+		event_target:great_khan_ruler = { kill_leader = { show_notification = no } }
+		event_target:great_khan = { kill_leader = { show_notification = no } }
+		
+		every_country = {
+			limit = { is_ai = no }
+			country_event = { id = marauder.513 }
+		}
+		observer_event = { id = observer.17 }
+		
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLifespan value = 1 } } }
+			country_event = { id = marauder.600 days = @CmtConstKhanLifespan_1e random = @CmtConstKhanLifespan_1f }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLifespan value = 2 } } }
+			country_event = { id = marauder.600 days = @CmtConstKhanLifespan_2e random = @CmtConstKhanLifespan_2f }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLifespan value = 4 } } }
+			country_event = { id = marauder.600 days = @CmtConstKhanLifespan_4e random = @CmtConstKhanLifespan_4f }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLifespan value = 5 } } }
+			country_event = { id = marauder.600 days = @CmtConstKhanLifespan_5e random = @CmtConstKhanLifespan_5f }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLifespan value = 6 } } }
+			country_event = { id = marauder.600 days = @CmtConstKhanLifespan_6e random = @CmtConstKhanLifespan_6f }
+		} else = { country_event = { id = marauder.600 days = @CmtConstKhanLifespan_3e random = @CmtConstKhanLifespan_3f } }
+	}
+}
+
+### Great Khan Dies
+country_event = {
+	id = marauder.513
+	title = "marauder.510.name"
+	desc = {
+		text = marauder.513.a.desc
+		trigger = { from = { has_country_flag = khan_dead_poison } }
+	}
+	desc = {
+		text = marauder.513.b.desc
+		trigger = { from = { has_country_flag = khan_dead_disease } }
+	}
+	desc = {
+		text = marauder.513.c.desc
+		trigger = { from = { has_country_flag = khan_dead_assassin } }
+	}
+	desc = {
+		text = marauder.513.d.desc
+		trigger = { from = { has_country_flag = khan_dead_concubine } }
+	}
+	desc = {
+		text = marauder.513.e.desc
+		trigger = { from = { has_country_flag = khan_dead_age } }
+	}
+	picture = GFX_evt_space_funeral
+	show_sound = event_life_support_fail
+
+	is_triggered_only = yes
+
+	option = {
+		name = marauder.510.a
+	}
+}
+
+### Great Khan Dies of Old Ages
+country_event = {
+	id = marauder.514
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		CmtTriggerIsKhanCountry = yes
+		NOT = { has_country_flag = khan_dead_age }
+	}
+
+	immediate = {
+		set_global_flag = great_khan_dead
+		set_country_flag = CmtFlagKhanDeadCountry
+		set_country_flag = khan_dead_age
+		
+		
+		if = {
+			limit = { exists = event_target:great_khan_ruler }
+			event_target:great_khan_ruler = { kill_leader = { show_notification = no } }
+		}
+		if = {
+			limit = { exists = event_target:great_khan }
+			event_target:great_khan = { kill_leader = { show_notification = no } }
+		}
+		
+		every_country = {
+			limit = { is_ai = no }
+			country_event = { id = marauder.513 }
+		}
+		observer_event = { id = observer.17 }
+		
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLifespan value = 1 } } }
+			country_event = { id = marauder.600 days = @CmtConstKhanLifespan_1e random = @CmtConstKhanLifespan_1f }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLifespan value = 2 } } }
+			country_event = { id = marauder.600 days = @CmtConstKhanLifespan_2e random = @CmtConstKhanLifespan_2f }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLifespan value = 4 } } }
+			country_event = { id = marauder.600 days = @CmtConstKhanLifespan_4e random = @CmtConstKhanLifespan_4f }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLifespan value = 5 } } }
+			country_event = { id = marauder.600 days = @CmtConstKhanLifespan_5e random = @CmtConstKhanLifespan_5f }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLifespan value = 6 } } }
+			country_event = { id = marauder.600 days = @CmtConstKhanLifespan_6e random = @CmtConstKhanLifespan_6f }
+		} else = { country_event = { id = marauder.600 days = @CmtConstKhanLifespan_3e random = @CmtConstKhanLifespan_3f } }
+	}
+}
+
+### Future of Horde
+country_event = {
+	id = marauder.600
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		is_country_type = awakened_marauders
+	}
+
+	immediate = {
+		if = {
+			limit = { num_owned_planets < 1 }
+			country_event = { id = marauder.604 }
+		} else = {
+			if = {
+				limit = {
+					OR = {
+						NOR = {
+							num_owned_planets < 6
+							event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanPostDeathSplinter value = 1 } }
+						}
+						NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanPostDeathKhanate value = 1 } } }
+						NOR = {
+							count_country = { limit = { is_subject_type = satrapy } count < 2 }
+							event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanPostDeathDemocratic value = 1 } }
+						}
+					}
+				}
+				random_list = {
+					60 = {
+						modifier = {
+							factor = 0
+							OR = {
+								num_owned_planets < 6
+								event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanPostDeathSplinter value = 1 } }
+							}
+						}
+						modifier = {
+							factor = 0.167
+							event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanPostDeathSplinter value = 2 } }
+						}
+						modifier = {
+							factor = 0.334
+							event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanPostDeathSplinter value = 3 } }
+						}
+						country_event = { id = marauder.601 }
+					}
+					10 = {
+						modifier = {
+							factor = 0
+							event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanPostDeathKhanate value = 1 } }
+						}
+						modifier = {
+							factor = 2
+							event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanPostDeathKhanate value = 3 } }
+						}
+						modifier = {
+							factor = 6
+							event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanPostDeathKhanate value = 4 } }
+						}
+						country_event = { id = marauder.602 }
+					}
+					10 = {
+						modifier = {
+							factor = 0
+							OR = {
+								count_country = { limit = { is_subject_type = satrapy } count < 2 }
+								event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanPostDeathDemocratic value = 1 } }
+							}
+						}
+						modifier = {
+							factor = 2
+							event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanPostDeathDemocratic value = 3 } }
+						}
+						modifier = {
+							factor = 6
+							event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanPostDeathDemocratic value = 4 } }
+						}
+						country_event = { id = marauder.603 }
+					}
+				}
+			} else = {
+				random_list = {
+					60 = {
+						modifier = {
+							factor = 0
+							num_owned_planets < 6
+						}
+						country_event = { id = marauder.601 }
+					}
+					10 = {
+						country_event = { id = marauder.602 }
+					}
+					10 = {
+						modifier = {
+							factor = 0
+							count_country = {
+								limit = { is_subject_type = satrapy }
+								count < 2
+							}
+						}
+						country_event = { id = marauder.603 }
+					}
+				}
+			}
+		}
+		remove_global_flag = marauder_crisis_ongoing
+		event_target:CmtGlobalVar = {
+			if = {
+				limit = { check_variable = { which = CmtVarKhanMultiple value = 3 } }
+				remove_global_flag = CmtFlagNowInKhanInterval
+				if = {
+					limit = { check_variable = { which = CmtVarKhanInterval value < @CmtConstKhanInterval_T0 } }
+					### Do nothing
+				} else_if = {
+					limit = { check_variable = { which = CmtVarKhanInterval value < @CmtConstKhanInterval_T1 } }
+					set_timed_global_flag = { flag = CmtFlagNowInKhanInterval days = @CmtConstKhanInterval_D1 }
+				} else_if = {
+					limit = { check_variable = { which = CmtVarKhanInterval value < @CmtConstKhanInterval_T2 } }
+					set_timed_global_flag = { flag = CmtFlagNowInKhanInterval days = @CmtConstKhanInterval_D2 }
+				} else_if = {
+					limit = { check_variable = { which = CmtVarKhanInterval value < @CmtConstKhanInterval_T3 } }
+					set_timed_global_flag = { flag = CmtFlagNowInKhanInterval days = @CmtConstKhanInterval_D3 }
+				} else_if = {
+					limit = { check_variable = { which = CmtVarKhanInterval value < @CmtConstKhanInterval_T4 } }
+					set_timed_global_flag = { flag = CmtFlagNowInKhanInterval days = @CmtConstKhanInterval_D4 }
+				} else_if = {
+					limit = { check_variable = { which = CmtVarKhanInterval value < @CmtConstKhanInterval_T5 } }
+					set_timed_global_flag = { flag = CmtFlagNowInKhanInterval days = @CmtConstKhanInterval_D5 }
+				} else = { set_timed_global_flag = { flag = CmtFlagNowInKhanInterval days = @CmtConstTUnq_ConstKhanInterval } }
+			}
+		}
+	}
+}
+
+
+
+########################
+###  Reinforcements  ###
+########################
+
+### Mercenaries Join Great Khan (HIDDEN)
+country_event = {
+	id = marauder.78
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanMultiple value = 5 } } }
+			every_planet_within_border = {
+				limit = { has_planet_flag = CmtFlagMarauderExpRallyPoint }
+				if = {
+					limit = { is_same_value = event_target:CmtTargetMarauderRallyPoint1 }
+					CmtEffectCreateAdmiralty_KhanMercenaries1 = yes
+				} else_if = {
+					limit = { is_same_value = event_target:CmtTargetMarauderRallyPoint2 }
+					CmtEffectCreateAdmiralty_KhanMercenaries2 = yes
+				} else_if = {
+					limit = { is_same_value = event_target:CmtTargetMarauderRallyPoint3 }
+					CmtEffectCreateAdmiralty_KhanMercenaries3 = yes
+				}
+			}
+		} else_if = {
+			limit = { has_country_flag = marauder_1 }
+			event_target:marauder_rally_point = { CmtEffectCreateAdmiralty_KhanMercenaries1 = yes }
+		} else_if = {
+			limit = { has_country_flag = marauder_2 }
+			event_target:marauder_rally_point = { CmtEffectCreateAdmiralty_KhanMercenaries2 = yes }
+		} else_if = {
+			limit = { has_country_flag = marauder_3 }
+			event_target:marauder_rally_point = { CmtEffectCreateAdmiralty_KhanMercenaries3 = yes }
+		}
+	}
+}
+
+### Regular Reinforcements at Captal(s)
+country_event = {
+	id = marauder.520
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		CmtTriggerIsKhanCountry = yes
+	}
+	
+	immediate = {
+		event_target:CmtGlobalVar = {
+			if = {
+				limit = {
+					NOR = {
+						check_variable = { which = CmtVarReinforceCycle_Khan value = 2 }
+						check_variable = { which = CmtVarReinforceCycle_Khan value = 3 }
+						check_variable = { which = CmtVarReinforceCycle_Khan value = 4 }
+					}
+				}
+				CmtEffectKhanReinforceOnCapital = yes
+				root = { country_event = { id = marauder.520 days = 340 } }
+			} else = {
+				if = {
+					limit = { check_variable = { which = CmtVarKhanReinforcementCounter value > 9.5 } }
+					CmtEffectKhanReinforceOnCapital = yes
+					change_variable = { which = CmtVarKhanReinforcementCounter value = -10 }
+				}
+				CmtEffectKhanIncreasementReinforcementCycle = yes		## required: prev = root
+				root = { country_event = { id = marauder.520 days = 34 } }
+			}
+		}
+	}
+}
+
+### Initial Reinforcement for Encouraging Satrap
+country_event = {
+	id = marauder.553
+	title = "marauder.553.name"
+	desc = "marauder.553.desc"
+	picture = GFX_evt_khan_throne_room
+	show_sound = event_conversation
+	location = event_target:garrison_base
+
+	is_triggered_only = yes
+
+	immediate = {
+		save_event_target_as = satrapy_empire
+		capital_scope = {
+			save_event_target_as = capital_planet
+			solar_system = { save_event_target_as = capital_system }
+		}
+		CmtEffectCreateEncouragingBase = yes		## event_target:garrison_base
+		event_target:garrison_base = { CmtEffectCreateAdmiralty_KhanEncourager = yes }
+	}
+	
+	option = { name = marauder.553.a }
+}
+
+### Regular Reinforcements at Capital of Satrap
+fleet_event = {
+	id = marauder.560
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		CmtTriggerExistKhanCountry = yes
+		owner = { is_same_value = event_target:raider_khanate }
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				event_target:CmtGlobalVar = {
+					NOR = {
+						check_variable = { which = CmtVarReinforceCycle_Khan value = 2 }
+						check_variable = { which = CmtVarReinforceCycle_Khan value = 3 }
+						check_variable = { which = CmtVarReinforceCycle_Khan value = 4 }
+					}
+				}
+			}
+			fleet_event = { id = marauder.560 days = 400 random = 400 }
+			event_target:satrapy_empire = { owner_species = { save_event_target_as = satrapy_species } }
+			CmtEffectCreateAdmiralty_KhanSubReinforcement = yes
+		} else = {
+			fleet_event = { id = marauder.560 days = 40 random = 40 }
+			if = {
+				limit = { check_variable = { which = CmtVarKhanReinforcementCounter value > 9.5 } }
+				event_target:satrapy_empire = { owner_species = { save_event_target_as = satrapy_species } }
+				CmtEffectCreateAdmiralty_KhanSubReinforcement = yes
+				change_variable = { which = CmtVarKhanReinforcementCounter value = -10 }
+			}
+			root.owner = { root = { CmtEffectKhanIncreasementReinforcementCycle = yes } }
+		}
+	}
+}
+
+
+
+##############################
+###  Standard War Process  ###
+##############################
+
+### Horde Conquers Planet
+country_event = {
+	id = marauder.503
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		is_country_type = awakened_marauders
+	}
+
+	immediate = {
+		fromfrom = {
+			save_event_target_as = conquered_planet
+			set_owner = root
+		}
+		from = {
+			country_event = { id = marauder.504 }
+			change_variable = { which = planets_lost_to_marauder value = 1 }
+			set_country_flag = former_owner@fromfrom
+		}
+		fromfrom = {
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarTemp value = 6 } }
+			if = {
+				limit = { exists = event_target:CmtTargetSpecies_Marauder1 }
+				while = {
+					count = 2
+					create_army = {
+						owner = root
+						species = event_target:CmtTargetSpecies_Marauder1
+						type = "defense_army"
+					}
+					event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } }
+				}
+			}
+			if = {
+				limit = { exists = event_target:CmtTargetSpecies_Marauder2 }
+				while = {
+					count = 2
+					create_army = {
+						owner = root
+						species = event_target:CmtTargetSpecies_Marauder2
+						type = "defense_army"
+					}
+					event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } }
+				}
+			}
+			if = {
+				limit = { exists = event_target:CmtTargetSpecies_Marauder3 }
+				while = {
+					count = 2
+					create_army = {
+						owner = root
+						species = event_target:CmtTargetSpecies_Marauder3
+						type = "defense_army"
+					}
+					event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } }
+				}
+			}
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value > 0.5 } } }
+				create_army = {
+					owner = root
+					species = root.species
+					type = "defense_army"
+				}
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } }
+			}
+			
+			if = {
+				limit = { free_housing < 1 }
+				random_pop = { kill_pop = yes }
+			}
+			if = {
+				limit = { free_housing < 2 }
+				while = { count = 4 random_pop = { kill_pop = yes } }
+				if = {
+					limit = { exists = event_target:CmtTargetSpecies_Marauder1 }
+					create_pop = { species = event_target:CmtTargetSpecies_Marauder1 }
+				}
+				if = {
+					limit = { exists = event_target:CmtTargetSpecies_Marauder2 }
+					create_pop = { species = event_target:CmtTargetSpecies_Marauder2 }
+				}
+				if = {
+					limit = { exists = event_target:CmtTargetSpecies_Marauder3 }
+					create_pop = { species = event_target:CmtTargetSpecies_Marauder3 }
+				}
+			} else_if = {
+				limit = { free_housing < 6 }
+				while = { count = 3 random_pop = { kill_pop = yes } }
+				create_pop = { species = root.species }
+				if = {
+					limit = { exists = event_target:CmtTargetSpecies_Marauder1 }
+					create_pop = { species = event_target:CmtTargetSpecies_Marauder1 }
+				}
+				if = {
+					limit = { exists = event_target:CmtTargetSpecies_Marauder2 }
+					create_pop = { species = event_target:CmtTargetSpecies_Marauder2 }
+				}
+				if = {
+					limit = { exists = event_target:CmtTargetSpecies_Marauder3 }
+					create_pop = { species = event_target:CmtTargetSpecies_Marauder3 }
+				}
+			} else = {
+				if = {
+					limit = { exists = event_target:CmtTargetSpecies_Marauder1 }
+					while = { count = 2 create_pop = { species = event_target:CmtTargetSpecies_Marauder1 } }
+				} else = { while = { count = 2 create_pop = { species = root.species } } }
+				if = {
+					limit = { exists = event_target:CmtTargetSpecies_Marauder2 }
+					while = { count = 2 create_pop = { species = event_target:CmtTargetSpecies_Marauder2 } }
+				} else = { while = { count = 2 create_pop = { species = root.species } } }
+				if = {
+					limit = { exists = event_target:CmtTargetSpecies_Marauder3 }
+					while = { count = 2 create_pop = { species = event_target:CmtTargetSpecies_Marauder3 } }
+				} else = { while = { count = 2 create_pop = { species = root.species } } }
+			}
+			
+			solar_system = {
+				if = {
+					limit = {
+						exists = starbase
+						starbase = { fleet = { owner = { NOT = { is_same_value = root } } } }
+					}
+					starbase = { set_owner = root }
+				} else = {
+					create_starbase = {
+						size = "starbase_marauder"
+						owner = root
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+
+###################
+###  Diplomacy  ###
+###################
+
+country_event = {
+	id = marauder.550
+	title = "greatkhan_diplo_header"
+	desc = {
+		trigger = {
+			NOR = {
+				is_subject_type = satrapy
+				has_country_flag = rebelling_satrapy
+				is_homicidal = yes
+			}
+		}
+		text = "marauder.550.a.desc"
+	}
+	desc = {
+		trigger = {
+			NOR = {
+				is_subject_type = satrapy
+				has_country_flag = rebelling_satrapy
+				is_homicidal = yes
+			}
+		}
+		text = "marauder.550.b.desc"
+	}
+	desc = {
+		trigger = {
+			NOR = {
+				is_subject_type = satrapy
+				has_country_flag = rebelling_satrapy
+				is_homicidal = yes
+			}
+		}
+		text = "marauder.550.c.desc"
+	}
+	desc = {
+		trigger = {
+			NOR = {
+				is_subject_type = satrapy
+				has_country_flag = rebelling_satrapy
+				is_homicidal = yes
+			}
+		}
+		text = "marauder.550.d.desc"
+	}
+	desc = {
+		trigger = {
+			NOR = {
+				is_subject_type = satrapy
+				has_country_flag = rebelling_satrapy
+				is_homicidal = yes
+			}
+		}
+		text = "marauder.550.e.desc"
+	}
+	desc = {
+		trigger = {
+			NOR = {
+				is_subject_type = satrapy
+				has_country_flag = rebelling_satrapy
+				is_homicidal = yes
+			}
+		}
+		text = "marauder.550.f.desc"
+	}
+	desc = {
+		trigger = {
+			NOR = {
+				is_subject_type = satrapy
+				has_country_flag = rebelling_satrapy
+				is_homicidal = yes
+			}
+		}
+		text = "marauder.550.g.desc"
+	}
+	desc = {
+		trigger = {
+			NOR = {
+				is_subject_type = satrapy
+				has_country_flag = rebelling_satrapy
+				is_homicidal = yes
+			}
+		}
+		text = "marauder.550.h.desc"
+	}
+	desc = {
+		trigger = {
+			NOR = {
+				is_subject_type = satrapy
+				has_country_flag = rebelling_satrapy
+				is_homicidal = yes
+			}
+		}
+		text = "marauder.550.i.desc"
+	}
+	desc = {
+		trigger = { is_subject_type = satrapy }
+		text = "marauder.550.j.desc"
+	}
+	desc = {
+		trigger = { is_subject_type = satrapy }
+		text = "marauder.550.k.desc"
+	}
+	desc = {
+		trigger = {
+			is_subject_type = satrapy
+			has_authority = auth_machine_intelligence
+		}
+		text = "marauder.550.l.desc"
+	}
+	desc = {
+		trigger = {
+			is_subject_type = satrapy
+			has_authority = auth_machine_intelligence
+		}
+		text = "marauder.550.m.desc"
+	}
+	desc = {
+		trigger = {
+			is_subject_type = satrapy
+			has_authority = auth_hive_mind
+		}
+		text = "marauder.550.n.desc"
+	}
+	desc = {
+		trigger = {
+			is_subject_type = satrapy
+			has_authority = auth_hive_mind
+		}
+		text = "marauder.550.o.desc"
+	}
+	desc = {
+		trigger = {
+			is_subject_type = satrapy
+			NOT = { has_ethic = ethic_gestalt_consciousness }
+		}
+		text = "marauder.550.p.desc"
+	}
+	desc = {
+		trigger = {
+			is_subject_type = satrapy
+			NOT = { has_ethic = ethic_gestalt_consciousness }
+		}
+		text = "marauder.550.q.desc"
+	}
+	desc = {
+		trigger = { has_country_flag = rebelling_satrapy }
+		text = "marauder.550.r.desc"
+	}
+	desc = {
+		trigger = { has_country_flag = rebelling_satrapy }
+		text = "marauder.550.s.desc"
+	}
+	desc = {
+		trigger = { has_country_flag = rebelling_satrapy }
+		text = "marauder.550.t.desc"
+	}
+	desc = {
+		trigger = { has_country_flag = rebelling_satrapy }
+		text = "marauder.550.u.desc"
+	}
+	desc = {
+		trigger = { is_homicidal = yes }
+		text = "marauder.550.v.desc"
+	}
+	desc = {
+		trigger = { from = { has_country_flag = marauder_2 } }
+		text = "marauder.550.w.desc"
+	}
+	
+	picture_event_data = {
+		portrait = event_target:raider_khanate
+		room = ethic_spaceship_room
+	}
+	is_triggered_only = yes
+	force_open = yes
+	diplomatic = yes
+	
+	trigger = {
+		from = { CmtTriggerIsKhanCountry = yes }
+		NOT = { has_country_flag = marauder_diplomacy_engaged }
+	}
+	
+	immediate = {
+		set_country_flag = marauder_diplomacy_engaged
+	}
+	after = {
+		hidden_effect = { remove_country_flag = marauder_diplomacy_engaged }
+	}
+	
+	option = {		# Submit?
+		name = marauder.550.a
+		trigger = {
+			NOR = {
+				is_subject_type = satrapy
+				has_country_flag = rebelling_satrapy
+				is_homicidal = yes
+			}
+		}
+		hidden_effect = { country_event = { id = marauder.551 } }
+	}
+	option = {		# Submit? Already rebelled
+		name = marauder.550.a
+		trigger = { has_country_flag = rebelling_satrapy }
+		response_text = marauder.550.a.2.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = marauder.550.b
+		trigger = {
+			from = { has_country_flag = marauder_2 }
+			NOR = {
+				has_country_flag = asked_about_language
+				is_homicidal = yes
+			}
+		}
+		response_text = marauder.550.b.response
+		is_dialog_only = yes
+		hidden_effect = { set_country_flag = asked_about_language }
+	}
+
+	option = {
+		name = marauder.550.c
+		trigger = {
+			from = { has_country_flag = marauder_3 }
+			NOR = {
+				has_country_flag = asked_about_religion
+				is_homicidal = yes
+			}
+		}
+		response_text = marauder.550.c.response
+		is_dialog_only = yes
+		hidden_effect = { set_country_flag = asked_about_religion }
+	}
+
+	option = {		# Rebel?
+		name = marauder.550.d
+		trigger = { is_subject_type = satrapy }
+		allow = {
+			custom_tooltip = {
+				fail_text = marauder.550.d_fail
+				NOT = { has_country_flag = rebellion_cooldown }
+			}
+		}
+		hidden_effect = { country_event = { id = marauder.554 } }
+	}
+
+	option = {
+		name = marauder.20.e
+		default_hide_option = yes
+	}
+}
+
+### Diplomacy after Khan's death
+country_event = {
+	id = marauder.665
+	title = "TRANSMISSION"
+	desc = "marauder.665.a.desc"
+	picture_event_data = { room = no_video_feed_room }
+	is_triggered_only = yes
+	force_open = yes
+	diplomatic = yes
+
+	trigger = {
+		from = { is_country_type = awakened_marauders }
+		has_global_flag = CmtFlagKhanDeadCountry
+	}
+
+	immediate = {
+		set_country_flag = marauder_diplomacy_engaged
+	}
+
+	after = {
+		hidden_effect = { remove_country_flag = marauder_diplomacy_engaged }
+	}
+	
+	option = {
+		name = marauder.665.a
+		default_hide_option = yes
+	}
+}
+
+

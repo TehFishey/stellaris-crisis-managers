@@ -1,0 +1,33 @@
+namespace = dmm_mod
+
+#####################################
+#####################################
+#####                           #####
+#####    Crisis Manager         #####
+#####                           #####
+#####    DMM Access Event       #####
+#####                           #####
+#####################################
+#####################################
+
+country_event = {
+    id = dmm_mod.10
+    hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = { 
+		is_ai = false
+		has_global_flag = dmm_mod_10 
+	}
+	
+	immediate = {
+		if = {
+			limit = { any_country = { has_country_flag = CmtFlagNowInMenu } }
+			country_event = { id = CrisisManagerMenu.0013 }
+		} else = { country_event = { id = CrisisManagerMenu.0100 } }
+	}
+	
+	after = {
+        remove_global_flag = dmm_mod_10_opened
+    }
+}

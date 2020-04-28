@@ -1,0 +1,101 @@
+
+##############################################################
+##############################################################
+#####                                                    #####
+#####    Crisis Manager                                  #####
+#####                                                    #####
+#####    Sollar System Initiallizer for L-Gate Events    #####
+#####                                                    #####
+##############################################################
+##############################################################
+
+### L-Gate System for Manual Creation
+#
+#	copy of distantstars_init_00 with some modification:
+#	(followings are deleted: usage, usage_odds, max_instances, scaled_spawn_chance
+#
+
+
+@standard_min = 20		## Real Space
+@standard_max = 35		## Real Space
+
+
+### for Vanilla
+CmtInitManualLgate00 = {
+	class = sc_black_hole
+	
+	flags = { hostile_system lgate }
+	
+	planet = {
+		class = star
+		orbit_distance = 0
+	}
+	
+	change_orbit = 60
+	
+	planet = {
+		count = { min = 0 max = 1 }
+		class = "pc_broken"
+		size = { min = 10 max = 15 }
+		
+		init_effect = { prevent_anomaly = yes }
+	}
+	
+	change_orbit = 30
+	
+	planet = {
+		count = { min = 0 max = 1 }
+		class = "pc_barren_cold"
+		size = { min = 10 max = 20 }
+	}
+	
+	init_effect = {
+		spawn_megastructure = {
+			type = lgate_base
+			orbit_angle = 225
+			orbit_distance = 30
+			location = solar_system
+		}
+	}
+}
+
+
+### for Real Space
+CmtInitManualLgate00RealSpace = {
+	class = sc_black_hole
+	
+	flags = { hostile_system lgate }
+	
+	planet = {
+		class = star
+		size = { min = @standard_min max = @standard_max }
+		orbit_distance = 0
+	}
+	
+	change_orbit = 60
+	
+	planet = {
+		count = { min = 0 max = 1 }
+		class = "pc_broken"
+		size = { min = 10 max = 15 }
+		
+		init_effect = { prevent_anomaly = yes }
+	}
+	
+	change_orbit = 30
+	
+	planet = {
+		count = { min = 0 max = 1 }
+		class = "pc_barren_cold"
+		size = { min = 10 max = 20 }
+	}
+	
+	init_effect = {
+		spawn_megastructure = {
+			type = lgate_base
+			orbit_angle = 225
+			orbit_distance = 30
+			location = solar_system
+		}
+	}
+}

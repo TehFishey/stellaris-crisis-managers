@@ -1,0 +1,491 @@
+
+#####################################################
+#####################################################
+#####                                           #####
+#####    Crisis Manager                         #####
+#####                                           #####
+#####    Policies Modified for Player Crisis    #####
+#####                                           #####
+#####################################################
+#####################################################
+
+war_doctrine = {
+	potential = {
+		CmtTriggerIsPlayableEmpire = yes
+		has_tradition = tr_supremacy_finish
+	}
+	option = {
+		name = defense_in_depth_doctrine
+		policy_flags = {}
+		modifier = { ship_home_territory_fire_rate_mult = 0.10 }
+		AI_weight = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_ai_personality = CmtPersonalityPlayerCrisisAggressor
+			}
+		}
+	}
+	option = {
+		name = hit_and_run_doctrine
+		policy_flags = {}
+		modifier = {
+			ship_disengage_chance_mult = 0.33
+			ship_emergency_ftl_mult = -0.25
+		}
+		AI_weight = {
+			factor = 10
+			modifier = {
+				factor = 0
+				NOR = {
+					has_ethic = ethic_pacifist
+					has_ethic = ethic_fanatic_pacifist
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = rapid_deployment_doctrine
+		policy_flags = {}
+		modifier = {
+			ship_speed_mult = 0.25
+			ship_weapon_range_mult = 0.10
+		}
+		AI_weight = {
+			factor = 10
+			modifier = {
+				factor = 0
+				NOT = { is_preferred_weapons = weapon_type_explosive }
+			}
+		}
+	}
+	
+	option = {
+		name = no_retreat_doctrine
+		valid = {
+			OR = {
+				has_ethic = ethic_militarist
+				has_ethic = ethic_fanatic_militarist
+				has_ethic = ethic_gestalt_consciousness
+				has_civic = civic_fanatic_purifiers
+				CmtTriggerIsPlayerCrisisAggressor = yes
+			}
+		}
+		policy_flags = {}
+		modifier = {
+			ship_disengage_chance_reduction = 1
+			ship_emergency_ftl_min_days_mult = 0.5
+			ship_fire_rate_mult = 0.33
+		}
+		AI_weight = {
+			factor = 100
+			modifier = {
+				factor = 0
+				NOR = {
+					has_ai_personality = honorbound_warriors
+					has_ai_personality = devouring_swarm
+					has_ai_personality = CmtPersonalityPlayerCrisisAggressor
+				}
+			}
+		}
+	}
+}
+
+
+orbital_bombardment = {
+	potential = {
+		OR = {
+			CmtTriggerIsPlayableEmpire = yes
+			is_country_type = vol
+		}
+	}
+	option = {
+		name = orbital_bombardment_selective
+		potential = { NOT = { CmtTriggerIsPlayerCrisisAggressor = yes } }
+		policy_flags = { orbital_bombardment_selective }
+		AI_weight = {
+			modifier = {
+				factor = 0
+				NOR = {
+					has_ethic = ethic_pacifist
+					has_ethic = ethic_fanatic_pacifist
+				}
+				NOT = {
+					is_galactic_community_member = yes
+					OR = {
+						is_active_resolution = "resolution_rulesofwar_independent_tribunals"
+						is_active_resolution = "resolution_rulesofwar_last_resort_doctrine"
+						is_active_resolution = "resolution_rulesofwar_demobilization_initiative"
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = orbital_bombardment_indiscriminate
+		potential = { NOT = { CmtTriggerIsPlayerCrisisAggressor = yes } }
+		policy_flags = { orbital_bombardment_indiscriminate }
+		valid = {
+			NOR = {
+				has_ethic = ethic_pacifist
+				has_ethic = ethic_fanatic_pacifist
+			}
+		}
+		AI_weight = {
+			modifier = {
+				factor = 0.1
+				is_galactic_community_member = yes
+				OR = {
+					is_active_resolution = "resolution_galacticstudies_ethical_guideline_refactoring"
+					is_active_resolution = "resolution_galacticstudies_extradimensional_experimentation"
+				}
+			}
+		}
+	}
+	option = {
+		name = orbital_bombardment_armageddon
+		potential = {
+			OR = {
+				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_machine_terminator
+				CmtTriggerIsPlayerCrisisAggressor = yes
+			}
+		}
+		policy_flags = { orbital_bombardment_armageddon }
+		AI_weight = {
+			modifier = {
+				factor = 10
+				OR = {
+					has_valid_civic = civic_fanatic_purifiers
+					has_valid_civic = civic_machine_terminator
+				}
+			}
+		}
+	}
+}
+
+interference = {
+	potential = { has_met_primitives = yes }
+	option = {
+		name = interference_passive
+		potential = { NOT = { CmtTriggerIsPlayerCrisisAggressor = yes } }
+		policy_flags = { interference_passive }
+		on_enabled = { hidden_effect = { set_country_flag = encountered_first_primitive } }
+		valid = {
+			OR = {
+				is_subject_type = signatory
+				NOR = {
+					has_ethic = ethic_fanatic_xenophobe
+					has_valid_civic = civic_fanatic_purifiers
+					has_valid_civic = civic_hive_devouring_swarm
+					has_valid_civic = civic_machine_terminator
+				}
+			}
+		}
+		AI_weight = {
+			modifier = {
+				factor = 0.1
+				is_galactic_community_member = yes
+				OR = {
+					is_active_resolution = "resolution_galacticstudies_advanced_xenostudies"
+					is_active_resolution = "resolution_galacticstudies_ethical_guideline_refactoring"
+					is_active_resolution = "resolution_galacticstudies_extradimensional_experimentation"
+				}
+			}
+		}
+	}
+	option = {
+		name = interference_active
+		potential = { NOT = { CmtTriggerIsPlayerCrisisAggressor = yes } }
+		policy_flags = { interference_active }
+		on_enabled = { hidden_effect = { set_country_flag = encountered_first_primitive } }
+		valid = {
+			NOR = {
+				is_subject_type = signatory
+				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_hive_devouring_swarm
+			}
+		}
+		
+		modifier = {}
+		AI_weight = {
+			modifier = {
+				factor = 2
+				has_valid_ai_personality = yes
+				OR = {
+					has_ai_personality_behaviour = infiltrator
+					has_ai_personality_behaviour = dominator
+				}
+			}
+			modifier = {
+				factor = 0
+				has_valid_ai_personality = yes
+				NOR = {
+					has_ai_personality_behaviour = infiltrator
+					has_ai_personality_behaviour = dominator
+				}
+				NOT = {
+					is_galactic_community_member = yes
+					OR = {
+						is_active_resolution = "resolution_galacticstudies_advanced_xenostudies"
+						is_active_resolution = "resolution_galacticstudies_ethical_guideline_refactoring"
+						is_active_resolution = "resolution_galacticstudies_extradimensional_experimentation"
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = interference_full
+		policy_flags = { interference_full }
+		on_enabled = { hidden_effect = { set_country_flag = encountered_first_primitive } }
+		valid = {
+			NOT = { is_subject_type = signatory }
+			OR = {
+				NOR = {
+					has_ethic = ethic_pacifist
+					has_ethic = ethic_fanatic_pacifist
+				}
+				CmtTriggerIsPlayerCrisisAggressor = yes
+			}
+		}
+
+		modifier = {}
+		AI_weight = {
+			modifier = {
+				factor = 3
+				has_valid_ai_personality = yes
+				OR = {
+					has_ai_personality_behaviour = infiltrator
+					has_ai_personality_behaviour = dominator
+				}
+			}
+			modifier = {
+				factor = 0
+				has_valid_ai_personality = yes
+				NOR = {
+					has_ai_personality_behaviour = infiltrator
+					has_ai_personality_behaviour = dominator
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_ethic = ethic_pacifist
+					has_ethic = ethic_fanatic_pacifist
+				}
+			}
+		}
+	}
+}
+
+pre_sapients = {
+	potential = {
+		OR = {
+			has_country_flag = found_presapients
+			any_planet_within_border = { any_pop = { is_sapient = no } }
+		}
+	}
+	option = {
+		name = pre_sapients_protect
+		on_enabled = { hidden_effect = { set_country_flag = found_presapients } }
+		potential = {
+			NOR = {
+				has_valid_civic = civic_machine_terminator
+				has_valid_civic = civic_hive_devouring_swarm
+				has_valid_civic = civic_fanatic_purifiers
+				CmtTriggerIsPlayerCrisisAggressor = yes
+			}
+		}
+		policy_flags = { pre_sapients_protect }
+		AI_weight = {
+			factor = 2
+			modifier = {
+				factor = 0
+				NOT = { has_ai_personality_behaviour = multispecies }
+			}
+		}
+	}
+	option = {
+		name = pre_sapients_allow
+		on_enabled = { hidden_effect = { set_country_flag = found_presapients } }
+		potential = {
+			NOR = {
+				has_valid_civic = civic_machine_terminator
+				has_valid_civic = civic_hive_devouring_swarm
+				has_valid_civic = civic_fanatic_purifiers
+				CmtTriggerIsPlayerCrisisAggressor = yes
+			}
+		}
+		policy_flags = { pre_sapients_allow }
+		AI_weight = { factor = 1 }
+	}
+	option = {
+		name = pre_sapients_eat
+		on_enabled = { hidden_effect = { set_country_flag = found_presapients } }
+		potential = {
+			host_has_dlc = "Utopia"
+			is_synthetic_empire = no
+			NOT = { has_valid_civic = civic_fanatic_purifiers }
+		}
+		valid = {
+			OR = {
+				NOR = {
+					has_ethic = "ethic_xenophile"
+					has_ethic = "ethic_fanatic_xenophile"
+				}
+				CmtTriggerIsPlayerCrisisAggressor = yes
+			}
+		}
+		policy_flags = { pre_sapients_eat }
+		modifier = {}
+		AI_weight = {
+			factor = 10
+			modifier = {
+				factor = 0
+				NOT = { has_authority = auth_hive_mind }
+			}
+		}
+	}
+	option = {
+		name = pre_sapients_purge
+		on_enabled = { hidden_effect = { set_country_flag = found_presapients } }
+		valid = {
+			OR = {
+				NOR = {
+					has_ethic = "ethic_xenophile"
+					has_ethic = "ethic_fanatic_xenophile"
+				}
+				CmtTriggerIsPlayerCrisisAggressor = yes
+			}
+		}
+		policy_flags = { pre_sapients_purge }
+		
+		modifier = {}
+		
+		AI_weight = {
+			factor = 5
+			modifier = {
+				factor = 0
+				CmtTriggerIsPlayableEmpire = yes
+				NOR = {
+					has_ethic = ethic_xenophobe
+					has_ethic = ethic_fanatic_xenophobe
+					has_ai_personality = CmtPersonalityPlayerCrisisAggressor
+					AND = {
+						has_authority = auth_machine_intelligence
+						NOR = {
+							has_valid_civic = civic_machine_servitor
+							has_valid_civic = civic_machine_assimilator
+						}
+					}
+					CmtTriggerIsPlayerCrisisAggressor = yes
+				}
+			}
+		}
+	}
+}
+
+purge = {
+	potential = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+	
+	option = {
+		name = purge_not_allowed
+		valid = {
+			NOR = {
+				has_ethic = ethic_gestalt_consciousness
+				has_valid_civic = civic_fanatic_purifiers
+			}
+		}
+		policy_flags = { purge_not_allowed }
+	}
+	
+	option = {
+		name = purge_displacement_only
+		policy_flags = { purge_displacement_only }
+		modifier = {}
+		valid = {
+			NOR = {
+				is_subject_type = signatory
+				AND = {
+					has_ethic = ethic_gestalt_consciousness
+					OR = {
+						is_galactic_community_member = no
+						NOT = { has_ai_personality = CmtPersonalityPlayerCrisisAggressor }
+						NOR = {
+							is_active_resolution = "resolution_rulesofwar_reverence_for_life"
+							is_active_resolution = "resolution_rulesofwar_independent_tribunals"
+							is_active_resolution = "resolution_rulesofwar_last_resort_doctrine"
+							is_active_resolution = "resolution_rulesofwar_demobilization_initiative"
+						}
+					}
+				}
+				has_valid_civic = civic_fanatic_purifiers
+			}
+			OR = {
+				NOR = {
+					has_ethic = ethic_xenophile
+					has_ethic = ethic_fanatic_xenophile
+				}
+				CmtTriggerIsPlayerCrisisAggressor = yes
+			}
+		}
+		AI_weight = {
+			factor = 5
+			modifier = {
+				factor = 0
+				has_valid_ai_personality = yes
+				has_ai_personality_behaviour = multispecies
+			}
+		}
+	}
+	
+	option = {
+		name = purge_allowed
+		policy_flags = { purge_allowed }
+		modifier = {}
+		valid = {
+			NOT = { is_subject_type = signatory }
+			OR = {
+				has_ethic = ethic_gestalt_consciousness
+				has_ethic = ethic_xenophobe
+				has_ethic = ethic_fanatic_xenophobe
+				CmtTriggerIsPlayerCrisisAggressor = yes
+			}
+		}
+		AI_weight = {
+			factor = 10
+			modifier = {
+				factor = 50
+				has_ethic = ethic_gestalt_consciousness
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_ethic = ethic_pacifist
+					has_ethic = ethic_fanatic_pacifist
+					AND = {
+						has_valid_ai_personality = yes
+						NOT = { has_ai_personality_behaviour = purger }
+					}
+				}
+				NOT = { has_ai_personality = CmtPersonalityPlayerCrisisAggressor }
+			}
+			modifier = {
+				factor = 0.1
+				has_valid_ai_personality = yes
+				is_ai = yes
+				is_galactic_community_member = yes
+				OR = {
+					is_active_resolution = "resolution_rulesofwar_reverence_for_life"
+					is_active_resolution = "resolution_rulesofwar_independent_tribunals"
+					is_active_resolution = "resolution_rulesofwar_last_resort_doctrine"
+					is_active_resolution = "resolution_rulesofwar_demobilization_initiative"
+				}
+				NOT = { has_ai_personality = CmtPersonalityPlayerCrisisAggressor }
+			}
+		}
+	}
+}
+

@@ -1,0 +1,312 @@
+
+##############################################################
+##############################################################
+#####                                                    #####
+#####    Crisis Manager                                  #####
+#####                                                    #####
+#####    Scripted Effects for Templates of Difficulty    #####
+#####                                                    #####
+##############################################################
+##############################################################
+
+##############
+###  Easy  ###
+##############
+
+CmtEffectDifficulty_EndgameEasy = {
+	event_target:CmtGlobalVar = {
+		CmtEffectResetCrisisPowerCommon = yes
+		
+		set_variable = { which = CmtVarFleetPower_Prethoryn          value = 0.75 }
+		set_variable = { which = CmtVarFleetPower_Sentinel           value = 1.00 }
+		set_variable = { which = CmtVarFleetPower_Unbidden           value = 0.75 }
+		set_variable = { which = CmtVarFleetPower_Aberrant           value = 0.75 }
+		set_variable = { which = CmtVarFleetPower_Vehement           value = 0.75 }
+		set_variable = { which = CmtVarFleetPower_Contingency        value = 0.75 }
+		set_variable = { which = CmtVarFleetPower_Cybrex             value = 0.75 }
+		set_variable = { which = CmtVarFleetPower_ForcedEoc          value = 0.75 }
+		
+		set_variable = { which = CmtVarArmyPower_Prethoryn           value = 0.75 }
+		set_variable = { which = CmtVarArmyPower_Contingency         value = 0.75 }
+		
+		set_variable = { which = CmtVarCombatFleetNumber_Prethoryn   value = 0.75 }
+		set_variable = { which = CmtVarCombatFleetNumber_Sentinel    value = 0.75 }
+		set_variable = { which = CmtVarCombatFleetNumber_Unbidden    value = 0.75 }
+		set_variable = { which = CmtVarCombatFleetNumber_Aberrant    value = 0.75 }
+		set_variable = { which = CmtVarCombatFleetNumber_Vehement    value = 0.75 }
+		set_variable = { which = CmtVarCombatFleetNumber_Contingency value = 0.75 }
+		set_variable = { which = CmtVarCombatFleetNumber_Cybrex      value = 0.75 }
+		
+		set_variable = { which = CmtVarArmyNumber_Prethoryn          value = 1.00 }
+		set_variable = { which = CmtVarArmyNumber_Contingency        value = 1.00 }
+		
+		set_variable = { which = CmtVarConstructorNumber_Prethoryn   value = 1.00 }
+		set_variable = { which = CmtVarConstructorNumber_Unbidden    value = 1.00 }
+		set_variable = { which = CmtVarConstructorNumber_Aberrant    value = 1.00 }
+		set_variable = { which = CmtVarConstructorNumber_Vehement    value = 1.00 }
+		set_variable = { which = CmtVarConstructorNumber_Contingency value = 1.00 }
+	}
+}
+
+CmtEffectDifficulty_MidgameEasy = {
+	event_target:CmtGlobalVar = {
+		CmtEffectResetCrisisPowerCommon = yes
+		set_variable = { which = CmtVarFleetPower_Khan               value = 0.75 }
+		set_variable = { which = CmtVarFleetPower_Graygoo            value = 0.75 }
+		set_variable = { which = CmtVarFleetPower_Dessanu            value = 0.75 }
+		
+		set_variable = { which = CmtVarArmyPower_Khan                value = 0.75 }
+		
+		set_variable = { which = CmtVarCombatFleetNumber_Khan        value = 0.75 }
+		set_variable = { which = CmtVarCombatFleetNumber_Graygoo     value = 0.75 }
+		set_variable = { which = CmtVarCombatFleetNumber_Dessanu     value = 0.75 }
+		
+		set_variable = { which = CmtVarArmyNumber_Khan               value = 1.00 }
+		
+		set_variable = { which = CmtVarConstructorNumber_Khan        value = 1.00 }
+	}
+}
+
+################
+###  Normal  ###
+################
+
+CmtEffectDifficulty_EndgameNormal = {
+	event_target:CmtGlobalVar = {
+		CmtEffectResetCrisisPowerCommon = yes
+		
+		set_variable = { which = CmtVarFleetPower_Prethoryn          value = 1.00 }
+		set_variable = { which = CmtVarFleetPower_Sentinel           value = 1.00 }
+		set_variable = { which = CmtVarFleetPower_Unbidden           value = 1.00 }
+		set_variable = { which = CmtVarFleetPower_Aberrant           value = 1.00 }
+		set_variable = { which = CmtVarFleetPower_Vehement           value = 1.00 }
+		set_variable = { which = CmtVarFleetPower_Contingency        value = 1.00 }
+		set_variable = { which = CmtVarFleetPower_Cybrex             value = 1.00 }
+		set_variable = { which = CmtVarFleetPower_ForcedEoc          value = 1.00 }
+		
+		set_variable = { which = CmtVarArmyPower_Prethoryn           value = 1.00 }
+		set_variable = { which = CmtVarArmyPower_Contingency         value = 1.00 }
+		
+		set_variable = { which = CmtVarCombatFleetNumber_Prethoryn   value = 1.00 }
+		set_variable = { which = CmtVarCombatFleetNumber_Sentinel    value = 1.00 }
+		set_variable = { which = CmtVarCombatFleetNumber_Unbidden    value = 1.00 }
+		set_variable = { which = CmtVarCombatFleetNumber_Aberrant    value = 1.00 }
+		set_variable = { which = CmtVarCombatFleetNumber_Vehement    value = 1.00 }
+		set_variable = { which = CmtVarCombatFleetNumber_Contingency value = 1.00 }
+		set_variable = { which = CmtVarCombatFleetNumber_Cybrex      value = 1.00 }
+		
+		set_variable = { which = CmtVarArmyNumber_Prethoryn          value = 1.00 }
+		set_variable = { which = CmtVarArmyNumber_Contingency        value = 1.00 }
+		
+		set_variable = { which = CmtVarConstructorNumber_Prethoryn   value = 1.00 }
+		set_variable = { which = CmtVarConstructorNumber_Unbidden    value = 1.00 }
+		set_variable = { which = CmtVarConstructorNumber_Aberrant    value = 1.00 }
+		set_variable = { which = CmtVarConstructorNumber_Vehement    value = 1.00 }
+		set_variable = { which = CmtVarConstructorNumber_Contingency value = 1.00 }
+	}
+}
+
+CmtEffectDifficulty_MidgameNormal = {
+	event_target:CmtGlobalVar = {
+		CmtEffectResetCrisisPowerCommon = yes
+		set_variable = { which = CmtVarFleetPower_Khan               value = 1.00 }
+		set_variable = { which = CmtVarFleetPower_Graygoo            value = 1.00 }
+		set_variable = { which = CmtVarFleetPower_Dessanu            value = 1.00 }
+		
+		set_variable = { which = CmtVarArmyPower_Khan                value = 1.00 }
+		
+		set_variable = { which = CmtVarCombatFleetNumber_Khan        value = 1.00 }
+		set_variable = { which = CmtVarCombatFleetNumber_Graygoo     value = 1.00 }
+		set_variable = { which = CmtVarCombatFleetNumber_Dessanu     value = 1.00 }
+		
+		set_variable = { which = CmtVarArmyNumber_Khan               value = 1.00 }
+		
+		set_variable = { which = CmtVarConstructorNumber_Khan        value = 1.00 }
+	}
+}
+
+##############
+###  Hard  ###
+##############
+
+CmtEffectDifficulty_EndgameHard = {
+	event_target:CmtGlobalVar = {
+		CmtEffectResetCrisisPowerCommon = yes
+		
+		set_variable = { which = CmtVarFleetPower_Prethoryn          value = 1.25 }
+		set_variable = { which = CmtVarFleetPower_Sentinel           value = 1.50 }
+		set_variable = { which = CmtVarFleetPower_Unbidden           value = 1.25 }
+		set_variable = { which = CmtVarFleetPower_Aberrant           value = 1.25 }
+		set_variable = { which = CmtVarFleetPower_Vehement           value = 1.25 }
+		set_variable = { which = CmtVarFleetPower_Contingency        value = 1.00 }
+		set_variable = { which = CmtVarFleetPower_Cybrex             value = 1.00 }
+		set_variable = { which = CmtVarFleetPower_ForcedEoc          value = 1.50 }
+		
+		set_variable = { which = CmtVarArmyPower_Prethoryn           value = 1.25 }
+		set_variable = { which = CmtVarArmyPower_Contingency         value = 1.25 }
+		
+		set_variable = { which = CmtVarCombatFleetNumber_Prethoryn   value = 1.50 }
+		set_variable = { which = CmtVarCombatFleetNumber_Sentinel    value = 1.25 }
+		set_variable = { which = CmtVarCombatFleetNumber_Unbidden    value = 1.25 }
+		set_variable = { which = CmtVarCombatFleetNumber_Aberrant    value = 1.25 }
+		set_variable = { which = CmtVarCombatFleetNumber_Vehement    value = 1.25 }
+		set_variable = { which = CmtVarCombatFleetNumber_Contingency value = 1.25 }
+		set_variable = { which = CmtVarCombatFleetNumber_Cybrex      value = 1.25 }
+		
+		set_variable = { which = CmtVarArmyNumber_Prethoryn          value = 1.50 }
+		set_variable = { which = CmtVarArmyNumber_Contingency        value = 1.25 }
+		
+		set_variable = { which = CmtVarConstructorNumber_Prethoryn   value = 1.75 }
+		set_variable = { which = CmtVarConstructorNumber_Unbidden    value = 1.75 }
+		set_variable = { which = CmtVarConstructorNumber_Aberrant    value = 1.75 }
+		set_variable = { which = CmtVarConstructorNumber_Vehement    value = 1.75 }
+		set_variable = { which = CmtVarConstructorNumber_Contingency value = 1.75 }
+	}
+}
+
+CmtEffectDifficulty_MidgameHard = {
+	event_target:CmtGlobalVar = {
+		CmtEffectResetCrisisPowerCommon = yes
+		set_variable = { which = CmtVarFleetPower_Khan               value = 1.25 }
+		set_variable = { which = CmtVarFleetPower_Graygoo            value = 1.25 }
+		set_variable = { which = CmtVarFleetPower_Dessanu            value = 1.50 }
+		
+		set_variable = { which = CmtVarArmyPower_Khan                value = 1.25 }
+		
+		set_variable = { which = CmtVarCombatFleetNumber_Khan        value = 1.25 }
+		set_variable = { which = CmtVarCombatFleetNumber_Graygoo     value = 1.25 }
+		set_variable = { which = CmtVarCombatFleetNumber_Dessanu     value = 1.25 }
+		
+		set_variable = { which = CmtVarArmyNumber_Khan               value = 1.25 }
+		
+		set_variable = { which = CmtVarConstructorNumber_Khan        value = 1.75 }
+	}
+}
+
+
+###################
+###  Very Hard  ###
+###################
+
+CmtEffectDifficulty_EndgameVeryHard = {
+	event_target:CmtGlobalVar = {
+		CmtEffectResetCrisisPowerCommon = yes
+		
+		set_variable = { which = CmtVarFleetPower_Prethoryn          value = 1.50 }
+		set_variable = { which = CmtVarFleetPower_Sentinel           value = 1.50 }
+		set_variable = { which = CmtVarFleetPower_Unbidden           value = 1.50 }
+		set_variable = { which = CmtVarFleetPower_Aberrant           value = 1.50 }
+		set_variable = { which = CmtVarFleetPower_Vehement           value = 1.50 }
+		set_variable = { which = CmtVarFleetPower_Contingency        value = 1.50 }
+		set_variable = { which = CmtVarFleetPower_Cybrex             value = 1.50 }
+		set_variable = { which = CmtVarFleetPower_ForcedEoc          value = 2.50 }
+		
+		set_variable = { which = CmtVarArmyPower_Prethoryn           value = 1.50 }
+		set_variable = { which = CmtVarArmyPower_Contingency         value = 1.50 }
+		
+		set_variable = { which = CmtVarCombatFleetNumber_Prethoryn   value = 2.25 }
+		set_variable = { which = CmtVarCombatFleetNumber_Sentinel    value = 1.75 }
+		set_variable = { which = CmtVarCombatFleetNumber_Unbidden    value = 1.75 }
+		set_variable = { which = CmtVarCombatFleetNumber_Aberrant    value = 1.75 }
+		set_variable = { which = CmtVarCombatFleetNumber_Vehement    value = 1.75 }
+		set_variable = { which = CmtVarCombatFleetNumber_Contingency value = 1.50 }
+		set_variable = { which = CmtVarCombatFleetNumber_Cybrex      value = 1.50 }
+		
+		set_variable = { which = CmtVarArmyNumber_Prethoryn          value = 2.00 }
+		set_variable = { which = CmtVarArmyNumber_Contingency        value = 1.50 }
+		
+		set_variable = { which = CmtVarConstructorNumber_Prethoryn   value = 2.00 }
+		set_variable = { which = CmtVarConstructorNumber_Unbidden    value = 2.00 }
+		set_variable = { which = CmtVarConstructorNumber_Aberrant    value = 2.00 }
+		set_variable = { which = CmtVarConstructorNumber_Vehement    value = 2.00 }
+		set_variable = { which = CmtVarConstructorNumber_Contingency value = 2.00 }
+	}
+}
+
+CmtEffectDifficulty_MidgameVeryHard = {
+	event_target:CmtGlobalVar = {
+		CmtEffectResetCrisisPowerCommon = yes
+		set_variable = { which = CmtVarFleetPower_Khan               value = 1.75 }
+		set_variable = { which = CmtVarFleetPower_Graygoo            value = 1.50 }
+		set_variable = { which = CmtVarFleetPower_Dessanu            value = 1.75 }
+		
+		set_variable = { which = CmtVarArmyPower_Khan                value = 1.50 }
+		
+		set_variable = { which = CmtVarCombatFleetNumber_Khan        value = 1.50 }
+		set_variable = { which = CmtVarCombatFleetNumber_Graygoo     value = 1.75 }
+		set_variable = { which = CmtVarCombatFleetNumber_Dessanu     value = 1.75 }
+		
+		set_variable = { which = CmtVarArmyNumber_Khan               value = 1.75 }
+		
+		set_variable = { which = CmtVarConstructorNumber_Khan        value = 2.00 }
+	}
+}
+
+
+
+##########################
+###  Constructor Spam  ###
+##########################
+
+CmtEffectDifficulty_EndgameConstructorSpam = {
+	event_target:CmtGlobalVar = {
+		set_variable = { which = CmtVarCrisisStrength                value = 0    }
+		set_variable = { which = CmtVarConstructorNumber_Common      value = 0.00 }
+		
+		set_variable = { which = CmtVarConstructorNumber_Prethoryn   value = 2.00 }
+		set_variable = { which = CmtVarConstructorNumber_Unbidden    value = 2.00 }
+		set_variable = { which = CmtVarConstructorNumber_Aberrant    value = 2.00 }
+		set_variable = { which = CmtVarConstructorNumber_Vehement    value = 2.00 }
+		set_variable = { which = CmtVarConstructorNumber_Contingency value = 2.00 }
+	}
+}
+
+CmtEffectDifficulty_MidgameConstructorSpam = {
+	event_target:CmtGlobalVar = {
+		set_variable = { which = CmtVarCrisisStrength                value = 0    }
+		set_variable = { which = CmtVarConstructorNumber_Common      value = 0.00 }
+		
+		set_variable = { which = CmtVarConstructorNumber_Khan        value = 2.00 }
+	}
+}
+
+
+#################
+###  Legacy   ###
+#################
+#
+#CmtEffectDifficulty_EndgameVeryHard = {
+#	event_target:CmtGlobalVar = {
+#		CmtEffectResetCrisisPowerCommon = yes
+#		
+#		set_variable = { which = CmtVarFleetPower_Prethoryn          value = 1.75 }
+#		set_variable = { which = CmtVarFleetPower_Sentinel           value = 2.00 }
+#		set_variable = { which = CmtVarFleetPower_Unbidden           value = 2.00 }
+#		set_variable = { which = CmtVarFleetPower_Aberrant           value = 2.00 }
+#		set_variable = { which = CmtVarFleetPower_Vehement           value = 2.00 }
+#		set_variable = { which = CmtVarFleetPower_Contingency        value = 2.00 }
+#		set_variable = { which = CmtVarFleetPower_Cybrex             value = 2.00 }
+#		set_variable = { which = CmtVarFleetPower_ForcedEoc          value = 2.00 }
+#		
+#		set_variable = { which = CmtVarArmyPower_Prethoryn           value = 2.00 }
+#		set_variable = { which = CmtVarArmyPower_Contingency         value = 2.00 }
+#		
+#		set_variable = { which = CmtVarCombatFleetNumber_Prethoryn   value = 3.00 }
+#		set_variable = { which = CmtVarCombatFleetNumber_Sentinel    value = 2.50 }
+#		set_variable = { which = CmtVarCombatFleetNumber_Unbidden    value = 2.50 }
+#		set_variable = { which = CmtVarCombatFleetNumber_Aberrant    value = 2.50 }
+#		set_variable = { which = CmtVarCombatFleetNumber_Vehement    value = 2.50 }
+#		set_variable = { which = CmtVarCombatFleetNumber_Contingency value = 2.00 }
+#		set_variable = { which = CmtVarCombatFleetNumber_Cybrex      value = 2.00 }
+#		
+#		set_variable = { which = CmtVarArmyNumber_Prethoryn          value = 2.50 }
+#		set_variable = { which = CmtVarArmyNumber_Contingency        value = 2.00 }
+#		
+#		set_variable = { which = CmtVarConstructorNumber_Prethoryn   value = 2.75 }
+#		set_variable = { which = CmtVarConstructorNumber_Unbidden    value = 2.50 }
+#		set_variable = { which = CmtVarConstructorNumber_Aberrant    value = 2.50 }
+#		set_variable = { which = CmtVarConstructorNumber_Vehement    value = 2.50 }
+#		set_variable = { which = CmtVarConstructorNumber_Contingency value = 2.50 }
+#	}
+#}
+

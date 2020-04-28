@@ -1,0 +1,74 @@
+namespace = fallen_empires_awakening
+
+###################################################
+###################################################
+#####                                         #####
+#####    Awakening Events of Fallen Empire    #####
+#####                                         #####
+#####    Replaced by Crisis Manager           #####
+#####    Re-overwrite End-Game Edition        #####
+#####                                         #####
+###################################################
+###################################################
+
+
+### Awakening of Sleeper
+country_event = {
+	id = fallen_empires_awakening.3
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		### Flag/Target Control for War in Heaven
+		if = {
+			limit = {
+				NOR = {
+					has_country_flag = guardians_of_the_galaxy
+					has_global_flag = CmtFlagWarInHeavenTriggered
+				}
+			}
+			if = {
+				limit = { exists = event_target:CmtTargetFirstSleeper }
+				clear_global_event_target = CmtTargetFirstSleeper
+			}
+			every_country = {
+				limit = { has_country_flag = sleepers_awake_first_sleeper }
+				remove_country_flag = sleepers_awake_first_sleeper
+			}
+			set_country_flag = sleepers_awake_first_sleeper
+			save_global_event_target_as = CmtTargetFirstSleeper
+		}
+		
+		### Change Government
+		set_country_type = awakened_fallen_empire
+		CmtEffectChangeAwakenerCivic = yes
+		
+		add_awakened_fallen_empire_resources = yes
+		
+		
+		### Initial Reinforcements
+		if = {
+			limit = {
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarGuardianWornOut value = 3 } }
+				NOT = { CmtTriggerCheckSleeperFleetPower = yes }
+			}
+			country_event = { id = fallen_empires.13 }
+		}
+		if = {
+			limit = { CmtTriggerCheckYoungsFleetPower = yes }
+			country_event = { id = fallen_empires.13 }
+		}
+		country_event = { id = fallen_empires.13 }
+		
+		### Communications
+		every_country = {
+			limit = {
+				CmtTriggerIsEmpire = yes
+				NOT = { has_communications = root }
+			}
+			establish_communications_no_message = root
+			root = { save_event_target_as = contact_empire }
+			country_event = { id = action.1 }
+		}
+	}
+}

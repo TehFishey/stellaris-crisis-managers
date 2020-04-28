@@ -1,0 +1,114 @@
+
+######################################################
+######################################################
+#####                                            #####
+#####    Crisis Manager                          #####
+#####                                            #####
+#####    Game Rule Modified for Player Crisis    #####
+#####                                            #####
+######################################################
+######################################################
+
+
+### Scope: root = claimer, this = system
+can_add_claim = {	
+	hidden_trigger = {
+		if = {
+			limit = { root = { NOT = { CmtTriggerIsPlayableEmpire = yes } } }
+			always = yes
+		}
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_POLICY
+		OR = {
+			root = { has_policy_flag = unrestricted_wars }
+			AND = {
+				exists = owner
+				owner = { is_gestalt = yes }
+			}
+			AND = {
+				exists = owner
+				owner = {
+					any_war = {
+						any_attacker = { is_same_value = prevprev }
+						any_defender = { is_same_value = root }
+					}
+				}
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_NOT_VALID_EMPIRE 
+		NAND = {
+			exists = owner
+			owner = { NOT = { CmtTriggerIsEmpire = yes } }
+		}
+		NOT = { root = { CmtTriggerIsPlayerCrisisAggressor = yes } }
+	}	
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_DEVOURING_SWARM
+		NAND = {
+			root = { has_valid_civic = civic_hive_devouring_swarm }
+			root = { is_lithoid_empire = no }
+		}
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_DEVOURING_SWARM_LITHOID
+		NAND = {
+			root = { has_valid_civic = civic_hive_devouring_swarm }
+			root = { is_lithoid_empire = yes }
+		}
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_ASSIMILATOR
+		NOT = { root = { has_valid_civic = civic_machine_assimilator }	}
+	}	
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_PURIFIERS
+		NAND = {
+			exists = owner
+			root = { has_valid_civic = civic_fanatic_purifiers }
+			NOT = { owner = { is_same_species = root } }
+		}
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_EXTERMINATOR
+		NAND = {
+			exists = owner
+			root = { has_valid_civic = civic_machine_terminator }
+			owner = {
+				NOR = {
+					is_same_species = root
+					has_country_flag = synthetic_empire
+					has_authority = auth_machine_intelligence
+				}
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = CANNOT_ADD_CLAIM_THEY_THREAT
+		NAND = {
+			exists = owner
+			owner = {
+				OR = {
+					has_valid_civic = civic_hive_devouring_swarm
+					has_valid_civic = civic_fanatic_purifiers
+					has_valid_civic = civic_machine_terminator
+					has_valid_civic = civic_machine_assimilator
+					CmtTriggerIsPlayerCrisisAggressor = yes
+				}
+			}
+			root = {
+				NOR = {
+					has_valid_civic = civic_hive_devouring_swarm
+					has_valid_civic = civic_fanatic_purifiers
+					has_valid_civic = civic_machine_terminator		
+					has_valid_civic = civic_machine_assimilator
+				}
+			}
+		}
+	}
+}
+
+
+

@@ -1,0 +1,231 @@
+﻿l_english:
+ 
+ #########################################
+ #########################################
+ #####                               #####
+ #####    Crisis Manager             #####
+ #####                               #####
+ #####    Texts for Player Crisis    #####
+ #####                               #####
+ #########################################
+ #########################################
+ 
+ #####################
+ ###  Game System  ###
+ #####################
+ 
+ ### For begining
+ CmtDescPlayerCrisis:0 "§WDetails of Effect: §!\nYour empire becomes a pseudo crisis faction, and declares total war on all empires to bring an end of the galaxy.\nThis total war has following features.\n\n<<Enemies>>\n- All standard/fallen/awakened empires will be your enemies.\n- All your subjects will be released soon and join war §Has enemies§!.\n- Also space creatures, enclaves and everything else will be hostile to you.\n\n<<Rules of War>>\n- §RA peace of Status Quo is NEVER made. The war continues until one side is completely destroyed.§!\n- This is total war. Ownership of starbases defeated in space combat is transfered immediately.\n\n<<Others>>\n- An orbital bombardment stronger than $bombardment_armageddon$ is unlocked.\n- Some of policies are allowed and/or forced.\n- All deals with enclaves are cancelled immediately.\n- The faction of pacifist will displease permanently because of the endless war."
+ CmtDescAnyCountryIsAtWar:0 "§RWarning!!§!\nSome empires are at in war(s). Maybe these war(s) will be forcibly stopped by abnormality method if the war of ''$edict_CmtEdictTriggerPlayerCrisis$'' begins. Recommended to wait for Peace of all empires."
+ edict_CmtEdictTriggerPlayerCrisis:0 "Liquidation of the Galaxy"
+ edict_CmtEdictTriggerPlayerCrisis_desc:0 "This Edict makes us aware that we must kill, cleanse and liquidate all creatures, consciousness and existence in the galaxy.\n§RWe can NEVER stop once we have begun.§!"
+ CmtFailTextRequireMoreRelativeFleetPower:0 "Our fleet power must be $RELATIVE_POWER_4$/$RELATIVE_POWER_5$ to all other standard empires.\nOur fleet power must be $RELATIVE_POWER_3$ to or stronger than all fallen/awakened empires.\n"
+ CmtFailTextRequireIndependency:0 "We must be independent.\n"
+ CmtFailTextRequireNoFederation:0 "We must not join any federations.\n"
+ CmtFailTextRequireNoWar:0 "We must NOT be at the war\n"
+ CmtFailTextNowMenuOpened:0 "The menu of Crisis Manager is opened. Wait for closeing."
+ CmtFailTextPlayerCrisisDefenderCanNotCloseBorder:0 "\n§RCannot close border until the end of §Y[CmtTargetPlayerCrisisAggressor.GetName]§!.§!"
+ 
+ ### War
+ war_goal_wg_CmtWarPlayerCrisisAttack:0 "End Galaxy"
+ war_goal_wg_CmtWarPlayerCrisisDefence:0 "End Crisis"
+ war_goal_wg_CmtWarPlayerCrisisAttack_desc:0 "This war is waged to bring an end to the galaxy."
+ war_goal_wg_CmtWarPlayerCrisisDefence_desc:1 "$war_goal_wg_end_threat_desc$"
+ CmtWarPlayerCrisisStatusQuo:0 "Status Quo ...?\nAh..., you mean we maintain the status quo?\nTo sum up, we still §Rcontinue the war§!."
+ 
+ ### Opinion
+ CmtOpinionPlayerCrisisAggressor:1 "$opinion_doomed_us_all$"
+ CmtOpinionPlayerCrisisPrey:0 "Existent"
+ CmtOpinionPlayerCrisisAlly:0 "Mutual Critical Threats"
+ CmtOpinionPlayerCrisisWiner:0 "Overcame Crisis"
+ 
+ ### Bombardment
+ bombardment_BombardmentPlayerCrisis:0 "Liquidation"
+ bombardment_BombardmentPlayerCrisis_desc:0 "This bombardment liquidates everything on the planet and restore it to a ''fresh'' condition.\n- §RExtreme§! damage to §YArmies§!\n- §RExtreme§! damage to §YTiles§!\n- §RExtreme§! damage to §YPops§!\n- Will bombard undefended planets\n- §RMay reduce planets to lifeless world that any lifeforms are never able to live on§!"
+ 
+ ### Personality
+ personality_CmtPersonalityPlayerCrisisAggressor:0 "Liquidator"
+ 
+ 
+ 
+ ################
+ ###  Events  ###
+ ################
+ #
+ #	cf. action.82.name, action.82.desc, action.83.desc
+ #	    primitive.131.desc, distar.131.desc
+ #	    crisis.211.desc, crisis.1271.desc, crisis.2038.desc, crisis.2038.shield.desc
+ #	    utopia.3320.desc.b, utopia.3321.opt.a
+ #
+ 
+ ### Declare War
+ CrisisManagerControl.0510.name:0 "The Beginning of the End"
+ CrisisManagerControl.0510.desc0:0 "We will declare war on all empires to kill, purge and liquidate every and all creatures, consciousness and existence in the galaxy. We cannot cancel it after the declaration. Are you surely ready to start?"
+ CrisisManagerControl.0510.desc1:1 "$CrisisManagerControl.0510.desc0$\n\n\n$CmtDescPlayerCrisis$"
+ CrisisManagerControl.0510.desc2:1 "$CrisisManagerControl.0510.desc0$\n\n$CmtDescAnyCountryIsAtWar$\n\n$CmtDescPlayerCrisis$"
+ CrisisManagerControl.0510a1.name:0 "I reconsider."
+ CrisisManagerControl.0510a1.tooltip:1 ""
+ CrisisManagerControl.0510a2.name:0 "It is no good after all."
+ CrisisManagerControl.0510a2.tooltip:1 ""
+ CrisisManagerControl.0510a3.name:0 "It is misoperation of the console."
+ CrisisManagerControl.0510a3.tooltip:1 ""
+ CrisisManagerControl.0510b.name:0 "§RLet's begin.§!"
+ CrisisManagerControl.0510b.tooltip:1 ""
+ 
+ ### Declare War
+ CrisisManagerControl.0511.name:0 "Liquidation"
+ CrisisManagerControl.0511.desc:0 "The time is ripe for liquidating all.\nToday, we declared war on all empires in the galaxy. We start the all-out war against everything in the galaxy."
+ CrisisManagerControl.0511a.name:0 "Liquidate the galaxy. That is all."
+ CrisisManagerControl.0511a.tooltip:1 ""
+ 
+ CrisisManagerControl.0512.name:0 "Emergency Situation"
+ CrisisManagerControl.0512.desc:0 "§Y[CmtTargetPlayerCrisisAggressor.GetName]§! declared a war on all empires in the galaxy. They said only ''$CrisisManagerControl.0511a.name$'', and then they disconnected. Our spies report that §Y[CmtTargetPlayerCrisisAggressor.GetName]§! aims to purge the galaxy for itself.\n\nAll empires decided that to form a military alliance among them. All friction and rivalry between each empires have been shelved for the time being to cope with the threats of §Y[CmtTargetPlayerCrisisAggressor.GetName]§!."
+ CrisisManagerControl.0512a.name:0 "This is a threat to all sapient life."		## cf. crisis.18.j
+ CrisisManagerControl.0512a.tooltip:1 ""
+ 
+ ### Orbital Bombardment
+ CrisisManagerControl.0533.name:1 "$action.82.name$"
+ CrisisManagerControl.0533.desc1:0 "After our massed and unrelenting orbital bombardment, §H[From.GetName]§! were ravaged by fallout and the nuclear winter is facing it. Although there are still some survivors on the planet, it is just a matter of time to wipe them."
+ CrisisManagerControl.0533.desc2:1 "$action.83.desc$"
+ CrisisManagerControl.0533.desc3:0 "Our forces report that they have concluded the orbital bombardment of §H[From.GetName]§!. The surface was wiped clean of all life and structures, and the entire [From.GetName] has been transformed into an uninhabitable wasteland."
+ CrisisManagerControl.0533.desc4:0 "$CrisisManagerControl.0533.desc3$ Pollution and destruction of our thorough bombardment is tremendous, and no one can do anything to wipe out the pollution or recolonize there."
+ CrisisManagerControl.0533a.name:1 "$GOOD$"
+ CrisisManagerControl.0533b.name:1 "$GOOD$"
+ CrisisManagerControl.0533c.name:1 "$EXCELLENT$"
+ CrisisManagerControl.0533d.name:1 "$MARVELOUS$"
+ CrisisManagerControl.0533z.name:0 "Good work, but I do not need the notification."
+ CrisisManagerControl.0533a.tooltip:0 "§Y[From.GetName] is now a $pc_nuked$.§!"
+ CrisisManagerControl.0533b.tooltip:1 "$bombed_to_tomb_world$"
+ CrisisManagerControl.0533c.tooltip:0 "§Y[From.GetName] is now a depopulated $pc_toxic$.§!"
+ CrisisManagerControl.0533d.tooltip:1 "$CrisisManagerControl.0533c.tooltip$"
+ CrisisManagerControl.0533z.tooltip:0 "No more notices will be given."
+ 
+ CrisisManagerControl.0534.name:1 "$action.82.name$"
+ CrisisManagerControl.0534.desc1:0 "A fleet belonging to the §H[FromFrom.GetName]§! is massacring the population of §H[From.GetName]§!!\nAfter a massed and unrelenting orbital bombardment campaign, [From.GetName] were ravaged by fallout and the nuclear winter is facing it. Although there are still some survivors on the planet, their escape will not come true as long as we do not drive enemy fleets soon from the planet."
+ CrisisManagerControl.0534.desc2:1 "$action.82.desc$"
+ CrisisManagerControl.0534.desc3:0 "A fleet belonging to the §H[FromFrom.GetName]§! has massacred the population of §H[From.GetName]§!!\nAfter a massed and unrelenting orbital bombardment campaign, all population centers and buildings on the surface have been systematically wiped out,"
+ CrisisManagerControl.0534.desc4:0 "$CrisisManagerControl.0533.desc3$ Pollution and destruction of the thorough bombardment is tremendous, and we can do anything to wipe out the pollution or recolonize there."
+ CrisisManagerControl.0534a.name:1 "$action.82.a$"
+ CrisisManagerControl.0534b.name:1 "$action.82.a$"
+ CrisisManagerControl.0534c.name:1 "$action.82.a$"
+ CrisisManagerControl.0534d.name:1 "$action.82.a$"
+ CrisisManagerControl.0534z.name:0 "I am fed up with this reporting!"
+ CrisisManagerControl.0534a.tooltip:1 "$CrisisManagerControl.0533a.tooltip$"
+ CrisisManagerControl.0534b.tooltip:1 "$CrisisManagerControl.0533b.tooltip$"
+ CrisisManagerControl.0534c.tooltip:1 "$CrisisManagerControl.0533c.tooltip$"
+ CrisisManagerControl.0534d.tooltip:1 "$CrisisManagerControl.0533d.tooltip$"
+ CrisisManagerControl.0534z.tooltip:1 "$CrisisManagerControl.0533z.tooltip$"
+ 
+ 
+ ### End of Crisis
+ CrisisManagerControl.0541.name:0 "The End of [LastKilledCountryName]"
+ CrisisManagerControl.0541.desc:0 "The galaxy breathed a collective sigh of relief today. The last vestiges of §Y[LastKilledCountryName]§! have been wiped out in the end. A sense of elation and utter joy is spreading across the galaxy at a speed greater than light, and spontaneous victory celebrations have erupted on countless worlds.\n\nIn the end, it is not known why they have become radical and violent to such a degree, or why they crave for the end of the galaxy. For the sake of future generations, we can only hope that anyone never follow the intention of the deceased them.\n\nIn any case, the future looks bright for the moment."
+ CrisisManagerControl.0541a.name:0 "$crisis.2038.a$"
+ 
+ 
+ ### Auxiliary Event
+ planet_destruction.610.desc.postpone:0 "[From.GetName] was a holy world.\n\n\nYou do not know the true extent of your sin.\n\n\nIt is after [CmtTargetPlayerCrisisAggressor.GetName]\nDo not forget."
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ ######################
+ ###  Till the End  ###
+ ######################
+ #
+ 
+ CmtNameStarLight:0 "Light of [This.GetName]"
+ CmtNameNull:1 "-"
+ gov_CmtPlayerCrisisNull:1 ""
+ gov_CmtPlayerCrisisNull_desc:1 ""
+ auth_CmtPlayerCrisisNull:1 ""
+ auth_CmtPlayerCrisisNull_desc:1 ""
+ personality_CmtPersonalityPlayerCrisisNull:1 ""
+ CmtSpciesPlayerCrisisNull:1 "-"
+ CmtSpciesClassPlayerCrisisNull:1 ""
+ 
+ CrisisManagerControl.0552.name:0 "The Remnants"
+ CrisisManagerControl.0552.desc:0 "We have completed liquidating all major empires. However, something must remain in the galaxy. Primitives, space creatures or any others? In any case, we are going to do only liquidate everything and this will bring the end in the near future."
+ CrisisManagerControl.0552a.name:0 "It is a time for hunting down remnants."
+ CrisisManagerControl.0552a.tooltip:1 ""
+ 
+ 
+ CrisisManagerControl.0556.name:0 "Arbitrary Liquidation"
+ CrisisManagerControl.0556.desc1:0 "Our paramilitary force gets impatient of delayed liquidation of the galaxy by the regular military forces. They acted independently and liquidated §Y[CmtTargetCheaplyLiquidatedSystem.GetName]§! System, where there is §Y[CmtTargetCheaplyLiquidatedOwner.GetName]§!. There are no sapient life in this system now."
+ CrisisManagerControl.0556.desc2:0 "The liquidation by the paramilitary force continues. They liquidated §Y[CmtTargetCheaplyLiquidatedSystem.GetName]§! System. There are no sapient life in this system now."
+ CrisisManagerControl.0556.desc3:0 "The liquidation by the paramilitary force continues! They has ignored a injunction of the Government to stop this. And they liquidated §Y[CmtTargetCheaplyLiquidatedSystem.GetName]§! System. There are no sapient life in this system now."
+ CrisisManagerControl.0556a.name:0 "Well, our labor and time was saved."
+ CrisisManagerControl.0556b.name:0 "Have it their way."
+ CrisisManagerControl.0556c.name:0 "Make them stop their arbitrary action!"
+ CrisisManagerControl.0556d.name:0 "Stop that! This is a command of [root.GetRulerTitle]!"
+ CrisisManagerControl.0556a.tooltip:1 ""
+ CrisisManagerControl.0556b.tooltip:1 ""
+ CrisisManagerControl.0556c.tooltip:1 ""
+ CrisisManagerControl.0556d.tooltip:1 ""
+ 
+ CrisisManagerControl.0561.name:0 "Till the End of Time"
+ CrisisManagerControl.0561.desc:0 "At last, we finish liquidating all alien lifeforms in the galaxy. What remained is only us for completely liquidation of the galaxy."
+ CrisisManagerControl.0561a.name:0 "Finally, we complete all liquidation soon."
+ CrisisManagerControl.0561a.tooltip:0 "Liquidates our own and restore the galaxy to a ''fresh''."
+ 
+ CrisisManagerControl.0563.name:1 ""
+ CrisisManagerControl.0563.desc:0 "Fi...  §R<<SIGNAL LOST>>§!\n\n\n§L<<NO S\n\n\n§!"		## Finally, SIGNAL LOST, NO SIGNAL DETECTED
+ CrisisManagerControl.0563a.name:1 ""
+ CrisisManagerControl.0563a.tooltip:1 " \n \n \n \n"
+ 
+ 
+ ################
+ ###  Legacy  ###
+ ################
+ #
+ #CrisisManagerControl.----.name:0 "The End of the Galaxy"
+ #CrisisManagerControl.----.desc:0 "We lost to §Y[CmtTargetPlayerCrisisAggressor.GetName]§!. There is no longer any empires with forces to resist them in the galaxy. The galaxy is getting to be the end just as they pleases. At least we will not be there to see the end."
+ #CrisisManagerControl.----a.name:0 "What do they want to do!?"
+ #CrisisManagerControl.----a.tooltip:1 ""
+ 
+ 

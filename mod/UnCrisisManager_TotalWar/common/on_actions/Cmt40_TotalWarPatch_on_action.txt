@@ -1,0 +1,49 @@
+
+################################################
+################################################
+#####                                      #####
+#####    Crisis Manager                    #####
+#####                                      #####
+#####    on_actions for Total War Pack     #####
+#####                                      #####
+################################################
+################################################
+
+
+# This = Ship
+# From = Disabler Ship
+on_ship_disabled = {
+	events = {
+		CrisisManagerControl.0211		## Transfer Stabase, Standard 1
+	}
+}
+
+
+# This = owner of ship 1 (destroyed)
+# From = owner of ship 2 (combatant)
+# FromFrom = ship 1
+# FromFromFrom = ship 2
+on_ship_destroyed_victim = {
+	events = {
+		CrisisManagerControl.0212		## Transfer Stabase, Standard 2
+	}
+}
+
+# This = Fleet
+# From = System
+on_entering_system_fleet = {
+	events = {
+		CrisisManagerControl.0221		## Transfer Stabase, Backup 1
+		CrisisManagerControl.0231		## Create Starbase
+	}
+}
+
+# No scope
+on_monthly_pulse = {
+	events = {
+		CrisisManagerControl.0222		## Transfer Stabase, Backup 1
+	}
+}
+
+
+

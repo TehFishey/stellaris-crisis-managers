@@ -1,0 +1,59 @@
+
+###################################
+###################################
+#####                         #####
+#####    Crisis Manager       #####
+#####                         #####
+#####    Jobs for Purginig    #####
+#####                         #####
+###################################
+###################################
+#
+# Pop Decline Speed
+#	Base Value: 5 % / month
+#	purge_normal: + (5 % / month) x 6	-> (5 + 30) % / month
+#
+#
+
+CmtPurge = {
+	icon = purge
+	category = purge
+	purge = purge_normal
+	is_capped_by_modifier = no
+	clothes_texture_index = 2
+		
+	possible = {
+		exists = planet
+		planet = { exists = controller }
+		planet.controller = { CmtTriggerIsBasicCrisisCountry = yes }
+		NAND = {
+			exists = event_target:custodian_bot
+			species = { is_same_value = event_target:custodian_bot }
+			planet.controller = { CmtTriggerIsContingency = yes }
+		}
+	}
+	
+	triggered_pop_modifier = {
+		potential = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPurgeSpeed value = 2 } } }
+		modifier = { pop_decline_speed = -5.3 }
+	}
+	triggered_pop_modifier = {
+		potential = {
+			event_target:CmtGlobalVar = {
+				OR = {
+					check_variable = { which = CmtVarPurgeSpeed value = 4 }
+					check_variable = { which = CmtVarPurgeSpeed value = 5 }		## & kill_pop by event
+					check_variable = { which = CmtVarPurgeSpeed value = 6 }		## & kill_pop by event
+					check_variable = { which = CmtVarPurgeSpeed value = 7 }		## Backup
+				}
+			}
+		}
+		modifier = { pop_decline_speed = 13 }
+	}
+	weight = { weight = 999999 }		## Must Greater than crisis_purge (19998)
+}
+
+
+
+
+

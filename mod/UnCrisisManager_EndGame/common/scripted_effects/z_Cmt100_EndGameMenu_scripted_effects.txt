@@ -1,0 +1,99 @@
+
+###############################################################
+###############################################################
+#####                                                     #####
+#####    Crisis Manager                                   #####
+#####                                                     #####
+#####    Scripted Effects for Menu of End-Game Edition    #####
+#####                                                     #####
+###############################################################
+###############################################################
+
+
+######################
+###  Basic Effect  ###
+######################
+
+### Overwriting Cmt001
+CmtEffectDetectEndGameEdition = {
+	set_global_flag = CmtFlagEndGameEdition
+}
+
+
+########################################################
+###  Manual Operation: Forced Termination of Crisis  ###
+########################################################
+
+CmtEffectDestroyPrethoryn = {
+	every_country = {
+		limit = { CmtTriggerIsPrethoryn = yes }
+		destroy_country = yes
+	}
+}
+
+CmtEffectDestroyExds = {
+	every_country = {
+		limit = { is_country_type = portal_holder }
+		destroy_country = yes
+	}
+	every_country = {
+		limit = { CmtTriggerIsExds = yes }
+		destroy_country = yes
+	}
+}
+
+CmtEffectDestroyContingency = {
+	every_country = {
+		limit = { CmtTriggerIsContingency = yes }
+		
+		### Destroy Four Machine Worlds
+		every_planet_within_border = {
+			limit = { is_planet_class = pc_ai }
+			planet_event = { id = crisis.2040 }
+		}
+		### Destroy Final Machine World
+		every_planet_within_border = {
+			limit = { is_planet_class = pc_ai }
+			planet_event = { id = crisis.2043 }
+			planet_event = { id = crisis.2043 days = 10 } ## Backup
+		}
+	}
+	every_country = {
+		limit = { has_event_chain = ai_crisis_chain }
+		end_event_chain = ai_crisis_chain
+	}
+	### Dummy
+	every_country = {
+		limit = {
+			always = no
+			OR = {
+				has_point_of_interest = { poi = ai_crisis_poi.1 }
+				has_point_of_interest = { poi = ai_crisis_poi.2 }
+				has_point_of_interest = { poi = ai_crisis_poi.3 }
+				has_point_of_interest = { poi = ai_crisis_poi.4 }
+				has_point_of_interest = { poi = ai_crisis_poi.5 }
+			}
+		}
+		remove_point_of_interest = ai_crisis_poi.1
+		remove_point_of_interest = ai_crisis_poi.2
+		remove_point_of_interest = ai_crisis_poi.3
+		remove_point_of_interest = ai_crisis_poi.4
+		remove_point_of_interest = ai_crisis_poi.5
+	}
+}
+
+CmtEffectDestroyShroudSpirits = {
+	every_country = {
+		limit = { CmtTriggerIsShroudSpirit = yes }
+		every_owned_ship = {
+			limit = {
+				OR = {
+					is_ship_size = warped_consciousness
+					is_ship_size = shroud_manifestation
+				}
+			}
+			delete_ship = this
+		}
+	}
+}
+

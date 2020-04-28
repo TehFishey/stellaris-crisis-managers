@@ -1,0 +1,375 @@
+namespace = CrisisManagerMenu
+
+###############################
+###############################
+#####                     #####
+#####    Template T107    #####
+#####                     #####
+###############################
+###############################
+
+
+country_event = {
+	id = CrisisManagerMenu.2107
+	hide_window = yes
+	
+	is_triggered_only = yes
+	trigger = { CmtTriggerTemplateActivated_T107 = yes }
+	
+	immediate = {
+		event_target:CmtGlobalVar = {
+			
+			### Common Configurations
+			set_variable = { which = CmtVarVersion value = @CmtT107_ConstVersionInfo }
+			set_variable = { which = CmtVarTemplateCode value = 2107 }
+			
+			
+			
+			### End Game Edition
+			if = {
+				limit = { always = @CmtT107_ConstActivatedEventEndgame }
+				
+				### Basic Configurations
+				set_variable = { which = CmtVarMultiple value = @CmtT107_ConstMultiple }
+				set_variable = { which = CmtVarTriggerInterval value = @CmtT107_ConstTriggerInterval }
+				set_variable = { which = CmtVarEarliestEgpy value = @CmtT107_ConstEarliestEgpy }
+				set_variable = { which = CmtVarTriggerProbability value = @CmtT107_ConstTriggerProbability }
+				set_variable = { which = CmtVarEqualizingProbability value = @CmtT107_ConstEqualizingProbability }
+				set_variable = { which = CmtVarOpeningEventSpeed value = @CmtT107_ConstOpeningEventSpeed }
+				if = {
+					limit = { always = @CmtT107_ConstSubmarineCrisis }
+					set_global_flag = CmtFlagSubmarineCrisis
+				} else = { remove_global_flag = CmtFlagSubmarineCrisis }
+				
+				set_variable = { which = CmtVarTotalWarPriority value = @CmtT107_ConstTotalWarPriority }
+				set_variable = { which = CmtVarTotalWarAutoBuild value = @CmtT107_ConstTotalWarAutoBuild }
+				set_variable = { which = CmtVarPlanetOccupy value = @CmtT107_ConstPlanetOccupy }
+				set_variable = { which = CmtVarPurgeSpeed value = @CmtT107_ConstPurgeSpeed }
+				set_variable = { which = CmtVarFasterCombatFleet_Common value = @CmtT107_ConstFasterCombatFleet }
+				set_variable = { which = CmtVarFasterConstructor_Common value = @CmtT107_ConstFasterConstructor }
+				set_variable = { which = CmtVarFriendlyCrisis value = @CmtT107_ConstFriendlyCrisis }
+				
+				
+				### Prethoryn
+				if = {
+					limit = { always = @CmtT107_ConstForbiddenPrethoryn }
+					set_global_flag = CmtFlagForbiddenPrethoryn
+				} else = { remove_global_flag = CmtFlagForbiddenPrethoryn }
+				if = {
+					limit = { always = @CmtT107_ConstPrethorynNonRimAttack }
+					set_global_flag = CmtFlagPrethorynNonRimAttack
+				} else = { remove_global_flag = CmtFlagPrethorynNonRimAttack }
+				set_variable = { which = CmtVarPrethorynQueen value = @CmtT107_ConstPrethorynQueen }
+				set_variable = { which = CmtVarSentinelRise value = @CmtT107_ConstSentinelRise }
+				if = {
+					limit = { always = @CmtT107_ConstForbiddenAnatomy }
+					set_global_flag = CmtFlagForbiddenAnatomy
+				} else = { remove_global_flag = CmtFlagForbiddenAnatomy }
+				set_variable = { which = CmtVarFeralPrethoryn value = @CmtT107_ConstFeralPrethoryn }
+				if = {
+					limit = { always = @CmtT107_ConstPrethorynUnlimitedFlavor }
+					set_global_flag = CmtFlagPrethorynUnlimitedFlavor
+				} else = { remove_global_flag = CmtFlagPrethorynUnlimitedFlavor }
+				
+				
+				### Extradimensionals
+				if = {
+					limit = { always = @CmtT107_ConstForbiddenExds }
+					set_global_flag = CmtFlagForbiddenExds
+				} else = { remove_global_flag = CmtFlagForbiddenExds }
+				if = {
+					limit = { always = @CmtT107_ConstNoJumpButExds }
+					set_global_flag = CmtFlagNoJumpButExds
+				} else = { remove_global_flag = CmtFlagNoJumpButExds }
+				set_variable = { which = CmtVarExdsChaserCondition value = @CmtT107_ConstExdsChaserCondition }
+				if = {
+					limit = {
+						OR = {
+							always = @CmtT107_ConstExdsChaserAnywhere
+							check_variable = { which = CmtVarExdsChaserCondition value = 6 }
+						}
+					}
+					set_global_flag = CmtFlagExdsChaserAnywhere
+				} else = { remove_global_flag = CmtFlagExdsChaserAnywhere }
+				set_variable = { which = CmtVarReinforceCycle_OnExdAnchorBuilt value = @CmtT107_ConstReinforceCycle_OnExdAnchorBuilt }
+				set_variable = { which = CmtVarExdsPortalStability value = @CmtT107_ConstExdsPortalStability }
+				
+				
+				### Contingency
+				if = {
+					limit = { always = @CmtT107_ConstForbiddenContingency }
+					set_global_flag = CmtFlagForbiddenContingency
+				} else = { remove_global_flag = CmtFlagForbiddenContingency }
+				set_variable = { which = CmtVarGhostStrength value = @CmtT107_ConstGhostStrength }
+				set_variable = { which = CmtVarSynthTerrorEventSpeed value = @CmtT107_ConstSynthTerrorEventSpeed }
+				set_variable = { which = CmtVarFreqTerror value = @CmtT107_ConstFreqTerror }
+				if = {
+					limit = { always = @CmtT107_ConstSynthTerrorAll }
+					set_global_flag = CmtFlagSynthTerrorAll
+				} else = { remove_global_flag = CmtFlagSynthTerrorAll }
+				set_variable = { which = CmtVarCybrexResurfacing value = @CmtT107_ConstCybrexResurfacing }
+				
+				
+				### Forced End of Cycle
+				if = {
+					limit = { always = @CmtT107_ConstAllowForcedEoc }
+					set_global_flag = CmtFlagAllowForcedEoc
+				} else = { remove_global_flag = CmtFlagAllowForcedEoc }
+				set_variable = { which = CmtVarForcedEocTargetPlayer value = @CmtT107_ConstForcedEocTargetPlayer }
+				set_variable = { which = CmtVarForcedEocTranscendence value = @CmtT107_ConstForcedEocTranscendence }
+				set_variable = { which = CmtVarForcedEocCountryStrength value = @CmtT107_ConstForcedEocCountryStrength }
+				if = {
+					limit = { always = @CmtT107_ConstForcedEocCrisisTerm }
+					set_global_flag = CmtFlagForcedEocCrisisTerm
+				} else = { remove_global_flag = CmtFlagForcedEocCrisisTerm }
+			}
+			
+			
+			
+			### Fallen Empire Edition
+			if = {
+				limit = { always = @CmtT107_ConstActivatedEventSleeper }
+				
+				
+				### Standard Awakening of Sleepers
+				set_variable = { which = CmtVarSleeperMultiple value = @CmtT107_ConstSleeperMultiple }
+				set_variable = { which = CmtVarSleeperInterval value = @CmtT107_ConstSleeperInterval }
+				set_variable = { which = CmtVarSleeperEarliestEgsy value = @CmtT107_ConstSleeperEarliestEgsy }
+				set_variable = { which = CmtVarSleeperProbability value = @CmtT107_ConstSleeperProbability }
+				set_variable = { which = CmtVarSleeperFleetPowerYoung value = @CmtT107_ConstSleeperFleetPowerYoung }
+				set_variable = { which = CmtVarSleeperFleetPowerOwn value = @CmtT107_ConstSleeperFleetPowerOwn }
+				if = {
+					limit = { always = @CmtT107_ConstSleeperForbidMaterialist }
+					set_global_flag = CmtFlagSleeperForbidMaterialist
+				} else = { remove_global_flag = CmtFlagSleeperForbidMaterialist }
+				if = {
+					limit = { always = @CmtT107_ConstSleeperForbidSpirituarist }
+					set_global_flag = CmtFlagSleeperForbidSpirituarist
+				} else = { remove_global_flag = CmtFlagSleeperForbidSpirituarist }
+				if = {
+					limit = { always = @CmtT107_ConstSleeperForbidXenophile }
+					set_global_flag = CmtFlagSleeperForbidXenophile
+				} else = { remove_global_flag = CmtFlagSleeperForbidXenophile }
+				if = {
+					limit = { always = @CmtT107_ConstSleeperForbidXenophobe }
+					set_global_flag = CmtFlagSleeperForbidXenophobe
+				} else = { remove_global_flag = CmtFlagSleeperForbidXenophobe }
+				set_variable = { which = CmtVarSleeperHolyClacker value = @CmtT107_ConstSleeperHolyClacker }
+				
+				set_variable = { which = CmtVarSleeperFleetPowerYoungDisplay value = CmtVarSleeperFleetPowerYoung }
+				set_variable = { which = CmtVarSleeperFleetPowerOwnDisplay value = CmtVarSleeperFleetPowerOwn }
+				multiply_variable = { which = CmtVarSleeperFleetPowerYoung value = 1000 }
+				multiply_variable = { which = CmtVarSleeperFleetPowerOwn value = 1000 }
+				
+				
+				### War in Heaven
+				set_variable = { which = CmtVarHeavenProbability value = @CmtT107_ConstHeavenProbability }
+				set_variable = { which = CmtVarHeavenAncientRival value = @CmtT107_ConstHeavenAncientRival }
+				set_variable = { which = CmtVarHeavenIndomitableRival value = @CmtT107_ConstHeavenIndomitableRival }
+				if = {
+					limit = { always = @CmtT107_ConstHeavenForbidIndependently }
+					set_global_flag = CmtFlagHeavenForbidIndependently
+				} else = { remove_global_flag = CmtFlagHeavenForbidIndependently }
+				if = {
+					limit = { always = @CmtT107_ConstHeavenForbidMaterialist }
+					set_global_flag = CmtFlagHeavenForbidMaterialist
+				} else = { remove_global_flag = CmtFlagHeavenForbidMaterialist }
+				if = {
+					limit = { always = @CmtT107_ConstHeavenForbidSpirituarist }
+					set_global_flag = CmtFlagHeavenForbidSpirituarist
+				} else = { remove_global_flag = CmtFlagHeavenForbidSpirituarist }
+				if = {
+					limit = { always = @CmtT107_ConstHeavenForbidXenophile }
+					set_global_flag = CmtFlagHeavenForbidXenophile
+				} else = { remove_global_flag = CmtFlagHeavenForbidXenophile }
+				if = {
+					limit = { always = @CmtT107_ConstHeavenForbidXenophobe }
+					set_global_flag = CmtFlagHeavenForbidXenophobe
+				} else = { remove_global_flag = CmtFlagHeavenForbidXenophobe }
+				set_variable = { which = CmtVarHeavenPreludeSpeed value = @CmtT107_ConstHeavenPreludeSpeed }
+				set_variable = { which = CmtVarHeavenNpcSubject value = @CmtT107_ConstHeavenNpcSubject }
+				set_variable = { which = CmtVarHeavenNpcLeague value = @CmtT107_ConstHeavenNpcLeague }
+				set_variable = { which = CmtVarHeavenExhaustion value = @CmtT107_ConstHeavenExhaustion }
+				
+				
+				### Guardians of Galaxy
+				set_variable = { which = CmtVarGuardiansProbability value = @CmtT107_ConstGuardiansProbability }
+				set_variable = { which = CmtVarTimingAwakingGuardians value = @CmtT107_ConstTimingAwakingGuardians }
+				set_variable = { which = CmtVarDoubleGurdian value = @CmtT107_ConstDoubleGurdian }
+				set_variable = { which = CmtVarGuardianWornOut value = @CmtT107_ConstGuardianWornOut }
+				set_variable = { which = CmtVarMechFeAwaking value = @CmtT107_ConstMechFeAwaking }
+				
+			}
+			
+			
+			
+			### Mid Game Edition
+			if = {
+				limit = { always = @CmtT107_ConstActivatedEventMidgame }
+				
+				### Khan
+				set_variable = { which = CmtVarKhanMultiple value = @CmtT107_ConstKhanMultiple }
+				set_variable = { which = CmtVarKhanInterval value = @CmtT107_ConstKhanInterval }
+				set_variable = { which = CmtVarKhanEarliestMgpy value = @CmtT107_ConstKhanEarliestMgpy }
+				set_variable = { which = CmtVarKhanLatestEgpy value = @CmtT107_ConstKhanLatestEgpy }
+				set_variable = { which = CmtVarKhanTriggerProbability value = @CmtT107_ConstKhanTriggerProbability }
+				set_variable = { which = CmtVarKhanVengeance value = @CmtT107_ConstKhanVengeance }
+				set_variable = { which = CmtVarKhanResurgence value = @CmtT107_ConstKhanResurgence }
+				set_variable = { which = CmtVarKhanLifespan value = @CmtT107_ConstKhanLifespan }
+				set_variable = { which = CmtVarReinforceCycle_Khan value = @CmtT107_ConstReinforceCycle_Khan }
+				set_variable = { which = CmtVarKhanPostDeathSummary value = @CmtT107_ConstKhanPostDeathSummary }
+				
+				
+				### L-Gate
+				set_variable = { which = CmtVarLgateReqClues value = @CmtT107_ConstLgateReqClues }
+				if = {
+					limit = { always = @CmtT107_ConstLgateSkipTech }
+					set_global_flag = CmtFlagLgateSkipTech
+				} else = { remove_global_flag = CmtFlagLgateSkipTech }
+				set_variable = { which = CmtVarLgateClusterType value = @CmtT107_ConstLgateClusterType }
+				if = {
+					limit = { always = @CmtT107_ConstLgateForbidSilence }
+					set_global_flag = CmtFlagLgateForbidSilence
+				} else = { remove_global_flag = CmtFlagLgateForbidSilence }
+				if = {
+					limit = { always = @CmtT107_ConstLgateForbidLdrake }
+					set_global_flag = CmtFlagLgateForbidLdrake
+				} else = { remove_global_flag = CmtFlagLgateForbidLdrake }
+				if = {
+					limit = { always = @CmtT107_ConstLgateForbidDessanu }
+					set_global_flag = CmtFlagLgateForbidDessanu
+				} else = { remove_global_flag = CmtFlagLgateForbidDessanu }
+				if = {
+					limit = { always = @CmtT107_ConstLgateForbidGraygoo }
+					set_global_flag = CmtFlagLgateForbidGraygoo
+				} else = { remove_global_flag = CmtFlagLgateForbidGraygoo }
+				set_variable = { which = CmtVarLgateCycleCommon value = @CmtT107_ConstLgateCycleCommon }
+				set_variable = { which = CmtVarLgateCycleSilence value = @CmtT107_ConstLgateCycleSilence }
+				set_variable = { which = CmtVarLgateCycleLdrake value = @CmtT107_ConstLgateCycleLdrake }
+				set_variable = { which = CmtVarLgateCycleDessanu value = @CmtT107_ConstLgateCycleDessanu }
+				set_variable = { which = CmtVarLgateCycleGraygoo value = @CmtT107_ConstLgateCycleGraygoo }
+				set_variable = { which = CmtVarLgateAloneGrayCondition value = @CmtT107_ConstLgateAloneGrayCondition }
+				set_variable = { which = CmtVarLgateDessanuGift value = @CmtT107_ConstLgateDessanuGift }
+				set_variable = { which = CmtVarReinforceCycle_Graygoo value = @CmtT107_ConstReinforceCycle_Graygoo }
+				set_variable = { which = CmtVarLgateTerraformNanite value = @CmtT107_ConstLgateTerraformNanite }
+				set_variable = { which = CmtVarCrisisPower_Endgame value = @CmtT107_ConstCrisisPower_Endgame }
+			}
+			
+			
+			
+			### Crisis Power (End Game)
+			if = {
+				limit = { always = @CmtT107_ConstActivatedPowerEndgame }
+				
+				set_variable = { which = CmtVarCrisisPower_Endgame value = @CmtT107_ConstCrisisStrengthEnd }
+				CmtEffectApplyDifficulty_Endgame = yes
+				
+				if = {
+					limit = { check_variable = { which = CmtVarCrisisPower_Endgame value < 0.5 } }
+					set_variable = { which = CmtVarFleetPower_Common value = @CmtT107_ConstFleetPower_Common }
+					if = {
+						limit = { check_variable = { which = CmtVarFleetPower_Common value < 0.125 } }
+						set_variable = { which = CmtVarFleetPower_Prethoryn value = @CmtT107_ConstFleetPower_Prethoryn }
+						set_variable = { which = CmtVarFleetPower_Sentinel value = @CmtT107_ConstFleetPower_Sentinel }
+						set_variable = { which = CmtVarFleetPower_Unbidden value = @CmtT107_ConstFleetPower_Unbidden }
+						set_variable = { which = CmtVarFleetPower_Aberrant value = @CmtT107_ConstFleetPower_Aberrant }
+						set_variable = { which = CmtVarFleetPower_Vehement value = @CmtT107_ConstFleetPower_Vehement }
+						set_variable = { which = CmtVarFleetPower_Contingency value = @CmtT107_ConstFleetPower_Contingency }
+						set_variable = { which = CmtVarFleetPower_Cybrex value = @CmtT107_ConstFleetPower_Cybrex }
+						set_variable = { which = CmtVarFleetPower_ForcedEoc value = @CmtT107_ConstFleetPower_ForcedEoc }
+					} else = { CmtEffectApplyCommonPowerEndgame_FleetPower = yes }
+					
+					set_variable = { which = CmtVarArmyPower_Common value = @CmtT107_ConstArmyPower_Common }
+					if = {
+						limit = { check_variable = { which = CmtVarArmyPower_Common value < 0.125 } }
+						set_variable = { which = CmtVarArmyPower_Prethoryn value = @CmtT107_ConstArmyPower_Prethoryn }
+						set_variable = { which = CmtVarArmyPower_Contingency value = @CmtT107_ConstArmyPower_Contingency }
+					} else = { CmtEffectApplyCommonPowerEndgame_ArmyPower = yes }
+					
+					set_variable = { which = CmtVarCombatFleetNumber_Common value = @CmtT107_ConstCombatFleetNumber_Common }
+					if = {
+						limit = { check_variable = { which = CmtVarCombatFleetNumber_Common value < 0.125 } }
+						set_variable = { which = CmtVarCombatFleetNumber_Prethoryn value = @CmtT107_ConstCombatFleetNumber_Prethoryn }
+						set_variable = { which = CmtVarCombatFleetNumber_Sentinel value = @CmtT107_ConstCombatFleetNumber_Sentinel }
+						set_variable = { which = CmtVarCombatFleetNumber_Unbidden value = @CmtT107_ConstCombatFleetNumber_Unbidden }
+						set_variable = { which = CmtVarCombatFleetNumber_Aberrant value = @CmtT107_ConstCombatFleetNumber_Aberrant }
+						set_variable = { which = CmtVarCombatFleetNumber_Vehement value = @CmtT107_ConstCombatFleetNumber_Vehement }
+						set_variable = { which = CmtVarCombatFleetNumber_Contingency value = @CmtT107_ConstCombatFleetNumber_Contingency }
+						set_variable = { which = CmtVarCombatFleetNumber_Cybrex value = @CmtT107_ConstCombatFleetNumber_Cybrex }
+					} else = { CmtEffectApplyCommonPowerEndgame_CombatFleetNumber = yes }
+					
+					set_variable = { which = CmtVarArmyNumber_Common value = @CmtT107_ConstArmyNumber_Common }
+					if = {
+						limit = { check_variable = { which = CmtVarArmyNumber_Common value < 0.125 } }
+						set_variable = { which = CmtVarArmyNumber_Prethoryn value = @CmtT107_ConstArmyNumber_Prethoryn }
+						set_variable = { which = CmtVarArmyNumber_Contingency value = @CmtT107_ConstArmyNumber_Contingency }
+					} else = { CmtEffectApplyCommonPowerEndgame_ArmyNumber = yes }
+					
+					set_variable = { which = CmtVarConstructorNumber_Common value = @CmtT107_ConstConstructorNumber_Common }
+					if = {
+						limit = { check_variable = { which = CmtVarConstructorNumber_Common value < 0.125 } }
+						set_variable = { which = CmtVarConstructorNumber_Prethoryn value = @CmtT107_ConstConstructorNumber_Prethoryn }
+						set_variable = { which = CmtVarConstructorNumber_Unbidden value = @CmtT107_ConstConstructorNumber_Unbidden }
+						set_variable = { which = CmtVarConstructorNumber_Aberrant value = @CmtT107_ConstConstructorNumber_Aberrant }
+						set_variable = { which = CmtVarConstructorNumber_Vehement value = @CmtT107_ConstConstructorNumber_Vehement }
+						set_variable = { which = CmtVarConstructorNumber_Contingency value = @CmtT107_ConstConstructorNumber_Contingency }
+					} else = { CmtEffectApplyCommonPowerEndgame_ConstructorNumber = yes }
+				}
+			}
+			
+			
+			
+			### Crisis Power (Mid Game)
+			if = {
+				limit = { always = @CmtT107_ConstActivatedPowerMidgame }
+				
+				set_variable = { which = CmtVarCrisisPower_Midgame value = @CmtT107_ConstCrisisStrengthMid }
+				CmtEffectApplyDifficulty_Midgame = yes
+				
+				if = {
+					limit = { check_variable = { which = CmtVarCrisisPower_Midgame value < 0.5 } }
+					set_variable = { which = CmtVarFleetPower_Common value = @CmtT107_ConstFleetPower_Common }
+					if = {
+						limit = { check_variable = { which = CmtVarFleetPower_Common value < 0.125 } }
+						set_variable = { which = CmtVarFleetPower_Khan value = @CmtT107_ConstFleetPower_Khan }
+						set_variable = { which = CmtVarFleetPower_Graygoo value = @CmtT107_ConstFleetPower_Graygoo }
+						set_variable = { which = CmtVarFleetPower_Dessanu value = @CmtT107_ConstFleetPower_Dessanu }
+					} else = { CmtEffectApplyCommonPowerMidgame_FleetPower = yes }
+					
+					set_variable = { which = CmtVarArmyPower_Common value = @CmtT107_ConstArmyPower_Common }
+					if = {
+						limit = { check_variable = { which = CmtVarArmyPower_Common value < 0.125 } }
+						set_variable = { which = CmtVarArmyPower_Khan value = @CmtT107_ConstArmyPower_Khan }
+					} else = { CmtEffectApplyCommonPowerMidgame_ArmyPower = yes }
+					
+					set_variable = { which = CmtVarCombatFleetNumber_Common value = @CmtT107_ConstCombatFleetNumber_Common }
+					if = {
+						limit = { check_variable = { which = CmtVarCombatFleetNumber_Common value < 0.125 } }
+						set_variable = { which = CmtVarCombatFleetNumber_Khan value = @CmtT107_ConstCombatFleetNumber_Khan }
+						set_variable = { which = CmtVarCombatFleetNumber_Graygoo value = @CmtT107_ConstCombatFleetNumber_Graygoo }
+						set_variable = { which = CmtVarCombatFleetNumber_Dessanu value = @CmtT107_ConstCombatFleetNumber_Dessanu }
+					} else = { CmtEffectApplyCommonPowerMidgame_CombatFleetNumber = yes }
+					
+					set_variable = { which = CmtVarArmyNumber_Common value = @CmtT107_ConstArmyNumber_Common }
+					if = {
+						limit = { check_variable = { which = CmtVarArmyNumber_Common value < 0.125 } }
+						set_variable = { which = CmtVarArmyNumber_Khan value = @CmtT107_ConstArmyNumber_Khan }
+					} else = { CmtEffectApplyCommonPowerMidgame_ArmyNumber = yes }
+					
+					set_variable = { which = CmtVarConstructorNumber_Common value = @CmtT107_ConstConstructorNumber_Common }
+					if = {
+						limit = { check_variable = { which = CmtVarConstructorNumber_Common value < 0.125 } }
+						set_variable = { which = CmtVarConstructorNumber_Khan value = @CmtT107_ConstConstructorNumber_Khan }
+					} else = { CmtEffectApplyCommonPowerMidgame_ConstructorNumber = yes }
+				}
+			}
+			
+			
+			
+			### Temporary Configurations
+			CmtEffectTransferAll = yes
+			### Around version up: "immediate" in main menu
+		}
+	}
+}
+

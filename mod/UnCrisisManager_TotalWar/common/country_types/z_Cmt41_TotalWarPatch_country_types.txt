@@ -1,0 +1,278 @@
+
+#################################################
+#################################################
+#####                                       #####
+#####    Crisis Manager                     #####
+#####                                       #####
+#####    country_type for Total War Pack    #####
+#####                                       #####
+#################################################
+#################################################
+#
+#	Memo
+#		Every coutry_types: ''destroys_starbases = yes'' is deleted.
+#		extradimensionals2 & 3: ''invaders_interior_minister_module'' is added.
+#
+
+swarm = {
+	attack_unarmed_orbital_stations = yes
+	scaled_difficulty_bonuses = 3.0	# scales to setting
+	end_game_crisis = yes
+	can_own_empty_planets = yes
+	needs_survey = no
+	has_complete_sensor = yes
+	can_planets_be_attacked = no
+	has_capital = no
+	enforces_borders = no
+	government = no
+	colonizing_title = "COLONIZING_PLANET_SWARM"
+	colonizing_desc = "PLANET_VIEW_UNDER_COLONIZATION_SWARM_DESC"
+	home_system = swarm_invasion_target_1
+	custom_starbase = starbase_swarm
+	observable = yes
+	
+	ai = {
+		enabled = yes
+		colonizer = yes
+		construction = yes
+		modules = {
+			swarm_interior_minister_module
+			swarm_military_minister_module
+		}
+	}
+	faction = {
+		needs_colony = no
+		hostile = yes
+		needs_border_access = no
+	}
+	
+	custom_diplomacy = yes
+	
+	modules = {
+		standard_event_module = {}
+		standard_leader_module = {}
+		all_technology_module = {}
+		exclusive_diplomacy_module = {
+			contact_rule = always
+		}
+	}
+}
+
+
+extradimensional = {
+	attack_unarmed_orbital_stations = yes
+	scaled_difficulty_bonuses = 3.0	# scales to setting
+	end_game_crisis = yes
+	needs_survey = no
+	has_complete_sensor = yes
+	can_planets_be_attacked = no
+	has_capital = no
+	enforces_borders = no
+	home_system = extradimensional_origin_system
+	custom_starbase = starbase_exd_0
+	observable = yes
+	targets = {
+		extradimensional_2
+		extradimensional_3
+	}
+	government = no
+	ai = {
+		enabled = yes
+		colonizer = yes
+		construction = yes
+		modules = {
+			invaders_military_minister_module
+			invaders_interior_minister_module
+		}
+	}
+	faction = {
+		needs_colony = no
+		hostile = yes
+		needs_border_access = no
+	}
+	
+	custom_diplomacy = yes
+	
+	modules = {
+		standard_event_module = {}
+		standard_leader_module = {}
+		all_technology_module = {}
+		exclusive_diplomacy_module = {
+			contact_rule = always
+		}
+	}
+}
+
+extradimensional_2 = {
+	attack_unarmed_orbital_stations = yes
+	scaled_difficulty_bonuses = 3.0	# scales to setting
+	end_game_crisis = yes
+	needs_survey = no
+	has_complete_sensor = yes
+	can_planets_be_attacked = no
+	has_capital = no
+	enforces_borders = no
+	home_system = extradimensional_second_portal_system
+	custom_starbase = starbase_exd
+	observable = yes
+	targets = {
+		extradimensional
+		extradimensional_3
+	}
+	government = no
+	ai = {
+		enabled = yes
+		colonizer = yes
+		construction = yes
+		modules = {
+			invaders_military_minister_module
+			invaders_interior_minister_module
+		}
+	}
+	faction = {
+		needs_colony = no
+		hostile = yes
+		needs_border_access = no
+	}
+	
+	custom_diplomacy = yes
+	
+	modules = {
+		standard_event_module = {}
+		standard_leader_module = {}
+		all_technology_module = {}
+		exclusive_diplomacy_module = {
+			contact_rule = always
+		}
+	}
+}
+
+extradimensional_3 = {
+	attack_unarmed_orbital_stations = yes
+	scaled_difficulty_bonuses = 3.0	# scales to setting
+	end_game_crisis = yes
+	needs_survey = no
+	has_complete_sensor = yes
+	can_planets_be_attacked = no
+	has_capital = no
+	enforces_borders = no
+	home_system = extradimensional_third_portal_system
+	custom_starbase = starbase_exd
+	observable = yes
+	targets = {
+		extradimensional
+		extradimensional_2
+	}
+	government = no
+	ai = {
+		enabled = yes
+		colonizer = yes
+		construction = yes
+		modules = {
+			invaders_military_minister_module
+			invaders_interior_minister_module
+		}
+	}
+	faction = {
+		needs_colony = no
+		hostile = yes
+		needs_border_access = no
+	}
+	
+	custom_diplomacy = yes
+	
+	modules = {
+		standard_event_module = {}
+		standard_leader_module = {}
+		all_technology_module = {}
+		exclusive_diplomacy_module = {
+			contact_rule = always
+		}
+	}
+}
+
+ai_empire = {
+	attack_unarmed_orbital_stations = yes
+	scaled_difficulty_bonuses = 3.0	# scales to setting
+	end_game_crisis = yes
+	can_own_empty_planets = yes
+	needs_survey = no
+	has_complete_sensor = yes
+	can_planets_be_attacked = yes
+	has_capital = no
+	playable = no
+	government = no
+	enforces_borders = no
+	minimalist_contacts_list_profile = yes
+	home_system = AI_lair
+	hub_system = AI_hub
+	custom_starbase = starbase_ai
+	observable = yes
+	
+	ai = {
+		enabled = yes
+		colonizer = yes
+		government = no
+		construction = yes
+		modules = {
+			machine_interior_minister_module
+			machine_military_minister_module
+		}
+	}
+	faction = {
+		needs_colony = no
+		hostile = yes
+		needs_border_access = no
+	}
+	custom_diplomacy = yes
+	modules = {
+		standard_event_module = {}
+		standard_leader_module = {}
+		all_technology_module = {}
+		exclusive_diplomacy_module = {
+			contact_rule = always
+		}
+	}
+}
+
+
+awakened_marauders = {
+	attack_unarmed_orbital_stations = yes
+	scaled_difficulty_bonuses = 1.0	# scales to setting
+	show_in_contacts_list = yes
+	counts_for_victory = yes
+	share_survey_data = no
+	custom_diplomacy = yes
+	mid_game_crisis = yes
+	enforces_borders = no
+	needs_survey = no
+	has_complete_sensor = yes
+	can_have_their_comms_shared = yes
+	custom_starbase = starbase_marauder
+	observable = yes
+	
+	ai = {
+		enabled = yes
+		modules = {
+			horde_interior_minister_module
+			horde_military_minister_module
+		}
+	}
+	faction = {
+		hostile = yes
+		needs_border_access = no
+		generate_borders = yes
+		needs_colony = no
+	}
+	modules = {
+		exclusive_diplomacy_module = {} # Nothing is allowed, but we need this for relationships.
+		tiered_technology_module = {
+			tier = 3
+			rare = no
+		}
+		standard_event_module = {}
+	}
+}
+
+
+

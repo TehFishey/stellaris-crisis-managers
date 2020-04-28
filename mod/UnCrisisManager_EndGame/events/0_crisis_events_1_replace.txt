@@ -1,0 +1,1851 @@
+namespace = crisis
+
+############################################
+############################################
+#####                                  #####
+#####    Crisis Events 1: Prethoryn    #####
+#####                                  #####
+#####    Replaced by Crisis Manager    #####
+#####                                  #####
+############################################
+############################################
+
+###################
+###  Constants  ###
+###################
+
+@CmtConstPrethorynShipsUpperLimit = 2000
+@CmtConstPrethorynArmyUpperLimit = 140
+@CmtConstPrethorynColonizerStdNum = 5
+@CmtConstPrethorynConstructorStdNum = 4
+
+@CmtConstSentinelShipsUpperLimit = 200
+
+
+###########################################
+###  Trigger Forced by Command Console  ###
+###########################################
+
+### Quick Attack
+country_event = {
+	id = crisis.199
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { has_global_flag = prethoryn_invasion_happened }
+	}
+	
+	immediate = {
+		endgame_telemetry = prethoryn
+		set_global_flag = galactic_crisis_happened
+		set_global_flag = prethoryn_invasion_happened
+		set_global_flag = CmtFlagPrethorynTriggered
+		
+		if = {
+			limit = { has_global_flag = CmtFlagPrethorynNonRimAttack }
+			random_system = {
+				limit = { CmtTriggerPrethoryn1stTarget = yes }
+				set_star_flag = swarm_invasion_target_1
+				save_event_target_as = prethoryn_invasion_system
+			}
+		} else = {
+			random_rim_system = {
+				limit = { CmtTriggerPrethoryn1stTarget = yes }
+				set_star_flag = swarm_invasion_target_1
+				save_event_target_as = prethoryn_invasion_system
+			}
+		}
+		
+		every_country = {
+			limit = { CmtTriggerIsPlayableEmpire = yes }
+			begin_event_chain = {
+				event_chain = "coming_storm_chain"
+				target = this
+			}
+			create_point_of_interest = {
+				id = coming_storm_poi.1
+				name = "coming_storm_poi_1_poi"
+				desc = "coming_storm_poi_1_poi_desc"
+				event_chain = "coming_storm_chain"
+				location = event_target:prethoryn_invasion_system
+			}
+		}
+		event_target:CmtGlobalVar = {
+			country_event = { id = crisis.17 }
+			country_event = { id = crisis.19 days = 5 }
+		}
+	}
+}
+
+
+### Standard 
+country_event = {
+	id = crisis.10
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = { always = no }
+	
+	immediate = {
+		country_event = { id = CrisisManagerControl.1000 }
+	}
+}
+
+
+
+
+########################
+###  Opening Events  ###
+########################
+
+
+### Notification of Approaching Subspace Echoes
+country_event = {
+	id = crisis.11
+	title = crisis.11.name
+	desc = crisis.11.desc
+	picture = GFX_evt_physics_research
+	show_sound = event_alien_nature
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_global_flag = CmtFlagSubmarineCrisis } }
+	
+	option = {
+		name = crisis.11.a
+		begin_event_chain = {
+			event_chain = "coming_storm_chain"
+			target = ROOT
+		}
+	}
+}
+
+### Approaching the Outer Rim
+country_event = {
+	id = crisis.12
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagPrethorynNonRimAttack }
+			random_system = {
+				limit = { CmtTriggerPrethoryn1stTarget = yes }
+				set_star_flag = swarm_invasion_target_1
+			}
+		} else = {
+			random_rim_system = {
+				limit = { CmtTriggerPrethoryn1stTarget = yes }
+				set_star_flag = swarm_invasion_target_1
+			}
+		}
+		every_country = {
+			limit = { CmtTriggerIsPlayableEmpire = yes }
+			country_event = { id = crisis.13 }
+		}
+		observer_event = { id = observer.28 }
+	}
+}
+
+### Notification of Approaching the Outer Rim
+country_event = {
+	id = crisis.13
+	title = crisis.13.name
+	desc = crisis.13.desc
+	picture = GFX_evt_physics_research
+	show_sound = event_alien_nature
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_global_flag = CmtFlagSubmarineCrisis } }
+	
+	immediate = {
+		random_system = {
+			limit = { has_star_flag = swarm_invasion_target_1 }
+			save_event_target_as = prethoryn_invasion_system
+			closest_system = {
+				limit = { NOT = { has_star_flag = swarm_invasion_target_1 } }
+				set_star_flag = swarm_invasion_warning
+				save_event_target_as = swarm_invasion_warning_1
+			}
+			closest_system = {
+				limit = {
+					NOR = {
+						has_star_flag = swarm_invasion_warning
+						has_star_flag = swarm_invasion_target_1
+					}
+				}
+				set_star_flag = swarm_invasion_warning
+				save_event_target_as = swarm_invasion_warning_2
+			}
+			closest_system = {
+				limit = {
+					NOR = {
+						has_star_flag = swarm_invasion_warning
+						has_star_flag = swarm_invasion_target_1
+					}
+				}
+				set_star_flag = swarm_invasion_warning
+				save_event_target_as = swarm_invasion_warning_3
+			}
+			closest_system = {
+				limit = {
+					NOR = {
+						has_star_flag = swarm_invasion_warning
+						has_star_flag = swarm_invasion_target_1
+					}
+				}
+				set_star_flag = swarm_invasion_warning
+				save_event_target_as = swarm_invasion_warning_4
+			}
+			closest_system = {
+				limit = {
+					NOR = {
+						has_star_flag = swarm_invasion_warning
+						has_star_flag = swarm_invasion_target_1
+					}
+				}
+				set_star_flag = swarm_invasion_warning
+				save_event_target_as = swarm_invasion_warning_5
+			}
+		}
+	}
+	
+	option = {
+		name = crisis.13.a
+		create_point_of_interest = {
+			id = coming_storm_poi.1
+			name = "coming_storm_poi_1_poi"
+			desc = "coming_storm_poi_1_poi_desc"
+			event_chain = "coming_storm_chain"
+			category = coming_storm
+			location = event_target:prethoryn_invasion_system
+		}
+		hidden_effect = {
+			create_point_of_interest = {
+				id = coming_storm_poi.2
+				event_chain = "coming_storm_chain"
+				category = coming_storm
+				location = event_target:swarm_invasion_warning_1
+			}
+			create_point_of_interest = {
+				id = coming_storm_poi.3
+				event_chain = "coming_storm_chain"
+				category = coming_storm
+				location = event_target:swarm_invasion_warning_2
+			}
+			create_point_of_interest = {
+				id = coming_storm_poi.4
+				event_chain = "coming_storm_chain"
+				category = coming_storm
+				location = event_target:swarm_invasion_warning_3
+			}
+			create_point_of_interest = {
+				id = coming_storm_poi.5
+				event_chain = "coming_storm_chain"
+				category = coming_storm
+				location = event_target:swarm_invasion_warning_4
+			}
+			create_point_of_interest = {
+				id = coming_storm_poi.6
+				event_chain = "coming_storm_chain"
+				category = coming_storm
+				location = event_target:swarm_invasion_warning_5
+			}
+		}
+	}
+}
+
+### Notification of Subspace Signal
+country_event = {
+	id = crisis.15
+	title = crisis.15.name
+	desc = crisis.15.desc
+	picture = GFX_evt_physics_research
+	show_sound = event_alien_nature
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_global_flag = CmtFlagSubmarineCrisis } }
+	
+	option = {
+		name = crisis.15.a
+		hidden_effect = { country_event = { id = crisis.16 } }
+	}
+}
+
+### Alien Transmission (crisis.16) -> Go to Diplomacy of Prethoryn
+
+### Vanguard Arrives
+country_event = {
+	id = crisis.17
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		set_crisis_sound = swarm_crisis_ambient_stage_1
+		set_crisis_stage_1 = yes
+		awaken_guardians_of_the_galaxy = yes
+		
+		remove_global_flag = prethoryn_approaching_rim
+		set_global_flag = prethoryn_arrival
+		every_country = {
+			limit = { CmtTriggerIsPlayableEmpire = yes }
+			country_event = { id = crisis.18 }
+		}
+		observer_event = { id = observer.29 }
+		
+		CmtEffectCreatePrethorynCountry = yes
+		
+		### FIRST SYSTEM
+		random_system = {
+			limit = { has_star_flag = swarm_invasion_target_1 }
+			CmtEffectDestroySystemStarbase = yes
+			create_starbase = {
+				size = starbase_swarm
+				owner = event_target:prethoryn_vgrd
+			}
+			random_system_planet = { CmtEffectCreateAdmiralty_PrethorynVanguard = yes }
+			
+			### SECOND SYSTEM
+			random_system = {
+				limit = {
+					distance = {
+						source = PREV
+						max_distance <= 60
+						min_distance >= 5
+					}
+					CmtTriggerSpawnableSystem = yes
+				}
+				set_star_flag = swarm_invasion_target_2
+				random_system_planet = { CmtEffectCreateAdmiralty_PrethorynVanguard = yes }
+			}
+			if = {
+				limit = { NOT = { any_system = { has_star_flag = swarm_invasion_target_2 } } }
+				random_neighbor_system = {
+					limit = { CmtTriggerSpawnableSystem = yes }
+					set_star_flag = swarm_invasion_target_2
+					random_system_planet = { CmtEffectCreateAdmiralty_PrethorynVanguard = yes }
+				}
+			}
+			
+			### THIRD SYSTEM
+			random_system = {
+				limit = {
+					distance = {
+						source = PREV
+						max_distance <= 60
+						min_distance >= 5
+					}
+					CmtTriggerSpawnableSystem = yes
+				}
+				set_star_flag = swarm_invasion_target_3
+				random_system_planet = { CmtEffectCreateAdmiralty_PrethorynVanguard = yes }
+			}
+			if = {
+				limit = { NOT = { any_system = { has_star_flag = swarm_invasion_target_3 } } }
+				random_neighbor_system = {
+					limit = { CmtTriggerSpawnableSystem = yes }
+					set_star_flag = swarm_invasion_target_3
+					random_system_planet = { CmtEffectCreateAdmiralty_PrethorynVanguard = yes }
+				}
+			}
+			if = {
+				limit = { NOT = { any_system = { has_star_flag = swarm_invasion_target_3 } } }
+				random_system = {
+					limit = { has_star_flag = swarm_invasion_target_2 }
+					random_neighbor_system = {
+						limit = { CmtTriggerSpawnableSystem = yes }
+						set_star_flag = swarm_invasion_target_3
+						random_system_planet = { CmtEffectCreateAdmiralty_PrethorynVanguard = yes }
+					}
+				}
+			}
+			
+			### FOURTH SYSTEM
+			random_system = {
+				limit = {
+					distance = {
+						source = PREV
+						max_distance <= 60
+						min_distance >= 5
+					}
+					CmtTriggerSpawnableSystem = yes
+				}
+				set_star_flag = swarm_invasion_target_4
+				random_system_planet = { CmtEffectCreateAdmiralty_PrethorynVanguard = yes }
+			}
+			if = {
+				limit = { NOT = { any_system = { has_star_flag = swarm_invasion_target_4 } } }
+				random_neighbor_system = {
+					limit = { CmtTriggerSpawnableSystem = yes }
+					set_star_flag = swarm_invasion_target_4
+					random_system_planet = { CmtEffectCreateAdmiralty_PrethorynVanguard = yes }
+				}
+			}
+			if = {
+				limit = { NOT = { any_system = { has_star_flag = swarm_invasion_target_4 } } }
+				random_system = {
+					limit = { has_star_flag = swarm_invasion_target_2 }
+					random_neighbor_system = {
+						limit = { CmtTriggerSpawnableSystem = yes }
+						set_star_flag = swarm_invasion_target_4
+						random_system_planet = { CmtEffectCreateAdmiralty_PrethorynVanguard = yes }
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { any_system = { has_star_flag = swarm_invasion_target_4 } } }
+				random_system = {
+					limit = { has_star_flag = swarm_invasion_target_3 }
+					random_neighbor_system = {
+						limit = { CmtTriggerSpawnableSystem = yes }
+						set_star_flag = swarm_invasion_target_4
+						random_system_planet = { CmtEffectCreateAdmiralty_PrethorynVanguard = yes }
+					}
+				}
+			}
+		}
+		CmtEffectFriendlyCrisis = yes
+	}
+}
+
+### Vanguard Arrives Notificartion
+country_event = {
+	id = crisis.18
+	title = crisis.18.name
+	desc = crisis.18.desc
+	picture = GFX_evt_physics_research
+	show_sound = event_alien_nature
+	location = event_target:prethoryn_invasion_system
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		random_system = {
+			limit = { has_star_flag = swarm_invasion_target_1 }
+			save_event_target_as = prethoryn_invasion_system
+		}
+	}
+	
+	option = {
+		name = crisis.18.a
+		trigger = {
+			has_spiritualist_government = yes
+			NOR = {
+				has_ethic = "ethic_fanatic_egalitarian"
+				has_ethic = "ethic_fanatic_authoritarian"
+				has_ethic = "ethic_fanatic_xenophile"
+				has_ethic = "ethic_fanatic_xenophobe"
+			}
+		}
+	}
+	option = {
+		name = crisis.18.b
+		trigger = {
+			has_militarist_government = yes
+			NOR = {
+				has_ethic = "ethic_fanatic_egalitarian"
+				has_ethic = "ethic_fanatic_authoritarian"
+				has_ethic = "ethic_fanatic_xenophile"
+				has_ethic = "ethic_fanatic_xenophobe"
+			}
+		}
+	}
+	option = {
+		name = crisis.18.c
+		trigger = {
+			has_materialist_government = yes
+			NOR = {
+				has_ethic = "ethic_fanatic_egalitarian"
+				has_ethic = "ethic_fanatic_authoritarian"
+				has_ethic = "ethic_fanatic_xenophile"
+				has_ethic = "ethic_fanatic_xenophobe"
+			}
+		}
+	}
+	option = {
+		name = crisis.18.d
+		trigger = {
+			has_pacifist_government = yes
+			NOR = {
+				has_ethic = "ethic_fanatic_egalitarian"
+				has_ethic = "ethic_fanatic_authoritarian"
+				has_ethic = "ethic_fanatic_xenophile"
+				has_ethic = "ethic_fanatic_xenophobe"
+			}
+		}
+	}
+	option = {
+		name = crisis.18.e
+		trigger = {
+			has_government = gov_megacorporation
+			NOR = {
+				has_ethic = "ethic_fanatic_egalitarian"
+				has_ethic = "ethic_fanatic_authoritarian"
+				has_ethic = "ethic_fanatic_xenophile"
+				has_ethic = "ethic_fanatic_xenophobe"
+			}
+		}
+	}
+	option = {
+		name = crisis.18.f
+		trigger = {
+			OR = {
+				has_generic_government = yes
+				has_government = gov_enlightened_monarchy
+				has_government = gov_elective_monarchy
+				has_government = gov_hive_mind
+				has_ethic = ethic_gestalt_consciousness
+				CmtTriggerIsZofeEmpireA = yes
+			}
+			NOR = {
+				has_ethic = "ethic_fanatic_egalitarian"
+				has_ethic = "ethic_fanatic_authoritarian"
+				has_ethic = "ethic_fanatic_xenophile"
+				has_ethic = "ethic_fanatic_xenophobe"
+			}
+		}
+	}
+	option = {
+		name = crisis.18.g
+		trigger = { has_ethic = "ethic_fanatic_xenophobe" }
+	}
+	option = {
+		name = crisis.18.h
+		trigger = { has_ethic = "ethic_fanatic_xenophile" }
+	}
+	option = {
+		name = crisis.18.i
+		trigger = { has_ethic = "ethic_fanatic_authoritarian" }
+	}
+	option = {
+		name = crisis.18.j
+		trigger = { has_ethic = "ethic_fanatic_egalitarian" }
+	}
+	
+	after = {
+		end_event_chain = "coming_storm_chain"
+		begin_event_chain = {
+			event_chain = "prethoryn_scourge_chain"
+			target = ROOT
+		}
+	}
+}
+
+### Main Invasion Arrives
+country_event = {
+	id = crisis.19
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		set_crisis_sound = swarm_crisis_ambient_stage_2
+		set_crisis_stage_2 = yes
+		set_global_flag = prethoryn_main_invasion
+		set_global_flag = prethoryn_arrival
+		set_global_flag = ongoing_prethoryn_invasion
+		
+		every_country = {
+			limit = { CmtTriggerIsPlayableEmpire = yes }
+			country_event = { id = crisis.20 }
+		}
+		observer_event = { id = observer.30 }
+		
+		if = {
+			limit = { NOT = { any_country = { is_country_type = swarm } } }		## For Case of Vanguard Annihilated
+			CmtEffectCreatePrethorynCountry = yes
+		}
+		
+		### FIRST SYSTEM
+		random_system = {
+			limit = { has_star_flag = swarm_invasion_target_1 }
+			if = {
+				limit = { 
+					event_target:prethoryn = { NOT = { any_owned_ship = { is_ship_class = shipclass_starbase } } }
+					any_fleet_in_system = { is_ship_class = shipclass_starbase }
+				}
+				CmtEffectDestroySystemStarbase = yes
+			}
+			create_starbase = {
+				size = starbase_swarm
+				owner = event_target:prethoryn
+			}
+			
+			random_system_planet = {
+				save_event_target_as = spawn_location
+				CmtEffectCreateAdmiralty_PrethorynBrood = yes
+			}
+		}
+			
+		### SECOND SYSTEM
+		random_system = {
+			limit = { has_star_flag = swarm_invasion_target_2 }
+			
+			CmtEffectDestroySystemStarbase = yes
+			create_starbase = {
+				size = starbase_swarm
+				owner = event_target:prethoryn
+			}
+			random_system_planet = {
+				save_event_target_as = spawn_location
+				CmtEffectCreateAdmiralty_PrethorynBrood = yes
+			}
+		}
+		
+		### THIRD SYSTEM
+		random_system = {
+			limit = { has_star_flag = swarm_invasion_target_3 }
+			
+			CmtEffectDestroySystemStarbase = yes
+			create_starbase = {
+				size = starbase_swarm
+				owner = event_target:prethoryn
+			}
+			
+			random_system_planet = {
+				save_event_target_as = spawn_location
+				CmtEffectCreateAdmiralty_PrethorynBrood = yes
+			}
+		}
+		
+		### FOURTH SYSTEM
+		random_system = {
+			limit = { has_star_flag = swarm_invasion_target_4 }
+			
+			CmtEffectDestroySystemStarbase = yes
+			create_starbase = {
+				size = starbase_swarm
+				owner = event_target:prethoryn
+			}
+			
+			random_system_planet = {
+				save_event_target_as = spawn_location
+				CmtEffectCreateAdmiralty_PrethorynBrood = yes
+			}
+		}
+		CmtEffectFriendlyCrisis = yes
+		
+		### Call Sentinels and Prethoryn Queen
+		every_country = {
+			limit = { CmtTriggerIsPrethoryn = yes }
+			if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 5 } } }
+				country_event = { id = crisis.50 days = 10 random = 20 }
+			}
+			if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPrethorynQueen value = 4 } } }
+				country_event = { id = crisis.100 days = 10 random = 20 }
+			}
+		}
+	}
+}
+
+### Main Invasion Arrives
+country_event = {
+	id = crisis.20
+	title = "crisis.20.name"
+	desc = "crisis.20.desc"
+	picture = GFX_evt_physics_research
+	show_sound = event_alien_nature
+	location = event_target:prethoryn_invasion_system
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		random_system = {
+			limit = { has_star_flag = swarm_invasion_target_1 }
+			save_event_target_as = prethoryn_invasion_system
+		}
+	}
+	
+	option = {
+		name = crisis.20.a
+	}
+}
+
+####################################
+###  Reinforcement of Prethoryn  ###
+####################################
+
+### Reinforcement of Combat Fleet (on_bi_yearly_pulse -> on_yearly_pulse)
+event = {
+	id = crisis.206
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		exists = event_target:prethoryn
+		event_target:prethoryn = {
+			CmtTriggerIsPrethoryn = yes
+			any_system_within_border = { exists = starbase }
+		}
+		NOT = { has_global_flag = CmtFlagNowHappen206 }		## To avoid double calling of on_yearly_pulse and on_bi_yearly_pulse
+	}
+	
+	immediate = {
+		set_timed_global_flag = { flag = CmtFlagNowHappen206 days = 3 }
+		event_target:CmtGlobalVar = {
+			set_variable = { which = CmtVarTemp value = @CmtConstPrethorynShipsUpperLimit }
+			multiply_variable = { which = CmtVarTemp value = CmtVarFleetPower_Prethoryn }
+			multiply_variable = { which = CmtVarTemp value = CmtVarCombatFleetNumber_Prethoryn }
+		}
+		event_target:prethoryn = {
+			every_owned_ship = { event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } } }
+			
+			if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value > 0 } } }
+				country_event = { id = crisis.207 }
+			}
+		}
+	}
+}
+
+### Called by crisis.206
+country_event = {
+	id = crisis.207
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		random_system_within_border = {
+			limit = { exists = starbase }
+			starbase = { CmtEffectCreateAdmiralty_PrethorynReinforcement = yes }
+		}
+		if = {
+			limit = { galaxy_percentage > 0.20 }
+			random_list = {
+				50 = {
+					random_system_within_border = {
+						limit = { exists = starbase }
+						starbase = { CmtEffectCreateAdmiralty_PrethorynReinforcement = yes }
+					}
+				}
+				50 = {
+					modifier = {
+						factor = 0
+						galaxy_percentage > 0.40
+					}
+				}
+			}
+		}
+	}
+}
+
+
+### Reinforcement of Prethoryn Armies (on_yearly_pulse)
+event = {
+	id = crisis.240
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_global_flag = ongoing_prethoryn_invasion
+		exists = event_target:prethoryn
+		event_target:prethoryn = { CmtTriggerIsPrethoryn = yes }
+	}
+	
+	immediate = {
+		event_target:CmtGlobalVar = {
+			set_variable = { which = CmtVarTemp value = @CmtConstPrethorynArmyUpperLimit }
+			multiply_variable = { which = CmtVarTemp value = CmtVarArmyPower_Prethoryn }
+			multiply_variable = { which = CmtVarTemp value = CmtVarArmyNumber_Prethoryn }
+		}
+		event_target:prethoryn = {
+			every_owned_army = { event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } } }
+			if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value > 0 } } }
+				
+				if = {
+					limit = { any_owned_planet = { is_planet_class = pc_infested } }
+					random_owned_planet = {
+						limit = { is_planet_class = pc_infested }
+						CmtEffectCreateAdmiralty_PrethorynArmy = yes
+					}
+				} else = { random_owned_ship = { CmtEffectCreateAdmiralty_PrethorynArmy = yes } }
+			}
+		}
+	}
+}
+
+### Reinforcement of Prethoryn Colonizers (on_yearly_pulse)
+event = {
+	id = crisis.204
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		exists = event_target:prethoryn
+		event_target:prethoryn = {
+			CmtTriggerIsPrethoryn = yes
+			num_ships > 10
+			count_owned_ships = {
+				limit = { is_ship_size = colony_ship_swarm }
+				count < @CmtConstPrethorynColonizerStdNum
+			}
+		}
+	}
+	
+	immediate = {
+		event_target:prethoryn = {
+			while = {
+				count = @CmtConstPrethorynColonizerStdNum
+				random_owned_ship = { CmtEffectCreateAdmiralty_PrethorynColonizer = yes }
+			}
+		}
+	}
+}
+
+### Reinforcement of Prethoryn Constructors (on_yearly_pulse)
+event = {
+	id = crisis.205
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		exists = event_target:prethoryn
+		event_target:prethoryn = {
+			CmtTriggerIsPrethoryn = yes
+			num_ships > 10
+		}
+	}
+	
+	immediate = {
+		event_target:CmtGlobalVar = {
+			set_variable = { which = CmtVarTemp value = @CmtConstPrethorynConstructorStdNum }
+			multiply_variable = { which = CmtVarTemp value = CmtVarConstructorNumber_Prethoryn }
+		}
+		event_target:prethoryn = {
+			every_owned_ship = {
+				limit = { is_ship_size = construction_ship_swarm }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } }
+			}
+			if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value > 0 } } }
+				while = {
+					count = @CmtConstPrethorynConstructorStdNum
+					random_owned_ship = { CmtEffectCreateAdmiralty_PrethorynConstructor = yes }
+				}
+			}
+		}
+	}
+}
+
+
+
+
+###################
+###  Sentinels  ###
+###################
+
+### Sentinel Order Found
+
+country_event = {
+	id = crisis.50
+	hide_window = yes
+	
+	trigger = {
+		has_global_flag = prethoryn_main_invasion
+		NOT = { has_global_flag = sentinels_founded }
+		NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 1 } } }
+		
+		CmtTriggerIsPrethoryn = yes
+		
+		OR = {
+			galaxy_percentage > 0.45
+			AND = {
+				NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 2 } } }
+				galaxy_percentage > 0.20
+			}
+			AND = {
+				NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 4 } } }
+				galaxy_percentage > 0.05
+			}
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 5 } }
+		}
+	}
+	
+	## Also called by crisis.19 if CmtVarSentinelRise = 5
+	mean_time_to_happen = {
+		months = 12
+		modifier = {
+			factor = 5
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 2 } }
+		}
+		modifier = {
+			factor = 0.1
+			has_global_flag = CmtFlagDebugMode
+		}
+	}
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = crisis.50 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectCallSentinel = yes
+		}
+	}
+}
+
+### Create Fleet (Initial/Reinforced, scope: this = fleet named sentinel_alpha, military station)
+fleet_event = {
+	id = crisis.60
+	hide_window = yes
+	
+	trigger = {
+		has_global_flag = ongoing_prethoryn_invasion
+		has_global_flag = sentinels_founded
+		owner = { is_country_type = sentinels }
+		is_same_value = event_target:sentinel_alpha
+	}
+
+	mean_time_to_happen = {
+		months = 100
+		modifier = {
+			factor = 0.01
+			has_global_flag = CmtFlagDebugMode
+		}
+	}
+	
+	immediate = {
+		event_target:CmtGlobalVar = {
+			set_variable = { which = CmtVarTemp value = @CmtConstSentinelShipsUpperLimit }
+			multiply_variable = { which = CmtVarTemp value = CmtVarFleetPower_Sentinel }
+			multiply_variable = { which = CmtVarTemp value = CmtVarCombatFleetNumber_Sentinel }
+		}
+		owner = { every_owned_ship = { event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } } } }
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value > 0 } } }
+			CmtEffectCreateAdmiralty_SentinelAttacker = yes
+		}
+	}
+}
+
+### Anatomy Files
+country_event = {
+	id = crisis.77
+	hide_window = yes
+	
+	trigger = {
+		has_global_flag = ongoing_prethoryn_invasion
+		is_country_type = sentinels
+		NOT = { has_global_flag = CmtFlagForbiddenAnatomy }
+		NOT = { has_country_flag = sentinel_anatomy_files }
+		exists = event_target:sentinel_alpha
+		exists = event_target:prethoryn
+		
+		event_target:prethoryn = {
+			OR = {
+				galaxy_percentage > 0.80
+				AND = {
+					NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 2 } } }
+					galaxy_percentage > 0.50
+				}
+				AND = {
+					event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 4 } }
+					galaxy_percentage > 0.40
+				}
+				AND = {
+					event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 5 } }
+					galaxy_percentage > 0.30
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 12
+		modifier = {
+			factor = 5
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 2 } }
+		}
+		modifier = {
+			factor = 0.1
+			has_global_flag = CmtFlagDebugMode
+		}
+	}
+	
+	immediate = {
+		set_country_flag = sentinel_anatomy_files
+		every_country = {
+			limit = { CmtTriggerIsEmpire = yes }
+			country_event = { id = crisis.78 }
+		}
+	}
+}
+
+### Ship Donation
+country_event = {
+	id = crisis.71
+	title = "sentinel_title"
+	desc = "crisis.71.desc"
+	
+	diplomatic = yes
+	
+	picture_event_data = {
+		portrait = event_target:sentinels
+		room = "ethic_spaceship_room"
+	}
+	
+	trigger = {
+		CmtTriggerIsPlayableEmpire = yes
+		has_global_flag = sentinels_founded
+		NOT = { has_country_flag = sentinel_donation }
+		check_variable = { which = swarm_fleet_kills value > 6 }
+		exists = event_target:sentinels
+		event_target:sentinels = {
+			count_owned_ships = { count > 30 }
+			root = { NOT = { is_at_war_with = prev } }
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 100
+	}
+	
+	immediate = {
+		set_country_flag = sentinel_donation
+	}
+	
+	option = {
+		name = crisis.71.a
+		response_text = crisis.71.a.response
+		custom_tooltip = sentinel_fleet_gift
+		hidden_effect = { capital_scope = { CmtEffectCreateAdmiraltyDonation_SentinelTaskforce = yes } }
+	}
+	option = {
+		name = crisis.71.b
+		response_text = crisis.71.b.response
+	}
+}
+
+### Sentinels Defeated
+country_event = {
+	id = crisis.80
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		is_country_type = sentinels
+		fromfrom = { is_ship_size = sentinel_station }
+		
+	}
+	
+	immediate = {
+		if = {
+			limit = { from = { CmtTriggerIsPrethoryn = yes } }
+			every_country = {
+				limit = { is_ai = no }
+				country_event = { id = crisis.81 }
+			}
+			observer_event = { id = observer.32 }
+		}
+		destroy_country = yes
+	}
+}
+
+
+
+
+
+#########################
+###  Prethoryn Queen  ###
+#########################
+
+### Wounded Queen Found (Pet Queen)
+country_event = {
+	id = crisis.100
+	hide_window = yes
+	
+	trigger = {
+		has_global_flag = prethoryn_main_invasion
+		NOT = { has_global_flag = injured_swarm_queen_global }
+		
+		CmtTriggerIsPrethoryn = yes
+		NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPrethorynQueen value = 1 } } }
+		any_system = {
+			exists = owner
+			owner = { CmtTriggerIsPrethoryn = yes }
+		}
+	}
+	
+	## Also called by crisis.19 if CmtVarPrethorynQueen = 4
+	mean_time_to_happen = {
+		months = 820
+		modifier = {
+			factor = 0.15
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarPrethorynQueen value = 3 } }
+		}
+		modifier = {
+			factor = 0.002
+			has_global_flag = CmtFlagDebugMode
+		}
+	}
+	
+	immediate = {
+		set_country_flag = injured_swarm_queen
+		set_global_flag = injured_swarm_queen_global
+		random_system_within_border = {
+			save_event_target_as = queen_system
+			create_ambient_object = {
+				type = "injured_queen_object"
+				location = solar_system
+			}
+			last_created_ambient_object = { save_event_target_as = injured_queen }
+			create_ambient_object = {
+				type = "large_debris_object"
+			}
+			last_created_ambient_object = {
+				set_location = {
+					target = event_target:injured_queen
+					distance = 5
+					angle = random
+				}
+				set_ambient_object_flag = dead_prethoryn
+			}
+			create_ambient_object = {
+				type = "dead_swarm_small_object"
+			}
+			last_created_ambient_object = {
+				set_location = {
+					target = event_target:injured_queen
+					distance = 15
+					angle = random
+				}
+				set_ambient_object_flag = dead_prethoryn
+			}
+			create_ambient_object = {
+				type = "dead_swarm_small_object"
+			}
+			last_created_ambient_object = {
+				set_location = {
+					target = event_target:injured_queen
+					distance = 20
+					angle = random
+				}
+				set_ambient_object_flag = dead_prethoryn
+			}
+			create_ambient_object = {
+				type = "dead_swarm_small_object"
+			}
+			last_created_ambient_object = {
+				set_location = {
+					target = event_target:injured_queen
+					distance = 25
+					angle = random
+				}
+				set_ambient_object_flag = dead_prethoryn
+			}
+			create_ambient_object = {
+				type = "dead_swarm_large_object"
+			}
+			last_created_ambient_object = {
+				set_location = {
+					target = event_target:injured_queen
+					distance = 10
+					angle = random
+				}
+				set_ambient_object_flag = dead_prethoryn
+			}
+			create_ambient_object = {
+				type = "dead_swarm_large_object"
+			}
+			last_created_ambient_object = {
+				set_location = {
+					target = event_target:injured_queen
+					distance = 15
+					angle = random
+				}
+				set_ambient_object_flag = dead_prethoryn
+			}
+			create_ambient_object = {
+				type = "dead_swarm_large_object"
+			}
+			last_created_ambient_object = {
+				set_location = {
+					target = event_target:injured_queen
+					distance = 20
+					angle = random
+				}
+				set_ambient_object_flag = dead_prethoryn
+			}
+		}
+		every_country = {
+			limit = { CmtTriggerIsPlayableEmpire = yes }
+			country_event = { id = crisis.101 }
+		}
+	}
+}
+
+### Queen Captured (Pet Queen)
+ship_event = {
+	id = crisis.105
+	title = "crisis.105.name"
+	desc = "crisis.105.desc"
+	picture = GFX_evt_society_research
+	show_sound = event_alien_nature
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		owner = {
+			save_event_target_as = ship_owner
+			set_country_flag = queen_captured
+		}
+		solar_system = { save_event_target_as = queen_system_1 }
+		random_country = {
+			limit = { is_country_type = swarm }
+			owner_species = { save_event_target_as = swarm_species }
+		}
+		every_country = {
+			limit = {
+				CmtTriggerIsPlayableEmpire = yes
+				has_special_project = CAPTURE_QUEEN
+				NOT = { is_same_value = event_target:ship_owner }
+			}
+			abort_special_project = {
+				type = "CAPTURE_QUEEN"
+				location = fromfrom
+			}
+			country_event = { id = crisis.107 }
+		}
+		destroy_ambient_object = fromfrom
+	}
+	
+	option = {
+		name = crisis.105.a
+		hidden_effect = {
+			owner = { CmtEffectCreateAdmiral_PetQueen = yes }
+			root = { CmtEffectCreateAdmiralty_PrethorynPetQueen = yes }
+			solar_system = {
+				every_system_ambient_object = {
+					limit = { has_ambient_object_flag = dead_prethoryn }
+					destroy_ambient_object = this
+				}
+			}
+		}
+	}
+}
+
+
+### Queen Breeds (Pet Queen)
+fleet_event = {
+	id = crisis.106
+	hide_window = yes
+	
+	trigger = {
+		has_fleet_flag = pet_queen
+		any_ship = { is_ship_size = queen_swarm }
+		OR = {
+			AND = {
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Prethoryn value > 2.875 } }
+				num_ships < 180
+			}
+			AND = {
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Prethoryn value > 2.125 } }
+				num_ships < 90
+			}
+			AND = {
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Prethoryn value > 1.125 } }
+				num_ships < 60
+			}
+			AND = {
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Prethoryn value > 0.375 } }
+				num_ships < 30
+			}
+			num_ships < 15
+		}
+	}
+	
+	mean_time_to_happen = { months = 2 }
+	
+	immediate = {
+		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Prethoryn } }
+		while = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.875 } } }
+			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -1 } }
+			random_list = {
+				33 = { CmtEffectCreateShip_PetQueenLarge = yes }
+				66 = { CmtEffectCreateShip_PetQueenSmall = yes }
+			}
+		}
+		while = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+			random_list = {
+				34 = {
+					event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = 0 } }
+					CmtEffectCreateShip_PetQueenLarge = yes
+				}
+				66 = {
+					event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = 0 } }
+					CmtEffectCreateShip_PetQueenSmall = yes
+				}
+				300 = { }
+			}
+		}
+	}
+}
+
+### Hole in the Void (Pet Queen)
+country_event = {
+	id = crisis.234
+	title = "crisis.234.name"
+	desc = "crisis.234.desc"
+	picture = GFX_evt_physics_research
+	show_sound = event_alien_nature
+	
+	trigger = {
+		CmtTriggerIsPlayableEmpire = yes
+		any_owned_leader = { has_leader_flag = captured_queen }
+		NOT = { CmtTriggerExistPrethoryn = yes }
+		OR = {
+			has_global_flag = CmtFlagPrethorynUnlimitedFlavor
+			owner_species = { has_trait = trait_psionic }
+		}
+		NOT = { has_country_flag = crisis.234 }
+	}
+	
+	mean_time_to_happen = {
+		years = 100
+		modifier = {
+			factor = 0.3
+			has_global_flag = CmtFlagPrethorynUnlimitedFlavor
+		}
+	}
+	
+	immediate = {
+		set_country_flag = crisis.234
+	}
+	
+	option = {
+		name = crisis.234.a
+		add_monthly_resource_mult = {
+			resource = physics_research
+			value = 10
+			min = 1000
+			max = 5000
+		}
+	}
+}
+
+
+### Queen Captured (Relic Queen)
+country_event = {
+	id = crisis.250
+	title = "crisis.250.name"
+	desc = "crisis.250.desc"
+	picture = GFX_evt_unidentified_monster
+	show_sound = event_mystic_reveal
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = GOOD
+		hidden_effect = { capital_scope = { CmtEffectCreateAdmiralty_PrethorynRelicQueen = yes } }
+	}
+}
+
+
+############################
+###  Defeated Prethoryn  ###
+############################
+
+# Destroy Prethoryn
+event = {
+	id = crisis.208
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		exists = event_target:prethoryn
+		event_target:prethoryn = {
+			num_ships < 6
+			NOT = { any_planet_within_border = { is_planet_class = pc_infested } }
+		}
+	}
+	
+	immediate = {
+		event_target:prethoryn = { destroy_country = yes }
+	}
+}
+
+### Prethoryn After Defeated Process
+country_event = {
+	id = crisis.210
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		is_country_type = swarm
+	}
+	
+	immediate = {
+		remove_global_flag = ongoing_prethoryn_invasion
+		event_target:CmtGlobalVar = { country_event = { id = crisis.119 days = 360 } }		## Feral Prethoryn
+		every_country = {
+			limit = { 
+				CmtTriggerIsEmpire = yes
+				NOT = { has_global_flag = galactic_community_formed } # Crisis reward is handled through Galactic Focus if the community exists
+			}
+			country_event = { id = crisis.211 }
+		}
+		observer_event = { id = observer.33 }
+		if = {
+			limit = { exists = event_target:sentinels }
+			event_target:sentinels = { country_event = { id = crisis.75 days = 15 random = 10 } }
+		}
+	}
+}
+
+
+
+#########################
+###  Feral Prethoryn  ###
+#########################
+
+
+### Feral Prethoryn Can Spawn Flag, called by crisis.210 (Prethoryn Defeated)
+country_event = {
+	id = crisis.119
+	hide_window = yes
+	
+	is_triggered_only = yes
+		
+	immediate = {
+		set_variable = { which = feral_prethoryn_spawned value = 0 }
+		if = {
+			limit = { check_variable = { which = CmtVarFeralPrethoryn value = 1 } }
+		} else_if = {
+			limit = { check_variable = { which = CmtVarFeralPrethoryn value = 2 } }
+			set_timed_global_flag = { flag = feral_prethoryn_can_spawn days = 3600 }	## 10 yr
+		} else_if = {
+			limit = { check_variable = { which = CmtVarFeralPrethoryn value = 4 } }
+			set_timed_global_flag = { flag = feral_prethoryn_can_spawn days = 18000 }	## 50 yr
+		} else = { set_timed_global_flag = { flag = feral_prethoryn_can_spawn days = 5400 } }	## 15 yr 
+	}
+}
+
+
+### Spawning to Planet (on_monthly_pulse)
+event = {
+	id = crisis.120
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_global_flag = feral_prethoryn_can_spawn
+		event_target:CmtGlobalVar = {
+			NOT = { check_variable = { which = CmtVarFeralPrethoryn value = 1 } }
+			OR = {
+				check_variable = { which = feral_prethoryn_spawned value < 5 }
+				AND = {
+					NOT = { check_variable = { which = CmtVarFeralPrethoryn value = 2 } }
+					check_variable = { which = feral_prethoryn_spawned value < 10 }
+				}
+				check_variable = { which = CmtVarFeralPrethoryn value = 4 }
+			}
+		}
+		any_system = { CmtTriggerFeralPrethorynSpawnableSystem = yes }
+	}
+	
+	immediate = {
+		random_list = {
+			10 = {
+				event_target:CmtGlobalVar = { change_variable = { which = feral_prethoryn_spawned value = 1 } }
+				if = {
+					limit = { NOT = { any_country = { is_country_type = feral_prethoryn } } }
+					random_system = {
+						limit = { CmtTriggerFeralPrethorynSpawnableSystem = yes }
+						set_star_flag = feral_prethoryn_system
+						save_event_target_as = feral_prethoryn_system
+						create_species = {
+							name = "NAME_Prethoryn"
+							class = SWARM
+							portrait = random
+							traits = random
+							immortal = yes
+							effect = { save_event_target_as = feral_prethoryn_species }
+						}
+						create_country = {
+							name = "NAME_Feral_Prethoryn"
+							type = "feral_prethoryn"
+							species = event_target:feral_prethoryn_species
+							name_list = "Prethoryn"
+							flag = {
+								icon= {
+									category = "special"
+									file = "the_swarm.dds"
+								}
+								background= {
+									category = "backgrounds"
+									file = "new_dawn.dds"
+								}
+								colors={ "red_orange" "grey" "null" "null" }
+							}
+							effect = {
+								save_global_event_target_as = feral_prethoryn
+								create_ship_design = { design = "NAME_Swarm_Starbase" }
+								add_ship_design = last_created_design
+							}
+						}
+						create_starbase = {
+							size = starbase_swarm
+							owner = event_target:feral_prethoryn
+						}
+						CmtEffectCreateAdmiraltySystem_FeralPrethorynGarrisonLarge = yes	## scope = stellar system
+						every_country = { establish_communications_no_message = event_target:feral_prethoryn }
+						if = {
+							limit = { NOT = { has_global_flag = feral_prethoryn_appeared } }
+							every_country = {
+								limit = { is_ai = no }
+								country_event = { id = crisis.121 }
+							}
+						}
+						set_global_flag = feral_prethoryn_appeared
+					}
+					CmtEffectFriendlyCrisis = yes
+				} else_if = {
+					limit = { any_country = { is_country_type = feral_prethoryn } }
+					random_system = {
+						limit = { CmtTriggerFeralPrethorynSpawnableSystem = yes }
+						set_star_flag = feral_prethoryn_system
+						save_event_target_as = feral_prethoryn_system
+						create_starbase = {
+							size = starbase_swarm
+							owner = event_target:feral_prethoryn
+						}
+						CmtEffectCreateAdmiraltySystem_FeralPrethorynGarrisonSmall = yes	## scope = stellar system
+					}
+				}
+			}
+			90 = {
+				modifier = {
+					factor = 2
+					check_variable = { which = CmtVarFeralPrethoryn value = 2 }
+				}
+				modifier = {
+					factor = 0.4
+					check_variable = { which = CmtVarFeralPrethoryn value = 4 }
+				}
+			}
+		}
+	}
+}
+
+### Roaming Feral Prethoryn (on_yearly_pulse)
+event = {
+	id = crisis.122
+	hide_window = yes
+	
+	is_triggered_only = yes
+
+	trigger = {
+		exists = event_target:feral_prethoryn
+		event_target:feral_prethoryn = { NOT = { any_owned_fleet = { has_fleet_flag = roaming_prethoryn_fleet } } }
+	}
+	
+	immediate = {
+		random_list = {
+			50 = {
+				event_target:feral_prethoryn = {
+					random_system_within_border = {
+						random_system_planet = { CmtEffectCreateAdmiralty_FeralPrethorynRoaming1 = yes }
+					}
+				}
+			}
+			50 = {
+				modifier = {
+					factor = 3
+					check_variable = { which = CmtVarFeralPrethoryn value = 2 }
+				}
+				modifier = {
+					factor = 0
+					check_variable = { which = CmtVarFeralPrethoryn value = 4 }
+				}
+			}
+		}
+	}
+}
+
+
+### Feral Prethoryn Infighting (on_monthly_pulse)
+event = {
+	id = crisis.123
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		any_country = { is_country_type = feral_prethoryn }
+		NOT = { has_global_flag = feral_prethoryn_infighting_ongoing }
+	}
+	
+	immediate = {
+		random_list = {
+			10 = {
+				random_country = {
+					limit = { is_country_type = feral_prethoryn }
+					country_event = { id = crisis.124 }
+				}
+			}
+			90 = {
+				modifier = {
+					factor = 2
+					check_variable = { which = CmtVarFeralPrethoryn value = 2 }
+				}
+				modifier = {
+					factor = 0.4
+					check_variable = { which = CmtVarFeralPrethoryn value = 4 }
+				}
+			}
+		}
+	}
+}
+
+
+################################
+###  Diplomacy of Prethoryn  ###
+################################
+
+### Alien Transmission
+country_event = {
+	id = crisis.16
+	title = "TRANSMISSION"
+	#desc = "crisis.16.desc"
+
+	desc = {
+		text = "crisis.16.desc"
+		trigger = { CmtTriggerPrethorynUnconectableCountry = yes }
+	}
+	desc = {
+		text = "crisis.16.b.desc"
+		trigger = { owner_species = { has_trait = trait_psionic } }
+	}
+	desc = {
+		text = "crisis.16.c.desc"
+		trigger = { CmtTriggerPrethorynExpandedHive = yes }
+	}
+	
+	diplomatic = yes
+	
+	picture_event_data = {
+		portrait = swarm1
+		room = "swarm_room"
+	}
+	
+	is_triggered_only = yes
+
+	option = {
+		name = crisis.16.a
+		trigger = { owner_species = { NOT = { has_trait = trait_hive_mind } } }
+	}
+
+	option = {
+		name = crisis.16.b
+		trigger = { owner_species = { has_trait = trait_hive_mind } }
+	}
+}
+
+
+
+### Swarm Diplomacy
+country_event = {
+	id = crisis.30
+	title = "TRANSMISSION"
+	
+	desc = {
+		text = crisis.30.desc_01
+		trigger = { CmtTriggerPrethorynUnconectableCountry = yes }
+	}
+	desc = {
+		text = crisis.30.desc_02
+		trigger = { CmtTriggerPrethorynUnconectableCountry = yes }
+	}
+	desc = {
+		text = crisis.30.desc_03
+		trigger = { CmtTriggerPrethorynUnconectableCountry = yes }
+	}
+	desc = {
+		text = crisis.30.desc_04
+		trigger = { owner_species = { has_trait = trait_psionic } }
+	}
+	desc = {
+		text = crisis.30.desc_05
+		trigger = { owner_species = { has_trait = trait_psionic } }
+	}
+	desc = {
+		text = crisis.30.desc_06
+		trigger = { owner_species = { has_trait = trait_psionic } }
+	}
+	desc = {
+		text = crisis.30.desc_07
+		trigger = { CmtTriggerPrethorynExpandedHive = yes }
+	}
+	desc = {
+		text = crisis.30.desc_08
+		trigger = { CmtTriggerPrethorynExpandedHive = yes }
+	}
+	desc = {
+		text = crisis.30.desc_09
+		trigger = { CmtTriggerPrethorynExpandedHive = yes }
+	}
+	
+	diplomatic = yes
+	
+	picture_event_data = {
+		portrait = swarm1
+		room = "swarm_room"
+	}
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		from = { is_country_type = swarm }
+	}
+	
+	option = {
+		name = crisis.30.a
+		trigger = { CmtTriggerPrethorynUnconectableCountry = yes }
+		response_text = crisis.30.a.response
+	}
+	option = {
+		name = crisis.30.a
+		trigger = { CmtTriggerPrethorynExpandedPsi = yes }
+		response_text = crisis.30.k.response
+	}
+	option = {
+		name = crisis.30.a.2
+		trigger = { owner_species = { has_trait = trait_hive_mind } }
+		response_text = crisis.30.k.response
+	}
+	
+	option = {
+		name = crisis.30.b
+		trigger = {
+			OR = {
+				has_ethic = "ethic_pacifist"
+				has_ethic = "ethic_fanatic_pacifist"
+			}
+			CmtTriggerPrethorynUnconectableCountry = yes
+		}
+		response_text = crisis.30.b.response
+	}
+	option = {
+		name = crisis.30.c
+		trigger = {
+			OR = {
+				has_ethic = "ethic_militarist"
+				has_ethic = "ethic_fanatic_militarist"
+			}
+			CmtTriggerPrethorynUnconectableCountry = yes
+		}
+		response_text = crisis.30.c.response
+	}
+	option = {
+		name = crisis.30.d
+		trigger = {
+			OR = {
+				has_ethic = "ethic_xenophobe"
+				has_ethic = "ethic_fanatic_xenophobe"
+			}
+			CmtTriggerPrethorynUnconectableCountry = yes
+		}
+		response_text = crisis.30.d.response
+	}
+	option = {
+		name = crisis.30.e
+		trigger = {
+			OR = {
+				has_ethic = "ethic_xenophile"
+				has_ethic = "ethic_fanatic_xenophile"
+			}
+			CmtTriggerPrethorynUnconectableCountry = yes
+		}
+		response_text = crisis.30.e.response
+	}
+	option = {
+		name = crisis.30.f
+		trigger = {
+			OR = {
+				has_ethic = "ethic_spiritualist"
+				has_ethic = "ethic_fanatic_spiritualist"
+			}
+			CmtTriggerPrethorynUnconectableCountry = yes
+		}
+		response_text = crisis.30.f.response
+	}
+	option = {
+		name = crisis.30.g
+		trigger = { CmtTriggerPrethorynExpandedPsi = yes }
+		response_text = crisis.30.g.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = crisis.30.h
+		trigger = { CmtTriggerPrethorynExpandedPsi = yes }
+		response_text = crisis.30.h.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = crisis.30.i
+		trigger = { CmtTriggerPrethorynExpandedPsi = yes }
+		response_text = crisis.30.i.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = crisis.30.j
+		trigger = { CmtTriggerPrethorynExpandedPsi = yes }
+		response_text = crisis.30.j.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = crisis.30.g.2
+		trigger = { owner_species = { has_trait = trait_hive_mind } }
+		response_text = crisis.30.g.2.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = crisis.30.h
+		trigger = { owner_species = { has_trait = trait_hive_mind } }
+		response_text = crisis.30.h.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = crisis.30.i
+		trigger = { owner_species = { has_trait = trait_hive_mind } }
+		response_text = crisis.30.i.response
+		is_dialog_only = yes
+	}
+	option = {
+		name = crisis.30.j.b
+		trigger = { owner_species = { has_trait = trait_hive_mind } }
+		response_text = crisis.30.j.response
+		is_dialog_only = yes
+	}
+}
+
+
+
+################
+###  Others  ###
+################
+
+### Purge Begins -> CrisisManagerControl.0041
+country_event = {
+	id = crisis.201
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = { always = no }
+}
+
+
+
+
+

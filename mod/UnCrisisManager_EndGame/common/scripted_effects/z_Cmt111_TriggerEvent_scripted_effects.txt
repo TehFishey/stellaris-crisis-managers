@@ -1,0 +1,296 @@
+
+
+########################################################
+########################################################
+#####                                              #####
+#####    Crisis Manager                            #####
+#####                                              #####
+#####    Scripted Effects for Triggering Crises    #####
+#####    And Opening Event Chains                  #####
+#####                                              #####
+########################################################
+########################################################
+
+
+########################
+###  Trigger Events  ###
+########################
+
+CmtEffectTriggerPrethoryn = {
+	set_global_flag = galactic_crisis_happened
+	event_target:CmtGlobalVar = {
+		if = {
+			limit = { check_variable = { which = CmtVarMultiple value = 5 } }
+			CmtEffectTriggerTripleCrisis = yes
+		} else = {
+			set_global_flag = CmtFlagPrethorynTriggered
+			country_event = { id = CrisisManagerControl.1000 }
+		}
+		
+		if = {
+			limit = { check_variable = { which = CmtVarMultiple value = 4 } }
+			CmtEffectSetIntervalFlag = yes
+		}
+		### For only debugging
+		change_variable = { which = GmtVarDebugCountTriggerPrethoryn value = 1 }
+	}
+}
+
+CmtEffectTriggerExds = {
+	set_global_flag = galactic_crisis_happened
+	event_target:CmtGlobalVar = {
+		if = {
+			limit = { check_variable = { which = CmtVarMultiple value = 5 } }
+			CmtEffectTriggerTripleCrisis = yes
+		} else = {
+			set_global_flag = CmtFlagExdsTriggered
+			country_event = { id = CrisisManagerControl.2000 }
+		}
+		
+		if = {
+			limit = { check_variable = { which = CmtVarMultiple value = 4 } }
+			CmtEffectSetIntervalFlag = yes
+		}
+		### For only debugging
+		change_variable = { which = GmtVarDebugCountTriggerExds value = 1 }
+	}
+}
+
+CmtEffectTriggerContingency = {
+	set_global_flag = galactic_crisis_happened
+	event_target:CmtGlobalVar = {
+		if = {
+			limit = { check_variable = { which = CmtVarMultiple value = 5 } }
+			CmtEffectTriggerTripleCrisis = yes
+		} else = {
+			set_global_flag = CmtFlagContingencyTriggerd
+			country_event = { id = CrisisManagerControl.3000 }
+		}
+		
+		if = {
+			limit = { check_variable = { which = CmtVarMultiple value = 4 } }
+			CmtEffectSetIntervalFlag = yes
+		}
+		### For only debugging
+		change_variable = { which = GmtVarDebugCountTriggerContingency value = 1 }
+	}
+}
+
+CmtEffectTriggerForcedEoc = {
+	set_global_flag = galactic_crisis_happened
+	event_target:CmtGlobalVar = {
+		if = {
+			limit = { check_variable = { which = CmtVarMultiple value = 5 } }
+			CmtEffectTriggerTripleCrisis = yes
+		} else = {
+			set_global_flag = CmtFlagForcedEocTriggered
+			country_event = { id = CrisisManagerControl.4000 }
+		}
+		
+		if = {
+			limit = { check_variable = { which = CmtVarMultiple value = 4 } }
+			CmtEffectSetIntervalFlag = yes
+		}
+		### For only debugging
+		change_variable = { which = GmtVarDebugCountTriggerForcedEoc value = 1 }
+	}
+}
+
+CmtEffectTriggerNoCrisis = {
+	### For only debugging
+	event_target:CmtGlobalVar = { change_variable = { which = GmtVarDebugCountTriggerNon value = 1 } }
+}
+
+CmtEffectTriggerTripleCrisis = {
+	set_global_flag = galactic_crisis_happened
+	
+	event_target:CmtGlobalVar = {
+		if = {
+			limit = { NOT = { CmtTriggerForbiddenPrethoryn = yes } }
+			set_global_flag = CmtFlagPrethorynTriggered
+			country_event = { id = CrisisManagerControl.1000 }
+		}
+		if = {
+			limit = { NOT = { CmtTriggerForbiddenExds = yes } }
+			set_global_flag = CmtFlagExdsTriggered
+			country_event = { id = CrisisManagerControl.2000 }
+		}
+		if = {
+			limit = { NOT = { CmtTriggerForbiddenContingency = yes } }
+			set_global_flag = CmtFlagContingencyTriggerd
+			country_event = { id = CrisisManagerControl.3000 }
+		}
+		if = {
+			limit = { NOT = { CmtTriggerForbiddenForcedEoc = yes } }
+			set_global_flag = CmtFlagForcedEocTriggered
+			country_event = { id = CrisisManagerControl.4000 }
+		}
+	}
+}
+
+
+
+
+
+########################
+###  Opening Events  ###
+########################
+
+### Prethoryn
+
+CmtEffectSubspaceEchoes = { 	### Alt. crisis.10
+	every_country = {
+		limit = { CmtTriggerIsPlayableEmpire = yes }
+		country_event = { id = crisis.11 }
+	}
+}
+
+CmtEffectApproachingOuterRim = {
+	country_event = { id = crisis.12 }
+}
+
+CmtEffectSubspaceSignal = { 	### Alt. crisis.14
+	every_country = {
+		limit = { CmtTriggerIsPlayableEmpire = yes }
+		country_event = { id = crisis.15 }
+	}
+}
+
+CmtEffectVanguardArrives = {
+	country_event = { id = crisis.17 }
+}
+
+CmtEffectPrethorynMainInvasionArrives = {
+	country_event = { id = crisis.19 }
+}
+
+
+
+### Extradimensionals
+
+CmtEffectUnbiddenAppear = {
+	country_event = { id = crisis.1000 }
+}
+
+CmtEffectAberrantAppear = {
+	country_event = { id = crisis.1100 }
+}
+
+CmtEffectVehementAppear = {
+	country_event = { id = crisis.1200 }
+}
+
+
+### Contingency
+
+CmtEffectStartGhostSignal = {
+	if = {
+		limit = { NOT = { has_global_flag = CmtFlagSubmarineCrisis } }
+		every_country = {
+			limit = { CmtTriggerIsPlayableEmpire = yes }
+			country_event = { id = crisis.2010 }
+		}
+	}
+}
+
+CmtEffectSynthsActStrange = {
+	if = {
+		limit = { NOT = { has_global_flag = CmtFlagSubmarineCrisis } }
+		every_country = {
+			limit = { CmtTriggerIsPlayableEmpire = yes }
+			country_event = { id = crisis.2006 }
+		}
+		every_country = {
+			limit = { has_authority = auth_machine_intelligence }
+			country_event = { id = crisis.2500 }
+		}
+	}
+}
+
+CmtEffectSynthsDisappear = {
+	if = {
+		limit = { NOT = { has_global_flag = CmtFlagSubmarineCrisis } }
+		every_country = {
+			limit = { CmtTriggerIsPlayableEmpire = yes }
+			country_event = { id = crisis.2007 }
+		}
+	}
+}
+
+
+CmtEffectSyntheticDisappearances = {
+	if = {
+		limit = { NOT = { has_global_flag = CmtFlagSubmarineCrisis } }
+		every_country = {
+			limit = { CmtTriggerIsPlayableEmpire = yes }
+			country_event = { id = crisis.2020 }
+		}
+	}
+}
+
+CmtEffectContingencySummons = {
+	if = {
+		limit = { NOT = { has_global_flag = CmtFlagSubmarineCrisis } }
+		every_country = {
+			limit = { CmtTriggerIsPlayableEmpire = yes }
+			country_event = { id = crisis.2021 }
+		}
+	}
+}
+
+CmtEffectContingencyArrival = {
+	every_country = {
+		limit = { CmtTriggerIsPlayableEmpire = yes }
+		country_event = { id = crisis.2022 }
+	}
+}
+
+CmtEffect1stMachineWorld = {
+	random_planet = {
+		limit = { has_planet_flag = machine_world_1 }
+		planet_event = { id = crisis.2025 }
+	}
+}
+
+CmtEffect2ndMachineWorld = {
+	random_planet = {
+		limit = { has_planet_flag = machine_world_2 }
+		planet_event = { id = crisis.2026 }
+	}
+}
+
+CmtEffect3rdMachineWorld = {
+	random_planet = {
+		limit = { has_planet_flag = machine_world_3 }
+		planet_event = { id = crisis.2027 }
+	}
+}
+
+CmtEffect4thMachineWorld = {
+	random_planet = {
+		limit = { has_planet_flag = machine_world_4 }
+		planet_event = { id = crisis.2028 }
+	}
+}
+
+
+
+### Forced End of Cycle
+
+CmtEffectForcedCovenantEoc = {
+	event_target:CmtTargetVictimForcedEoc = {
+		country_event = { id = CrisisManagerControl.4101 }
+	}
+}
+
+
+CmtEffectReckoningForcedEoc = {
+	event_target:CmtTargetVictimForcedEoc = {
+		country_event = { id = CrisisManagerControl.4102 }
+	}
+}
+
+
+
+
+

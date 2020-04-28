@@ -1,0 +1,38 @@
+
+#################################################
+#################################################
+#####                                       #####
+#####    Crisis Manager                     #####
+#####                                       #####
+#####    country_types for Player Crisis    #####
+#####                                       #####
+#################################################
+#################################################
+
+
+
+CmtCountryIiquidated = {
+	default_ships = no
+	has_complete_sensor = yes
+	has_capital = no
+	share_communications = no
+	government = no
+	#observable = yes
+	
+	ai = {
+		enabled = no
+	}
+	faction = {
+		hostile = no
+		needs_border_access = no
+		generate_borders = no
+		needs_colony = no
+		auto_delete = no
+	}
+	modules = {
+		standard_event_module = {} # Needed for events
+		exclusive_diplomacy_module = {
+			contact_rule = script_only
+		}
+	}
+}

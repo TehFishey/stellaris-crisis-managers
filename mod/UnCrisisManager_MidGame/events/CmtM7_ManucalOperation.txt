@@ -1,0 +1,3721 @@
+namespace = CrisisManagerMenu
+
+###################################
+###################################
+#####                         #####
+#####    Crisis Manager       #####
+#####                         #####
+#####    Manual Operations    #####
+#####                         #####
+###################################
+###################################
+
+###################
+###  Main Menu  ###
+###################
+
+country_event = {
+	id = CrisisManagerMenu.7000
+	title = CrisisManagerMenu.7000.name
+	desc = CrisisManagerMenu.7000.desc
+	picture = GFX_evt_CmtMenuA
+	is_triggered_only = yes
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	### Trigger End-Game Crisis
+	option = {
+		name = CrisisManagerMenu.7000.7110.A.name
+		custom_tooltip = CrisisManagerMenu.7000.7110.A.tooltip
+		trigger = {
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				has_global_flag = galactic_crisis_happened
+				CmtTriggerForbiddenPrethoryn = yes
+				has_global_flag = sentinels_founded
+				CmtTriggerForbiddenExds = yes
+				has_global_flag = extradimensional_second_portal
+				has_global_flag = extradimensional_third_portal
+				CmtTriggerForbiddenContingency = yes
+				has_global_flag = cybrex_resurface
+				CmtTriggerForbiddenForcedEoc = yes
+			}
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7110 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7000.7110.B.name
+		custom_tooltip = CrisisManagerMenu.7000.B.7110.tooltip
+		trigger = {
+			has_global_flag = CmtFlagEndGameEdition
+			has_global_flag = galactic_crisis_happened
+			CmtTriggerForbiddenPrethoryn = yes
+			has_global_flag = sentinels_founded
+			CmtTriggerForbiddenExds = yes
+			has_global_flag = extradimensional_second_portal
+			has_global_flag = extradimensional_third_portal
+			CmtTriggerForbiddenContingency = yes
+			has_global_flag = cybrex_resurface
+			CmtTriggerForbiddenForcedEoc = yes
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+	}
+	
+	### Trigger Awakening of Sleeper
+	option = {
+		name = CrisisManagerMenu.7000.7135.A.name
+		custom_tooltip = CrisisManagerMenu.7000.7135.A.tooltip
+		trigger = {
+			has_global_flag = CmtFlagSleeperEdition
+			any_country = { CmtTriggerIsOrganicSleeper = yes }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7135 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7000.7135.B.name
+		custom_tooltip = CrisisManagerMenu.7000.7135.B.tooltip
+		trigger = {
+			has_global_flag = CmtFlagSleeperEdition
+			NOT = { any_country = { CmtTriggerIsOrganicSleeper = yes } }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+	}
+	
+	### War in Heaven
+	option = {
+		name = CrisisManagerMenu.7000.7136.A.name
+		custom_tooltip = CrisisManagerMenu.7000.7136.A.tooltip
+		trigger = {
+			host_has_dlc = "Leviathans Story Pack"
+			has_global_flag = CmtFlagSleeperEdition
+			NOR = {
+				has_global_flag = CmtFlagWarInHeavenTriggered
+				count_country = { limit = { CmtTriggerIsOrganicSleeper = yes } count < 2 }
+			}
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7136 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7000.7136.B.name
+		custom_tooltip = CrisisManagerMenu.7000.7136.B.tooltip
+		trigger = {
+			host_has_dlc = "Leviathans Story Pack"
+			has_global_flag = CmtFlagSleeperEdition
+			count_country = { limit = { CmtTriggerIsOrganicSleeper = yes } count < 2 }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7000.7136.C.name
+		custom_tooltip = CrisisManagerMenu.7000.7136.C.tooltip
+		trigger = {
+			host_has_dlc = "Leviathans Story Pack"
+			has_global_flag = CmtFlagSleeperEdition
+			has_global_flag = CmtFlagWarInHeavenTriggered
+			NOT = { count_country = { limit = { CmtTriggerIsOrganicSleeper = yes } count < 2 } }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+	}
+	
+	### Khan
+	option = {
+		name = CrisisManagerMenu.7000.7138.A.name
+		custom_tooltip = CrisisManagerMenu.7000.7138.A.tooltip
+		trigger = {
+			host_has_dlc = "Apocalypse"
+			has_global_flag = CmtFlagMidGameEdition
+			NOT = { CmtTriggerNowInKhanCrisis = yes }
+			any_country = { CmtTriggerHasPotentialKhanAwaking = yes }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7138 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7000.7138.B.name
+		custom_tooltip = CrisisManagerMenu.7000.7138.B.tooltip
+		trigger = {
+			host_has_dlc = "Apocalypse"
+			has_global_flag = CmtFlagMidGameEdition
+			NOT = { any_country = { CmtTriggerHasPotentialKhanAwaking = yes } }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7000.7138.C.name
+		custom_tooltip = CrisisManagerMenu.7000.7138.C.tooltip
+		trigger = {
+			host_has_dlc = "Apocalypse"
+			has_global_flag = CmtFlagMidGameEdition
+			any_country = { CmtTriggerHasPotentialKhanAwaking = yes }
+			CmtTriggerNowInKhanCrisis = yes
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+	}
+	
+	### L-Gate
+	option = {
+		name = CrisisManagerMenu.7000.7140.A.name
+		custom_tooltip = CrisisManagerMenu.7000.7140.A.tooltip
+		trigger = {
+			host_has_dlc = "Distant Stars Story Pack"
+			has_global_flag = CmtFlagMidGameEdition
+			any_megastructure = { CmtTriggerIsClosedLgate = yes }
+			NOT = { has_global_flag = l_cluster_opened }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7140 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7000.7140.B.name
+		custom_tooltip = CrisisManagerMenu.7000.7140.B.tooltip
+		trigger = {
+			host_has_dlc = "Distant Stars Story Pack"
+			has_global_flag = CmtFlagMidGameEdition
+			NOR = {
+				has_global_flag = l_cluster_opened
+				any_megastructure = { CmtTriggerIsClosedLgate = yes }
+			}
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7000.7140.C.name
+		custom_tooltip = CrisisManagerMenu.7000.7140.C.tooltip
+		trigger = {
+			host_has_dlc = "Distant Stars Story Pack"
+			has_global_flag = CmtFlagMidGameEdition
+			has_global_flag = l_cluster_opened
+			NOT = { any_megastructure = { CmtTriggerIsClosedLgate = yes } }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7000.7142.name
+		custom_tooltip = CrisisManagerMenu.7000.7142.tooltip
+		trigger = {
+			host_has_dlc = "Distant Stars Story Pack"
+			has_global_flag = CmtFlagMidGameEdition
+			any_megastructure = { CmtTriggerIsClosedLgate = yes }
+			has_global_flag = l_cluster_opened
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7142 } }
+	}
+	
+	### Uprising
+	#option = {
+	#	name = CrisisManagerMenu.7000.7146.A.name
+	#	custom_tooltip = CrisisManagerMenu.7000.7146.A.tooltip
+	#	trigger = {
+	#		host_has_dlc = "Synthetic Dawn Story Pack"
+	#		has_global_flag = CmtFlagUprisingEdition
+	#		any_country = { CmtTriggerUprisingPotentialManually = yes }
+	#	}
+	#	hidden_effect = { country_event = { id = CrisisManagerMenu.7146 } }
+	#}
+	#option = {
+	#	name = CrisisManagerMenu.7000.7146.B.name
+	#	custom_tooltip = CrisisManagerMenu.7000.7146.B.tooltip
+	#	trigger = {
+	#		host_has_dlc = "Synthetic Dawn Story Pack"
+	#		has_global_flag = CmtFlagUprisingEdition
+	#		NOT = { any_country = { CmtTriggerUprisingPotentialManually = yes } }
+	#	}
+	#	hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+	#}
+	
+	
+	### Player Crisis
+	option = {
+		name = CrisisManagerMenu.7000.7150.A.name
+		custom_tooltip = CrisisManagerMenu.7000.7150.A.tooltip
+		trigger = {
+			has_global_flag = CmtFlagPlayerCrisisPatch
+			NOR = {
+				exists = event_target:OriginalCountry
+				exists = event_target:CmtTargetPlayerCrisisAggressor
+			}
+			any_country = { CmtTriggerPlayerCrisisAggressorCandidateMenu = yes }
+			any_country = { CmtTriggerPlayerCrisisDefenceLeaderCandidate = yes }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7150 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7000.7150.B.name
+		custom_tooltip = CrisisManagerMenu.7000.7150.B.tooltip
+		trigger = {
+			has_global_flag = CmtFlagPlayerCrisisPatch
+			OR = {
+				exists = event_target:OriginalCountry
+				exists = event_target:CmtTargetPlayerCrisisAggressor
+				NAND = {
+					any_country = { CmtTriggerPlayerCrisisAggressorCandidateMenu = yes }
+					any_country = { CmtTriggerPlayerCrisisDefenceLeaderCandidate = yes }
+				}
+			}
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+	}
+	
+	
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = {
+			NOT = { has_global_flag = CmtFlagNoSeparator }
+			OR = {
+				has_global_flag = CmtFlagSleeperEdition
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	
+	
+	### Terminate Eng-Game Crisis
+	option = {
+		name = CrisisManagerMenu.7000.7200.name
+		custom_tooltip = CrisisManagerMenu.7000.7200.tooltip
+		trigger = {
+			OR = {
+				has_global_flag = CmtFlagEndGameEdition
+				has_global_flag = CmtFlagMidGameEdition
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7200 } }
+	}
+	
+	### Create Fleet for Sleeper
+	option = {
+		name = CrisisManagerMenu.7000.7400.A.name
+		custom_tooltip = CrisisManagerMenu.7000.7400.A.tooltip
+		trigger = {
+			has_global_flag = CmtFlagSleeperEdition
+			any_country = { is_country_type = fallen_empire }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7400 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7000.7400.B.name
+		custom_tooltip = CrisisManagerMenu.7000.7400.B.tooltip
+		trigger = {
+			has_global_flag = CmtFlagSleeperEdition
+			NOT = { any_country = { is_country_type = fallen_empire } }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+	}
+	
+	### Create/Delete L-Gate
+	option = {
+		name = CrisisManagerMenu.7000.7500.name
+		custom_tooltip = CrisisManagerMenu.7000.7500.tooltip
+		trigger = {
+			has_global_flag = CmtFlagMidGameEdition
+			host_has_dlc = "Distant Stars Story Pack"
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7500 } }
+	}
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	option = {
+		name = CmtTextGoBack.name
+		custom_tooltip = CmtTextGoBack.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.0100 } }
+	}
+	option = {
+		name = CmtTextExit.name
+		custom_tooltip = CmtTextExit.tooltip
+		hidden_effect = { CmtEffectExitMenu = yes }
+	}
+}
+
+
+###########################################
+###  Trigger End-Game Crisis Manuallly  ###
+###########################################
+
+### Menu
+country_event = {
+	id = CrisisManagerMenu.7110
+	title = CrisisManagerMenu.7110.name
+	desc = CrisisManagerMenu.7110.desc
+	picture = GFX_evt_CmtMenuA
+	is_triggered_only = yes
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	### Random/All
+	option = {
+		name = CrisisManagerMenu.7110a1.name
+		custom_tooltip = CrisisManagerMenu.7110a1.tooltip
+		trigger = {
+			NOT = { has_global_flag = galactic_crisis_happened }
+			NAND = {
+				CmtTriggerForbiddenPrethoryn = yes
+				CmtTriggerForbiddenExds = yes
+				CmtTriggerForbiddenContingency = yes
+				CmtTriggerForbiddenForcedEoc = yes
+			}
+			NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMultiple value = 5 } } }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7111 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7110a2.name
+		custom_tooltip = CrisisManagerMenu.7110a2.tooltip
+		trigger = {
+			NOT = { has_global_flag = galactic_crisis_happened }
+			NAND = {
+				CmtTriggerForbiddenPrethoryn = yes
+				CmtTriggerForbiddenExds = yes
+				CmtTriggerForbiddenContingency = yes
+				CmtTriggerForbiddenForcedEoc = yes
+			}
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarMultiple value = 5 } }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7111 } }
+	}
+	
+	### Prethoryn
+	option = {
+		name = CrisisManagerMenu.7110b1.name
+		custom_tooltip = CrisisManagerMenu.7110b1.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagPrethorynTriggered } }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7112 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7110b2.name
+		custom_tooltip = CrisisManagerMenu.7110b2.tooltip
+		trigger = { has_global_flag = CmtFlagPrethorynTriggered }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7110 } }
+	}
+	
+	### Sentinels
+	option = {
+		name = CrisisManagerMenu.7110c1.name
+		custom_tooltip = CrisisManagerMenu.7110c1.tooltip
+		trigger = {
+			OR = {
+				has_global_flag = CmtFlagDebugMode
+				AND = {
+					has_global_flag = prethoryn_arrival
+					CmtTriggerExistPrethoryn = yes
+				}
+			}
+			NOT = { has_global_flag = sentinels_founded }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7113 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7110c2.name
+		custom_tooltip = CrisisManagerMenu.7110c2.tooltip
+		trigger = { has_global_flag = sentinels_founded }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7110 } }
+	}
+	
+	### Unbidden
+	option = {
+		name = CrisisManagerMenu.7110d1.name
+		custom_tooltip = CrisisManagerMenu.7110d1.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagExdsTriggered } }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7114 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7110d2.name
+		custom_tooltip = CrisisManagerMenu.7110d2.tooltip
+		trigger = { has_global_flag = CmtFlagExdsTriggered }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7110 } }
+	}
+	
+	### Aberrant
+	option = {
+		name = CrisisManagerMenu.7110e1.name
+		custom_tooltip = CrisisManagerMenu.7110e1.tooltip
+		trigger = {
+			OR = {
+				has_global_flag = CmtFlagDebugMode
+				AND = {
+					has_global_flag = extradimensional_invasion_happened
+					CmtTriggerExistExds = yes
+				}
+			}
+			NOT = { has_global_flag = extradimensional_second_portal }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7115 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7110e2.name
+		custom_tooltip = CrisisManagerMenu.7110e2.tooltip
+		trigger = { has_global_flag = extradimensional_second_portal }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7110 } }
+	}
+	
+	
+	### Vehement
+	option = {
+		name = CrisisManagerMenu.7110f1.name
+		custom_tooltip = CrisisManagerMenu.7110f1.tooltip
+		trigger = {
+			OR = {
+				has_global_flag = CmtFlagDebugMode
+				AND = {
+					has_global_flag = extradimensional_invasion_happened
+					has_global_flag = extradimensional_second_portal
+					CmtTriggerExistExds = yes
+				}
+			}
+			NOT = { has_global_flag = extradimensional_third_portal }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7116 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7110f2.name
+		custom_tooltip = CrisisManagerMenu.7110f2.tooltip
+		trigger = { has_global_flag = extradimensional_third_portal }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7110 } }
+	}
+	
+	### Contingency
+	option = {
+		name = CrisisManagerMenu.7110g1.name
+		custom_tooltip = CrisisManagerMenu.7110g1.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagContingencyTriggerd } }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7117 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7110g2.name
+		custom_tooltip = CrisisManagerMenu.7110g2.tooltip
+		trigger = { has_global_flag = CmtFlagContingencyTriggerd }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7110 } }
+	}
+	
+	### Cybrex
+	option = {
+		name = CrisisManagerMenu.7110h1.name
+		custom_tooltip = CrisisManagerMenu.7110h1.tooltip
+		trigger = {
+			OR = {
+				has_global_flag = CmtFlagDebugMode
+				AND = {
+					has_global_flag = ai_invasion_ongoing
+					CmtTriggerExistContingency = yes
+				}
+			}
+			NOT = { has_global_flag = cybrex_resurface }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7118 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7110h2.name
+		custom_tooltip = CrisisManagerMenu.7110h2.tooltip
+		trigger = { has_global_flag = cybrex_resurface }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7110 } }
+	}
+	
+	### End of Cycle
+	option = {
+		name = CrisisManagerMenu.7110i1.name
+		custom_tooltip = CrisisManagerMenu.7110i1.tooltip
+		trigger = { CmtTriggerAllowedManualForcedEoc = yes }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7119 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7110i2.name
+		custom_tooltip = CrisisManagerMenu.7110i2.tooltip
+		trigger = { has_global_flag = CmtFlagForcedEocTriggered }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7110 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7110i3.name
+		custom_tooltip = CrisisManagerMenu.7110i3.tooltip
+		trigger = {
+			NOR = {
+				CmtTriggerAllowedManualForcedEoc = yes
+				has_global_flag = CmtFlagForcedEocTriggered
+			}
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7110 } }
+	}
+	
+	### Go Back, etc.
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	option = {
+		name = CmtTextGoBack.name
+		custom_tooltip = CmtTextGoBack.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+	}
+	option = {
+		name = CmtTextExit.name
+		custom_tooltip = CmtTextExit.tooltip
+		hidden_effect = { CmtEffectExitMenu = yes }
+	}
+}
+
+### Trigger Random Crisis or All Crises
+country_event = {
+	id = CrisisManagerMenu.7111
+	title = CrisisManagerMenu.7111.name
+	desc = {
+		text = CrisisManagerMenu.7111.desc1
+		trigger = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMultiple value = 5 } } } }
+	}
+	desc = {
+		text = CrisisManagerMenu.7111.desc2
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMultiple value = 5 } } }
+	}
+	picture = GFX_evt_CmtMenuA
+	is_triggered_only = yes
+	
+	option = {
+		name = CrisisManagerMenu.71xxa.name
+		custom_tooltip = CrisisManagerMenu.71xxa.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7110 } }
+	}
+	option = {
+		name = CrisisManagerMenu.711xb1.name
+		custom_tooltip = CrisisManagerMenu.711xb1.tooltip
+		hidden_effect = {
+			while = {
+				limit = { NOT = { has_global_flag = galactic_crisis_happened } }
+				country_event = { id = CrisisManagerControl.0012 }
+			}
+			country_event = { id = CrisisManagerMenu.7121 }
+		}
+	}
+}
+country_event = {
+	id = CrisisManagerMenu.7121
+	title = CrisisManagerMenu.7121.name
+	desc = {
+		text = CrisisManagerMenu.7121.desc1
+		trigger = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMultiple value = 5 } } } }
+	}
+	desc = {
+		text = CrisisManagerMenu.7121.desc2
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMultiple value = 5 } } }
+	}
+	picture = GFX_evt_CmtMenuA
+	is_triggered_only = yes
+	
+	option = {
+		name = CmtTextOK.name
+		custom_tooltip = CmtTextOK.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+	}
+	option = {
+		name = CmtTextExit.name
+		custom_tooltip = CmtTextExit.tooltip
+		hidden_effect = { CmtEffectExitMenu = yes }
+	}
+}
+
+### Call Prethoryn
+country_event = {
+	id = CrisisManagerMenu.7112
+	title = CrisisManagerMenu.7112.name
+	desc = CrisisManagerMenu.7112.desc
+	picture = GFX_evt_physics_research
+	is_triggered_only = yes
+	
+	option = {
+		name = CrisisManagerMenu.71xxa.name
+		custom_tooltip = CrisisManagerMenu.71xxa.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7110 } }
+	}
+	option = {
+		name = CrisisManagerMenu.711xb1.name
+		custom_tooltip = CrisisManagerMenu.711xb1.tooltip
+		hidden_effect = {
+			country_event = { id = CrisisManagerControl.1000 }
+			country_event = { id = CrisisManagerMenu.7122 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.711xc.name
+		custom_tooltip = CrisisManagerMenu.711xc.tooltip
+		hidden_effect = {
+			event_target:CmtGlobalVar = { country_event = { id = crisis.199 } }
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+}
+country_event = {
+	id = CrisisManagerMenu.7122
+	title = CrisisManagerMenu.7122.name
+	desc = CrisisManagerMenu.7122.desc
+	picture = GFX_evt_physics_research
+	is_triggered_only = yes
+	
+	option = {
+		name = CmtTextOK.name
+		custom_tooltip = CmtTextOK.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+	}
+	option = {
+		name = CmtTextExit.name
+		custom_tooltip = CmtTextExit.tooltip
+		hidden_effect = { CmtEffectExitMenu = yes }
+	}
+}
+
+### Call Sentinels
+country_event = {
+	id = CrisisManagerMenu.7113
+	title = CrisisManagerMenu.7113.name
+	desc = CrisisManagerMenu.7113.desc
+	picture = GFX_evt_federation_fleet
+	is_triggered_only = yes
+	
+	option = {
+		name = CrisisManagerMenu.71xxa.name
+		custom_tooltip = CrisisManagerMenu.71xxa.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7110 } }
+	}
+	option = {
+		name = CrisisManagerMenu.711xb2.name
+		custom_tooltip = CrisisManagerMenu.711xb2.tooltip
+		hidden_effect = {
+			CmtEffectCallSentinel = yes
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+}
+
+### Call Unbidden
+country_event = {
+	id = CrisisManagerMenu.7114
+	title = CrisisManagerMenu.7114.name
+	desc = CrisisManagerMenu.7114.desc
+	picture = GFX_evt_wormhole
+	is_triggered_only = yes
+	
+	option = {
+		name = CrisisManagerMenu.71xxa.name
+		custom_tooltip = CrisisManagerMenu.71xxa.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7110 } }
+	}
+	option = {
+		name = CrisisManagerMenu.711xb1.name
+		custom_tooltip = CrisisManagerMenu.711xb1.tooltip
+		hidden_effect = {
+			country_event = { id = CrisisManagerControl.2000 }
+			country_event = { id = CrisisManagerMenu.7124 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.711xc.name
+		custom_tooltip = CrisisManagerMenu.711xc.tooltip
+		hidden_effect = {
+			country_event = { id = crisis.1000 }
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+}
+country_event = {
+	id = CrisisManagerMenu.7124
+	title = CrisisManagerMenu.7124.name
+	desc = CrisisManagerMenu.7124.desc
+	picture = GFX_evt_wormhole
+	is_triggered_only = yes
+	
+	option = {
+		name = CmtTextOK.name
+		custom_tooltip = CmtTextOK.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+	}
+	option = {
+		name = CmtTextExit.name
+		custom_tooltip = CmtTextExit.tooltip
+		hidden_effect = { CmtEffectExitMenu = yes }
+	}
+}
+
+### Call Aberrant
+country_event = {
+	id = CrisisManagerMenu.7115
+	title = CrisisManagerMenu.7115.name
+	desc = CrisisManagerMenu.7115.desc
+	picture = GFX_evt_wormhole
+	is_triggered_only = yes
+	
+	option = {
+		name = CrisisManagerMenu.71xxa.name
+		custom_tooltip = CrisisManagerMenu.71xxa.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7110 } }
+	}
+	option = {
+		name = CrisisManagerMenu.711xb2.name
+		custom_tooltip = CrisisManagerMenu.711xb2.tooltip
+		hidden_effect = {
+			CmtEffectCallAberrant = yes
+			country_event = { id = CrisisManagerMenu.7125 }
+		}
+	}
+}
+country_event = {
+	id = CrisisManagerMenu.7125
+	title = CrisisManagerMenu.7125.name
+	desc = CrisisManagerMenu.7125.desc
+	picture = GFX_evt_wormhole
+	is_triggered_only = yes
+	
+	option = {
+		name = CmtTextOK.name
+		custom_tooltip = CmtTextOK.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+	}
+	option = {
+		name = CmtTextExit.name
+		custom_tooltip = CmtTextExit.tooltip
+		hidden_effect = { CmtEffectExitMenu = yes }
+	}
+}
+
+### Call Vehement
+country_event = {
+	id = CrisisManagerMenu.7116
+	title = CrisisManagerMenu.7116.name
+	desc = CrisisManagerMenu.7116.desc
+	picture = GFX_evt_wormhole
+	is_triggered_only = yes
+	
+	option = {
+		name = CrisisManagerMenu.71xxa.name
+		custom_tooltip = CrisisManagerMenu.71xxa.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7110 } }
+	}
+	option = {
+		name = CrisisManagerMenu.711xb2.name
+		custom_tooltip = CrisisManagerMenu.711xb2.tooltip
+		hidden_effect = {
+			CmtEffectCallVehement = yes
+			country_event = { id = CrisisManagerMenu.7125 }
+		}
+	}
+}
+country_event = {
+	id = CrisisManagerMenu.7126
+	title = CrisisManagerMenu.7126.name
+	desc = CrisisManagerMenu.7126.desc
+	picture = GFX_evt_wormhole
+	is_triggered_only = yes
+	
+	option = {
+		name = CmtTextOK.name
+		custom_tooltip = CmtTextOK.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+	}
+	option = {
+		name = CmtTextExit.name
+		custom_tooltip = CmtTextExit.tooltip
+		hidden_effect = { CmtEffectExitMenu = yes }
+	}
+}
+
+### Call Contingency
+country_event = {
+	id = CrisisManagerMenu.7117
+	title = CrisisManagerMenu.7117.name
+	desc = CrisisManagerMenu.7117.desc
+	picture = GFX_evt_glitchy_matrix
+	is_triggered_only = yes
+	
+	option = {
+		name = CrisisManagerMenu.71xxa.name
+		custom_tooltip = CrisisManagerMenu.71xxa.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7110 } }
+	}
+	option = {
+		name = CrisisManagerMenu.711xb1.name
+		custom_tooltip = CrisisManagerMenu.711xb1.tooltip
+		hidden_effect = {
+			country_event = { id = CrisisManagerControl.3000 }
+			country_event = { id = CrisisManagerMenu.7127 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.711xc.name
+		custom_tooltip = CrisisManagerMenu.711xc.tooltip
+		hidden_effect = {
+			country_event = { id = crisis.2000 }
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+}
+country_event = {
+	id = CrisisManagerMenu.7127
+	title = CrisisManagerMenu.7127.name
+	desc = CrisisManagerMenu.7127.desc
+	picture = GFX_evt_glitchy_matrix
+	is_triggered_only = yes
+	
+	option = {
+		name = CmtTextOK.name
+		custom_tooltip = CmtTextOK.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+	}
+	option = {
+		name = CmtTextExit.name
+		custom_tooltip = CmtTextExit.tooltip
+		hidden_effect = { CmtEffectExitMenu = yes }
+	}
+}
+
+### Call Cybrex
+country_event = {
+	id = CrisisManagerMenu.7118
+	title = CrisisManagerMenu.7118.name
+	desc = CrisisManagerMenu.7118.desc
+	picture = GFX_evt_ringworld
+	is_triggered_only = yes
+	
+	option = {
+		name = CrisisManagerMenu.71xxa.name
+		custom_tooltip = CrisisManagerMenu.71xxa.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7110 } }
+	}
+	option = {
+		name = CrisisManagerMenu.711xb2.name
+		custom_tooltip = CrisisManagerMenu.711xb2.tooltip
+		hidden_effect = {
+			CmtEffectCallCybrex = yes
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+}
+
+### Force Covenant of End of Cycle
+country_event = {
+	id = CrisisManagerMenu.7119
+	title = CrisisManagerMenu.7119.name
+	desc = CrisisManagerMenu.7119.desc
+	picture = GFX_evt_unspeakable_horror
+	is_triggered_only = yes
+	
+	option = {
+		name = CrisisManagerMenu.71xxa.name
+		custom_tooltip = CrisisManagerMenu.71xxa.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7110 } }
+	}
+	option = {
+		name = CrisisManagerMenu.711xb1.name
+		custom_tooltip = CrisisManagerMenu.711xb1.tooltip
+		hidden_effect = {
+			country_event = { id = CrisisManagerControl.4000 }
+			country_event = { id = CrisisManagerMenu.7129 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.711xc.name
+		custom_tooltip = CrisisManagerMenu.711xc.tooltip
+		hidden_effect = {
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarTermForcedEoc value = -1 } }
+			CmtEffectTargetingForcedEoc = yes
+			event_target:CmtTargetVictimForcedEoc = {
+				country_event = { id = CrisisManagerControl.4101 }
+				country_event = { id = CrisisManagerControl.4102 }
+			}
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+}
+country_event = {
+	id = CrisisManagerMenu.7129
+	title = CrisisManagerMenu.7129.name
+	desc = CrisisManagerMenu.7129.desc
+	picture = GFX_evt_unspeakable_horror
+	is_triggered_only = yes
+	
+	option = {
+		name = CmtTextOK.name
+		custom_tooltip = CmtTextOK.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+	}
+	option = {
+		name = CmtTextExit.name
+		custom_tooltip = CmtTextExit.tooltip
+		hidden_effect = { CmtEffectExitMenu = yes }
+	}
+}
+
+
+
+### Sleeper Awakening
+country_event = {
+	id = CrisisManagerMenu.7135
+	title = CrisisManagerMenu.7135.name
+	desc = CrisisManagerMenu.7135.desc
+	picture = GFX_evt_fallen_empire_awakes
+	is_triggered_only = yes
+	
+	immediate = { CmtEffectManualTargetSleepers = yes }
+	after = { hidden_effect = { CmtEffectClearTargetSleepers = yes } }
+	
+	option = {
+		name = CrisisManagerMenu.71xxa.name
+		custom_tooltip = CrisisManagerMenu.71xxa.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7135b.name
+		custom_tooltip = CrisisManagerMenu.7135b.tooltip
+		trigger = { count_country = { limit = { CmtTriggerIsOrganicSleeper = yes } count > 1 } }		## 2 or more
+		hidden_effect = {
+			if = {
+				limit = {
+					any_country = {
+						CmtTriggerIsAwakenableSleeper = yes
+						CmtTriggerCheckSleeperFleetPower = yes
+					}
+				}
+				random_country = {
+					limit = {
+						CmtTriggerIsAwakenableSleeper = yes
+						CmtTriggerCheckSleeperFleetPower = yes
+					}
+					country_event = { id = fallen_empires_awakening.1 }
+				}
+			} else = {
+				random_country = {
+					limit = { CmtTriggerIsOrganicSleeper = yes }
+					country_event = { id = fallen_empires_awakening.1 }
+				}
+			}
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+	
+	option = {
+		name = CrisisManagerMenu.7135c1.name
+		custom_tooltip = CrisisManagerMenu.7135c.tooltip
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper1
+			event_target:CmtTargetManualSleeper1 = { CmtTriggerIsOrganicSleeper = yes }
+		}
+		hidden_effect = {
+			event_target:CmtTargetManualSleeper1 = { country_event = { id = fallen_empires_awakening.1 } }
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7135c2.name
+		custom_tooltip = CrisisManagerMenu.7135c.tooltip
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper2
+			event_target:CmtTargetManualSleeper2 = { CmtTriggerIsOrganicSleeper = yes }
+		}
+		hidden_effect = {
+			event_target:CmtTargetManualSleeper2 = { country_event = { id = fallen_empires_awakening.1 } }
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7135c3.name
+		custom_tooltip = CrisisManagerMenu.7135c.tooltip
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper3
+			event_target:CmtTargetManualSleeper3 = { CmtTriggerIsOrganicSleeper = yes }
+		}
+		hidden_effect = {
+			event_target:CmtTargetManualSleeper3 = { country_event = { id = fallen_empires_awakening.1 } }
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7135c4.name
+		custom_tooltip = CrisisManagerMenu.7135c.tooltip
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper4
+			event_target:CmtTargetManualSleeper4 = { CmtTriggerIsOrganicSleeper = yes }
+		}
+		hidden_effect = {
+			event_target:CmtTargetManualSleeper4 = { country_event = { id = fallen_empires_awakening.1 } }
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+}
+
+### War in Heaven
+country_event = {
+	id = CrisisManagerMenu.7136
+	title = CrisisManagerMenu.7136.name
+	desc = {
+		text = CrisisManagerMenu.7136.desc1
+		trigger = { NOT = { exists = event_target:CmtTargetManualSleeperA } }
+	}
+	desc = {
+		text = CrisisManagerMenu.7136.desc2
+		trigger = {
+			exists = event_target:CmtTargetManualSleeperA
+			NOT = { exists = event_target:CmtTargetManualSleeperB }
+		}
+	}
+	desc = {
+		text = CrisisManagerMenu.7136.desc3
+		trigger = {
+			exists = event_target:CmtTargetManualSleeperA
+			exists = event_target:CmtTargetManualSleeperB
+		}
+	}
+	picture = GFX_evt_fallen_empire_awakes
+	is_triggered_only = yes
+	
+	immediate = { CmtEffectManualTargetSleepers = yes }
+	
+	option = {
+		name = CrisisManagerMenu.7136a.name
+		custom_tooltip = CrisisManagerMenu.7136a.tooltip
+		hidden_effect = {
+			if = {
+				limit = { exists = event_target:CmtTargetManualSleeperA }
+				clear_global_event_target = CmtTargetManualSleeperA
+			}
+			if = {
+				limit = { exists = event_target:CmtTargetManualSleeperB }
+				clear_global_event_target = CmtTargetManualSleeperB
+			}
+			CmtEffectClearTargetSleepers = yes
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7136b.name
+		custom_tooltip = CrisisManagerMenu.7136b.tooltip
+		trigger = {
+			NAND = {
+				exists = event_target:CmtTargetManualSleeperA
+				exists = event_target:CmtTargetManualSleeperB
+			}
+		}
+		hidden_effect = {
+			if = {
+				limit = { exists = event_target:CmtTargetManualSleeperA }
+				random_country = {
+					limit = {
+						CmtTriggerIsOrganicSleeper = yes
+						NOT = { is_same_value = event_target:CmtTargetManualSleeperA }
+					}
+					save_global_event_target_as = CmtTargetManualSleeperB
+				}
+			} else = {
+				random_country = {
+					limit = { CmtTriggerIsOrganicSleeper = yes }
+					save_global_event_target_as = CmtTargetManualSleeperA
+				}
+			}
+			country_event = { id = CrisisManagerMenu.7136 }
+		}
+	}
+	
+	option = {
+		name = CrisisManagerMenu.7136c1.name
+		custom_tooltip = CrisisManagerMenu.7135c.tooltip
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper1
+			NAND = {
+				exists = event_target:CmtTargetManualSleeperA
+				exists = event_target:CmtTargetManualSleeperB
+			}
+			event_target:CmtTargetManualSleeper1 = {
+				CmtTriggerIsOrganicSleeper = yes
+				NAND = {
+					exists = event_target:CmtTargetManualSleeperA
+					is_same_value = event_target:CmtTargetManualSleeperA
+				}
+			}
+		}
+		hidden_effect = {
+			event_target:CmtTargetManualSleeper1 = {
+				if = {
+					limit = { exists = event_target:CmtTargetManualSleeperA }
+					save_global_event_target_as = CmtTargetManualSleeperB
+				} else = { save_global_event_target_as = CmtTargetManualSleeperA }
+			}
+			country_event = { id = CrisisManagerMenu.7136 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7136c2.name
+		custom_tooltip = CrisisManagerMenu.7135c.tooltip
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper2
+			NAND = {
+				exists = event_target:CmtTargetManualSleeperA
+				exists = event_target:CmtTargetManualSleeperB
+			}
+			event_target:CmtTargetManualSleeper2 = {
+				CmtTriggerIsOrganicSleeper = yes
+				NAND = {
+					exists = event_target:CmtTargetManualSleeperA
+					is_same_value = event_target:CmtTargetManualSleeperA
+				}
+			}
+		}
+		hidden_effect = {
+			event_target:CmtTargetManualSleeper2 = {
+				if = {
+					limit = { exists = event_target:CmtTargetManualSleeperA }
+					save_global_event_target_as = CmtTargetManualSleeperB
+				} else = { save_global_event_target_as = CmtTargetManualSleeperA }
+			}
+			country_event = { id = CrisisManagerMenu.7136 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7136c3.name
+		custom_tooltip = CrisisManagerMenu.7135c.tooltip
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper3
+			NAND = {
+				exists = event_target:CmtTargetManualSleeperA
+				exists = event_target:CmtTargetManualSleeperB
+			}
+			event_target:CmtTargetManualSleeper3 = {
+				CmtTriggerIsOrganicSleeper = yes
+				NAND = {
+					exists = event_target:CmtTargetManualSleeperA
+					is_same_value = event_target:CmtTargetManualSleeperA
+				}
+			}
+		}
+		hidden_effect = {
+			event_target:CmtTargetManualSleeper3 = {
+				if = {
+					limit = { exists = event_target:CmtTargetManualSleeperA }
+					save_global_event_target_as = CmtTargetManualSleeperB
+				} else = { save_global_event_target_as = CmtTargetManualSleeperA }
+			}
+			country_event = { id = CrisisManagerMenu.7136 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7136c4.name
+		custom_tooltip = CrisisManagerMenu.7135c.tooltip
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper4
+			NAND = {
+				exists = event_target:CmtTargetManualSleeperA
+				exists = event_target:CmtTargetManualSleeperB
+			}
+			event_target:CmtTargetManualSleeper4 = {
+				CmtTriggerIsOrganicSleeper = yes
+				NAND = {
+					exists = event_target:CmtTargetManualSleeperA
+					is_same_value = event_target:CmtTargetManualSleeperA
+				}
+			}
+		}
+		hidden_effect = {
+			event_target:CmtTargetManualSleeper4 = {
+				if = {
+					limit = { exists = event_target:CmtTargetManualSleeperA }
+					save_global_event_target_as = CmtTargetManualSleeperB
+				} else = { save_global_event_target_as = CmtTargetManualSleeperA }
+			}
+			country_event = { id = CrisisManagerMenu.7136 }
+		}
+	}
+	
+	option = {
+		name = CrisisManagerMenu.7136d.name
+		custom_tooltip = CrisisManagerMenu.7136d.tooltip
+		trigger = {
+			exists = event_target:CmtTargetManualSleeperA
+			exists = event_target:CmtTargetManualSleeperB
+		}
+		hidden_effect = {
+			event_target:CmtTargetManualSleeperA = { country_event = { id = fallen_empires_awakening.1 } }
+			event_target:CmtTargetManualSleeperB = { CmtEffectSetAnciantRival = yes }
+			CmtEffectClearTargetSleepers = yes
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+}
+
+### Khan
+country_event = {
+	id = CrisisManagerMenu.7138
+	title = CrisisManagerMenu.7138.name
+	desc = CrisisManagerMenu.7138.desc
+	picture = GFX_evt_khan_throne_room
+	is_triggered_only = yes
+	
+	immediate = {
+		random_country = {
+			limit = { has_country_flag = marauder_1 }
+			save_global_event_target_as = CmtTargetManualMarauder1
+		}
+		random_country = {
+			limit = { has_country_flag = marauder_2 }
+			save_global_event_target_as = CmtTargetManualMarauder2
+		}
+		random_country = {
+			limit = { has_country_flag = marauder_3 }
+			save_global_event_target_as = CmtTargetManualMarauder3
+		}
+	}
+	
+	after = {
+		if = {
+			limit = { exists = event_target:CmtTargetManualMarauder1 }
+			clear_global_event_target = CmtTargetManualMarauder1
+		}
+		if = {
+			limit = { exists = event_target:CmtTargetManualMarauder2 }
+			clear_global_event_target = CmtTargetManualMarauder2
+		}
+		if = {
+			limit = { exists = event_target:CmtTargetManualMarauder3 }
+			clear_global_event_target = CmtTargetManualMarauder3
+		}
+	}
+	
+	option = {
+		name = CrisisManagerMenu.71xxa.name
+		custom_tooltip = CrisisManagerMenu.71xxa.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7138b.name
+		custom_tooltip = CrisisManagerMenu.7138b.tooltip
+		hidden_effect = {
+			random_country = {
+				limit = { CmtTriggerHasPotentialKhanAwaking = yes }
+				CmtEffectTriggerMarauderManually = yes
+			}
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7138c1.name
+		custom_tooltip = CrisisManagerMenu.7135c.tooltip
+		trigger = {
+			exists = event_target:CmtTargetManualMarauder1
+			event_target:CmtTargetManualMarauder1 = { CmtTriggerHasPotentialKhanAwaking = yes }
+		}
+		hidden_effect = {
+			event_target:CmtTargetManualMarauder1 = { CmtEffectTriggerMarauderManually = yes }
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7138c2.name
+		custom_tooltip = CrisisManagerMenu.7135c.tooltip
+		trigger = {
+			exists = event_target:CmtTargetManualMarauder2
+			event_target:CmtTargetManualMarauder2 = { CmtTriggerHasPotentialKhanAwaking = yes }
+		}
+		hidden_effect = {
+			event_target:CmtTargetManualMarauder2 = { CmtEffectTriggerMarauderManually = yes }
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7138c3.name
+		custom_tooltip = CrisisManagerMenu.7135c.tooltip
+		trigger = {
+			exists = event_target:CmtTargetManualMarauder3
+			event_target:CmtTargetManualMarauder3 = { CmtTriggerHasPotentialKhanAwaking = yes }
+		}
+		hidden_effect = {
+			event_target:CmtTargetManualMarauder3 = { CmtEffectTriggerMarauderManually = yes }
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+}
+
+### Open L-Gate and Trigger L-Cluster Event
+country_event = {
+	id = CrisisManagerMenu.7140
+	title = CrisisManagerMenu.7140.name
+	desc = CrisisManagerMenu.7140.desc
+	picture = GFX_evt_l-gateway
+	is_triggered_only = yes
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	option = {
+		name = CrisisManagerMenu.7140b.name
+		custom_tooltip = CrisisManagerMenu.7140b.tooltip
+		hidden_effect = {
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarManualTemp value = 0 } }
+			country_event = { id = CrisisManagerMenu.7141 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7140c1.name
+		custom_tooltip = CrisisManagerMenu.7140c.tooltip
+		hidden_effect = {
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarManualTemp value = 1 } }		## Eerie Silence
+			country_event = { id = CrisisManagerMenu.7141 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7140c2.name
+		custom_tooltip = CrisisManagerMenu.7140c.tooltip
+		hidden_effect = {
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarManualTemp value = 2 } }		## L-Drake
+			country_event = { id = CrisisManagerMenu.7141 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7140c3.name
+		custom_tooltip = CrisisManagerMenu.7140c.tooltip
+		hidden_effect = {
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarManualTemp value = 3 } }		## Dessanu
+			country_event = { id = CrisisManagerMenu.7141 }
+		}
+	}
+	
+	option = {
+		name = CrisisManagerMenu.7140c4.name
+		custom_tooltip = CrisisManagerMenu.7140c.tooltip
+		hidden_effect = {
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarManualTemp value = 4 } }		## Gray Tempest
+			country_event = { id = CrisisManagerMenu.7141 }
+		}
+	}
+	
+	### Go Back, etc.
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	option = {
+		name = CmtTextGoBack.name
+		custom_tooltip = CmtTextGoBack.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+	}
+	option = {
+		name = CmtTextExit.name
+		custom_tooltip = CmtTextExit.tooltip
+		hidden_effect = { CmtEffectExitMenu = yes }
+	}
+}
+
+### Open L-Gate and Trigger L-Cluster Event: Select Target L-Gate
+country_event = {
+	id = CrisisManagerMenu.7141
+	title = CrisisManagerMenu.7141.name
+	desc = {
+		text = CrisisManagerMenu.7141.desc1
+		trigger = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualLgate value > 8 } } } }
+	}
+	desc = {
+		text = CrisisManagerMenu.7141.desc2
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualLgate value > 8 } } }
+	}
+	picture = GFX_evt_l-gateway
+	is_triggered_only = yes
+	
+	immediate = {
+		CmtEffectManualTargetLgates = yes
+	}
+	
+	after = {
+		hidden_effect = {
+			if = {
+				limit = { exists = event_target:CmtTargetLgateOrininatingSystem }
+				set_global_flag = CmtFlagLgatePreludeTriggered
+				event_target:CmtGlobalVar = {
+					if = {
+						limit = { check_variable = { which = CmtVarManualTemp value > 0.5 } }
+						set_global_flag = CmtFlagLgateForbidSilence
+						set_global_flag = CmtFlagLgateForbidLdrake
+						set_global_flag = CmtFlagLgateForbidDessanu
+						set_global_flag = CmtFlagLgateForbidGraygoo
+					}
+					if = {
+						limit = { check_variable = { which = CmtVarManualTemp value = 1 } }
+						remove_global_flag = CmtFlagLgateForbidSilence
+					} else_if = {
+						limit = { check_variable = { which = CmtVarManualTemp value = 2 } }
+						remove_global_flag = CmtFlagLgateForbidLdrake
+					} else_if = {
+						limit = { check_variable = { which = CmtVarManualTemp value = 3 } }
+						remove_global_flag = CmtFlagLgateForbidDessanu
+					} else_if = {
+						limit = { check_variable = { which = CmtVarManualTemp value = 4 } }
+						remove_global_flag = CmtFlagLgateForbidGraygoo
+					}
+				}
+				event_target:CmtTargetLgateOrininatingSystem = {
+					if = {
+						limit = {
+							exists = owner
+							owner = { CmtTriggerIsPlayableEmpire = yes }
+						}
+						owner = { country_event = { id = distar.10950 } }
+					} else = { event_target:CmtGlobalVar = { country_event = { id = distar.10950 } } }
+				}
+				country_event = { id = CrisisManagerMenu.7000 }
+			}
+			CmtEffectClearTargetLgates = yes
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarManualTemp value = 0 } }
+		}
+	}
+	
+	option = {
+		name = CrisisManagerMenu.7141a.name
+		custom_tooltip = CrisisManagerMenu.7141a.tooltip
+		hidden_effect = {
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarManualTemp value = 0 } }
+			country_event = { id = CrisisManagerMenu.7140 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7141d.name
+		custom_tooltip = CrisisManagerMenu.7141d.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualLgate value > 8 } } }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7141 } }
+	}
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = {
+			NOT = { has_global_flag = CmtFlagNoSeparator }
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualLgate value > 8 } }
+		}
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	option = {
+		name = CrisisManagerMenu.7141b.name
+		custom_tooltip = CrisisManagerMenu.7141b.tooltip
+		hidden_effect = {
+			random_megastructure = {
+				limit = { CmtTriggerIsClosedLgate = yes }
+				solar_system = { save_global_event_target_as = CmtTargetLgateOrininatingSystem }
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7141c1.name
+		custom_tooltip = CrisisManagerMenu.7141c.tooltip
+		trigger = { exists = event_target:CmtTargetManualLgateSystem1 }
+		hidden_effect = { event_target:CmtTargetManualLgateSystem1 = { save_global_event_target_as = CmtTargetLgateOrininatingSystem } }
+	}
+	option = {
+		name = CrisisManagerMenu.7141c2.name
+		custom_tooltip = CrisisManagerMenu.7141c.tooltip
+		trigger = { exists = event_target:CmtTargetManualLgateSystem2 }
+		hidden_effect = { event_target:CmtTargetManualLgateSystem2 = { save_global_event_target_as = CmtTargetLgateOrininatingSystem } }
+	}
+	option = {
+		name = CrisisManagerMenu.7141c3.name
+		custom_tooltip = CrisisManagerMenu.7141c.tooltip
+		trigger = { exists = event_target:CmtTargetManualLgateSystem3 }
+		hidden_effect = { event_target:CmtTargetManualLgateSystem3 = { save_global_event_target_as = CmtTargetLgateOrininatingSystem } }
+	}
+	option = {
+		name = CrisisManagerMenu.7141c4.name
+		custom_tooltip = CrisisManagerMenu.7141c.tooltip
+		trigger = { exists = event_target:CmtTargetManualLgateSystem4 }
+		hidden_effect = { event_target:CmtTargetManualLgateSystem4 = { save_global_event_target_as = CmtTargetLgateOrininatingSystem } }
+	}
+	option = {
+		name = CrisisManagerMenu.7141c5.name
+		custom_tooltip = CrisisManagerMenu.7141c.tooltip
+		trigger = { exists = event_target:CmtTargetManualLgateSystem5 }
+		hidden_effect = { event_target:CmtTargetManualLgateSystem5 = { save_global_event_target_as = CmtTargetLgateOrininatingSystem } }
+	}
+	option = {
+		name = CrisisManagerMenu.7141c6.name
+		custom_tooltip = CrisisManagerMenu.7141c.tooltip
+		trigger = { exists = event_target:CmtTargetManualLgateSystem6 }
+		hidden_effect = { event_target:CmtTargetManualLgateSystem6 = { save_global_event_target_as = CmtTargetLgateOrininatingSystem } }
+	}
+	option = {
+		name = CrisisManagerMenu.7141c7.name
+		custom_tooltip = CrisisManagerMenu.7141c.tooltip
+		trigger = { exists = event_target:CmtTargetManualLgateSystem7 }
+		hidden_effect = { event_target:CmtTargetManualLgateSystem7 = { save_global_event_target_as = CmtTargetLgateOrininatingSystem } }
+	}
+	option = {
+		name = CrisisManagerMenu.7141c8.name
+		custom_tooltip = CrisisManagerMenu.7141c.tooltip
+		trigger = { exists = event_target:CmtTargetManualLgateSystem8 }
+		hidden_effect = { event_target:CmtTargetManualLgateSystem8 = { save_global_event_target_as = CmtTargetLgateOrininatingSystem } }
+	}
+}
+
+### Open L-Gate after L-Cluster Event Triggered
+country_event = {
+	id = CrisisManagerMenu.7142
+	title = CrisisManagerMenu.7142.name
+	desc = CrisisManagerMenu.7142.desc
+	picture = GFX_evt_l-gateway
+	is_triggered_only = yes
+	
+	option = {
+		name = CrisisManagerMenu.7142a.name
+		custom_tooltip = CrisisManagerMenu.7142a.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7142b.name
+		custom_tooltip = CrisisManagerMenu.7142b.tooltip
+		hidden_effect = {
+			every_megastructure = {
+				limit = { CmtTriggerIsClosedLgate = yes }
+				CmtEffectOpenLgate = yes
+			}
+			country_event = { id = CrisisManagerMenu.7143 }
+		}
+	}
+}
+
+### All L-Gate Opened
+country_event = {
+	id = CrisisManagerMenu.7143
+	title = CrisisManagerMenu.7143.name
+	desc = CrisisManagerMenu.7143.desc
+	picture = GFX_evt_l-gateway
+	is_triggered_only = yes
+	
+	option = {
+		name = CmtTextOK.name
+		custom_tooltip = CmtTextOK.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+	}
+}
+
+
+#### Uprising
+#country_event = {
+#	id = CrisisManagerMenu.7146
+#	title = CrisisManagerMenu.7146.name
+#	desc = CrisisManagerMenu.7146.desc
+#	picture = GFX_evt_organic_oppression
+#	is_triggered_only = yes
+#	
+#	immediate = {
+#		CmtEffectManualTargetUprising = yes
+#		if = {
+#			limit = { exists = event_target:CmtTargetManualUprisingSelected }
+#			clear_global_event_target = CmtTargetManualUprisingSelected
+#		}
+#	}
+#	
+#	after = {
+#		hidden_effect = { CmtEffectClearTargetUprising = yes }
+#	}
+#	
+#	option = {
+#		name = CrisisManagerMenu.71xxa.name
+#		custom_tooltip = CrisisManagerMenu.71xxa.tooltip
+#		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+#	}
+#	option = {
+#		name = CrisisManagerMenu.7146b.name
+#		custom_tooltip = CrisisManagerMenu.7146b.tooltip
+#		trigger = { count_country = { limit = { has_country_flag = CmtFlagManualUprisingListed } count > 1 } }		## 2 or more
+#		hidden_effect = {
+#			if = {
+#				limit = { any_country = { CmtTriggerUprisingMachinePotentialCountry = yes } }
+#				random_country = {
+#					limit = { CmtTriggerUprisingMachinePotentialCountry = yes }
+#					save_global_event_target_as = CmtTargetManualUprisingSelected
+#					CmtEffectTriggerUprisingWarCommon = yes
+#				}
+#			} else = {
+#				random_country = {
+#					limit = { CmtTriggerUprisingPotentialManually = yes }
+#					save_global_event_target_as = CmtTargetManualUprisingSelected
+#					CmtEffectTriggerUprisingWarCommon = yes
+#				}
+#			}
+#			country_event = { id = CrisisManagerMenu.7147 }
+#		}
+#	}
+#	
+#	option = {
+#		name = CrisisManagerMenu.7146c1.name
+#		custom_tooltip = CrisisManagerMenu.7146c.tooltip
+#		trigger = { exists = event_target:CmtTargetManualUprising1 }
+#		hidden_effect = {
+#			event_target:CmtTargetManualUprising1 = {
+#				save_global_event_target_as = CmtTargetManualUprisingSelected
+#				CmtEffectTriggerUprisingWarCommon = yes
+#			}
+#			country_event = { id = CrisisManagerMenu.7147 }
+#		}
+#	}
+#	option = {
+#		name = CrisisManagerMenu.7146c2.name
+#		custom_tooltip = CrisisManagerMenu.7146c.tooltip
+#		trigger = { exists = event_target:CmtTargetManualUprising2 }
+#		hidden_effect = {
+#			event_target:CmtTargetManualUprising2 = {
+#				save_global_event_target_as = CmtTargetManualUprisingSelected
+#				CmtEffectTriggerUprisingWarCommon = yes
+#			}
+#			country_event = { id = CrisisManagerMenu.7147 }
+#		}
+#	}
+#	option = {
+#		name = CrisisManagerMenu.7146c3.name
+#		custom_tooltip = CrisisManagerMenu.7146c.tooltip
+#		trigger = { exists = event_target:CmtTargetManualUprising3 }
+#		hidden_effect = {
+#			event_target:CmtTargetManualUprising3 = {
+#				save_global_event_target_as = CmtTargetManualUprisingSelected
+#				CmtEffectTriggerUprisingWarCommon = yes
+#			}
+#			country_event = { id = CrisisManagerMenu.7147 }
+#		}
+#	}
+#	option = {
+#		name = CrisisManagerMenu.7146c4.name
+#		custom_tooltip = CrisisManagerMenu.7146c.tooltip
+#		trigger = { exists = event_target:CmtTargetManualUprising4 }
+#		hidden_effect = {
+#			event_target:CmtTargetManualUprising4 = {
+#				save_global_event_target_as = CmtTargetManualUprisingSelected
+#				CmtEffectTriggerUprisingWarCommon = yes
+#			}
+#			country_event = { id = CrisisManagerMenu.7147 }
+#		}
+#	}
+#	option = {
+#		name = CrisisManagerMenu.7146c5.name
+#		custom_tooltip = CrisisManagerMenu.7146c.tooltip
+#		trigger = { exists = event_target:CmtTargetManualUprising5 }
+#		hidden_effect = {
+#			event_target:CmtTargetManualUprising5 = {
+#				save_global_event_target_as = CmtTargetManualUprisingSelected
+#				CmtEffectTriggerUprisingWarCommon = yes
+#			}
+#			country_event = { id = CrisisManagerMenu.7147 }
+#		}
+#	}
+#	option = {
+#		name = CrisisManagerMenu.7146c6.name
+#		custom_tooltip = CrisisManagerMenu.7146c.tooltip
+#		trigger = { exists = event_target:CmtTargetManualUprising6 }
+#		hidden_effect = {
+#			event_target:CmtTargetManualUprising6 = {
+#				save_global_event_target_as = CmtTargetManualUprisingSelected
+#				CmtEffectTriggerUprisingWarCommon = yes
+#			}
+#			country_event = { id = CrisisManagerMenu.7147 }
+#		}
+#	}
+#	option = {
+#		name = CrisisManagerMenu.7146c7.name
+#		custom_tooltip = CrisisManagerMenu.7146c.tooltip
+#		trigger = { exists = event_target:CmtTargetManualUprising7 }
+#		hidden_effect = {
+#			event_target:CmtTargetManualUprising7 = {
+#				save_global_event_target_as = CmtTargetManualUprisingSelected
+#				CmtEffectTriggerUprisingWarCommon = yes
+#			}
+#			country_event = { id = CrisisManagerMenu.7147 }
+#		}
+#	}
+#	option = {
+#		name = CrisisManagerMenu.7146c8.name
+#		custom_tooltip = CrisisManagerMenu.7146c.tooltip
+#		trigger = { exists = event_target:CmtTargetManualUprising8 }
+#		hidden_effect = {
+#			event_target:CmtTargetManualUprising8 = {
+#				save_global_event_target_as = CmtTargetManualUprisingSelected
+#				CmtEffectTriggerUprisingWarCommon = yes
+#			}
+#			country_event = { id = CrisisManagerMenu.7147 }
+#		}
+#	}
+#}
+#
+#country_event = {
+#	id = CrisisManagerMenu.7147
+#	title = CrisisManagerMenu.7147.name
+#	desc = CrisisManagerMenu.7147.desc
+#	picture = GFX_evt_organic_oppression
+#	is_triggered_only = yes
+#	
+#	after = {
+#		hidden_effect = { clear_global_event_target = CmtTargetManualUprisingSelected }
+#	}
+#	
+#	option = {
+#		name = CmtTextOK.name
+#		custom_tooltip = CmtTextOK.tooltip
+#		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+#	}
+#	option = {
+#		name = CmtTextExit.name
+#		custom_tooltip = CmtTextExit.tooltip
+#		hidden_effect = { CmtEffectExitMenu = yes }
+#	}
+#}
+
+
+### Player Crisis
+country_event = {
+	id = CrisisManagerMenu.7150
+	title = CrisisManagerMenu.7150.name
+	desc = {
+		text = CrisisManagerMenu.7150.desc1
+		trigger = {
+			NOR = {
+				has_country_flag = CmtFlagSpMenu
+				any_country = { is_at_war = yes }
+			}
+		}
+	}
+	desc = {
+		text = CrisisManagerMenu.7150.desc2
+		trigger = {
+			NOT = { has_country_flag = CmtFlagSpMenu }
+			any_country = { is_at_war = yes }
+		}
+	}
+	desc = {
+		text = CrisisManagerMenu.7150.desc3
+		trigger = { has_country_flag = CmtFlagSpMenu }
+	}
+	picture = GFX_evt_city_ruins
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { NOT = { has_country_flag = CmtFlagSpMenu } }
+			CmtEffectManualTargetPlayerCrisis = yes
+		}
+	}
+	
+	### More Infomation
+	option = {
+		name = CrisisManagerMenu.7150d.name
+		custom_tooltip = CrisisManagerMenu.7150d.tooltip
+		trigger = { NOT = { has_country_flag = CmtFlagSpMenu } }
+		hidden_effect = {
+			set_country_flag = CmtFlagSpMenu
+			country_event = { id = CrisisManagerMenu.7150 }
+		}
+	}
+	option = {
+		name = CmtTextOK.name
+		custom_tooltip = CmtTextOK.tooltip
+		trigger = { has_country_flag = CmtFlagSpMenu }
+		hidden_effect = {
+			country_event = { id = CrisisManagerMenu.7150 }
+			remove_country_flag = CmtFlagSpMenu
+		}
+	}
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_country_flag = CmtFlagSpMenu } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	### Cancel
+	option = {
+		name = CrisisManagerMenu.7150a1.name
+		custom_tooltip = CrisisManagerMenu.7150a1.tooltip
+		trigger = { NOT = { has_country_flag = CmtFlagSpMenu } }
+		hidden_effect = {
+			CmtEffectClearTargetPlayerCrisis = yes
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7150a2.name
+		custom_tooltip = CrisisManagerMenu.7150a2.tooltip
+		trigger = { NOT = { has_country_flag = CmtFlagSpMenu } }
+		hidden_effect = {
+			CmtEffectClearTargetPlayerCrisis = yes
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7150a3.name
+		custom_tooltip = CrisisManagerMenu.7150a3.tooltip
+		trigger = { NOT = { has_country_flag = CmtFlagSpMenu } }
+		hidden_effect = {
+			CmtEffectClearTargetPlayerCrisis = yes
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+	
+	### Trigger on Us
+	option = {
+		name = CrisisManagerMenu.7150b.name
+		custom_tooltip = CrisisManagerMenu.7150b.tooltip
+		trigger = {
+			NOT = { has_country_flag = CmtFlagSpMenu }
+			CmtTriggerPlayerCrisisAggressorCandidateMenu = yes
+		}
+		hidden_effect = {
+			remove_country_flag = CmtFlagNowInMenu
+			country_event = { id = CrisisManagerControl.0511 }
+			CmtEffectClearTargetPlayerCrisis = yes
+		}
+	}
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = {
+			NOT = { has_country_flag = CmtFlagSpMenu }
+			exists = event_target:CmtTargetManualPlayerCrisis1
+			CmtTriggerPlayerCrisisAggressorCandidateMenu = yes
+		}
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	
+	### Trigger on Another Empire
+	option = {
+		name = CrisisManagerMenu.7150c1.name
+		custom_tooltip = CrisisManagerMenu.7150c.tooltip
+		trigger = {
+			NOT = { has_country_flag = CmtFlagSpMenu }
+			exists = event_target:CmtTargetManualPlayerCrisis1
+		}
+		hidden_effect = {
+			country_event = { id = CrisisManagerMenu.0100 }
+			event_target:CmtTargetManualPlayerCrisis1 = { country_event = { id = CrisisManagerControl.0511 } }
+			CmtEffectClearTargetPlayerCrisis = yes
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7150c2.name
+		custom_tooltip = CrisisManagerMenu.7150c.tooltip
+		trigger = {
+			NOT = { has_country_flag = CmtFlagSpMenu }
+			exists = event_target:CmtTargetManualPlayerCrisis2
+		}
+		hidden_effect = {
+			country_event = { id = CrisisManagerMenu.0100 }
+			event_target:CmtTargetManualPlayerCrisis2 = { country_event = { id = CrisisManagerControl.0511 } }
+			CmtEffectClearTargetPlayerCrisis = yes
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7150c3.name
+		custom_tooltip = CrisisManagerMenu.7150c.tooltip
+		trigger = {
+			NOT = { has_country_flag = CmtFlagSpMenu }
+			exists = event_target:CmtTargetManualPlayerCrisis3
+		}
+		hidden_effect = {
+			country_event = { id = CrisisManagerMenu.0100 }
+			event_target:CmtTargetManualPlayerCrisis3 = { country_event = { id = CrisisManagerControl.0511 } }
+			CmtEffectClearTargetPlayerCrisis = yes
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7150c4.name
+		custom_tooltip = CrisisManagerMenu.7150c.tooltip
+		trigger = {
+			NOT = { has_country_flag = CmtFlagSpMenu }
+			exists = event_target:CmtTargetManualPlayerCrisis4
+		}
+		hidden_effect = {
+			country_event = { id = CrisisManagerMenu.0100 }
+			event_target:CmtTargetManualPlayerCrisis4 = { country_event = { id = CrisisManagerControl.0511 } }
+			CmtEffectClearTargetPlayerCrisis = yes
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7150c5.name
+		custom_tooltip = CrisisManagerMenu.7150c.tooltip
+		trigger = {
+			NOT = { has_country_flag = CmtFlagSpMenu }
+			exists = event_target:CmtTargetManualPlayerCrisis5
+		}
+		hidden_effect = {
+			country_event = { id = CrisisManagerMenu.0100 }
+			event_target:CmtTargetManualPlayerCrisis5 = { country_event = { id = CrisisManagerControl.0511 } }
+			CmtEffectClearTargetPlayerCrisis = yes
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7150c6.name
+		custom_tooltip = CrisisManagerMenu.7150c.tooltip
+		trigger = {
+			NOT = { has_country_flag = CmtFlagSpMenu }
+			exists = event_target:CmtTargetManualPlayerCrisis6
+		}
+		hidden_effect = {
+			country_event = { id = CrisisManagerMenu.0100 }
+			event_target:CmtTargetManualPlayerCrisis6 = { country_event = { id = CrisisManagerControl.0511 } }
+			CmtEffectClearTargetPlayerCrisis = yes
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7150c7.name
+		custom_tooltip = CrisisManagerMenu.7150c.tooltip
+		trigger = {
+			NOT = { has_country_flag = CmtFlagSpMenu }
+			exists = event_target:CmtTargetManualPlayerCrisis7
+		}
+		hidden_effect = {
+			country_event = { id = CrisisManagerMenu.0100 }
+			event_target:CmtTargetManualPlayerCrisis7 = { country_event = { id = CrisisManagerControl.0511 } }
+			CmtEffectClearTargetPlayerCrisis = yes
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7150c8.name
+		custom_tooltip = CrisisManagerMenu.7150c.tooltip
+		trigger = {
+			NOT = { has_country_flag = CmtFlagSpMenu }
+			exists = event_target:CmtTargetManualPlayerCrisis8
+		}
+		hidden_effect = {
+			country_event = { id = CrisisManagerMenu.0100 }
+			event_target:CmtTargetManualPlayerCrisis8 = { country_event = { id = CrisisManagerControl.0511 } }
+			CmtEffectClearTargetPlayerCrisis = yes
+		}
+	}
+}
+
+
+
+##############################################
+###  Forced Termination of Crisis Country  ###
+##############################################
+
+### Menu
+country_event = {
+	id = CrisisManagerMenu.7200
+	title = CrisisManagerMenu.7200.name
+	desc = CrisisManagerMenu.7200.desc
+	picture = GFX_evt_CmtMenuA
+	is_triggered_only = yes
+	
+	### Separator
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = {
+			has_global_flag = CmtFlagEndGameEdition
+			NOT = { has_global_flag = CmtFlagNoSeparator }
+		}
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	### Prethoryn
+	option = {
+		name = CrisisManagerMenu.7200a.name
+		custom_tooltip = CrisisManagerMenu.7200a.tooltip
+		trigger = {
+			has_global_flag = CmtFlagEndGameEdition
+			CmtTriggerExistPrethoryn = yes
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7201 } }
+	}
+	
+	### Extradimensionals
+	option = {
+		name = CrisisManagerMenu.7200b.name
+		custom_tooltip = CrisisManagerMenu.7200b.tooltip
+		trigger = {
+			has_global_flag = CmtFlagEndGameEdition
+			CmtTriggerExistExds = yes
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7202 } }
+	}
+	
+	### Contingency
+	option = {
+		name = CrisisManagerMenu.7200c.name
+		custom_tooltip = CrisisManagerMenu.7200c.tooltip
+		trigger = {
+			has_global_flag = CmtFlagEndGameEdition
+			CmtTriggerExistContingency = yes
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7203 } }
+	}
+	
+	### Forced End of Cycle
+	option = {
+		name = CrisisManagerMenu.7200d.name
+		custom_tooltip = CrisisManagerMenu.7200d.tooltip
+		trigger = {
+			has_global_flag = CmtFlagEndGameEdition
+			CmtTriggerExistShroudSpirit = yes
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7204 } }
+	}
+	
+	### Separator
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = {
+			OR = {
+				has_global_flag = CmtFlagSleeperEdition
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NOT = { has_global_flag = CmtFlagNoSeparator }
+		}
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	### Fallen/Awakened Empire
+	option = {
+		name = CrisisManagerMenu.7200e.name
+		custom_tooltip = CrisisManagerMenu.7200e.tooltip
+		trigger = {
+			has_global_flag = CmtFlagSleeperEdition
+			any_country = { CmtTriggerIsFallenEmpire = yes }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7205 } }
+	}
+	
+	### War in Heaven: Not Implemented
+	option = {
+		name = CrisisManagerMenu.7200f.name
+		custom_tooltip = CrisisManagerMenu.7200f.tooltip
+		trigger = {
+			always = no
+			has_global_flag = CmtFlagSleeperEdition
+			CmtTriggerExistShroudSpirit = yes
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7206 } }
+	}
+	
+	### Khan
+	option = {
+		name = CrisisManagerMenu.7200h.name
+		custom_tooltip = CrisisManagerMenu.7200h.tooltip
+		trigger = {
+			has_global_flag = CmtFlagMidGameEdition
+			any_country = { CmtTriggerIsMarauder = yes }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7208 } }
+	}
+	
+	### Gray Tempest
+	option = {
+		name = CrisisManagerMenu.7200i.name
+		custom_tooltip = CrisisManagerMenu.7200i.tooltip
+		trigger = {
+			has_global_flag = CmtFlagMidGameEdition
+			CmtTriggerExistGraygoo = yes
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7209 } }
+	}
+	
+	
+	### Go Back, etc.
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	option = {
+		name = CmtTextGoBack.name
+		custom_tooltip = CmtTextGoBack.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+	}
+	option = {
+		name = CmtTextExit.name
+		custom_tooltip = CmtTextExit.tooltip
+		hidden_effect = { CmtEffectExitMenu = yes }
+	}
+}
+
+### Termination of Prethoryn
+country_event = {
+	id = CrisisManagerMenu.7201
+	title = CrisisManagerMenu.7201.name
+	desc = CrisisManagerMenu.7201.desc
+	picture = GFX_evt_physics_research
+	is_triggered_only = yes
+	
+	option = {
+		name = CrisisManagerMenu.720xa.name
+		custom_tooltip = CrisisManagerMenu.720xa.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7200 } }
+	}
+	option = {
+		name = CrisisManagerMenu.720xb.name
+		custom_tooltip = CrisisManagerMenu.720xb.tooltip
+		hidden_effect = {
+			CmtEffectDestroyPrethoryn = yes
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+}
+
+### Termination of Extradimensionals
+country_event = {
+	id = CrisisManagerMenu.7202
+	title = CrisisManagerMenu.7202.name
+	desc = CrisisManagerMenu.7202.desc
+	picture = GFX_evt_wormhole
+	is_triggered_only = yes
+	
+	option = {
+		name = CrisisManagerMenu.720xa.name
+		custom_tooltip = CrisisManagerMenu.720xa.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7200 } }
+	}
+	option = {
+		name = CrisisManagerMenu.720xb.name
+		custom_tooltip = CrisisManagerMenu.720xb.tooltip
+		hidden_effect = {
+			CmtEffectDestroyExds = yes
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+}
+
+### Termination of Contingency
+country_event = {
+	id = CrisisManagerMenu.7203
+	title = CrisisManagerMenu.7203.name
+	desc = CrisisManagerMenu.7203.desc
+	picture = GFX_evt_glitchy_matrix
+	is_triggered_only = yes
+	
+	option = {
+		name = CrisisManagerMenu.720xa.name
+		custom_tooltip = CrisisManagerMenu.720xa.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7200 } }
+	}
+	option = {
+		name = CrisisManagerMenu.720xb.name
+		custom_tooltip = CrisisManagerMenu.720xb.tooltip
+		hidden_effect = {
+			CmtEffectDestroyContingency = yes
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+}
+
+### Termination of Shroud Spirits (Forced End of Cycle)
+country_event = {
+	id = CrisisManagerMenu.7204
+	title = CrisisManagerMenu.7204.name
+	desc = CrisisManagerMenu.7204.desc
+	picture = GFX_evt_unspeakable_horror
+	is_triggered_only = yes
+	
+	option = {
+		name = CrisisManagerMenu.720xa.name
+		custom_tooltip = CrisisManagerMenu.720xa.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7200 } }
+	}
+	option = {
+		name = CrisisManagerMenu.720xb.name
+		custom_tooltip = CrisisManagerMenu.720xb.tooltip
+		hidden_effect = {
+			CmtEffectDestroyShroudSpirits = yes
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+}
+
+### Termination of Fallen/Awakened Empire
+country_event = {
+	id = CrisisManagerMenu.7205
+	title = CrisisManagerMenu.7205.name
+	desc = CrisisManagerMenu.7205.desc
+	picture = GFX_evt_fallen_empire_awakes
+	is_triggered_only = yes
+	
+	immediate = { CmtEffectManualTargetSleepers = yes }
+	after = { hidden_effect = { CmtEffectClearTargetSleepers = yes } }
+	
+	option = {
+		name = CrisisManagerMenu.720xa.name
+		custom_tooltip = CrisisManagerMenu.720xa.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7200 } }
+	}
+	
+	option = {
+		name = CrisisManagerMenu.7205c1.name
+		custom_tooltip = CrisisManagerMenu.7205c.tooltip
+		trigger = { exists = event_target:CmtTargetManualSleeper1 }
+		hidden_effect = {
+			event_target:CmtTargetManualSleeper1 = { destroy_country = yes }
+			country_event = { id = CrisisManagerMenu.7200 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7205c2.name
+		custom_tooltip = CrisisManagerMenu.7205c.tooltip
+		trigger = { exists = event_target:CmtTargetManualSleeper2 }
+		hidden_effect = {
+			event_target:CmtTargetManualSleeper2 = { destroy_country = yes }
+			country_event = { id = CrisisManagerMenu.7200 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7205c3.name
+		custom_tooltip = CrisisManagerMenu.7205c.tooltip
+		trigger = { exists = event_target:CmtTargetManualSleeper3 }
+		hidden_effect = {
+			event_target:CmtTargetManualSleeper3 = { destroy_country = yes }
+			country_event = { id = CrisisManagerMenu.7200 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7205c4.name
+		custom_tooltip = CrisisManagerMenu.7205c.tooltip
+		trigger = { exists = event_target:CmtTargetManualSleeper4 }
+		hidden_effect = {
+			event_target:CmtTargetManualSleeper4 = { destroy_country = yes }
+			country_event = { id = CrisisManagerMenu.7200 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7205c5.name
+		custom_tooltip = CrisisManagerMenu.7205c.tooltip
+		trigger = { exists = event_target:CmtTargetManualSleeper5 }
+		hidden_effect = {
+			event_target:CmtTargetManualSleeper5 = { destroy_country = yes }
+			country_event = { id = CrisisManagerMenu.7200 }
+		}
+	}
+}
+
+### Termination of War in Heaven
+country_event = {
+	id = CrisisManagerMenu.7206
+	title = CrisisManagerMenu.7206.name
+	desc = CrisisManagerMenu.7206.desc
+	picture = GFX_evt_fallen_empire_awakes
+	is_triggered_only = yes
+	
+	option = {
+		name = CrisisManagerMenu.720xa.name
+		custom_tooltip = CrisisManagerMenu.720xa.tooltip
+		trigger = { always = no }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7200 } }
+	}
+}
+
+
+### Termination of Khan/Marauder
+country_event = {
+	id = CrisisManagerMenu.7208
+	title = CrisisManagerMenu.7208.name
+	desc = CrisisManagerMenu.7208.desc
+	picture = GFX_evt_khan_throne_room
+	is_triggered_only = yes
+	
+	immediate = {
+		random_country = {
+			limit = { has_country_flag = marauder_1 }
+			save_global_event_target_as = CmtTargetManualMarauder1
+		}
+		random_country = {
+			limit = { has_country_flag = marauder_2 }
+			save_global_event_target_as = CmtTargetManualMarauder2
+		}
+		random_country = {
+			limit = { has_country_flag = marauder_3 }
+			save_global_event_target_as = CmtTargetManualMarauder3
+		}
+	}
+	
+	after = {
+		if = {
+			limit = { exists = event_target:CmtTargetManualMarauder1 }
+			clear_global_event_target = CmtTargetManualMarauder1
+		}
+		if = {
+			limit = { exists = event_target:CmtTargetManualMarauder2 }
+			clear_global_event_target = CmtTargetManualMarauder2
+		}
+		if = {
+			limit = { exists = event_target:CmtTargetManualMarauder3 }
+			clear_global_event_target = CmtTargetManualMarauder3
+		}
+	}
+	
+	option = {
+		name = CrisisManagerMenu.720xa.name
+		custom_tooltip = CrisisManagerMenu.720xa.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7200 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7208b.name
+		custom_tooltip = CrisisManagerMenu.7208b.tooltip
+		trigger = { any_country = { CmtTriggerIsKhanCountry = yes } }
+		hidden_effect = {
+			every_country = {
+				limit = { CmtTriggerIsKhanCountry = yes }
+				country_event = { id = marauder.512 }
+				set_country_flag = khan_dead_assassin
+				remove_country_flag = khan_dead_poison
+				remove_country_flag = khan_dead_disease
+				remove_country_flag = khan_dead_concubine
+			}
+			country_event = { id = CrisisManagerMenu.7200 }
+		}
+	}
+	
+	option = {
+		name = CrisisManagerMenu.7208c1.name
+		custom_tooltip = CrisisManagerMenu.7208c.tooltip
+		trigger = { exists = event_target:CmtTargetManualMarauder1 }
+		hidden_effect = {
+			event_target:CmtTargetManualMarauder1 = { destroy_country = yes }
+			country_event = { id = CrisisManagerMenu.7200 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7208c2.name
+		custom_tooltip = CrisisManagerMenu.7208c.tooltip
+		trigger = { exists = event_target:CmtTargetManualMarauder2 }
+		hidden_effect = {
+			event_target:CmtTargetManualMarauder2 = { destroy_country = yes }
+			country_event = { id = CrisisManagerMenu.7200 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7208c3.name
+		custom_tooltip = CrisisManagerMenu.7208c.tooltip
+		trigger = { exists = event_target:CmtTargetManualMarauder3 }
+		hidden_effect = {
+			event_target:CmtTargetManualMarauder3 = { destroy_country = yes }
+			country_event = { id = CrisisManagerMenu.7200 }
+		}
+	}
+}
+
+### Termination of Graygoo
+country_event = {
+	id = CrisisManagerMenu.7209
+	title = CrisisManagerMenu.7209.name
+	desc = CrisisManagerMenu.7209.desc
+	picture = GFX_evt_gray_goo
+	is_triggered_only = yes
+	
+	option = {
+		name = CrisisManagerMenu.720xa.name
+		custom_tooltip = CrisisManagerMenu.720xa.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7200 } }
+	}
+	option = {
+		name = CrisisManagerMenu.720xb.name
+		custom_tooltip = CrisisManagerMenu.720xb.tooltip
+		hidden_effect = {
+			event_target:nanite_factory = { save_event_target_as = goo_slayer_ship }
+			CmtEffectDestroyGraygoo = yes
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+}
+
+
+
+##################################
+### Create Fleet for Sleepers  ###
+##################################
+
+### Menu
+country_event = {
+	id = CrisisManagerMenu.7400
+	title = CrisisManagerMenu.7400.name
+	desc = CrisisManagerMenu.7400.desc
+	picture = GFX_evt_fallen_empire
+	is_triggered_only = yes
+	
+	### Separator
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = {
+			has_global_flag = CmtFlagEndGameEdition
+			NOT = { has_global_flag = CmtFlagNoSeparator }
+		}
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	### Option
+	option = {
+		name = CrisisManagerMenu.7400a.name
+		custom_tooltip = CrisisManagerMenu.7400a.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7411 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7400b.name
+		custom_tooltip = CrisisManagerMenu.7400a.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7412 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7400c.name
+		custom_tooltip = CrisisManagerMenu.7400a.tooltip
+		trigger = { host_has_dlc = "Apocalypse" }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7413 } }
+	}
+	option = {
+		name = CrisisManagerMenu.7400d.name
+		custom_tooltip = CrisisManagerMenu.7400d.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7419 } }
+	}
+	
+	
+	### Go Back, etc.
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	option = {
+		name = CmtTextGoBack.name
+		custom_tooltip = CmtTextGoBack.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+	}
+	option = {
+		name = CmtTextExit.name
+		custom_tooltip = CmtTextExit.tooltip
+		hidden_effect = { CmtEffectExitMenu = yes }
+	}
+}
+
+
+### Create Standard Fleet for Sleeper
+country_event = {
+	id = CrisisManagerMenu.7411
+	title = CrisisManagerMenu.7411.name
+	desc = CrisisManagerMenu.7411.desc
+	picture = GFX_evt_fallen_empire
+	is_triggered_only = yes
+	
+	immediate = { CmtEffectManualTargetSleepers = yes }
+	
+	after = {
+		hidden_effect = {
+			CmtEffectClearTargetSleepers = yes
+			country_event = { id = CrisisManagerMenu.7400 }
+		}
+	}
+	
+	### Cancel
+	option = {
+		name = CrisisManagerMenu.741xa.name
+		custom_tooltip = CrisisManagerMenu.741xa.tooltip
+	}
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	
+	### Standard Creation
+	option = {
+		name = CrisisManagerMenu.7411d0.name
+		custom_tooltip = CrisisManagerMenu.7411d0.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = { is_country_type = fallen_empire }
+				every_owned_ship = { limit = { is_ship_class = shipclass_military } delete_ship = this }
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7411b1.name
+		custom_tooltip = CrisisManagerMenu.7411b1.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = { is_country_type = fallen_empire }
+				random_list = { 10 = { capital_scope = { CmtEffectCreateSleeperStandard = yes } } 20 = {} }
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7411b2.name
+		custom_tooltip = CrisisManagerMenu.7411b2.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = { is_country_type = fallen_empire }
+				random_list = { 20 = { capital_scope = { CmtEffectCreateSleeperStandard = yes } } 10 = {} }
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7411c1.name
+		custom_tooltip = CrisisManagerMenu.7411c1.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = { is_country_type = fallen_empire }
+				capital_scope = { CmtEffectCreateSleeperStandard = yes }
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7411c2.name
+		custom_tooltip = CrisisManagerMenu.7411c2.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = { is_country_type = fallen_empire }
+				capital_scope = {
+					while = {
+						count = 2
+						CmtEffectCreateSleeperStandard = yes
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7411c3.name
+		custom_tooltip = CrisisManagerMenu.7411c3.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = { is_country_type = fallen_empire }
+				capital_scope = {
+					while = {
+						count = 3
+						CmtEffectCreateSleeperStandard = yes
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7411c4.name
+		custom_tooltip = CrisisManagerMenu.7411c4.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = { is_country_type = fallen_empire }
+				capital_scope = {
+					while = {
+						count = 4
+						CmtEffectCreateSleeperStandard = yes
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7411c5.name
+		custom_tooltip = CrisisManagerMenu.7411c5.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = { is_country_type = fallen_empire }
+				capital_scope = {
+					while = {
+						count = 5
+						CmtEffectCreateSleeperStandard = yes
+					}
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	### Create for Specified Sleeper
+	option = {
+		name = CrisisManagerMenu.7411e1.name
+		custom_tooltip = CrisisManagerMenu.7411e1.tooltip
+		trigger = { exists = event_target:CmtTargetManualSleeper1 }
+		hidden_effect = { event_target:CmtTargetManualSleeper1 = { capital_scope = { CmtEffectCreateSleeperStandard = yes } } }
+	}
+	option = {
+		name = CrisisManagerMenu.7411e2.name
+		custom_tooltip = CrisisManagerMenu.7411e2.tooltip
+		trigger = { exists = event_target:CmtTargetManualSleeper2 }
+		hidden_effect = { event_target:CmtTargetManualSleeper2 = { capital_scope = { CmtEffectCreateSleeperStandard = yes } } }
+	}
+	option = {
+		name = CrisisManagerMenu.7411e3.name
+		custom_tooltip = CrisisManagerMenu.7411e3.tooltip
+		trigger = { exists = event_target:CmtTargetManualSleeper3 }
+		hidden_effect = { event_target:CmtTargetManualSleeper3 = { capital_scope = { CmtEffectCreateSleeperStandard = yes } } }
+	}
+	option = {
+		name = CrisisManagerMenu.7411e4.name
+		custom_tooltip = CrisisManagerMenu.7411e4.tooltip
+		trigger = { exists = event_target:CmtTargetManualSleeper4 }
+		hidden_effect = { event_target:CmtTargetManualSleeper4 = { capital_scope = { CmtEffectCreateSleeperStandard = yes } } }
+	}
+	option = {
+		name = CrisisManagerMenu.7411e5.name
+		custom_tooltip = CrisisManagerMenu.7411e5.tooltip
+		trigger = { exists = event_target:CmtTargetManualSleeper5 }
+		hidden_effect = { event_target:CmtTargetManualSleeper5 = { capital_scope = { CmtEffectCreateSleeperStandard = yes } } }
+	}
+}
+
+### Create Titan for Sleeper
+country_event = {
+	id = CrisisManagerMenu.7412
+	title = CrisisManagerMenu.7412.name
+	desc = CrisisManagerMenu.7412.desc
+	picture = GFX_evt_fallen_empire
+	is_triggered_only = yes
+	
+	immediate = { CmtEffectManualTargetSleepers = yes }
+	
+	after = {
+		hidden_effect = {
+			CmtEffectClearTargetSleepers = yes
+			country_event = { id = CrisisManagerMenu.7400 }
+		}
+	}
+	
+	### Cancel
+	option = {
+		name = CrisisManagerMenu.741xa.name
+		custom_tooltip = CrisisManagerMenu.741xa.tooltip
+	}
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	
+	### Standard Creation
+	option = {
+		name = CrisisManagerMenu.7412b1.name
+		custom_tooltip = CrisisManagerMenu.7412b1.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = {
+					is_country_type = fallen_empire
+					NOT = { any_owned_ship = { is_ship_size = massive_ship_fallen_empire } }
+				}
+				random_list = { 10 = { capital_scope = { CmtEffectCreateSleeperTitan = yes } } 30 = {} }
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7412b2.name
+		custom_tooltip = CrisisManagerMenu.7412b2.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = {
+					is_country_type = fallen_empire
+					NOT = { any_owned_ship = { is_ship_size = massive_ship_fallen_empire } }
+				}
+				random_list = { 20 = { capital_scope = { CmtEffectCreateSleeperTitan = yes } } 30 = {} }
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7412b3.name
+		custom_tooltip = CrisisManagerMenu.7412b3.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = {
+					is_country_type = fallen_empire
+					NOT = { any_owned_ship = { is_ship_size = massive_ship_fallen_empire } }
+				}
+				random_list = { 20 = { capital_scope = { CmtEffectCreateSleeperTitan = yes } } 10 = {} }
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7412c1.name
+		custom_tooltip = CrisisManagerMenu.7412c1.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = { is_country_type = fallen_empire }
+				capital_scope = { CmtEffectCreateSleeperTitan = yes }
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7412c2.name
+		custom_tooltip = CrisisManagerMenu.7412c2.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = { is_country_type = fallen_empire }
+				capital_scope = {
+					while = {
+						count = 2
+						CmtEffectCreateSleeperTitan = yes
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7412c3.name
+		custom_tooltip = CrisisManagerMenu.7412c3.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = { is_country_type = fallen_empire }
+				capital_scope = {
+					while = {
+						count = 3
+						CmtEffectCreateSleeperTitan = yes
+					}
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	### Set for Targeted Number
+	option = {
+		name = CrisisManagerMenu.7412d0.name
+		custom_tooltip = CrisisManagerMenu.7412d0.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = { is_country_type = fallen_empire }
+				every_owned_ship = { limit = { is_ship_size = massive_ship_fallen_empire } delete_ship = this }
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7412d1.name
+		custom_tooltip = CrisisManagerMenu.7412d1.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = { is_country_type = fallen_empire }
+				capital_scope = {
+					while = {
+						limit = { prev = { count_owned_ships = { limit = { is_ship_size = massive_ship_fallen_empire } count < 1 } } }
+						CmtEffectCreateSleeperTitan = yes
+					}
+				}
+				while = {
+					limit = { count_owned_ships = { limit = { is_ship_size = massive_ship_fallen_empire } count > 1 } }
+					random_owned_ship = { limit = { is_ship_size = massive_ship_fallen_empire } delete_ship = this }
+				}
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7412d2.name
+		custom_tooltip = CrisisManagerMenu.7412d2.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = { is_country_type = fallen_empire }
+				capital_scope = {
+					while = {
+						limit = { prev = { count_owned_ships = { limit = { is_ship_size = massive_ship_fallen_empire } count < 2 } } }
+						CmtEffectCreateSleeperTitan = yes
+					}
+				}
+				while = {
+					limit = { count_owned_ships = { limit = { is_ship_size = massive_ship_fallen_empire } count > 2 } }
+					random_owned_ship = { limit = { is_ship_size = massive_ship_fallen_empire } delete_ship = this }
+				}
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7412d3.name
+		custom_tooltip = CrisisManagerMenu.7412d3.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = { is_country_type = fallen_empire }
+				capital_scope = {
+					while = {
+						limit = { prev = { count_owned_ships = { limit = { is_ship_size = massive_ship_fallen_empire } count < 3 } } }
+						CmtEffectCreateSleeperTitan = yes
+					}
+				}
+				while = {
+					limit = { count_owned_ships = { limit = { is_ship_size = massive_ship_fallen_empire } count > 3 } }
+					random_owned_ship = { limit = { is_ship_size = massive_ship_fallen_empire } delete_ship = this }
+				}
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7412d4.name
+		custom_tooltip = CrisisManagerMenu.7412d4.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = { is_country_type = fallen_empire }
+				capital_scope = {
+					while = {
+						limit = { prev = { count_owned_ships = { limit = { is_ship_size = massive_ship_fallen_empire } count < 4 } } }
+						CmtEffectCreateSleeperTitan = yes
+					}
+				}
+				while = {
+					limit = { count_owned_ships = { limit = { is_ship_size = massive_ship_fallen_empire } count > 4 } }
+					random_owned_ship = { limit = { is_ship_size = massive_ship_fallen_empire } delete_ship = this }
+				}
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7412d5.name
+		custom_tooltip = CrisisManagerMenu.7412d5.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = { is_country_type = fallen_empire }
+				capital_scope = {
+					while = {
+						limit = { prev = { count_owned_ships = { limit = { is_ship_size = massive_ship_fallen_empire } count < 5 } } }
+						CmtEffectCreateSleeperTitan = yes
+					}
+				}
+				while = {
+					limit = { count_owned_ships = { limit = { is_ship_size = massive_ship_fallen_empire } count > 5 } }
+					random_owned_ship = { limit = { is_ship_size = massive_ship_fallen_empire } delete_ship = this }
+				}
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7412d9.name
+		custom_tooltip = CrisisManagerMenu.7412d9.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = { is_country_type = fallen_empire }
+				every_owned_ship = {
+					limit = { is_ship_size = massive_ship_fallen_empire }
+					delete_ship = this
+				}
+				every_owned_fleet = {
+					limit = {
+						is_ship_class = shipclass_military
+						count_fleet_ships = { limit = { NOT = { is_ship_size = massive_ship_fallen_empire } } count > 1 }
+					}
+					create_fallen_empire_titan = yes
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	### Create for Specified Sleeper
+	option = {
+		name = CrisisManagerMenu.7412e1.name
+		custom_tooltip = CrisisManagerMenu.7412e1.tooltip
+		trigger = { exists = event_target:CmtTargetManualSleeper1 }
+		hidden_effect = { event_target:CmtTargetManualSleeper1 = { capital_scope = { CmtEffectCreateSleeperTitan = yes } } }
+	}
+	option = {
+		name = CrisisManagerMenu.7412e2.name
+		custom_tooltip = CrisisManagerMenu.7412e2.tooltip
+		trigger = { exists = event_target:CmtTargetManualSleeper2 }
+		hidden_effect = { event_target:CmtTargetManualSleeper2 = { capital_scope = { CmtEffectCreateSleeperTitan = yes } } }
+	}
+	option = {
+		name = CrisisManagerMenu.7412e3.name
+		custom_tooltip = CrisisManagerMenu.7412e3.tooltip
+		trigger = { exists = event_target:CmtTargetManualSleeper3 }
+		hidden_effect = { event_target:CmtTargetManualSleeper3 = { capital_scope = { CmtEffectCreateSleeperTitan = yes } } }
+	}
+	option = {
+		name = CrisisManagerMenu.7412e4.name
+		custom_tooltip = CrisisManagerMenu.7412e4.tooltip
+		trigger = { exists = event_target:CmtTargetManualSleeper4 }
+		hidden_effect = { event_target:CmtTargetManualSleeper4 = { capital_scope = { CmtEffectCreateSleeperTitan = yes } } }
+	}
+	option = {
+		name = CrisisManagerMenu.7412e5.name
+		custom_tooltip = CrisisManagerMenu.7412e5.tooltip
+		trigger = { exists = event_target:CmtTargetManualSleeper5 }
+		hidden_effect = { event_target:CmtTargetManualSleeper5 = { capital_scope = { CmtEffectCreateSleeperTitan = yes } } }
+	}
+}
+
+### Create Colossus for Sleeper
+country_event = {
+	id = CrisisManagerMenu.7413
+	title = CrisisManagerMenu.7413.name
+	desc = CrisisManagerMenu.7413.desc
+	picture = GFX_evt_fallen_empire
+	is_triggered_only = yes
+	
+	immediate = { CmtEffectManualTargetSleepers = yes }
+	
+	after = {
+		hidden_effect = {
+			CmtEffectClearTargetSleepers = yes
+			country_event = { id = CrisisManagerMenu.7400 }
+		}
+	}
+	
+	### Cancel
+	option = {
+		name = CrisisManagerMenu.741xa.name
+		custom_tooltip = CrisisManagerMenu.741xa.tooltip
+	}
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	
+	### Standard Creation
+	option = {
+		name = CrisisManagerMenu.7413b1.name
+		custom_tooltip = CrisisManagerMenu.7413b1.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = {
+					is_country_type = fallen_empire
+					NOT = { any_owned_ship = { is_ship_size = colossus } }
+				}
+				random_list = { 10 = { capital_scope = { CmtEffectCreateSleeperColossus = yes } } 90 = {} }
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7413b2.name
+		custom_tooltip = CrisisManagerMenu.7413b2.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = {
+					is_country_type = fallen_empire
+					NOT = { any_owned_ship = { is_ship_size = colossus } }
+				}
+				random_list = { 10 = { capital_scope = { CmtEffectCreateSleeperColossus = yes } } 20 = {} }
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7413b3.name
+		custom_tooltip = CrisisManagerMenu.7413b3.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = {
+					is_country_type = fallen_empire
+					NOT = { any_owned_ship = { is_ship_size = colossus } }
+				}
+				random_list = { 20 = { capital_scope = { CmtEffectCreateSleeperColossus = yes } } 10 = {} }
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7413c1.name
+		custom_tooltip = CrisisManagerMenu.7413c1.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = { is_country_type = fallen_empire }
+				capital_scope = { CmtEffectCreateSleeperColossus = yes }
+			}
+		}
+	}
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	### Set for Targeted Number
+	option = {
+		name = CrisisManagerMenu.7413d0.name
+		custom_tooltip = CrisisManagerMenu.7413d0.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = { is_country_type = fallen_empire }
+				every_owned_ship = { limit = { is_ship_size = colossus } delete_ship = this }
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7413d1.name
+		custom_tooltip = CrisisManagerMenu.7413d1.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = { is_country_type = fallen_empire }
+				capital_scope = {
+					while = {
+						limit = { prev = { count_owned_ships = { limit = { is_ship_size = colossus } count < 1 } } }
+						CmtEffectCreateSleeperColossus = yes
+					}
+				}
+				while = {
+					limit = { count_owned_ships = { limit = { is_ship_size = colossus } count > 1 } }
+					random_owned_ship = { limit = { is_ship_size = colossus } delete_ship = this }
+				}
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7413d2.name
+		custom_tooltip = CrisisManagerMenu.7413d2.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = { is_country_type = fallen_empire }
+				capital_scope = {
+					while = {
+						limit = { prev = { count_owned_ships = { limit = { is_ship_size = colossus } count < 2 } } }
+						CmtEffectCreateSleeperColossus = yes
+					}
+				}
+				while = {
+					limit = { count_owned_ships = { limit = { is_ship_size = colossus } count > 2 } }
+					random_owned_ship = { limit = { is_ship_size = colossus } delete_ship = this }
+				}
+			}
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7413d3.name
+		custom_tooltip = CrisisManagerMenu.7413d3.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = { is_country_type = fallen_empire }
+				capital_scope = {
+					while = {
+						limit = { prev = { count_owned_ships = { limit = { is_ship_size = colossus } count < 3 } } }
+						CmtEffectCreateSleeperColossus = yes
+					}
+				}
+				while = {
+					limit = { count_owned_ships = { limit = { is_ship_size = colossus } count > 3 } }
+					random_owned_ship = { limit = { is_ship_size = colossus } delete_ship = this }
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	### Create for Specified Sleeper
+	option = {
+		name = CrisisManagerMenu.7413e1.name
+		custom_tooltip = CrisisManagerMenu.7413e1.tooltip
+		trigger = { exists = event_target:CmtTargetManualSleeper1 }
+		hidden_effect = { event_target:CmtTargetManualSleeper1 = { capital_scope = { CmtEffectCreateSleeperColossus = yes } } }
+	}
+	option = {
+		name = CrisisManagerMenu.7413e2.name
+		custom_tooltip = CrisisManagerMenu.7413e2.tooltip
+		trigger = { exists = event_target:CmtTargetManualSleeper2 }
+		hidden_effect = { event_target:CmtTargetManualSleeper2 = { capital_scope = { CmtEffectCreateSleeperColossus = yes } } }
+	}
+	option = {
+		name = CrisisManagerMenu.7413e3.name
+		custom_tooltip = CrisisManagerMenu.7413e3.tooltip
+		trigger = { exists = event_target:CmtTargetManualSleeper3 }
+		hidden_effect = { event_target:CmtTargetManualSleeper3 = { capital_scope = { CmtEffectCreateSleeperColossus = yes } } }
+	}
+	option = {
+		name = CrisisManagerMenu.7413e4.name
+		custom_tooltip = CrisisManagerMenu.7413e4.tooltip
+		trigger = { exists = event_target:CmtTargetManualSleeper4 }
+		hidden_effect = { event_target:CmtTargetManualSleeper4 = { capital_scope = { CmtEffectCreateSleeperColossus = yes } } }
+	}
+	option = {
+		name = CrisisManagerMenu.7413e5.name
+		custom_tooltip = CrisisManagerMenu.7413e5.tooltip
+		trigger = { exists = event_target:CmtTargetManualSleeper5 }
+		hidden_effect = { event_target:CmtTargetManualSleeper5 = { capital_scope = { CmtEffectCreateSleeperColossus = yes } } }
+	}
+}
+
+
+### Create Titan for Sleeper
+country_event = {
+	id = CrisisManagerMenu.7419
+	title = CrisisManagerMenu.7419.name
+	desc = CrisisManagerMenu.7419.desc
+	picture = GFX_evt_fallen_empire
+	is_triggered_only = yes
+	
+	immediate = { CmtEffectManualTargetSleepers = yes }
+	
+	after = {
+		hidden_effect = {
+			CmtEffectClearTargetSleepers = yes
+			country_event = { id = CrisisManagerMenu.7400 }
+		}
+	}
+	
+	### Cancel
+	option = {
+		name = CrisisManagerMenu.741xa.name
+		custom_tooltip = CrisisManagerMenu.741xa.tooltip
+	}
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	
+	### Weak
+	option = {
+		name = CrisisManagerMenu.7419b1.name
+		custom_tooltip = CrisisManagerMenu.7419b1.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = {
+					is_country_type = fallen_empire
+					is_at_war = no
+				}
+				every_owned_ship = {
+					limit = {
+						OR = {
+							is_ship_class = shipclass_military
+							is_ship_size = colossus
+						}
+					}
+					delete_ship = this
+				}
+				capital_scope = {
+					CmtEffectCreateSleeperStandard = yes
+					CmtEffectCreateSleeperStandard = yes
+				}
+			}
+		}
+	}
+	
+	### Standard
+	option = {
+		name = CrisisManagerMenu.7419b2.name
+		custom_tooltip = CrisisManagerMenu.7419b2.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = {
+					is_country_type = fallen_empire
+					is_at_war = no
+				}
+				every_owned_ship = {
+					limit = {
+						OR = {
+							is_ship_class = shipclass_military
+							is_ship_size = colossus
+						}
+					}
+					delete_ship = this
+				}
+				capital_scope = {
+					CmtEffectCreateSleeperStandard = yes
+					CmtEffectCreateSleeperStandard = yes
+					random_list = { 10 = { CmtEffectCreateSleeperStandard = yes } 20 = {} }
+					random_list = { 10 = { CmtEffectCreateSleeperTitan = yes } 30 = {} }
+					if = {
+						limit = { host_has_dlc = "Apocalypse" }
+						random_list = { 10 = { CmtEffectCreateSleeperColossus = yes } 90 = {} }
+					}
+				}
+			}
+		}
+	}
+	
+	### Always Titan/Collossus
+	option = {
+		name = CrisisManagerMenu.7419b3.name
+		custom_tooltip = CrisisManagerMenu.7419b3.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = {
+					is_country_type = fallen_empire
+					is_at_war = no
+				}
+				every_owned_ship = {
+					limit = {
+						OR = {
+							is_ship_class = shipclass_military
+							is_ship_size = colossus
+						}
+					}
+					delete_ship = this
+				}
+				capital_scope = {
+					CmtEffectCreateSleeperStandard = yes
+					CmtEffectCreateSleeperStandard = yes
+					CmtEffectCreateSleeperStandard = yes
+					CmtEffectCreateSleeperTitan = yes
+					if = {
+						limit = { host_has_dlc = "Apocalypse" }
+						CmtEffectCreateSleeperColossus = yes
+					}
+				}
+			}
+		}
+	}
+	
+	### Full Titan/Collossus
+	option = {
+		name = CrisisManagerMenu.7419b4.name
+		custom_tooltip = CrisisManagerMenu.7419b4.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = {
+					is_country_type = fallen_empire
+					is_at_war = no
+				}
+				every_owned_ship = {
+					limit = {
+						OR = {
+							is_ship_class = shipclass_military
+							is_ship_size = colossus
+						}
+					}
+					delete_ship = this
+				}
+				capital_scope = {
+					while = {
+						count = 3
+						CmtEffectCreateSleeperStandard = yes
+						last_created_fleet = { create_fallen_empire_titan = yes }
+					}
+					if = {
+						limit = { host_has_dlc = "Apocalypse" }
+						CmtEffectCreateSleeperColossus = yes
+					}
+				}
+			}
+		}
+	}
+	
+	### Strong
+	option = {
+		name = CrisisManagerMenu.7419b5.name
+		custom_tooltip = CrisisManagerMenu.7419b5.tooltip
+		hidden_effect = {
+			every_country = {
+				limit = {
+					is_country_type = fallen_empire
+					is_at_war = no
+				}
+				every_owned_ship = {
+					limit = {
+						OR = {
+							is_ship_class = shipclass_military
+							is_ship_size = colossus
+						}
+					}
+					delete_ship = this
+				}
+				capital_scope = {
+					while = {
+						count = 5
+						CmtEffectCreateSleeperStandard = yes
+						last_created_fleet = { create_fallen_empire_titan = yes }
+					}
+					if = {
+						limit = { host_has_dlc = "Apocalypse" }
+						CmtEffectCreateSleeperColossus = yes
+						CmtEffectCreateSleeperColossus = yes
+					}
+				}
+			}
+		}
+	}
+	
+	### User Template
+	option = {
+		name = CrisisManagerMenu.7419b9.name
+		custom_tooltip = CrisisManagerMenu.7419b9.tooltip
+		trigger = { always = @CmtT201_ConstSleeperFleet_Activate }
+		hidden_effect = { CmtEffectApplyTemplate201 = yes }
+	}
+}
+
+
+
+##############################
+###  Create/Delete L-Gate  ###
+##############################
+
+country_event = {
+	id = CrisisManagerMenu.7500
+	title = CrisisManagerMenu.7500.name
+	desc = {
+		text = CrisisManagerMenu.7500.desc1
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualLgate value = 0 } } }
+	}
+	desc = {
+		text = CrisisManagerMenu.7500.desc2
+		trigger = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualLgate value = 0 } } } }
+	}
+	picture = GFX_evt_l-gateway
+	is_triggered_only = yes
+	
+	immediate = {
+		event_target:CmtGlobalVar = { set_variable = { which = CmtVarManualLgate value = 0 } }
+		every_system = {
+			limit = { has_star_flag = CmtFlagListedLgateSystem }
+			remove_star_flag = CmtFlagListedLgateSystem
+		}
+		every_system = {
+			limit = { CmtTriggerIsGalaxyLgateSystem = yes }
+			event_target:CmtGlobalVar = { change_variable = { which = CmtVarManualLgate value = 1 } }
+		}
+	}
+	
+	### Separator
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	### Create L-Gate
+	option = {
+		name = CrisisManagerMenu.7500a1.name
+		custom_tooltip = CrisisManagerMenu.7500a1.tooltip
+		hidden_effect = {
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarManualLgate value = 1 } }
+			country_event = { id = CrisisManagerMenu.7511 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7500a2.name
+		custom_tooltip = CrisisManagerMenu.7500a2.tooltip
+		hidden_effect = {
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarManualLgate value = 2 } }
+			country_event = { id = CrisisManagerMenu.7511 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7500a3.name
+		custom_tooltip = CrisisManagerMenu.7500a3.tooltip
+		hidden_effect = {
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarManualLgate value = 3 } }
+			country_event = { id = CrisisManagerMenu.7511 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7500a5.name
+		custom_tooltip = CrisisManagerMenu.7500a5.tooltip
+		hidden_effect = {
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarManualLgate value = 5 } }
+			country_event = { id = CrisisManagerMenu.7511 }
+		}
+	}
+	
+	### Create L-Gate Near Capital
+	option = {
+		name = CrisisManagerMenu.7500b1.name
+		custom_tooltip = CrisisManagerMenu.7500b1.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7512 } }
+	}
+	
+	### Separator
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	### Delete All L-Gates
+	option = {
+		name = CrisisManagerMenu.7500c1.name
+		custom_tooltip = CrisisManagerMenu.7500c1.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7521 } }
+	}
+	
+	### Delete Random L-Gate
+	option = {
+		name = CrisisManagerMenu.7500c2.name
+		custom_tooltip = CrisisManagerMenu.7500c2.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7522 } }
+	}
+	
+	### Delete Selected L-Gate
+	option = {
+		name = CrisisManagerMenu.7500c3.name
+		custom_tooltip = CrisisManagerMenu.7500c3.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7523 } }
+	}
+	
+	### Go Back, etc.
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	option = {
+		name = CmtTextGoBack.name
+		custom_tooltip = CmtTextGoBack.tooltip
+		hidden_effect = {
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarManualLgate value = 0 } }
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+	option = {
+		name = CmtTextExit.name
+		custom_tooltip = CmtTextExit.tooltip
+		hidden_effect = {
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarManualLgate value = 0 } }
+			CmtEffectExitMenu = yes
+		}
+	}
+}
+
+
+### Create L-Gate
+country_event = {
+	id = CrisisManagerMenu.7511
+	title = CrisisManagerMenu.7511.name
+	desc = CrisisManagerMenu.7511.desc
+	picture = GFX_evt_l-gateway
+	is_triggered_only = yes
+	
+	after = { hidden_effect = { country_event = { id = CrisisManagerMenu.7500 } } }
+	
+	option = {
+		name = CrisisManagerMenu.75xxb.name
+		custom_tooltip = CrisisManagerMenu.75xxb.tooltip
+	}
+	option = {
+		name = CrisisManagerMenu.75xxc.name
+		custom_tooltip = CrisisManagerMenu.75xxc.tooltip
+		hidden_effect = {
+			event_target:CmtGlobalVar = {
+				while = {
+					limit = { check_variable = { which = CmtVarManualLgate value > 0.5 } }
+					change_variable = { which = CmtVarManualLgate value = -1 }
+					random_system = {
+						limit = { CmtTriggerSpawnableSystem = yes }
+						spawn_system = {
+							min_distance >= 20
+							max_distance <= 50
+							initializer = CmtInitManualLgate00
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+### Create L-Gate Near Capital
+country_event = {
+	id = CrisisManagerMenu.7512
+	title = CrisisManagerMenu.7512.name
+	desc = CrisisManagerMenu.7512.desc
+	picture = GFX_evt_l-gateway
+	is_triggered_only = yes
+	
+	after = { hidden_effect = { country_event = { id = CrisisManagerMenu.7500 } } }
+	
+	option = {
+		name = CrisisManagerMenu.75xxb.name
+		custom_tooltip = CrisisManagerMenu.75xxb.tooltip
+	}
+	option = {
+		name = CrisisManagerMenu.75xxc.name
+		custom_tooltip = CrisisManagerMenu.75xxc.tooltip
+		hidden_effect = {
+			capital_scope = {
+				spawn_system = {
+					min_distance >= 20
+					max_distance <= 50
+					initializer = CmtInitManualLgate00
+				}
+			}
+		}
+	}
+}
+
+### Delete All L-Gates
+country_event = {
+	id = CrisisManagerMenu.7521
+	title = CrisisManagerMenu.7521.name
+	desc = CrisisManagerMenu.7521.desc
+	picture = GFX_evt_l-gateway
+	is_triggered_only = yes
+	
+	after = { hidden_effect = { country_event = { id = CrisisManagerMenu.7500 } } }
+	
+	option = {
+		name = CrisisManagerMenu.75xxb.name
+		custom_tooltip = CrisisManagerMenu.75xxb.tooltip
+	}
+	option = {
+		name = CrisisManagerMenu.75xxc.name
+		custom_tooltip = CrisisManagerMenu.75xxc.tooltip
+		hidden_effect = {
+			every_system = {
+				limit = { CmtTriggerIsGalaxyLgateSystem = yes }
+				CmtEffectDeleteLgateInSystem = yes
+			}
+		}
+	}
+}
+
+### Delete Random L-Gates
+country_event = {
+	id = CrisisManagerMenu.7522
+	title = CrisisManagerMenu.7522.name
+	desc = CrisisManagerMenu.7522.desc
+	picture = GFX_evt_l-gateway
+	is_triggered_only = yes
+	
+	after = { hidden_effect = { country_event = { id = CrisisManagerMenu.7500 } } }
+	
+	option = {
+		name = CrisisManagerMenu.75xxb.name
+		custom_tooltip = CrisisManagerMenu.75xxb.tooltip
+	}
+	option = {
+		name = CrisisManagerMenu.75xxc.name
+		custom_tooltip = CrisisManagerMenu.75xxc.tooltip
+		hidden_effect = {
+			random_system = {
+				limit = { CmtTriggerIsGalaxyLgateSystem = yes }
+				CmtEffectDeleteLgateInSystem = yes
+			}
+		}
+	}
+}
+
+### Delete Selected L-Gates
+country_event = {
+	id = CrisisManagerMenu.7523
+	title = CrisisManagerMenu.7523.name
+	desc = {
+		text = CrisisManagerMenu.7523.desc1
+		trigger = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualLgate value > 8 } } } }
+	}
+	desc = {
+		text = CrisisManagerMenu.7523.desc2
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualLgate value > 8 } } }
+	}
+	picture = GFX_evt_l-gateway
+	is_triggered_only = yes
+	
+	immediate = {
+		CmtEffectManualTargetLgates = yes
+	}
+	
+	after = {
+		hidden_effect = {
+			CmtEffectClearTargetLgates = yes
+			if = {
+				limit = { has_country_flag = CmtFlagSpMenu }
+				remove_country_flag = CmtFlagSpMenu
+				country_event = { id = CrisisManagerMenu.7523 }
+			} else = { country_event = { id = CrisisManagerMenu.7500 } }
+		}
+	}
+	
+	option = {
+		name = CrisisManagerMenu.75xxb.name
+		custom_tooltip = CrisisManagerMenu.75xxb.tooltip
+	}
+	
+	option = {
+		name = CrisisManagerMenu.7523d.name
+		custom_tooltip = CrisisManagerMenu.7523d.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualLgate value > 8 } } }
+		hidden_effect = { set_country_flag = CmtFlagSpMenu }
+	}
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = {
+			NOT = { has_global_flag = CmtFlagNoSeparator }
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualLgate value > 8 } }
+		}
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	option = {
+		name = CrisisManagerMenu.7523c1.name
+		custom_tooltip = CrisisManagerMenu.75xxc.tooltip
+		trigger = { exists = event_target:CmtTargetManualLgateSystem1 }
+		hidden_effect = { event_target:CmtTargetManualLgateSystem1 = { CmtEffectDeleteLgateInSystem = yes } }
+	}
+	option = {
+		name = CrisisManagerMenu.7523c2.name
+		custom_tooltip = CrisisManagerMenu.75xxc.tooltip
+		trigger = { exists = event_target:CmtTargetManualLgateSystem2 }
+		hidden_effect = { event_target:CmtTargetManualLgateSystem2 = { CmtEffectDeleteLgateInSystem = yes } }
+	}
+	option = {
+		name = CrisisManagerMenu.7523c3.name
+		custom_tooltip = CrisisManagerMenu.75xxc.tooltip
+		trigger = { exists = event_target:CmtTargetManualLgateSystem3 }
+		hidden_effect = { event_target:CmtTargetManualLgateSystem3 = { CmtEffectDeleteLgateInSystem = yes } }
+	}
+	option = {
+		name = CrisisManagerMenu.7523c4.name
+		custom_tooltip = CrisisManagerMenu.75xxc.tooltip
+		trigger = { exists = event_target:CmtTargetManualLgateSystem4 }
+		hidden_effect = { event_target:CmtTargetManualLgateSystem4 = { CmtEffectDeleteLgateInSystem = yes } }
+	}
+	option = {
+		name = CrisisManagerMenu.7523c5.name
+		custom_tooltip = CrisisManagerMenu.75xxc.tooltip
+		trigger = { exists = event_target:CmtTargetManualLgateSystem5 }
+		hidden_effect = { event_target:CmtTargetManualLgateSystem5 = { CmtEffectDeleteLgateInSystem = yes } }
+	}
+	option = {
+		name = CrisisManagerMenu.7523c6.name
+		custom_tooltip = CrisisManagerMenu.75xxc.tooltip
+		trigger = { exists = event_target:CmtTargetManualLgateSystem6 }
+		hidden_effect = { event_target:CmtTargetManualLgateSystem6 = { CmtEffectDeleteLgateInSystem = yes } }
+	}
+	option = {
+		name = CrisisManagerMenu.7523c7.name
+		custom_tooltip = CrisisManagerMenu.75xxc.tooltip
+		trigger = { exists = event_target:CmtTargetManualLgateSystem7 }
+		hidden_effect = { event_target:CmtTargetManualLgateSystem7 = { CmtEffectDeleteLgateInSystem = yes } }
+	}
+	option = {
+		name = CrisisManagerMenu.7523c8.name
+		custom_tooltip = CrisisManagerMenu.75xxc.tooltip
+		trigger = { exists = event_target:CmtTargetManualLgateSystem8 }
+		hidden_effect = { event_target:CmtTargetManualLgateSystem8 = { CmtEffectDeleteLgateInSystem = yes } }
+	}
+}

@@ -1,0 +1,138 @@
+
+###################################################################
+###################################################################
+#####                                                         #####
+#####    Crisis Manager                                       #####
+#####                                                         #####
+#####    Scripted Effects for Creating Auxiliary Ships        #####
+#####    of End-Game Crises (Army, Constructor, Colonizer)    #####
+#####                                                         #####
+###################################################################
+###################################################################
+#
+# Information
+#	All script in this file require following scopes
+#	this: Owner country
+#	prev: Location for creating fleets (e.g. planet)
+#
+
+
+
+###################
+###  Constants  ###
+###################
+
+
+###################
+###  Prethoryn  ###
+###################
+
+
+CmtEffectCreateShip_PrethorynConstructor = {
+	create_fleet = {
+		name = "NAME_Prethoryn_Constructor"
+		effect = {
+			set_owner = prev
+			create_ship = {
+				name = random
+				design = "NAME_Swarm_Constructor"
+				graphical_culture = "swarm_01"
+				effect = { CmtEffectFasterPrethorynConstructor = yes }
+			}
+			CmtFleetSetAuxParam_PrethorynAuxiliary = yes
+		}
+	}
+}
+
+CmtEffectCreateShip_PrethorynColonyzer = {
+	create_fleet = {
+		name = "NAME_Prethoryn_Infestor"
+		effect = {
+			set_owner = prev
+			create_ship = {
+				name = random
+				design = "NAME_Swarm_Colonizer"
+				graphical_culture = "swarm_01"
+				effect = { CmtEffectFasterPrethorynConstructor = yes }
+			}
+			CmtFleetSetAuxParam_PrethorynAuxiliary = yes
+		}
+	}
+}
+
+
+###########################
+###  Extradimensionals  ###
+###########################
+
+CmtEffectCreateShip_UnbiddenConstructor = {
+	create_fleet = {
+		effect = {
+			set_owner = prev
+			create_ship = {
+				name = random
+				design = "NAME_Void_Shaper"
+				graphical_culture = "extra_dimensional_01"
+				effect = { CmtEffectFasterUnbiddenConstructor = yes }
+			}
+			CmtFleetSetAuxParam_ExdsAuxiliary = yes
+		}
+	}
+}
+
+CmtEffectCreateShip_AberrantConstructor = {
+	create_fleet = {
+		effect = {
+			set_owner = prev
+			create_ship = {
+				name = random
+				design = "NAME_Void_Former"
+				graphical_culture = "extra_dimensional_02"
+				effect = { CmtEffectFasterAberrantConstructor = yes }
+			}
+			CmtFleetSetAuxParam_ExdsAuxiliary = yes
+		}
+	}
+}
+
+CmtEffectCreateShip_VehementConstructor = {
+	create_fleet = {
+		effect = {
+			set_owner = prev
+			create_ship = {
+				name = random
+				design = "NAME_Void_Weaver"
+				graphical_culture = "extra_dimensional_03"
+				effect = { CmtEffectFasterVehementConstructor = yes }
+			}
+			CmtFleetSetAuxParam_ExdsAuxiliary = yes
+		}
+	}
+}
+
+
+
+#####################
+###  Contingency  ###
+#####################
+
+
+CmtEffectCreateShip_ContingencyConstructor = {
+	create_fleet = {
+		effect = {
+			set_owner = prev
+			create_ship = {
+				name = random
+				design = "NAME_AI_Constructor"
+				graphical_culture = "ai_01"
+				effect = { CmtEffectFasterContingencyConstructor = yes }
+			}
+			CmtFleetSetAuxParam_ContingencyAuxiliary = yes
+		}
+	}
+}
+
+
+
+
+

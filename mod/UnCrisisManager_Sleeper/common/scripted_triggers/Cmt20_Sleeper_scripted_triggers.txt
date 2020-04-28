@@ -1,0 +1,381 @@
+
+##########################################################
+##########################################################
+#####                                                #####
+#####    Crisis Manager                              #####
+#####                                                #####
+#####    Scripted Triggers for Sleepers Awakening    #####
+#####                                                #####
+##########################################################
+##########################################################
+
+
+###################
+###  Awakening  ###
+###################
+
+
+### Scope: this = country (Sleeper)
+CmtTriggerIsAwakenableSleeper = {
+	CmtTriggerIsOrganicSleeper = yes
+	is_at_war = no
+	OR = {
+		AND = {
+			has_ethic = ethic_fanatic_materialist
+			NOT = { has_global_flag = CmtFlagSleeperForbidMaterialist  }
+		}
+		AND = {
+			has_ethic = ethic_fanatic_spiritualist
+			NOT = { has_global_flag = CmtFlagSleeperForbidSpirituarist }
+		}
+		AND = {
+			has_ethic = ethic_fanatic_xenophile
+			NOT = { has_global_flag = CmtFlagSleeperForbidXenophile }
+		}
+		AND = {
+			has_ethic = ethic_fanatic_xenophobe
+			NOT = { has_global_flag = CmtFlagSleeperForbidXenophobe }
+		}
+		AND = {
+			has_ethic = ethic_fanatic_militarist
+			NOT = { has_global_flag = CmtFlagSleeperForbidMilitarist }
+		}
+		AND = {
+			has_ethic = ethic_fanatic_pacifist
+			NOT = { has_global_flag = CmtFlagSleeperForbidPacifist }
+		}
+	}
+}
+
+### Scope: this = country (Sleeper)
+CmtTriggerCandidateAncientRival = {
+	CmtTriggerIsOrganicSleeper = yes
+	is_at_war = no
+	NAND = {
+		exists = event_target:CmtTargetFirstSleeper
+		is_same_value = event_target:CmtTargetFirstSleeper
+	}
+	OR = {
+		AND = {
+			exists = event_target:CmtTargetManualSleeperB
+			is_same_value = event_target:CmtTargetManualSleeperB
+		}
+		CmtTriggerCheckAncientRivalFleetPower = yes
+	}
+	OR = {
+		AND = {
+			has_global_flag = CmtFlagHeavenForbidIndependently
+			OR = {
+				AND = {
+					has_ethic = ethic_fanatic_materialist
+					NOT = { has_global_flag = CmtFlagHeavenForbidMaterialist }
+				}
+				AND = {
+					has_ethic = ethic_fanatic_spiritualist
+					NOT = { has_global_flag = CmtFlagHeavenForbidSpirituarist }
+				}
+				AND = {
+					has_ethic = ethic_fanatic_xenophile
+					NOT = { has_global_flag = CmtFlagHeavenForbidXenophile }
+				}
+				AND = {
+					has_ethic = ethic_fanatic_xenophobe
+					NOT = { has_global_flag = CmtFlagHeavenForbidXenophobe }
+				}
+				AND = {
+					has_ethic = ethic_fanatic_militarist
+					NOT = { has_global_flag = CmtFlagHeavenForbidMilitarist }
+				}
+				AND = {
+					has_ethic = ethic_fanatic_pacifist
+					NOT = { has_global_flag = CmtFlagHeavenForbidPacifist }
+				}
+			}
+		}
+		AND = {
+			NOT = { has_global_flag = CmtFlagHeavenForbidIndependently }
+			OR = {
+				AND = {
+					has_ethic = ethic_fanatic_materialist
+					NOT = { has_global_flag = CmtFlagSleeperForbidMaterialist  }
+				}
+				AND = {
+					has_ethic = ethic_fanatic_spiritualist
+					NOT = { has_global_flag = CmtFlagSleeperForbidSpirituarist }
+				}
+				AND = {
+					has_ethic = ethic_fanatic_xenophile
+					NOT = { has_global_flag = CmtFlagSleeperForbidXenophile    }
+				}
+				AND = {
+					has_ethic = ethic_fanatic_xenophobe
+					NOT = { has_global_flag = CmtFlagSleeperForbidXenophobe    }
+				}
+				AND = {
+					has_ethic = ethic_fanatic_militarist
+					NOT = { has_global_flag = CmtFlagSleeperForbidMilitarist }
+				}
+				AND = {
+					has_ethic = ethic_fanatic_pacifist
+					NOT = { has_global_flag = CmtFlagSleeperForbidPacifist }
+				}
+			}
+		}
+	}
+}
+
+
+### Scope: this = country (Sleeper)
+CmtTriggerCheckSleeperFleetPower = {
+	OR = {
+		AND = {
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarSleeperFleetPowerOwn value = 0 } }
+			fleet_power > 40000
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				check_variable = { which = CmtVarSleeperFleetPowerOwn value < @CmtConstSleeperFleetPowerOwn_T1 }
+				NOT = { check_variable = { which = CmtVarSleeperFleetPowerOwn value = 0 } }
+			}
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarSleeperFleetPowerOwn value < @CmtConstSleeperFleetPowerOwn_T1 } }
+				NOT = { check_variable = { which = CmtVarSleeperFleetPowerOwn value = 0 } }
+				check_variable = { which = CmtVarSleeperFleetPowerOwn value < @CmtConstSleeperFleetPowerOwn_T2 }
+			}
+			fleet_power > @CmtConstSleeperFleetPowerOwn_V1
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarSleeperFleetPowerOwn value < @CmtConstSleeperFleetPowerOwn_T2 } }
+				check_variable = { which = CmtVarSleeperFleetPowerOwn value < @CmtConstSleeperFleetPowerOwn_T3 }
+			}
+			fleet_power > @CmtConstSleeperFleetPowerOwn_V2
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarSleeperFleetPowerOwn value < @CmtConstSleeperFleetPowerOwn_T3 } }
+				check_variable = { which = CmtVarSleeperFleetPowerOwn value < @CmtConstSleeperFleetPowerOwn_T4 }
+			}
+			fleet_power > @CmtConstSleeperFleetPowerOwn_V3
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarSleeperFleetPowerOwn value < @CmtConstSleeperFleetPowerOwn_T4 } }
+				check_variable = { which = CmtVarSleeperFleetPowerOwn value < @CmtConstSleeperFleetPowerOwn_T5 }
+			}
+			fleet_power > @CmtConstSleeperFleetPowerOwn_V4
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarSleeperFleetPowerOwn value < @CmtConstSleeperFleetPowerOwn_T5 } }
+				check_variable = { which = CmtVarSleeperFleetPowerOwn value < @CmtConstSleeperFleetPowerOwn_T6 }
+			}
+			fleet_power > @CmtConstSleeperFleetPowerOwn_V5
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarSleeperFleetPowerOwn value < @CmtConstSleeperFleetPowerOwn_T6 } }
+				check_variable = { which = CmtVarSleeperFleetPowerOwn value < @CmtConstSleeperFleetPowerOwn_T7 }
+			}
+			fleet_power > @CmtConstSleeperFleetPowerOwn_V6
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarSleeperFleetPowerOwn value < @CmtConstSleeperFleetPowerOwn_T7 } }
+				check_variable = { which = CmtVarSleeperFleetPowerOwn value < @CmtConstSleeperFleetPowerOwn_T8 }
+			}
+			fleet_power > @CmtConstSleeperFleetPowerOwn_V7
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarSleeperFleetPowerOwn value < @CmtConstSleeperFleetPowerOwn_T8 } }
+				check_variable = { which = CmtVarSleeperFleetPowerOwn value < @CmtConstSleeperFleetPowerOwn_T9 }
+			}
+			fleet_power > @CmtConstSleeperFleetPowerOwn_V8
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarSleeperFleetPowerOwn value < @CmtConstSleeperFleetPowerOwn_T9 } }
+				check_variable = { which = CmtVarSleeperFleetPowerOwn value < @CmtConstSleeperFleetPowerOwn_TA }
+			}
+			fleet_power > @CmtConstSleeperFleetPowerOwn_V9
+		}
+		AND = {
+			event_target:CmtGlobalVar = { NOT = { check_variable = { which = CmtVarSleeperFleetPowerOwn value < @CmtConstSleeperFleetPowerOwn_TA } } }
+			fleet_power > @CmtConstTUnq_ConstSleeperFleetPowerOwn
+		}
+	}
+}
+
+### Scope: this = country (Sleeper)
+CmtTriggerCheckAncientRivalFleetPower = {
+	OR = {
+		event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenIndomitableRival value = 2 } }
+		event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenIndomitableRival value = 3 } }
+		CmtTriggerCheckSleeperFleetPower = yes
+	}
+}
+
+CmtTriggerCheckYoungsFleetPower = {
+	event_target:CmtGlobalVar = {
+		OR = {
+			AND = {
+				check_variable = { which = CmtVarSleeperFleetPowerYoung value = 0 }
+				any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > 50000 }
+			}
+			AND = {
+				check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T1 }
+				NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value = 0 } }
+			}
+			AND = {
+				NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value = 0 } }
+				NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T1 } }
+				check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T2 }
+				any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V1 }
+			}
+			AND = {
+				NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T2 } }
+				check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T3 }
+				any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V2 }
+			}
+			AND = {
+				NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T3 } }
+				check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T4 }
+				any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V3 }
+			}
+			AND = {
+				NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T4 } }
+				check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T5 }
+				any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V4 }
+			}
+			AND = {
+				NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T5 } }
+				check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T6 }
+				any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V5 }
+			}
+			AND = {
+				NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T6 } }
+				check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T7 }
+				any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V6 }
+			}
+			AND = {
+				NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T7 } }
+				check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T8 }
+				any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V7 }
+			}
+			AND = {
+				NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T8 } }
+				check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T9 }
+				any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V8 }
+			}
+			AND = {
+				NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T9 } }
+				check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_TA }
+				any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V9 }
+			}
+			AND = {
+				NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_TA } }
+				any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstTUnq_ConstSleeperFleetPowerYoung1 }
+			}
+		}
+	}
+}
+
+
+
+#######################
+###  War in Heaven  ###
+#######################
+
+### Scope: this = Checked country
+CmtTriggerSleeperOpposingEchos = {
+	is_country_type = fallen_empire
+	NOR = { has_ethic = ethic_gestalt_consciousness }
+	OR = {
+		AND = {
+			has_ethic = ethic_fanatic_xenophobe
+			event_target:CmtTargetFirstSleeper = { has_ethic = ethic_fanatic_xenophile }
+		}
+		AND = {
+			has_ethic = ethic_fanatic_xenophile
+			event_target:CmtTargetFirstSleeper = { has_ethic = ethic_fanatic_xenophobe }
+		}
+		AND = {
+			has_ethic = ethic_fanatic_spiritualist
+			event_target:CmtTargetFirstSleeper = { has_ethic = ethic_fanatic_materialist }
+		}
+		AND = {
+			has_ethic = ethic_fanatic_materialist
+			event_target:CmtTargetFirstSleeper = { has_ethic = ethic_fanatic_spiritualist }
+		}
+		AND = {
+			has_ethic = ethic_fanatic_militarist
+			event_target:CmtTargetFirstSleeper = { has_ethic = ethic_fanatic_pacifist }
+		}
+		AND = {
+			has_ethic = ethic_fanatic_pacifist 
+			event_target:CmtTargetFirstSleeper = { has_ethic = ethic_fanatic_militarist }
+		}
+	}
+}
+
+CmtTriggerIsHeavenSleeper = {
+	is_country_type = awakened_fallen_empire
+	OR = {
+		has_country_flag = sleepers_awake_first_sleeper
+		has_country_flag = sleepers_awake_ancient_rival
+	}
+}
+
+
+
+### Modifiers for NPC Joining to League
+CmtTriggerHeavenLeagueNpcWeight5 = {
+	OR = {
+		has_ai_personality = harmonious_hierarchy
+		has_ai_personality = democratic_crusaders
+		has_ai_personality = federation_builders
+		has_ai_personality = fanatic_befrienders
+		has_ai_personality = servitors
+		has_ethic = ethic_fanatic_xenophile
+	}
+}
+
+CmtTriggerHeavenLeagueNpcWeight4 = {
+	OR = {
+		has_ai_personality = spiritual_seekers
+		has_ai_personality = peaceful_traders
+		has_ai_personality = migrating_flock
+		has_ethic = ethic_xenophile
+	}
+	NOT = { CmtTriggerHeavenLeagueNpcWeight5 = yes }
+}
+
+CmtTriggerHeavenLeagueNpcWeight2 = {
+	OR = {
+		has_ai_personality = honorbound_warriors
+		has_ai_personality = hegemonic_imperialists
+		has_ai_personality = slaving_despots
+		has_ai_personality = decadent_hierarchy
+		has_ai_personality = assimilators
+		has_ethic = ethic_xenophobe
+	}
+	NOT = { CmtTriggerHeavenLeagueNpcWeight1 = yes }
+}
+
+CmtTriggerHeavenLeagueNpcWeight1 = {
+	OR = {
+		is_homicidal = yes
+		has_ai_personality = xenophobic_isolationists
+		has_ai_personality = fanatic_purifiers
+		has_ai_personality = metalhead
+		has_ai_personality = devouring_swarm
+		has_ai_personality = exterminators
+		has_ethic = ethic_fanatic_xenophobe
+	}
+}
+
+
+

@@ -1,0 +1,157 @@
+
+##########################################
+##########################################
+#####                                #####
+#####    Crisis Manager              #####
+#####                                #####
+#####    Scripted Effects for        #####
+#####    Fallen Empires Awakening    #####
+#####    As Guardians of Galaxy      #####
+#####                                #####
+##########################################
+##########################################
+
+
+
+###################
+###  Constants  ###
+###################
+
+
+
+###############
+###  Event  ###
+###############
+
+awaken_fallen_machine_empire = {
+	every_country = {
+		limit = {
+			is_country_type = fallen_empire
+			has_authority = auth_machine_intelligence
+		}
+		
+		set_global_flag = CmtFlagMachineFeTryToAwake
+		
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMechFeAwaking value = 2 } } }
+			set_country_flag = fallen_machine_empire_awaken_1		## Custodian
+			remove_country_flag = fallen_machine_empire_awaken_2
+		}
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMechFeAwaking value = 4 } } }
+			remove_country_flag = fallen_machine_empire_awaken_1
+			set_country_flag = fallen_machine_empire_awaken_2		## Berserker
+		}
+		if = {
+			limit = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMechFeAwaking value = 1 } } } }
+			country_event = { id = fallen_machine_empire.1 days = 30 random = 30 }
+		}
+	}
+}
+
+
+awaken_guardians_of_the_galaxy = {
+	if = {
+		limit = {
+			OR = {
+				NOT = { has_global_flag = CmtFlagGuardiansTryToAwake }
+				has_global_flag = CmtFlagDebugMode
+			}
+			NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGuardiansProbability value = 1 } } }
+		}
+		set_global_flag = CmtFlagGuardiansTryToAwake
+		
+		random_list = {
+			75 = {
+				random_list = {
+					15 = {
+						modifier = {
+							factor = 0
+							event_target:CmtGlobalVar = {
+								NOR = {
+									check_variable = { which = CmtVarDoubleGurdian value = 2 }
+									check_variable = { which = CmtVarDoubleGurdian value = 3 }
+									check_variable = { which = CmtVarDoubleGurdian value = 4 }
+								}
+							}
+						}
+						modifier = {
+							factor = 6
+							event_target:CmtGlobalVar = { check_variable = { which = CmtVarDoubleGurdian value = 3 } }
+						}
+						every_country = {
+							limit = { CmtTriggerEmpireAwakenableGuardians = yes }
+							CmtEffectAwakingAsGuardians = yes
+						}
+						### For Debugging Only
+						event_target:CmtGlobalVar = { change_variable = { which = GmtVarDebugCountTriggerDualGuardians value = 1 } }
+					}
+					60 = {
+						modifier = {
+							factor = 0
+							event_target:CmtGlobalVar = { check_variable = { which = CmtVarDoubleGurdian value = 4 } }
+						}
+						random_country = {
+							limit = { CmtTriggerEmpireAwakenableGuardians = yes }
+							CmtEffectAwakingAsGuardians = yes
+						}
+						### For Debugging Only
+						event_target:CmtGlobalVar = { change_variable = { which = GmtVarDebugCountTriggerSingleGuardians value = 1 } }
+					}
+				}
+			}
+			25 = {		## No awaking
+				modifier = {
+					factor = 4.5		## 40% of Awaking
+					event_target:CmtGlobalVar = { check_variable = { which = CmtVarGuardiansProbability value = 2 } }
+				}
+				modifier = {
+					factor = 0
+					event_target:CmtGlobalVar = { check_variable = { which = CmtVarGuardiansProbability value = 4 } }
+				}
+				### For Debugging Only
+				event_target:CmtGlobalVar = { change_variable = { which = GmtVarDebugCountTriggerNoGuardians value = 1 } }
+			}
+		}
+	}
+}
+
+
+CmtEffectAwakingAsGuardians = {
+	set_country_flag = guardians_of_the_galaxy
+	if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTimingAwakingGuardians value = 1 } } }
+		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy days = 3600 }
+		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy_2 days = 10800 }
+	}
+	if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTimingAwakingGuardians value = 3 } } }
+		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy days = 360 }
+		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy_2 days = 1800 }
+	}
+	if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTimingAwakingGuardians value = 4 } } }
+		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy_2 days = 30 }
+		country_event = { id = fallen_empires_awakening.4 days = 20 random = 10 }
+	}
+	if = {
+		limit = {
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarTimingAwakingGuardians value = 1 }
+					check_variable = { which = CmtVarTimingAwakingGuardians value = 3 }
+					check_variable = { which = CmtVarTimingAwakingGuardians value = 4 }
+				}
+			}
+		}
+		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy days = 1825 }
+		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy_2 days = 3650 }
+	}
+}
+
+# guardians_of_the_galaxy        :	Awake as the gurdian
+# timed_guardians_of_the_galaxy  :	Don't awake yet,
+# timed_guardians_of_the_galaxy_2:	Awake immediately if this flag is expired.
+
+
+

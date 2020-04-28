@@ -1,0 +1,85 @@
+
+############################################
+############################################
+#####                                  #####
+#####    Crisis Manager                #####
+#####                                  #####
+#####    Template Unique Constants     #####
+#####                        (Beta)    #####
+#####                                  #####
+############################################
+############################################
+#
+#
+#	Each value in this file is activated
+#	only if corresponding parameter is set in each template file.
+#	
+#	This value is shared by every template.
+#	So, only one unique value can be set for each one mod.
+#
+
+
+#########################
+###  End-Game Crisis  ###
+#########################
+
+### Crises to Happen at Earliest
+	@CmtConstTUnq_ConstEarliestEgpy = 35
+		### Set x of ''End-Game Start Year + x years''.
+	
+### Interval of Crisis
+	@CmtConstTUnq_ConstCrisisInterval = 40
+		### Set the interval of the crisis in year.
+	
+### MTTH for Crisis Triggered
+	@CmtConstTUnq_TriggerProbability = 1.2
+		### This number is fuctor of ''nothing'' in ''random_list'' for choice crisis,
+		### Larger number makes the probability any crisis happens to be low.
+		### Because of spec of the function ''random_list'',
+		### the probability is NOT simple mathematical product of original value and this factor.
+		### cf. low = 3, middle = 1, high = 0.3333, very high = 0.1
+
+### Unstable Portals (Extradimensionals)
+	@CmtConstTUnq_ExdsPortalStability = 7
+		### Set the number MINUS 1 of required anchors to make the portal invulnerable. 
+		### For exaple, 7 means ''8 Anchors Required to Stabilize Portals''.
+		
+	
+
+###########################
+###  Sleeper Awakening  ###
+###########################
+
+### Interval of Sleepers Awakening
+	@CmtConstTUnq_ConstSleeperInterval = 2880
+		### Set in days, but NOT years
+	
+### Sleepers to Awake at Earliest
+	@CmtConstTUnq_ConstSleeperEarliestEgsy = 12
+		### Set x of ''End-Game Start Year + x years''.
+	
+### Fleet Power of Young Empires for Awakening
+	@CmtConstTUnq_ConstSleeperFleetPowerYoung1 = 35000
+	@CmtConstTUnq_ConstSleeperFleetPowerYoung2 = 52500		## This must be 1.5 times of ''Young1''
+	
+### Minimum Own Fleet Power for Awakening
+	@CmtConstTUnq_ConstSleeperFleetPowerOwn = 25000
+	
+	
+
+#########################
+###  Mid-Game Crisis  ###
+#########################
+
+### Interval of Khan Awakening
+	@CmtConstTUnq_ConstKhanInterval = 2880
+		### Set in days, but NOT years
+	
+### Khan to Reign at Earliest
+	@CmtConstTUnq_ConstKhanEarliestMgpy = 15
+		### Set x of ''Mid-Game Start Year + x years''.
+	
+### Last Chance of Khan Reigning
+	@CmtConstTUnq_ConstKhanLatestEgpy = 20
+		### Set x of ''End-Game Start Year + x years''.
+	

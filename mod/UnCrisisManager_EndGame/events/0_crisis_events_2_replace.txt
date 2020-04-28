@@ -1,0 +1,893 @@
+namespace = crisis
+
+####################################################
+####################################################
+#####                                          #####
+#####    Crisis Events 2: Extradimensionals    #####
+#####                                          #####
+#####    Replaced by Crisis Manager            #####
+#####                                          #####
+####################################################
+####################################################
+
+###################
+###  Constants  ###
+###################
+
+@CmtConstExdsShipsUpperLimit = 2000
+@CmtConstExdsConstructorStdNum = 3
+
+
+
+#######################
+###  Summon Events  ###
+#######################
+
+### Unbidden
+country_event = {
+	id = crisis.1000
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { has_global_flag = extradimensional_first_portal }
+	}
+	
+	immediate = {
+		endgame_telemetry = extradimensional
+		set_global_flag = galactic_crisis_happened
+		set_global_flag = extradimensional_invasion_happened
+		set_global_flag = CmtFlagExdsTriggered
+		set_global_flag = extradimensional_first_portal
+		
+		set_crisis_sound = extradimensional_crisis_ambient_stage_1
+		set_crisis_stage_1 = yes
+		create_country = {
+			name = "NAME_Portal_Holder_1"
+			type = portal_holder
+			flag = {
+				icon= {
+					category = "special"
+					file = "extradimensional_01.dds"
+				}
+				background= {
+					category = "backgrounds"
+					file = "circle.dds"
+				}
+				colors={ "black" "black" "null" "null" }
+			}
+			effect = {
+				save_global_event_target_as = portal_holder_1
+				every_playable_country = { establish_communications_no_message = event_target:portal_holder_1 }
+			}
+		}
+		awaken_guardians_of_the_galaxy = yes
+		
+		random_system = {
+			limit = {
+				NOT = {
+					any_country = {
+						CmtTriggerIsFallenEmpire = yes
+						any_system_within_border = { is_same_value = prev }
+					}
+				}
+				CmtTriggerSpawnableSystem = yes
+			}
+			set_star_flag = extradimensional_origin_system
+			save_event_target_as = extradimensional_system
+			random_system_planet = {
+				create_species = {
+					name = "NAME_Unbidden"
+					class = EXD
+					portrait = exd1
+					traits = random
+					effect = { save_global_event_target_as = extradimensional_shabanash_species }
+				}
+				create_country = {
+					name = "NAME_Unbidden"
+					type = "extradimensional"
+					species = event_target:extradimensional_shabanash_species
+					name_list = "Extradimensional"
+					effect = { set_country_flag = unbidden }
+					flag = {
+						icon= {
+							category = "special"
+							file = "extradimensional_01.dds"
+						}
+						background= {
+							category = "backgrounds"
+							file = "circle.dds"
+						}
+						colors={ "indigo" "blue" "null" "null" }
+					}
+					effect = {
+						create_ship_design = { design = "NAME_Void_Shaper" }
+						add_ship_design = last_created_design
+						create_ship_design = { design = "NAME_Unbidden_Anchor" }
+						add_ship_design = last_created_design
+						create_ship_design = { design = "NAME_Unbidden_Starbase" }
+						add_ship_design = last_created_design
+						
+						set_graphical_culture = extra_dimensional_01
+						save_global_event_target_as = extradimensionals
+						save_global_event_target_as = extradimensionals1
+						establish_communications_no_message = event_target:portal_holder_1
+						set_faction_hostility = {
+							target = event_target:portal_holder_1
+							set_hostile = no
+						}
+					}
+				}
+				event_target:extradimensionals1 = {
+					create_fleet = {
+						name = "NAME_Dimensional_Portal"
+						effect = {
+							set_owner = prev
+							create_ship = {
+								name = random
+								design = "NAME_Unbidden_Portal"
+								graphical_culture = "extra_dimensional_01"
+								effect = { set_ship_flag = unbidden_portal }
+							}
+							set_location = {
+								target = prevprev
+								distance = 40
+								angle = random
+							}
+							save_event_target_as = dimensional_portal
+							fleet_event = { id = crisis.1003 days = 15 } # Second Fleet Arrives
+							fleet_event = { id = crisis.1003 days = 30 } # Third Fleet Arrives
+							fleet_event = { id = crisis.1003 days = 55 } # Fourth Fleet Arrives
+							fleet_event = { id = crisis.1003 days = 90 } # Fifth Fleet Arrives
+							fleet_event = { id = crisis.1003 days = 180 } # Sixth Fleet Arrives
+							fleet_event = { id = crisis.1003 days = 265 } # Seventh Fleet Arrives
+							fleet_event = { id = crisis.1003 days = 340 } # Eight Fleet Arrives
+							fleet_event = { id = crisis.1003 days = 425 } # Ninth Fleet Arrives
+							fleet_event = { id = crisis.1003 days = 550 } # Tenth Fleet Arrives
+							fleet_event = { id = crisis.1006 days = 20 } # First Constructor Arrives
+							fleet_event = { id = crisis.1006 days = 25 } # Second Constructor Arrives
+							fleet_event = { id = crisis.1006 days = 160 } # Third Constructor Arrives
+							fleet_event = { id = crisis.1006 days = 310 } # Fourth Constructor Arrives
+							event_target:extradimensionals1 = { country_event = { id = crisis.1260 days = 350 } } # Spawn Cycle starts
+							CmtEffectCreateAdmiralty_UnbiddenCapitalDefense = yes
+						}
+					}
+				}
+			}
+			CmtEffectDestroySystemStarbase = yes
+			create_starbase = {
+				size = starbase_exd
+				owner = event_target:extradimensionals1
+			}
+			event_target:extradimensionals1 = { random_owned_ship = { ship_event = { id = crisis.1280 } } }
+		}
+		CmtEffectFriendlyCrisis = yes
+		
+		every_country = {
+			limit = {
+				CmtTriggerIsEmpire = yes
+				NOR = {
+					intel_level = { level = full system = event_target:extradimensional_system }
+					intel_level = { level = high system = event_target:extradimensional_system }
+				}
+			}
+			country_event = { id = crisis.1007 }
+		}
+		every_country = {
+			limit = {
+				CmtTriggerIsEmpire = yes
+				OR = {
+					intel_level = { level = full system = event_target:extradimensional_system }
+					intel_level = { level = high system = event_target:extradimensional_system }
+				}
+			}
+			country_event = { id = crisis.1008 }
+		}
+		observer_event = { id = observer.34 }
+		
+		### For Controling Arrival of Aberrant
+		set_timed_global_flag = { flag = CmtFlagUnbiddenFirstHalfDecade days = 1800 }
+		set_timed_global_flag = { flag = CmtFlagUnbiddenFirstDecade days = 3600 }
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 6 } } }
+			event_target:extradimensionals1 = { country_event = { id = crisis.1100 days = 10 random = 5 } }
+		}
+	}
+}
+
+### Notification of Spawning Unbidden for Country with 'intel_level < high'
+country_event = {
+	id = crisis.1008
+	title = "crisis.1008.name"
+	desc = "crisis.1008.desc"
+	picture = GFX_evt_physics_research
+	show_sound = event_alien_signal
+
+	is_triggered_only = yes
+
+	option = {
+		name = crisis.1008.a
+		hidden_effect = {
+			if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 6 } } }
+				country_event = { id = crisis.1009 days = 8 }
+			} else = { country_event = { id = crisis.1009 days = 30 } }
+		}
+	}
+}
+
+### Aberrant
+country_event = {
+	id = crisis.1100
+	hide_window = yes
+	
+	trigger = {
+		NOT = { has_global_flag = extradimensional_second_portal }
+		NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 1 } } }
+		is_country_type = extradimensional
+		
+		OR = {
+			galaxy_percentage > 0.40
+			AND = {
+				NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 2 } } }
+				galaxy_percentage > 0.15
+			}
+			event_target:CmtGlobalVar = {
+				OR = {
+					check_variable = { which = CmtVarExdsChaserCondition value = 4 }
+					check_variable = { which = CmtVarExdsChaserCondition value = 5 }
+					check_variable = { which = CmtVarExdsChaserCondition value = 6 }
+				}
+			}
+		}
+	}
+	
+	### Also called by crisis.1000 if CmtVarExdsChaserCondition = 6
+	mean_time_to_happen = {
+		months = 12
+		modifier = {
+			factor = 3
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 2 } }
+		}
+		modifier = {
+			factor = 2.5
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 3 } }
+			galaxy_percentage < 0.15
+		}
+		modifier = {
+			factor = 3		## 2.5 x 3 = 7.5
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 3 } }
+			galaxy_percentage < 0.10
+		}
+		modifier = {
+			factor = 4		## 2.5 x 3 x 10 = 30
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 3 } }
+			galaxy_percentage < 0.05
+		}
+		modifier = {
+			factor = 0.66		## 2.5 x 0.66 = 1.65
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 3 } }
+			galaxy_percentage < 0.15
+			NOT = { has_global_flag = CmtFlagUnbiddenFirstHalfDecade }
+		}
+		modifier = {
+			factor = 0.66		## 2.5 x 0.66 x 0.66 = 1.09
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 3 } }
+			galaxy_percentage < 0.15
+			NOT = { has_global_flag = CmtFlagUnbiddenFirstDecade }
+		}
+		modifier = {
+			factor = 0.1
+			OR = {
+				has_global_flag = CmtFlagDebugMode
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 6 } }
+			}
+		}
+	}
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = crisis.1100 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectCallAberrant = yes
+		}
+	}
+}
+
+### Vehement
+country_event = {
+	id = crisis.1200
+	hide_window = yes
+	
+	trigger = {
+		NOT = { has_global_flag = extradimensional_third_portal }
+		NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 1 } } }
+		
+		is_country_type = extradimensional_2
+		exists = event_target:extradimensionals1		#any_country = { is_country_type = extradimensional }
+		
+		event_target:CmtGlobalVar = {
+			OR = {
+				has_global_flag = extradimensionals_fight
+				check_variable = { which = CmtVarExdsChaserCondition value = 4 }
+				check_variable = { which = CmtVarExdsChaserCondition value = 5 }
+				check_variable = { which = CmtVarExdsChaserCondition value = 6 }
+				check_variable = { which = CmtVarFriendlyCrisis value = 2 }
+				check_variable = { which = CmtVarFriendlyCrisis value = 4 }
+			}
+		}
+	}
+	
+	### Also called by CmtEffectCallAberrant if CmtVarExdsChaserCondition = 6
+	mean_time_to_happen = {
+		months = 40
+		modifier = {
+			factor = 3
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 2 } }
+		}
+		modifier = {
+			factor = 10
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 3 } }
+			NOT = { has_global_flag = extradimensionals_fight }
+		}
+		modifier = {
+			factor = 0.4		## 10 x 0.4 = 4
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 3 } }
+			NOR = {
+				has_global_flag = extradimensionals_fight
+				has_global_flag = CmtFlagAberrantFirstDecade
+			}
+		}
+		modifier = {
+			factor = 0.25		## 3 x 0.4 x 0.25 = 1.00
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 3 } }
+			NOR = {
+				has_global_flag = extradimensionals_fight
+				has_global_flag = CmtFlagAberrantFirstTwoDecades
+			}
+		}
+		modifier = {
+			factor = 0.1
+			has_global_flag = CmtFlagDebugMode
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = crisis.1200 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectCallVehement = yes
+		}
+	}
+}
+
+
+###############################
+###  Create Vanguard Fleet  ###
+###############################
+
+### Unbidden
+fleet_event = {
+	id = crisis.1003
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		CmtEffectCreateAdmiralty_UnbiddenVanguard = yes
+	}
+}
+
+### Aberrant
+fleet_event = {
+	id = crisis.1103
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		CmtEffectCreateAdmiralty_AberrantVanguard = yes
+	}
+}
+
+### Vehement
+fleet_event = {
+	id = crisis.1203
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		CmtEffectCreateAdmiralty_VehementVanguard = yes
+	}
+}
+
+### Constructor
+fleet_event = {
+	id = crisis.1006
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		CmtEffectCreateAdmiralty_UnbiddenConstructor = yes
+	}
+}
+
+fleet_event = {
+	id = crisis.1106
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		CmtEffectCreateAdmiralty_AberrantConstructor = yes
+	}
+}
+
+fleet_event = {
+	id = crisis.1206
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		CmtEffectCreateAdmiralty_VehementConstructor = yes
+	}
+}
+
+
+################################
+###  Reinforcement of Fleet  ###
+################################
+
+### Clock Event for Regular Reinforcement
+country_event = {
+	id = crisis.1260
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		CmtTriggerHasExdPortal = yes
+	}
+	
+	immediate = {
+		
+		### For Constructor
+		country_event = { id = crisis.1266 days = 6 }
+		
+		
+		### Check if number of total ships is less than upper limit
+		event_target:CmtGlobalVar = {
+			set_variable = { which = CmtVarTemp value = @CmtConstExdsShipsUpperLimit }
+			if = {
+				limit = { root = { is_country_type = extradimensional } }
+				multiply_variable = { which = CmtVarTemp value = CmtVarFleetPower_Unbidden }
+				multiply_variable = { which = CmtVarTemp value = CmtVarCombatFleetNumber_Unbidden }
+			}
+			if = {
+				limit = { root = { is_country_type = extradimensional_2 } }
+				multiply_variable = { which = CmtVarTemp value = CmtVarFleetPower_Aberrant }
+				multiply_variable = { which = CmtVarTemp value = CmtVarCombatFleetNumber_Aberrant }
+			}
+			if = {
+				limit = { root = { is_country_type = extradimensional_3 } }
+				multiply_variable = { which = CmtVarTemp value = CmtVarFleetPower_Vehement }
+				multiply_variable = { which = CmtVarTemp value = CmtVarCombatFleetNumber_Vehement }
+			}
+		}
+		every_owned_ship = { event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } } }
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value < 0 } } }
+			country_event = { id = crisis.1260 days = 600 random = 200 } # Check again later
+		} else_if = {		### Decide Reinforcement Cycle
+			limit = { NOT = { any_owned_ship = { is_ship_size = starbase_exd } } }
+			country_event = { id = crisis.1265 days = 1500 random = 200 }
+		} else_if = {
+			limit = { count_owned_ships = { limit = { is_ship_size = starbase_exd } count = 1 } }
+			country_event = { id = crisis.1265 days = 1300 random = 200 }
+		} else_if = {
+			limit = { count_owned_ships = { limit = { is_ship_size = starbase_exd } count = 2 } }
+			country_event = { id = crisis.1265 days = 1100 random = 200 }
+		} else_if = {
+			limit = { count_owned_ships = { limit = { is_ship_size = starbase_exd } count = 3 } }
+			country_event = { id = crisis.1265 days = 900 random = 200 }
+		} else_if = {
+			limit = { count_owned_ships = { limit = { is_ship_size = starbase_exd } count = 4 } }
+			country_event = { id = crisis.1265 days = 600 random = 200 }
+		} else_if = {
+			limit = { count_owned_ships = { limit = { is_ship_size = starbase_exd } count = 5 } }
+			country_event = { id = crisis.1265 days = 400 random = 200 }
+		} else_if = {
+			limit = { count_owned_ships = { limit = { is_ship_size = starbase_exd } count = 6 } }
+			country_event = { id = crisis.1265 days = 400 random = 200 }
+		} else_if = {
+			limit = { count_owned_ships = { limit = { is_ship_size = starbase_exd } count = 7 } }
+			country_event = { id = crisis.1265 days = 300 random = 100 }
+		} else_if = {
+			limit = { count_owned_ships = { limit = { is_ship_size = starbase_exd } count = 8 } }
+			country_event = { id = crisis.1265 days = 250 random = 50 }
+		} else_if = {
+			limit = { count_owned_ships = { limit = { is_ship_size = starbase_exd } count = 9 } }
+			country_event = { id = crisis.1265 days = 200 random = 50 }
+		} else = { country_event = { id = crisis.1265 days = 150 random = 50 } }		## > 9
+	}
+}
+
+### Regular Reinforcement of Combat Fleet, scape: this = each EXDs' country
+country_event = {
+	id = crisis.1265
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		CmtTriggerHasExdPortal = yes
+	}
+	
+	immediate = {
+		country_event = { id = crisis.1260 } # Restart spawn cycle
+		CmtEffectReinforcementExdCombat = yes
+	}
+}
+
+
+
+### Reinforcements Arrive After Building Anchor (on_building_starbase_exd), Re-overwrite Total War Pack
+ship_event = {
+	id = crisis.1267
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		owner = { CmtTriggerHasExdPortal = yes }
+	}
+	
+	immediate = {
+		event_target:CmtGlobalVar = {
+			if = {
+				limit = { check_variable = { which = CmtVarReinforceCycle_OnExdAnchorBuilt value < 1.5 } }
+				root.owner = {
+					country_event = { id = crisis.1266 days = 6 }		## Reinforcement of Constructor
+					CmtEffectReinforcementExdCombat = yes
+				}
+			} else_if = {
+				limit = { check_variable = { which = CmtVarReinforceCycle_OnExdAnchorBuilt value < 510 } }
+				if = {		## Copy Cycle from Global Var to Each Exds Country if It Unexists
+					limit = { root.owner = { check_variable = { which = CmtVarReinforceCycle_OnExdAnchorBuilt value < 0.5 } } }
+					root.owner = {
+						set_variable = { which = CmtVarCountExdAnchorBuilt value = 0.1 }		## 0.1 = Margin
+						set_variable = { which = CmtVarReinforceCycle_OnExdAnchorBuilt value = 0 }
+					}
+					set_variable = { which = CmtVarTemp value = CmtVarReinforceCycle_OnExdAnchorBuilt }
+					while = {
+						limit = { check_variable = { which = CmtVarTemp value > 0.5 } }
+						change_variable = { which = CmtVarTemp value = -1 }
+						root.owner = { change_variable = { which = CmtVarReinforceCycle_OnExdAnchorBuilt value = 1 } }
+					}
+				}
+				root.owner = {
+					change_variable = { which = CmtVarCountExdAnchorBuilt value = 1 }
+					if = {
+						limit = { NOT = { check_variable = { which = CmtVarCountExdAnchorBuilt value < CmtVarReinforceCycle_OnExdAnchorBuilt } } }
+						set_variable = { which = CmtVarCountExdAnchorBuilt value = 0.1 }		## 0.1 = Margin
+						country_event = { id = crisis.1266 days = 6 } # Spawn Construction Ships if needed
+						CmtEffectReinforcementExdCombat = yes
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+### Reinforcement of Constructor
+country_event = {
+	id = crisis.1266
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		CmtTriggerHasExdPortal = yes
+	}
+	
+	immediate = {
+		CmtEffectSaveTargetExdPortal = yes		## save_event_target_as = dimensional_portal
+		if = {
+			limit = { is_country_type = extradimensional }
+			event_target:CmtGlobalVar = {
+				set_variable = { which = CmtVarTemp value = @CmtConstExdsConstructorStdNum }
+				multiply_variable = { which = CmtVarTemp value = CmtVarConstructorNumber_Unbidden }
+			}
+			every_owned_ship = {
+				limit = { is_ship_size = construction_ship_ed }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } }
+			}
+			if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value > 0 } } }
+				event_target:dimensional_portal = {
+					CmtEffectCreateAdmiralty_UnbiddenConstructor = yes
+					CmtEffectCreateAdmiralty_UnbiddenConstructor = yes
+				}
+			}
+		} else_if = {
+			limit = { is_country_type = extradimensional_2 }
+			event_target:CmtGlobalVar = {
+				set_variable = { which = CmtVarTemp value = @CmtConstExdsConstructorStdNum }
+				multiply_variable = { which = CmtVarTemp value = CmtVarConstructorNumber_Aberrant }
+			}
+			every_owned_ship = {
+				limit = { is_ship_size = construction_ship_ed }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } }
+			}
+			if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value > 0 } } }
+				event_target:dimensional_portal = {
+					CmtEffectCreateAdmiralty_AberrantConstructor = yes
+					CmtEffectCreateAdmiralty_AberrantConstructor = yes
+				}
+			}
+		} else_if = {
+			limit = { is_country_type = extradimensional_3 }
+			event_target:CmtGlobalVar = {
+				set_variable = { which = CmtVarTemp value = @CmtConstExdsConstructorStdNum }
+				multiply_variable = { which = CmtVarTemp value = CmtVarConstructorNumber_Vehement }
+			}
+			every_owned_ship = {
+				limit = { is_ship_size = construction_ship_ed }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } }
+			}
+			if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value > 0 } } }
+				event_target:dimensional_portal = {
+					CmtEffectCreateAdmiralty_VehementConstructor = yes
+					CmtEffectCreateAdmiralty_VehementConstructor = yes
+				}
+			}
+		}
+	}
+}
+
+
+
+###########################
+###  Anchor and Portal  ###
+###########################
+
+### Transfer Portal to Holder Just BEFORE Anchor Built, Never Use ''From''
+ship_event = {
+	id = crisis.1280
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		owner = { CmtTriggerIsExds = yes }
+	}
+	
+	immediate = {
+		owner = {
+			### Transfer Portal
+			if = {
+				limit = { CmtTriggerAnchorForPortalCreate = yes }
+				random_owned_ship = {
+					limit = { is_ship_size = dimensional_portal_ed }
+					fleet = {
+						set_event_locked = yes
+						set_owner = event_target:portal_holder_1
+					}
+				}
+			}
+			
+			### Increase Counter
+			if = {
+				limit = { is_country_type = extradimensional }
+				every_country = {
+					limit = { has_event_chain = "extradimensional_invasion_chain" }
+					add_event_chain_counter = {
+						event_chain = "extradimensional_invasion_chain"
+						counter = "dimensional_anchors_1"
+						amount = 1
+					}
+				}
+			} else_if = {
+				limit = { is_country_type = extradimensional_2 }
+				every_country = {
+					limit = { has_event_chain = "extradimensional_invasion_chain_2" }
+					add_event_chain_counter = {
+						event_chain = "extradimensional_invasion_chain_2"
+						counter = "dimensional_anchors_2"
+						amount = 1
+					}
+				}
+			} else_if = {
+				limit = { is_country_type = extradimensional_3 }
+				every_country = {
+					limit = { has_event_chain = "extradimensional_invasion_chain_3" }
+					add_event_chain_counter = {
+						event_chain = "extradimensional_invasion_chain_3"
+						counter = "dimensional_anchors_3"
+						amount = 1
+					}
+				}
+			}
+		}
+	}
+}
+
+### Anchor Destroyed, Triggered Just After Destroying
+country_event = {
+	id = crisis.1281
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		FROMFROM = { is_ship_size = starbase_exd }
+	}
+	
+	immediate = {
+		### Transfer Portal
+		if = {
+			limit = { CmtTriggerAnchorForPortalDestroy = yes }
+			event_target:portal_holder_1 = {
+				random_owned_ship = {
+					limit = {
+						is_ship_size = dimensional_portal_ed
+						OR = {
+							AND = {
+								has_ship_flag = unbidden_portal
+								root = { is_country_type = extradimensional }
+							}
+							AND = {
+								has_ship_flag = aberrant_portal
+								root = { is_country_type = extradimensional_2 }
+							}
+							AND = {
+								has_ship_flag = vehement_portal
+								root = { is_country_type = extradimensional_3 }
+							}
+						}
+					}
+					fleet = {
+						set_owner = root
+						set_event_locked = no
+					}
+				}
+			}
+		}
+		
+		### Decrease Counter
+		if = {
+			limit = { is_country_type = extradimensional }
+			every_country = {
+				limit = { has_event_chain = "extradimensional_invasion_chain" }
+				add_event_chain_counter = {
+					event_chain = "extradimensional_invasion_chain"
+					counter = "dimensional_anchors_1"
+					amount = -1
+				}
+			}
+		} else_if = {
+			limit = { is_country_type = extradimensional_2 }
+			every_country = {
+				limit = { has_event_chain = "extradimensional_invasion_chain_2" }
+				add_event_chain_counter = {
+					event_chain = "extradimensional_invasion_chain_2"
+					counter = "dimensional_anchors_2"
+					amount = -1
+				}
+			}
+		} else_if = {
+			limit = { is_country_type = extradimensional_3 }
+			every_country = {
+				limit = { has_event_chain = "extradimensional_invasion_chain_3" }
+				add_event_chain_counter = {
+					event_chain = "extradimensional_invasion_chain_3"
+					counter = "dimensional_anchors_3"
+					amount = -1
+				}
+			}
+		}
+	}
+}
+
+
+
+######################
+###  Other Events  ###
+######################
+
+### Defeated Extradimensionals: on_yearly_pulse
+event = {
+	id = crisis.1254
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		CmtTriggerExistExpExds = yes
+		NOR = {
+			CmtTriggerExistExdPortal = yes
+			any_country = {
+				CmtTriggerIsExpExds = yes
+				OR = {
+					num_ships > 6
+					any_planet_within_border = {
+						exists = controller
+						controller = { CmtTriggerIsExds = yes }
+					}
+					any_planet_within_border = {
+						exists = owner
+						owner = { CmtTriggerIsExds = yes }
+					}
+				}
+			}
+		}
+	}
+	
+	immediate = {
+		every_country = {
+			limit = { CmtTriggerIsExpExds = yes }
+			destroy_country = yes
+		}
+	}
+}
+
+
+
+### Colony Bombarded
+planet_event = {
+	id = crisis.1011
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		from = { CmtTriggerIsExds = yes }
+		OR = {
+			planet_devastation >= 100
+			AND = {
+				planet_devastation >= 25
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarPlanetOccupy value = 6 } }
+			}
+			AND = {
+				planet_devastation >= 3
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarPlanetOccupy value = 7 } }
+			}
+		}
+		OR = {
+			event_target:CmtGlobalVar = {
+				OR = {
+					NOR = {
+						check_variable = { which = CmtVarPlanetOccupy value = 2 }
+						check_variable = { which = CmtVarPlanetOccupy value = 3 }
+					}
+					check_variable = { which = CmtVarPlanetOccupy value = 5 }		## Backup for Legacy
+				}
+			}
+			count_planet_army = { count < 1 }
+		}
+	}
+	
+	immediate = {
+		add_threat = { who = from amount = 2 }
+		set_controller = from
+		
+		### Purge Complete Immediately
+		if = {
+			limit = {
+				event_target:CmtGlobalVar = {
+					NOR = {
+						check_variable = { which = CmtVarPurgeSpeed value = 2 }
+						check_variable = { which = CmtVarPurgeSpeed value = 3 }
+						check_variable = { which = CmtVarPurgeSpeed value = 4 }
+						check_variable = { which = CmtVarPurgeSpeed value = 5 }
+						check_variable = { which = CmtVarPurgeSpeed value = 6 }
+					}
+				}
+			}
+			planet_event = { id = CrisisManagerControl.0043 }
+		}
+	}
+}
+
+
+

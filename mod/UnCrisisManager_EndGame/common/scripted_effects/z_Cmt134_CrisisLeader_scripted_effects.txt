@@ -1,0 +1,368 @@
+
+######################################################
+######################################################
+#####                                            #####
+#####    Crisis Manager                          #####
+#####                                            #####
+#####    Scripted Effects for Creating Leader    #####
+#####    of End-Game Crises                      #####
+#####                                            #####
+######################################################
+######################################################
+#
+# Information
+#	All scripts to creating leader in this file is scope free
+#
+#
+
+###################
+###  Constants  ###
+###################
+
+
+
+###################
+###  Prethoryn  ###
+###################
+
+CmtEffectCreateAdmiral_SwarmVanguard = {
+	random_list = {
+		10 = {
+			create_leader = {
+				class = admiral
+				species = event_target:prethoryn_species
+				name = random
+				skill = 3
+				set_age = 3452
+				traits = { trait = leader_trait_void_swimmer }
+			}
+		}
+		10 = {
+			create_leader = {
+				class = admiral
+				species = event_target:prethoryn_species
+				name = random
+				skill = 3
+				set_age = 2967
+				traits = { trait = leader_trait_void_swimmer }
+			}
+		}
+		10 = {
+			create_leader = {
+				class = admiral
+				species = event_target:prethoryn_species
+				name = random
+				skill = 3
+				set_age = 4126
+				traits = { trait = leader_trait_void_swimmer }
+			}
+		}
+		10 = {
+			create_leader = {
+				class = admiral
+				species = event_target:prethoryn_species
+				name = random
+				skill = 3
+				set_age = 756
+				traits = { trait = leader_trait_void_swimmer }
+			}
+		}
+		10 = {
+			create_leader = {
+				class = admiral
+				species = event_target:prethoryn_species
+				name = random
+				skill = 3
+				set_age = 1007
+				traits = { trait = leader_trait_void_swimmer }
+			}
+		}
+		10 = {
+			create_leader = {
+				class = admiral
+				species = event_target:prethoryn_species
+				name = random
+				skill = 3
+				set_age = 2510
+				traits = { trait = leader_trait_void_swimmer }
+			}
+		}
+		10 = {
+			create_leader = {
+				class = admiral
+				species = event_target:prethoryn_species
+				name = random
+				skill = 3
+				set_age = 4831
+				traits = { trait = leader_trait_void_swimmer }
+			}
+		}
+		10 = {
+			create_leader = {
+				class = admiral
+				species = event_target:prethoryn_species
+				name = random
+				skill = 3
+				set_age = 3367
+				traits = { trait = leader_trait_void_swimmer }
+			}
+		}
+		10 = {
+			create_leader = {
+				class = admiral
+				species = event_target:prethoryn_species
+				name = random
+				skill = 3
+				set_age = 987
+				traits = { trait = leader_trait_void_swimmer }
+			}
+		}
+		10 = {
+			create_leader = {
+				class = admiral
+				species = event_target:prethoryn_species
+				name = random
+				skill = 3
+				set_age = 4517
+				traits = { trait = leader_trait_void_swimmer }
+			}
+		}
+	}
+}
+
+CmtEffectCreateAdmiral_SwarmBrood = {
+	random_list = {
+		75 = {
+			create_leader = {
+				class = admiral
+				species = event_target:prethoryn_species
+				name = random
+				skill = 3
+				set_age = 1125
+			}
+		}
+		25 = {
+			create_leader = {
+				class = admiral
+				species = event_target:prethoryn_species
+				name = random
+				skill = 3
+				set_age = 1125
+				traits = { trait = leader_trait_hive_affinity }
+			}
+		}
+	}
+}
+
+CmtEffectCreateAdmiral_PetQueen = {
+	create_leader = {
+		class = admiral
+		species = event_target:swarm_species
+		name = "NAME_Fleet_Consciousness"
+		skill = 8
+		event_leader = yes		# prevents this leader from leading factions and winning elections
+		immortal = yes		# can't be killed (not even in battle, unless fleet is destroyed)
+		effect = { set_leader_flag = captured_queen }
+	}
+}
+
+##################
+###  Sentinels ###
+##################
+
+CmtEffectCreateAdmiral_SentinelAttacker = {
+	random_country = {
+		limit = { CmtTriggerIsPlayableEmpire = yes }
+		owner_species = { save_event_target_as = random_species }
+	}
+	create_leader = {
+		class = admiral
+		species = event_target:random_species
+		name = random
+		skill = 3
+		traits = {
+			trait = leader_trait_sentinel
+			trait = random_trait
+		}
+	}
+}
+
+CmtEffectCreateAdmiral_SentinelCapitalDefense = {
+	event_target:sentinels = {
+		create_leader = {
+			class = admiral
+			species = owner_main_species
+			name = random
+			skill = 5
+			traits = {
+				trait = leader_trait_sentinel
+				trait = random_trait
+			}
+		}
+	}
+}
+
+
+
+###########################
+###  Extradimensionals  ###
+###########################
+
+### Unbidden
+
+CmtEffectCreateAdmiral_UnbiddenCapital = {
+	create_leader = {
+		class = admiral
+		species = event_target:extradimensional_shabanash_species
+		name = random
+		skill = 3
+		traits = { trait = leader_trait_ethereal }
+	}
+}
+
+CmtEffectCreateAdmiral_UnbiddenStandard = {
+	random_list = {
+		25 = {
+			create_leader = {
+				class = admiral
+				species = event_target:extradimensional_shabanash_species
+				name = random
+				skill = 3
+				traits = { trait = leader_trait_ethereal }
+			}
+		}
+		25 = {
+			create_leader = {
+				class = admiral
+				species = event_target:extradimensional_shabanash_species
+				name = random
+				skill = 3
+				traits = { trait = leader_trait_dimensional_stutter }
+			}
+		}
+		50 = {
+			create_leader = {
+				class = admiral
+				species = event_target:extradimensional_shabanash_species
+				name = random
+				skill = 3
+			}
+		}
+	}
+}
+
+
+### Aberrant
+CmtEffectCreateAdmiral_Aberrant = {
+	random_list = {
+		25 = {
+			create_leader = {
+				class = admiral
+				species = event_target:extradimensional_hunters_species
+				name = random
+				skill = 3
+				traits = { trait = leader_trait_ethereal }
+			}
+		}
+		25 = {
+			create_leader = {
+				class = admiral
+				species = event_target:extradimensional_hunters_species
+				name = random
+				skill = 3
+				traits = { trait = leader_trait_dimensional_stutter }
+			}
+		}
+		50 = {
+			create_leader = {
+				class = admiral
+				species = event_target:extradimensional_hunters_species
+				name = random
+				skill = 3
+			}
+		}
+	}
+}
+
+
+### Vehement
+
+CmtEffectCreateAdmiral_Vehement = {
+	random_list = {
+		25 = {
+			create_leader = {
+				class = admiral
+				species = event_target:extradimensional_trespassers_species
+				name = random
+				skill = 3
+				traits = { trait = leader_trait_ethereal }
+			}
+		}
+		25 = {
+			create_leader = {
+				class = admiral
+				species = event_target:extradimensional_trespassers_species
+				name = random
+				skill = 3
+				traits = { trait = leader_trait_dimensional_stutter }
+			}
+		}
+		50 = {
+			create_leader = {
+				class = admiral
+				species = event_target:extradimensional_trespassers_species
+				name = random
+				skill = 3
+			}
+		}
+	}
+}
+
+
+
+#####################
+###  Contingency  ###
+#####################
+
+CmtEffectCreateAdmiral_Contingency = {
+	create_leader = {
+		class = admiral
+		species = owner_main_species		## 2.2.4: event_target:contingency_bot
+		name = random
+		skill = 3
+		effect = {
+			set_age = 0
+			save_event_target_as = contingency_fleet_leader
+		}
+	}
+}
+
+
+################
+###  Cybrex  ###
+################
+
+CmtEffectCreateAdmiral_Cybrex = {
+	create_leader = {
+		class = admiral
+		species = owner_main_species
+		name = random
+		skill = 5
+		traits = { trait = leader_trait_cybrex }
+	}
+	last_created_leader = { set_age = 0 }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

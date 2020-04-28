@@ -1,0 +1,648 @@
+namespace = CrisisManagerMenu
+
+######################################
+######################################
+#####                            #####
+#####    Crisis Manager          #####
+#####                            #####
+#####    Configutation Viewer    #####
+#####    for Crisis Power        #####
+#####                            #####
+######################################
+######################################
+
+
+
+###################################
+###  Crisis Power: Fleet Power  ###
+###################################
+
+country_event = {
+	id = CrisisManagerMenu.1031
+	title = CrisisManagerMenu.1031.name
+	desc = CrisisManagerMenu.1031.desc
+	picture = GFX_evt_small_space_battle
+	is_triggered_only = yes
+	
+	immediate = {
+		set_country_flag = CmtFlagConfigViewerShowing1031
+	}
+	
+	option = {
+		name = CmtTextGoNextPage.name
+		custom_tooltip = CmtTextGoNextPage.tooltip
+		trigger = { has_country_flag = CmtFlagConfigViewerSeq }
+		hidden_effect = {
+			remove_country_flag = CmtFlagConfigViewerShowing1031
+			country_event = { id = CrisisManagerMenu.1032 }
+		}
+	}
+	option = {
+		name = CmtTextGoBack.name
+		custom_tooltip = CmtTextGoBack.tooltip
+		hidden_effect = {
+			remove_country_flag = CmtFlagConfigViewerShowing1031
+			if = {
+				limit = { has_country_flag = CmtFlagConfigViewerSeq }
+				if = {
+					limit = { has_global_flag = CmtFlagUprisingEdition }
+					country_event = { id = CrisisManagerMenu.1028 }
+				} else_if = {
+					limit = { has_global_flag = CmtFlagMidGameEdition }
+					country_event = { id = CrisisManagerMenu.1027 }
+				} else = { country_event = { id = CrisisManagerMenu.1024 } }
+			} else_if = {
+				limit = { CmtTriggerAllViewerClosed = yes }
+				country_event = { id = CrisisManagerMenu.1000 }
+			}
+		}
+	}
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.6000a.Endgame.name
+		custom_tooltip = CrisisManagerMenu.6000a.tooltip
+		trigger = {
+			has_global_flag = CmtFlagEndGameEdition
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarCrisisPower_Endgame value = 1 } }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6000 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6000b.Endgame.name
+		custom_tooltip = CrisisManagerMenu.6000b.tooltip
+		trigger = {
+			has_global_flag = CmtFlagEndGameEdition
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarCrisisPower_Endgame value = 2 } }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6000 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6000c.Endgame.name
+		custom_tooltip = CrisisManagerMenu.6000c.tooltip
+		trigger = {
+			has_global_flag = CmtFlagEndGameEdition
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarCrisisPower_Endgame value = 3 } }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6000 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6000d.Endgame.name
+		custom_tooltip = CrisisManagerMenu.6000d.tooltip
+		trigger = {
+			has_global_flag = CmtFlagEndGameEdition
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarCrisisPower_Endgame value = 4 } }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6000 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6000z.Endgame.name
+		custom_tooltip = CrisisManagerMenu.6000z.tooltip
+		trigger = {
+			has_global_flag = CmtFlagEndGameEdition
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarCrisisPower_Endgame value = 1 }
+					check_variable = { which = CmtVarCrisisPower_Endgame value = 2 }
+					check_variable = { which = CmtVarCrisisPower_Endgame value = 3 }
+					check_variable = { which = CmtVarCrisisPower_Endgame value = 4 }
+				}
+			}
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6000 } }
+	}
+	
+	option = {
+		name = CrisisManagerMenu.6000a.Midgame.name
+		custom_tooltip = CrisisManagerMenu.6000a.tooltip
+		trigger = {
+			has_global_flag = CmtFlagMidGameEdition
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarCrisisPower_Midgame value = 1 } }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6000 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6000b.Midgame.name
+		custom_tooltip = CrisisManagerMenu.6000b.tooltip
+		trigger = {
+			has_global_flag = CmtFlagMidGameEdition
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarCrisisPower_Midgame value = 2 } }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6000 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6000c.Midgame.name
+		custom_tooltip = CrisisManagerMenu.6000c.tooltip
+		trigger = {
+			has_global_flag = CmtFlagMidGameEdition
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarCrisisPower_Midgame value = 3 } }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6000 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6000d.Midgame.name
+		custom_tooltip = CrisisManagerMenu.6000d.tooltip
+		trigger = {
+			has_global_flag = CmtFlagMidGameEdition
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarCrisisPower_Midgame value = 4 } }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6000 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6000z.Midgame.name
+		custom_tooltip = CrisisManagerMenu.6000z.tooltip
+		trigger = {
+			has_global_flag = CmtFlagMidGameEdition
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarCrisisPower_Midgame value = 1 }
+					check_variable = { which = CmtVarCrisisPower_Midgame value = 2 }
+					check_variable = { which = CmtVarCrisisPower_Midgame value = 3 }
+					check_variable = { which = CmtVarCrisisPower_Midgame value = 4 }
+				}
+			}
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6000 } }
+	}
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	option = {
+		name = CrisisManagerMenu.6100.xxx.name
+		custom_tooltip = CrisisManagerMenu.6100.xxx.tooltip
+		trigger = {
+			has_global_flag = CmtFlagEndGameEdition
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Common value > 0.125 } }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6100 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6100.NA.name
+		custom_tooltip = CrisisManagerMenu.6100.NA.tooltip
+		trigger = {
+			has_global_flag = CmtFlagEndGameEdition
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Common value < 0.125 } }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6100 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6101.xxx.name
+		custom_tooltip = CrisisManagerMenu.6101.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6101 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6102.xxx.name
+		custom_tooltip = CrisisManagerMenu.6102.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6102 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6103.xxx.name
+		custom_tooltip = CrisisManagerMenu.6103.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6103 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6104.xxx.name
+		custom_tooltip = CrisisManagerMenu.6104.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6104 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6105.xxx.name
+		custom_tooltip = CrisisManagerMenu.6105.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6105 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6106.xxx.name
+		custom_tooltip = CrisisManagerMenu.6106.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6106 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6107.xxx.name
+		custom_tooltip = CrisisManagerMenu.6107.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6107 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6111.xxx.name
+		custom_tooltip = CrisisManagerMenu.6111.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagMidGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6111 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6112.xxx.name
+		custom_tooltip = CrisisManagerMenu.6112.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagMidGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6112 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6113.xxx.name
+		custom_tooltip = CrisisManagerMenu.6113.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagMidGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6113 } }
+	}
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	
+	option = {
+		name = CrisisManagerMenu.6200.xxx.name
+		custom_tooltip = CrisisManagerMenu.6200.xxx.tooltip
+		trigger = {
+			has_global_flag = CmtFlagEndGameEdition
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarArmyPower_Common value > 0.125 } }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6200 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6200.NA.name
+		custom_tooltip = CrisisManagerMenu.6200.NA.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarArmyPower_Common value < 0.125 } } }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6200 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6201.xxx.name
+		custom_tooltip = CrisisManagerMenu.6201.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6201 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6206.xxx.name
+		custom_tooltip = CrisisManagerMenu.6206.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6206 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6211.xxx.name
+		custom_tooltip = CrisisManagerMenu.6211.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagMidGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6211 } }
+	}
+	
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = {
+			NOT = { has_global_flag = CmtFlagNoSeparator }
+			has_country_flag = CmtFlagConfigViewerSeq
+		}
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	option = {
+		name = CmtTextGoBackViewerMenu.name
+		custom_tooltip = CmtTextGoBackViewerMenu.tooltip
+		trigger = { has_country_flag = CmtFlagConfigViewerSeq }
+		hidden_effect = {
+			remove_country_flag = CmtFlagConfigViewerShowing1023
+			country_event = { id = CrisisManagerMenu.1000 }
+		}
+	}
+}
+
+
+#######################################
+###  Crisis Power: Number of Fleet  ###
+#######################################
+
+country_event = {
+	id = CrisisManagerMenu.1032
+	title = CrisisManagerMenu.1032.name
+	desc = CrisisManagerMenu.1032.desc
+	picture = GFX_evt_small_space_battle
+	is_triggered_only = yes
+	
+	immediate = {
+		set_country_flag = CmtFlagConfigViewerShowing1032
+	}
+	
+	option = {
+		name = CmtTextGoNextPage.name
+		custom_tooltip = CmtTextGoNextPage.tooltip
+		trigger = { has_country_flag = CmtFlagConfigViewerSeq }
+		hidden_effect = {
+			remove_country_flag = CmtFlagConfigViewerShowing1032
+			country_event = { id = CrisisManagerMenu.1033 }
+		}
+	}
+	option = {
+		name = CmtTextGoBack.name
+		custom_tooltip = CmtTextGoBack.tooltip
+		hidden_effect = {
+			remove_country_flag = CmtFlagConfigViewerShowing1032
+			if = {
+				limit = { has_country_flag = CmtFlagConfigViewerSeq }
+				country_event = { id = CrisisManagerMenu.1031 }
+			} else_if = {
+				limit = { CmtTriggerAllViewerClosed = yes }
+				country_event = { id = CrisisManagerMenu.1000 }
+			}
+		}
+	}
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.6300.xxx.name
+		custom_tooltip = CrisisManagerMenu.6300.xxx.tooltip
+		trigger = {
+			has_global_flag = CmtFlagEndGameEdition
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Common value > 0.125 } }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6300 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6300.NA.name
+		custom_tooltip = CrisisManagerMenu.6300.NA.tooltip
+		trigger = {
+			has_global_flag = CmtFlagEndGameEdition
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Common value < 0.125 } }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6300 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6301.xxx.name
+		custom_tooltip = CrisisManagerMenu.6301.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6301 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6302.xxx.name
+		custom_tooltip = CrisisManagerMenu.6302.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6302 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6303.xxx.name
+		custom_tooltip = CrisisManagerMenu.6303.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6303 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6304.xxx.name
+		custom_tooltip = CrisisManagerMenu.6304.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6304 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6305.xxx.name
+		custom_tooltip = CrisisManagerMenu.6305.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6305 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6306.xxx.name
+		custom_tooltip = CrisisManagerMenu.6306.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6306 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6307.xxx.name
+		custom_tooltip = CrisisManagerMenu.6307.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6307 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6311.xxx.name
+		custom_tooltip = CrisisManagerMenu.6311.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagMidGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6311 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6312.xxx.name
+		custom_tooltip = CrisisManagerMenu.6312.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagMidGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6312 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6313.xxx.name
+		custom_tooltip = CrisisManagerMenu.6313.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagMidGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6313 } }
+	}
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	
+	option = {
+		name = CrisisManagerMenu.6400.xxx.name
+		custom_tooltip = CrisisManagerMenu.6400.xxx.tooltip
+		trigger = {
+			has_global_flag = CmtFlagEndGameEdition
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarArmyNumber_Common value > 0.125 } }
+		}
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6400 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6400.NA.name
+		custom_tooltip = CrisisManagerMenu.6400.NA.tooltip
+		trigger = {
+			has_global_flag = CmtFlagEndGameEdition
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarArmyNumber_Common value < 0.125 } }
+		}
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6400 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6401.xxx.name
+		custom_tooltip = CrisisManagerMenu.6401.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6401 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6406.xxx.name
+		custom_tooltip = CrisisManagerMenu.6406.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6406 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6411.xxx.name
+		custom_tooltip = CrisisManagerMenu.6411.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagMidGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6411 } }
+	}
+	
+	
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = {
+			NOT = { has_global_flag = CmtFlagNoSeparator }
+			has_country_flag = CmtFlagConfigViewerSeq
+		}
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	option = {
+		name = CmtTextGoBackViewerMenu.name
+		custom_tooltip = CmtTextGoBackViewerMenu.tooltip
+		trigger = { has_country_flag = CmtFlagConfigViewerSeq }
+		hidden_effect = {
+			remove_country_flag = CmtFlagConfigViewerShowing1023
+			country_event = { id = CrisisManagerMenu.1000 }
+		}
+	}
+}
+
+
+
+
+
+###################################
+###  Crisis Power: Constructor  ###
+###################################
+
+country_event = {
+	id = CrisisManagerMenu.1033
+	title = CrisisManagerMenu.1033.name
+	desc = CrisisManagerMenu.1033.desc
+	picture = GFX_evt_small_space_battle
+	is_triggered_only = yes
+	
+	immediate = {
+		set_country_flag = CmtFlagConfigViewerShowing1033
+	}
+	
+	option = {
+		name = CmtTextGoNextPage.name
+		custom_tooltip = CmtTextGoNextPage.tooltip
+		trigger = { has_country_flag = CmtFlagConfigViewerSeq }
+		hidden_effect = {
+			remove_country_flag = CmtFlagConfigViewerShowing1033
+			country_event = { id = CrisisManagerMenu.1000 }
+		}
+	}
+	option = {
+		name = CmtTextGoBack.name
+		custom_tooltip = CmtTextGoBack.tooltip
+		hidden_effect = {
+			remove_country_flag = CmtFlagConfigViewerShowing1033
+			if = {
+				limit = { has_country_flag = CmtFlagConfigViewerSeq }
+				country_event = { id = CrisisManagerMenu.1032 }
+			} else_if = {
+				limit = { CmtTriggerAllViewerClosed = yes }
+				country_event = { id = CrisisManagerMenu.1000 }
+			}
+		}
+	}
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.6500.xxx.name
+		custom_tooltip = CrisisManagerMenu.6500.xxx.tooltip
+		trigger = {
+			has_global_flag = CmtFlagEndGameEdition
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Common value > 0.125 } }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6500 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6500.NA.name
+		custom_tooltip = CrisisManagerMenu.6500.NA.tooltip
+		trigger = {
+			has_global_flag = CmtFlagEndGameEdition
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Common value < 0.125 } }
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6500 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6501.xxx.name
+		custom_tooltip = CrisisManagerMenu.6501.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6501 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6503.xxx.name
+		custom_tooltip = CrisisManagerMenu.6503.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6503 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6504.xxx.name
+		custom_tooltip = CrisisManagerMenu.6504.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6504 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6505.xxx.name
+		custom_tooltip = CrisisManagerMenu.6505.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6505 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6506.xxx.name
+		custom_tooltip = CrisisManagerMenu.6506.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6506 } }
+	}
+	option = {
+		name = CrisisManagerMenu.6511.xxx.name
+		custom_tooltip = CrisisManagerMenu.6511.xxx.tooltip
+		trigger = { has_global_flag = CmtFlagMidGameEdition }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.6511 } }
+	}
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = {
+			NOT = { has_global_flag = CmtFlagNoSeparator }
+			has_country_flag = CmtFlagConfigViewerSeq
+		}
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	option = {
+		name = CmtTextGoBackViewerMenu.name
+		custom_tooltip = CmtTextGoBackViewerMenu.tooltip
+		trigger = { has_country_flag = CmtFlagConfigViewerSeq }
+		hidden_effect = {
+			remove_country_flag = CmtFlagConfigViewerShowing1023
+			country_event = { id = CrisisManagerMenu.1000 }
+		}
+	}
+}
+

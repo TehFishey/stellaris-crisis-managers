@@ -1,0 +1,1455 @@
+namespace = CrisisManagerControl
+
+#################################################
+#################################################
+#####                                       #####
+#####    Crisis Manager                     #####
+#####                                       #####
+#####    Contingency Opening Event Chain    #####
+#####    Ghost Signal                       #####
+#####                                       #####
+#################################################
+#################################################
+# 
+# All events in this file are country_event for global_event.
+# 
+
+###################
+###  Constants  ###
+###################
+#
+# Days: Event Delay
+# Rand: Random part of days for event delay
+# Mtth: Mean time to happen in months
+# 
+
+
+### Very Slow: Double Centrally Controled by The Ghost Signal & 1st Machine Worlds
+@CmtConstGhostSignalDays11 =  360	## The Ghost Signal
+@CmtConstGhostSignalRand11 =  180
+@CmtConstGhostSignalDays12 = 1620	## Synths Act Strange, from
+@CmtConstGhostSignalRand12 =  540
+@CmtConstGhostSignalDays13 = 3240	## Synths Disappear
+@CmtConstGhostSignalRand13 =  540
+@CmtConstGhostSignalDays14 = 4860	## Synthetic Disappearances
+@CmtConstGhostSignalRand14 =  540
+@CmtConstGhostSignalDays15 = 6480	## The Summons
+@CmtConstGhostSignalRand15 =  540
+@CmtConstGhostSignalDays16 = 8220	## The Arrival
+@CmtConstGhostSignalRand16 =  540
+@CmtConstGhostSignalDays17 = 8280	## 1st Machine Worlds & Synth Infiltration
+@CmtConstGhostSignalRand17 =  540
+@CmtConstGhostSignalDays1a =   55	## 2nd Machine Worlds
+@CmtConstGhostSignalRand1a =   10
+@CmtConstGhostSignalDays1b =  115	## 3rd Machine Worlds
+@CmtConstGhostSignalRand1b =   10
+@CmtConstGhostSignalDays1c =  175	## 4th Machine Worlds
+@CmtConstGhostSignalRand1c =   10
+
+### Random & Slow
+@CmtConstGhostSignalDays21 =  180	## The Ghost Signal
+@CmtConstGhostSignalRand21 = 1620
+@CmtConstGhostSignalDays22 =  200	## Synths Act Strange, from
+@CmtConstGhostSignalRand22 = 1500
+@CmtConstGhostSignalDays23 =  250	## Synths Disappear
+@CmtConstGhostSignalRand23 = 1500
+@CmtConstGhostSignalDays24 =  250	## Synthetic Disappearances
+@CmtConstGhostSignalRand24 = 1500
+@CmtConstGhostSignalDays25 =  250	## The Summons
+@CmtConstGhostSignalRand25 = 1500
+@CmtConstGhostSignalDays26 =  250	## The Arrival
+@CmtConstGhostSignalRand26 = 1500
+@CmtConstGhostSignalDays27 =   30	## 1st Machine Worlds & Synth Infiltration
+@CmtConstGhostSignalRand27 =   30
+@CmtConstGhostSignalDays2a =   55	## 2nd Machine Worlds
+@CmtConstGhostSignalRand2a =   10
+@CmtConstGhostSignalDays2b =  115	## 3rd Machine Worlds
+@CmtConstGhostSignalRand2b =   10
+@CmtConstGhostSignalDays2c =  175	## 4th Machine Worlds
+@CmtConstGhostSignalRand2c =   10
+
+
+### Vanilla: Centrally Controled by the Ghost Signal
+@CmtConstGhostSignalDays31 =  200	## The Ghost Signal
+@CmtConstGhostSignalRand31 =  800
+@CmtConstGhostSignalDays32 =  100	## Synths Act Strange
+@CmtConstGhostSignalRand32 =  200
+@CmtConstGhostSignalDays33 =  400	## Synths Disappear
+@CmtConstGhostSignalRand33 =  200
+@CmtConstGhostSignalDays34 =  700	## Synthetic Disappearances
+@CmtConstGhostSignalRand34 =  200
+@CmtConstGhostSignalDays35 = 1000	## The Summons
+@CmtConstGhostSignalRand35 =  200
+@CmtConstGhostSignalDays36 = 1400	## The Arrival
+@CmtConstGhostSignalRand36 =    0
+@CmtConstGhostSignalDays37 = 1450	## 1st Machine Worlds & Synth Infiltration
+@CmtConstGhostSignalRand37 =   10
+@CmtConstGhostSignalDays3a = 1500	## 2nd Machine Worlds
+@CmtConstGhostSignalRand3a =   10
+@CmtConstGhostSignalDays3b = 1550	## 3rd Machine Worlds
+@CmtConstGhostSignalRand3b =   10
+@CmtConstGhostSignalDays3c = 1600	## 4th Machine Worlds
+@CmtConstGhostSignalRand3c =   10
+
+
+### Fast
+@CmtConstGhostSignalDays41 =  180	## The Ghost Signal
+@CmtConstGhostSignalRand41 =   45
+@CmtConstGhostSignalDays42 =   90	## Synths Act Strange
+@CmtConstGhostSignalRand42 =  210
+@CmtConstGhostSignalDays43 =  360	## Synths Disappear
+@CmtConstGhostSignalRand43 =  240
+@CmtConstGhostSignalDays44 =  720	## Synthetic Disappearances
+@CmtConstGhostSignalRand44 =  180
+@CmtConstGhostSignalDays45 = 1080	## The Summons
+@CmtConstGhostSignalRand45 =  150
+@CmtConstGhostSignalDays46 = 1410	## The Arrival
+@CmtConstGhostSignalRand46 =    0
+@CmtConstGhostSignalDays47 = 1440	## 1st Machine Worlds & Synth Infiltration
+@CmtConstGhostSignalRand47 =   15
+@CmtConstGhostSignalDays4a = 1470	## 2nd Machine Worlds
+@CmtConstGhostSignalRand4a =   15
+@CmtConstGhostSignalDays4b = 1500	## 3rd Machine Worlds
+@CmtConstGhostSignalRand4b =   15
+@CmtConstGhostSignalDays4c = 1530	## 4th Machine Worlds
+@CmtConstGhostSignalRand4c =   15
+
+### Random & Fast
+@CmtConstGhostSignalDays51 =    1	## The Ghost Signal
+@CmtConstGhostSignalRand51 =  360
+@CmtConstGhostSignalDays52 =   15	## Synths Act Strange, from
+@CmtConstGhostSignalRand52 =  240
+@CmtConstGhostSignalDays53 =   30	## Synths Disappear
+@CmtConstGhostSignalRand53 =  240
+@CmtConstGhostSignalDays54 =   30	## Synthetic Disappearances
+@CmtConstGhostSignalRand54 =  240
+@CmtConstGhostSignalDays55 =   30	## The Summons
+@CmtConstGhostSignalRand55 =  240
+@CmtConstGhostSignalDays56 =   30	## The Arrival
+@CmtConstGhostSignalRand56 =  240
+@CmtConstGhostSignalDays57 =   30	## 1st Machine Worlds & Synth Infiltration
+@CmtConstGhostSignalRand57 =  240
+@CmtConstGhostSignalDays5a =   30	## 2nd Machine Worlds
+@CmtConstGhostSignalRand5a =   15
+@CmtConstGhostSignalDays5b =   30	## 3rd Machine Worlds
+@CmtConstGhostSignalRand5b =   15
+@CmtConstGhostSignalDays5c =   30	## 4th Machine Worlds
+@CmtConstGhostSignalRand5c =   15
+
+### Foxhound: Sequential Control
+@CmtConstGhostSignalDays61 =    1	## The Ghost Signal 
+@CmtConstGhostSignalRand61 =    3
+@CmtConstGhostSignalDays62 =    1	## Synths Act Strange
+@CmtConstGhostSignalRand62 =    3
+@CmtConstGhostSignalDays63 =    1	## Synths Disappear
+@CmtConstGhostSignalRand63 =    3
+@CmtConstGhostSignalDays64 =    1	## Synthetic Disappearances
+@CmtConstGhostSignalRand64 =    3
+@CmtConstGhostSignalDays65 =    1	## The Summons
+@CmtConstGhostSignalRand65 =    3
+@CmtConstGhostSignalDays66 =    1	## The Arrival
+@CmtConstGhostSignalRand66 =    3
+@CmtConstGhostSignalDays67 =    1	## 1st Machine Worlds & Synth Infiltration
+@CmtConstGhostSignalRand67 =    3
+@CmtConstGhostSignalDays6a =    1	## 2nd Machine Worlds
+@CmtConstGhostSignalRand6a =    2
+@CmtConstGhostSignalDays6b =    1	## 3rd Machine Worlds
+@CmtConstGhostSignalRand6b =    2
+@CmtConstGhostSignalDays6c =    1	## 4th Machine Worlds
+@CmtConstGhostSignalRand6c =    2
+
+
+
+################
+###  Common  ###
+################
+
+### Check Progress Speed of Opening Event Chain
+country_event = {
+	id = CrisisManagerControl.3000
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_global_flag = ai_invasion_happened }
+	}
+	
+	immediate = {
+		endgame_telemetry = ai_revolt
+		set_global_flag = galactic_crisis_happened
+		set_global_flag = ai_invasion_happened
+		set_global_flag = ai_ghost_signal
+		set_global_flag = CmtFlagContingencyTriggerd
+		observer_event = { id = observer.41 }
+		
+		event_target:CmtGlobalVar = {
+			if = {
+				limit = { check_variable = { which = CmtVarOpeningEventSpeed value = 1 } }
+				country_event = { id = CrisisManagerControl.3010 }
+			} else_if = {
+				limit = { check_variable = { which = CmtVarOpeningEventSpeed value = 2 } }
+				country_event = { id = CrisisManagerControl.3020 }
+			} else_if = {
+				limit = { check_variable = { which = CmtVarOpeningEventSpeed value = 4 } }
+				country_event = { id = CrisisManagerControl.3040 }
+			} else_if = {
+				limit = { check_variable = { which = CmtVarOpeningEventSpeed value = 5 } }
+				country_event = { id = CrisisManagerControl.3050 }
+			} else_if = {
+				limit = { check_variable = { which = CmtVarOpeningEventSpeed value = 6 } }
+				country_event = { id = CrisisManagerControl.3060 }
+			} else = { country_event = { id = CrisisManagerControl.3030 } }
+		}
+	}
+}
+
+
+
+
+
+###################
+###  Very Slow  ###
+###################
+
+### Internal Trigger
+country_event = {
+	id = CrisisManagerControl.3010
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		country_event = { id = CrisisManagerControl.3011 days = @CmtConstGhostSignalDays11 random = @CmtConstGhostSignalRand11 }
+	}
+}
+
+### The Ghost Signal (crisis.2010)
+country_event = {
+	id = CrisisManagerControl.3011
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3011 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectStartGhostSignal = yes
+			country_event = { id = CrisisManagerControl.3012 days = @CmtConstGhostSignalDays12 random = @CmtConstGhostSignalRand12 }
+			country_event = { id = CrisisManagerControl.3013 days = @CmtConstGhostSignalDays13 random = @CmtConstGhostSignalRand13 }
+			country_event = { id = CrisisManagerControl.3014 days = @CmtConstGhostSignalDays14 random = @CmtConstGhostSignalRand14 }
+			country_event = { id = CrisisManagerControl.3015 days = @CmtConstGhostSignalDays15 random = @CmtConstGhostSignalRand15 }
+			country_event = { id = CrisisManagerControl.3016 days = @CmtConstGhostSignalDays16 random = @CmtConstGhostSignalRand16 }
+			country_event = { id = CrisisManagerControl.3017 days = @CmtConstGhostSignalDays17 random = @CmtConstGhostSignalRand17 }
+		}
+	}
+}
+
+### Synths Act Strange (crisis.2006 / 2500)
+country_event = {
+	id = CrisisManagerControl.3012
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3012 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSynthsActStrange = yes
+		}
+	}
+}
+
+### Synths Disappear (crisis.2007)
+country_event = {
+	id = CrisisManagerControl.3013
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3013 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSynthsDisappear = yes
+		}
+	}
+}
+
+### Synthetic Disappearances (crisis.2020)
+country_event = {
+	id = CrisisManagerControl.3014
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3014 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSyntheticDisappearances = yes
+		}
+	}
+}
+
+### The Summons (crisis.2021)
+country_event = {
+	id = CrisisManagerControl.3015
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3015 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectContingencySummons = yes
+		}
+	}
+}
+
+### The Arrival (crisis.2022)
+country_event = {
+	id = CrisisManagerControl.3016
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3016 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectContingencyArrival = yes
+		}
+	}
+}
+
+### 4 Machine Worlds & Synth Infiltration (Redirect Only)
+country_event = {
+	id = CrisisManagerControl.3017
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		country_event = { id = CrisisManagerControl.3111 }
+		country_event = { id = CrisisManagerControl.3300 }
+	}
+}
+
+### 1st Machine Worlds (crisis.2025)
+country_event = {
+	id = CrisisManagerControl.3111
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3111 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffect1stMachineWorld = yes
+			country_event = { id = CrisisManagerControl.3112 days = @CmtConstGhostSignalDays1a random = @CmtConstGhostSignalRand1a }
+			country_event = { id = CrisisManagerControl.3113 days = @CmtConstGhostSignalDays1b random = @CmtConstGhostSignalRand1b }
+			country_event = { id = CrisisManagerControl.3114 days = @CmtConstGhostSignalDays1c random = @CmtConstGhostSignalRand1c }
+		}
+	}
+}
+
+### 2nd Machine Worlds (crisis.2026)
+country_event = {
+	id = CrisisManagerControl.3112
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3112 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffect2ndMachineWorld = yes
+		}
+	}
+}
+
+### 3rd Machine Worlds (crisis.2027)
+country_event = {
+	id = CrisisManagerControl.3113
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3113 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffect3rdMachineWorld = yes
+		}
+	}
+}
+
+### 4th Machine Worlds (crisis.2028)
+country_event = {
+	id = CrisisManagerControl.3114
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3114 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffect4thMachineWorld = yes
+		}
+	}
+}
+
+
+
+#######################
+###  Randomly Slow  ###
+#######################
+
+### Internal Trigger
+country_event = {
+	id = CrisisManagerControl.3020
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		country_event = { id = CrisisManagerControl.3021 days = @CmtConstGhostSignalDays21 random = @CmtConstGhostSignalRand21 }
+	}
+}
+
+### The Ghost Signal (crisis.2010)
+country_event = {
+	id = CrisisManagerControl.3021
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3021 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectStartGhostSignal = yes
+			country_event = { id = CrisisManagerControl.3022 days = @CmtConstGhostSignalDays22 random = @CmtConstGhostSignalRand22 }
+		}
+	}
+}
+
+### Synths Act Strange (crisis.2006 / 2500)
+country_event = {
+	id = CrisisManagerControl.3022
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3022 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSynthsActStrange = yes
+			country_event = { id = CrisisManagerControl.3023 days = @CmtConstGhostSignalDays23 random = @CmtConstGhostSignalRand23 }
+		}
+	}
+}
+
+### Synths Disappear (crisis.2007)
+country_event = {
+	id = CrisisManagerControl.3023
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3023 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSynthsDisappear = yes
+			country_event = { id = CrisisManagerControl.3024 days = @CmtConstGhostSignalDays24 random = @CmtConstGhostSignalRand24 }
+		}
+	}
+}
+
+### Synthetic Disappearances (crisis.2020)
+country_event = {
+	id = CrisisManagerControl.3024
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3024 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSyntheticDisappearances = yes
+			country_event = { id = CrisisManagerControl.3025 days = @CmtConstGhostSignalDays25 random = @CmtConstGhostSignalRand25 }
+		}
+	}
+}
+
+### The Summons (crisis.2021)
+country_event = {
+	id = CrisisManagerControl.3025
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3025 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectContingencySummons = yes
+			country_event = { id = CrisisManagerControl.3026 days = @CmtConstGhostSignalDays26 random = @CmtConstGhostSignalRand26 }
+		}
+	}
+}
+
+### The Arrival (crisis.2022)
+country_event = {
+	id = CrisisManagerControl.3026
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3026 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectContingencyArrival = yes
+			country_event = { id = CrisisManagerControl.3027 days = @CmtConstGhostSignalDays27 random = @CmtConstGhostSignalRand27 }
+		}
+	}
+}
+
+### 4 Machine Worlds & Synth Infiltration (Redirect Only)
+country_event = {
+	id = CrisisManagerControl.3027
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		country_event = { id = CrisisManagerControl.3121 }
+		country_event = { id = CrisisManagerControl.3300 }
+	}
+}
+
+### 1st Machine Worlds (crisis.2025)
+country_event = {
+	id = CrisisManagerControl.3121
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3121 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffect1stMachineWorld = yes
+			country_event = { id = CrisisManagerControl.3122 days = @CmtConstGhostSignalDays2a random = @CmtConstGhostSignalRand2a }
+		}
+	}
+}
+
+### 2nd Machine Worlds (crisis.2026)
+country_event = {
+	id = CrisisManagerControl.3122
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3122 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffect2ndMachineWorld = yes
+			country_event = { id = CrisisManagerControl.3123 days = @CmtConstGhostSignalDays2b random = @CmtConstGhostSignalRand2b }
+		}
+	}
+}
+
+### 3rd Machine Worlds (crisis.2027)
+country_event = {
+	id = CrisisManagerControl.3123
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3123 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffect3rdMachineWorld = yes
+			country_event = { id = CrisisManagerControl.3124 days = @CmtConstGhostSignalDays2c random = @CmtConstGhostSignalRand2c }
+		}
+	}
+}
+
+### 4th Machine Worlds (crisis.2028)
+country_event = {
+	id = CrisisManagerControl.3124
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3124 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffect4thMachineWorld = yes
+		}
+	}
+}
+
+
+
+#################
+###  Vanilla  ###
+#################
+
+### Internal Trigger
+country_event = {
+	id = CrisisManagerControl.3030
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		country_event = { id = CrisisManagerControl.3031 days = @CmtConstGhostSignalDays31 random = @CmtConstGhostSignalRand31 }
+	}
+}
+
+### The Ghost Signal (crisis.2010)
+country_event = {
+	id = CrisisManagerControl.3031
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3031 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectStartGhostSignal = yes
+			country_event = { id = CrisisManagerControl.3032 days = @CmtConstGhostSignalDays32 random = @CmtConstGhostSignalRand32 }
+			country_event = { id = CrisisManagerControl.3033 days = @CmtConstGhostSignalDays33 random = @CmtConstGhostSignalRand33 }
+			country_event = { id = CrisisManagerControl.3034 days = @CmtConstGhostSignalDays34 random = @CmtConstGhostSignalRand34 }
+			country_event = { id = CrisisManagerControl.3035 days = @CmtConstGhostSignalDays35 random = @CmtConstGhostSignalRand35 }
+			country_event = { id = CrisisManagerControl.3036 days = @CmtConstGhostSignalDays36 random = @CmtConstGhostSignalRand36 }
+			country_event = { id = CrisisManagerControl.3037 days = @CmtConstGhostSignalDays37 random = @CmtConstGhostSignalRand37 }
+			country_event = { id = CrisisManagerControl.3132 days = @CmtConstGhostSignalDays3a random = @CmtConstGhostSignalRand3a }
+			country_event = { id = CrisisManagerControl.3133 days = @CmtConstGhostSignalDays3b random = @CmtConstGhostSignalRand3b }
+			country_event = { id = CrisisManagerControl.3134 days = @CmtConstGhostSignalDays3c random = @CmtConstGhostSignalRand3c }
+		}
+	}
+}
+
+### Synths Act Strange (crisis.2006 / 2500)
+country_event = {
+	id = CrisisManagerControl.3032
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3032 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSynthsActStrange = yes
+		}
+	}
+}
+
+### Synths Disappear (crisis.2007)
+country_event = {
+	id = CrisisManagerControl.3033
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3033 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSynthsDisappear = yes
+		}
+	}
+}
+
+### Synthetic Disappearances (crisis.2020)
+country_event = {
+	id = CrisisManagerControl.3034
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3034 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSyntheticDisappearances = yes
+		}
+	}
+}
+
+### The Summons (crisis.2021)
+country_event = {
+	id = CrisisManagerControl.3035
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3035 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectContingencySummons = yes
+		}
+	}
+}
+
+### The Arrival (crisis.2022)
+country_event = {
+	id = CrisisManagerControl.3036
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3036 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectContingencyArrival = yes
+		}
+	}
+}
+
+### 4 Machine Worlds & Synth Infiltration (Redirect Only)
+country_event = {
+	id = CrisisManagerControl.3037
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		country_event = { id = CrisisManagerControl.3131 }
+		country_event = { id = CrisisManagerControl.3300 }
+	}
+}
+
+### 1st Machine Worlds (crisis.2025)
+country_event = {
+	id = CrisisManagerControl.3131
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3131 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffect1stMachineWorld = yes
+		}
+	}
+}
+
+### 2nd Machine Worlds (crisis.2026)
+country_event = {
+	id = CrisisManagerControl.3132
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3132 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffect2ndMachineWorld = yes
+		}
+	}
+}
+
+### 3rd Machine Worlds (crisis.2027)
+country_event = {
+	id = CrisisManagerControl.3133
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3133 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffect3rdMachineWorld = yes
+		}
+	}
+}
+
+### 4th Machine Worlds (crisis.2028)
+country_event = {
+	id = CrisisManagerControl.3134
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3134 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffect4thMachineWorld = yes
+		}
+	}
+}
+
+
+
+##############
+###  Fast  ###
+##############
+
+### Internal Trigger
+country_event = {
+	id = CrisisManagerControl.3040
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		country_event = { id = CrisisManagerControl.3041 days = @CmtConstGhostSignalDays41 random = @CmtConstGhostSignalRand41 }
+	}
+}
+
+### The Ghost Signal (crisis.2010)
+country_event = {
+	id = CrisisManagerControl.3041
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3041 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectStartGhostSignal = yes
+			country_event = { id = CrisisManagerControl.3042 days = @CmtConstGhostSignalDays42 random = @CmtConstGhostSignalRand42 }
+			country_event = { id = CrisisManagerControl.3043 days = @CmtConstGhostSignalDays43 random = @CmtConstGhostSignalRand43 }
+			country_event = { id = CrisisManagerControl.3044 days = @CmtConstGhostSignalDays44 random = @CmtConstGhostSignalRand44 }
+			country_event = { id = CrisisManagerControl.3045 days = @CmtConstGhostSignalDays45 random = @CmtConstGhostSignalRand45 }
+			country_event = { id = CrisisManagerControl.3046 days = @CmtConstGhostSignalDays46 random = @CmtConstGhostSignalRand46 }
+			country_event = { id = CrisisManagerControl.3047 days = @CmtConstGhostSignalDays47 random = @CmtConstGhostSignalRand47 }
+			country_event = { id = CrisisManagerControl.3142 days = @CmtConstGhostSignalDays4a random = @CmtConstGhostSignalRand4a }
+			country_event = { id = CrisisManagerControl.3143 days = @CmtConstGhostSignalDays4b random = @CmtConstGhostSignalRand4b }
+			country_event = { id = CrisisManagerControl.3144 days = @CmtConstGhostSignalDays4c random = @CmtConstGhostSignalRand4c }
+		}
+	}
+}
+
+### Synths Act Strange (crisis.2006 / 2500)
+country_event = {
+	id = CrisisManagerControl.3042
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3042 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSynthsActStrange = yes
+		}
+	}
+}
+
+### Synths Disappear (crisis.2007)
+country_event = {
+	id = CrisisManagerControl.3043
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3043 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSynthsDisappear = yes
+		}
+	}
+}
+
+### Synthetic Disappearances (crisis.2020)
+country_event = {
+	id = CrisisManagerControl.3044
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3044 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSyntheticDisappearances = yes
+		}
+	}
+}
+
+### The Summons (crisis.2021)
+country_event = {
+	id = CrisisManagerControl.3045
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3045 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectContingencySummons = yes
+		}
+	}
+}
+
+### The Arrival (crisis.2022)
+country_event = {
+	id = CrisisManagerControl.3046
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3046 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectContingencyArrival = yes
+		}
+	}
+}
+
+### 4 Machine Worlds & Synth Infiltration (Redirect Only)
+country_event = {
+	id = CrisisManagerControl.3047
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		country_event = { id = CrisisManagerControl.3141 }
+		country_event = { id = CrisisManagerControl.3300 }
+	}
+}
+
+### 1st Machine Worlds (crisis.2025)
+country_event = {
+	id = CrisisManagerControl.3141
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3141 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffect1stMachineWorld = yes
+		}
+	}
+}
+
+### 2nd Machine Worlds (crisis.2026)
+country_event = {
+	id = CrisisManagerControl.3142
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3142 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffect2ndMachineWorld = yes
+		}
+	}
+}
+
+### 3rd Machine Worlds (crisis.2027)
+country_event = {
+	id = CrisisManagerControl.3143
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3143 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffect3rdMachineWorld = yes
+		}
+	}
+}
+
+### 4th Machine Worlds (crisis.2028)
+country_event = {
+	id = CrisisManagerControl.3144
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3144 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffect4thMachineWorld = yes
+		}
+	}
+}
+
+
+
+#######################
+###  Randomly Fast  ###
+#######################
+
+### Internal Trigger
+country_event = {
+	id = CrisisManagerControl.3050
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		country_event = { id = CrisisManagerControl.3051 days = @CmtConstGhostSignalDays51 random = @CmtConstGhostSignalRand51 }
+	}
+}
+
+### The Ghost Signal (crisis.2010)
+country_event = {
+	id = CrisisManagerControl.3051
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3051 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectStartGhostSignal = yes
+			country_event = { id = CrisisManagerControl.3052 days = @CmtConstGhostSignalDays52 random = @CmtConstGhostSignalRand52 }
+		}
+	}
+}
+
+### Synths Act Strange (crisis.2006 / 2500)
+country_event = {
+	id = CrisisManagerControl.3052
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3052 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSynthsActStrange = yes
+			country_event = { id = CrisisManagerControl.3053 days = @CmtConstGhostSignalDays53 random = @CmtConstGhostSignalRand53 }
+		}
+	}
+}
+
+### Synths Disappear (crisis.2007)
+country_event = {
+	id = CrisisManagerControl.3053
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3053 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSynthsDisappear = yes
+			country_event = { id = CrisisManagerControl.3054 days = @CmtConstGhostSignalDays54 random = @CmtConstGhostSignalRand54 }
+		}
+	}
+}
+
+### Synthetic Disappearances (crisis.2020)
+country_event = {
+	id = CrisisManagerControl.3054
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3054 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSyntheticDisappearances = yes
+			country_event = { id = CrisisManagerControl.3055 days = @CmtConstGhostSignalDays55 random = @CmtConstGhostSignalRand55 }
+		}
+	}
+}
+
+### The Summons (crisis.2021)
+country_event = {
+	id = CrisisManagerControl.3055
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3055 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectContingencySummons = yes
+			country_event = { id = CrisisManagerControl.3056 days = @CmtConstGhostSignalDays56 random = @CmtConstGhostSignalRand56 }
+		}
+	}
+}
+
+### The Arrival (crisis.2022)
+country_event = {
+	id = CrisisManagerControl.3056
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3056 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectContingencyArrival = yes
+			country_event = { id = CrisisManagerControl.3057 days = @CmtConstGhostSignalDays57 random = @CmtConstGhostSignalRand57 }
+		}
+	}
+}
+
+### 4 Machine Worlds & Synth Infiltration (Redirect Only)
+country_event = {
+	id = CrisisManagerControl.3057
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		country_event = { id = CrisisManagerControl.3151 }
+		country_event = { id = CrisisManagerControl.3300 }
+	}
+}
+
+### 1st Machine Worlds (crisis.2025)
+country_event = {
+	id = CrisisManagerControl.3151
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3151 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffect1stMachineWorld = yes
+			country_event = { id = CrisisManagerControl.3152 days = @CmtConstGhostSignalDays5a random = @CmtConstGhostSignalRand5a }
+		}
+	}
+}
+
+### 2nd Machine Worlds (crisis.2026)
+country_event = {
+	id = CrisisManagerControl.3152
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3152 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffect2ndMachineWorld = yes
+			country_event = { id = CrisisManagerControl.3153 days = @CmtConstGhostSignalDays5b random = @CmtConstGhostSignalRand5b }
+		}
+	}
+}
+
+### 3rd Machine Worlds (crisis.2027)
+country_event = {
+	id = CrisisManagerControl.3153
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3153 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffect3rdMachineWorld = yes
+			country_event = { id = CrisisManagerControl.3154 days = @CmtConstGhostSignalDays5c random = @CmtConstGhostSignalRand5c }
+		}
+	}
+}
+
+### 4th Machine Worlds (crisis.2028)
+country_event = {
+	id = CrisisManagerControl.3154
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3154 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffect4thMachineWorld = yes
+		}
+	}
+}
+
+
+
+##################
+###  Foxhound  ###
+##################
+
+### Internal Trigger
+country_event = {
+	id = CrisisManagerControl.3060
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		country_event = { id = CrisisManagerControl.3061 days = @CmtConstGhostSignalDays61 random = @CmtConstGhostSignalRand61 }
+	}
+}
+
+### The Ghost Signal (crisis.2010)
+country_event = {
+	id = CrisisManagerControl.3061
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3061 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectStartGhostSignal = yes
+			country_event = { id = CrisisManagerControl.3062 days = @CmtConstGhostSignalDays62 random = @CmtConstGhostSignalRand62 }
+		}
+	}
+}
+
+### Synths Act Strange (crisis.2006 / 2500)
+country_event = {
+	id = CrisisManagerControl.3062
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3062 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSynthsActStrange = yes
+			country_event = { id = CrisisManagerControl.3063 days = @CmtConstGhostSignalDays63 random = @CmtConstGhostSignalRand63 }
+		}
+	}
+}
+
+### Synths Disappear (crisis.2007)
+country_event = {
+	id = CrisisManagerControl.3063
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3063 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSynthsDisappear = yes
+			country_event = { id = CrisisManagerControl.3064 days = @CmtConstGhostSignalDays64 random = @CmtConstGhostSignalRand64 }
+		}
+	}
+}
+
+### Synthetic Disappearances (crisis.2020)
+country_event = {
+	id = CrisisManagerControl.3064
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3064 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSyntheticDisappearances = yes
+			country_event = { id = CrisisManagerControl.3065 days = @CmtConstGhostSignalDays65 random = @CmtConstGhostSignalRand65 }
+		}
+	}
+}
+
+### The Summons (crisis.2021)
+country_event = {
+	id = CrisisManagerControl.3065
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3065 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectContingencySummons = yes
+			country_event = { id = CrisisManagerControl.3066 days = @CmtConstGhostSignalDays66 random = @CmtConstGhostSignalRand66 }
+		}
+	}
+}
+
+### The Arrival (crisis.2022)
+country_event = {
+	id = CrisisManagerControl.3066
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3066 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectContingencyArrival = yes
+			country_event = { id = CrisisManagerControl.3067 days = @CmtConstGhostSignalDays67 random = @CmtConstGhostSignalRand67 }
+		}
+	}
+}
+
+### 4 Machine Worlds & Synth Infiltration (Redirect Only)
+country_event = {
+	id = CrisisManagerControl.3067
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		country_event = { id = CrisisManagerControl.3161 }
+		country_event = { id = CrisisManagerControl.3300 }
+	}
+}
+
+### 1st Machine Worlds (crisis.2025)
+country_event = {
+	id = CrisisManagerControl.3161
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3161 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffect1stMachineWorld = yes
+			country_event = { id = CrisisManagerControl.3162 days = @CmtConstGhostSignalDays6a random = @CmtConstGhostSignalRand6a }
+		}
+	}
+}
+
+### 2nd Machine Worlds (crisis.2026)
+country_event = {
+	id = CrisisManagerControl.3162
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3162 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffect2ndMachineWorld = yes
+			country_event = { id = CrisisManagerControl.3163 days = @CmtConstGhostSignalDays6b random = @CmtConstGhostSignalRand6b }
+		}
+	}
+}
+
+### 3rd Machine Worlds (crisis.2027)
+country_event = {
+	id = CrisisManagerControl.3163
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3163 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffect3rdMachineWorld = yes
+			country_event = { id = CrisisManagerControl.3164 days = @CmtConstGhostSignalDays6c random = @CmtConstGhostSignalRand6c }
+		}
+	}
+}
+
+### 4th Machine Worlds (crisis.2028)
+country_event = {
+	id = CrisisManagerControl.3164
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.3164 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffect4thMachineWorld = yes
+		}
+	}
+}
+

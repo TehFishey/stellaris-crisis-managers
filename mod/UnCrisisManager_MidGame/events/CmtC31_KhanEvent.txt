@@ -1,0 +1,218 @@
+namespace = CrisisManagerControl
+
+############################################
+############################################
+#####                                  #####
+#####    Crisis Manager                #####
+#####                                  #####
+#####    Khan (Horde Crisis) Events    #####
+#####                                  #####
+############################################
+############################################
+
+####################################################
+###  Standard Awakening of Khan (Not Vengeance)  ###
+####################################################
+
+### Check Trgger Condision
+event = {
+	id = CrisisManagerControl.6101
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		event_target:CmtGlobalVar = {
+			### Check Earliest Year
+			OR = {
+				check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T1 }
+				AND = {
+					NOT = { check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T1 } }
+					check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T2 }
+					mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V1
+				}
+				AND = {
+					NOT = { check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T2 } }
+					check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T3 }
+					mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V2
+				}
+				AND = {
+					NOT = { check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T3 } }
+					check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T4 }
+					mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V3
+				}
+				AND = {
+					NOT = { check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T4 } }
+					check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T5 }
+					mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V4
+				}
+				AND = {
+					NOT = { check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T5 } }
+					check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T6 }
+					mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V5
+				}
+				AND = {
+					NOT = { check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T6 } }
+					check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T7 }
+					mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V6
+				}
+				AND = {
+					NOT = { check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T7 } }
+					check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T8 }
+					mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V7
+				}
+				AND = {
+					NOT = { check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T8 } }
+					check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T9 }
+					mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V8
+				}
+				AND = {
+					NOT = { check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T9 } }
+					check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_TA }
+					mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V9
+				}
+				AND = {
+					NOT = { check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_TA } }
+					mid_game_years_passed >= @CmtConstTUnq_ConstKhanEarliestMgpy
+				}
+			}
+			
+			### Check Latest Year
+			OR = {
+				AND = {
+					check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T1 }
+					end_game_years_passed <= @CmtConstTUnq_ConstKhanLatestEgpy
+				}
+				AND = {
+					NOT = { check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T1 } }
+					check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T2 }
+					end_game_years_passed <= @CmtConstKhanLatestEgpy_V1
+				}
+				AND = {
+					NOT = { check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T2 } }
+					check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T3 }
+					end_game_years_passed <= @CmtConstKhanLatestEgpy_V2
+				}
+				AND = {
+					NOT = { check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T3 } }
+					check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T4 }
+					end_game_years_passed <= @CmtConstKhanLatestEgpy_V3
+				}
+				AND = {
+					NOT = { check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T4 } }
+					check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T5 }
+					end_game_years_passed <= @CmtConstKhanLatestEgpy_V4
+				}
+				AND = {
+					NOT = { check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T5 } }
+					check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T6 }
+					end_game_years_passed <= @CmtConstKhanLatestEgpy_V5
+				}
+				AND = {
+					NOT = { check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T6 } }
+					check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T7 }
+					end_game_years_passed <= @CmtConstKhanLatestEgpy_V6
+				}
+				AND = {
+					NOT = { check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T7 } }
+					check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T8 }
+					end_game_years_passed <= @CmtConstKhanLatestEgpy_V7
+				}
+				AND = {
+					NOT = { check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T8 } }
+					check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T9 }
+					end_game_years_passed <= @CmtConstKhanLatestEgpy_V8
+				}
+				AND = {
+					NOT = { check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T9 } }
+					check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_TA }
+					end_game_years_passed <= @CmtConstKhanLatestEgpy_V9
+				}
+				NOT = { check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_TA } }
+			}
+			
+			CmtTriggerKhanAwakingMultipleCheck = yes
+		}
+	}
+	
+	immediate = {
+		event_target:CmtGlobalVar = {
+			if = {
+				limit = { NOT = { has_global_flag = CmtFlagCheckKhanFirstChance } }
+				set_global_flag = CmtFlagCheckKhanFirstChance
+				country_event = { id = CrisisManagerControl.6111 days = 17990 }	## 50 yr - 10 d
+			}
+		}
+		
+		remove_global_flag = CmtFlagKillDoubleBookingKhan
+		every_country = {
+			limit = { CmtTriggerHasPotentialKhanAwaking = yes }
+			
+			random_list = {
+				10 = {		## MTTH = 100 yr
+					modifier = {		## >= Earliest Year + 50 yr
+						factor = 1.5
+						has_global_flag = CmtFlagKhanProbabilityIncrease
+					}
+					modifier = {
+						factor = 0.67
+						count_country = {
+							limit = { CmtTriggerIsSleepingMarauder = yes }
+							count = 2
+						}
+					}
+					modifier = {
+						factor = 0.50
+						count_country = {
+							limit = { CmtTriggerIsSleepingMarauder = yes }
+							count > 2
+						}
+					}
+					modifier = {
+						factor = 0
+						has_global_flag = CmtFlagKillDoubleBookingKhan
+					}
+					set_global_flag = CmtFlagKhanTriggered
+					set_timed_global_flag = { flag = CmtFlagKillDoubleBookingKhan days = 3 }
+					country_event = { id = marauder.500 days = 1 random = 358 }
+				}
+				990 = {
+					modifier = {
+						factor = 3
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanTriggerProbability value = 1 } }
+					}
+					modifier = {
+						factor = 0.33
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanTriggerProbability value = 3 } }
+					}
+					modifier = {
+						factor = 0.1
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanTriggerProbability value = 4 } }
+					}
+					modifier = {
+						factor = 0
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanTriggerProbability value = 5 } }
+						NOT = { has_global_flag = CmtFlagKillDoubleBookingKhan }
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+##############################################
+###  Control Flag for Probability of Khan  ###
+##############################################
+
+country_event = {
+	id = CrisisManagerControl.6111
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		set_global_flag = CmtFlagKhanProbabilityIncrease
+	}
+}

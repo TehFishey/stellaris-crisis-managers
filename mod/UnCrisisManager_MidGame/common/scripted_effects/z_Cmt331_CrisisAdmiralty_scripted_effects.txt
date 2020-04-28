@@ -1,0 +1,1093 @@
+
+##########################################################
+##########################################################
+#####                                                #####
+#####    Crisis Manager                              #####
+#####                                                #####
+#####    Scripted Effects for Creating Fleet Sets    #####
+#####    of Mid-Game Crises                          #####
+#####                                                #####
+##########################################################
+##########################################################
+#
+# Information
+#	All script in this file require following scopes
+#	this: Location for creating fleets (e.g. planet)
+#
+
+
+###################
+###  Constants  ###
+###################
+@CmtConstKhanConstructorUpperLimit = 5		## -1
+@CmtConstKhanArmyUpperLimit = 40		## -1
+@CmtConstKhanFleetPowerUpperLimit_Base = 100000		## 100 k
+
+@CmtConstKhanFleetPowerUpperLimit_V1 =   25000		##   25 k
+@CmtConstKhanFleetPowerUpperLimit_V2 =   50000		##   50 k
+@CmtConstKhanFleetPowerUpperLimit_V3 =   75000		##   75 k
+@CmtConstKhanFleetPowerUpperLimit_V4 =  100000		##  100 k
+@CmtConstKhanFleetPowerUpperLimit_V5 =  150000		##  150 k
+@CmtConstKhanFleetPowerUpperLimit_V6 =  250000		##  250 k
+@CmtConstKhanFleetPowerUpperLimit_V7 =  500000		##  500 k
+@CmtConstKhanFleetPowerUpperLimit_V8 = 1000000		## 1000 k
+
+@CmtConstKhanFleetPowerUpperLimit_T1 =   37500		##   37.5 k
+@CmtConstKhanFleetPowerUpperLimit_T2 =   62500		##   62.5 k
+@CmtConstKhanFleetPowerUpperLimit_T3 =   87500		##   87.5 k
+@CmtConstKhanFleetPowerUpperLimit_T4 =  125000		##  125 k
+@CmtConstKhanFleetPowerUpperLimit_T5 =  200000		##  200 k
+@CmtConstKhanFleetPowerUpperLimit_T6 =  375000		##  375 k
+@CmtConstKhanFleetPowerUpperLimit_T7 =  750000		##  750 k
+
+@CmtConstGraygooFleetNumberUpperLimit =   3000
+
+
+
+##############
+###  Khan  ###
+##############
+
+### The Fleet for Khan Own
+CmtEffectCreateAdmiralty_Khan1stFleet = {		### Exception: Leader = event_target:great_khan
+	event_target:raider_khanate = {
+		CmtEffectCreateFleet_Khan1stFleet = yes
+	}
+}
+
+CmtEffectCreateAdmiralty_Khan2ndFleetSet = {		### Exception: Leader = exiled_khan
+	event_target:raider_khanate = {
+		CmtEffectCreateFleet_Khan2ndFleet = yes
+		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Khan } }
+		while = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
+			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -1 } }
+			CmtEffectCreateFleet_KhanStandard = yes
+			CmtEffectCreateFleet_KhanArmy = yes
+			CmtEffectCreateFleet_KhanArmy = yes
+		}
+		while = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
+			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
+			random_list = {
+				125 = {
+					event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = 0 } }
+					CmtEffectCreateFleet_KhanStandard = yes
+					CmtEffectCreateFleet_KhanArmy = yes
+				}
+				75 = {
+					event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
+					CmtEffectCreateFleet_KhanArmy = yes
+				}
+				200 = { }
+			}
+		}
+	}
+}
+
+### Consorts of Khan
+CmtEffectCreateAdmiralty_KhanStarterPack = {
+	event_target:raider_khanate = {
+		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Khan } }
+		while = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
+			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -1 } }
+			CmtEffectCreateFleet_KhanStandard = yes
+			CmtEffectCreateFleet_KhanStandard = yes
+			CmtEffectCreateFleet_KhanStandard = yes
+			CmtEffectCreateFleet_KhanArmy = yes
+			CmtEffectCreateFleet_KhanArmy = yes
+			CmtEffectCreateFleet_KhanArmy = yes
+			CmtEffectCreateFleet_KhanArmy = yes
+			CmtEffectCreateFleet_KhanConstructor = yes
+			CmtEffectCreateFleet_KhanConstructor = yes
+			CmtEffectCreateFleet_KhanConstructor = yes
+		}
+		while = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
+			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
+			CmtEffectCreateFleet_KhanArmy = yes
+			random_list = { 300 = { CmtEffectCreateFleet_KhanStandard = yes } 100 = { } }
+			random_list = { 300 = { CmtEffectCreateFleet_KhanConstructor = yes } 100 = { } }
+		}
+	}
+}
+
+
+### Mercenaries
+CmtEffectCreateAdmiralty_KhanMercenaries1 = {
+	event_target:raider_khanate = {
+		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Khan } }
+		while = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
+			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -1 } }
+			CmtEffectCreateFleet_KhanArmadaVoidborn = yes
+			CmtEffectCreateFleet_KhanStarRiderFlotilla = yes
+			CmtEffectCreateFleet_KhanFirstStormWing = yes
+		}
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.625 } } }
+			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.75 } }
+			CmtEffectCreateFleet_KhanArmadaVoidborn = yes
+			CmtEffectCreateFleet_KhanStarRiderFlotilla = yes
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.375 } } }
+			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
+			CmtEffectCreateFleet_KhanStarRiderFlotilla = yes
+			CmtEffectCreateFleet_KhanFirstStormWing = yes
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.175 } } }
+			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.50 } }
+			CmtEffectCreateFleet_KhanFirstStormWing = yes
+		}
+	}
+}
+
+
+CmtEffectCreateAdmiralty_KhanMercenaries2 = {
+	event_target:raider_khanate = {
+		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Khan } }
+		while = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
+			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -1 } }
+			CmtEffectCreateFleet_KhanDwamakBashers = yes
+			CmtEffectCreateFleet_KhanUnhingedScreamerFlotilla = yes
+			CmtEffectCreateFleet_KhanFrenziedVolunteerSquadron = yes
+		}
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.625 } } }
+			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.75 } }
+			CmtEffectCreateFleet_KhanDwamakBashers = yes
+			CmtEffectCreateFleet_KhanUnhingedScreamerFlotilla = yes
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.375 } } }
+			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
+			CmtEffectCreateFleet_KhanUnhingedScreamerFlotilla = yes
+			CmtEffectCreateFleet_KhanFrenziedVolunteerSquadron = yes
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.175 } } }
+			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.50 } }
+			CmtEffectCreateFleet_KhanFrenziedVolunteerSquadron = yes
+		}
+	}
+}
+
+CmtEffectCreateAdmiralty_KhanMercenaries3 = {
+	event_target:raider_khanate = {
+		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Khan } }
+		while = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
+			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -1 } }
+			CmtEffectCreateFleet_KhanHerChosenChampions = yes
+			CmtEffectCreateFleet_KhanOrderEternalNight = yes
+			CmtEffectCreateFleet_KhanTwilightCongregation = yes
+		}
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.625 } } }
+			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.75 } }
+			CmtEffectCreateFleet_KhanHerChosenChampions = yes
+			CmtEffectCreateFleet_KhanOrderEternalNight = yes
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.375 } } }
+			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
+			CmtEffectCreateFleet_KhanOrderEternalNight = yes
+			CmtEffectCreateFleet_KhanTwilightCongregation = yes
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.175 } } }
+			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.50 } }
+			CmtEffectCreateFleet_KhanTwilightCongregation = yes
+		}
+	}
+}
+
+
+### Reinforcement (Capital/Sub-Capital)
+CmtEffectCreateAdmiralty_KhanReinforcement = {
+	event_target:raider_khanate = {
+		### Constructor
+		if = {
+			limit = {
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanMultiple value = 5 } }
+				any_planet_within_border = { has_planet_flag = CmtFlagMarauderExpRallyPoint }
+			}
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarTemp value = 0 } }
+			every_planet_within_border = {
+				limit = { has_planet_flag = CmtFlagMarauderExpRallyPoint }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = @CmtConstKhanConstructorUpperLimit } }
+			}
+		} else = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarTemp value = @CmtConstKhanConstructorUpperLimit } } }
+		event_target:CmtGlobalVar = { multiply_variable = { which = CmtVarTemp value = CmtVarConstructorNumber_Khan } }
+		every_owned_ship = {
+			limit = { is_ship_size = constructor }
+			event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } }
+		}
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value > 0 } } }
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarConstructorNumber_Khan } }
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -1 } }
+				CmtEffectCreateFleet_KhanConstructor = yes
+			}
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
+				random_list = {
+					100 = {
+						event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = 0 } }
+						CmtEffectCreateFleet_KhanConstructor = yes
+					}
+					300 = { }
+				}
+			}
+		}
+		
+		### Army
+		if = {
+			limit = {
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanMultiple value = 5 } }
+				any_planet_within_border = { has_planet_flag = CmtFlagMarauderExpRallyPoint }
+			}
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarTemp value = 0 } }
+			every_planet_within_border = {
+				limit = { has_planet_flag = CmtFlagMarauderExpRallyPoint }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = @CmtConstKhanArmyUpperLimit } }
+			}
+		} else = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarTemp value = @CmtConstKhanArmyUpperLimit } } }
+		event_target:CmtGlobalVar = {
+			multiply_variable = { which = CmtVarTemp value = CmtVarArmyPower_Khan }
+			multiply_variable = { which = CmtVarTemp value = CmtVarArmyNumber_Khan }
+		}
+		every_owned_army = { event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } } }
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value > 0 } } }
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarArmyNumber_Khan } }
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -1 } }
+				CmtEffectCreateFleet_KhanArmy = yes
+			}
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
+				random_list = {
+					100 = {
+						event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = 0 } }
+						CmtEffectCreateFleet_KhanArmy = yes
+					}
+					300 = { }
+				}
+			}
+		}
+		
+		### Navy Fleet
+		if = {
+			limit = {
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanMultiple value = 5 } }
+				any_planet_within_border = { has_planet_flag = CmtFlagMarauderExpRallyPoint }
+			}
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarTemp value = 0 } }
+			every_planet_within_border = {
+				limit = { has_planet_flag = CmtFlagMarauderExpRallyPoint }
+				change_variable = { which = CmtVarTemp value = @CmtConstKhanFleetPowerUpperLimit_Base }
+			}
+		} else = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarTemp value = @CmtConstKhanFleetPowerUpperLimit_Base } } }
+		event_target:CmtGlobalVar = {
+			multiply_variable = { which = CmtVarTemp value = CmtVarFleetPower_Khan }
+			multiply_variable = { which = CmtVarTemp value = CmtVarCombatFleetNumber_Khan }
+		}
+		if = {
+			limit = {
+				OR = {
+					fleet_power < @CmtConstKhanFleetPowerUpperLimit_V1
+					AND = {
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value > @CmtConstKhanFleetPowerUpperLimit_T1 } }
+						fleet_power < @CmtConstKhanFleetPowerUpperLimit_V2
+					}
+					AND = {
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value > @CmtConstKhanFleetPowerUpperLimit_T2 } }
+						fleet_power < @CmtConstKhanFleetPowerUpperLimit_V3
+					}
+					AND = {
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value > @CmtConstKhanFleetPowerUpperLimit_T3 } }
+						fleet_power < @CmtConstKhanFleetPowerUpperLimit_V4
+					}
+					AND = {
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value > @CmtConstKhanFleetPowerUpperLimit_T4 } }
+						fleet_power < @CmtConstKhanFleetPowerUpperLimit_V5
+					}
+					AND = {
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value > @CmtConstKhanFleetPowerUpperLimit_T5 } }
+						fleet_power < @CmtConstKhanFleetPowerUpperLimit_V6
+					}
+					AND = {
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value > @CmtConstKhanFleetPowerUpperLimit_T6 } }
+						fleet_power < @CmtConstKhanFleetPowerUpperLimit_V7
+					}
+					AND = {
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value > @CmtConstKhanFleetPowerUpperLimit_T7 } }
+						fleet_power < @CmtConstKhanFleetPowerUpperLimit_V8
+					}
+				}
+			}
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Khan } }
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -1 } }
+				CmtEffectCreateFleet_KhanStandard = yes
+			}
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
+				random_list = {
+					100 = {
+						event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = 0 } }
+						CmtEffectCreateFleet_KhanStandard = yes
+					}
+					300 = { }
+				}
+			}
+		}
+	}
+}
+
+
+### Garrison (Satrap)
+CmtEffectCreateAdmiralty_KhanEncourager = {
+	event_target:raider_khanate = {
+		CmtEffectCreateFleet_KhanEncourager = yes
+	}
+}
+
+### Reinforcement (Satrap)
+CmtEffectCreateAdmiralty_KhanSubReinforcement = {
+	event_target:raider_khanate = {
+		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Khan } }
+		while = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
+			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -1 } }
+			if = {
+				limit = { event_target:satrapy_empire = { max_naval_capacity < 100 } }
+				CmtEffectCreateFleet_KhanSubReinforcement1 = yes
+			} else_if = {
+				limit = { event_target:satrapy_empire = { max_naval_capacity < 200 } }
+				CmtEffectCreateFleet_KhanSubReinforcement2 = yes
+			} else_if = {
+				limit = { event_target:satrapy_empire = { max_naval_capacity < 300 } }
+				CmtEffectCreateFleet_KhanSubReinforcement3 = yes
+			} else_if = {
+				limit = { event_target:satrapy_empire = { max_naval_capacity < 500 } }
+				CmtEffectCreateFleet_KhanSubReinforcement4 = yes
+			} else = { CmtEffectCreateFleet_KhanSubReinforcement5 = yes }
+		}
+		while = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
+			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
+			random_list = {
+				100 = {
+					event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = 0 } }
+					if = {
+						limit = { event_target:satrapy_empire = { max_naval_capacity < 100 } }
+						CmtEffectCreateFleet_KhanSubReinforcement1 = yes
+					} else_if = {
+						limit = { event_target:satrapy_empire = { max_naval_capacity < 200 } }
+						CmtEffectCreateFleet_KhanSubReinforcement2 = yes
+					} else_if = {
+						limit = { event_target:satrapy_empire = { max_naval_capacity < 300 } }
+						CmtEffectCreateFleet_KhanSubReinforcement3 = yes
+					} else_if = {
+						limit = { event_target:satrapy_empire = { max_naval_capacity < 500 } }
+						CmtEffectCreateFleet_KhanSubReinforcement4 = yes
+					} else = { CmtEffectCreateFleet_KhanSubReinforcement5 = yes }
+				}
+				300 = { }
+			}
+		}
+	}
+}
+
+
+
+#################
+###  Dessanu  ###
+#################
+
+CmtEffectCreateAdmiralty_DessanuCapitalDefence = {
+	event_target:graygoo_country = {
+		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Dessanu } }
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 1.875 } } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 0 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 45 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 90 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 135 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 180 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 225 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 270 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 315 } }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 1.625 } } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 0 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 51 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 103 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 154 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 206 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 257 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 309 } }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 1.375 } } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 0 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 60 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 120 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 180 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 240 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 300 } }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 1.125 } } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 0 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 72 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 144 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 216 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 288 } }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 0 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 90 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 180 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 270 } }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.625 } } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 65 angle = 0 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 65 angle = 120 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 65 angle = 240 } }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.375 } } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 55 angle = 0 } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 55 angle = 180 } }
+		} else = {
+			CmtEffectCreateFleet_DessanuGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 30 angle = random } }
+		}
+	}
+}
+
+CmtEffectCreateAdmiralty_DessanuGarryson = {
+	event_target:graygoo_country = {
+		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Dessanu } }
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
+			CmtEffectCreateFleet_DessanuGarryson = yes
+		} else = {
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
+				random_list = {
+					100 = {
+						event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = 0 } }
+						CmtEffectCreateFleet_DessanuGarryson = yes
+					}
+					300 = { }
+				}
+			}
+		}
+	}
+}
+
+CmtEffectCreateAdmiralty_DessanuRoamer = {
+	event_target:graygoo_country = {
+		CmtEffectCreateFleet_DessanuRoamer = yes
+		last_created_fleet = { CmtFleetSetAuxParam_DessanuRoamer01 = yes }
+		
+		CmtEffectCreateFleet_DessanuRoamer = yes
+		random_system = {
+			limit = { has_star_flag = lcluster1 }
+			random_system_planet = {
+				limit = { is_planet_class = pc_gray_goo }
+				last_created_fleet = { CmtFleetSetAuxParam_DessanuRoamer02 = yes }
+			}
+		}
+		
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Dessanu value > 0.375 } } }
+			CmtEffectCreateFleet_DessanuRoamer = yes
+			random_system = {
+				limit = { has_star_flag = lcluster2 }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_DessanuRoamer03 = yes }
+				}
+			}
+			CmtEffectCreateFleet_DessanuRoamer = yes
+			random_system = {
+				limit = { has_star_flag = lcluster3 }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_DessanuRoamer04 = yes }
+				}
+			}
+		}
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Dessanu value > 0.625 } } }
+			CmtEffectCreateFleet_DessanuRoamer = yes
+			random_system = {
+				limit = { has_star_flag = lcluster4 }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_DessanuRoamer05 = yes }
+				}
+			}
+		}
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Dessanu value > 0.875 } } }
+			CmtEffectCreateFleet_DessanuRoamer = yes
+			random_system = {
+				limit = { has_star_flag = lcluster5 }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_DessanuRoamer06 = yes }
+				}
+			}
+			CmtEffectCreateFleet_DessanuRoamer = yes
+			random_system = {
+				limit = { has_star_flag = lcluster6 }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_DessanuRoamer07 = yes }
+				}
+			}
+		}
+		
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Dessanu value > 1.125 } } }
+			CmtEffectCreateFleet_DessanuRoamer = yes
+			random_system = {
+				limit = { has_star_flag = lcluster }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_DessanuRoamer08 = yes }
+				}
+			}
+			CmtEffectCreateFleet_DessanuRoamer = yes
+			random_system = {
+				limit = { has_star_flag = lcluster }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_DessanuRoamer09 = yes }
+				}
+			}
+		}
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Dessanu value > 1.375 } } }
+			CmtEffectCreateFleet_DessanuRoamer = yes
+			random_system = {
+				limit = { has_star_flag = lcluster }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_DessanuRoamer10 = yes }
+				}
+			}
+			CmtEffectCreateFleet_DessanuRoamer = yes
+			random_system = {
+				limit = { has_star_flag = lcluster }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_DessanuRoamer11 = yes }
+				}
+			}
+		}
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Dessanu value > 1.625 } } }
+			CmtEffectCreateFleet_DessanuRoamer = yes
+			random_system = {
+				limit = { has_star_flag = lcluster }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_DessanuRoamer12 = yes }
+				}
+			}
+		}
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Dessanu value > 1.875 } } }
+			CmtEffectCreateFleet_DessanuRoamer = yes
+			random_system = {
+				limit = { has_star_flag = lcluster }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_DessanuRoamer13 = yes }
+				}
+			}
+			CmtEffectCreateFleet_DessanuRoamer = yes
+			random_system = {
+				limit = { has_star_flag = lcluster }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_DessanuRoamer14 = yes }
+				}
+			}
+		}
+		
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Dessanu value > 2.125 } } }
+			CmtEffectCreateFleet_DessanuRoamer = yes
+			random_system = {
+				limit = { has_star_flag = lcluster }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_DessanuRoamer15 = yes }
+				}
+			}
+			CmtEffectCreateFleet_DessanuRoamer = yes
+			random_system = {
+				limit = { has_star_flag = lcluster }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_DessanuRoamer16 = yes }
+				}
+			}
+		}
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Dessanu value > 2.375 } } }
+			CmtEffectCreateFleet_DessanuRoamer = yes
+			random_system = {
+				limit = { has_star_flag = lcluster }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_DessanuRoamer17 = yes }
+				}
+			}
+			CmtEffectCreateFleet_DessanuRoamer = yes
+			random_system = {
+				limit = { has_star_flag = lcluster }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_DessanuRoamer18 = yes }
+				}
+			}
+		}
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Dessanu value > 2.625 } } }
+			CmtEffectCreateFleet_DessanuRoamer = yes
+			random_system = {
+				limit = { has_star_flag = lcluster }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_DessanuRoamer19 = yes }
+				}
+			}
+		}
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Dessanu value > 2.875 } } }
+			CmtEffectCreateFleet_DessanuRoamer = yes
+			random_system = {
+				limit = { has_star_flag = lcluster }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_DessanuRoamer20 = yes }
+				}
+			}
+		}
+	}
+}
+
+
+
+#################
+###  Graygoo  ###
+#################
+
+CmtEffectCreateAdmiralty_GraygooCapitalDefence = {
+	event_target:graygoo_country = {
+		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Graygoo } }
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 1.875 } } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 0 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 45 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 90 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 135 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 180 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 225 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 270 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 315 } }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 1.625 } } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 0 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 51 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 103 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 154 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 206 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 257 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 309 } }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 1.375 } } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 0 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 60 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 120 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 180 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 240 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 300 } }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 1.125 } } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 0 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 72 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 144 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 216 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 288 } }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 0 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 90 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 180 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 80 angle = 270 } }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.625 } } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 65 angle = 0 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 65 angle = 120 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 65 angle = 240 } }
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.375 } } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 55 angle = 0 } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 55 angle = 180 } }
+		} else = {
+			CmtEffectCreateFleet_GraygooGarryson = yes
+			last_created_fleet = { set_location = { target = prevprev distance = 30 angle = random } }
+		}
+	}
+}
+
+CmtEffectCreateAdmiralty_GraygooGarryson = {
+	event_target:graygoo_country = {
+		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Graygoo } }
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
+			CmtEffectCreateFleet_GraygooGarryson = yes
+		} else = {
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
+				random_list = {
+					100 = {
+						event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = 0 } }
+						CmtEffectCreateFleet_GraygooGarryson = yes
+					}
+					300 = { }
+				}
+			}
+		}
+	}
+}
+
+CmtEffectCreateAdmiralty_GraygooRoamer = {
+	event_target:graygoo_country = {
+		CmtEffectCreateFleet_GraygooAttacker = yes
+		last_created_fleet = { CmtFleetSetAuxParam_GraygooRoamer01 = yes }
+		
+		CmtEffectCreateFleet_GraygooAttacker = yes
+		random_system = {
+			limit = { has_star_flag = lcluster1 }
+			random_system_planet = {
+				limit = { is_planet_class = pc_gray_goo }
+				last_created_fleet = { CmtFleetSetAuxParam_GraygooRoamer02 = yes }
+			}
+		}
+		
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Graygoo value > 0.375 } } }
+			CmtEffectCreateFleet_GraygooAttacker = yes
+			random_system = {
+				limit = { has_star_flag = lcluster2 }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_GraygooRoamer03 = yes }
+				}
+			}
+			CmtEffectCreateFleet_GraygooAttacker = yes
+			random_system = {
+				limit = { has_star_flag = lcluster3 }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_GraygooRoamer04 = yes }
+				}
+			}
+		}
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Graygoo value > 0.625 } } }
+			CmtEffectCreateFleet_GraygooAttacker = yes
+			random_system = {
+				limit = { has_star_flag = lcluster4 }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_GraygooRoamer05 = yes }
+				}
+			}
+		}
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Graygoo value > 0.875 } } }
+			CmtEffectCreateFleet_GraygooAttacker = yes
+			random_system = {
+				limit = { has_star_flag = lcluster5 }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_GraygooRoamer06 = yes }
+				}
+			}
+			CmtEffectCreateFleet_GraygooAttacker = yes
+			random_system = {
+				limit = { has_star_flag = lcluster6 }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_GraygooRoamer07 = yes }
+				}
+			}
+		}
+		
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Graygoo value > 1.125 } } }
+			CmtEffectCreateFleet_GraygooAttacker = yes
+			random_system = {
+				limit = { has_star_flag = lcluster }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_GraygooRoamer08 = yes }
+				}
+			}
+			CmtEffectCreateFleet_GraygooAttacker = yes
+			random_system = {
+				limit = { has_star_flag = lcluster }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_GraygooRoamer09 = yes }
+				}
+			}
+		}
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Graygoo value > 1.375 } } }
+			CmtEffectCreateFleet_GraygooAttacker = yes
+			random_system = {
+				limit = { has_star_flag = lcluster }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_GraygooRoamer10 = yes }
+				}
+			}
+			CmtEffectCreateFleet_GraygooAttacker = yes
+			random_system = {
+				limit = { has_star_flag = lcluster }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_GraygooRoamer11 = yes }
+				}
+			}
+		}
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Graygoo value > 1.625 } } }
+			CmtEffectCreateFleet_GraygooAttacker = yes
+			random_system = {
+				limit = { has_star_flag = lcluster }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_GraygooRoamer12 = yes }
+				}
+			}
+		}
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Graygoo value > 1.875 } } }
+			CmtEffectCreateFleet_GraygooAttacker = yes
+			random_system = {
+				limit = { has_star_flag = lcluster }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_GraygooRoamer13 = yes }
+				}
+			}
+			CmtEffectCreateFleet_GraygooAttacker = yes
+			random_system = {
+				limit = { has_star_flag = lcluster }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_GraygooRoamer14 = yes }
+				}
+			}
+		}
+		
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Graygoo value > 2.125 } } }
+			CmtEffectCreateFleet_GraygooAttacker = yes
+			random_system = {
+				limit = { has_star_flag = lcluster }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_GraygooRoamer15 = yes }
+				}
+			}
+			CmtEffectCreateFleet_GraygooAttacker = yes
+			random_system = {
+				limit = { has_star_flag = lcluster }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_GraygooRoamer16 = yes }
+				}
+			}
+		}
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Graygoo value > 2.375 } } }
+			CmtEffectCreateFleet_GraygooAttacker = yes
+			random_system = {
+				limit = { has_star_flag = lcluster }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_GraygooRoamer17 = yes }
+				}
+			}
+			CmtEffectCreateFleet_GraygooAttacker = yes
+			random_system = {
+				limit = { has_star_flag = lcluster }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_GraygooRoamer18 = yes }
+				}
+			}
+		}
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Graygoo value > 2.625 } } }
+			CmtEffectCreateFleet_GraygooAttacker = yes
+			random_system = {
+				limit = { has_star_flag = lcluster }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_GraygooRoamer19 = yes }
+				}
+			}
+		}
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Graygoo value > 2.875 } } }
+			CmtEffectCreateFleet_GraygooAttacker = yes
+			random_system = {
+				limit = { has_star_flag = lcluster }
+				random_system_planet = {
+					limit = { is_planet_class = pc_gray_goo }
+					last_created_fleet = { CmtFleetSetAuxParam_GraygooRoamer20 = yes }
+				}
+			}
+		}
+	}
+}
+
+
+CmtEffectCreateAdmiralty_GraygooAttackerA = {
+	event_target:graygoo_country = {
+		if = {
+			limit = { num_ships < @CmtConstGraygooFleetNumberUpperLimit }
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Graygoo } }
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -1 } }
+				CmtEffectCreateFleet_GraygooAttacker = yes
+			}
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
+				random_list = {
+					100 = {
+						event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = 0 } }
+						CmtEffectCreateFleet_GraygooAttacker = yes
+					}
+					300 = { }
+				}
+			}
+		}
+	}
+}
+
+CmtEffectCreateAdmiralty_GraygooAttackerB = {
+	event_target:graygoo_country = {
+		if = {
+			limit = { num_ships < @CmtConstGraygooFleetNumberUpperLimit }
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Graygoo } }
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -1 } }
+				CmtEffectCreateFleet_GraygooAttacker = yes
+				CmtEffectCreateFleet_GraygooAttacker = yes
+				CmtEffectCreateFleet_GraygooAttacker = yes
+			}
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
+				random_list = {
+					300 = { CmtEffectCreateFleet_GraygooAttacker = yes }
+					100 = { }
+				}
+			}
+		}
+	}
+}

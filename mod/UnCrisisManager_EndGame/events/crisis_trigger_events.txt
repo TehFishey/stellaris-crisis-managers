@@ -1,0 +1,18 @@
+namespace = crisis_trigger
+
+#######################
+###  Redirect Only  ###
+#######################
+
+event = {
+	id = crisis_trigger.1
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		event_target:CmtGlobalVar = { country_event = { id = CrisisManagerControl.0011 } }
+	}
+}
+
+
+

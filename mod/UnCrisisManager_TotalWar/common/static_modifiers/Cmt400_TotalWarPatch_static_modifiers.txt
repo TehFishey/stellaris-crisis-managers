@@ -1,0 +1,19 @@
+
+##############################################
+##############################################
+#####                                    #####
+#####    Crisis Manager                  #####
+#####                                    #####
+#####    Modifiers for Total War Pack    #####
+#####                                    #####
+##############################################
+##############################################
+
+
+CmtModifierDisabledStarbase = {
+	ship_tracking_add = -70
+	ship_accuracy_add = -70
+	ship_weapon_damage = -0.7
+	ship_fire_rate_mult = -0.7
+				###	ship_hull_mult = -0.50, reason of deletion: ship_hull_mult = -1  =>  The ship is destoryed with no combat
+}

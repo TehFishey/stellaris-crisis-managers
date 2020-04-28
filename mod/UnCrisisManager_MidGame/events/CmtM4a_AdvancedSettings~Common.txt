@@ -1,0 +1,256 @@
+namespace = CrisisManagerMenu
+
+##################################################
+##################################################
+#####                                        #####
+#####    Crisis Manager                      #####
+#####                                        #####
+#####    Advanced Congigurations - Common    #####
+#####                                        #####
+##################################################
+##################################################
+
+##############
+###  Menu  ###
+##############
+
+country_event = {
+	id = CrisisManagerMenu.4000
+	title = CrisisManagerMenu.4000.name
+	desc = CrisisManagerMenu.4000.desc
+	picture = GFX_evt_CmtMenuA
+	is_triggered_only = yes
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = {
+			has_global_flag = CmtFlagEndGameEdition
+			NOT = { has_global_flag = CmtFlagNoSeparator }
+		}
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	### Prethoryn
+	option = {
+		name = CrisisManagerMenu.4000.4100.name
+		custom_tooltip = CrisisManagerMenu.4000.4100.tooltip
+		trigger = { CmtTriggerPrethorynConfig = yes }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.4110 } }
+	}
+	option = {
+		name = CrisisManagerMenu.4000.4100.fail.name
+		custom_tooltip = CrisisManagerMenu.4000.4100.fail.tooltip
+		trigger = {
+			NOT = { CmtTriggerPrethorynConfig = yes }
+			has_global_flag = CmtFlagEndGameEdition
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.4000 } }
+	}
+	
+	### Extradimensionals
+	option = {
+		name = CrisisManagerMenu.4000.4200.name
+		custom_tooltip = CrisisManagerMenu.4000.4200.tooltip
+		trigger = { CmtTriggerExdsConfig = yes }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.4210 } }
+	}
+	option = {
+		name = CrisisManagerMenu.4000.4200.fail.name
+		custom_tooltip = CrisisManagerMenu.4000.4200.fail.tooltip
+		trigger = {
+			NOT = { CmtTriggerExdsConfig = yes }
+			has_global_flag = CmtFlagEndGameEdition
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.4000 } }
+	}
+	
+	### Contingency
+	option = {
+		name = CrisisManagerMenu.4000.4300.name
+		custom_tooltip = CrisisManagerMenu.4000.4300.tooltip
+		trigger = { CmtTriggerContingencyConfig = yes }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.4310 } }
+	}
+	option = {
+		name = CrisisManagerMenu.4000.4300.fail.name
+		custom_tooltip = CrisisManagerMenu.4000.4300.fail.tooltip
+		trigger = {
+			NOT = { CmtTriggerContingencyConfig = yes }
+			has_global_flag = CmtFlagEndGameEdition
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.4000 } }
+	}
+	
+	### Forced End of Cycle
+	option = {
+		name = CrisisManagerMenu.4000.4400.name
+		custom_tooltip = CrisisManagerMenu.4000.4400.tooltip
+		trigger = { CmtTriggerForcedEocConfig = yes }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.4410 } }
+	}
+	option = {
+		name = CrisisManagerMenu.4000.4400.fail.name
+		custom_tooltip = CrisisManagerMenu.4000.4400.fail.tooltip
+		trigger = {
+			NOT = { CmtTriggerForcedEocConfig = yes }
+			has_global_flag = CmtFlagEndGameEdition
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.4000 } }
+	}
+	
+	
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = {
+			has_global_flag = CmtFlagSleeperEdition
+			NOT = { has_global_flag = CmtFlagNoSeparator }
+		}
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	
+	
+	### Sleeper Awakening
+	option = {
+		name = CrisisManagerMenu.4000.4500.name
+		custom_tooltip = CrisisManagerMenu.4000.4500.tooltip
+		trigger = { CmtTriggerSleeperConfig = yes }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.4510 } }
+	}
+	option = {
+		name = CrisisManagerMenu.4000.4500.fail.name
+		custom_tooltip = CrisisManagerMenu.4000.4500.fail.tooltip
+		trigger = {
+			NOT = { CmtTriggerSleeperConfig = yes }
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.4000 } }
+	}
+	
+	
+	
+	### War in Heaven
+	option = {
+		name = CrisisManagerMenu.4000.4600.name
+		custom_tooltip = CrisisManagerMenu.4000.4600.tooltip
+		trigger = { CmtTriggerHeavenConfig = yes }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.4610 } }
+	}
+	option = {
+		name = CrisisManagerMenu.4000.4600.fail.name
+		custom_tooltip = CrisisManagerMenu.4000.4600.fail.tooltip
+		trigger = {
+			NOT = { CmtTriggerHeavenConfig = yes }
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.4000 } }
+	}
+	
+	
+	
+	### Guardians of Galaxy
+	option = {
+		name = CrisisManagerMenu.4000.4700.name
+		custom_tooltip = CrisisManagerMenu.4000.4700.tooltip
+		trigger = { CmtTriggerGuardianFeConfig = yes }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.4710 } }
+	}
+	option = {
+		name = CrisisManagerMenu.4000.4700.fail.name
+		custom_tooltip = CrisisManagerMenu.4000.4700.fail.tooltip
+		trigger = {
+			NOT = { CmtTriggerGuardianFeConfig = yes }
+			has_global_flag = CmtFlagEndGameEdition
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.4000 } }
+	}
+	
+	
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = {
+			has_global_flag = CmtFlagMidGameEdition
+			NOT = { has_global_flag = CmtFlagNoSeparator }
+		}
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	
+	
+	### Khan
+	option = {
+		name = CrisisManagerMenu.4000.4800.name
+		custom_tooltip = CrisisManagerMenu.4000.4800.tooltip
+		trigger = { CmtTriggerKhanConfig = yes }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.4810 } }
+	}
+	option = {
+		name = CrisisManagerMenu.4000.4800.fail.name
+		custom_tooltip = CrisisManagerMenu.4000.4800.fail.tooltip
+		trigger = {
+			NOT = { CmtTriggerKhanConfig = yes }
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.4000 } }
+	}
+	
+	### L-gate
+	option = {
+		name = CrisisManagerMenu.4000.4900.name
+		custom_tooltip = CrisisManagerMenu.4000.4900.tooltip
+		trigger = { CmtTriggerLgateConfig = yes }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.4911 } }
+	}
+	option = {
+		name = CrisisManagerMenu.4000.4900.fail.name
+		custom_tooltip = CrisisManagerMenu.4000.4900.fail.tooltip
+		trigger = {
+			NOT = { CmtTriggerLgateConfig = yes }
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.4000 } }
+	}
+	
+	### Machine Uprising
+	option = {
+		name = CrisisManagerMenu.4000.5100.name
+		custom_tooltip = CrisisManagerMenu.4000.5100.tooltip
+		trigger = {
+			CmtTriggerUprisingConfig = yes
+			has_global_flag = CmtFlagUprisingEdition
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.5111 } }
+	}
+	option = {
+		name = CrisisManagerMenu.4000.5100.fail.name
+		custom_tooltip = CrisisManagerMenu.4000.5100.fail.tooltip
+		trigger = {
+			NOT = { CmtTriggerUprisingConfig = yes }
+			has_global_flag = CmtFlagUprisingEdition
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.4000 } }
+	}
+	
+	### Common
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	option = {
+		name = CmtTextGoBack.name
+		custom_tooltip = CmtTextGoBack.tooltip
+		hidden_effect = { country_event = { id = CrisisManagerMenu.0100 } }
+	}
+	option = {
+		name = CmtTextExit.name
+		custom_tooltip = CmtTextExit.tooltip
+		hidden_effect = { CmtEffectExitMenu = yes }
+	}
+}

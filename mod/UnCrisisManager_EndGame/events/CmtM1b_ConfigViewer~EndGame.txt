@@ -1,0 +1,1793 @@
+namespace = CrisisManagerMenu
+
+######################################
+######################################
+#####                            #####
+#####    Crisis Manager          #####
+#####                            #####
+#####    Configutation Viewer    #####
+#####    for End-Game Crisis     #####
+#####                            #####
+######################################
+######################################
+
+
+
+###############################################
+###  Configuration of Crisis Trigger Event  ###
+###############################################
+
+country_event = {
+	id = CrisisManagerMenu.1010
+	title = CrisisManagerMenu.1010.name
+	desc = {
+		text = CrisisManagerMenu.1010.desc1
+		trigger = { CmtTriggerCrisisConfig = yes }
+	}
+	desc = {
+		text = CrisisManagerMenu.1010.desc2
+		trigger = { NOT = { CmtTriggerCrisisConfig = yes } }
+	}
+	picture = GFX_evt_CmtMenuA
+	is_triggered_only = yes
+	
+	immediate = {
+		set_country_flag = CmtFlagConfigViewerShowing1010
+	}
+	
+	option = {
+		name = CmtTextGoNextPage.name
+		custom_tooltip = CmtTextGoNextPage.tooltip
+		trigger = { has_country_flag = CmtFlagConfigViewerSeq }
+		hidden_effect = {
+			remove_country_flag = CmtFlagConfigViewerShowing1010
+			country_event = { id = CrisisManagerMenu.1021 }
+		}
+	}
+	option = {
+		name = CmtTextGoBack.name
+		custom_tooltip = CmtTextGoBack.tooltip
+		hidden_effect = {
+			remove_country_flag = CmtFlagConfigViewerShowing1010
+			if = {
+				limit = {
+					OR = {
+						has_country_flag = CmtFlagConfigViewerSeq
+						CmtTriggerAllViewerClosed = yes
+					}
+				}
+				country_event = { id = CrisisManagerMenu.1000 }
+			}
+		}
+	}
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.3110a.name
+		custom_tooltip = CrisisManagerMenu.3110a.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMultiple value = 1 } } }
+		hidden_effect = { CmtEffect1010TryCall3110 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3110b.name
+		custom_tooltip = CrisisManagerMenu.3110b.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMultiple value = 2 } } }
+		hidden_effect = { CmtEffect1010TryCall3110 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3110c.name
+		custom_tooltip = CrisisManagerMenu.3110c.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMultiple value = 3 } } }
+		hidden_effect = { CmtEffect1010TryCall3110 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3110d.name
+		custom_tooltip = CrisisManagerMenu.3110d.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMultiple value = 4 } } }
+		hidden_effect = { CmtEffect1010TryCall3110 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3110e.name
+		custom_tooltip = CrisisManagerMenu.3110e.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarMultiple value = 5 } }
+			NOT = { has_global_flag = CmtFlagAllowForcedEoc }
+		}
+		hidden_effect = { CmtEffect1010TryCall3110 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3110f.name
+		custom_tooltip = CrisisManagerMenu.3110f.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarMultiple value = 5 } }
+			has_global_flag = CmtFlagAllowForcedEoc
+		}
+		hidden_effect = { CmtEffect1010TryCall3110 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3110z.name
+		custom_tooltip = CrisisManagerMenu.3110z.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarMultiple value = 1 }
+					check_variable = { which = CmtVarMultiple value = 2 }
+					check_variable = { which = CmtVarMultiple value = 3 }
+					check_variable = { which = CmtVarMultiple value = 4 }
+					check_variable = { which = CmtVarMultiple value = 5 }
+				}
+			}
+		}
+		hidden_effect = { CmtEffect1010TryCall3110 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.3120.V0.name
+		custom_tooltip = CrisisManagerMenu.3120.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				check_variable = { which = CmtVarTriggerInterval value < @CmtConstCrisisInterval_T0 }
+				OR = {
+					check_variable = { which = CmtVarMultiple value = 3 }
+					check_variable = { which = CmtVarMultiple value = 4 }
+				}
+			}
+		}
+		hidden_effect = { CmtEffect1010TryCall3120 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3120.VC.name
+		custom_tooltip = CrisisManagerMenu.3120.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarTriggerInterval value < @CmtConstCrisisInterval_T0 }
+					check_variable = { which = CmtVarTriggerInterval value > @CmtConstCrisisInterval_T5 }
+				}
+				OR = {
+					check_variable = { which = CmtVarMultiple value = 3 }
+					check_variable = { which = CmtVarMultiple value = 4 }
+				}
+			}
+		}
+		hidden_effect = { CmtEffect1010TryCall3120 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3120.Vt.name
+		custom_tooltip = CrisisManagerMenu.3120.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				check_variable = { which = CmtVarTriggerInterval value > @CmtConstCrisisInterval_T5 }
+				OR = {
+					check_variable = { which = CmtVarMultiple value = 3 }
+					check_variable = { which = CmtVarMultiple value = 4 }
+				}
+			}
+		}
+		hidden_effect = { CmtEffect1010TryCall3120 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3120.VN.name
+		custom_tooltip = CrisisManagerMenu.3120.VN.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarMultiple value = 3 }
+					check_variable = { which = CmtVarMultiple value = 4 }
+				}
+			}
+		}
+		hidden_effect = { country_event = { id = CrisisManagerMenu.1010 } }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.3130.V0.name
+		custom_tooltip = CrisisManagerMenu.3130.V0.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEarliestEgpy value < @CmtConstTriggerEgpy_T1 } } }
+		hidden_effect = { CmtEffect1010TryCall3130 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3130.VC.name
+		custom_tooltip = CrisisManagerMenu.3130.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarEarliestEgpy value < @CmtConstTriggerEgpy_T1 }
+					check_variable = { which = CmtVarEarliestEgpy value > @CmtConstTriggerEgpy_TA }
+					AND = {
+						check_variable = { which = CmtVarEarliestEgpy value > @CmtConstTriggerEgpy_T7 }
+						check_variable = { which = CmtVarEarliestEgpy value < @CmtConstTriggerEgpy_T8 }
+					}
+				}
+			}
+		}
+		hidden_effect = { CmtEffect1010TryCall3130 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3130.V7.name
+		custom_tooltip = CrisisManagerMenu.3130.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				check_variable = { which = CmtVarEarliestEgpy value > @CmtConstTriggerEgpy_T7 }
+				check_variable = { which = CmtVarEarliestEgpy value < @CmtConstTriggerEgpy_T8 }
+			}
+		}
+		hidden_effect = { CmtEffect1010TryCall3130 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3130z.name
+		custom_tooltip = CrisisManagerMenu.3130z.tooltip
+		trigger = { always = no }
+		hidden_effect = { CmtEffect1010TryCall3130 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3130t.name
+		custom_tooltip = CrisisManagerMenu.3130t.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEarliestEgpy value > @CmtConstTriggerEgpy_TA } } }
+		hidden_effect = { CmtEffect1010TryCall3130 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.3140a.name
+		custom_tooltip = CrisisManagerMenu.3140a.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTriggerProbability value = 1 } } }
+		hidden_effect = { CmtEffect1010TryCall3140 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3140b.name
+		custom_tooltip = CrisisManagerMenu.3140b.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTriggerProbability value = 2 } } }
+		hidden_effect = { CmtEffect1010TryCall3140 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3140c.name
+		custom_tooltip = CrisisManagerMenu.3140c.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTriggerProbability value = 3 } } }
+		hidden_effect = { CmtEffect1010TryCall3140 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3140d.name
+		custom_tooltip = CrisisManagerMenu.3140d.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTriggerProbability value = 4 } } }
+		hidden_effect = { CmtEffect1010TryCall3140 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3140e.name
+		custom_tooltip = CrisisManagerMenu.3140e.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTriggerProbability value = 5 } } }
+		hidden_effect = { CmtEffect1010TryCall3140 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3140z.name
+		custom_tooltip = CrisisManagerMenu.3140z.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarTriggerProbability value < 0 }
+					check_variable = { which = CmtVarTriggerProbability value = 1 }
+					check_variable = { which = CmtVarTriggerProbability value = 2 }
+					check_variable = { which = CmtVarTriggerProbability value = 3 }
+					check_variable = { which = CmtVarTriggerProbability value = 4 }
+					check_variable = { which = CmtVarTriggerProbability value = 5 }
+				}
+			}
+		}
+		hidden_effect = { CmtEffect1010TryCall3140 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3140t.name
+		custom_tooltip = CrisisManagerMenu.3140t.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTriggerProbability value = 0 } } }
+		hidden_effect = { CmtEffect1010TryCall3140 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.3150a.name
+		custom_tooltip = CrisisManagerMenu.3150a.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEqualizingProbability value = 1 } } }
+		hidden_effect = { CmtEffect1010TryCall3150 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3150b.name
+		custom_tooltip = CrisisManagerMenu.3150b.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEqualizingProbability value = 2 } } }
+		hidden_effect = { CmtEffect1010TryCall3150 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3150c.name
+		custom_tooltip = CrisisManagerMenu.3150c.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEqualizingProbability value = 3 } } }
+		hidden_effect = { CmtEffect1010TryCall3150 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3150d.name
+		custom_tooltip = CrisisManagerMenu.3150d.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEqualizingProbability value = 4 } } }
+		hidden_effect = { CmtEffect1010TryCall3150 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3150z.name
+		custom_tooltip = CrisisManagerMenu.3150z.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarEqualizingProbability value = 1 }
+					check_variable = { which = CmtVarEqualizingProbability value = 2 }
+					check_variable = { which = CmtVarEqualizingProbability value = 3 }
+					check_variable = { which = CmtVarEqualizingProbability value = 4 }
+				}
+			}
+		}
+		hidden_effect = { CmtEffect1010TryCall3150 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.3160a.name
+		custom_tooltip = CrisisManagerMenu.3160a.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarOpeningEventSpeed value = 1 } } }
+		hidden_effect = { CmtEffect1010TryCall3160 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3160b.name
+		custom_tooltip = CrisisManagerMenu.3160b.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarOpeningEventSpeed value = 2 } } }
+		hidden_effect = { CmtEffect1010TryCall3160 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3160c.name
+		custom_tooltip = CrisisManagerMenu.3160c.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarOpeningEventSpeed value = 3 } } }
+		hidden_effect = { CmtEffect1010TryCall3160 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3160d.name
+		custom_tooltip = CrisisManagerMenu.3160d.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarOpeningEventSpeed value = 4 } } }
+		hidden_effect = { CmtEffect1010TryCall3160 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3160e.name
+		custom_tooltip = CrisisManagerMenu.3160e.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarOpeningEventSpeed value = 5 } } }
+		hidden_effect = { CmtEffect1010TryCall3160 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3160f.name
+		custom_tooltip = CrisisManagerMenu.3160f.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarOpeningEventSpeed value = 6 } } }
+		hidden_effect = { CmtEffect1010TryCall3160 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3160z.name
+		custom_tooltip = CrisisManagerMenu.3160z.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarOpeningEventSpeed value = 1 }
+					check_variable = { which = CmtVarOpeningEventSpeed value = 2 }
+					check_variable = { which = CmtVarOpeningEventSpeed value = 3 }
+					check_variable = { which = CmtVarOpeningEventSpeed value = 4 }
+					check_variable = { which = CmtVarOpeningEventSpeed value = 5 }
+					check_variable = { which = CmtVarOpeningEventSpeed value = 6 }
+				}
+			}
+		}
+		hidden_effect = { CmtEffect1010TryCall3160 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.3170a.name
+		custom_tooltip = CrisisManagerMenu.3170a.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagSubmarineCrisis } }
+		hidden_effect = { CmtEffect1010TryCall3170 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3170b.name
+		custom_tooltip = CrisisManagerMenu.3170b.tooltip
+		trigger = { has_global_flag = CmtFlagSubmarineCrisis }
+		hidden_effect = { CmtEffect1010TryCall3170 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.3210a.name
+		custom_tooltip = CrisisManagerMenu.3210a.tooltip
+		trigger = {
+			OR = {
+				NOT = { has_global_flag = CmtFlagTotalWarPatch }
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarTotalWarPriority value = 1 } }
+			}
+		}
+		hidden_effect = { CmtEffect1010TryCall3210 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3210b.name
+		custom_tooltip = CrisisManagerMenu.3210b.tooltip
+		trigger = {
+			has_global_flag = CmtFlagTotalWarPatch
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarTotalWarPriority value = 2 } }
+		}
+		hidden_effect = { CmtEffect1010TryCall3210 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3210c.name
+		custom_tooltip = CrisisManagerMenu.3210c.tooltip
+		trigger = {
+			has_global_flag = CmtFlagTotalWarPatch
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarTotalWarPriority value = 3 } }
+		}
+		hidden_effect = { CmtEffect1010TryCall3210 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3210z.name
+		custom_tooltip = CrisisManagerMenu.3210z.tooltip
+		trigger = {
+			has_global_flag = CmtFlagTotalWarPatch
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarTotalWarPriority value = 1 }
+					check_variable = { which = CmtVarTotalWarPriority value = 2 }
+					check_variable = { which = CmtVarTotalWarPriority value = 3 }
+				}
+			}
+		}
+		hidden_effect = { CmtEffect1010TryCall3210 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.3220a.name
+		custom_tooltip = CrisisManagerMenu.3220a.tooltip
+		trigger = {
+			OR = {
+				NOT = { has_global_flag = CmtFlagTotalWarPatch }
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarTotalWarAutoBuild value = 1 } }
+			}
+		}
+		hidden_effect = { CmtEffect1010TryCall3220 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3220b.name
+		custom_tooltip = CrisisManagerMenu.3220b.tooltip
+		trigger = {
+			has_global_flag = CmtFlagTotalWarPatch
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarTotalWarAutoBuild value = 2 } }
+		}
+		hidden_effect = { CmtEffect1010TryCall3220 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3220c.name
+		custom_tooltip = CrisisManagerMenu.3220c.tooltip
+		trigger = {
+			has_global_flag = CmtFlagTotalWarPatch
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarTotalWarAutoBuild value = 3 } }
+		}
+		hidden_effect = { CmtEffect1010TryCall3220 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3220z.name
+		custom_tooltip = CrisisManagerMenu.3220z.tooltip
+		trigger = {
+			has_global_flag = CmtFlagTotalWarPatch
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarTotalWarAutoBuild value = 1 }
+					check_variable = { which = CmtVarTotalWarAutoBuild value = 2 }
+					check_variable = { which = CmtVarTotalWarAutoBuild value = 3 }
+				}
+			}
+		}
+		hidden_effect = { CmtEffect1010TryCall3220 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.3231a.name
+		custom_tooltip = CrisisManagerMenu.3231a.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPlanetOccupy value = 1 } } }
+		hidden_effect = { CmtEffect1010TryCall3231 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3231b.name
+		custom_tooltip = CrisisManagerMenu.3231b.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPlanetOccupy value = 2 } } }
+		hidden_effect = { CmtEffect1010TryCall3231 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3231c.name
+		custom_tooltip = CrisisManagerMenu.3231c.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPlanetOccupy value = 3 } } }
+		hidden_effect = { CmtEffect1010TryCall3231 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3231d.name
+		custom_tooltip = CrisisManagerMenu.3231d.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPlanetOccupy value = 4 } } }
+		hidden_effect = { CmtEffect1010TryCall3231 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3231e.name
+		custom_tooltip = CrisisManagerMenu.3231e.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPlanetOccupy value = 5 } } }
+		hidden_effect = { CmtEffect1010TryCall3231 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3231f.name
+		custom_tooltip = CrisisManagerMenu.3231f.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPlanetOccupy value = 6 } } }
+		hidden_effect = { CmtEffect1010TryCall3231 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3231g.name
+		custom_tooltip = CrisisManagerMenu.3231g.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPlanetOccupy value = 7 } } }
+		hidden_effect = { CmtEffect1010TryCall3231 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3231z.name
+		custom_tooltip = CrisisManagerMenu.3231z.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarPlanetOccupy value = 1 }
+					check_variable = { which = CmtVarPlanetOccupy value = 2 }
+					check_variable = { which = CmtVarPlanetOccupy value = 3 }
+					check_variable = { which = CmtVarPlanetOccupy value = 4 }
+					check_variable = { which = CmtVarPlanetOccupy value = 5 }
+					check_variable = { which = CmtVarPlanetOccupy value = 6 }
+					check_variable = { which = CmtVarPlanetOccupy value = 7 }
+				}
+			}
+		}
+		hidden_effect = { CmtEffect1010TryCall3231 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.3232a.name
+		custom_tooltip = CrisisManagerMenu.3232a.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPurgeSpeed value = 1 } } }
+		hidden_effect = { CmtEffect1010TryCall3232 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3232b.name
+		custom_tooltip = CrisisManagerMenu.3232b.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPurgeSpeed value = 2 } } }
+		hidden_effect = { CmtEffect1010TryCall3232 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3232c.name
+		custom_tooltip = CrisisManagerMenu.3232c.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPurgeSpeed value = 3 } } }
+		hidden_effect = { CmtEffect1010TryCall3232 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3232d.name
+		custom_tooltip = CrisisManagerMenu.3232d.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPurgeSpeed value = 4 } } }
+		hidden_effect = { CmtEffect1010TryCall3232 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3232e.name
+		custom_tooltip = CrisisManagerMenu.3232e.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPurgeSpeed value = 5 } } }
+		hidden_effect = { CmtEffect1010TryCall3232 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3232f.name
+		custom_tooltip = CrisisManagerMenu.3232f.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPurgeSpeed value = 6 } } }
+		hidden_effect = { CmtEffect1010TryCall3232 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3232g.name
+		custom_tooltip = CrisisManagerMenu.3232g.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPurgeSpeed value = 7 } } }
+		hidden_effect = { CmtEffect1010TryCall3232 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3232z.name
+		custom_tooltip = CrisisManagerMenu.3232z.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarPurgeSpeed value = 1 }
+					check_variable = { which = CmtVarPurgeSpeed value = 2 }
+					check_variable = { which = CmtVarPurgeSpeed value = 3 }
+					check_variable = { which = CmtVarPurgeSpeed value = 4 }
+					check_variable = { which = CmtVarPurgeSpeed value = 5 }
+					check_variable = { which = CmtVarPurgeSpeed value = 6 }
+					check_variable = { which = CmtVarPurgeSpeed value = 7 }
+				}
+			}
+		}
+		hidden_effect = { CmtEffect1010TryCall3232 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.3240a.name
+		custom_tooltip = CrisisManagerMenu.3240a.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 1 } } }
+		hidden_effect = { CmtEffect1010TryCall3240 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3240b.name
+		custom_tooltip = CrisisManagerMenu.3240b.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 2 } } }
+		hidden_effect = { CmtEffect1010TryCall3240 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3240c.name
+		custom_tooltip = CrisisManagerMenu.3240c.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 3 } } }
+		hidden_effect = { CmtEffect1010TryCall3240 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3240d.name
+		custom_tooltip = CrisisManagerMenu.3240d.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 4 } } }
+		hidden_effect = { CmtEffect1010TryCall3240 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3240e.name
+		custom_tooltip = CrisisManagerMenu.3240e.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 5 } } }
+		hidden_effect = { CmtEffect1010TryCall3240 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3240z.name
+		custom_tooltip = CrisisManagerMenu.3240z.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarFasterCombatFleet_Common value = 1 }
+					check_variable = { which = CmtVarFasterCombatFleet_Common value = 2 }
+					check_variable = { which = CmtVarFasterCombatFleet_Common value = 3 }
+					check_variable = { which = CmtVarFasterCombatFleet_Common value = 4 }
+					check_variable = { which = CmtVarFasterCombatFleet_Common value = 5 }
+				}
+			}
+		}
+		hidden_effect = { CmtEffect1010TryCall3240 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.3250a.name
+		custom_tooltip = CrisisManagerMenu.3250a.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 1 } } }
+		hidden_effect = { CmtEffect1010TryCall3250 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3250b.name
+		custom_tooltip = CrisisManagerMenu.3250b.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 2 } } }
+		hidden_effect = { CmtEffect1010TryCall3250 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3250c.name
+		custom_tooltip = CrisisManagerMenu.3250c.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 3 } } }
+		hidden_effect = { CmtEffect1010TryCall3250 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3250d.name
+		custom_tooltip = CrisisManagerMenu.3250d.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 4 } } }
+		hidden_effect = { CmtEffect1010TryCall3250 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3250e.name
+		custom_tooltip = CrisisManagerMenu.3250e.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 5 } } }
+		hidden_effect = { CmtEffect1010TryCall3250 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3250z.name
+		custom_tooltip = CrisisManagerMenu.3250z.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarFasterConstructor_Common value = 1 }
+					check_variable = { which = CmtVarFasterConstructor_Common value = 2 }
+					check_variable = { which = CmtVarFasterConstructor_Common value = 3 }
+					check_variable = { which = CmtVarFasterConstructor_Common value = 4 }
+					check_variable = { which = CmtVarFasterConstructor_Common value = 5 }
+				}
+			}
+		}
+		hidden_effect = { CmtEffect1010TryCall3250 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.3260a.name
+		custom_tooltip = CrisisManagerMenu.3260a.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFriendlyCrisis value = 1 } } }
+		hidden_effect = { CmtEffect1010TryCall3260 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3260b.name
+		custom_tooltip = CrisisManagerMenu.3260b.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFriendlyCrisis value = 2 } } }
+		hidden_effect = { CmtEffect1010TryCall3260 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3260c.name
+		custom_tooltip = CrisisManagerMenu.3260c.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFriendlyCrisis value = 3 } } }
+		hidden_effect = { CmtEffect1010TryCall3260 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3260d.name
+		custom_tooltip = CrisisManagerMenu.3260d.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFriendlyCrisis value = 4 } } }
+		hidden_effect = { CmtEffect1010TryCall3260 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.3260z.name
+		custom_tooltip = CrisisManagerMenu.3260z.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarFriendlyCrisis value = 1 }
+					check_variable = { which = CmtVarFriendlyCrisis value = 2 }
+					check_variable = { which = CmtVarFriendlyCrisis value = 3 }
+					check_variable = { which = CmtVarFriendlyCrisis value = 4 }
+				}
+			}
+		}
+		hidden_effect = { CmtEffect1010TryCall3260 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = {
+			NOT = { has_global_flag = CmtFlagNoSeparator }
+			has_country_flag = CmtFlagConfigViewerSeq
+		}
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	option = {
+		name = CmtTextGoBackViewerMenu.name
+		custom_tooltip = CmtTextGoBackViewerMenu.tooltip
+		trigger = { has_country_flag = CmtFlagConfigViewerSeq }
+		hidden_effect = {
+			remove_country_flag = CmtFlagConfigViewerShowing1010
+			country_event = { id = CrisisManagerMenu.1000 }
+		}
+	}
+}
+
+
+
+############################################
+###  Advanced Configurations: Prethoryn  ###
+############################################
+
+country_event = {
+	id = CrisisManagerMenu.1021
+	title = CrisisManagerMenu.1021.name
+	desc = {
+		text = CrisisManagerMenu.1021.desc1
+		trigger = { CmtTriggerPrethorynConfig = yes }
+	}
+	desc = {
+		text = CrisisManagerMenu.1021.desc2
+		trigger = { NOT = { CmtTriggerPrethorynConfig = yes } }
+	}
+	picture = GFX_evt_physics_research
+	is_triggered_only = yes
+	
+	immediate = {
+		set_country_flag = CmtFlagConfigViewerShowing1021
+	}
+	
+	option = {
+		name = CmtTextGoNextPage.name
+		custom_tooltip = CmtTextGoNextPage.tooltip
+		trigger = { has_country_flag = CmtFlagConfigViewerSeq }
+		hidden_effect = {
+			remove_country_flag = CmtFlagConfigViewerShowing1021
+			country_event = { id = CrisisManagerMenu.1022 }
+		}
+	}
+	option = {
+		name = CmtTextGoBack.name
+		custom_tooltip = CmtTextGoBack.tooltip
+		hidden_effect = {
+			remove_country_flag = CmtFlagConfigViewerShowing1021
+			if = {
+				limit = { has_country_flag = CmtFlagConfigViewerSeq }
+				country_event = { id = CrisisManagerMenu.1010 }
+			} else_if = {
+				limit = { CmtTriggerAllViewerClosed = yes }
+				country_event = { id = CrisisManagerMenu.1000 }
+			}
+		}
+	}
+	
+	
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.4110a.name
+		custom_tooltip = CrisisManagerMenu.4110a.tooltip
+		trigger = { has_global_flag = CmtFlagForbiddenPrethoryn }
+		hidden_effect = { CmtEffect1021TryCall4110 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4110b.name
+		custom_tooltip = CrisisManagerMenu.4110b.tooltip
+		trigger = {
+			NOR = {
+				has_global_flag = CmtFlagForbiddenPrethoryn
+				has_global_flag = CmtFlagPrethorynNonRimAttack
+			}
+		}
+		hidden_effect = { CmtEffect1021TryCall4110 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4110c.name
+		custom_tooltip = CrisisManagerMenu.4110c.tooltip
+		trigger = {
+			NOT = { has_global_flag = CmtFlagForbiddenPrethoryn }
+			has_global_flag = CmtFlagPrethorynNonRimAttack
+		}
+		hidden_effect = { CmtEffect1021TryCall4110 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.4120a.name
+		custom_tooltip = CrisisManagerMenu.4120a.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPrethorynQueen value = 1 } } }
+		hidden_effect = { CmtEffect1021TryCall4120 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4120b.name
+		custom_tooltip = CrisisManagerMenu.4120b.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPrethorynQueen value = 2 } } }
+		hidden_effect = { CmtEffect1021TryCall4120 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4120c.name
+		custom_tooltip = CrisisManagerMenu.4120c.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPrethorynQueen value = 3 } } }
+		hidden_effect = { CmtEffect1021TryCall4120 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4120d.name
+		custom_tooltip = CrisisManagerMenu.4120d.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPrethorynQueen value = 4 } } }
+		hidden_effect = { CmtEffect1021TryCall4120 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4120z.name
+		custom_tooltip = CrisisManagerMenu.4120z.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarPrethorynQueen value = 1 }
+					check_variable = { which = CmtVarPrethorynQueen value = 2 }
+					check_variable = { which = CmtVarPrethorynQueen value = 3 }
+					check_variable = { which = CmtVarPrethorynQueen value = 4 }
+				}
+			}
+		}
+		hidden_effect = { CmtEffect1021TryCall4120 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.4130a.name
+		custom_tooltip = CrisisManagerMenu.4130a.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 1 } } }
+		hidden_effect = { CmtEffect1021TryCall4130 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4130b.name
+		custom_tooltip = CrisisManagerMenu.4130b.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 2 } } }
+		hidden_effect = { CmtEffect1021TryCall4130 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4130c.name
+		custom_tooltip = CrisisManagerMenu.4130c.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 3 } } }
+		hidden_effect = { CmtEffect1021TryCall4130 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4130d.name
+		custom_tooltip = CrisisManagerMenu.4130d.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 4 } } }
+		hidden_effect = { CmtEffect1021TryCall4130 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4130e.name
+		custom_tooltip = CrisisManagerMenu.4130e.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 5 } } }
+		hidden_effect = { CmtEffect1021TryCall4130 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4130z.name
+		custom_tooltip = CrisisManagerMenu.4130z.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarSentinelRise value = 1 }
+					check_variable = { which = CmtVarSentinelRise value = 2 }
+					check_variable = { which = CmtVarSentinelRise value = 3 }
+					check_variable = { which = CmtVarSentinelRise value = 4 }
+					check_variable = { which = CmtVarSentinelRise value = 5 }
+				}
+			}
+		}
+		hidden_effect = { CmtEffect1021TryCall4130 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.4140a.name
+		custom_tooltip = CrisisManagerMenu.4140a.tooltip
+		trigger = { has_global_flag = CmtFlagForbiddenAnatomy }
+		hidden_effect = { CmtEffect1021TryCall4140 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4140b.name
+		custom_tooltip = CrisisManagerMenu.4140b.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagForbiddenAnatomy } }
+		hidden_effect = { CmtEffect1021TryCall4140 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.4150a.name
+		custom_tooltip = CrisisManagerMenu.4150a.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFeralPrethoryn value = 1 } } }
+		hidden_effect = { CmtEffect1021TryCall4150 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4150b.name
+		custom_tooltip = CrisisManagerMenu.4150b.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFeralPrethoryn value = 2 } } }
+		hidden_effect = { CmtEffect1021TryCall4150 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4150c.name
+		custom_tooltip = CrisisManagerMenu.4150c.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFeralPrethoryn value = 3 } } }
+		hidden_effect = { CmtEffect1021TryCall4150 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4150d.name
+		custom_tooltip = CrisisManagerMenu.4150d.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFeralPrethoryn value = 4 } } }
+		hidden_effect = { CmtEffect1021TryCall4150 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4150z.name
+		custom_tooltip = CrisisManagerMenu.4150z.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarFeralPrethoryn value = 1 }
+					check_variable = { which = CmtVarFeralPrethoryn value = 2 }
+					check_variable = { which = CmtVarFeralPrethoryn value = 3 }
+					check_variable = { which = CmtVarFeralPrethoryn value = 4 }
+				}
+			}
+		}
+		hidden_effect = { CmtEffect1021TryCall4150 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4160a.name
+		custom_tooltip = CrisisManagerMenu.4160a.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagPrethorynUnlimitedFlavor } }
+		hidden_effect = { CmtEffect1021TryCall4160 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4160b.name
+		custom_tooltip = CrisisManagerMenu.4160b.tooltip
+		trigger = { has_global_flag = CmtFlagPrethorynUnlimitedFlavor }
+		hidden_effect = { CmtEffect1021TryCall4160 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = {
+			NOT = { has_global_flag = CmtFlagNoSeparator }
+			has_country_flag = CmtFlagConfigViewerSeq
+		}
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	option = {
+		name = CmtTextGoBackViewerMenu.name
+		custom_tooltip = CmtTextGoBackViewerMenu.tooltip
+		trigger = { has_country_flag = CmtFlagConfigViewerSeq }
+		hidden_effect = {
+			remove_country_flag = CmtFlagConfigViewerShowing1021
+			country_event = { id = CrisisManagerMenu.1000 }
+		}
+	}
+}
+
+
+###########################################################################
+###  Advanced Configurations: Extradimensionals  & Forced End of Cycle  ###
+###########################################################################
+
+
+country_event = {
+	id = CrisisManagerMenu.1022
+	title = CrisisManagerMenu.1022.name
+	desc = {
+		text = CrisisManagerMenu.1022.desc1
+		trigger = {
+			OR = {
+				CmtTriggerExdsConfig = yes
+				CmtTriggerForcedEocConfig = yes
+			}
+		}
+	}
+	desc = {
+		text = CrisisManagerMenu.1022.desc2
+		trigger = {
+			NOR = {
+				CmtTriggerExdsConfig = yes
+				CmtTriggerForcedEocConfig = yes
+			}
+		}
+	}
+	picture = GFX_evt_wormhole
+	is_triggered_only = yes
+	
+	immediate = {
+		set_country_flag = CmtFlagConfigViewerShowing1022
+	}
+	
+	option = {
+		name = CmtTextGoNextPage.name
+		custom_tooltip = CmtTextGoNextPage.tooltip
+		trigger = { has_country_flag = CmtFlagConfigViewerSeq }
+		hidden_effect = {
+			remove_country_flag = CmtFlagConfigViewerShowing1022
+			country_event = { id = CrisisManagerMenu.1023 }
+		}
+	}
+	option = {
+		name = CmtTextGoBack.name
+		custom_tooltip = CmtTextGoBack.tooltip
+		hidden_effect = {
+			remove_country_flag = CmtFlagConfigViewerShowing1022
+			if = {
+				limit = { has_country_flag = CmtFlagConfigViewerSeq }
+				country_event = { id = CrisisManagerMenu.1021 }
+			} else_if = {
+				limit = { CmtTriggerAllViewerClosed = yes }
+				country_event = { id = CrisisManagerMenu.1000 }
+			}
+		}
+	}
+	
+	
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	
+	
+	
+	### Extradimensionals
+	option = {
+		name = CrisisManagerMenu.4210a.name
+		custom_tooltip = CrisisManagerMenu.4210a.tooltip
+		trigger = { has_global_flag = CmtFlagForbiddenExds }
+		hidden_effect = { CmtEffect1022TryCall4210 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4210b.name
+		custom_tooltip = CrisisManagerMenu.4210b.tooltip
+		trigger = {
+			NOR = {
+				has_global_flag = CmtFlagForbiddenExds
+				has_global_flag = CmtFlagNoJumpButExds
+			}
+		}
+		hidden_effect = { CmtEffect1022TryCall4210 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4210c.name
+		custom_tooltip = CrisisManagerMenu.4210c.tooltip
+		trigger = {
+			NOT = { has_global_flag = CmtFlagForbiddenExds }
+			has_global_flag = CmtFlagNoJumpButExds
+		}
+		hidden_effect = { CmtEffect1022TryCall4210 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.4220a.name
+		custom_tooltip = CrisisManagerMenu.4220a.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 1 } } }
+		hidden_effect = { CmtEffect1022TryCall4220 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4220b.name
+		custom_tooltip = CrisisManagerMenu.4220b.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 2 } } }
+		hidden_effect = { CmtEffect1022TryCall4220 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4220c.name
+		custom_tooltip = CrisisManagerMenu.4220c.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 3 } } }
+		hidden_effect = { CmtEffect1022TryCall4220 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4220d.name
+		custom_tooltip = CrisisManagerMenu.4220d.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 4 } } }
+		hidden_effect = { CmtEffect1022TryCall4220 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4220e.name
+		custom_tooltip = CrisisManagerMenu.4220e.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 5 } } }
+		hidden_effect = { CmtEffect1022TryCall4220 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4220f.name
+		custom_tooltip = CrisisManagerMenu.4220f.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 6 } } }
+		hidden_effect = { CmtEffect1022TryCall4220 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4220z.name
+		custom_tooltip = CrisisManagerMenu.4220z.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarExdsChaserCondition value = 1 }
+					check_variable = { which = CmtVarExdsChaserCondition value = 2 }
+					check_variable = { which = CmtVarExdsChaserCondition value = 3 }
+					check_variable = { which = CmtVarExdsChaserCondition value = 4 }
+					check_variable = { which = CmtVarExdsChaserCondition value = 5 }
+					check_variable = { which = CmtVarExdsChaserCondition value = 6 }
+				}
+			}
+		}
+		hidden_effect = { CmtEffect1022TryCall4220 = yes }
+	}
+	
+	
+	option = {
+		name = CrisisManagerMenu.4230a1.name
+		custom_tooltip = CrisisManagerMenu.4230a1.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagExdsChaserAnywhere } }
+		hidden_effect = { CmtEffect1022TryCall4230 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4230b.name
+		custom_tooltip = CrisisManagerMenu.4230b.tooltip
+		trigger = { has_global_flag = CmtFlagExdsChaserAnywhere }
+		hidden_effect = { CmtEffect1022TryCall4230 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.4240a.name
+		custom_tooltip = CrisisManagerMenu.4240a.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarReinforceCycle_OnExdAnchorBuilt value > 510 } } }
+		hidden_effect = { CmtEffect1022TryCall4240 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4240n.name
+		custom_tooltip = CrisisManagerMenu.4240n.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarReinforceCycle_OnExdAnchorBuilt value > 510 } }
+				check_variable = { which = CmtVarReinforceCycle_OnExdAnchorBuilt value > 1.5 }
+			}
+		}
+		hidden_effect = { CmtEffect1022TryCall4240 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4240f.name
+		custom_tooltip = CrisisManagerMenu.4240f.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarReinforceCycle_OnExdAnchorBuilt value > 1.5 } }
+				check_variable = { which = CmtVarReinforceCycle_OnExdAnchorBuilt value > 0.5 }
+			}
+		}
+		hidden_effect = { CmtEffect1022TryCall4240 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4240z.name
+		custom_tooltip = CrisisManagerMenu.4240z.tooltip
+		trigger = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarReinforceCycle_OnExdAnchorBuilt value > 0.5 } } } }
+		hidden_effect = { CmtEffect1022TryCall4240 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.4250t.name
+		custom_tooltip = CrisisManagerMenu.4250t.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T0 } } }
+		hidden_effect = { CmtEffect1022TryCall4250 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4250.V1.name
+		custom_tooltip = CrisisManagerMenu.4250.V1.name
+		trigger = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T0 } }
+				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T1 }
+			}
+		}
+		hidden_effect = { CmtEffect1022TryCall4250 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4250.VC.name
+		custom_tooltip = CrisisManagerMenu.4250.VC.name
+		trigger = {
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T1 }
+					check_variable = { which = CmtVarExdsPortalStability value > @CmtConstPortalStability_T9 }
+				}
+			}
+		}
+		hidden_effect = { CmtEffect1022TryCall4250 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4250.VA.name
+		custom_tooltip = CrisisManagerMenu.4250.VA.name
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsPortalStability value > @CmtConstPortalStability_T9 } } }
+		hidden_effect = { CmtEffect1022TryCall4250 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	
+	
+	### Forced End of Cycle
+	option = {
+		name = CrisisManagerMenu.4410a.name
+		custom_tooltip = CrisisManagerMenu.4410a.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagAllowForcedEoc } }
+		hidden_effect = { CmtEffect1022TryCall4410 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4410b.name
+		custom_tooltip = CrisisManagerMenu.4410b.tooltip
+		trigger = { has_global_flag = CmtFlagAllowForcedEoc }
+		hidden_effect = { CmtEffect1022TryCall4410 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.4420a.name
+		custom_tooltip = CrisisManagerMenu.4420a.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocTargetPlayer value = 1 } } }
+		hidden_effect = { CmtEffect1022TryCall4420 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4420b.name
+		custom_tooltip = CrisisManagerMenu.4420b.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocTargetPlayer value = 2 } } }
+		hidden_effect = { CmtEffect1022TryCall4420 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4420c.name
+		custom_tooltip = CrisisManagerMenu.4420c.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocTargetPlayer value = 3 } } }
+		hidden_effect = { CmtEffect1022TryCall4420 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4420z.name
+		custom_tooltip = CrisisManagerMenu.4420z.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarForcedEocTargetPlayer value = 1 }
+					check_variable = { which = CmtVarForcedEocTargetPlayer value = 2 }
+					check_variable = { which = CmtVarForcedEocTargetPlayer value = 3 }
+				}
+			}
+		}
+		hidden_effect = { CmtEffect1022TryCall4420 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.4430a.name
+		custom_tooltip = CrisisManagerMenu.4430a.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocTranscendence value = 1 } } }
+		hidden_effect = { CmtEffect1022TryCall4430 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4430b.name
+		custom_tooltip = CrisisManagerMenu.4430b.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocTranscendence value = 2 } } }
+		hidden_effect = { CmtEffect1022TryCall4430 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4430c.name
+		custom_tooltip = CrisisManagerMenu.4430c.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocTranscendence value = 3 } } }
+		hidden_effect = { CmtEffect1022TryCall4430 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4430z.name
+		custom_tooltip = CrisisManagerMenu.4430z.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarForcedEocTranscendence value = 1 }
+					check_variable = { which = CmtVarForcedEocTranscendence value = 2 }
+					check_variable = { which = CmtVarForcedEocTranscendence value = 3 }
+				}
+			}
+		}
+		hidden_effect = { CmtEffect1022TryCall4430 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.4440a.name
+		custom_tooltip = CrisisManagerMenu.4440a.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocCountryStrength value = 1 } } }
+		hidden_effect = { CmtEffect1022TryCall4440 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4440b.name
+		custom_tooltip = CrisisManagerMenu.4440b.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocCountryStrength value = 2 } } }
+		hidden_effect = { CmtEffect1022TryCall4440 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4440c.name
+		custom_tooltip = CrisisManagerMenu.4440c.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocCountryStrength value = 3 } } }
+		hidden_effect = { CmtEffect1022TryCall4440 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4440d.name
+		custom_tooltip = CrisisManagerMenu.4440d.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocCountryStrength value = 4 } } }
+		hidden_effect = { CmtEffect1022TryCall4440 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4440z.name
+		custom_tooltip = CrisisManagerMenu.4440z.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarForcedEocCountryStrength value = 1 }
+					check_variable = { which = CmtVarForcedEocCountryStrength value = 2 }
+					check_variable = { which = CmtVarForcedEocCountryStrength value = 3 }
+					check_variable = { which = CmtVarForcedEocCountryStrength value = 4 }
+				}
+			}
+		}
+		hidden_effect = { CmtEffect1022TryCall4440 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.4450a.name
+		custom_tooltip = CrisisManagerMenu.4450a.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagForcedEocCrisisTerm } }
+		hidden_effect = { CmtEffect1022TryCall4450 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4450b.name
+		custom_tooltip = CrisisManagerMenu.4450b.tooltip
+		trigger = { has_global_flag = CmtFlagForcedEocCrisisTerm }
+		hidden_effect = { CmtEffect1022TryCall4450 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = {
+			NOT = { has_global_flag = CmtFlagNoSeparator }
+			has_country_flag = CmtFlagConfigViewerSeq
+		}
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	option = {
+		name = CmtTextGoBackViewerMenu.name
+		custom_tooltip = CmtTextGoBackViewerMenu.tooltip
+		trigger = { has_country_flag = CmtFlagConfigViewerSeq }
+		hidden_effect = {
+			remove_country_flag = CmtFlagConfigViewerShowing1022
+			country_event = { id = CrisisManagerMenu.1000 }
+		}
+	}
+}
+
+
+
+###############################################
+###  Advanced Configurations: Contingency   ###
+###############################################
+
+country_event = {
+	id = CrisisManagerMenu.1023
+	title = CrisisManagerMenu.1023.name
+	desc = {
+		text = CrisisManagerMenu.1023.desc1
+		trigger = { CmtTriggerContingencyConfig = yes }
+	}
+	desc = {
+		text = CrisisManagerMenu.1023.desc2
+		trigger = { NOT = { CmtTriggerContingencyConfig = yes } }
+	}
+	picture = GFX_evt_glitchy_matrix
+	is_triggered_only = yes
+	
+	immediate = {
+		set_country_flag = CmtFlagConfigViewerShowing1023
+	}
+	
+	option = {
+		name = CmtTextGoNextPage.name
+		custom_tooltip = CmtTextGoNextPage.tooltip
+		trigger = { has_country_flag = CmtFlagConfigViewerSeq }
+		hidden_effect = {
+			remove_country_flag = CmtFlagConfigViewerShowing1023
+			country_event = { id = CrisisManagerMenu.1024 }
+		}
+	}
+	option = {
+		name = CmtTextGoBack.name
+		custom_tooltip = CmtTextGoBack.tooltip
+		hidden_effect = {
+			remove_country_flag = CmtFlagConfigViewerShowing1023
+			if = {
+				limit = { has_country_flag = CmtFlagConfigViewerSeq }
+				country_event = { id = CrisisManagerMenu.1022 }
+			} else_if = {
+				limit = { CmtTriggerAllViewerClosed = yes }
+				country_event = { id = CrisisManagerMenu.1000 }
+			}
+		}
+	}
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	
+	
+	### Contingency
+	option = {
+		name = CrisisManagerMenu.4310a.name
+		custom_tooltip = CrisisManagerMenu.4310a.tooltip
+		trigger = { has_global_flag = CmtFlagForbiddenContingency }
+		hidden_effect = { CmtEffect1023TryCall4310 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4310b.name
+		custom_tooltip = CrisisManagerMenu.4310b.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagForbiddenContingency } }
+		hidden_effect = { CmtEffect1023TryCall4310 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.4330a.name
+		custom_tooltip = CrisisManagerMenu.4330a.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
+		hidden_effect = { CmtEffect1023TryCall4330 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4330b.name
+		custom_tooltip = CrisisManagerMenu.4330b.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
+		hidden_effect = { CmtEffect1023TryCall4330 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4330c.name
+		custom_tooltip = CrisisManagerMenu.4330c.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 3 } } }
+		hidden_effect = { CmtEffect1023TryCall4330 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4330d.name
+		custom_tooltip = CrisisManagerMenu.4330d.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
+		hidden_effect = { CmtEffect1023TryCall4330 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4330e.name
+		custom_tooltip = CrisisManagerMenu.4330e.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
+		hidden_effect = { CmtEffect1023TryCall4330 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4330z.name
+		custom_tooltip = CrisisManagerMenu.4330z.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarGhostStrength value = 1 }
+					check_variable = { which = CmtVarGhostStrength value = 2 }
+					check_variable = { which = CmtVarGhostStrength value = 3 }
+					check_variable = { which = CmtVarGhostStrength value = 4 }
+					check_variable = { which = CmtVarGhostStrength value = 5 }
+				}
+			}
+		}
+		hidden_effect = { CmtEffect1023TryCall4330 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.4340a.name
+		custom_tooltip = CrisisManagerMenu.4340a.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 1 } } }
+		hidden_effect = { CmtEffect1023TryCall4340 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4340b.name
+		custom_tooltip = CrisisManagerMenu.4340b.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 2 } } }
+		hidden_effect = { CmtEffect1023TryCall4340 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4340c.name
+		custom_tooltip = CrisisManagerMenu.4340c.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 3 } } }
+		hidden_effect = { CmtEffect1023TryCall4340 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4340d.name
+		custom_tooltip = CrisisManagerMenu.4340d.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 4 } } }
+		hidden_effect = { CmtEffect1023TryCall4340 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4340e.name
+		custom_tooltip = CrisisManagerMenu.4340e.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 5 } } }
+		hidden_effect = { CmtEffect1023TryCall4340 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4340z.name
+		custom_tooltip = CrisisManagerMenu.4340z.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarSynthTerrorEventSpeed value = 1 }
+					check_variable = { which = CmtVarSynthTerrorEventSpeed value = 2 }
+					check_variable = { which = CmtVarSynthTerrorEventSpeed value = 3 }
+					check_variable = { which = CmtVarSynthTerrorEventSpeed value = 4 }
+					check_variable = { which = CmtVarSynthTerrorEventSpeed value = 5 }
+				}
+			}
+		}
+		hidden_effect = { CmtEffect1023TryCall4340 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.4350a.name
+		custom_tooltip = CrisisManagerMenu.4350a.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFreqTerror value = 1 } } }
+		hidden_effect = { CmtEffect1023TryCall4350 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4350b.name
+		custom_tooltip = CrisisManagerMenu.4350b.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFreqTerror value = 2 } } }
+		hidden_effect = { CmtEffect1023TryCall4350 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4350c.name
+		custom_tooltip = CrisisManagerMenu.4350c.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFreqTerror value = 3 } } }
+		hidden_effect = { CmtEffect1023TryCall4350 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4350d.name
+		custom_tooltip = CrisisManagerMenu.4350d.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFreqTerror value = 4 } } }
+		hidden_effect = { CmtEffect1023TryCall4350 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4350e.name
+		custom_tooltip = CrisisManagerMenu.4350e.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFreqTerror value = 5 } } }
+		hidden_effect = { CmtEffect1023TryCall4350 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4350z.name
+		custom_tooltip = CrisisManagerMenu.4350z.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarFreqTerror value = 1 }
+					check_variable = { which = CmtVarFreqTerror value = 2 }
+					check_variable = { which = CmtVarFreqTerror value = 3 }
+					check_variable = { which = CmtVarFreqTerror value = 4 }
+					check_variable = { which = CmtVarFreqTerror value = 5 }
+				}
+			}
+		}
+		hidden_effect = { CmtEffect1023TryCall4350 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.4360a.name
+		custom_tooltip = CrisisManagerMenu.4360a.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagSynthTerrorAll } }
+		hidden_effect = { CmtEffect1023TryCall4360 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4360b.name
+		custom_tooltip = CrisisManagerMenu.4360b.tooltip
+		trigger = { has_global_flag = CmtFlagSynthTerrorAll }
+		hidden_effect = { CmtEffect1023TryCall4360 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerMenu.4370a.name
+		custom_tooltip = CrisisManagerMenu.4370a.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCybrexResurfacing value = 1 } } }
+		hidden_effect = { CmtEffect1023TryCall4370 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4370b.name
+		custom_tooltip = CrisisManagerMenu.4370b.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCybrexResurfacing value = 2 } } }
+		hidden_effect = { CmtEffect1023TryCall4370 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4370c.name
+		custom_tooltip = CrisisManagerMenu.4370c.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCybrexResurfacing value = 3 } } }
+		hidden_effect = { CmtEffect1023TryCall4370 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4370d.name
+		custom_tooltip = CrisisManagerMenu.4370d.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCybrexResurfacing value = 4 } } }
+		hidden_effect = { CmtEffect1023TryCall4370 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4370e.name
+		custom_tooltip = CrisisManagerMenu.4370e.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCybrexResurfacing value = 5 } } }
+		hidden_effect = { CmtEffect1023TryCall4370 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4370z.name
+		custom_tooltip = CrisisManagerMenu.4370z.tooltip
+		trigger = {
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarCybrexResurfacing value = 1 }
+					check_variable = { which = CmtVarCybrexResurfacing value = 2 }
+					check_variable = { which = CmtVarCybrexResurfacing value = 3 }
+					check_variable = { which = CmtVarCybrexResurfacing value = 4 }
+					check_variable = { which = CmtVarCybrexResurfacing value = 5 }
+				}
+			}
+		}
+		hidden_effect = { CmtEffect1023TryCall4370 = yes }
+	}
+	
+	
+	
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = {
+			NOT = { has_global_flag = CmtFlagNoSeparator }
+			has_country_flag = CmtFlagConfigViewerSeq
+		}
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	option = {
+		name = CmtTextGoBackViewerMenu.name
+		custom_tooltip = CmtTextGoBackViewerMenu.tooltip
+		trigger = { has_country_flag = CmtFlagConfigViewerSeq }
+		hidden_effect = {
+			remove_country_flag = CmtFlagConfigViewerShowing1023
+			country_event = { id = CrisisManagerMenu.1000 }
+		}
+	}
+}

@@ -1,0 +1,959 @@
+namespace = CrisisManagerControl
+
+#######################################
+#######################################
+#####                             #####
+#####    Crisis Manager           #####
+#####                             #####
+#####    Crisis Trigger Events    #####
+#####                             #####
+#######################################
+#######################################
+
+###############################
+###  Factor of Probability  ###
+###############################
+
+### No Equalization
+@CmtConstModPt1_N00 = 0.00
+@CmtConstModPt1_N05 = 0.50
+@CmtConstModPt1_N12 = 1.20
+@CmtConstModPt1_N1q = 1.25
+@CmtConstModPt1_N13 = 1.30
+@CmtConstModPt1_N15 = 1.50
+@CmtConstModPt1_N20 = 2.00
+@CmtConstModPt1_N30 = 3.00
+@CmtConstModPt1_N40 = 4.00
+@CmtConstModPt1_R00 = 1.00
+@CmtConstModPt1_R05 = 1.00
+@CmtConstModPt1_R12 = 1.00
+@CmtConstModPt1_R1q = 1.00
+@CmtConstModPt1_R13 = 1.00
+@CmtConstModPt1_R15 = 1.00
+@CmtConstModPt1_R20 = 1.00
+@CmtConstModPt1_R30 = 1.00
+@CmtConstModPt1_R40 = 1.00
+
+### Weak Equalization
+@CmtConstModPt2_N00 = 0.00
+@CmtConstModPt2_N05 = 0.75
+@CmtConstModPt2_N12 = 1.10
+@CmtConstModPt2_N1q = 1.13
+@CmtConstModPt2_N13 = 1.15
+@CmtConstModPt2_N15 = 1.25
+@CmtConstModPt2_N20 = 1.50
+@CmtConstModPt2_N30 = 2.00
+@CmtConstModPt2_N40 = 2.50
+@CmtConstModPt2_R00 = 1.38
+@CmtConstModPt2_R05 = 1.19
+@CmtConstModPt2_R12 = 0.97
+@CmtConstModPt2_R1q = 0.96
+@CmtConstModPt2_R13 = 0.96
+@CmtConstModPt2_R15 = 0.94
+@CmtConstModPt2_R20 = 0.90
+@CmtConstModPt2_R30 = 0.87
+@CmtConstModPt2_R40 = 0.85
+
+### Strong Equalization
+@CmtConstModPt3_N00 = 0.00
+@CmtConstModPt3_N05 = 0.93
+@CmtConstModPt3_N12 = 1.03
+@CmtConstModPt3_N1q = 1.04
+@CmtConstModPt3_N13 = 1.04
+@CmtConstModPt3_N15 = 1.07
+@CmtConstModPt3_N20 = 1.15
+@CmtConstModPt3_N30 = 1.29
+@CmtConstModPt3_N40 = 1.44
+@CmtConstModPt3_R00 = 1.74
+@CmtConstModPt3_R05 = 1.37
+@CmtConstModPt3_R12 = 0.94
+@CmtConstModPt3_R1q = 0.93
+@CmtConstModPt3_R13 = 0.91
+@CmtConstModPt3_R15 = 0.88
+@CmtConstModPt3_R20 = 0.81
+@CmtConstModPt3_R30 = 0.75
+@CmtConstModPt3_R40 = 0.72
+
+### Completely Equalization
+@CmtConstModPt4_N00 = 1.00
+@CmtConstModPt4_N05 = 1.00
+@CmtConstModPt4_N12 = 1.00
+@CmtConstModPt4_N1q = 1.00
+@CmtConstModPt4_N13 = 1.00
+@CmtConstModPt4_N15 = 1.00
+@CmtConstModPt4_N20 = 1.00
+@CmtConstModPt4_N30 = 1.00
+@CmtConstModPt4_N40 = 1.00
+@CmtConstModPt4_R00 = 1.92
+@CmtConstModPt4_R05 = 1.46
+@CmtConstModPt4_R12 = 0.92
+@CmtConstModPt4_R1q = 0.91
+@CmtConstModPt4_R13 = 0.89
+@CmtConstModPt4_R15 = 0.85
+@CmtConstModPt4_R20 = 0.77
+@CmtConstModPt4_R30 = 0.69
+@CmtConstModPt4_R40 = 0.65
+
+### Configuraion of Trigger Probability
+@CmtConstTriggerProbability_V1 = 3
+@CmtConstTriggerProbability_V2 = 1
+@CmtConstTriggerProbability_V3 = 0.3333
+@CmtConstTriggerProbability_V4 = 0.1
+@CmtConstTriggerProbability_V5 = 0
+
+############################################
+###  Trigger Event with No Equalization  ###
+############################################
+
+country_event = {
+	id = CrisisManagerControl.0021
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		random_list = {
+			
+			### Prethoryn
+			100 = {
+				modifier = {
+					factor = 0
+					CmtTriggerForbiddenPrethoryn = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt1_N20
+					CmtTriggerCrisisAllowed_10yr = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt1_N30
+					CmtTriggerCrisisAllowed_30yr = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt1_N40
+					CmtTriggerCrisisAllowed_50yr = yes
+				}
+				CmtEffectTriggerPrethoryn = yes
+			}
+			
+			### Extradimensionals
+			100 = {
+				modifier = {
+					factor = 0
+					CmtTriggerForbiddenExds = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt1_N00
+					CmtTriggerNoJumpDriveA = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt1_N05
+					CmtTriggerNoJumpDriveB = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt1_N40
+					CmtTriggerPsiJumpDrive = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt1_N15
+					CmtTriggerRougeScientist = yes
+				}
+				CmtEffectTriggerExds = yes
+			}
+			
+			### Contingency
+			100 = {
+				modifier = {
+					factor = 0
+					CmtTriggerForbiddenContingency = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt1_N00
+					CmtTriggerSynthetic_0000 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt1_N20
+					CmtTriggerSynthetic_0250 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt1_N20
+					CmtTriggerSynthetic_0500 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt1_N15
+					CmtTriggerExistMechFe = yes
+				}
+				CmtEffectTriggerContingency = yes
+			}
+			
+			### Forced End of Cycle
+			100 = {
+				modifier = {
+					factor = 0
+					CmtTriggerForbiddenForcedEoc = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt1_N05
+					CmtTriggerNoTelepathy = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt1_N15
+					CmtTriggerTranscendence = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt1_N20
+					CmtTriggerShroudPatron = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt1_N20
+					CmtTriggerExdsTriggered = yes
+				}
+				
+				CmtEffectTriggerForcedEoc = yes
+			}
+			
+			### Nothing
+			1200 = {
+				
+				### Modified by Trigger Probability
+				modifier = {
+					factor = @CmtConstTriggerProbability_V1
+					CmtTriggerTotalProbability_1 = yes
+				}
+				modifier = {
+					factor = @CmtConstTriggerProbability_V2
+					CmtTriggerTotalProbability_2 = yes
+				}
+				modifier = {
+					factor = @CmtConstTriggerProbability_V3
+					CmtTriggerTotalProbability_3 = yes
+				}
+				modifier = {
+					factor = @CmtConstTriggerProbability_V4
+					CmtTriggerTotalProbability_4 = yes
+				}
+				modifier = {
+					factor = @CmtConstTriggerProbability_V5
+					CmtTriggerTotalProbability_5 = yes
+				}
+				modifier = {
+					factor = @CmtConstTUnq_TriggerProbability
+					CmtTriggerTotalProbabilityUnq = yes
+				}
+				
+				### Factor of Prethoryn
+				modifier = {
+					factor = @CmtConstModPt1_R20
+					CmtTriggerCrisisAllowed_10yr = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt1_R30
+					CmtTriggerCrisisAllowed_30yr = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt1_R40
+					CmtTriggerCrisisAllowed_50yr = yes
+				}
+				
+				### Factor of Extradimensionals
+				modifier = {
+					factor = @CmtConstModPt1_R05
+					CmtTriggerNoJumpDrive0 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt1_R40
+					CmtTriggerPsiJumpDrive = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt1_R15
+					CmtTriggerRougeScientist = yes
+				}
+				
+				### Factor of Contingency
+				modifier = {
+					factor = @CmtConstModPt1_R00
+					CmtTriggerSynthetic_0000 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt1_R20
+					CmtTriggerSynthetic_0250 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt1_R20
+					CmtTriggerSynthetic_0500 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt1_R15
+					CmtTriggerExistMechFe = yes
+				}
+				
+				### Forced End of Cycle
+				modifier = {
+					factor = 1.333
+					CmtTriggerPotentialForcedEoc = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt1_R05
+					CmtTriggerNoTelepathy = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt1_R15
+					CmtTriggerTranscendence = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt1_R20
+					CmtTriggerShroudPatron = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt1_R20
+					CmtTriggerExdsTriggered = yes
+				}
+				
+				CmtEffectTriggerNoCrisis = yes
+			}
+		}
+	}
+}
+
+
+##############################################
+###  Trigger Event with Weak Equalization  ###
+##############################################
+
+country_event = {
+	id = CrisisManagerControl.0022
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		random_list = {
+			
+			### Prethoryn
+			100 = {
+				modifier = {
+					factor = 0
+					CmtTriggerForbiddenPrethoryn = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt2_N20
+					CmtTriggerCrisisAllowed_10yr = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt2_N30
+					CmtTriggerCrisisAllowed_30yr = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt2_N40
+					CmtTriggerCrisisAllowed_50yr = yes
+				}
+				CmtEffectTriggerPrethoryn = yes
+			}
+			
+			### Extradimensionals
+			100 = {
+				modifier = {
+					factor = 0
+					CmtTriggerForbiddenExds = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt2_N00
+					CmtTriggerNoJumpDriveA = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt2_N05
+					CmtTriggerNoJumpDriveB = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt2_N40
+					CmtTriggerPsiJumpDrive = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt2_N15
+					CmtTriggerRougeScientist = yes
+				}
+				CmtEffectTriggerExds = yes
+			}
+			
+			### Contingency
+			100 = {
+				modifier = {
+					factor = 0
+					CmtTriggerForbiddenContingency = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt2_N00
+					CmtTriggerSynthetic_0000 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt2_N20
+					CmtTriggerSynthetic_0250 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt2_N20
+					CmtTriggerSynthetic_0500 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt2_N15
+					CmtTriggerExistMechFe = yes
+				}
+				CmtEffectTriggerContingency = yes
+			}
+			
+			### Forced End of Cycle
+			100 = {
+				modifier = {
+					factor = 0
+					CmtTriggerForbiddenForcedEoc = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt2_N05
+					CmtTriggerNoTelepathy = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt2_N15
+					CmtTriggerTranscendence = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt2_N20
+					CmtTriggerShroudPatron = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt2_N20
+					CmtTriggerExdsTriggered = yes
+				}
+				
+				CmtEffectTriggerForcedEoc = yes
+			}
+			
+			### Nothing
+			1200 = {
+				
+				### Modified by Trigger Probability
+				modifier = {
+					factor = @CmtConstTriggerProbability_V1
+					CmtTriggerTotalProbability_1 = yes
+				}
+				modifier = {
+					factor = @CmtConstTriggerProbability_V2
+					CmtTriggerTotalProbability_2 = yes
+				}
+				modifier = {
+					factor = @CmtConstTriggerProbability_V3
+					CmtTriggerTotalProbability_3 = yes
+				}
+				modifier = {
+					factor = @CmtConstTriggerProbability_V4
+					CmtTriggerTotalProbability_4 = yes
+				}
+				modifier = {
+					factor = @CmtConstTriggerProbability_V5
+					CmtTriggerTotalProbability_5 = yes
+				}
+				modifier = {
+					factor = @CmtConstTUnq_TriggerProbability
+					CmtTriggerTotalProbabilityUnq = yes
+				}
+				
+				### Factor of Prethoryn
+				modifier = {
+					factor = @CmtConstModPt2_R20
+					CmtTriggerCrisisAllowed_10yr = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt2_R30
+					CmtTriggerCrisisAllowed_30yr = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt2_R40
+					CmtTriggerCrisisAllowed_50yr = yes
+				}
+				
+				### Factor of Extradimensionals
+				modifier = {
+					factor = @CmtConstModPt2_R05
+					CmtTriggerNoJumpDrive0 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt2_R40
+					CmtTriggerPsiJumpDrive = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt2_R15
+					CmtTriggerRougeScientist = yes
+				}
+				
+				### Factor of Contingency
+				modifier = {
+					factor = @CmtConstModPt2_R00
+					CmtTriggerSynthetic_0000 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt2_R20
+					CmtTriggerSynthetic_0250 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt2_R20
+					CmtTriggerSynthetic_0500 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt2_R15
+					CmtTriggerExistMechFe = yes
+				}
+				
+				### Forced End of Cycle
+				modifier = {
+					factor = 1.333
+					CmtTriggerPotentialForcedEoc = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt2_R05
+					CmtTriggerNoTelepathy = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt2_R15
+					CmtTriggerTranscendence = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt2_R20
+					CmtTriggerShroudPatron = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt2_R20
+					CmtTriggerExdsTriggered = yes
+				}
+				
+				CmtEffectTriggerNoCrisis = yes
+			}
+		}
+	}
+}
+
+
+################################################
+###  Trigger Event with Strong Equalization  ###
+################################################
+
+country_event = {
+	id = CrisisManagerControl.0023
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		random_list = {
+			
+			### Prethoryn
+			100 = {
+				modifier = {
+					factor = 0
+					CmtTriggerForbiddenPrethoryn = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt3_N20
+					CmtTriggerCrisisAllowed_10yr = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt3_N30
+					CmtTriggerCrisisAllowed_30yr = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt3_N40
+					CmtTriggerCrisisAllowed_50yr = yes
+				}
+				CmtEffectTriggerPrethoryn = yes
+			}
+			
+			### Extradimensionals
+			100 = {
+				modifier = {
+					factor = 0
+					CmtTriggerForbiddenExds = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt3_N00
+					CmtTriggerNoJumpDriveA = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt3_N05
+					CmtTriggerNoJumpDriveB = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt3_N40
+					CmtTriggerPsiJumpDrive = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt3_N15
+					CmtTriggerRougeScientist = yes
+				}
+				CmtEffectTriggerExds = yes
+			}
+			
+			### Contingency
+			100 = {
+				modifier = {
+					factor = 0
+					CmtTriggerForbiddenContingency = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt3_N00
+					CmtTriggerSynthetic_0000 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt3_N20
+					CmtTriggerSynthetic_0250 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt3_N20
+					CmtTriggerSynthetic_0500 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt3_N15
+					CmtTriggerExistMechFe = yes
+				}
+				CmtEffectTriggerContingency = yes
+			}
+			
+			### Forced End of Cycle
+			100 = {
+				modifier = {
+					factor = 0
+					CmtTriggerForbiddenForcedEoc = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt3_N05
+					CmtTriggerNoTelepathy = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt3_N15
+					CmtTriggerTranscendence = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt3_N20
+					CmtTriggerShroudPatron = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt3_N20
+					CmtTriggerExdsTriggered = yes
+				}
+				
+				CmtEffectTriggerForcedEoc = yes
+			}
+			
+			### Nothing
+			1200 = {
+				
+				### Modified by Trigger Probability
+				modifier = {
+					factor = @CmtConstTriggerProbability_V1
+					CmtTriggerTotalProbability_1 = yes
+				}
+				modifier = {
+					factor = @CmtConstTriggerProbability_V2
+					CmtTriggerTotalProbability_2 = yes
+				}
+				modifier = {
+					factor = @CmtConstTriggerProbability_V3
+					CmtTriggerTotalProbability_3 = yes
+				}
+				modifier = {
+					factor = @CmtConstTriggerProbability_V4
+					CmtTriggerTotalProbability_4 = yes
+				}
+				modifier = {
+					factor = @CmtConstTriggerProbability_V5
+					CmtTriggerTotalProbability_5 = yes
+				}
+				modifier = {
+					factor = @CmtConstTUnq_TriggerProbability
+					CmtTriggerTotalProbabilityUnq = yes
+				}
+				
+				### Factor of Prethoryn
+				modifier = {
+					factor = @CmtConstModPt3_R20
+					CmtTriggerCrisisAllowed_10yr = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt3_R30
+					CmtTriggerCrisisAllowed_30yr = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt3_R40
+					CmtTriggerCrisisAllowed_50yr = yes
+				}
+				
+				### Factor of Extradimensionals
+				modifier = {
+					factor = @CmtConstModPt3_R05
+					CmtTriggerNoJumpDrive0 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt3_R40
+					CmtTriggerPsiJumpDrive = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt3_R15
+					CmtTriggerRougeScientist = yes
+				}
+				
+				### Factor of Contingency
+				modifier = {
+					factor = @CmtConstModPt3_R00
+					CmtTriggerSynthetic_0000 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt3_R20
+					CmtTriggerSynthetic_0250 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt3_R20
+					CmtTriggerSynthetic_0500 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt3_R15
+					CmtTriggerExistMechFe = yes
+				}
+				
+				modifier = {
+					factor = @CmtConstModPt3_R12
+					CmtTriggerExistMechFe = yes
+				}
+				
+				### Forced End of Cycle
+				modifier = {
+					factor = 1.333
+					CmtTriggerPotentialForcedEoc = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt3_R05
+					CmtTriggerNoTelepathy = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt3_R15
+					CmtTriggerTranscendence = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt3_R20
+					CmtTriggerShroudPatron = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt3_R20
+					CmtTriggerExdsTriggered = yes
+				}
+				
+				CmtEffectTriggerNoCrisis = yes
+			}
+		}
+	}
+}
+
+
+####################################################
+###  Trigger Event with Completely Equalization  ###
+####################################################
+
+country_event = {
+	id = CrisisManagerControl.0024
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		random_list = {
+			
+			### Prethoryn
+			100 = {
+				modifier = {
+					factor = 0
+					CmtTriggerForbiddenPrethoryn = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt4_N20
+					CmtTriggerCrisisAllowed_10yr = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt4_N30
+					CmtTriggerCrisisAllowed_30yr = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt4_N40
+					CmtTriggerCrisisAllowed_50yr = yes
+				}
+				CmtEffectTriggerPrethoryn = yes
+			}
+			
+			### Extradimensionals
+			100 = {
+				modifier = {
+					factor = 0
+					CmtTriggerForbiddenExds = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt4_N00
+					CmtTriggerNoJumpDriveA = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt4_N05
+					CmtTriggerNoJumpDriveB = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt4_N40
+					CmtTriggerPsiJumpDrive = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt4_N15
+					CmtTriggerRougeScientist = yes
+				}
+				CmtEffectTriggerExds = yes
+			}
+			
+			### Contingency
+			100 = {
+				modifier = {
+					factor = 0
+					CmtTriggerForbiddenContingency = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt4_N00
+					CmtTriggerSynthetic_0000 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt4_N20
+					CmtTriggerSynthetic_0250 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt4_N20
+					CmtTriggerSynthetic_0500 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt4_N15
+					CmtTriggerExistMechFe = yes
+				}
+				CmtEffectTriggerContingency = yes
+			}
+			
+			### Forced End of Cycle
+			100 = {
+				modifier = {
+					factor = 0
+					CmtTriggerForbiddenForcedEoc = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt4_N05
+					CmtTriggerNoTelepathy = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt4_N15
+					CmtTriggerTranscendence = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt4_N20
+					CmtTriggerShroudPatron = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt4_N20
+					CmtTriggerExdsTriggered = yes
+				}
+				
+				CmtEffectTriggerForcedEoc = yes
+			}
+			
+			### Nothing
+			1200 = {
+				
+				### Modified by Trigger Probability
+				modifier = {
+					factor = @CmtConstTriggerProbability_V1
+					CmtTriggerTotalProbability_1 = yes
+				}
+				modifier = {
+					factor = @CmtConstTriggerProbability_V2
+					CmtTriggerTotalProbability_2 = yes
+				}
+				modifier = {
+					factor = @CmtConstTriggerProbability_V3
+					CmtTriggerTotalProbability_3 = yes
+				}
+				modifier = {
+					factor = @CmtConstTriggerProbability_V4
+					CmtTriggerTotalProbability_4 = yes
+				}
+				modifier = {
+					factor = @CmtConstTriggerProbability_V5
+					CmtTriggerTotalProbability_5 = yes
+				}
+				modifier = {
+					factor = @CmtConstTUnq_TriggerProbability
+					CmtTriggerTotalProbabilityUnq = yes
+				}
+				
+				### Factor of Prethoryn
+				modifier = {
+					factor = @CmtConstModPt4_R20
+					CmtTriggerCrisisAllowed_10yr = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt4_R30
+					CmtTriggerCrisisAllowed_30yr = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt4_R40
+					CmtTriggerCrisisAllowed_50yr = yes
+				}
+				
+				### Factor of Extradimensionals
+				modifier = {
+					factor = @CmtConstModPt4_R05
+					CmtTriggerNoJumpDrive0 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt4_R40
+					CmtTriggerPsiJumpDrive = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt4_R15
+					CmtTriggerRougeScientist = yes
+				}
+				
+				### Factor of Contingency
+				modifier = {
+					factor = @CmtConstModPt4_R00
+					CmtTriggerSynthetic_0000 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt4_R20
+					CmtTriggerSynthetic_0250 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt4_R20
+					CmtTriggerSynthetic_0500 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt4_R15
+					CmtTriggerExistMechFe = yes
+				}
+				
+				### Forced End of Cycle
+				modifier = {
+					factor = 1.333
+					CmtTriggerPotentialForcedEoc = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt4_R05
+					CmtTriggerNoTelepathy = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt4_R15
+					CmtTriggerTranscendence = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt4_R20
+					CmtTriggerShroudPatron = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt4_R20
+					CmtTriggerExdsTriggered = yes
+				}
+				
+				CmtEffectTriggerNoCrisis = yes
+			}
+		}
+	}
+}
+

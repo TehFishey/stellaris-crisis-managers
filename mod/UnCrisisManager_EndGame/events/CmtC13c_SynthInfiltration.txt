@@ -1,0 +1,195 @@
+namespace = CrisisManagerControl
+
+###########################################
+###########################################
+#####                                 #####
+#####    Crisis Manager               #####
+#####                                 #####
+#####    Synth Infiltration Events    #####
+#####                                 #####
+###########################################
+###########################################
+#
+# All events in this file are country_event for global_event.
+#
+
+###################
+###  Constants  ###
+###################
+
+### No Events
+
+### Slow
+@CmtConstTerrorDays21 = 720 	## Attack to Security, Days from 1st Machiene World Appears
+@CmtConstTerrorRand21 = 270
+@CmtConstTerrorDays22 = 240 	## Security Breach
+@CmtConstTerrorRand22 = 120
+@CmtConstTerrorDays23 = 360 	## Synth Detection Project
+@CmtConstTerrorRand23 = 720
+
+### Vanilla
+@CmtConstTerrorDays31 = 345 	## Attack to Security, Days from 1st Machiene World Appears
+@CmtConstTerrorRand31 = 100
+@CmtConstTerrorDays32 = 120 	## Security Breach
+@CmtConstTerrorRand32 =   0
+@CmtConstTerrorDays33 = 200 	## Synth Detection Project
+@CmtConstTerrorRand33 = 200
+
+### Fast
+@CmtConstTerrorDays41 =  90 	## Attack to Security, Days from 1st Machiene World Appears
+@CmtConstTerrorRand41 =  30
+@CmtConstTerrorDays42 =  20 	## Security Breach
+@CmtConstTerrorRand42 =  20
+@CmtConstTerrorDays43 =  45 	## Synth Detection Project
+@CmtConstTerrorRand43 =  45
+
+### Foxhound
+@CmtConstTerrorDays51 =  10 	## Attack to Security, Days from 1st Machiene World Appears
+@CmtConstTerrorRand51 =   5
+@CmtConstTerrorDays52 =   3 	## Security Breach
+@CmtConstTerrorRand52 =   1
+@CmtConstTerrorDays53 =   3 	## Synth Detection Project
+@CmtConstTerrorRand53 =   3
+
+
+
+###############
+###  Event  ###
+###############
+
+### Redirect only
+country_event = {
+	id = CrisisManagerControl.3300
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { NOT = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 1 } } }
+			if = {
+				limit = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 2 } }
+				country_event = { id = CrisisManagerControl.3301 days = @CmtConstTerrorDays21 random = @CmtConstTerrorRand21 }
+			} else_if = {
+				limit = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 4 } }
+				country_event = { id = CrisisManagerControl.3301 days = @CmtConstTerrorDays41 random = @CmtConstTerrorRand41 }
+			} else_if = {
+				limit = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 5 } }
+				country_event = { id = CrisisManagerControl.3301 days = @CmtConstTerrorDays51 random = @CmtConstTerrorRand51 }
+			} else = { country_event = { id = CrisisManagerControl.3301 days = @CmtConstTerrorDays31 random = @CmtConstTerrorRand31 } }
+		}
+	}
+}
+
+### Attack to Security
+country_event = {
+	id = CrisisManagerControl.3301
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		CmtTriggerExistContingency = yes
+	}
+	
+	immediate = {
+		every_country = {
+			limit = { CmtTriggerIsPlayableEmpire = yes }
+			
+			### Notification Event
+			if = {
+				limit = { CmtTriggerContingencyOrganicCountry = yes }
+				country_event = { id = crisis.2085 }
+			}
+			if = {
+				limit = {
+					has_authority = auth_hive_mind
+					NOT = { has_global_flag = CmtFlagSynthTerrorAll }
+				}
+				country_event = { id = crisis.2086 }
+			}
+			if = {
+				limit = {
+					owner_species = { has_trait = trait_psionic }
+					NOT = { has_global_flag = CmtFlagSynthTerrorAll }
+				}
+				country_event = { id = crisis.2087 }
+			}
+			if = {
+				limit = { has_authority = auth_machine_intelligence }
+				country_event = { id = crisis.2313 }
+			}
+		}
+		
+		### Call Next Event
+		if = {
+			limit = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 2 } }
+			country_event = { id = CrisisManagerControl.3302 days = @CmtConstTerrorDays22 random = @CmtConstTerrorRand22 }
+		} else_if = {
+			limit = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 4 } }
+			country_event = { id = CrisisManagerControl.3302 days = @CmtConstTerrorDays42 random = @CmtConstTerrorRand42 }
+		} else_if = {
+			limit = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 5 } }
+			country_event = { id = CrisisManagerControl.3302 days = @CmtConstTerrorDays52 random = @CmtConstTerrorRand52 }
+		} else = { country_event = { id = CrisisManagerControl.3302 days = @CmtConstTerrorDays32 random = @CmtConstTerrorRand32 } }
+	}
+}
+
+### Security Breach
+country_event = {
+	id = CrisisManagerControl.3302
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		CmtTriggerExistContingency = yes
+	}
+	
+	immediate = {
+		every_country = {
+			limit = { CmtTriggerIsPlayableEmpire = yes }
+			
+			### Notification Event
+			if = {
+				limit = { CmtTriggerContingencyOrganicCountry = yes }
+				country_event = { id = crisis.2090 }
+			}
+			if = {
+				limit = { has_authority = auth_machine_intelligence }
+				country_event = { id = crisis.2314 }
+			}
+		}
+		
+		### Call Next Event
+		if = {
+			limit = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 2 } }
+			country_event = { id = CrisisManagerControl.3303 days = @CmtConstTerrorDays23 random = @CmtConstTerrorRand23 }
+		} else_if = {
+			limit = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 4 } }
+			country_event = { id = CrisisManagerControl.3303 days = @CmtConstTerrorDays43 random = @CmtConstTerrorRand43 }
+		} else_if = {
+			limit = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 5 } }
+			country_event = { id = CrisisManagerControl.3303 days = @CmtConstTerrorDays53 random = @CmtConstTerrorRand53 }
+		} else = { country_event = { id = CrisisManagerControl.3301 days = @CmtConstTerrorDays33 random = @CmtConstTerrorRand33 } }
+	}
+}
+
+### Synth Detection Project
+country_event = {
+	id = CrisisManagerControl.3303
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		CmtTriggerExistContingency = yes
+	}
+	
+	immediate = {
+		every_country = {
+			limit = { CmtTriggerContingencyOrganicCountry = yes }
+			country_event = { id = crisis.2202 }
+		}
+	}
+}
+
+
+
+

@@ -1,0 +1,150 @@
+
+########################################################
+########################################################
+#####                                              #####
+#####    Crisis Manager                            #####
+#####                                              #####
+#####    Scripted Effects for Creating Warships    #####
+#####                                              #####
+########################################################
+########################################################
+#
+# Information
+#	All script in this file require following scopes
+#	this: Affiliated fleet
+#	prev: Owner country
+#	prevprev: Location for creating fleets (e.g. planet)
+#
+
+###################
+###  Constants  ###
+###################
+
+
+
+##############
+###  Khan  ###
+##############
+
+CmtEffectCreateShip_Outrider = {
+	create_ship = {
+		name = random
+		design = "NAME_Outrider"
+		prefix = no
+		graphical_culture = "pirate_01"
+	}
+}
+
+CmtEffectCreateShip_Lancer = {
+	create_ship = {
+		name = random
+		design = "NAME_Lancer"
+		prefix = no
+		graphical_culture = "pirate_01"
+	}
+}
+
+CmtEffectCreateShip_VoidChampion = {
+	create_ship = {
+		name = random
+		design = "NAME_Void_Champion"
+		prefix = no
+		graphical_culture = "pirate_01"
+	}
+}
+
+CmtEffectCreateShip_AncestralGlory = {
+	create_ship = {
+		name = random
+		design = "NAME_Ancestral_Glory"
+		prefix = no
+		graphical_culture = "pirate_01"
+	}
+}
+
+CmtEffectCreateShip_KhanArmy = {
+	if = {
+		limit = {
+			prevprev.solar_system = { has_star_flag = marauder_capital_1 }
+			exists = event_target:CmtTargetSpecies_Marauder1
+		}
+		create_army_transport = {
+			ship_name = "NAME_Pirate_Transport"
+			graphical_culture = "mammalian_01"
+			army_type = "assault_army"
+			species = event_target:CmtTargetSpecies_Marauder1
+		}
+	} else_if = {
+		limit = {
+			prevprev.solar_system = { has_star_flag = marauder_capital_2 }
+			exists = event_target:CmtTargetSpecies_Marauder2
+		}
+		create_army_transport = {
+			ship_name = "NAME_Pirate_Transport"
+			graphical_culture = "mammalian_01"
+			army_type = "assault_army"
+			species = event_target:CmtTargetSpecies_Marauder2
+		}
+	} else_if = {
+		limit = {
+			prevprev.solar_system = { has_star_flag = marauder_capital_3 }
+			exists = event_target:CmtTargetSpecies_Marauder3
+		}
+		create_army_transport = {
+			ship_name = "NAME_Pirate_Transport"
+			graphical_culture = "mammalian_01"
+			army_type = "assault_army"
+			species = event_target:CmtTargetSpecies_Marauder3
+		}
+	} else = {
+		create_army_transport = {
+			ship_name = "NAME_Pirate_Transport"
+			graphical_culture = "mammalian_01"
+			army_type = "assault_army"
+			species = event_target:raider_khanate
+		}
+	}
+}
+
+
+
+#################
+###  Dessanu  ###
+#################
+
+CmtEffectCreateShip_DessanuMother = {
+	create_ship = {
+		name = random
+		design = "NAME_Dessanu_Mothership"
+	}
+}
+
+CmtEffectCreateShip_DessanuInterdictor = {
+	create_ship = {
+		name = random
+		design = "NAME_Dessanu_Interdictor"
+	}
+}
+
+
+
+#################
+###  Graygoo  ###
+#################
+
+CmtEffectCreateShip_GraygooMother = {
+	create_ship = {
+		name = random
+		design = "NAME_Nanite_Mothership"
+		graphical_culture = "pirate_01"
+	}
+}
+
+CmtEffectCreateShip_GraygooInterdictor = {
+	create_ship = {
+		name = random
+		design = "NAME_Nanite_Interdictor"
+		graphical_culture = "pirate_01"
+	}
+}
+

@@ -1,0 +1,117 @@
+
+######################################################
+######################################################
+#####                                            #####
+#####    Crisis Manager                          #####
+#####                                            #####
+#####    Global Constants for End-Game Crisis    #####
+#####                                            #####
+######################################################
+######################################################
+
+
+####################################
+###  Crisis Happens at Earliest  ###
+####################################
+#
+#	Change also localisation file and comment in template event file.
+#
+
+### Value
+@CmtConstTriggerEgpy_V0 = -999		## Anytime
+@CmtConstTriggerEgpy_V1 = -100
+@CmtConstTriggerEgpy_V2 = -75
+@CmtConstTriggerEgpy_V3 = -50
+@CmtConstTriggerEgpy_V4 = -25
+@CmtConstTriggerEgpy_V5 =   0
+@CmtConstTriggerEgpy_V6 =   25
+@CmtConstTriggerEgpy_V7 =   50
+@CmtConstTriggerEgpy_V8 =   75
+@CmtConstTriggerEgpy_V9 =  100
+
+### Threshold
+@CmtConstTriggerEgpy_T1 = -500
+@CmtConstTriggerEgpy_T2 =  -87.5
+@CmtConstTriggerEgpy_T3 =  -62.5
+@CmtConstTriggerEgpy_T4 =  -37.5
+@CmtConstTriggerEgpy_T5 =  -12.5
+@CmtConstTriggerEgpy_T6 =   12.5
+@CmtConstTriggerEgpy_T7 =   37.5
+@CmtConstTriggerEgpy_T8 =   67.5
+@CmtConstTriggerEgpy_T9 =   87.5
+@CmtConstTriggerEgpy_TA =  500		## Template Unique
+
+
+#########################
+###  Crisis Interval  ###
+#########################
+#
+#	Change also localisation file and comment in template event file.
+#
+
+### Value (Days := 360*Years - 8)
+@CmtConstCrisisInterval_D1 =  3592
+@CmtConstCrisisInterval_D2 =  8992
+@CmtConstCrisisInterval_D3 = 17992
+@CmtConstCrisisInterval_D4 = 26992
+@CmtConstCrisisInterval_D5 = 35992
+
+### Value (Years)
+@CmtConstCrisisInterval_V0 =   0
+@CmtConstCrisisInterval_V1 =  10
+@CmtConstCrisisInterval_V2 =  25
+@CmtConstCrisisInterval_V3 =  50
+@CmtConstCrisisInterval_V4 =  75
+@CmtConstCrisisInterval_V5 = 100
+
+### Threshold (Years)
+@CmtConstCrisisInterval_T0 =   7.5
+@CmtConstCrisisInterval_T1 =  12.5
+@CmtConstCrisisInterval_T2 =  37.5
+@CmtConstCrisisInterval_T3 =  67.5
+@CmtConstCrisisInterval_T4 =  87.5
+@CmtConstCrisisInterval_T5 = 500		## Template Unique
+
+
+
+#########################
+###  Unstable Portals  ###
+#########################
+
+### Value
+@CmtConstPortalStability_V1 =    1
+@CmtConstPortalStability_V2 =    3
+@CmtConstPortalStability_V3 =    5
+@CmtConstPortalStability_V4 =   10
+@CmtConstPortalStability_V5 =   25
+@CmtConstPortalStability_V6 =   50
+@CmtConstPortalStability_V7 =  100
+@CmtConstPortalStability_V8 =  250
+@CmtConstPortalStability_V9 =  500
+@CmtConstPortalStability_VA = 9999		## Always Unstable
+
+### Value - 1
+@CmtConstPortalStability_R1 =    0
+@CmtConstPortalStability_R2 =    2
+@CmtConstPortalStability_R3 =    4
+@CmtConstPortalStability_R4 =    9
+@CmtConstPortalStability_R5 =   24
+@CmtConstPortalStability_R6 =   49
+@CmtConstPortalStability_R7 =   99
+@CmtConstPortalStability_R8 =  249
+@CmtConstPortalStability_R9 =  499
+
+### Threshold
+@CmtConstPortalStability_T0 =   -0.5		## Template Unique
+@CmtConstPortalStability_T1 =    2
+@CmtConstPortalStability_T2 =    4
+@CmtConstPortalStability_T3 =    7.5
+@CmtConstPortalStability_T4 =   17.5
+@CmtConstPortalStability_T5 =   37.5
+@CmtConstPortalStability_T6 =   75
+@CmtConstPortalStability_T7 =  175
+@CmtConstPortalStability_T8 =  375
+@CmtConstPortalStability_T9 = 8000
+
+
+

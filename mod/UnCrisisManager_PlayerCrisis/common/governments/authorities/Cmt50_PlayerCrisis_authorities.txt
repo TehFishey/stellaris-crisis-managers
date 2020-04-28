@@ -1,0 +1,29 @@
+
+###############################################
+###############################################
+#####                                     #####
+#####    Crisis Manager                   #####
+#####                                     #####
+#####    Authorities for Player Crisis    #####
+#####                                     #####
+###############################################
+###############################################
+
+
+
+auth_CmtPlayerCrisisNull = {
+	has_heir = no
+	election_type = none
+	has_factions = no
+	can_reform = yes
+	
+	potential = { country_type = { value = CmtCountryIiquidated } }
+	possible = { always = yes }
+	#random_weight = { value = 0 }
+	
+	traits = {}
+	country_modifier = {}
+	tags = {}
+	
+	icon = "gfx/interface/icons/governments/authorities/unknown.dds"
+}

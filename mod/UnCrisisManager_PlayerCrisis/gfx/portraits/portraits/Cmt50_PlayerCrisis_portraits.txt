@@ -1,0 +1,43 @@
+
+################################################
+################################################
+#####                                      #####
+#####    Crisis Manager                    #####
+#####                                      #####
+#####    Portraits(?) for Player Crisis    #####
+#####                                      #####
+################################################
+################################################
+
+character = {
+	icon = {
+		orientation = lower_right
+		position = { x = 0 y = 0 }
+		scale = 1.0
+	}
+}
+
+portraits = {
+	CmtTexturePlayerCrisisNullSpcies = { texturefile = "gfx/interface/transp.dds" }
+}
+
+portrait_groups = {
+	CmtPortraitPlayerCrisisNull = {
+		default = CmtTexturePlayerCrisisNullSpcies			#icon class
+		game_setup = { #ruler portraits
+			add = { portraits = { CmtTexturePlayerCrisisNullSpcies } }
+		}
+		species = { #generic portrait for a species
+			add = { portraits = { CmtTexturePlayerCrisisNullSpcies } }
+		}
+		pop = {
+			add = { portraits = { CmtTexturePlayerCrisisNullSpcies } }
+		}
+		leader = {
+			add = { portraits = { CmtTexturePlayerCrisisNullSpcies } }
+		}
+		ruler = {
+			add = { portraits = { CmtTexturePlayerCrisisNullSpcies } }
+		}
+	}
+}

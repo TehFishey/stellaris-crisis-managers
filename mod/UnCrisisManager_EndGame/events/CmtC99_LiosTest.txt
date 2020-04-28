@@ -1,0 +1,25 @@
+namespace = CrisisManagerControl
+
+####################################################
+####################################################
+#####                                          #####
+#####    Crisis Manager                        #####
+#####    Debug Event for Compatibility Test    #####
+#####                                          #####
+#####    Check if FIOS or LIOS                 #####
+#####                                          #####
+####################################################
+####################################################
+
+country_event = {
+	id = CrisisManagerControl.9011
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		event_target:CmtGlobalVar = {
+			set_variable = { which = CmtVarFiosLios value = 20 }
+			CmtEffectFiosLiosTest = yes
+		}
+	}
+}

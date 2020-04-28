@@ -1,0 +1,62 @@
+
+#########################################
+#########################################
+#####                               #####
+#####    Crisis Manager             #####
+#####                               #####
+#####    on_actions for End-Game    #####
+#####                               #####
+#########################################
+#########################################
+
+
+on_monthly_pulse = {
+	events = {
+		CrisisManagerControl.0044		## Auxiliary Process for Purging
+		CrisisManagerControl.0400		## Sound Control
+	}
+}
+
+on_yearly_pulse = {
+	events = {
+		crisis.206		## Reinforcement of Prethoryn
+	}
+}
+
+# This = owner of destroyed ship, From = owner of combatant ship, FromFrom = destroyed ship, FromFromFrom = combatant ship
+on_ship_destroyed_victim = {
+	events = {
+		CrisisManagerControl.4111		## Defeat of FEoC
+	}
+}
+
+# This = destroyed country, From = destroying country
+on_country_destroyed = {
+	events = {
+		CrisisManagerControl.0310		## Post-Crisis Process
+		CrisisManagerControl.0320		## DEAD END (All empires are destroyed)
+		CrisisManagerControl.0430		## Crisis Sound Control
+	}
+}
+
+# This = country (attacker), From = country (planet owner), FromFrom = planet
+on_planet_attackers_win = {
+	events = {
+		CrisisManagerControl.0041		## Occupy Planets by Army
+	}
+}
+
+# This = Planet, From = Bombarder(country)
+on_planet_bombarded = {
+	events = {
+		CrisisManagerControl.0042		## Occupy Planets by Orbital Bombardment
+	}
+}
+
+# This = Planet, From = Country, FromFrom = Pop
+on_pop_purged = {
+	events = {
+		CrisisManagerControl.0043		## Purge by Exds Complete
+	}
+}
+

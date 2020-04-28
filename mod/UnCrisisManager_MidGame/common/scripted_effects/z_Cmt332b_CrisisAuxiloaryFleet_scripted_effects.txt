@@ -1,0 +1,60 @@
+
+###################################################################
+###################################################################
+#####                                                         #####
+#####    Crisis Manager                                       #####
+#####                                                         #####
+#####    Scripted Effects for Creating Auxiliary Fleets       #####
+#####    of Mid-Game Crises (Army, Constructor, Colonizer)    #####
+#####                                                         #####
+###################################################################
+###################################################################
+#
+# Information
+#	All script in this file require following scopes
+#	this: Owner country
+#	prev: Location for creating fleets (e.g. planet)
+#
+
+
+
+###################
+###  Constants  ###
+###################
+
+
+##############
+###  Khan  ###
+##############
+
+CmtEffectCreateFleet_KhanArmy = {
+	CmtEffectCreateGeneral_Marauder = yes
+	create_fleet = {
+		effect = {
+			set_owner = prev
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarArmyPower_Khan } }
+			
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+				while = { count = 5 CmtEffectCreateShip_KhanArmy = yes }
+			}
+			CmtFleetSetAuxParam_KhanAuxiliary = yes
+		}
+	}
+	last_created_army = { assign_leader = last_created_leader }
+}
+
+CmtEffectCreateFleet_KhanConstructor = {
+	event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarConstructorNumber_Khan } }
+	while = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
+		event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -1 } }
+		CmtEffectCreateShip_KhanConstructor = yes
+	}
+	while = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
+		event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
+		random_list = { 100 = { CmtEffectCreateShip_KhanConstructor = yes } 300 = { } }
+	}
+}

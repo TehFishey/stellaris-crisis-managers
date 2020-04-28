@@ -1,0 +1,177 @@
+
+###########################################
+###########################################
+#####                                 #####
+#####    Crisis Manager               #####
+#####                                 #####
+#####    Scripted Effects for Khan    #####
+#####                                 #####
+###########################################
+###########################################
+
+
+###################
+###  Constants  ###
+###################
+
+
+### Reinforcement Cycle of Khan Fleets on Capital
+@CmtConstReinforceCycle_Khan1a =  1.0		## if disabled or x > Ta
+@CmtConstReinforceCycle_Khan2a =  1.0		## if x < Ta
+@CmtConstReinforceCycle_Khan2b =  1.2		## if x < Tb
+@CmtConstReinforceCycle_Khan2c =  1.6		## if x < Tc
+@CmtConstReinforceCycle_Khan2d =  2.0		## if x < Td
+@CmtConstReinforceCycle_Khan3a =  1.7		## if x < Ta
+@CmtConstReinforceCycle_Khan3b =  2.8		## if x < Tb
+@CmtConstReinforceCycle_Khan3c =  3.9		## if x < Tc
+@CmtConstReinforceCycle_Khan3d =  5.0		## if x < Td
+@CmtConstReinforceCycle_Khan4a =  2.5		## if x < Ta
+@CmtConstReinforceCycle_Khan4b =  5.0		## if x < Tb
+@CmtConstReinforceCycle_Khan4c =  7.5		## if x < Tc
+@CmtConstReinforceCycle_Khan4d = 10.0 		## if x < Td
+
+### Threshold Navy Sizes for Reinforcement Cycle
+#CmtConstReinforceCycle_KhanT0 = 386		## Standard, Never Change
+@CmtConstReinforceCycle_KhanTa = 309
+@CmtConstReinforceCycle_KhanTb = 232
+@CmtConstReinforceCycle_KhanTc = 154
+@CmtConstReinforceCycle_KhanTd =  77
+
+### cf,
+#	Flags   	: { 18, 12,  6, 1} =  74
+#	Standard	: { 16,  8,  6, 1} =  64 (x 3)
+#	Mercenary 1	: { 16,  8,  6, 0} =  56
+#	Mercenary 2	: { 12,  6,  4, 0} =  40
+#	Mercenary 3	: {  8,  4,  2, 0} =  24
+#	Encourager	: { 22, 14,  8, 0} =  82
+#	Encourager 5: { 36, 28, 18, 2} = 180
+#	Encourager 4: { 26, 18, 12, 1} =  94
+#	Encourager 3: { 22, 12,  8, 1} =  86
+#	Encourager 2: { 16,  8,  6, 1} =  64
+#	Encourager 1: { 10,  4,  2, 0} =  26
+#	----------------------------------
+#	Initial 	: {102, 54, 36, 4} = 386
+#	Reinforce 1	: { 16,  8,  6, 1} =  64
+#	Encourager	: { 22, 14,  8, 0} =  82
+#	Reinforce 2	: {  -,  -,  -, -} =  26 - 180
+#
+
+
+#################
+###  Scripts  ###
+#################
+
+CmtEffectKhanReinforceOnCapital = {		## Scope: root = Country (Khan)
+	event_target:CmtGlobalVar = {
+		if = {
+			limit = { check_variable = { which = CmtVarKhanMultiple value = 5 } }
+			root = {
+				every_planet_within_border = {
+					limit = { has_planet_flag = CmtFlagMarauderExpRallyPoint }
+					CmtEffectCreateAdmiralty_KhanReinforcement = yes
+				}
+			}
+		} else_if = {
+			limit = {
+				exists = event_target:marauder_rally_point.solar_system.owner
+				event_target:marauder_rally_point.solar_system.owner = { is_same_value = root }
+			}
+			event_target:marauder_rally_point = { CmtEffectCreateAdmiralty_KhanReinforcement = yes }
+		}
+	}
+}
+
+CmtEffectKhanIncreasementReinforcementCycle = {		## Scope: this = Strage of Variable, prev = Country (Khan)
+	### Get Current Navy Size
+	event_target:CmtGlobalVar = {
+		set_variable = { which = CmtVarTemp value = 0 }
+		prevprev = {
+			every_owned_ship = {
+				limit = { is_ship_class = shipclass_military }
+				switch = {
+					trigger = is_ship_size
+					marauder_corvette = { event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = 1 } } }
+					marauder_destroyer = { event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = 2 } } }
+					marauder_cruiser = { event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = 4 } } }
+					marauder_galleon = { event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = 8 } } }
+					default = { event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = 2 } } }
+				}
+			}
+		}
+		if = {
+			limit = { check_variable = { which = CmtVarFleetPower_Khan value > 0.125 } }
+			divide_variable = { which = CmtVarTemp value = CmtVarFleetPower_Khan }
+		}
+		if = {
+			limit = { check_variable = { which = CmtVarCombatFleetNumber_Khan value > 0.125 } }
+			divide_variable = { which = CmtVarTemp value = CmtVarCombatFleetNumber_Khan }
+		}
+		if = {
+			limit = {
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanMultiple value = 5 } }
+				prevprev = { any_planet_within_border = { has_planet_flag = CmtFlagMarauderExpRallyPoint } }
+			}
+			set_variable = { which = CmtVarWhileControlFleet value = 0 }
+			prevprev = {
+				every_planet_within_border = {
+					limit = { has_planet_flag = CmtFlagMarauderExpRallyPoint }
+					change_variable = { which = CmtVarWhileControlFleet value = 1 }		## Appropriation of Variable
+				}
+			}
+			if = {
+				limit = { check_variable = { which = CmtVarWhileControlFleet value > 0.75 } }
+				divide_variable = { which = CmtVarTemp value = CmtVarWhileControlFleet }
+			}
+		}		## Current: CmtVarTemp = regularized military ship number of Khan
+		
+		### Increment of Counter, Call Next Cycle
+		if = {
+			limit = { check_variable = { which = CmtVarReinforceCycle_Khan value = 2 } }
+			if = {
+				limit = { check_variable = { which = CmtVarTemp value < @CmtConstReinforceCycle_KhanTd } }
+				prev = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan2d } }
+			} else_if = {
+				limit = { check_variable = { which = CmtVarTemp value < @CmtConstReinforceCycle_KhanTc } }
+				prev = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan2c } }
+			} else_if = {
+				limit = { check_variable = { which = CmtVarTemp value < @CmtConstReinforceCycle_KhanTb } }
+				prev = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan2b } }
+			} else_if = {
+				limit = { check_variable = { which = CmtVarTemp value < @CmtConstReinforceCycle_KhanTa } }
+				prev = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan2a } }
+			} else = { prev = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan1a } } }
+		} else_if = {
+			limit = { check_variable = { which = CmtVarReinforceCycle_Khan value = 3 } }
+			if = {
+				limit = { check_variable = { which = CmtVarTemp value < @CmtConstReinforceCycle_KhanTd } }
+				prev = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan3d } }
+			} else_if = {
+				limit = { check_variable = { which = CmtVarTemp value < @CmtConstReinforceCycle_KhanTc } }
+				prev = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan3c } }
+			} else_if = {
+				limit = { check_variable = { which = CmtVarTemp value < @CmtConstReinforceCycle_KhanTb } }
+				prev = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan3b } }
+			} else_if = {
+				limit = { check_variable = { which = CmtVarTemp value < @CmtConstReinforceCycle_KhanTa } }
+				prev = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan3a } }
+			} else = { prev = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan1a } } }
+		} else_if = {
+			limit = { check_variable = { which = CmtVarReinforceCycle_Khan value = 4 } }
+			if = {
+				limit = { check_variable = { which = CmtVarTemp value < @CmtConstReinforceCycle_KhanTd } }
+				prev = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan4d } }
+			} else_if = {
+				limit = { check_variable = { which = CmtVarTemp value < @CmtConstReinforceCycle_KhanTc } }
+				prev = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan4c } }
+			} else_if = {
+				limit = { check_variable = { which = CmtVarTemp value < @CmtConstReinforceCycle_KhanTb } }
+				prev = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan4b } }
+			} else_if = {
+				limit = { check_variable = { which = CmtVarTemp value < @CmtConstReinforceCycle_KhanTa } }
+				prev = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan4a } }
+			} else = { prev = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan1a } } }
+		} else = { prev = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan1a } } }
+	}
+			#log = "Cycle = [This.GetValue.CmtVarKhanReinforcementCounter], Ships = [CmtGlobalVar.GetValue.CmtVarTemp], This = [This.GetName]"
+}
+

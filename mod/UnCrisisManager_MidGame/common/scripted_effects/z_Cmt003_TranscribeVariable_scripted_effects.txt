@@ -1,0 +1,177 @@
+
+#####################################
+#####################################
+#####                           #####
+#####    Scripted Effect        #####
+#####                           #####
+#####    Transcribe Variable    #####
+#####                           #####
+#####################################
+#####################################
+
+
+################
+###  Common  ###
+################
+
+CmtEffectTransferAll = {
+	CmtEffectTransferCrisisPower = yes
+	CmtEffectTransferKhanPostDeath = yes
+	CmtEffectTransferLgateCycle = yes
+	CmtEffectTransferUprisingVariables = yes
+}
+
+
+
+##############
+###  Khan  ###
+##############
+
+### Resurgence of Khan (Transcribe when they awakening)
+CmtEffectTransferKhanRemainingLive = {		### Scope: root = Awakened Khan Country
+	event_target:CmtGlobalVar = {
+		if = {
+			limit = { check_variable = { which = CmtVarKhanResurgence value < -0.5 } }
+			root = { set_variable = { which = CmtVarKhanRemainingLive value = -1 } }
+		} else = {
+			set_variable = { which = CmtVarTemp value = CmtVarKhanResurgence }
+			root = { set_variable = { which = CmtVarKhanRemainingLive value = 0 } }
+			while = {
+				limit = { check_variable = { which = CmtVarTemp value > 0.5 } }
+				change_variable = { which = CmtVarTemp value = -1 }
+				root = { change_variable = { which = CmtVarKhanRemainingLive value = 1 } }
+			}
+			set_variable = { which = CmtVarTemp value = 0 }
+		}
+	}
+}
+
+### Future of Horde
+CmtEffectTransferKhanPostDeath = {
+	event_target:CmtGlobalVar = {
+		if = {
+			limit = { check_variable = { which = CmtVarKhanPostDeathSummary value = 2 } }
+			set_variable = { which = CmtVarKhanPostDeathDemocratic value = 3 }
+			set_variable = { which = CmtVarKhanPostDeathSplinter value = 1 }
+			set_variable = { which = CmtVarKhanPostDeathKhanate value = 1 }
+		} else_if = {
+			limit = { check_variable = { which = CmtVarKhanPostDeathSummary value = 3 } }
+			set_variable = { which = CmtVarKhanPostDeathDemocratic value = 3 }
+			set_variable = { which = CmtVarKhanPostDeathSplinter value = 1 }
+			set_variable = { which = CmtVarKhanPostDeathKhanate value = 3 }
+		} else_if = {
+			limit = { check_variable = { which = CmtVarKhanPostDeathSummary value = 4 } }
+			set_variable = { which = CmtVarKhanPostDeathDemocratic value = 0 }
+			set_variable = { which = CmtVarKhanPostDeathSplinter value = 0 }
+			set_variable = { which = CmtVarKhanPostDeathKhanate value = 3 }
+		} else_if = {
+			limit = { check_variable = { which = CmtVarKhanPostDeathSummary value = 5 } }
+			set_variable = { which = CmtVarKhanPostDeathDemocratic value = 0 }
+			set_variable = { which = CmtVarKhanPostDeathSplinter value = 4 }
+			set_variable = { which = CmtVarKhanPostDeathKhanate value = 1 }
+		} else_if = {
+			limit = { check_variable = { which = CmtVarKhanPostDeathSummary value = 6 } }
+			set_variable = { which = CmtVarKhanPostDeathDemocratic value = 0 }
+			set_variable = { which = CmtVarKhanPostDeathSplinter value = 3 }
+			set_variable = { which = CmtVarKhanPostDeathKhanate value = 0 }
+		} else = {
+			set_variable = { which = CmtVarKhanPostDeathDemocratic value = 2 }
+			set_variable = { which = CmtVarKhanPostDeathSplinter value = 4 }
+			set_variable = { which = CmtVarKhanPostDeathKhanate value = 2 }
+		}
+	}
+}
+
+
+
+################
+###  L-Gate  ###
+################
+
+CmtEffectTransferLgateCycle = {
+	event_target:CmtGlobalVar = {
+		if = {
+			limit = { check_variable = { which = CmtVarLgateCycleCommon value = 1 } }
+			set_variable = { which = CmtVarLgateCycleSilence value = 1 }
+			set_variable = { which = CmtVarLgateCycleLdrake value = 1 }
+			set_variable = { which = CmtVarLgateCycleDessanu value = 1 }
+			set_variable = { which = CmtVarLgateCycleGraygoo value = 1 }
+		} else_if = {
+			limit = { check_variable = { which = CmtVarLgateCycleCommon value = 2 } }
+			set_variable = { which = CmtVarLgateCycleSilence value = 3 }
+			set_variable = { which = CmtVarLgateCycleLdrake value = 3 }
+			set_variable = { which = CmtVarLgateCycleDessanu value = 4 }
+			set_variable = { which = CmtVarLgateCycleGraygoo value = 4 }
+		} else_if = {
+			limit = { check_variable = { which = CmtVarLgateCycleCommon value = 4 } }
+			set_variable = { which = CmtVarLgateCycleSilence value = 5 }
+			set_variable = { which = CmtVarLgateCycleLdrake value = 5 }
+			set_variable = { which = CmtVarLgateCycleDessanu value = 5 }
+			set_variable = { which = CmtVarLgateCycleGraygoo value = 5 }
+		} else_if = {
+			limit = { NOT = { check_variable = { which = CmtVarLgateCycleCommon value = -1 } } }
+			set_variable = { which = CmtVarLgateCycleSilence value = 4 }
+			set_variable = { which = CmtVarLgateCycleLdrake value = 5 }
+			set_variable = { which = CmtVarLgateCycleDessanu value = 5 }
+			set_variable = { which = CmtVarLgateCycleGraygoo value = 5 }
+		}
+	}
+}
+
+
+
+##################
+###  Uprising  ###
+##################
+
+CmtEffectTransferUprisingVariables = {
+	event_target:CmtGlobalVar = {
+		set_variable = { which = CmtVarUprisingPreludeCycle value = CmtVarUprisingMtth }
+		
+		if = {
+			limit = { check_variable = { which = CmtVarUprisingUnwarned value = 3 } }
+			set_variable = { which = CmtVarUprisingWarProbability value = 5 }
+		}
+		
+		if = {
+			limit = { check_variable = { which = CmtVarUprisingWarProbability value = 1 } }
+			set_variable = { which = CmtVarUprisingHotfixProbability value = 5 }
+		} else_if = {
+			limit = { check_variable = { which = CmtVarUprisingWarProbability value = 2 } }
+			set_variable = { which = CmtVarUprisingHotfixProbability value = 4 }
+		} else_if = {
+			limit = { check_variable = { which = CmtVarUprisingWarProbability value = 4 } }
+			set_variable = { which = CmtVarUprisingHotfixProbability value = 2 }
+		} else_if = {
+			limit = { check_variable = { which = CmtVarUprisingWarProbability value = 5 } }
+			set_variable = { which = CmtVarUprisingHotfixProbability value = 1 }
+		} else = { set_variable = { which = CmtVarUprisingHotfixProbability value = 3 } }
+		
+		if = {
+			limit = { has_global_flag = CmtFlagUprisingForbidSynthetic }
+			remove_global_flag = CmtFlagUprisingAllowDroid
+		}
+	}
+}
+
+
+
+######################
+###  Crisis Power  ###
+######################
+
+CmtEffectTransferCrisisPower = {
+	event_target:CmtGlobalVar = {
+		set_variable = { which = CmtVarColonizerNumber_Prethoryn value = CmtVarConstructorNumber_Prethoryn }
+		if = {
+			limit = { check_variable = { which = CmtVarColonizerNumber_Prethoryn value > 1.375 } }
+			change_variable = { which = CmtVarColonizerNumber_Prethoryn value = -1 }
+			multiply_variable = { which = CmtVarColonizerNumber_Prethoryn value = 0.5 }
+			change_variable = { which = CmtVarColonizerNumber_Prethoryn value = 1 }
+		}
+		### y = 1 + (x - 1) / 2		if x >= 1.5
+	}
+}
+
+
+

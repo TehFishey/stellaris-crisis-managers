@@ -1,0 +1,64 @@
+
+##############################################
+##############################################
+#####                                    #####
+#####    Crisis Manager                  #####
+#####                                    #####
+#####    on_actions for Player Crisis    #####
+#####                                    #####
+##############################################
+##############################################
+
+### Scope: none
+on_monthly_pulse = {
+	events = {
+		CrisisManagerControl.0521		## Join War as Defender
+		CrisisManagerControl.0550		## Backup for End of Galaxy
+	}
+}
+
+### Scope: none
+on_yearly_pulse = {
+	events = {
+		CrisisManagerControl.0555		## Backup for End Process of All Existences
+	}
+}
+
+### Scope: this = Destroyer (country), from = Victim (country), fromfrom = Destroyer (fleet), fromfromfrom = Victim (fleet)
+on_fleet_destroyed_perp = {
+	events = {
+		CrisisManagerControl.0553		## Flag Control for End Process of All Existences
+	}
+}
+
+### Scope: this = Planet, from = Bombarder (country)
+on_planet_bombarded = {
+	events = {
+		CrisisManagerControl.0531		## Change to Tomb
+					#CrisisManagerControl.0535		## Legacy: Destroy Planetary Shield Generator, etc.
+	}
+}
+
+### Scope: this = Planet, from = Bombarder (country)
+on_planet_zero_pops = {
+	events = {
+		CrisisManagerControl.0532		## Change to Toxic
+		CrisisManagerControl.0554		## Flag Control for End Process of All Existences
+	}
+}
+
+### Scope: this = Attacker (country), from = Victim (country), fromfrom = planet
+on_planet_attackers_win = {
+	events = {
+		CrisisManagerControl.0553		## Flag Control for End Process of All Existences
+	}
+}
+
+### Scope: this = Country (Destroyed), from = Country (Destroyer)
+on_country_destroyed = {
+	events = {
+		CrisisManagerControl.0540		## End of Crisis
+		CrisisManagerControl.0551		## End of Galaxy Lv.1
+		CrisisManagerControl.0563		## End of Galaxy Lv.3
+	}
+}

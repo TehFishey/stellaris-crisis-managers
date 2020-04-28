@@ -1,0 +1,172 @@
+
+###############################################
+###############################################
+#####                                     #####
+#####    Crisis Manager                   #####
+#####                                     #####
+#####    Scripted Effects to              #####
+#####    Create Other Fleets and Bases    #####
+#####    of End-Game Crises               #####
+#####                                     #####
+###############################################
+###############################################
+#
+# Information
+#	
+#
+
+###################
+###  Constants  ###
+###################
+
+
+
+###################
+###  Prethoryn  ###
+###################
+
+
+
+###################
+###  Sentinels  ###
+###################
+
+
+###########################
+###  Extradimensionals  ###
+###########################
+
+
+#####################
+###  Contingency  ###
+#####################
+
+## for only crisis.2025-2028
+CmtEffectCreateContingencyCore = {
+	create_fleet = {
+		name = "NAME_AI_Core"
+		effect = {
+			set_owner = event_target:AI_crisis
+			create_ship = {
+				name = random
+				design = "NAME_AI_Core"
+				graphical_culture = "ai_01"
+			}
+			set_location = {
+				target = root
+				distance = 10
+				angle = random
+			}
+		}
+	}
+}
+
+################
+###  Cybrex  ###
+################
+
+
+################
+###  Shroud  ###
+################
+
+CmtEffectCreateShroudManifestation = {
+	create_fleet = {
+		name = NAME_Shroud_Manifestation
+		settings = {
+			spawn_debris = no
+			is_boss = yes
+		}
+		effect = {
+			set_owner = event_target:shroud_country
+			
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_ForcedEoc } }
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.875 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -1 } }
+				create_ship = {
+					name = NAME_Fragment
+					design = NAME_Shroud_Manifestation
+				}
+			}
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+				random_list = {
+					100 = {
+						create_ship = {
+							name = NAME_Fragment
+							design = NAME_Shroud_Manifestation
+						}
+					}
+					300 = { }
+				}
+			}
+			
+			set_location = prev
+			set_fleet_stance = aggressive
+			set_aggro_range_measure_from = return_point
+			set_aggro_range = 3000
+		}
+	}
+}
+
+CmtEffectCreateShroudTheEnd = {
+	create_fleet = {
+		name = NAME_The_End
+		settings = {
+			spawn_debris = no
+			ai_ignore_strength = yes
+			is_boss = yes
+		}
+		effect = {
+			save_global_event_target_as = the_end_of_the_cycle
+			set_name = NAME_Absorbed_XXX		## Absorbed [Root.GetSpeciesNamePlural]
+			set_owner = event_target:shroud_country
+			create_ship = {
+				name = NAME_Reckoning
+				design = NAME_Warped_Consciousness
+			}
+			set_location = event_target:former_capital
+			set_fleet_stance = aggressive
+			set_aggro_range_measure_from = return_point
+			set_aggro_range = 3000
+			
+			if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEndPower value <   4 } } }
+				add_modifier = { modifier = absorbed_consciousness_1 days = -1 }
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEndPower value <   9 } } }
+				add_modifier = { modifier = absorbed_consciousness_2 days = -1 }
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEndPower value <  16 } } }
+				add_modifier = { modifier = absorbed_consciousness_3 days = -1 }
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEndPower value <  25 } } }
+				add_modifier = { modifier = absorbed_consciousness_4 days = -1 }
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEndPower value <  36 } } }
+				add_modifier = { modifier = absorbed_consciousness_5 days = -1 }
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEndPower value <  49 } } }
+				add_modifier = { modifier = CmtModifierAbsorvedConsciousness_6 days = -1 }
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEndPower value <  64 } } }
+				add_modifier = { modifier = CmtModifierAbsorvedConsciousness_7 days = -1 }
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEndPower value <  81 } } }
+				add_modifier = { modifier = CmtModifierAbsorvedConsciousness_8 days = -1 }
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEndPower value < 100 } } }
+				add_modifier = { modifier = CmtModifierAbsorvedConsciousness_9 days = -1 }
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEndPower value < 121 } } }
+				add_modifier = { modifier = CmtModifierAbsorvedConsciousness_A days = -1 }
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEndPower value < 144 } } }
+				add_modifier = { modifier = CmtModifierAbsorvedConsciousness_B days = -1 }
+			} else = { add_modifier = { modifier = CmtModifierAbsorvedConsciousness_C days = -1 } }
+		}
+	}
+}
+

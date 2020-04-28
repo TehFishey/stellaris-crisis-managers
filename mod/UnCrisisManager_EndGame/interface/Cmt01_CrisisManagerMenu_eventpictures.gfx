@@ -1,0 +1,19 @@
+
+##################################################
+##################################################
+#####                                        #####
+#####    Event Picture for Crisis Manager    #####
+#####                                        #####
+##################################################
+##################################################
+
+spriteTypes = {
+	
+	spriteType = {
+		name = GFX_evt_CmtMenuA
+		texturefile = "gfx/event_pictures/synth_sabotage.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+
+}

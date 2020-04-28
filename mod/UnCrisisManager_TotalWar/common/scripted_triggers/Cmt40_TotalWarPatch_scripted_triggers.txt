@@ -1,0 +1,85 @@
+
+
+#######################################################
+#######################################################
+#####                                             #####
+#####    Crisis Manager                           #####
+#####                                             #####
+#####    Scripted Triggers for Total War Pack     #####
+#####                                             #####
+#######################################################
+#######################################################
+
+### List of Country Types
+
+CmtTriggerIsPlayableEmpire = {		## Written in also Cmt00 and Cmt50
+	is_country_type = default
+}
+
+CmtTriggerIsStandardStarbaseCountry = {
+	OR = {
+		CmtTriggerIsPlayableEmpire = yes
+		is_country_type = fallen_empire
+		is_country_type = awakened_fallen_empire
+		is_country_type = dormant_marauders		## Exceptional Classification
+	}
+}
+
+CmtTriggerIsCrisisStarbaseCountry = {
+	OR = {
+		is_country_type = swarm
+		is_country_type = extradimensional
+		is_country_type = extradimensional_2
+		is_country_type = extradimensional_3
+		is_country_type = ai_empire
+		is_country_type = awakened_marauders
+		is_country_type = gate_builders
+	}
+}
+
+CmtTriggerIsCrisisKillerCountry = {
+	OR = {
+		is_country_type = sentinels
+		is_country_type = cybrex_empire
+	}
+}
+
+
+
+### Group of List
+
+CmtTriggerIsTotalWarCountry = {
+	OR = {
+		CmtTriggerIsCrisisStarbaseCountry = yes
+		CmtTriggerIsCrisisKillerCountry = yes
+	}
+}
+
+
+CmtTriggerIsStarbaseCountry = {
+	OR = {
+		CmtTriggerIsCrisisStarbaseCountry = yes
+		CmtTriggerIsStandardStarbaseCountry = yes
+	}
+}
+
+
+
+### For Locking/Unlocking Starbase, Scope: this = fleet, root = N/A (country/starbase)
+
+CmtTriggerStarbaseShouldLocked = {
+	solar_system = {
+		any_ship_in_system = {
+			NOR = {
+				owner = { is_same_value = prevprevprev.owner }
+				is_ship_class = shipclass_starbase
+				is_ship_class = shipclass_military_station
+				is_ship_class = shipclass_science_ship
+				is_ship_class = shipclass_constructor
+				is_ship_class = shipclass_colonizer
+			}
+			is_in_combat = yes
+		}
+	}
+}
+

@@ -1,0 +1,2737 @@
+
+######################################################
+######################################################
+#####                                            #####
+#####    Crisis Manager                          #####
+#####                                            #####
+#####    Scripted Localisations for Templates    #####
+#####                                            #####
+######################################################
+######################################################
+
+
+##########################
+###  Description Text  ###
+##########################
+
+defined_text = {
+	name = GetName_CmtTemplateDescEndGame
+	text = {
+		trigger = { has_global_flag = CmtFlagEndGameEdition }
+		localization_key = CmtDescTemplateInfoEndGame
+	}
+	text = {
+		trigger = { NOT = { has_global_flag = CmtFlagEndGameEdition } }
+		localization_key = CmtDescTemplateInfoNull
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplateDescMidGame
+	text = {
+		trigger = { has_global_flag = CmtFlagMidGameEdition }
+		localization_key = CmtDescTemplateInfoMidGame
+	}
+	text = {
+		trigger = { NOT = { has_global_flag = CmtFlagMidGameEdition } }
+		localization_key = CmtDescTemplateInfoNull
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplateDescSleeper
+	text = {
+		trigger = { has_global_flag = CmtFlagSleeperEdition }
+		localization_key = CmtDescTemplateInfoSleeper
+	}
+	text = {
+		trigger = { NOT = { has_global_flag = CmtFlagSleeperEdition } }
+		localization_key = CmtDescTemplateInfoNull
+	}
+}
+
+
+########################
+###  Event Template  ###
+########################
+defined_text = {
+	name = GetName_CmtTemplateEvent_T101
+	text = {
+		trigger = {
+			always = @CmtT101_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT101_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT101_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_EMS
+	}
+	text = {
+		trigger = {
+			always = @CmtT101_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT101_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT101_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT101_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT101_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT101_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_E_S
+	}
+	text = {
+		trigger = {
+			always = @CmtT101_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT101_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT101_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT101_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT101_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT101_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent__MS
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT101_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT101_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT101_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT101_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT101_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT101_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent___S
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT101_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT101_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT101_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplateEvent_T102
+	text = {
+		trigger = {
+			always = @CmtT102_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT102_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT102_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_EMS
+	}
+	text = {
+		trigger = {
+			always = @CmtT102_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT102_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT102_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT102_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT102_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT102_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_E_S
+	}
+	text = {
+		trigger = {
+			always = @CmtT102_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT102_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT102_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT102_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT102_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT102_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent__MS
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT102_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT102_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT102_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT102_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT102_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT102_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent___S
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT102_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT102_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT102_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplateEvent_T103
+	text = {
+		trigger = {
+			always = @CmtT103_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT103_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT103_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_EMS
+	}
+	text = {
+		trigger = {
+			always = @CmtT103_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT103_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT103_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT103_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT103_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT103_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_E_S
+	}
+	text = {
+		trigger = {
+			always = @CmtT103_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT103_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT103_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT103_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT103_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT103_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent__MS
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT103_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT103_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT103_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT103_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT103_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT103_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent___S
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT103_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT103_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT103_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplateEvent_T104
+	text = {
+		trigger = {
+			always = @CmtT104_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT104_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT104_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_EMS
+	}
+	text = {
+		trigger = {
+			always = @CmtT104_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT104_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT104_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT104_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT104_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT104_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_E_S
+	}
+	text = {
+		trigger = {
+			always = @CmtT104_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT104_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT104_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT104_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT104_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT104_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent__MS
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT104_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT104_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT104_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT104_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT104_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT104_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent___S
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT104_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT104_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT104_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplateEvent_T105
+	text = {
+		trigger = {
+			always = @CmtT105_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT105_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT105_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_EMS
+	}
+	text = {
+		trigger = {
+			always = @CmtT105_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT105_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT105_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT105_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT105_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT105_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_E_S
+	}
+	text = {
+		trigger = {
+			always = @CmtT105_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT105_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT105_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT105_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT105_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT105_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent__MS
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT105_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT105_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT105_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT105_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT105_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT105_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent___S
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT105_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT105_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT105_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplateEvent_T106
+	text = {
+		trigger = {
+			always = @CmtT106_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT106_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT106_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_EMS
+	}
+	text = {
+		trigger = {
+			always = @CmtT106_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT106_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT106_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT106_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT106_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT106_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_E_S
+	}
+	text = {
+		trigger = {
+			always = @CmtT106_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT106_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT106_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT106_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT106_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT106_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent__MS
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT106_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT106_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT106_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT106_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT106_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT106_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent___S
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT106_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT106_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT106_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplateEvent_T107
+	text = {
+		trigger = {
+			always = @CmtT107_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT107_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT107_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_EMS
+	}
+	text = {
+		trigger = {
+			always = @CmtT107_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT107_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT107_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT107_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT107_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT107_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_E_S
+	}
+	text = {
+		trigger = {
+			always = @CmtT107_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT107_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT107_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT107_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT107_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT107_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent__MS
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT107_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT107_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT107_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT107_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT107_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT107_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent___S
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT107_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT107_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT107_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplateEvent_T108
+	text = {
+		trigger = {
+			always = @CmtT108_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT108_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT108_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_EMS
+	}
+	text = {
+		trigger = {
+			always = @CmtT108_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT108_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT108_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT108_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT108_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT108_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_E_S
+	}
+	text = {
+		trigger = {
+			always = @CmtT108_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT108_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT108_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT108_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT108_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT108_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent__MS
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT108_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT108_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT108_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT108_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT108_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT108_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent___S
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT108_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT108_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT108_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplateEvent_T109
+	text = {
+		trigger = {
+			always = @CmtT109_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT109_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT109_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_EMS
+	}
+	text = {
+		trigger = {
+			always = @CmtT109_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT109_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT109_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT109_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT109_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT109_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_E_S
+	}
+	text = {
+		trigger = {
+			always = @CmtT109_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT109_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT109_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT109_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT109_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT109_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent__MS
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT109_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT109_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT109_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT109_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT109_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT109_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent___S
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT109_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT109_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT109_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplateEvent_T110
+	text = {
+		trigger = {
+			always = @CmtT110_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT110_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT110_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_EMS
+	}
+	text = {
+		trigger = {
+			always = @CmtT110_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT110_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT110_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT110_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT110_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT110_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_E_S
+	}
+	text = {
+		trigger = {
+			always = @CmtT110_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT110_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT110_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT110_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT110_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT110_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent__MS
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT110_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT110_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT110_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT110_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT110_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT110_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent___S
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT110_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT110_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT110_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplateEvent_T111
+	text = {
+		trigger = {
+			always = @CmtT111_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT111_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT111_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_EMS
+	}
+	text = {
+		trigger = {
+			always = @CmtT111_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT111_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT111_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT111_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT111_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT111_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_E_S
+	}
+	text = {
+		trigger = {
+			always = @CmtT111_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT111_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT111_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT111_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT111_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT111_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent__MS
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT111_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT111_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT111_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT111_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT111_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT111_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent___S
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT111_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT111_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT111_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplateEvent_T112
+	text = {
+		trigger = {
+			always = @CmtT112_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT112_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT112_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_EMS
+	}
+	text = {
+		trigger = {
+			always = @CmtT112_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT112_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT112_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT112_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT112_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT112_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_E_S
+	}
+	text = {
+		trigger = {
+			always = @CmtT112_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT112_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT112_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT112_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT112_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT112_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent__MS
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT112_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT112_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT112_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT112_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT112_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT112_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent___S
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT112_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT112_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT112_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplateEvent_T113
+	text = {
+		trigger = {
+			always = @CmtT113_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT113_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT113_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_EMS
+	}
+	text = {
+		trigger = {
+			always = @CmtT113_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT113_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT113_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT113_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT113_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT113_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_E_S
+	}
+	text = {
+		trigger = {
+			always = @CmtT113_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT113_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT113_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT113_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT113_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT113_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent__MS
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT113_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT113_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT113_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT113_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT113_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT113_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent___S
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT113_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT113_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT113_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplateEvent_T114
+	text = {
+		trigger = {
+			always = @CmtT114_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT114_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT114_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_EMS
+	}
+	text = {
+		trigger = {
+			always = @CmtT114_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT114_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT114_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT114_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT114_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT114_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_E_S
+	}
+	text = {
+		trigger = {
+			always = @CmtT114_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT114_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT114_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT114_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT114_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT114_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent__MS
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT114_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT114_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT114_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT114_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT114_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT114_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent___S
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT114_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT114_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT114_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplateEvent_T115
+	text = {
+		trigger = {
+			always = @CmtT115_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT115_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT115_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_EMS
+	}
+	text = {
+		trigger = {
+			always = @CmtT115_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT115_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT115_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT115_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT115_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT115_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_E_S
+	}
+	text = {
+		trigger = {
+			always = @CmtT115_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT115_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT115_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT115_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT115_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT115_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent__MS
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT115_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT115_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT115_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT115_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT115_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT115_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent___S
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT115_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT115_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT115_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplateEvent_T116
+	text = {
+		trigger = {
+			always = @CmtT116_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT116_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT116_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_EMS
+	}
+	text = {
+		trigger = {
+			always = @CmtT116_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT116_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT116_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT116_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT116_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT116_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent_E_S
+	}
+	text = {
+		trigger = {
+			always = @CmtT116_ConstActivatedEventEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT116_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT116_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT116_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT116_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			always = @CmtT116_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent__MS
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT116_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT116_ConstActivatedEventMidgame
+			has_global_flag = CmtFlagMidGameEdition
+			NAND = {
+				always = @CmtT116_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT116_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT116_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			always = @CmtT116_ConstActivatedEventSleeper
+			has_global_flag = CmtFlagSleeperEdition
+		}
+		localization_key = CmtTemplateEvent___S
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT116_ConstActivatedEventEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT116_ConstActivatedEventMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+			NAND = {
+				always = @CmtT116_ConstActivatedEventSleeper
+				has_global_flag = CmtFlagSleeperEdition
+			}
+		}
+		localization_key = CmtTemplateEvent____
+	}
+}
+
+
+
+
+
+######################
+###  Crisis Power  ###
+######################
+
+defined_text = {
+	name = GetName_CmtTemplatePower_T001
+	text = {
+		trigger = {
+			always = @CmtT001_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT001_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT001_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT001_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT001_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT001_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT001_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT001_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplatePower_T101
+	text = {
+		trigger = {
+			always = @CmtT101_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT101_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT101_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT101_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT101_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT101_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT101_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT101_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplatePower_T102
+	text = {
+		trigger = {
+			always = @CmtT102_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT102_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT102_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT102_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT102_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT102_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT102_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT102_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplatePower_T103
+	text = {
+		trigger = {
+			always = @CmtT103_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT103_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT103_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT103_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT103_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT103_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT103_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT103_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplatePower_T104
+	text = {
+		trigger = {
+			always = @CmtT104_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT104_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT104_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT104_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT104_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT104_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT104_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT104_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplatePower_T105
+	text = {
+		trigger = {
+			always = @CmtT105_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT105_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT105_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT105_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT105_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT105_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT105_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT105_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplatePower_T106
+	text = {
+		trigger = {
+			always = @CmtT106_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT106_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT106_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT106_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT106_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT106_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT106_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT106_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplatePower_T107
+	text = {
+		trigger = {
+			always = @CmtT107_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT107_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT107_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT107_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT107_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT107_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT107_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT107_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplatePower_T108
+	text = {
+		trigger = {
+			always = @CmtT108_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT108_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT108_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT108_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT108_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT108_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT108_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT108_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplatePower_T109
+	text = {
+		trigger = {
+			always = @CmtT109_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT109_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT109_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT109_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT109_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT109_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT109_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT109_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplatePower_T110
+	text = {
+		trigger = {
+			always = @CmtT110_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT110_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT110_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT110_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT110_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT110_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT110_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT110_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplatePower_T111
+	text = {
+		trigger = {
+			always = @CmtT111_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT111_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT111_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT111_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT111_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT111_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT111_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT111_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplatePower_T112
+	text = {
+		trigger = {
+			always = @CmtT112_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT112_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT112_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT112_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT112_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT112_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT112_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT112_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplatePower_T113
+	text = {
+		trigger = {
+			always = @CmtT113_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT113_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT113_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT113_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT113_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT113_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT113_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT113_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplatePower_T114
+	text = {
+		trigger = {
+			always = @CmtT114_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT114_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT114_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT114_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT114_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT114_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT114_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT114_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplatePower_T115
+	text = {
+		trigger = {
+			always = @CmtT115_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT115_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT115_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT115_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT115_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT115_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT115_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT115_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower____
+	}
+}
+
+defined_text = {
+	name = GetName_CmtTemplatePower_T116
+	text = {
+		trigger = {
+			always = @CmtT116_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			always = @CmtT116_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower_EM_
+	}
+	text = {
+		trigger = {
+			always = @CmtT116_ConstActivatedPowerEndgame
+			has_global_flag = CmtFlagEndGameEdition
+			NAND = {
+				always = @CmtT116_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower_E__
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT116_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			always = @CmtT116_ConstActivatedPowerMidgame
+			has_global_flag = CmtFlagMidGameEdition
+		}
+		localization_key = CmtTemplatePower__M_
+	}
+	text = {
+		trigger = {
+			NAND = {
+				always = @CmtT116_ConstActivatedPowerEndgame
+				has_global_flag = CmtFlagEndGameEdition
+			}
+			NAND = {
+				always = @CmtT116_ConstActivatedPowerMidgame
+				has_global_flag = CmtFlagMidGameEdition
+			}
+		}
+		localization_key = CmtTemplatePower____
+	}
+}
+
+

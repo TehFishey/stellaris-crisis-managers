@@ -1,0 +1,520 @@
+namespace = CrisisManagerControl
+
+##########################################
+##########################################
+#####                                #####
+#####    Crisis Manager              #####
+#####                                #####
+#####    Sound Control for Crisis    #####
+#####                                #####
+##########################################
+##########################################
+
+###################
+###  Constants  ###
+###################
+#
+# Required galaxy_percentage for Stage Progressing/Regressing
+# a: Only 1 Crisis Country Exists, b: 2 or More Crisis Countries Exist
+#
+
+@CmtConstCrisisStage34a = 0.40
+@CmtConstCrisisStage34b = 0.30
+@CmtConstCrisisStage23a = 0.20
+@CmtConstCrisisStage23b = 0.15
+@CmtConstCrisisStage12  = 0.05
+
+@CmtConstCrisisStage43a = 0.30
+@CmtConstCrisisStage43b = 0.25
+@CmtConstCrisisStage32a = 0.15
+@CmtConstCrisisStage32b = 0.10
+@CmtConstCrisisStage21  = 0.05
+
+@CmtConstSoundControlDate = 13
+
+#####################
+###  Pulse Event  ###
+#####################
+
+event = {
+	id = CrisisManagerControl.0400
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_crisis = yes
+	}
+	
+	immediate = {
+		event_target:CmtGlobalVar = {
+			country_event = { id = CrisisManagerControl.0412 days = @CmtConstSoundControlDate }
+			country_event = { id = CrisisManagerControl.0413 days = @CmtConstSoundControlDate }
+			country_event = { id = CrisisManagerControl.0414 days = @CmtConstSoundControlDate }
+			country_event = { id = CrisisManagerControl.0423 days = @CmtConstSoundControlDate }
+			country_event = { id = CrisisManagerControl.0422 days = @CmtConstSoundControlDate }
+			country_event = { id = CrisisManagerControl.0421 days = @CmtConstSoundControlDate }
+		}
+	}
+}
+
+
+
+#####################
+###  Progression  ###
+#####################
+
+### Stage 1 -> 2
+country_event = {
+	id = CrisisManagerControl.0412
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_crisis_stage_1 = yes
+		any_country = {
+			CmtTriggerIsBasicCrisisCountry = yes
+			galaxy_percentage > @CmtConstCrisisStage12
+		}
+	}
+	
+	immediate = {
+		set_crisis_stage_2 = yes
+		random_list = {
+			10 = {
+				modifier = {
+					factor = 0
+					NOT = {
+						any_country = {
+							CmtTriggerIsPrethoryn = yes
+							galaxy_percentage > @CmtConstCrisisStage12
+						}
+					}
+				}
+				set_crisis_sound = swarm_crisis_ambient_stage_2
+			}
+			10 = {
+				modifier = {
+					factor = 0
+					NOT = {
+						any_country = {
+							CmtTriggerIsExds = yes
+							galaxy_percentage > @CmtConstCrisisStage12
+						}
+					}
+				}
+				set_crisis_sound = extradimensional_crisis_ambient_stage_2
+			}
+			10 = {
+				modifier = {
+					factor = 0
+					NOT = {
+						any_country = {
+							CmtTriggerIsContingency = yes
+							galaxy_percentage > @CmtConstCrisisStage12
+						}
+					}
+				}
+				set_crisis_sound = ai_empire_ambient_stage_2
+			}
+		}
+	}
+}
+
+
+### Stage 2 -> 3
+country_event = {
+	id = CrisisManagerControl.0413
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_crisis_stage_2 = yes
+		OR = {
+			AND = {
+				count_country = { limit = { CmtTriggerIsBasicCrisisCountry = yes } count > 1 }
+				any_country = {
+					CmtTriggerIsBasicCrisisCountry = yes
+					galaxy_percentage > @CmtConstCrisisStage23b
+				}
+			}
+			any_country = {
+				CmtTriggerIsBasicCrisisCountry = yes
+				galaxy_percentage > @CmtConstCrisisStage23a
+			}
+		}
+	}
+	
+	immediate = {
+		set_crisis_stage_3 = yes
+		random_list = {
+			10 = {
+				modifier = {
+					factor = 0
+					NOT = {
+						any_country = {
+							CmtTriggerIsPrethoryn = yes
+							galaxy_percentage > @CmtConstCrisisStage23b
+						}
+					}
+				}
+				set_crisis_sound = swarm_crisis_ambient_stage_3
+			}
+			10 = {
+				modifier = {
+					factor = 0
+					NOT = {
+						any_country = {
+							CmtTriggerIsExds = yes
+							galaxy_percentage > @CmtConstCrisisStage23b
+						}
+					}
+				}
+				set_crisis_sound = extradimensional_crisis_ambient_stage_3
+			}
+			10 = {
+				modifier = {
+					factor = 0
+					NOT = {
+						any_country = {
+							CmtTriggerIsContingency = yes
+							galaxy_percentage > @CmtConstCrisisStage23b
+						}
+					}
+				}
+				set_crisis_sound = ai_empire_ambient_stage_3
+			}
+		}
+	}
+}
+
+
+### Stage 3 -> 4
+country_event = {
+	id = CrisisManagerControl.0414
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_crisis_stage_3 = yes
+		OR = {
+			AND = {
+				count_country = { limit = { CmtTriggerIsBasicCrisisCountry = yes } count > 1 }
+				any_country = {
+					CmtTriggerIsBasicCrisisCountry = yes
+					galaxy_percentage > @CmtConstCrisisStage34b
+				}
+			}
+			any_country = {
+				CmtTriggerIsBasicCrisisCountry = yes
+				galaxy_percentage > @CmtConstCrisisStage34a
+			}
+		}
+	}
+	
+	immediate = {
+		set_crisis_stage_4 = yes
+		random_list = {
+			10 = {
+				modifier = {
+					factor = 0
+					NOT = { any_country = { CmtTriggerIsPrethoryn = yes }
+						
+						galaxy_percentage > @CmtConstCrisisStage34b
+					}
+				}
+				set_crisis_sound = swarm_crisis_ambient_stage_final
+			}
+			10 = {
+				modifier = {
+					factor = 0
+					any_country = {
+						CmtTriggerIsExds = yes
+						galaxy_percentage > @CmtConstCrisisStage34b
+					}
+				}
+				set_crisis_sound = extradimensional_crisis_ambient_stage_final
+			}
+			10 = {
+				modifier = {
+					factor = 0
+					any_country = {
+						CmtTriggerIsContingency = yes
+						galaxy_percentage > @CmtConstCrisisStage34b
+					}
+				}
+				set_crisis_sound = ai_empire_ambient_stage_final
+			}
+		}
+	}
+}
+
+
+
+####################
+###  Regression  ###
+####################
+
+### Stage 2 -> 1
+country_event = {
+	id = CrisisManagerControl.0421
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_crisis_stage_2 = yes
+		NOT = {
+			any_country = {
+				CmtTriggerIsBasicCrisisCountry = yes
+				galaxy_percentage > @CmtConstCrisisStage21
+			}
+		}
+	}
+	
+	immediate = {
+		set_crisis_stage_1 = yes
+		random_list = {
+			10 = {
+				modifier = {
+					factor = 0
+					NOT = { any_country = { CmtTriggerIsPrethoryn = yes } }
+				}
+				set_crisis_sound = swarm_crisis_ambient_stage_1
+			}
+			10 = {
+				modifier = {
+					factor = 0
+					NOT = { any_country = { CmtTriggerIsExds = yes } }
+				}
+				set_crisis_sound = extradimensional_crisis_ambient_stage_1
+			}
+			10 = {
+				modifier = {
+					factor = 0
+					NOT = { any_country = { CmtTriggerIsContingency = yes } }
+				}
+				set_crisis_sound = ai_empire_ambient_stage_1
+			}
+		}
+	}
+}
+
+
+### Stage 3 -> 2
+country_event = {
+	id = CrisisManagerControl.0422
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_crisis_stage_3 = yes
+		NOR = {
+			AND = {
+				count_country = { limit = { CmtTriggerIsBasicCrisisCountry = yes } count > 1 }
+				any_country = {
+					CmtTriggerIsBasicCrisisCountry = yes
+					galaxy_percentage > @CmtConstCrisisStage32b
+				}
+			}
+			any_country = {
+				CmtTriggerIsBasicCrisisCountry = yes
+				galaxy_percentage > @CmtConstCrisisStage32a
+			}
+		}
+	}
+	
+	immediate = {
+		set_crisis_stage_2 = yes
+		random_list = {
+			10 = {
+				modifier = {
+					factor = 0
+					NOT = { any_country = { CmtTriggerIsPrethoryn = yes } }
+				}
+				modifier = {
+					factor = 100
+					any_country = {
+						CmtTriggerIsPrethoryn = yes
+						galaxy_percentage > @CmtConstCrisisStage12b
+					}
+				}
+				set_crisis_sound = swarm_crisis_ambient_stage_2
+			}
+			10 = {
+				modifier = {
+					factor = 0
+					NOT = { any_country = { CmtTriggerIsExds = yes } }
+				}
+				modifier = {
+					factor = 100
+					any_country = {
+						CmtTriggerIsExds = yes
+						galaxy_percentage > @CmtConstCrisisStage12b
+					}
+				}
+				set_crisis_sound = extradimensional_crisis_ambient_stage_2
+			}
+			10 = {
+				modifier = {
+					factor = 0
+					NOT = { any_country = { CmtTriggerIsContingency = yes } }
+				}
+				modifier = {
+					factor = 100
+					any_country = {
+						CmtTriggerIsContingency = yes
+						galaxy_percentage > @CmtConstCrisisStage12b
+					}
+				}
+				set_crisis_sound = ai_empire_ambient_stage_2
+			}
+		}
+	}
+}
+
+
+### Stage 4 -> 3
+country_event = {
+	id = CrisisManagerControl.0423
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_crisis_stage_4 = yes
+		NOR = {
+			AND = {
+				count_country = { limit = { CmtTriggerIsBasicCrisisCountry = yes } count > 1 }
+				any_country = {
+					CmtTriggerIsBasicCrisisCountry = yes
+					galaxy_percentage > @CmtConstCrisisStage43b
+				}
+			}
+			any_country = {
+				CmtTriggerIsBasicCrisisCountry = yes
+				galaxy_percentage > @CmtConstCrisisStage43a
+			}
+		}
+	}
+	
+	immediate = {
+		set_crisis_stage_3 = yes
+		random_list = {
+			10 = {
+				modifier = {
+					factor = 0
+					NOT = { any_country = { CmtTriggerIsPrethoryn = yes } }
+				}
+				modifier = {
+					factor = 100
+					any_country = {
+						CmtTriggerIsPrethoryn = yes
+						galaxy_percentage > @CmtConstCrisisStage23b
+					}
+				}
+				set_crisis_sound = swarm_crisis_ambient_stage_3
+			}
+			10 = {
+				modifier = {
+					factor = 0
+					NOT = { any_country = { CmtTriggerIsExds = yes } }
+				}
+				modifier = {
+					factor = 100
+					any_country = {
+						CmtTriggerIsExds = yes
+						galaxy_percentage > @CmtConstCrisisStage23b
+					}
+				}
+				set_crisis_sound = extradimensional_crisis_ambient_stage_3
+			}
+			10 = {
+				modifier = {
+					factor = 0
+					NOT = { any_country = { CmtTriggerIsContingency = yes } }
+				}
+				modifier = {
+					factor = 100
+					any_country = {
+						CmtTriggerIsContingency = yes
+						galaxy_percentage > @CmtConstCrisisStage23b
+					}
+				}
+				set_crisis_sound = ai_empire_ambient_stage_3
+			}
+		}
+	}
+}
+
+
+####################
+###  Crisis End  ###
+####################
+
+country_event = {
+	id = CrisisManagerControl.0430
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		CmtTriggerIsBasicCrisisCountry = yes
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				any_country = {
+					CmtTriggerIsBasicCrisisCountry = yes
+					NOT = { is_same_value = root }
+				}
+			}
+			set_crisis_stage_1 = yes
+			random_list = {
+				10 = {
+					modifier = {
+						factor = 0
+						NOT = {
+							any_country = {
+								CmtTriggerIsPrethoryn = yes
+								NOT = { is_same_value = root }
+							}
+						}
+					}
+					set_crisis_sound = swarm_crisis_ambient_stage_1
+				}
+				10 = {
+					modifier = {
+						factor = 0
+						NOT = {
+							any_country = {
+								CmtTriggerIsExds = yes
+								NOT = { is_same_value = root }
+							}
+						}
+					}
+					set_crisis_sound = extradimensional_crisis_ambient_stage_1
+				}
+				10 = {
+					modifier = {
+						factor = 0
+						NOT = {
+							any_country = {
+								CmtTriggerIsContingency = yes
+								NOT = { is_same_value = root }
+							}
+						}
+					}
+					set_crisis_sound = ai_empire_ambient_stage_1
+				}
+			}
+			country_event = { id = CrisisManagerControl.0412 }
+			country_event = { id = CrisisManagerControl.0413 }
+			country_event = { id = CrisisManagerControl.0414 }
+		} else = {
+			stop_crisis_sound = yes
+			end_crisis = yes
+		}
+	}
+}
+
+
+
+

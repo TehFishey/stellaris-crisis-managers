@@ -1,0 +1,429 @@
+
+######################################################
+######################################################
+#####                                            #####
+#####    Crisis Manager                          #####
+#####                                            #####
+#####    scripted_effects for Spawn Countries    #####
+#####                                            #####
+######################################################
+######################################################
+
+###################
+###  Prethoryn  ###
+###################
+
+CmtEffectCreatePrethorynCountry = {
+	create_species = {
+		name = "NAME_Prethoryn"
+		class = SWARM
+		portrait = random
+		traits = random
+		immortal = yes
+		effect = { save_event_target_as = prethoryn_species }
+	}
+	create_country = {
+		name = "NAME_Prethoryn_Scourge"
+		type = "swarm"
+		species = event_target:prethoryn_species
+		name_list = "Prethoryn"
+		flag = {
+			icon= {
+				category = "special"
+				file = "the_swarm.dds"
+			}
+			background= {
+				category = "backgrounds"
+				file = "new_dawn.dds"
+			}
+			colors={ "orange" "grey" "null" "null" }
+		}
+		effect = {
+			save_global_event_target_as = prethoryn_vgrd
+			save_global_event_target_as = prethoryn
+			create_ship_design = { design = "NAME_Swarm_Transport" }
+			add_ship_design = last_created_design
+			create_ship_design = { design = "NAME_Swarm_Colonizer" }
+			add_ship_design = last_created_design
+			create_ship_design = { design = "NAME_Swarm_Constructor" }
+			add_ship_design = last_created_design
+			create_ship_design = { design = "NAME_Swarm_Starbase" }
+			add_ship_design = last_created_design
+		}
+	}
+	
+	### Communications and Opinion Modifiers
+	every_country = {
+		limit = { CmtTriggerIsEmpire = yes }
+		establish_communications_no_message = event_target:prethoryn
+		add_opinion_modifier = {
+			who = event_target:prethoryn
+			modifier = opinion_swarm
+		}
+		event_target:prethoryn = {
+			add_opinion_modifier = {
+				who = PREV
+				modifier = opinion_prey
+			}
+		}
+	}
+}
+
+
+
+###################
+###  Sentinels  ###
+###################
+
+CmtEffectCallSentinel = {
+	if = {
+		limit = { CmtTriggerExistPrethoryn = yes }
+		set_crisis_sound = swarm_crisis_ambient_stage_3
+		set_crisis_stage_3 = yes
+		random_country = {
+			limit = { CmtTriggerIsPrethoryn = yes }
+			save_event_target_as = swarm
+		}
+	}
+	set_global_flag = sentinels_founded
+
+	random_system = {
+		limit = {
+			exists = space_owner
+			space_owner = { NOT = { CmtTriggerIsPrethoryn = yes } }
+		}
+		spawn_system = {
+			max_distance <= 50
+			min_distance >= 20
+			initializer = "sentinel_system"
+		}
+	}
+	if = {
+		limit = { any_country = { CmtTriggerIsFallenEmpire = yes } }
+		set_global_flag = sentinel_fe_support
+		random_country = {
+			limit = { CmtTriggerIsFallenEmpire = yes }
+			save_global_event_target_as = sentinel_fallen_empire
+		}
+		every_country = {
+			limit = { CmtTriggerIsPlayableEmpire = yes }
+			establish_communications = event_target:sentinel_fallen_empire
+		}
+	}
+	every_country = {
+		limit = { CmtTriggerIsPlayableEmpire = yes }
+		country_event = { id = crisis.51 days = 1 }
+	}
+	event_target:sentinel_alpha = {
+		fleet_event = { id = crisis.60 }
+		fleet_event = { id = crisis.60 days = 10 }
+	}
+	observer_event = { id = observer.31 }
+}
+
+
+
+##################
+###  Aberrant  ###
+##################
+
+CmtEffectCallAberrant = {
+	set_crisis_sound = extradimensional_crisis_ambient_stage_3
+	set_crisis_stage_3 = yes
+	set_global_flag = extradimensional_second_portal
+	
+	if = {
+		limit = {
+			OR = {
+				has_global_flag = CmtFlagExdsChaserAnywhere
+				NOT = { CmtTriggerUnbiddenExpand = yes }
+			}
+		}
+		random_system = {
+			limit = { CmtTriggerSpawnableSystem = yes }
+			CmtEffectCreateCountryAberrant = yes
+		}
+		else = {
+			event_target:extradimensionals1 = {
+				random_system_within_border = {
+					limit = { CmtTriggerSpawnableSystem = yes }
+					CmtEffectCreateCountryAberrant = yes
+				}
+			}
+		}
+	}
+	CmtEffectFriendlyCrisis = yes
+	
+	every_country = {
+		limit = { CmtTriggerIsEmpire = yes }
+		country_event = { id = crisis.1110 days = 1 }
+	}
+	random_country = {
+		limit = { is_country_type = extradimensional_2 }
+		establish_communications_no_message = event_target:extradimensionals
+	}
+	observer_event = { id = observer.36 }
+	
+	### For Controling Arrival of Vehement
+	set_timed_global_flag = { flag = CmtFlagAberrantFirstDecade days = 3600 }
+	set_timed_global_flag = { flag = CmtFlagAberrantFirstTwoDecades days = 7200 }
+	if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 6 } } }
+		event_target:extradimensionals2 = { country_event = { id = crisis.1200 days = 10 random = 5 } }
+	}
+}
+
+## Scope: this = Stellar System
+CmtEffectCreateCountryAberrant = {
+	set_star_flag = extradimensional_second_portal_system
+	save_event_target_as = second_portal_system
+	random_system_planet = {
+		create_species = {
+			name = "NAME_Aberrant"
+			class = EXD
+			portrait = exd2
+			traits = random
+			effect = { save_global_event_target_as = extradimensional_hunters_species }
+		}
+		create_country = {
+			name = "NAME_Aberrant"
+			type = "extradimensional_2"
+			species = event_target:extradimensional_hunters_species
+			name_list = "Extradimensional"
+			flag = {
+				icon= {
+					category = "special"
+					file = "extradimensional_02.dds"
+				}
+				background= {
+					category = "backgrounds"
+					file = "triangle_split.dds"
+				}
+				colors={ "brown" "orange" "null" "null" }
+			}
+			effect = {
+				set_country_flag = aberrant
+				create_ship_design = { design = "NAME_Void_Former" }
+				add_ship_design = last_created_design
+				create_ship_design = { design = "NAME_Aberrant_Anchor" }
+				add_ship_design = last_created_design
+				
+				set_graphical_culture = extra_dimensional_02
+				save_global_event_target_as = extradimensionals2
+				save_event_target_as = extradimensional_hunters
+				establish_communications_no_message = event_target:portal_holder_1
+				set_faction_hostility = {
+					target = event_target:portal_holder_1
+					set_hostile = no
+				}
+			}
+		}
+		event_target:extradimensionals2 = {
+			create_fleet = {
+				name = "NAME_Dimensional_Portal"
+				effect = {
+					set_owner = prev
+					create_ship = {
+						name = random
+						design = "NAME_Aberrant_Portal"
+						graphical_culture = "extra_dimensional_02"
+						effect = { set_ship_flag = aberrant_portal }
+					}
+					set_location = {
+						target = prevprev
+						distance = 40
+						angle = random
+					}
+					save_event_target_as = second_portal
+					fleet_event = { id = crisis.1103 days = 1 } # Fleet Arrives
+					fleet_event = { id = crisis.1103 days = 5 } # Fleet Arrives
+					fleet_event = { id = crisis.1103 days = 15 } # Fleet Arrives
+					fleet_event = { id = crisis.1103 days = 30 } # Fleet Arrives
+					fleet_event = { id = crisis.1103 days = 45 } # Fleet Arrives
+					fleet_event = { id = crisis.1103 days = 60 } # Fleet Arrives
+					fleet_event = { id = crisis.1103 days = 150 } # Fleet Arrives
+					fleet_event = { id = crisis.1103 days = 350 } # Fleet Arrives
+					fleet_event = { id = crisis.1106 days = 20 } # Constructor Arrives
+					fleet_event = { id = crisis.1106 days = 25 } # Constructor Arrives
+					fleet_event = { id = crisis.1106 days = 90 } # Constructor Arrives
+					fleet_event = { id = crisis.1106 days = 210 } # Constructor Arrives
+					event_target:extradimensional_hunters = { country_event = { id = crisis.1260 days = 550 } } # Spawn Cycle starts
+					CmtEffectCreateAdmiralty_AberrantCapitalDefense = yes
+				}
+			}
+		}
+	}
+	CmtEffectDestroySystemStarbase = yes
+	create_starbase = {
+		size = starbase_exd
+		owner = event_target:extradimensionals2
+	}
+	event_target:extradimensionals2 = { random_owned_ship = { ship_event = { id = crisis.1280 } } }
+}
+
+
+
+##################
+###  Vehement  ###
+##################
+
+CmtEffectCallVehement = {
+	set_global_flag = extradimensional_third_portal
+	
+	if = {
+		limit = {
+			OR = {
+				has_global_flag = CmtFlagExdsChaserAnywhere
+				NOT = { CmtTriggerUnbiddenExpand = yes }
+			}
+		}
+		random_system = {
+			limit = { CmtTriggerSpawnableSystem = yes }
+			CmtEffectCreateCountryVehement = yes
+		}
+		else = {
+			event_target:extradimensionals1 = {
+				random_system_within_border = {
+					limit = { CmtTriggerSpawnableSystem = yes }
+					CmtEffectCreateCountryVehement = yes
+				}
+			}
+		}
+	}
+	CmtEffectFriendlyCrisis = yes
+	
+	every_country = {
+		limit = { CmtTriggerIsEmpire = yes }
+		country_event = { id = crisis.1210 days = 1 }
+	}
+	every_country = {
+		limit = {
+			OR = {
+				is_country_type = extradimensional
+				is_country_type = extradimensional_2
+			}
+		}
+		establish_communications_no_message = event_target:extradimensional_trespassers
+	}
+	observer_event = { id = observer.38 }
+}
+
+
+CmtEffectCreateCountryVehement = {	## Scope = Stellar System
+	set_star_flag = extradimensional_third_portal_system
+	save_event_target_as = third_portal_system
+	random_system_planet = {
+		create_species = {
+			name = "NAME_Vehement"
+			class = EXD
+			portrait = exd3
+			traits = random
+			effect = { save_global_event_target_as = extradimensional_trespassers_species }
+		}
+		create_country = {
+			name = "NAME_Vehement"
+			type = "extradimensional_3"
+			species = event_target:extradimensional_trespassers_species
+			name_list = "Extradimensional"
+			flag = {
+				icon= {
+					category = "special"
+					file = "extradimensional_03.dds"
+				}
+				background= {
+					category = "backgrounds"
+					file = "stripe.dds"
+				}
+				colors={ "green" "teal" "null" "null" }
+			}
+			effect = {
+				set_country_flag = vehement
+				create_ship_design = { design = "NAME_Void_Weaver" }
+				add_ship_design = last_created_design
+				create_ship_design = { design = "NAME_Vehement_Anchor" }
+				add_ship_design = last_created_design
+				
+				set_graphical_culture = extra_dimensional_03
+				save_global_event_target_as = extradimensionals3
+				save_event_target_as = extradimensional_trespassers
+				establish_communications_no_message = event_target:portal_holder_1
+				set_faction_hostility = {
+					target = event_target:portal_holder_1
+					set_hostile = no
+				}
+			}
+		}
+		event_target:extradimensionals3 = {
+			create_fleet = {
+				name = "NAME_Dimensional_Portal"
+				effect = {
+					set_owner = prev
+					create_ship = {
+						name = random
+						design = "NAME_Vehement_Portal"
+						graphical_culture = "extra_dimensional_03"
+						effect = { set_ship_flag = vehement_portal }
+					}
+					set_location = {
+						target = prevprev
+						distance = 40
+						angle = random
+					}
+					save_event_target_as = third_portal
+					fleet_event = { id = crisis.1203 days = 1 } # Fleet Arrives
+					fleet_event = { id = crisis.1203 days = 5 } # Fleet Arrives
+					fleet_event = { id = crisis.1203 days = 15 } # Fleet Arrives
+					fleet_event = { id = crisis.1203 days = 30 } # Fleet Arrives
+					fleet_event = { id = crisis.1203 days = 45 } # Fleet Arrives
+					fleet_event = { id = crisis.1203 days = 60 } # Fleet Arrives
+					fleet_event = { id = crisis.1203 days = 150 } # Fleet Arrives
+					fleet_event = { id = crisis.1203 days = 350 } # Fleet Arrives
+					fleet_event = { id = crisis.1206 days = 20 } # Constructor Arrives
+					fleet_event = { id = crisis.1206 days = 25 } # Constructor Arrives
+					fleet_event = { id = crisis.1206 days = 90 } # Constructor Arrives
+					fleet_event = { id = crisis.1206 days = 210 } # Constructor Arrives
+					event_target:extradimensional_trespassers = { country_event = { id = crisis.1260 days = 550 } } # Spawn Cycle starts
+					CmtEffectCreateAdmiralty_VehementCapitalDefense = yes
+				}
+			}
+		}
+	}
+	CmtEffectDestroySystemStarbase = yes
+	create_starbase = {
+		size = starbase_exd
+		owner = event_target:extradimensionals3
+	}
+	event_target:extradimensionals3 = { random_owned_ship = { ship_event = { id = crisis.1280 } } }
+}
+
+
+
+################
+###  Cybrex  ###
+################
+
+CmtEffectCallCybrex = {
+	set_global_flag = cybrex_resurface
+	random_rim_system = {
+		spawn_system = {
+			max_distance <= 50
+			min_distance >= 20
+			initializer = "cybrex_beta"
+		}
+	}
+	every_country = {
+		limit = { CmtTriggerIsPlayableEmpire = yes }
+		country_event = { id = crisis.2401 days = 2 }
+	}
+	observer_event = { id = observer.52 }
+	
+	random_country = {
+		limit = { is_country_type = cybrex_empire }
+		country_event = { id = crisis.2421 days = 4 }
+		country_event = { id = crisis.2421 days = 120 }
+		country_event = { id = crisis.2421 days = 320 }
+		establish_communications_no_message = root
+	}
+	CmtEffectFriendlyCrisis = yes
+}
+

@@ -1,0 +1,501 @@
+
+###################################################
+###################################################
+#####                                         #####
+#####    Crisis Manager                       #####
+#####                                         #####
+#####    Scripted Effect for Player Crisis    #####
+#####                                         #####
+###################################################
+###################################################
+
+######################
+###  Basic Effect  ###
+######################
+
+### Overwriting Cmt001
+CmtEffectDetectPlayerCrisisPack = {
+	set_global_flag = CmtFlagPlayerCrisisPatch
+}
+
+
+
+#################
+###  The War  ###
+#################
+
+### Start Player Crisis, Scope: this = country (Agrressor)
+CmtEffectStartPlayerCrisis = {
+	
+	### Target, Flag Control
+	if = {
+		limit = { exists = event_target:CmtTargetPlayerCrisisAggressor }
+		clear_global_event_target = CmtTargetPlayerCrisisAggressor
+	}
+	save_global_event_target_as = CmtTargetPlayerCrisisAggressor	## Do It before Finding Defence Leader
+	if = {
+		limit = {
+			exists = event_target:CmtTargetPlayerCrisisDefenceLeader
+			any_country = { CmtTriggerPlayerCrisisDefenceLeaderCandidate = yes }
+		}
+		clear_global_event_target = CmtTargetPlayerCrisisDefenceLeader
+	}
+	if = {
+		limit = {
+			any_country = {
+				CmtTriggerIsPlayableEmpire = yes
+				CmtTriggerPlayerCrisisDefenceLeaderCandidate = yes
+			}
+		}
+		random_country = {
+			limit = {
+				CmtTriggerIsPlayableEmpire = yes
+				CmtTriggerPlayerCrisisDefenceLeaderCandidate = yes
+			}
+			save_global_event_target_as = CmtTargetPlayerCrisisDefenceLeader
+		}
+	} else = {
+		random_country = {
+			limit = { CmtTriggerPlayerCrisisDefenceLeaderCandidate = yes }
+			save_global_event_target_as = CmtTargetPlayerCrisisDefenceLeader
+		}
+	}
+	event_target:CmtTargetPlayerCrisisDefenceLeader = {
+		set_country_flag = CmtFlagPlayerCrisisDefender
+		set_country_flag = ai_no_wars
+		country_event = { id = CrisisManagerControl.0512 }
+	}
+	
+	
+	### Leave Federation, Release Subjects
+	if = {
+		limit = { has_federation = yes }
+		leave_alliance = { override_requirements = yes }
+	}
+	every_subject = { set_subject_of = { who = none } }
+	
+	### Declare War (To Leader Only)
+	if = {
+		limit = { NOT = { is_at_war_with = event_target:CmtTargetPlayerCrisisDefenceLeader } }
+		declare_war = {
+			target = event_target:CmtTargetPlayerCrisisDefenceLeader
+			name = NAME_CmtWarPlayerCrisis
+			attacker_war_goal = wg_CmtWarPlayerCrisisAttack
+		}
+	}
+	
+	### Add Opinion Modifiers, Join War
+	every_country = {
+		limit = {
+			CmtTriggerIsEmpire = yes
+			NOT = { CmtTriggerIsPlayerCrisisAggressor = yes }
+		}
+		CmtEffectJoinWarPlayerCrisis = yes
+	}
+	
+	### Non-Empire Country: Common
+	every_country = {
+		limit = { CmtTriggerPlayerCrisisResistibleCountry = yes }
+		CmtEffectHostilizeToAggressor = yes
+	}
+	
+	### Cnclave: Common
+	every_country = {
+		limit = { is_country_type = enclave }
+		add_trust = { who = root amount = -100 }
+		root = {
+			remove_relation_flag = { who = prev flag = xuracorp_trade }
+			remove_relation_flag = { who = prev flag = riggan_trade }
+			remove_relation_flag = { who = prev flag = muutagan_trade }
+		}
+	}
+	
+	### Enclave: Artist
+	remove_modifier = enclave_artist_patron
+	remove_country_flag = artist_patron
+	set_country_flag = enclave_artist_ignores
+	
+	### Enclave: Traders
+	set_country_flag = attacked_xuracorp
+	set_country_flag = attacked_riggans
+	set_country_flag = attacked_muutagans
+	#remove_modifier = enclave_traders_sr1
+	#remove_modifier = enclave_traders_sr2
+	#remove_modifier = enclave_traders_sr3
+	remove_xuracorp_trades = yes
+	remove_riggan_trades = yes
+	remove_muutagan_trades = yes
+	
+	### Enclave: Curator
+	set_country_flag = attacked_curators
+	remove_modifier = curator_insight
+	
+	### Marauders: non
+	#every_owned_fleet = {
+	#	limit = {
+	#		OR = {
+	#			has_fleet_flag = armada_of_the_voidborn
+	#			has_fleet_flag = star_rider_flotilla
+	#			has_fleet_flag = first_storm_wing
+	#			has_fleet_flag = dwamak_bashers
+	#			has_fleet_flag = unhinged_screamer_flotilla
+	#			has_fleet_flag = frenzied_volunteer_squadron
+	#			has_fleet_flag = her_chosen_champions
+	#			has_fleet_flag = order_of_eternal_night
+	#			has_fleet_flag = twilight_congregation
+	#		}
+	#	}
+	#	leader = {
+	#		remove_leader_flag = marauder_merc_leader
+	#		kill_leader = { show_notification = no } 
+	#	}
+	#	delete_fleet = this
+	#}
+	#every_owned_leader = {
+	#	limit = {
+	#		OR = {
+	#			has_leader_flag = hired_merc_leader_1
+	#			has_leader_flag = hired_merc_leader_2
+	#			has_leader_flag = hired_merc_leader_3
+	#		}
+	#	}
+	#	kill_leader = { show_notification = no }
+	#}
+	
+	### Dessanu
+	every_country = {
+		limit = { is_country_type = gate_builders }
+		root = { country_event = { id = graygoo.155 scopes = { from = prev } } }
+	}
+	set_country_flag = gate_builders_hostility		## Backup Code
+	
+	### War in Heaven
+	every_country = {
+		limit = { has_country_flag = war_in_heaven_league_leader }
+		remove_country_flag = war_in_heaven_league_leader
+	}
+	remove_global_flag = war_in_heaven_nonaligned_league
+}
+
+
+
+### Add Opinion Modifiers, Join War, Scope: this = country, event_target = CmtTargetPlayerCrisisAggressor, CmtTargetPlayerCrisisDefenceLeader
+CmtEffectJoinWarPlayerCrisis = {
+	if = {
+		limit = { NOT = { exists = event_target:CmtTargetPlayerCrisisDefenceLeader } }
+		if = {
+			limit = {
+				any_country = {
+					has_country_flag = CmtFlagPlayerCrisisDefender
+					is_at_war_with = event_target:CmtTargetPlayerCrisisAggressor
+					CmtTriggerIsPlayableEmpire = yes
+				}
+			}
+			random_country = {
+				limit = {
+					has_country_flag = CmtFlagPlayerCrisisDefender
+					is_at_war_with = event_target:CmtTargetPlayerCrisisAggressor
+					CmtTriggerIsPlayableEmpire = yes
+				}
+				save_global_event_target_as = CmtTargetPlayerCrisisDefenceLeader
+			}
+		} else = {
+			random_country = {
+				limit = {
+					has_country_flag = CmtFlagPlayerCrisisDefender
+					is_at_war_with = event_target:CmtTargetPlayerCrisisAggressor
+				}
+				save_global_event_target_as = CmtTargetPlayerCrisisDefenceLeader
+			}
+		}
+	}
+	set_country_flag = CmtFlagPlayerCrisisDefender
+	set_country_flag = ai_no_wars
+	join_war = event_target:CmtTargetPlayerCrisisDefenceLeader
+	
+	add_opinion_modifier = { who = event_target:CmtTargetPlayerCrisisAggressor modifier = CmtOpinionPlayerCrisisAggressor }
+	event_target:CmtTargetPlayerCrisisAggressor = { add_opinion_modifier = { who = prev modifier = CmtOpinionPlayerCrisisPrey } }
+	every_country = {
+		limit = {
+			CmtTriggerIsEmpire = yes
+			NOR = {
+				is_same_value = prev
+				CmtTriggerIsPlayerCrisisAggressor = yes
+			}
+		}
+		add_opinion_modifier = { who = prev modifier = CmtOpinionPlayerCrisisAlly }
+		set_closed_borders = { who = prev status = no }
+	}
+}
+
+### Scope: this = country, event_target = CmtTargetPlayerCrisisAggressor
+CmtEffectHostilizeToAggressor = {
+	set_faction_hostility = {
+		target = event_target:CmtTargetPlayerCrisisAggressor
+		set_hostile = yes
+		set_neutral = no
+		set_friendly = no
+	}
+}
+
+CmtEffectEndPlayerCrisis = {
+	every_country = {
+		limit = {
+			CmtTriggerIsEmpire = yes
+			has_country_flag = CmtFlagPlayerCrisisDefender
+		}
+		remove_country_flag = CmtFlagPlayerCrisisDefender
+		remove_country_flag = ai_no_wars
+		remove_opinion_modifier = { who = event_target:CmtTargetPlayerCrisisAggressor modifier = CmtOpinionPlayerCrisisAggressor }
+		event_target:CmtTargetPlayerCrisisAggressor = { remove_opinion_modifier = { who = prev modifier = CmtOpinionPlayerCrisisPrey } }
+		every_country = {
+			limit = { has_opinion_modifier = { who = prev modifier = CmtOpinionPlayerCrisisAlly } }
+			remove_opinion_modifier = { who = prev modifier = CmtOpinionPlayerCrisisAlly }
+		}
+	}
+	clear_global_event_target = CmtTargetPlayerCrisisAggressor
+	if = {
+		limit = { exists = event_target:CmtTargetPlayerCrisisDefenceLeader }
+		clear_global_event_target = CmtTargetPlayerCrisisDefenceLeader
+	}
+}
+
+### Liquidation of Planet, Scope: this = planet
+CmtEffectLiquidatePlanetBombardment = {
+	set_planet_flag = armageddon_nuked
+	random_list = {
+		700 = {
+			change_pc = pc_toxic
+			reroll_planet = yes
+			destroy_colony = yes
+		}
+		200 = {
+			change_pc = pc_toxic
+			reroll_planet = yes
+			destroy_colony = yes
+			add_modifier = { modifier = terraforming_candidate days = -1 }
+		}
+		100 = {
+			change_pc = pc_nuked
+			remove_all_buildings = yes
+			reroll_deposits = yes
+			remove_modifier = natural_beauty
+			remove_modifier = atmospheric_aphrodisiac
+			remove_modifier = atmospheric_hallucinogen
+			remove_modifier = lush_planet
+			remove_modifier = dangerous_wildlife
+			#			every_tile = {
+			#				random_list = {
+			#					40 = { set_blocker = tb_bombarded_land }
+			#					10 = {}
+			#				}
+			#			}
+		}
+	}
+}
+
+
+######################
+###  Till the End  ###
+######################
+
+CmtEffectLiquidateSystemStructure = {
+	every_fleet_in_system = {
+		if = {
+			limit = { exists = leader }
+			leader = { kill_leader = { show_notification = no } }
+		}
+		delete_fleet = this
+	}
+	every_country = {
+		limit = { any_owned_army = { always = yes } }
+		every_owned_army = { remove_army = yes }
+	}
+	every_system_ambient_object = { destroy_ambient_object = this }
+	
+	every_system_planet = {
+		limit = {
+			OR = {
+				is_colony = yes
+				is_under_colonization = yes
+				is_colonizable = yes
+			}
+		}
+		CmtEffectLiquidatePlanetFinal = yes
+	}
+	
+	every_system_megastructure = {
+		limit = { NOT = { has_megastructure_flag = CmtFlagPlayerCrisisLiquidatedObject } }
+		if = {
+			limit = {
+				OR = {
+					is_megastructure_type = ring_world_2
+					is_megastructure_type = ring_world_3_intermediate
+					is_megastructure_type = ring_world_restored
+				}
+			}
+			upgrade_megastructure_to = ring_world_ruined
+			set_megastructure_flag = CmtFlagPlayerCrisisLiquidatedObject
+		} else_if = {
+			limit = {
+				OR = {
+					is_megastructure_type = dyson_sphere_4
+					is_megastructure_type = dyson_sphere_5
+					is_megastructure_type = dyson_sphere_restored
+				}
+			}
+			upgrade_megastructure_to = dyson_sphere_ruined
+			set_megastructure_flag = CmtFlagPlayerCrisisLiquidatedObject
+		} else_if = {
+			limit = {
+				OR = {
+					is_megastructure_type = spy_orb_3
+					is_megastructure_type = spy_orb_4
+					is_megastructure_type = spy_orb_restored
+				}
+			}
+			upgrade_megastructure_to = spy_orb_ruined
+			set_megastructure_flag = CmtFlagPlayerCrisisLiquidatedObject
+		} else_if = {
+			limit = {
+				OR = {
+					is_megastructure_type = think_tank_3
+					is_megastructure_type = think_tank_4
+					is_megastructure_type = think_tank_restored
+				}
+			}
+			upgrade_megastructure_to = think_tank_ruined
+			set_megastructure_flag = CmtFlagPlayerCrisisLiquidatedObject
+		} else_if = {
+			limit = {
+				OR = {
+					is_megastructure_type = gateway_restored
+					is_megastructure_type = gateway_final
+				}
+			}
+			upgrade_megastructure_to = gateway_ruined
+			set_megastructure_flag = CmtFlagPlayerCrisisLiquidatedObject
+		} else_if = {
+			limit = { is_megastructure_type = lgate_base }
+			set_megastructure_flag = CmtFlagPlayerCrisisLiquidatedObject
+		} else_if = { remove_megastructure = this }
+	}
+}
+
+CmtEffectLiquidateSystemCelestial = {
+	every_system_planet = { remove_planet = yes }
+	every_system_megastructure = { remove_megastructure = this }
+	every_neighbor_system = {
+		limit = { has_hyperlane_to = prev }
+		remove_hyperlane = { from = prev to = this }
+	}
+	if = {
+		limit = { NOT = { has_star_flag = CmtFlagLiquidatedSystem } }
+		set_star_flag = CmtFlagLiquidatedSystem
+		set_name = CmtNameStarLight
+	}
+}
+
+CmtEffectLiquidateAgressor = {
+	event_target:CmtTargetPlayerCrisisAggressor = {
+		
+		### Trivials
+		clear_resources = yes
+		every_subject = { set_subject_of = { who = none } }
+		every_planet_within_border = {
+			limit = {
+				OR = {
+					is_colony = yes
+					is_under_colonization = yes
+					is_colonizable = yes
+				}
+			}
+			set_planet_flag = CmtFlagLiquidateTargetPlanet
+		}
+		every_system = {
+			limit = { prev = { has_claim = prev } }
+			remove_claims = { who = prev }
+		}
+		
+		### Pops
+		create_species = {
+			name = CmtSpciesPlayerCrisisNull
+			class = CmtSpciesClassPlayerCrisisNull
+			portrait = CmtPortraitPlayerCrisisNull
+			traits = {}
+		}
+		every_owned_pop = { change_species = last_created }
+		change_dominant_species = { species = last_created }
+		
+		### Leaders except Ruler
+		every_owned_leader = {
+			limit = { NOT = { leader_class = ruler } }		## Put befor delete_fleet for Killing Silentry
+			kill_leader = { show_notification = no }
+		}
+		every_owned_fleet = { delete_fleet = this }
+		every_owned_ship = { delete_ship = this }
+		every_owned_army = { remove_army = yes }
+		
+		### Government
+		country_remove_ethic = ethic_fanatic_authoritarian
+		country_remove_ethic = ethic_authoritarian
+		country_remove_ethic = ethic_fanatic_egalitarian
+		country_remove_ethic = ethic_egalitarian
+		country_remove_ethic = ethic_fanatic_xenophobe
+		country_remove_ethic = ethic_xenophobe
+		country_remove_ethic = ethic_fanatic_xenophile
+		country_remove_ethic = ethic_xenophile
+		country_remove_ethic = ethic_fanatic_militarist
+		country_remove_ethic = ethic_militarist
+		country_remove_ethic = ethic_fanatic_pacifist
+		country_remove_ethic = ethic_pacifist
+		country_remove_ethic = ethic_fanatic_spiritualist
+		country_remove_ethic = ethic_spiritualist
+		country_remove_ethic = ethic_fanatic_materialist
+		country_remove_ethic = ethic_materialist
+		country_remove_ethic = ethic_gestalt_consciousness
+		change_government = { authority = auth_CmtPlayerCrisisNull civics = {} }
+		set_country_type = CmtCountryIiquidated
+		
+		### Rular
+		every_owned_leader = { kill_leader = { show_notification = no } }
+		create_leader = {
+			class = ruler
+			species = CmtSpciesPlayerCrisisNull
+			name = NAME_CmtNameNull
+			set_age = 0
+			skill = 1
+		}
+		set_leader = last_created_leader
+		
+		### Colonies
+		every_planet = {
+			limit = { has_planet_flag = CmtFlagLiquidateTargetPlanet }
+			CmtEffectLiquidatePlanetFinal = yes
+		}
+	}
+}
+
+CmtEffectLiquidatePlanetFinal = {
+	remove_all_buildings = yes
+	destroy_colony = yes
+	if = {
+		limit = { CmtTriggerIsHabitableRingWorld = yes }
+		change_pc = pc_ringworld_habitable_damaged
+		reset_planet = yes
+	} else_if = {
+		limit = { CmtTriggerIsHabitat = yes }
+		remove_planet = yes
+	} else = {
+		set_planet_flag = armageddon_nuked
+		random_list = {
+			100 = { change_pc = pc_toxic }
+			100 = { change_pc = pc_barren }
+			100 = { change_pc = pc_barren_cold }
+			3 = { change_pc = pc_shrouded }
+		}
+		reroll_planet = yes
+	}
+}
+
+

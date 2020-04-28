@@ -1,0 +1,1349 @@
+namespace = crisis
+
+##############################################
+##############################################
+#####                                    #####
+#####    Crisis Events 3: Contingency    #####
+#####                                    #####
+#####    Ghost Signal Events             #####
+#####    Replaced by Crisis Manager      #####
+#####                                    #####
+##############################################
+##############################################
+
+#####################
+###  Spot Events  ###
+#####################
+
+### The Arrival
+country_event = {
+	id = crisis.2022
+	title = crisis.2022.name
+	desc = {
+		trigger = { NOT = { has_authority = auth_machine_intelligence } }
+		text = crisis.2022.desc
+	}
+	desc = {
+		trigger = { has_authority = auth_machine_intelligence }
+		text = crisis.2022.desc.b
+	}
+	picture = GFX_evt_machine_sapience
+	show_sound = event_ai_started
+	trackable = yes
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = ghost_signal_5_flag
+		
+		observer_event = { id = observer.44 }
+		end_event_chain = ghost_signal_chain
+		begin_event_chain = { event_chain = ai_crisis_chain target = ROOT }
+		
+		### Ghost Signal for POPs
+		if = {
+			limit = { has_authority = auth_machine_intelligence }
+			add_notification_modifier = ghost_signal_5_machine
+			if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
+				every_owned_pop = {
+					limit = { has_trait = trait_machine_unit }
+					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_5a days = -1 }
+				}
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
+				every_owned_pop = {
+					limit = { has_trait = trait_machine_unit }
+					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_5b days = -1 }
+				}
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
+				every_owned_pop = {
+					limit = { has_trait = trait_machine_unit }
+					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_5d days = -1 }
+				}
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
+				every_owned_pop = {
+					limit = { has_trait = trait_machine_unit }
+					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_5e days = -1 }
+				}
+			} else = {
+				every_owned_pop = {
+					limit = { has_trait = trait_machine_unit }
+					add_modifier = { modifier = pop_ghost_signal_5_machine days = -1 }
+				}
+			}
+		} else = {
+			add_notification_modifier = ghost_signal_5
+			if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
+				every_owned_pop = {
+					limit = { CmtTriggerGhostTargetPop = yes }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_5a days = -1 }
+				}
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
+				every_owned_pop = {
+					limit = { CmtTriggerGhostTargetPop = yes }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_5b days = -1 }
+				}
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
+				every_owned_pop = {
+					limit = { CmtTriggerGhostTargetPop = yes }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_5d days = -1 }
+				}
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
+				every_owned_pop = {
+					limit = { CmtTriggerGhostTargetPop = yes }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_5e days = -1 }
+				}
+			} else = {
+				every_owned_pop = {
+					limit = { CmtTriggerGhostTargetPop = yes }
+					add_modifier = { modifier = pop_ghost_signal_5 days = -1 }
+				}
+			}
+		}
+		
+		if = {
+			limit = {
+				OR = {
+					has_authority = auth_machine_intelligence
+					has_country_flag = synthetic_empire
+				}
+			}
+			enable_special_project = {
+				name = "AI_CRISIS_PROJECT"
+				location = capital_scope
+				owner = root
+			}
+		}
+		### Ghost Signal for Ships
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
+			every_owned_ship = {
+				limit = { has_sapient_combat_computer = yes }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5a days = -1 }
+			}
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
+			every_owned_ship = {
+				limit = { has_sapient_combat_computer = yes }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5b days = -1 }
+			}
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
+			every_owned_ship = {
+				limit = { has_sapient_combat_computer = yes }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5d days = -1 }
+			}
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
+			every_owned_ship = {
+				limit = { has_sapient_combat_computer = yes }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5e days = -1 }
+			}
+		} else = {
+			every_owned_ship = {
+				limit = { has_sapient_combat_computer = yes }
+				add_modifier = { modifier = ship_ghost_signal_5 days = -1 }
+			}
+		}
+		if = {
+			limit = { any_owned_ship = { has_sapient_combat_computer = yes } }
+			country_event = { id = crisis.2099 days = 10 }
+		}
+	}
+	
+	option = {
+		name = ONSCREEN
+		if = {
+			limit = {
+				OR = {
+					has_authority = auth_machine_intelligence
+					has_country_flag = synthetic_empire
+				}
+			}
+			tooltip = {
+				enable_special_project = {
+					name = AI_CRISIS_PROJECT
+					location = capital_scope
+					owner = root
+				}
+			}
+		}
+		hidden_effect = { country_event = { id = crisis.2023 } }
+	}
+}
+
+
+### Machine Empire Special Project Finished
+country_event = {
+	id = crisis.2510
+	title = crisis.2510.name
+	desc = crisis.2510.desc
+	show_sound = event_alien_signal
+	picture = GFX_evt_synth_sabotage
+	is_triggered_only = yes
+
+	immediate = {
+		set_country_flag = ghost_signal_blocked
+	}
+	
+	option = {
+		name = EXCELLENT
+		hidden_effect = {
+			if = {
+				limit = { has_notification_modifier = ghost_signal_5_machine }
+				remove_notification_modifier = ghost_signal_5_machine
+				if = {
+					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
+					every_owned_pop = {
+						limit = { has_modifier = CmtModifierMachinePopGhostSignal_5a }
+						remove_modifier = CmtModifierMachinePopGhostSignal_5a
+					}
+				} else_if = {
+					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
+					every_owned_pop = {
+						limit = { has_modifier = CmtModifierMachinePopGhostSignal_5b }
+						remove_modifier = CmtModifierMachinePopGhostSignal_5b
+					}
+				} else_if = {
+					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
+					every_owned_pop = {
+						limit = { has_modifier = CmtModifierMachinePopGhostSignal_5d }
+						remove_modifier = CmtModifierMachinePopGhostSignal_5d
+					}
+				} else_if = {
+					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
+					every_owned_pop = {
+						limit = { has_modifier = CmtModifierMachinePopGhostSignal_5e }
+						remove_modifier = CmtModifierMachinePopGhostSignal_5e
+					}
+				} else = {
+					every_owned_pop = {
+						limit = { has_modifier = pop_ghost_signal_5_machine }
+						remove_modifier = pop_ghost_signal_5_machine
+					}
+				}
+			} else_if = {
+				limit = { has_notification_modifier = ghost_signal_4_machine }
+				remove_notification_modifier = ghost_signal_4_machine
+				if = {
+					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
+					every_owned_pop = {
+						limit = { has_modifier = CmtModifierMachinePopGhostSignal_4a }
+						remove_modifier = CmtModifierMachinePopGhostSignal_4a
+					}
+				} else_if = {
+					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
+					every_owned_pop = {
+						limit = { has_modifier = CmtModifierMachinePopGhostSignal_4b }
+						remove_modifier = CmtModifierMachinePopGhostSignal_4b
+					}
+				} else_if = {
+					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
+					every_owned_pop = {
+						limit = { has_modifier = CmtModifierMachinePopGhostSignal_4d }
+						remove_modifier = CmtModifierMachinePopGhostSignal_4d
+					}
+				} else_if = {
+					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
+					every_owned_pop = {
+						limit = { has_modifier = CmtModifierMachinePopGhostSignal_4e }
+						remove_modifier = CmtModifierMachinePopGhostSignal_4e
+					}
+				} else = {
+					every_owned_pop = {
+						limit = { has_modifier = pop_ghost_signal_4_machine }
+						remove_modifier = pop_ghost_signal_4_machine
+					}
+				}
+			}
+		}
+	}
+}
+
+### Machine World Destroyed
+planet_event = {
+	id = crisis.2040
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		is_planet_class = pc_ai
+		OR = {
+			planet_devastation >= 100		## 2.2.4.beta: >=50
+			has_planet_flag = destroyed_by_colossus
+			has_planet_flag = planet_cracked
+			has_planet_flag = planet_shielded
+			has_planet_flag = planet_godrayed
+		}
+		NOT = { has_planet_flag = machine_lair }
+	}
+	
+	immediate = {
+		if = {
+			limit = { has_planet_flag = machine_world_1 }
+			every_country = {
+				limit = { has_event_chain = "ai_crisis_chain" }
+				remove_point_of_interest = ai_crisis_poi.1
+			}
+		} else_if = {
+			limit = { has_planet_flag = machine_world_2 }
+			every_country = {
+				limit = { has_event_chain = "ai_crisis_chain" }
+				remove_point_of_interest = ai_crisis_poi.2
+			}
+		} else_if = {
+			limit = { has_planet_flag = machine_world_3 }
+			every_country = {
+				limit = { has_event_chain = "ai_crisis_chain" }
+				remove_point_of_interest = ai_crisis_poi.3
+			}
+		} else_if = {
+			limit = { has_planet_flag = machine_world_4 }
+			every_country = {
+				limit = { has_event_chain = "ai_crisis_chain" }
+				remove_point_of_interest = ai_crisis_poi.4
+			}
+		}
+		every_country = {
+			limit = { has_event_chain = "ai_crisis_chain" }
+			add_event_chain_counter = {
+				event_chain = "ai_crisis_chain"
+				counter = "active_machine_worlds"
+				amount = -1
+			}
+		}
+		
+		if = {
+			limit = { 
+				OR = {
+					NOT = { has_planet_flag = destroyed_by_colossus }
+					has_planet_flag = planet_godrayed
+				}
+			}
+			destroy_colony = yes
+			change_pc = pc_broken
+			reset_planet = yes
+			hidden_effect = { clear_deposits = yes }
+			add_deposit = d_living_metal_deposit
+			add_deposit = d_minerals_3
+			add_deposit = d_energy_3
+		}
+		
+		event_target:AI_crisis = {
+			change_variable = { which = machine_worlds_destroyed value = 1 }
+			if = {
+				limit = { check_variable = { which = machine_worlds_destroyed value = 1 } }
+				remove_global_flag = ghost_signal_5_flag
+				set_global_flag = ghost_signal_4_flag
+				every_country = {
+					limit = { has_notification_modifier = ghost_signal_5 }
+					remove_notification_modifier = ghost_signal_5
+					add_notification_modifier = ghost_signal_4
+					if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
+						every_owned_pop = {
+							limit = { has_modifier = CmtModifierOrganicPopGhostSignal_5a }
+							remove_modifier = CmtModifierOrganicPopGhostSignal_5a
+							add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_4a days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
+						every_owned_pop = {
+							limit = { has_modifier = CmtModifierOrganicPopGhostSignal_5b }
+							remove_modifier = CmtModifierOrganicPopGhostSignal_5b
+							add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_4b days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
+						every_owned_pop = {
+							limit = { has_modifier = CmtModifierOrganicPopGhostSignal_5d }
+							remove_modifier = CmtModifierOrganicPopGhostSignal_5d
+							add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_4d days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
+						every_owned_pop = {
+							limit = { has_modifier = CmtModifierOrganicPopGhostSignal_5e }
+							remove_modifier = CmtModifierOrganicPopGhostSignal_5e
+							add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_4e days = -1 }
+						}
+					} else = {
+						every_owned_pop = {
+							limit = { has_modifier = pop_ghost_signal_5 }
+							remove_modifier = pop_ghost_signal_5
+							add_modifier = { modifier = pop_ghost_signal_4 days = -1 }
+						}
+					}
+					if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = CmtModifierCombatShipGhostSignal_5a
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4a days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = CmtModifierCombatShipGhostSignal_5b
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4b days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = CmtModifierCombatShipGhostSignal_5d
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4d days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = CmtModifierCombatShipGhostSignal_5e
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4e days = -1 }
+						}
+					} else = {
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = ship_ghost_signal_5
+							add_modifier = { modifier = ship_ghost_signal_4 days = -1 }
+						}
+					}
+				}
+				every_country = {
+					limit = { has_notification_modifier = ghost_signal_5_machine }
+					remove_notification_modifier = ghost_signal_5_machine
+					add_notification_modifier = ghost_signal_4_machine
+					if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
+						every_owned_pop = {
+							limit = { has_trait = trait_machine_unit }
+							remove_modifier = CmtModifierMachinePopGhostSignal_5a
+							add_modifier = { modifier = CmtModifierMachinePopGhostSignal_4a days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
+						every_owned_pop = {
+							limit = { has_trait = trait_machine_unit }
+							remove_modifier = CmtModifierMachinePopGhostSignal_5b
+							add_modifier = { modifier = CmtModifierMachinePopGhostSignal_4b days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
+						every_owned_pop = {
+							limit = { has_trait = trait_machine_unit }
+							remove_modifier = CmtModifierMachinePopGhostSignal_5d
+							add_modifier = { modifier = CmtModifierMachinePopGhostSignal_4d days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
+						every_owned_pop = {
+							limit = { has_trait = trait_machine_unit }
+							remove_modifier = CmtModifierMachinePopGhostSignal_5e
+							add_modifier = { modifier = CmtModifierMachinePopGhostSignal_4e days = -1 }
+						}
+					} else = {
+						every_owned_pop = {
+							limit = { has_trait = trait_machine_unit }
+							remove_modifier = pop_ghost_signal_5_machine
+							add_modifier = { modifier = pop_ghost_signal_4_machine days = -1 }
+						}
+					}
+					if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = CmtModifierCombatShipGhostSignal_5a
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4a days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = CmtModifierCombatShipGhostSignal_5b
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4b days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = CmtModifierCombatShipGhostSignal_5d
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4d days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = CmtModifierCombatShipGhostSignal_5e
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4e days = -1 }
+						}
+					} else = {
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = ship_ghost_signal_5
+							add_modifier = { modifier = ship_ghost_signal_4 days = -1 }
+						}
+					}
+				}
+				every_country = {
+					limit = { is_ai = no }
+					country_event = { id = crisis.2037 }
+				}
+				observer_event = { id = observer.50 }
+			} else_if = {
+				limit = { check_variable = { which = machine_worlds_destroyed value = 2 } }
+				set_global_flag = first_machine_world_destroyed
+				remove_global_flag = ghost_signal_4_flag
+				set_global_flag = ghost_signal_3_flag
+				every_country = {
+					limit = { has_notification_modifier = ghost_signal_4 }
+					remove_notification_modifier = ghost_signal_4
+					add_notification_modifier = ghost_signal_3
+					if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
+						every_owned_pop = {
+							limit = { has_modifier = CmtModifierOrganicPopGhostSignal_4a }
+							remove_modifier = CmtModifierOrganicPopGhostSignal_4a
+							add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_3a days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
+						every_owned_pop = {
+							limit = { has_modifier = CmtModifierOrganicPopGhostSignal_4b }
+							remove_modifier = CmtModifierOrganicPopGhostSignal_4b
+							add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_3b days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
+						every_owned_pop = {
+							limit = { has_modifier = CmtModifierOrganicPopGhostSignal_4d }
+							remove_modifier = CmtModifierOrganicPopGhostSignal_4d
+							add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_3d days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
+						every_owned_pop = {
+							limit = { has_modifier = CmtModifierOrganicPopGhostSignal_4e }
+							remove_modifier = CmtModifierOrganicPopGhostSignal_4e
+							add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_3e days = -1 }
+						}
+					} else = {
+						every_owned_pop = {
+							limit = { has_modifier = pop_ghost_signal_4 }
+							remove_modifier = pop_ghost_signal_4
+							add_modifier = { modifier = pop_ghost_signal_3 days = -1 }
+						}
+					}
+					if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = CmtModifierCombatShipGhostSignal_4a
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3a days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = CmtModifierCombatShipGhostSignal_4b
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3b days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = CmtModifierCombatShipGhostSignal_4d
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3d days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = CmtModifierCombatShipGhostSignal_4e
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3e days = -1 }
+						}
+					} else = {
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = ship_ghost_signal_4
+							add_modifier = { modifier = ship_ghost_signal_3 days = -1 }
+						}
+					}
+				}
+				every_country = {
+					limit = { has_notification_modifier = ghost_signal_4_machine }
+					remove_notification_modifier = ghost_signal_4_machine
+					if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
+						every_owned_pop = {
+							limit = { has_trait = trait_machine_unit }
+							remove_modifier = CmtModifierMachinePopGhostSignal_4a
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
+						every_owned_pop = {
+							limit = { has_trait = trait_machine_unit }
+							remove_modifier = CmtModifierMachinePopGhostSignal_4b
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
+						every_owned_pop = {
+							limit = { has_trait = trait_machine_unit }
+							remove_modifier = CmtModifierMachinePopGhostSignal_4d
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
+						every_owned_pop = {
+							limit = { has_trait = trait_machine_unit }
+							remove_modifier = CmtModifierMachinePopGhostSignal_4e
+						}
+					} else = {
+						every_owned_pop = {
+							limit = { has_trait = trait_machine_unit }
+							remove_modifier = pop_ghost_signal_4_machine
+						}
+					}
+					if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = CmtModifierCombatShipGhostSignal_4a
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = CmtModifierCombatShipGhostSignal_4b
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = CmtModifierCombatShipGhostSignal_4d
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = CmtModifierCombatShipGhostSignal_4e
+						}
+					} else = {
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = ship_ghost_signal_4
+						}
+					}
+				}
+				every_country = {
+					limit = { has_special_project = AI_CRISIS_PROJECT }
+					abort_special_project = { type = AI_CRISIS_PROJECT }
+				}
+				every_country = {
+					limit = { is_ai = no }
+					country_event = { id = crisis.2037 }
+				}
+				observer_event = { id = observer.50 }
+			} else_if = {
+				limit = { check_variable = { which = machine_worlds_destroyed value = 3 } }
+				remove_global_flag = ghost_signal_3_flag
+				set_global_flag = ghost_signal_2_flag
+				every_country = {
+					limit = { has_notification_modifier = ghost_signal_3 }
+					remove_notification_modifier = ghost_signal_3
+					add_notification_modifier = ghost_signal_2
+					if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
+						every_owned_pop = {
+							limit = { has_modifier = CmtModifierOrganicPopGhostSignal_3a }
+							remove_modifier = CmtModifierOrganicPopGhostSignal_3a
+							add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_2a days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
+						every_owned_pop = {
+							limit = { has_modifier = CmtModifierOrganicPopGhostSignal_3b }
+							remove_modifier = CmtModifierOrganicPopGhostSignal_3b
+							add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_2b days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
+						every_owned_pop = {
+							limit = { has_modifier = CmtModifierOrganicPopGhostSignal_3d }
+							remove_modifier = CmtModifierOrganicPopGhostSignal_3d
+							add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_2d days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
+						every_owned_pop = {
+							limit = { has_modifier = CmtModifierOrganicPopGhostSignal_3e }
+							remove_modifier = CmtModifierOrganicPopGhostSignal_3e
+							add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_2e days = -1 }
+						}
+					} else = {
+						every_owned_pop = {
+							limit = { has_modifier = pop_ghost_signal_3 }
+							remove_modifier = pop_ghost_signal_3
+							add_modifier = { modifier = pop_ghost_signal_2 days = -1 }
+						}
+					}
+					if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = CmtModifierCombatShipGhostSignal_3a
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2a days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = CmtModifierCombatShipGhostSignal_3b
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2b days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = CmtModifierCombatShipGhostSignal_3d
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2d days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = CmtModifierCombatShipGhostSignal_3e
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2e days = -1 }
+						}
+					} else = {
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = ship_ghost_signal_3
+							add_modifier = { modifier = ship_ghost_signal_2 days = -1 }
+						}
+					}
+				}
+				every_country = {
+					limit = { is_ai = no }
+					country_event = { id = crisis.2037 }
+				}
+				observer_event = { id = observer.50 }
+			} else_if = {
+				limit = { check_variable = { which = machine_worlds_destroyed value = 4 } }
+				remove_global_flag = ghost_signal_2_flag
+				every_country = {
+					limit = { has_notification_modifier = ghost_signal_2 }
+					remove_notification_modifier = ghost_signal_2
+					add_notification_modifier = ghost_signal_1
+					if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
+						every_owned_pop = {
+							limit = { has_modifier = CmtModifierOrganicPopGhostSignal_2a }
+							remove_modifier = CmtModifierOrganicPopGhostSignal_2a
+							add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_1a days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
+						every_owned_pop = {
+							limit = { has_modifier = CmtModifierOrganicPopGhostSignal_2b }
+							remove_modifier = CmtModifierOrganicPopGhostSignal_2b
+							add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_1b days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
+						every_owned_pop = {
+							limit = { has_modifier = CmtModifierOrganicPopGhostSignal_2d }
+							remove_modifier = CmtModifierOrganicPopGhostSignal_2d
+							add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_1d days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
+						every_owned_pop = {
+							limit = { has_modifier = CmtModifierOrganicPopGhostSignal_2e }
+							remove_modifier = CmtModifierOrganicPopGhostSignal_2e
+							add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_1e days = -1 }
+						}
+					} else = {
+						every_owned_pop = {
+							limit = { has_modifier = pop_ghost_signal_2 }
+							remove_modifier = pop_ghost_signal_2
+							add_modifier = { modifier = pop_ghost_signal_1 days = -1 }
+						}
+					}
+					if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = CmtModifierCombatShipGhostSignal_2a
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1a days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = CmtModifierCombatShipGhostSignal_2b
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1b days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = CmtModifierCombatShipGhostSignal_2d
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1d days = -1 }
+						}
+					} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = CmtModifierCombatShipGhostSignal_2e
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1e days = -1 }
+						}
+					} else = {
+						every_owned_ship = {
+							limit = { has_sapient_combat_computer = yes }
+							remove_modifier = ship_ghost_signal_2
+							add_modifier = { modifier = ship_ghost_signal_1 days = -1 }
+						}
+					}
+				}
+				country_event = { id = crisis.2035 }
+				observer_event = { id = observer.50 }
+			}
+		}
+	}
+}
+
+### Final Machine World Destroyed
+planet_event = {
+	id = crisis.2046
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		remove_global_flag = synth_terror
+		remove_global_flag = ai_ghost_signal
+		remove_global_flag = ai_invasion_ongoing
+		
+		if = {
+			limit = { 
+				OR = {
+					NOT = { has_planet_flag = destroyed_by_colossus }
+					has_planet_flag = planet_godrayed
+				}
+			}
+			destroy_colony = yes
+			change_pc = pc_broken
+			reset_planet = yes
+		}
+		event_target:final_machine_world_destroyer = {
+			set_country_flag = does_not_compute
+			set_country_flag = final_machine_world_destroyed
+		}
+		if = {
+			limit = {
+				event_target:final_machine_world_destroyer = { is_ai = no }
+				NOT = { has_planet_flag = planet_shielded }
+			}
+			event_target:final_machine_world_destroyer = {
+				country_event = { id = crisis.2480 days = 10 random = 10 }
+			}
+		}
+		if = {
+			limit = {
+				event_target:final_machine_world_destroyer = { is_ai = no }
+				has_planet_flag = planet_shielded
+			}
+			event_target:final_machine_world_destroyer = {
+				country_event = { id = crisis.2481 days = 10 random = 10 }
+			}
+		}
+		
+		CmtEffectClearGhostSignalGalaxy = yes
+		
+		every_country = {
+			limit = { has_event_chain = "ai_crisis_chain" }
+			end_event_chain = "ai_crisis_chain"
+		}
+		every_country = {
+			limit = { has_special_project = SYNTH_INFILTRATION_PROJECT }
+			abort_special_project = { type = SYNTH_INFILTRATION_PROJECT }
+		}
+		every_country = {
+			limit = { has_modifier = unity_reduction_crisis_2204 }
+			remove_modifier = unity_reduction_crisis_2204
+		}
+		every_country = {
+			limit = { CmtTriggerIsEmpire = yes }
+			country_event = { id = crisis.2038 }
+			every_owned_planet = {
+				limit = { has_modifier = synth_planet_paranoia }
+				remove_modifier = synth_planet_paranoia
+			}
+		}
+		observer_event = { id = observer.51 }
+		
+		event_target:AI_crisis = {
+			destroy_country = yes
+			### 2.2.4: should end their purges too
+		}
+		
+		### Fallen Machine Empire & Cybrex
+		every_country = {
+			limit = { is_fallen_machine_empire = yes }
+			country_event = { id = fallen_machine_empire.3 days = 1 }
+		}
+		
+		if = {
+			limit = {
+				has_global_flag = cybrex_resurface
+				NOT = { has_global_flag = cybrex_destroyed }
+			}
+			random_country = {
+				limit = { is_country_type = cybrex_empire }
+				every_country = {
+					limit = { has_country_flag = cybrex_donation }
+					country_event = { id = crisis.2474 days = 20 random = 30 }		## Cybrex recall expeditionary fleets
+				}
+				country_event = { id = crisis.2406 days = 365 random = 800 }		## Cybrex Depart Galaxy
+			}
+		}
+	}
+}
+
+
+
+#########################
+###  Ordinary Events  ###
+#########################
+
+### for New Synth
+planet_event = {
+	id = crisis.2055
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_global_flag = ai_ghost_signal
+		fromfrom = {
+			has_trait = trait_mechanical
+			owner = {
+				CmtTriggerUnderGhostSignalCountry = yes
+				NOT = { has_country_flag = synthetic_empire }
+			}
+		}
+	}
+	
+	immediate = {
+		fromfrom = {
+			if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
+				if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_5 } }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_5a days = -1 }
+				} else_if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_4 } }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_4a days = -1 }
+				} else_if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_3 } }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_3a days = -1 }
+				} else_if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_2 } }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_2a days = -1 }
+				} else_if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_1 } }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_1a days = -1 }
+				}
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
+				if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_5 } }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_5b days = -1 }
+				} else_if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_4 } }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_4b days = -1 }
+				} else_if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_3 } }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_3b days = -1 }
+				} else_if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_2 } }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_2b days = -1 }
+				} else_if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_1 } }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_1b days = -1 }
+				}
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
+				if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_5 } }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_5d days = -1 }
+				} else_if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_4 } }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_4d days = -1 }
+				} else_if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_3 } }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_3d days = -1 }
+				} else_if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_2 } }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_2d days = -1 }
+				} else_if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_1 } }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_1d days = -1 }
+				}
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
+				if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_5 } }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_5e days = -1 }
+				} else_if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_4 } }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_4e days = -1 }
+				} else_if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_3 } }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_3e days = -1 }
+				} else_if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_2 } }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_2e days = -1 }
+				} else_if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_1 } }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_1e days = -1 }
+				}
+			} else = {
+				if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_5 } }
+					add_modifier = { modifier = pop_ghost_signal_5 days = -1 }
+				} else_if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_4 } }
+					add_modifier = { modifier = pop_ghost_signal_4 days = -1 }
+				} else_if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_3 } }
+					add_modifier = { modifier = pop_ghost_signal_3 days = -1 }
+				} else_if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_2 } }
+					add_modifier = { modifier = pop_ghost_signal_2 days = -1 }
+				} else_if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_1 } }
+					add_modifier = { modifier = pop_ghost_signal_1 days = -1 }
+				}
+			}
+		}
+	}
+}
+
+### for New Machine Empire Pop
+planet_event = {
+	id = crisis.2312
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_global_flag = ai_ghost_signal
+		fromfrom = {
+			has_trait = trait_machine_unit
+			owner = { CmtTriggerUnderGhostSignalCountry = yes }
+		}
+	}
+	
+	immediate = {
+		fromfrom = {
+			if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
+				if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_5_machine } }
+					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_5a days = -1 }
+				} else_if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_4_machine } }
+					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_4a days = -1 }
+				}
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
+				if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_5_machine } }
+					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_5b days = -1 }
+				} else_if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_4_machine } }
+					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_4b days = -1 }
+				}
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
+				if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_5_machine } }
+					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_5d days = -1 }
+				} else_if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_4_machine } }
+					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_4d days = -1 }
+				}
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
+				if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_5_machine } }
+					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_5e days = -1 }
+				} else_if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_4_machine } }
+					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_4e days = -1 }
+				}
+			} else = {
+				if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_5_machine } }
+					add_modifier = { modifier = pop_ghost_signal_5_machine days = -1 }
+				} else_if = {
+					limit = { owner = { has_notification_modifier = ghost_signal_4_machine } }
+					add_modifier = { modifier = pop_ghost_signal_4_machine days = -1 }
+				}
+			}
+		}
+	}
+}
+
+
+### for New ships
+ship_event = {
+	id = crisis.2056
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_global_flag = ai_ghost_signal
+		has_sapient_combat_computer = yes
+		owner = { CmtTriggerUnderGhostSignalCountry = yes }
+	}
+	
+	immediate = {
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
+			if = {
+				limit = {
+					owner = {
+						OR = {
+							has_notification_modifier = ghost_signal_5
+							has_notification_modifier = ghost_signal_5_machine
+						}
+					}
+				}
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5a days = -1 }
+			} else_if = {
+				limit = {
+					owner = {
+						OR = {
+							has_notification_modifier = ghost_signal_4
+							has_notification_modifier = ghost_signal_4_machine
+						}
+					}
+				}
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4a days = -1 }
+			} else_if = {
+				limit = { owner = { has_notification_modifier = ghost_signal_3 } }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3a days = -1 }
+			} else_if = {
+				limit = { owner = { has_notification_modifier = ghost_signal_2 } }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2a days = -1 }
+			} else_if = {
+				limit = { owner = { has_notification_modifier = ghost_signal_1 } }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1a days = -1 }
+			}
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
+			if = {
+				limit = {
+					owner = {
+						OR = {
+							has_notification_modifier = ghost_signal_5
+							has_notification_modifier = ghost_signal_5_machine
+						}
+					}
+				}
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5b days = -1 }
+			} else_if = {
+				limit = {
+					owner = {
+						OR = {
+							has_notification_modifier = ghost_signal_4
+							has_notification_modifier = ghost_signal_4_machine
+						}
+					}
+				}
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4b days = -1 }
+			} else_if = {
+				limit = { owner = { has_notification_modifier = ghost_signal_3 } }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3b days = -1 }
+			} else_if = {
+				limit = { owner = { has_notification_modifier = ghost_signal_2 } }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2b days = -1 }
+			} else_if = {
+				limit = { owner = { has_notification_modifier = ghost_signal_1 } }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1b days = -1 }
+			}
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
+			if = {
+				limit = {
+					owner = {
+						OR = {
+							has_notification_modifier = ghost_signal_5
+							has_notification_modifier = ghost_signal_5_machine
+						}
+					}
+				}
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5d days = -1 }
+			} else_if = {
+				limit = {
+					owner = {
+						OR = {
+							has_notification_modifier = ghost_signal_4
+							has_notification_modifier = ghost_signal_4_machine
+						}
+					}
+				}
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4d days = -1 }
+			} else_if = {
+				limit = { owner = { has_notification_modifier = ghost_signal_3 } }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3d days = -1 }
+			} else_if = {
+				limit = { owner = { has_notification_modifier = ghost_signal_2 } }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2d days = -1 }
+			} else_if = {
+				limit = { owner = { has_notification_modifier = ghost_signal_1 } }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1d days = -1 }
+			}
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
+			if = {
+				limit = {
+					owner = {
+						OR = {
+							has_notification_modifier = ghost_signal_5
+							has_notification_modifier = ghost_signal_5_machine
+						}
+					}
+				}
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5e days = -1 }
+			} else_if = {
+				limit = {
+					owner = {
+						OR = {
+							has_notification_modifier = ghost_signal_4
+							has_notification_modifier = ghost_signal_4_machine
+						}
+					}
+				}
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4e days = -1 }
+			} else_if = {
+				limit = { owner = { has_notification_modifier = ghost_signal_3 } }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3e days = -1 }
+			} else_if = {
+				limit = { owner = { has_notification_modifier = ghost_signal_2 } }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2e days = -1 }
+			} else_if = {
+				limit = { owner = { has_notification_modifier = ghost_signal_1 } }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1e days = -1 }
+			}
+		} else = {
+			if = {
+				limit = {
+					owner = {
+						OR = {
+							has_notification_modifier = ghost_signal_5
+							has_notification_modifier = ghost_signal_5_machine
+						}
+					}
+				}
+				add_modifier = { modifier = ship_ghost_signal_5 days = -1 }
+			} else_if = {
+				limit = {
+					owner = {
+						OR = {
+							has_notification_modifier = ghost_signal_4
+							has_notification_modifier = ghost_signal_4_machine
+						}
+					}
+				}
+				add_modifier = { modifier = ship_ghost_signal_4 days = -1 }
+			} else_if = {
+				limit = { owner = { has_notification_modifier = ghost_signal_3 } }
+				add_modifier = { modifier = ship_ghost_signal_3 days = -1 }
+			} else_if = {
+				limit = { owner = { has_notification_modifier = ghost_signal_2 } }
+				add_modifier = { modifier = ship_ghost_signal_2 days = -1 }
+			} else_if = {
+				limit = { owner = { has_notification_modifier = ghost_signal_1 } }
+				add_modifier = { modifier = ship_ghost_signal_1 days = -1 }
+			}
+		}
+	}
+}
+
+
+### for Upgraded Ships
+ship_event = {
+	id = crisis.2057
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_global_flag = ai_ghost_signal
+		owner = { CmtTriggerUnderGhostSignalCountry = yes }
+		OR = {
+			has_sapient_combat_computer = yes
+			has_modifier = ship_ghost_signal_5
+			has_modifier = ship_ghost_signal_4
+			has_modifier = ship_ghost_signal_3
+			has_modifier = ship_ghost_signal_2
+			has_modifier = ship_ghost_signal_1
+			has_modifier = CmtModifierCombatShipGhostSignal_5a
+			has_modifier = CmtModifierCombatShipGhostSignal_5b
+			has_modifier = CmtModifierCombatShipGhostSignal_5d
+			has_modifier = CmtModifierCombatShipGhostSignal_5e
+			has_modifier = CmtModifierCombatShipGhostSignal_4a
+			has_modifier = CmtModifierCombatShipGhostSignal_4b
+			has_modifier = CmtModifierCombatShipGhostSignal_4d
+			has_modifier = CmtModifierCombatShipGhostSignal_4e
+			has_modifier = CmtModifierCombatShipGhostSignal_3a
+			has_modifier = CmtModifierCombatShipGhostSignal_3b
+			has_modifier = CmtModifierCombatShipGhostSignal_3d
+			has_modifier = CmtModifierCombatShipGhostSignal_3e
+			has_modifier = CmtModifierCombatShipGhostSignal_2a
+			has_modifier = CmtModifierCombatShipGhostSignal_2b
+			has_modifier = CmtModifierCombatShipGhostSignal_2d
+			has_modifier = CmtModifierCombatShipGhostSignal_2e
+			has_modifier = CmtModifierCombatShipGhostSignal_1a
+			has_modifier = CmtModifierCombatShipGhostSignal_1b
+			has_modifier = CmtModifierCombatShipGhostSignal_1d
+			has_modifier = CmtModifierCombatShipGhostSignal_1e
+		}
+	}
+	
+	immediate = {
+		remove_modifier = ship_ghost_signal_5
+		remove_modifier = ship_ghost_signal_4
+		remove_modifier = ship_ghost_signal_3
+		remove_modifier = ship_ghost_signal_2
+		remove_modifier = ship_ghost_signal_1
+		remove_modifier = CmtModifierCombatShipGhostSignal_5a
+		remove_modifier = CmtModifierCombatShipGhostSignal_5b
+		remove_modifier = CmtModifierCombatShipGhostSignal_5d
+		remove_modifier = CmtModifierCombatShipGhostSignal_5e
+		remove_modifier = CmtModifierCombatShipGhostSignal_4a
+		remove_modifier = CmtModifierCombatShipGhostSignal_4b
+		remove_modifier = CmtModifierCombatShipGhostSignal_4d
+		remove_modifier = CmtModifierCombatShipGhostSignal_4e
+		remove_modifier = CmtModifierCombatShipGhostSignal_3a
+		remove_modifier = CmtModifierCombatShipGhostSignal_3b
+		remove_modifier = CmtModifierCombatShipGhostSignal_3d
+		remove_modifier = CmtModifierCombatShipGhostSignal_3e
+		remove_modifier = CmtModifierCombatShipGhostSignal_2a
+		remove_modifier = CmtModifierCombatShipGhostSignal_2b
+		remove_modifier = CmtModifierCombatShipGhostSignal_2d
+		remove_modifier = CmtModifierCombatShipGhostSignal_2e
+		remove_modifier = CmtModifierCombatShipGhostSignal_1a
+		remove_modifier = CmtModifierCombatShipGhostSignal_1b
+		remove_modifier = CmtModifierCombatShipGhostSignal_1d
+		remove_modifier = CmtModifierCombatShipGhostSignal_1e
+		
+		ship_event = { id = crisis.2056 }		## Set Modifier if Ship Has Sapient CPU
+	}
+}
+

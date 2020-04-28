@@ -1,0 +1,86 @@
+
+#################################################
+#################################################
+#####                                       #####
+#####    Crisis Manager                     #####
+#####                                       #####
+#####    Sound Effects for Player Crisis    #####
+#####                                       #####
+#################################################
+#################################################
+
+
+#####################################
+###  Notification of Liquidation  ###
+#####################################
+#
+#		ancient_space_station_l_death_02
+#		event_ghost_town
+#		event_mystic_reveal_03
+#		extra_dimensional_ship_death_01, extra_dimensional_station_death_01
+#		distance_extra_dimensional_ship_death_01
+#		ex_corvette_hum_01
+#
+
+soundeffect = {
+	name = CmtSoundLiquidation1
+	sounds = { sound = event_ghost_town }
+	volume = 0.3
+	max_audible = 1
+	max_audible_behaviour = fail
+}
+
+soundeffect = {
+	name = CmtSoundLiquidation2
+	sounds = { sound = event_mystic_reveal_03 }
+	volume = 0.3
+	max_audible = 1
+	max_audible_behaviour = fail
+}
+
+soundeffect = {
+	name = CmtSoundLiquidation3
+	sounds = { sound = ancient_space_station_l_death_02 }
+	volume = 0.2
+	max_audible = 1
+	max_audible_behaviour = fail
+}
+
+soundeffect = {
+	name = CmtSoundLiquidation4
+	sounds = { sound = distance_extra_dimensional_ship_death_01 }
+	volume = 0.15
+	max_audible = 1
+	max_audible_behaviour = fail
+}
+
+
+############################
+###  Liquidating System  ###
+############################
+#
+#	Choices
+#		event_mystic_reveal, event_mystic_reveal_02, event_mystic_reveal_03
+#		alert_construction_complete
+#		ex_dimensional_portal_thunder_01
+#		notification_research_alert
+#		shielded_planet_01, shielded_planet_02
+#
+
+soundeffect = {
+	name = CmtSoundNowLiquidating3
+	sounds = { sound = alert_construction_complete }
+	volume = 0.25
+	max_audible = 1
+	max_audible_behaviour = fail
+}
+
+soundeffect = {
+	name = CmtSoundNowLiquidating4
+	sounds = { sound = shielded_planet_01 }
+	volume = 0.15
+	max_audible = 1
+	max_audible_behaviour = fail
+}
+
+

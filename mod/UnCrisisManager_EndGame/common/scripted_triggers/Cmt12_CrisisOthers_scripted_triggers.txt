@@ -1,0 +1,487 @@
+
+######################################################
+######################################################
+#####                                            #####
+#####    Crisis Manager                          #####
+#####                                            #####
+#####    Scripted Trigger for End-Game Crises    #####
+#####    Except Triggering Crises                #####
+#####                                            #####
+######################################################
+######################################################
+
+
+###################
+###  Prethoryn  ###
+###################
+
+CmtTriggerPrethoryn1stTarget = {
+	OR = {
+		# No owner or neighbors
+		NOR = {
+			any_neighbor_system = { exists = space_owner }
+			exists = space_owner
+		}
+		# Owned but not by fallen mpire
+		AND = {
+			exists = space_owner
+			space_owner = { NOT = { CmtTriggerIsFallenEmpire = yes } }
+		}
+	}
+	# No neighboring fallen empires
+	NOT = {
+		any_neighbor_system = {
+			exists = space_owner
+			space_owner = { CmtTriggerIsFallenEmpire = yes }
+		}
+	}
+	# Not Captial of Other Crisis Country
+	CmtTriggerSpawnableSystem = yes
+}
+
+CmtTriggerFeralPrethorynSpawnableSystem = {
+	has_owner = no
+	NOR = {
+		has_star_flag = feral_prethoryn_system
+		has_star_flag = extradimensional_origin_system
+		has_star_flag = extradimensional_second_portal_system
+		has_star_flag = extradimensional_third_portal_system
+		has_star_flag = AI_hub		## Machiene World 1-4, cf. planet_flag = machine_world_1
+		has_star_flag = AI_lair		## Final MAchiene World, cf. planet flag = machine_lair
+		any_system_planet = { is_capital = yes }
+	}
+	any_system_planet = { has_planet_flag = previously_infested }
+}
+
+CmtTriggerPrethorynExpandedPsi = {
+	OR = {
+		has_global_flag = CmtFlagPrethorynUnlimitedFlavor
+		owner_species = { has_trait = trait_psionic }
+	}
+	NOT = { owner_species = { has_trait = trait_hive_mind } }
+}
+
+CmtTriggerPrethorynExpandedHive = {
+	OR = {
+		has_global_flag = CmtFlagPrethorynUnlimitedFlavor
+		owner_species = { has_trait = trait_hive_mind }
+	}
+	NOT = { owner_species = { has_trait = trait_psionic } }
+}
+
+CmtTriggerPrethorynUnconectableCountry = {
+	NOR = {
+		has_global_flag = CmtFlagPrethorynUnlimitedFlavor
+		owner_species = { has_trait = trait_psionic }
+		owner_species = { has_trait = trait_hive_mind }
+	}
+}
+
+
+
+###########################
+###  Extradimensionals  ###
+###########################
+
+### For Spawn Extradimensional Chaser
+CmtTriggerUnbiddenExpand = {
+	any_country = {
+		is_country_type = extradimensional
+		any_system_within_border = {
+			CmtTriggerSpawnableSystem = yes
+		}
+	}
+}
+
+### Scope: this = country, Must synchronize with trigger of crisis.1267 in Total War Pack
+CmtTriggerHasExdPortal = {
+	OR = {
+		AND = {
+			is_country_type = extradimensional
+			OR = {
+				any_owned_ship = { has_ship_flag = unbidden_portal }
+				any_country = {
+					is_country_type = portal_holder
+					any_owned_ship = { has_ship_flag = unbidden_portal }
+				}
+			}
+		}
+		AND = {
+			is_country_type = extradimensional_2
+			OR = {
+				any_owned_ship = { has_ship_flag = aberrant_portal }
+				any_country = {
+					is_country_type = portal_holder
+					any_owned_ship = { has_ship_flag = aberrant_portal }
+				}
+			}
+		}
+		AND = {
+			is_country_type = extradimensional_3
+			OR = {
+				any_owned_ship = { has_ship_flag = vehement_portal }
+				any_country = {
+					is_country_type = portal_holder
+					any_owned_ship = { has_ship_flag = vehement_portal }
+				}
+			}
+		}
+	}
+}
+
+CmtTriggerExistExdPortal = {
+	any_country = {
+		CmtTriggerIsExpExds = yes
+		any_owned_ship = { is_ship_size = dimensional_portal_ed }
+	}
+}
+
+CmtTriggerAnchorForPortalCreate = {		## This = Country (Exds)
+	OR = {
+		AND = {
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T0 } }
+			count_owned_ships = { limit = { is_ship_size = starbase_exd } count >= @CmtConstTUnq_ExdsPortalStability }
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T0 } }
+				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T1 }
+			}
+			count_owned_ships = { limit = { is_ship_size = starbase_exd } count >= @CmtConstPortalStability_R1 }
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T1 } }
+				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T2 }
+			}
+			count_owned_ships = { limit = { is_ship_size = starbase_exd } count >= @CmtConstPortalStability_R2 }
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T2 } }
+				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T3 }
+			}
+			count_owned_ships = { limit = { is_ship_size = starbase_exd } count >= @CmtConstPortalStability_R3 }
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T3 } }
+				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T4 }
+			}
+			count_owned_ships = { limit = { is_ship_size = starbase_exd } count >= @CmtConstPortalStability_R4 }
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T4 } }
+				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T5 }
+			}
+			count_owned_ships = { limit = { is_ship_size = starbase_exd } count >= @CmtConstPortalStability_R5 }
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T5 } }
+				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T6 }
+			}
+			count_owned_ships = { limit = { is_ship_size = starbase_exd } count >= @CmtConstPortalStability_R6 }
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T6 } }
+				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T7 }
+			}
+			count_owned_ships = { limit = { is_ship_size = starbase_exd } count >= @CmtConstPortalStability_R7 }
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T7 } }
+				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T8 }
+			}
+			count_owned_ships = { limit = { is_ship_size = starbase_exd } count >= @CmtConstPortalStability_R8 }
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T8 } }
+				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T9 }
+			}
+			count_owned_ships = { limit = { is_ship_size = starbase_exd } count >= @CmtConstPortalStability_R9 }
+		}
+		event_target:CmtGlobalVar = { NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T9 } } }
+	}
+}
+
+CmtTriggerAnchorForPortalDestroy = {		## This = Country (Exds)
+	NOR = {
+		AND = {
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T0 } }
+			count_owned_ships = { limit = { is_ship_size = starbase_exd } count > @CmtConstTUnq_ExdsPortalStability }
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T0 } }
+				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T1 }
+			}
+			count_owned_ships = { limit = { is_ship_size = starbase_exd } count > @CmtConstPortalStability_R1 }
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T1 } }
+				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T2 }
+			}
+			count_owned_ships = { limit = { is_ship_size = starbase_exd } count > @CmtConstPortalStability_R2 }
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T2 } }
+				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T3 }
+			}
+			count_owned_ships = { limit = { is_ship_size = starbase_exd } count > @CmtConstPortalStability_R3 }
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T3 } }
+				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T4 }
+			}
+			count_owned_ships = { limit = { is_ship_size = starbase_exd } count > @CmtConstPortalStability_R4 }
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T4 } }
+				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T5 }
+			}
+			count_owned_ships = { limit = { is_ship_size = starbase_exd } count > @CmtConstPortalStability_R5 }
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T5 } }
+				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T6 }
+			}
+			count_owned_ships = { limit = { is_ship_size = starbase_exd } count > @CmtConstPortalStability_R6 }
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T6 } }
+				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T7 }
+			}
+			count_owned_ships = { limit = { is_ship_size = starbase_exd } count > @CmtConstPortalStability_R7 }
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T7 } }
+				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T8 }
+			}
+			count_owned_ships = { limit = { is_ship_size = starbase_exd } count > @CmtConstPortalStability_R8 }
+		}
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T8 } }
+				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T9 }
+			}
+			count_owned_ships = { limit = { is_ship_size = starbase_exd } count > @CmtConstPortalStability_R9 }
+		}
+		event_target:CmtGlobalVar = { NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T9 } } }
+	}
+}
+
+
+
+#####################
+###  Contingency  ###
+#####################
+
+### For Terror Events
+CmtTriggerContingencyOrganicCountry = {
+	OR = {
+		has_global_flag = CmtFlagSynthTerrorAll
+		NOR = {
+			has_authority = auth_hive_mind
+			has_authority = auth_machine_intelligence
+			owner_species = { has_trait = trait_psionic }
+		}
+	}
+	NOT = { has_authority = auth_machine_intelligence }
+}
+
+CmtTriggerRepeatableTerror = {
+	event_target:CmtGlobalVar = {
+		OR = {
+			check_variable = { which = CmtVarFreqTerror value = 4 }
+			check_variable = { which = CmtVarFreqTerror value = 5 }
+		}
+	}
+}
+
+
+CmtTriggerTerrorOrganicGlobal = {
+	has_global_flag = synth_terror
+}
+
+CmtTriggerTerrorOrganicCountry = {
+	CmtTriggerContingencyOrganicCountry = yes
+	has_country_flag = synth_terror_country
+	NOT = { has_country_flag = synth_detector }
+}
+
+CmtTriggerTerrorMachineGlobal = {
+	has_global_flag = synth_terror
+	OR = {
+		has_global_flag = ghost_signal_5_flag
+		has_global_flag = ghost_signal_4_flag
+	}
+}
+
+CmtTriggerTerrorMachineCountry = {
+	has_country_flag = post_arrival_events_machine
+	has_authority = auth_machine_intelligence
+	CmtTriggerIsPlayableEmpire = yes
+	OR = {
+		has_notification_modifier = ghost_signal_4_machine
+		has_notification_modifier = ghost_signal_5_machine
+	}
+}
+
+
+### Ghost Signal
+
+CmtTriggerGhostTargetPop = {
+	has_trait = trait_mechanical
+	NAND = {
+		owner = { has_country_flag = synthetic_empire }		## NOT Synthetically Ascended Empires
+		is_same_species = owner.species
+	}
+}
+
+CmtTriggerUnderGhostSignalCountry = {
+	OR = {
+		has_notification_modifier = ghost_signal_5
+		has_notification_modifier = ghost_signal_4
+		has_notification_modifier = ghost_signal_3
+		has_notification_modifier = ghost_signal_2
+		has_notification_modifier = ghost_signal_1
+		has_notification_modifier = ghost_signal_5_machine
+		has_notification_modifier = ghost_signal_4_machine
+	}
+}
+
+
+
+#############################
+###  Guardians of Galaxy  ###
+#############################
+
+CmtTriggerEmpireAwakenableGuardians = {
+	is_country_type = fallen_empire
+	OR = {
+		AND = {
+			has_ethic = ethic_fanatic_materialist
+			NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarDoubleGurdian value = 1.2 } } }
+		}
+		AND = {
+			has_ethic = ethic_fanatic_xenophile
+			NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarDoubleGurdian value = 1.1 } } }
+		}
+	}
+	OR = {
+		event_target:CmtGlobalVar = { check_variable = { which = CmtVarGuardianWornOut value = 2 } }
+		event_target:CmtGlobalVar = { check_variable = { which = CmtVarGuardianWornOut value = 3 } }
+		fleet_power > 40000
+	}
+}
+
+
+
+#################################
+###  For Forced End of Cycle  ###
+#################################
+
+### Trigger FEoC
+
+CmtTriggerPotentialForcedEoc = {	## Used for Trigger Lottery (Modify 'Nothing')
+	host_has_dlc = "Utopia"
+	has_global_flag = CmtFlagAllowForcedEoc
+}
+
+CmtTriggerForbiddenForcedEoc = {	## Used for Trigger Lottery (Modify 'FEoc')
+	OR = {
+		NOT = { CmtTriggerPotentialForcedEoc = yes }
+		AND = {
+			OR = {
+				has_global_flag = end_of_the_cycle
+				has_global_flag = end_of_the_cycle_complete
+				has_global_flag = CmtFlagForcedEocTriggered
+				NOT = { any_country = { CmtTriggerForcedEocTargetList = yes } }
+			}
+			NOT = { has_global_flag = CmtFlagDebugMode }
+		}
+	}
+}
+
+CmtTriggerAllowedManualForcedEoc = {
+	host_has_dlc = "Utopia"
+	NOR = {
+		has_global_flag = end_of_the_cycle
+		has_global_flag = end_of_the_cycle_complete
+		has_global_flag = CmtFlagForcedEocTriggered
+	}
+	any_country = { CmtTriggerForcedEocTargetList = yes }
+}
+
+CmtTriggerForcedEocTargetList = {
+	CmtTriggerIsPlayableEmpire = yes
+	OR = {
+		AND = {
+			event_target:CmtGlobalVar = {
+				NOR = {
+					check_variable = { which = CmtVarForcedEocTargetPlayer value = 2 }
+					check_variable = { which = CmtVarForcedEocTargetPlayer value = 3 }
+				}
+			}
+			is_ai = yes
+			NOT = { any_subject = { is_ai = no } }
+		}
+		event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocTargetPlayer value = 2 } }
+		AND = {
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocTargetPlayer value = 3 } }
+			OR = {
+				is_ai = no
+				any_subject = { is_ai = no }
+			}
+		}
+	}
+	OR = {
+		NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocTranscendence value = 1 } } }
+		has_ascension_perk = ap_transcendence
+	}
+}
+
+### Select Exile: Checked before Reckoning Planets
+
+CmtTriggerFeocExileCandidate = {
+	has_owner = no
+	is_colonizable = yes
+	NOT = { has_modifier = covenant_shroud_marked }
+}
+
+CmtTriggerFeocExile1stPrioritySystem = {
+	OR = {
+		NOT = { exists = starbase.owner }
+		starbase.owner = { is_same_value = root }
+	}
+	CmtTriggerFeocExile3rdPrioritySystem = yes
+}
+
+CmtTriggerFeocExile2ndPrioritySystem = {
+	any_system_planet = { CmtTriggerFeocExileCandidate = yes }
+	NOT = {
+		any_system_planet = {
+			OR = {
+				is_colony = yes
+				has_modifier = covenant_shroud_marked
+			}
+		}
+	}
+}
+
+CmtTriggerFeocExile3rdPrioritySystem = {
+	any_system_planet = { CmtTriggerFeocExileCandidate = yes }
+	NOT = { any_system_planet = { has_modifier = covenant_shroud_marked } }
+}

@@ -1,0 +1,32 @@
+
+##################################################
+##################################################
+#####                                        #####
+#####    Crisis Manager                      #####
+#####                                        #####
+#####    Sound Category for Player Crisis    #####
+#####                                        #####
+##################################################
+##################################################
+
+category = {
+	name = Effect
+	soundeffects = {
+		CmtSoundLiquidation1
+		CmtSoundLiquidation2
+		CmtSoundLiquidation3
+		CmtSoundLiquidation4
+		CmtSoundNowLiquidating3
+		CmtSoundNowLiquidating4
+	}
+	
+	compressor = {
+		enabled = yes
+		pregain = 2.0
+		postgain = 1.5
+		ratio = 10.0
+		threshold = -8.0
+		attacktime = 0.30
+		releasetime = 0.020
+	}
+}

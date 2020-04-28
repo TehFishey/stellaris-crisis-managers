@@ -1,0 +1,152 @@
+namespace = fallen_empires_awakening
+
+###################################################
+###################################################
+#####                                         #####
+#####    Awakening Events of Fallen Empire    #####
+#####    As Guradian of Galaxy                #####
+#####                                         #####
+#####    Replaced by Crisis Manager           #####
+#####                                         #####
+###################################################
+###################################################
+#
+# Some events are re-overwrittten by Sleeper Edition
+#
+
+### Guardians of the Galaxy
+country_event = {
+	id = fallen_empires_awakening.4
+	hide_window = yes
+
+	trigger = {
+		has_global_flag = galactic_crisis_happened
+		has_country_flag = guardians_of_the_galaxy
+		NOT = { has_global_flag = sleepers_awake_rival_waking } # Not if WiH happened
+		NOT = { has_country_flag = CmtFlagAwakingAsGuardians }
+		NOT = { has_country_flag = timed_guardians_of_the_galaxy }
+	}
+
+	mean_time_to_happen = {
+		months = 60
+		modifier = {
+			factor = 0.01
+			NOT = { has_country_flag = timed_guardians_of_the_galaxy_2 }
+		}
+		modifier = {
+			factor = 0.02
+			has_global_flag = CmtFlagDebugMode
+		}
+		modifier = {
+			factor = 3
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarTimingAwakingGuardians value = 1 } }
+		}
+		modifier = {
+			factor = 0.2
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarTimingAwakingGuardians value = 3 } }
+		}
+	}
+
+	immediate = {
+		set_global_flag = guardians_of_the_galaxy_happened
+		set_country_flag = CmtFlagAwakingAsGuardians
+		country_event = { id = fallen_empires_awakening.3 }
+		
+		every_country = {
+			limit = { CmtTriggerIsPlayableEmpire = yes }
+			random_list = {
+				33 = { add_opinion_modifier = { who = root modifier = opinion_crisis_fighter } }
+				33 = { add_opinion_modifier = { who = root modifier = opinion_crisis_fighter_small } }
+				33 = { }
+			}
+		}
+
+		# Notify
+		every_country = {
+			limit = { is_ai = no }
+			country_event = { id = fallen_empires_awakening.5 }
+		}
+		observer_event = { id = observer.74 }
+	}
+}
+
+# In scpipted effect
+#	CmtEffectAwakingAsGuardians = {
+#		set_country_flag = guardians_of_the_galaxy
+#		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy days = 1825 }
+#		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy_2 days = 3650 }
+#	}
+#
+
+
+### Awakening of Sleeper: Re-Overwritten by Sleeper Edition
+country_event = {
+	id = fallen_empires_awakening.3
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		### Flag/Target Control for War in Heaven
+		if = {
+			limit = {
+				NOR = {
+					has_country_flag = guardians_of_the_galaxy
+					has_global_flag = CmtFlagWarInHeavenTriggered
+				}
+			}
+			if = {
+				limit = { exists = event_target:CmtTargetFirstSleeper }
+				clear_global_event_target = CmtTargetFirstSleeper
+			}
+			every_country = {
+				limit = { has_country_flag = sleepers_awake_first_sleeper }
+				remove_country_flag = sleepers_awake_first_sleeper
+			}
+			set_country_flag = sleepers_awake_first_sleeper
+			save_global_event_target_as = CmtTargetFirstSleeper
+		}
+		
+		### Change Government
+		set_country_type = awakened_fallen_empire
+		CmtEffectChangeAwakenerCivic = yes
+		add_resource = {
+			minerals = 50000
+			energy = 50000
+			food = 5000
+			influence = 1000
+		}
+		
+		
+		### Initial Reinforcements
+		if = {
+			limit = {
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarGuardianWornOut value = 3 } }
+				has_country_flag = guardians_of_the_galaxy
+				fleet_power < 40000
+			}
+			country_event = { id = fallen_empires.13 }
+		}
+		if = {
+			limit = {
+				any_country = {
+					CmtTriggerIsPlayableEmpire = yes
+					fleet_power > 50000
+				}
+			}
+			country_event = { id = fallen_empires.13 }
+		}
+		country_event = { id = fallen_empires.13 }	## Reinforcement of Fleet
+		
+		### Communications
+		every_country = {
+			limit = {
+				CmtTriggerIsEmpire = yes
+				NOT = { has_communications = root }
+			}
+			establish_communications_no_message = root
+			root = { save_event_target_as = contact_empire }
+			country_event = { id = action.1 }
+		}
+	}
+}
+

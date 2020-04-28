@@ -1,0 +1,226 @@
+
+##################################################################
+##################################################################
+#####                                                        #####
+#####    Crisis Manager                                      #####
+#####                                                        #####
+#####    Scripted Triggers for Triggering End-Game Crises    #####
+#####                                                        #####
+##################################################################
+##################################################################
+
+
+##########################################################
+###  For Modifier of Lottery to Trigger/Select Crisis  ###
+##########################################################
+
+### Prethoryn
+
+CmtTriggerForbiddenPrethoryn = {
+	OR = {
+		has_global_flag = CmtFlagForbiddenPrethoryn
+		AND = {
+			has_global_flag = CmtFlagPrethorynTriggered
+			NOT = { has_global_flag = CmtFlagDebugMode }
+		}
+	}
+}
+
+CmtTriggerCrisisAllowed_10yr = {
+	has_global_flag = CmtFlagCrisisAllowed_10yr
+}
+
+CmtTriggerCrisisAllowed_30yr = {
+	has_global_flag = CmtFlagCrisisAllowed_30yr
+}
+
+CmtTriggerCrisisAllowed_50yr = {
+	has_global_flag = CmtFlagCrisisAllowed_50yr
+}
+
+
+
+### Extradimensionals
+
+CmtTriggerForbiddenExds = {
+	OR = {
+		has_global_flag = CmtFlagForbiddenExds
+		AND = {
+			has_global_flag = CmtFlagExdsTriggered
+			NOT = { has_global_flag = CmtFlagDebugMode }
+		}
+	}
+}
+
+CmtTriggerNoJumpDrive0 = {
+	NOT = {
+		any_country = {
+			CmtTriggerIsPlayableEmpire = yes
+			OR = {
+				has_technology = "tech_psi_jump_drive_1"
+				has_technology = "tech_jump_drive_1"
+			}
+		}
+	}
+}
+
+CmtTriggerNoJumpDriveA = {
+	NOT = { has_global_flag = CmtFlagNoJumpButExds }
+	NOT = {
+		any_country = {
+			CmtTriggerIsPlayableEmpire = yes
+			OR = {
+				has_technology = "tech_psi_jump_drive_1"
+				has_technology = "tech_jump_drive_1"
+			}
+		}
+	}
+}
+
+CmtTriggerNoJumpDriveB = {
+	has_global_flag = CmtFlagNoJumpButExds
+	NOT = {
+		any_country = {
+			CmtTriggerIsPlayableEmpire = yes
+			OR = {
+				has_technology = "tech_psi_jump_drive_1"
+				has_technology = "tech_jump_drive_1"
+			}
+		}
+	}
+}
+
+CmtTriggerPsiJumpDrive = {
+	any_country = {
+		CmtTriggerIsPlayableEmpire = yes
+		has_technology = "tech_psi_jump_drive_1"
+	}
+}
+
+CmtTriggerRougeScientist = {
+	any_country = {
+		CmtTriggerIsPlayableEmpire = yes
+		has_country_flag = completed_rogue_scientist
+	}
+}
+
+
+
+### Contingency
+
+CmtTriggerForbiddenContingency = {
+	OR = {
+		has_global_flag = CmtFlagForbiddenContingency
+		AND = {
+			has_global_flag = CmtFlagContingencyTriggerd
+			NOT = { has_global_flag = CmtFlagDebugMode }
+		}
+	}
+}
+
+CmtTriggerSynthetic_0000 = {
+	NOT = {
+		any_country = {
+			CmtTriggerIsPlayableEmpire = yes
+			has_technology = tech_synthetic_workers
+			any_owned_pop = { has_trait = trait_mechanical }
+		}
+	}
+}
+
+CmtTriggerSynthetic_0250 = {
+	any_country = {
+		CmtTriggerIsPlayableEmpire = yes
+		has_technology = tech_synthetic_workers
+		pop_percentage = {
+			percentage >= 0.25
+			limit = { has_trait = trait_mechanical }
+		}
+	}
+}
+
+CmtTriggerSynthetic_0500 = {
+	any_country = {
+		CmtTriggerIsPlayableEmpire = yes
+		has_technology = tech_synthetic_workers
+		pop_percentage = {
+			percentage >= 0.50
+			limit = { has_trait = trait_mechanical }
+		}
+	}
+}
+
+CmtTriggerExistMechFe = {
+	any_country = {
+		is_country_type = fallen_empire
+		has_authority = auth_machine_intelligence
+	}
+}
+
+
+### Forced End of Cycle
+#
+# CmtTriggerPotentialForcedEoc -> Cmt2_Others_scripted_triggers.txt
+# CmtTriggerForbiddenForcedEoc -> Cmt2_Others_scripted_triggers.txt
+#
+
+CmtTriggerNoTelepathy = {
+	NOT = {
+		any_country = {
+			CmtTriggerIsPlayableEmpire = yes
+			has_technology = tech_telepathy
+		}
+	}
+}
+
+CmtTriggerTranscendence = {
+	any_country = {
+		CmtTriggerIsPlayableEmpire = yes
+		has_ascension_perk = ap_transcendence
+	}
+}
+
+CmtTriggerShroudPatron = {
+	any_country = {
+		CmtTriggerIsPlayableEmpire = yes
+		has_country_flag = has_shroud_patron
+	}
+}
+
+CmtTriggerExdsTriggered = {
+	has_global_flag = CmtFlagExdsTriggered
+}
+
+
+### Probability Control by This Mod
+
+CmtTriggerTotalProbability_1 = {
+	check_variable = { which = CmtVarTriggerProbability value = 1 }
+}
+
+CmtTriggerTotalProbability_2 = {
+	NOR = {
+		check_variable = { which = CmtVarTriggerProbability value < 0 }
+		check_variable = { which = CmtVarTriggerProbability value = 1 }
+		check_variable = { which = CmtVarTriggerProbability value = 3 }
+		check_variable = { which = CmtVarTriggerProbability value = 4 }
+		check_variable = { which = CmtVarTriggerProbability value = 5 }
+	}
+}
+
+CmtTriggerTotalProbability_3 = {
+	check_variable = { which = CmtVarTriggerProbability value = 3 }
+}
+
+CmtTriggerTotalProbability_4 = {
+	check_variable = { which = CmtVarTriggerProbability value = 4 }
+}
+
+CmtTriggerTotalProbability_5 = {
+	check_variable = { which = CmtVarTriggerProbability value = 5 }
+}
+
+CmtTriggerTotalProbabilityUnq = {
+	check_variable = { which = CmtVarTriggerProbability value < 0 }
+}
+

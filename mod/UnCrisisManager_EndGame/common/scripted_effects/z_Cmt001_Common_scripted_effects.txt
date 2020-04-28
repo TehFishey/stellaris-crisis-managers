@@ -1,0 +1,253 @@
+
+########################################
+########################################
+#####                              #####
+#####    Common Scripted Effect    #####
+#####                              #####
+########################################
+########################################
+
+
+################################
+###  Common Effect for Menu  ###
+################################
+
+### Hard Coated Option
+CmtEffectHardCoatedSettings = {
+	remove_global_flag = CmtFlagDebugMode
+	
+	#set_global_flag = CmtFlagDebugMode		## Hidden menu is shown and MTTH several event is short
+	#set_global_flag = CmtFlagNoSeparator
+}
+
+### Version check
+CmtEffectVersionUp = {
+	event_target:CmtGlobalVar = {
+		if = {
+			limit = { check_variable = { which = CmtVarVersion value < @CmtT000_ConstVersionInfo } }
+			if = {
+				limit = {
+					check_variable = { which = CmtVarVersion value < 1.01 }
+					check_variable = { which = CmtVarGuardianWornOut value = 0 }
+				}
+				set_variable = { which = CmtVarGuardianWornOut value = 1 }
+			}
+			if = {
+				limit = { check_variable = { which = CmtVarVersion value < 1.03 } }
+				if = {
+					limit = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 0 } }
+					set_variable = { which = CmtVarFasterCombatFleet_Common value = 1 }
+				}
+				if = {
+					limit = { check_variable = { which = CmtVarFasterConstructor_Common value = 0 } }
+					set_variable = { which = CmtVarFasterConstructor_Common value = 1 }
+				}
+				if = {
+					limit = { check_variable = { which = CmtVarGhostStrength value = 0 } }
+					set_variable = { which = CmtVarGhostStrength value = 3 }
+				}
+			}
+			if = {
+				limit = { check_variable = { which = CmtVarVersion value < 1.04 } }
+				if = {
+					limit = { check_variable = { which = CmtVarLgateReqClues value = 0 } }
+					set_variable = { which = CmtVarLgateReqClues value = 7 }
+				}
+				if = {
+					limit = { check_variable = { which = CmtVarReinforceCycle_Graygoo value = 0 } }
+					set_variable = { which = CmtVarReinforceCycle_Graygoo value = 3 }
+				}
+				if = {
+					limit = { check_variable = { which = CmtVarLgateTerraformNanite value = 0 } }
+					set_variable = { which = CmtVarLgateTerraformNanite value = 2 }
+				}
+				if = {
+					limit = { check_variable = { which = CmtVarFleetPower_Graygoo value = 0 } }
+					set_variable = { which = CmtVarFleetPower_Graygoo value = 1 }
+				}
+				if = {
+					limit = { check_variable = { which = CmtVarCombatFleetNumber_Graygoo value = 0 } }
+					set_variable = { which = CmtVarCombatFleetNumber_Graygoo value = 1 }
+				}
+			}
+			if = {
+				limit = { check_variable = { which = CmtVarVersion value < 1.05 } }
+				if = {
+					limit = { check_variable = { which = CmtVarTotalWarPriority value = 0 } }
+					set_variable = { which = CmtVarTotalWarPriority value = 2 }
+				}
+				if = {
+					limit = { check_variable = { which = CmtVarTotalWarAutoBuild value = 0 } }
+					set_variable = { which = CmtVarTotalWarAutoBuild value = 3 }
+				}
+				if = {
+					limit = { check_variable = { which = CmtVarPlanetOccupy value = 0 } }
+					set_variable = { which = CmtVarPlanetOccupy value = 1 }
+				}
+			}
+			if = {
+				limit = { check_variable = { which = CmtVarVersion value < 1.06 } }
+				if = {
+					limit = {
+						check_variable = { which = CmtVarLgateClusterType value > 0 }
+						NOR = {
+							has_global_flag = CmtFlagLgateForbidSilence
+							has_global_flag = CmtFlagLgateForbidLdrake
+							has_global_flag = CmtFlagLgateForbidDessanu
+							has_global_flag = CmtFlagLgateForbidGraygoo
+						}
+					}
+					if = {
+						limit = { check_variable = { which = CmtVarLgateClusterType value = 2 } }
+						set_global_flag = CmtFlagLgateForbidLdrake
+						set_global_flag = CmtFlagLgateForbidDessanu
+						set_global_flag = CmtFlagLgateForbidGraygoo
+					} else_if = {
+						limit = { check_variable = { which = CmtVarLgateClusterType value = 3 } }
+						set_global_flag = CmtFlagLgateForbidGraygoo
+					} else_if = {
+						limit = { check_variable = { which = CmtVarLgateClusterType value = 4 } }
+						set_global_flag = CmtFlagLgateForbidSilence
+						set_global_flag = CmtFlagLgateForbidDessanu
+						set_global_flag = CmtFlagLgateForbidGraygoo
+					} else_if = {
+						limit = { check_variable = { which = CmtVarLgateClusterType value = 5 } }
+						set_global_flag = CmtFlagLgateForbidSilence
+					} else_if = {
+						limit = { check_variable = { which = CmtVarLgateClusterType value = 6 } }
+						set_global_flag = CmtFlagLgateForbidSilence
+						set_global_flag = CmtFlagLgateForbidLdrake
+						set_global_flag = CmtFlagLgateForbidDessanu
+					}
+				}
+				if = {
+					limit = { check_variable = { which = CmtVarLgateCycleSilence value = 0 } }
+					if = {
+						limit = { check_variable = { which = CmtVarLgateCycleStandard value > 0 } }
+						set_variable = { which = CmtVarLgateCycleSilence value = CmtVarLgateCycleStandard }
+					} else = { set_variable = { which = CmtVarLgateCycleSilence value = 4 } }
+				}
+				if = {
+					limit = { check_variable = { which = CmtVarLgateCycleDessanu value = 0 } }
+					set_variable = { which = CmtVarLgateCycleDessanu value = 5 }
+				}
+				if = {
+					limit = { check_variable = { which = CmtVarLgateAloneGrayCondition value = 0 } }
+					set_variable = { which = CmtVarLgateAloneGrayCondition value = 2 }
+				}
+				if = {
+					limit = { check_variable = { which = CmtVarLgateDessanuGift value = 0 } }
+					set_variable = { which = CmtVarLgateDessanuGift value = 3 }
+				}
+				if = {
+					limit = { check_variable = { which = CmtVarLgateTerraformNanite value = 2 } }
+					set_variable = { which = CmtVarLgateTerraformNanite value = 4 }
+				} else_if = {
+					limit = {
+						OR = {
+							check_variable = { which = CmtVarLgateTerraformNanite value = 0 }
+							check_variable = { which = CmtVarLgateTerraformNanite value = 3 }
+						}
+					}
+					set_variable = { which = CmtVarLgateTerraformNanite value = 5 }
+				}
+			}
+			### if = { limit = { check_variable = { which = CmtVarVersion value < 1.07 } } }: Do Nothing
+			if = {
+				limit = { check_variable = { which = CmtVarVersion value < 1.08 } }
+				if = {
+					limit = { check_variable = { which = CmtVarReinforceCycle_OnExdAnchorBuilt value = 0 } }
+					set_variable = { which = CmtVarReinforceCycle_OnExdAnchorBuilt value = 1 }
+				}
+				if = {
+					limit = { check_variable = { which = CmtVarReinforceCycle_Khan value = 0 } }
+					set_variable = { which = CmtVarReinforceCycle_Khan value = 1 }
+				}
+			}
+			### if = { limit = { check_variable = { which = CmtVarVersion value < 1.09 } } }: Do Nothing
+			if = {
+				limit = { check_variable = { which = CmtVarVersion value < 1.10 } }
+				if = {
+					limit = {
+						check_variable = { which = CmtVarPlanetOccupy value = 5 }
+						check_variable = { which = CmtVarPurgeSpeed value = 0 }
+					}
+					set_variable = { which = CmtVarPlanetOccupy value = 4 }
+					set_variable = { which = CmtVarPurgeSpeed value = 7 }
+				} else_if = {
+					limit = { check_variable = { which = CmtVarPurgeSpeed value = 0 } }
+					set_variable = { which = CmtVarPurgeSpeed value = 1 }
+				}
+			}
+			set_variable = { which = CmtVarVersion value = @CmtT000_ConstVersionInfo }
+		}
+	}
+}
+
+### Edition Check
+CmtEffectClearDetectedEdition = {
+	remove_global_flag = CmtFlagEndGameEdition
+	remove_global_flag = CmtFlagMidGameEdition
+	remove_global_flag = CmtFlagSleeperEdition
+	remove_global_flag = CmtFlagUprisingEdition
+	remove_global_flag = CmtFlagTotalWarPatch
+	remove_global_flag = CmtFlagPlayerCrisisPatch
+	remove_global_flag = CmtFlagFeeCompatPatch
+}
+
+CmtEffectSetDetectedEdition = {
+	CmtEffectDetectEndGameEdition = yes
+	CmtEffectDetectMidGameEdition = yes
+	CmtEffectDetectSleeperEdition = yes
+	CmtEffectDetectUprisingEdition = yes
+	CmtEffectDetectTotalWarPack = yes
+	CmtEffectDetectPlayerCrisisPack = yes
+	CmtEffectDetectFeeCompatPatch = yes
+}
+
+### Edition Check: Overwritten by Cmt*00, Fee_Cmt
+CmtEffectDetectEndGameEdition = {}
+CmtEffectDetectMidGameEdition = {}
+CmtEffectDetectSleeperEdition = {}
+CmtEffectDetectUprisingEdition = {}
+CmtEffectDetectTotalWarPack = {}
+CmtEffectDetectPlayerCrisisPack = {}
+CmtEffectDetectFeeCompatPatch = {}
+
+
+
+########################
+###  Common Actions  ###
+########################
+
+### scope: this = stellar_system, written in also Cmt400 in Total War Pack
+CmtEffectDestroySystemStarbase = {
+	if = {
+		limit = { exists = starbase }
+		starbase = { fleet = { destroy_fleet = this } }
+	}
+}
+
+
+### scope: this = country (fallen empire), Overwritten by FFE_CMT
+CmtEffectChangeAwakenerCivic = {
+	change_government = {
+		civics = {
+			civic = civic_revanchist_fervor
+			civic = civic_ancient_caches_of_technology
+		}
+	}
+}
+
+
+####################
+###  Debug tool  ###
+####################
+
+### Test of FIOS/LIOS
+CmtEffectFiosLiosTest = {
+	event_target:CmtGlobalVar = { change_variable = { which = CmtVarFiosLios value = 1 } }
+}
+
+
+

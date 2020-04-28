@@ -1,0 +1,24 @@
+
+##############################################
+##############################################
+#####                                    #####
+#####    Crisis Manager                  #####
+#####                                    #####
+#####    Gorvenment for Player Crisis    #####
+#####                                    #####
+##############################################
+##############################################
+
+gov_CmtPlayerCrisisNull = {
+	ruler_title = CmtNameNull
+	ruler_title_female = CmtNameNull
+	
+	possible = {
+		has_authority = auth_CmtPlayerCrisisNull
+	}
+
+	weight = {
+		base = 1000
+	}
+}
+

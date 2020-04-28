@@ -1,0 +1,219 @@
+
+###################################################
+###################################################
+#####                                         #####
+#####    Crisis Manager                       #####
+#####                                         #####
+#####    Modifiers for Forced End of Cycle    #####
+#####                                         #####
+###################################################
+###################################################
+
+
+###################
+###  Constants  ###
+###################
+
+@CmtConstEndOfCycleModifierMult_013d      = 60.00		##  1400
+@CmtConstEndOfCycleModifierMult_088d      = 60.00		##   200
+@CmtConstEndOfCycleModifierMult_666d      = 60.00		##    27
+@CmtConstEndOfCycleModifierMult_04yr      = 12.00
+@CmtConstEndOfCycleModifierMult_13yr      =  3.75
+@CmtConstEndOfCycleModifierMult_17yr      =  3.00
+@CmtConstEndOfCycleModifierMult_23yr      =  2.00
+#CmtConstEndOfCycleModifierMult_50yr      =  1.00
+
+@CmtConstEndOfCycleModifierStarbase_013d  =   600		## 14000
+@CmtConstEndOfCycleModifierStarbase_088d  =   600		##  2000
+@CmtConstEndOfCycleModifierStarbase_666d  =   600		##   270
+@CmtConstEndOfCycleModifierStarbase_04yr  =   120
+@CmtConstEndOfCycleModifierStarbase_13yr  =    40
+@CmtConstEndOfCycleModifierStarbase_17yr  =    30
+@CmtConstEndOfCycleModifierStarbase_23yr  =    20
+#CmtConstEndOfCycleModifierStarbase_50yr  =    10
+
+@CmtConstEndOfCycleModifierInfluence_013d  =   300		##  7000
+@CmtConstEndOfCycleModifierInfluence_088d  =   300		##  1000
+@CmtConstEndOfCycleModifierInfluence_666d  =   300		##   135
+@CmtConstEndOfCycleModifierInfluence_04yr  =    60
+@CmtConstEndOfCycleModifierInfluence_13yr  =    20
+@CmtConstEndOfCycleModifierInfluence_17yr  =    15
+@CmtConstEndOfCycleModifierInfluence_23yr  =    10
+#CmtConstEndOfCycleModifierInfluence_50yr  =     5
+
+
+
+###############################
+###  Covenant End of Cycle  ###
+###############################
+#	cf. Vanilla
+#	covenant_end_of_the_cycle = {
+#		stations_produces_mult = 1
+#		planet_jobs_produces_mult = 1
+#		country_naval_cap_mult = 1
+#		country_starbase_capacity_add = 10
+#		country_base_influence_produces_add = 5
+#	}
+#
+
+CmtModifierCovenantFEoC_013d = {
+	stations_produces_mult = @CmtConstEndOfCycleModifierMult_013d
+	planet_jobs_produces_mult = @CmtConstEndOfCycleModifierMult_013d
+	country_naval_cap_mult = @CmtConstEndOfCycleModifierMult_013d
+	country_starbase_capacity_add = @CmtConstEndOfCycleModifierStarbase_013d
+	country_base_influence_produces_add = @CmtConstEndOfCycleModifierInfluence_013d
+}
+
+CmtModifierCovenantFEoC_088d = {
+	stations_produces_mult = @CmtConstEndOfCycleModifierMult_088d
+	planet_jobs_produces_mult = @CmtConstEndOfCycleModifierMult_088d
+	country_naval_cap_mult = @CmtConstEndOfCycleModifierMult_088d
+	country_starbase_capacity_add = @CmtConstEndOfCycleModifierStarbase_088d
+	country_base_influence_produces_add = @CmtConstEndOfCycleModifierInfluence_088d
+}
+
+CmtModifierCovenantFEoC_666d = {
+	stations_produces_mult = @CmtConstEndOfCycleModifierMult_666d
+	planet_jobs_produces_mult = @CmtConstEndOfCycleModifierMult_666d
+	country_naval_cap_mult = @CmtConstEndOfCycleModifierMult_666d
+	country_starbase_capacity_add = @CmtConstEndOfCycleModifierStarbase_666d
+	country_base_influence_produces_add = @CmtConstEndOfCycleModifierInfluence_666d
+}
+
+CmtModifierCovenantFEoC_04yr = {
+	stations_produces_mult = @CmtConstEndOfCycleModifierMult_04yr
+	planet_jobs_produces_mult = @CmtConstEndOfCycleModifierMult_04yr
+	country_naval_cap_mult = @CmtConstEndOfCycleModifierMult_04yr
+	country_starbase_capacity_add = @CmtConstEndOfCycleModifierStarbase_04yr
+	country_base_influence_produces_add = @CmtConstEndOfCycleModifierInfluence_04yr
+}
+
+CmtModifierCovenantFEoC_13yr = {
+	stations_produces_mult = @CmtConstEndOfCycleModifierMult_13yr
+	planet_jobs_produces_mult = @CmtConstEndOfCycleModifierMult_13yr
+	country_naval_cap_mult = @CmtConstEndOfCycleModifierMult_13yr
+	country_starbase_capacity_add = @CmtConstEndOfCycleModifierStarbase_13yr
+	country_base_influence_produces_add = @CmtConstEndOfCycleModifierInfluence_13yr
+}
+
+CmtModifierCovenantFEoC_17yr = {
+	stations_produces_mult = @CmtConstEndOfCycleModifierMult_17yr
+	planet_jobs_produces_mult = @CmtConstEndOfCycleModifierMult_17yr
+	country_naval_cap_mult = @CmtConstEndOfCycleModifierMult_17yr
+	country_starbase_capacity_add = @CmtConstEndOfCycleModifierStarbase_17yr
+	country_base_influence_produces_add = @CmtConstEndOfCycleModifierInfluence_17yr
+}
+
+CmtModifierCovenantFEoC_23yr = {
+	stations_produces_mult = @CmtConstEndOfCycleModifierMult_23yr
+	planet_jobs_produces_mult = @CmtConstEndOfCycleModifierMult_23yr
+	country_naval_cap_mult = @CmtConstEndOfCycleModifierMult_23yr
+	country_starbase_capacity_add = @CmtConstEndOfCycleModifierStarbase_23yr
+	country_base_influence_produces_add = @CmtConstEndOfCycleModifierInfluence_23yr
+}
+
+
+
+##################
+###  Absorber  ###
+##################
+#	cf. Vanilla
+#
+#	absorbed_consciousness_1 = {
+#		ship_shield_add = 100000 
+#		ship_hull_add = 50000
+#		ship_shield_regen_add_static = 100
+#		ship_weapon_damage = 2
+#		ship_fire_rate_mult = 2
+#	}
+#
+#	absorbed_consciousness_2 = {
+#		ship_shield_add = 200000 
+#		ship_hull_add = 100000
+#		ship_shield_regen_add_static = 200
+#		ship_weapon_damage = 3
+#		ship_fire_rate_mult = 3
+#	}
+#
+#	absorbed_consciousness_3 = {
+#		ship_shield_add = 300000 
+#		ship_hull_add = 150000
+#		ship_shield_regen_add_static = 300
+#		ship_weapon_damage = 4
+#		ship_fire_rate_mult = 4
+#	}
+#
+#	absorbed_consciousness_4 = {
+#		ship_shield_add = 400000 
+#		ship_hull_add = 200000
+#		ship_shield_regen_add_static = 400
+#		ship_weapon_damage = 5
+#		ship_fire_rate_mult = 5
+#	}
+#
+#	absorbed_consciousness_5 = {
+#		ship_shield_add = 500000 
+#		ship_hull_add = 250000
+#		ship_shield_regen_add_static = 500
+#		ship_weapon_damage = 6
+#		ship_fire_rate_mult = 6
+#	}
+#
+
+
+CmtModifierAbsorvedConsciousness_6 = {
+	ship_shield_add = 600000
+	ship_hull_add = 300000
+	ship_shield_regen_add_static = 600
+	ship_weapon_damage = 7
+	ship_fire_rate_mult = 7
+}
+
+CmtModifierAbsorvedConsciousness_7 = {
+	ship_shield_add = 700000
+	ship_hull_add = 350000
+	ship_shield_regen_add_static = 700
+	ship_weapon_damage = 8
+	ship_fire_rate_mult = 8
+}
+
+CmtModifierAbsorvedConsciousness_8 = {
+	ship_shield_add = 800000
+	ship_hull_add = 400000
+	ship_shield_regen_add_static = 800
+	ship_weapon_damage = 9
+	ship_fire_rate_mult = 9
+}
+
+CmtModifierAbsorvedConsciousness_9 = {
+	ship_shield_add = 900000
+	ship_hull_add = 450000
+	ship_shield_regen_add_static = 900
+	ship_weapon_damage = 10
+	ship_fire_rate_mult = 10
+}
+
+CmtModifierAbsorvedConsciousness_A = {
+	ship_shield_add = 1000000
+	ship_hull_add = 500000
+	ship_shield_regen_add_static = 1000
+	ship_weapon_damage = 11
+	ship_fire_rate_mult = 11
+}
+
+CmtModifierAbsorvedConsciousness_B = {
+	ship_shield_add = 1100000
+	ship_hull_add = 550000
+	ship_shield_regen_add_static = 1100
+	ship_weapon_damage = 12
+	ship_fire_rate_mult = 12
+}
+
+CmtModifierAbsorvedConsciousness_C = {
+	ship_shield_add = 1200000
+	ship_hull_add = 6000000
+	ship_shield_regen_add_static = 1200
+	ship_weapon_damage = 13
+	ship_fire_rate_mult = 13
+}
+

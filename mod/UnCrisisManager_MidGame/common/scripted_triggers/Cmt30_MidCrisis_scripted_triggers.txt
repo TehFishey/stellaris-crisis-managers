@@ -1,0 +1,156 @@
+
+#######################################################
+#######################################################
+#####                                             #####
+#####    Crisis Manager                           #####
+#####                                             #####
+#####    Scripted Triggers for Mid-Game Crisis    #####
+#####                                             #####
+#######################################################
+#######################################################
+
+
+##############
+###  Khan  ###
+##############
+
+### Global Conditions
+
+CmtTriggerKhanAwakingMultipleCheck = {
+	event_target:CmtGlobalVar = {
+		NOR = {
+			check_variable = { which = CmtVarKhanMultiple value = 1 }
+			has_global_flag = CmtFlagNowInKhanInterval
+		}
+		OR = {
+			NOT = { has_global_flag = CmtFlagKhanTriggered }
+			AND = {
+				check_variable = { which = CmtVarKhanMultiple value = 3 }
+				NOT = { CmtTriggerNowInKhanCrisis = yes }
+			}
+		}
+		any_country = { CmtTriggerHasPotentialKhanAwaking = yes }
+	}
+}
+
+
+### Country Conditions
+
+CmtTriggerHasPotentialKhanAwaking = {		## Scope = country
+	CmtTriggerIsSleepingMarauder = yes
+	OR = {
+		AND = {
+			has_country_flag = marauder_1
+			any_system_within_border = { has_star_flag = marauder_capital_1 }
+		}
+		AND = {
+			has_country_flag = marauder_2
+			any_system_within_border = { has_star_flag = marauder_capital_2 }
+		}
+		AND = {
+			has_country_flag = marauder_3
+			any_system_within_border = { has_star_flag = marauder_capital_3 }
+		}
+	}
+}
+
+CmtTriggerMarauderCapitalSystem = {
+	OR = {
+		has_star_flag = marauder_capital_1
+		has_star_flag = marauder_capital_2
+		has_star_flag = marauder_capital_3
+	}
+}
+
+
+### Mercenaries
+
+CmtTriggerHiredMarauderFleet1 = {
+	OR = {
+		has_fleet_flag = armada_of_the_voidborn
+		has_fleet_flag = star_rider_flotilla
+		has_fleet_flag = first_storm_wing
+	}
+}
+
+CmtTriggerHiredMarauderFleet2 = {
+	OR = {
+		has_fleet_flag = dwamak_bashers
+		has_fleet_flag = unhinged_screamer_flotilla
+		has_fleet_flag = frenzied_volunteer_squadron
+	}
+}
+
+CmtTriggerHiredMarauderFleet3 = {
+	OR = {
+		has_fleet_flag = her_chosen_champions
+		has_fleet_flag = order_of_eternal_night
+		has_fleet_flag = twilight_congregation
+	}
+}
+
+
+CmtTriggerCountryHiringMarauder1 = {
+	OR = {
+		any_owned_fleet = { CmtTriggerHiredMarauderFleet1 = yes }
+		any_owned_leader = { has_leader_flag = hired_merc_leader_1 }
+	}
+}
+
+CmtTriggerCountryHiringMarauder2 = {
+	OR = {
+		any_owned_fleet = { CmtTriggerHiredMarauderFleet2 = yes }
+		any_owned_leader = { has_leader_flag = hired_merc_leader_2 }
+	}
+}
+
+CmtTriggerCountryHiringMarauder3 = {
+	OR = {
+		any_owned_fleet = { CmtTriggerHiredMarauderFleet3 = yes }
+		any_owned_leader = { has_leader_flag = hired_merc_leader_3 }
+	}
+}
+
+
+
+#######################
+###  L-Gate Common  ###
+#######################
+
+CmtTriggerIsClosedLgate = {
+	is_megastructure_type = lgate_base
+	NOT = { has_megastructure_flag = lgate_activated }
+}
+
+CmtTriggerIsOpenedLgate = {
+	is_megastructure_type = lgate_base
+	has_megastructure_flag = lgate_activated
+}
+
+CmtTriggerIsGalaxyLgateSystem = {
+	has_star_flag = lgate
+	NOT = { has_star_flag = lcluster_lgate }
+}
+
+
+
+#################
+###  Dessanu  ###
+#################
+
+CmtTriggerHasDessanuGift = {
+	OR = {
+		has_modifier = dessanu_gift
+		has_modifier = CmtModifierDessanuGift_21
+		has_modifier = CmtModifierDessanuGift_22
+		has_modifier = CmtModifierDessanuGift_23
+		has_modifier = CmtModifierDessanuGift_24
+		has_modifier = CmtModifierDessanuGift_25
+		has_modifier = CmtModifierDessanuGift_26
+		has_modifier = CmtModifierDessanuGift_11
+		has_modifier = CmtModifierDessanuGift_12
+		has_modifier = CmtModifierDessanuGift_13
+		has_modifier = CmtModifierDessanuGift_14
+	}
+}
+

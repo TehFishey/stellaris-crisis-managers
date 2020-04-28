@@ -1,0 +1,380 @@
+namespace = CrisisManagerControl
+
+#######################################
+#######################################
+#####                             #####
+#####    Crisis Manager           #####
+#####                             #####
+#####    Crisis Ongoing Events    #####
+#####                             #####
+#######################################
+#######################################
+
+
+
+#############################
+###  Post-Crisis Process  ###
+#############################
+
+### Redirect only, Called by on_country_destroyed
+country_event = {
+	id = CrisisManagerControl.0310
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		event_target:CmtGlobalVar = { check_variable = { which = CmtVarMultiple value = 3 } }
+		CmtTriggerIsCrisisCountry = yes
+		NOT = { CmtTriggerInCrisisNow = yes }
+	}
+	
+	immediate = {
+		event_target:CmtGlobalVar = {
+			country_event = { id = CrisisManagerControl.0311 }
+			country_event = { id = CrisisManagerControl.0311 days = 3 }	## Backup
+		}
+	}
+}
+
+### Flag Control for Crisis Interval
+country_event = {
+	id = CrisisManagerControl.0311
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		event_target:CmtGlobalVar = { check_variable = { which = CmtVarMultiple value = 3 } }
+		NOT = { CmtTriggerInCrisisNow = yes }
+	}
+	
+	immediate = {
+		CmtEffectSetIntervalFlag = yes
+	}
+}
+
+### Dead End
+country_event = {
+	id = CrisisManagerControl.0320
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = {
+			any_country = {
+				OR = {
+					CmtTriggerIsEmpire = yes
+					CmtTriggerIsMarauder = yes
+				}
+			}
+		}
+	}
+	
+	immediate = {
+		CmtEffectHostileCrisis = yes
+	}
+}
+
+
+
+
+
+###################################################
+###  Occupy Planets by Only Orbital Bombardment  ###
+###################################################
+#
+# Planet Occupied by Armies
+#	Prethoryn:  	crisis.201, 202
+#	Exds:       	(crisis.1011)
+#	Contingency:	crisis.2041, 2044
+#
+
+### Occupy Planets by Ground Combat / Start Purging (Prethoryn, Contingency)
+country_event = {
+	id = CrisisManagerControl.0041
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		OR = {
+			CmtTriggerIsPrethoryn = yes
+			CmtTriggerIsContingency = yes
+		}
+	}
+	
+	immediate = {
+		FROMFROM = {
+			add_threat = { who = root amount = 2 }
+			set_controller = root
+			
+			# Create and kill a pop to force job assignment updates
+			create_pop = { }
+			last_created_pop = { kill_pop = yes }
+		}
+		
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPurgeSpeed value = 7 } } }
+			FROMFROM = {
+				random_owned_pop = {
+					prev = {
+						every_owned_pop = {
+							limit = { NOT = { is_same_value = prevprev } }		## Remain 1 pop
+							kill_pop = yes
+						}
+						planet_event = { id = crisis.202 }		## Prethoryn
+						planet_event = { id = crisis.2044 }		## Contingency
+					}
+					kill_pop = yes		## Kill Last One After Above 2 Events
+				}
+			}
+		}
+	}
+}
+
+
+
+
+### Occupy Planets by Orbital Bombardmenet / Start Purging (Prethoryn, Contingency)
+planet_event = {
+	id = CrisisManagerControl.0042
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		from = {
+			OR = {
+				CmtTriggerIsPrethoryn = yes
+				CmtTriggerIsContingency = yes
+			}
+		}
+		OR = {
+			AND = {
+				planet_devastation >= 100
+				OR = {
+					AND = {
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarPlanetOccupy value = 3 } }
+						count_planet_army = { count < 1 }
+					}
+					event_target:CmtGlobalVar = {
+						OR = {
+							check_variable = { which = CmtVarPlanetOccupy value = 4 }
+							check_variable = { which = CmtVarPlanetOccupy value = 5 }
+						}
+					}
+				}
+			}
+			AND = {
+				planet_devastation >= 25
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarPlanetOccupy value = 6 } }
+			}
+			AND = {
+				planet_devastation >= 3
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarPlanetOccupy value = 7 } }
+			}
+		}
+	}
+	
+	immediate = {
+		add_threat = { who = from amount = 2 }
+		set_controller = from
+		
+		# Create and kill a pop to force job assignment updates
+		create_pop = { }
+		last_created_pop = { kill_pop = yes }
+		
+		if = {
+			limit = {
+				event_target:CmtGlobalVar = {
+					check_variable = { which = CmtVarPurgeSpeed value = 7 }
+					check_variable = { which = CmtVarPlanetOccupy value = 5 }		## Backup for Legacy
+				}
+			}
+			random_owned_pop = {
+				root = {
+					every_owned_pop = {
+						limit = { NOT = { is_same_value = prevprev } }		## Remain 1 Pop
+						kill_pop = yes
+					}
+					planet_event = { id = crisis.202 }		## Prethoryn
+					planet_event = { id = crisis.2044 }		## Contingency
+				}
+				kill_pop = yes
+			}
+		}
+	}
+}
+
+### Occupy Planets by Orbital Bombardmenet / Start Purging (Exds)
+#
+# -> crisis.1011
+#
+
+### Complete Purging (Exds)
+planet_event = {
+	id = CrisisManagerControl.0043
+	title = "crisis.1011.name"
+	desc = "crisis.1011.desc"
+	picture = GFX_evt_city_ruins
+	show_sound = event_ghost_town
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		exists = controller
+		controller = { CmtTriggerIsExds = yes }
+		OR = {
+			num_pops < 2		## Last Pop Still Alive when Event Triggered
+			event_target:CmtGlobalVar = {
+				OR = {
+					NOR = {
+						check_variable = { which = CmtVarPurgeSpeed value = 2 }
+						check_variable = { which = CmtVarPurgeSpeed value = 3 }
+						check_variable = { which = CmtVarPurgeSpeed value = 4 }
+						check_variable = { which = CmtVarPurgeSpeed value = 5 }
+						check_variable = { which = CmtVarPurgeSpeed value = 6 }
+					}
+					check_variable = { which = CmtVarPlanetOccupy value = 5 }		## Backup for Legacy
+				}
+			}
+		}
+	}
+	
+	immediate = {
+		### Change Counter (Do this before reset_planet)
+		if = {
+			limit = { controller = { is_country_type = extradimensional } }
+			every_country = {
+				limit = { has_event_chain = extradimensional_invasion_chain }
+				add_event_chain_counter = {
+					event_chain = extradimensional_invasion_chain
+					counter = extradimensional_planets_1
+					amount = 1
+				}
+			}
+		} else_if = {
+			limit = { controller = { is_country_type = extradimensional_2 } }
+			every_country = {
+				limit = { has_event_chain = extradimensional_invasion_chain_2 }
+				add_event_chain_counter = {
+					event_chain = extradimensional_invasion_chain_2
+					counter = extradimensional_planets_2
+					amount = 1
+				}
+			}
+		} else_if = {
+			limit = { controller = { is_country_type = extradimensional_3 } }
+			every_country = {
+				limit = { has_event_chain = extradimensional_invasion_chain_3 }
+				add_event_chain_counter = {
+					event_chain = extradimensional_invasion_chain_3
+					counter = extradimensional_planets_3
+					amount = 1
+				}
+			}
+		}
+		
+		### Change Planet Class, etc.
+		destroy_colony = yes
+		if = {
+			limit = {
+				NOR = {
+					is_planet_class = pc_ringworld_habitable
+					is_planet_class = pc_habitat
+				}
+			}
+			random_list = {
+				50 = { change_pc = pc_barren }
+				50 = { change_pc = pc_barren_cold }
+			}
+			reset_planet = yes
+			add_modifier = { modifier = terraforming_candidate days = -1 }
+		} else = {
+			if = {
+				limit = { is_planet_class = pc_ringworld_habitable }
+				change_pc = pc_ringworld_habitable_damaged
+				reset_planet = yes
+			}
+			if = {
+				limit = { is_planet_class = pc_habitat }
+				remove_planet = yes
+			}
+		}
+	}
+	
+	option = {
+		name = crisis.1011.a
+	}
+}
+
+
+
+### Auxiliary Process for Purging
+event = {
+	id = CrisisManagerControl.0044
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		event_target:CmtGlobalVar = { check_variable = { which = CmtVarPurgeSpeed value > 4.5 } }
+	}
+	
+	immediate = {
+		event_target:CmtGlobalVar = {
+			if = {
+				limit = { check_variable = { which = CmtVarPurgeSpeed value = 5 } }
+				country_event = { id = CrisisManagerControl.0045 days = 10 }
+				country_event = { id = CrisisManagerControl.0045 days = 20 }
+			} else_if = {
+				limit = {
+					OR = {
+						check_variable = { which = CmtVarPurgeSpeed value = 6 }
+						check_variable = { which = CmtVarPurgeSpeed value = 7 }
+					}
+				}
+				country_event = { id = CrisisManagerControl.0045 days =  3 }
+				country_event = { id = CrisisManagerControl.0045 days =  6 }
+				country_event = { id = CrisisManagerControl.0045 days =  9 }
+				country_event = { id = CrisisManagerControl.0045 days = 12 }
+				country_event = { id = CrisisManagerControl.0045 days = 15 }
+				country_event = { id = CrisisManagerControl.0045 days = 18 }
+				country_event = { id = CrisisManagerControl.0045 days = 21 }
+				country_event = { id = CrisisManagerControl.0045 days = 24 }
+				country_event = { id = CrisisManagerControl.0045 days = 27 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = CrisisManagerControl.0045
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		is_country_type = global_event
+		check_variable = { which = CmtVarPurgeSpeed value > 4.5 }
+	}
+	
+	immediate = {
+		every_country = {
+			limit = { CmtTriggerIsBasicCrisisCountry = yes }
+			every_controlled_planet = {
+				if = {
+					limit = { num_pops = 1 }
+					planet_event = { id = crisis.202 }		## Prethoryn
+					planet_event = { id = CrisisManagerControl.0043 }		## Exds	
+					planet_event = { id = crisis.2044 }		## Contingency
+				}
+				random_owned_pop = {
+					limit = {
+						NAND = {
+							exists = event_target:custodian_bot
+							species = { is_same_value = event_target:custodian_bot }
+							planet.controller = { CmtTriggerIsContingency = yes }
+						}
+					}
+					kill_pop = yes
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,202 @@
+
+###########################################################
+###########################################################
+#####                                                 #####
+#####    Crisis Manager                               #####
+#####                                                 #####
+#####    Common Scripted Effect of Total War Pack     #####
+#####                                                 #####
+###########################################################
+###########################################################
+
+
+################
+###  Common  ###
+################
+
+### Overwriting Cmt001 in Basic 3 Editions
+CmtEffectDetectTotalWarPack = {
+	set_global_flag = CmtFlagTotalWarPatch
+}
+
+### scope: this = stellar_system, written in also Cmt001 in basic 3 editions
+CmtEffectDestroySystemStarbase = {
+	if = {
+		limit = { exists = starbase }
+		starbase.fleet = { destroy_fleet = this }
+	}
+}
+
+### scope: this = country (new starbase owner), required = event_target:CmtTargetTransferSystem
+CmtEffectCreateStarbase = {
+	### Create Starbase
+	if = {
+		limit = { CmtTriggerIsPlayableEmpire = yes }
+		event_target:CmtTargetTransferSystem = { create_starbase = { size = starbase_outpost owner = prev } }
+	} else_if = {
+		limit = {
+			OR = {
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire
+			}
+		}
+		event_target:CmtTargetTransferSystem = {
+			if = {
+				limit = {
+					exists = prev.capital_scope
+					any_system_planet = { is_same_value = prevprev.capital_scope }
+				}
+				CmtEffectCreateFeHomeCitadel = yes
+			} else_if = {
+				limit = { any_system_planet = { has_planet_flag = fallen_empire_world } }
+				CmtEffectCreateFeCitadel = yes
+			} else = { CmtEffectCreateFeOutpost = yes }
+		}
+	} else_if = {
+		limit = { is_country_type = swarm }
+		event_target:CmtTargetTransferSystem = { create_starbase = { size = starbase_swarm owner = prev } }
+	} else_if = {
+		limit = { 
+			is_country_type = extradimensional
+			exists = event_target:CmtTargetTransferSystem
+		}
+		random_owned_ship = {
+			ship_event = { id = crisis.1280 }		## Change Counter
+			ship_event = { id = crisis.1267 }		## Call Reinforcement
+		}
+		event_target:CmtTargetTransferSystem = { create_starbase = { size = starbase_exd_0 owner = prev } }
+	} else_if = {
+		limit = {
+			OR = {
+				is_country_type = extradimensional_2
+				is_country_type = extradimensional_3
+			}
+			exists = event_target:CmtTargetTransferSystem
+		}
+		random_owned_ship = {
+			ship_event = { id = crisis.1280 }		## Change Counter
+			ship_event = { id = crisis.1267 }		## Call Reinforcement
+		}
+		event_target:CmtTargetTransferSystem = { create_starbase = { size = starbase_exd owner = prev } }
+	} else_if = {
+		limit = { is_country_type = ai_empire }
+		event_target:CmtTargetTransferSystem = { create_starbase = { size = starbase_ai owner = prev } }
+	} else_if = {
+		limit = {
+			OR = {
+				is_country_type = dormant_marauders
+				is_country_type = awakened_marauders
+			}
+		}
+		event_target:CmtTargetTransferSystem = { create_starbase = { size = starbase_marauder owner = prev } }
+	} else_if = {
+		limit = { is_country_type = gate_builders }		## L-Cluster Empire, Dessanu
+		event_target:CmtTargetTransferSystem = { create_starbase = { size = starbase_gatebuilders owner = prev } }
+	} else = { set_country_flag = CmtFlagTotalWarMissingCreatingStarbase }
+	
+	### Lock Starbase Temporarily
+	if = {
+		limit = {
+			OR = {
+				has_country_flag = CmtFlagTotalWarMissingCreatingStarbase
+				NAND = {
+					exists = last_created_fleet
+					last_created_fleet = { is_ship_class = shipclass_starbase }
+				}
+			}
+		}
+		remove_country_flag = CmtFlagTotalWarMissingCreatingStarbase
+	} else = {
+		last_created_fleet = {
+			if = {
+				limit = { CmtTriggerStarbaseShouldLocked = yes }
+				set_event_locked = yes
+				set_fleet_flag = CmtFlagTotalWarLockedStarbase
+				add_modifier = { modifier = CmtModifierDisabledStarbase days = -1 }
+				fleet_event = { id = CrisisManagerControl.0240 }
+			}
+		}
+	}
+}
+
+### Legacy: Deleted Log Commands
+#	log = "Starbase of [This.GetName] in [event_target:CmtTargetTransferSystem.GetName] was NOT created."
+#	log = "Starbase in [This.GetStarName] was locked"
+#	log = "Starbase in [This.GetStarName] was NOT locked"
+
+
+##############################################
+###  Starbases of Fallen/Awakened Empires  ###
+##############################################
+#
+#	Ref.: create_fe_home_citadel, create_fe_citadel, create_fe_outpost
+#
+#	Scope: this = stellar system, prev = owner
+#
+
+CmtEffectCreateFeOutpost = {
+	create_starbase = {
+		size = "starbase_outpost"
+		owner = prev
+		effect = {
+			while = {
+				count = 2
+				create_fallen_empire_platform = yes
+			}
+		}
+	}
+}
+
+
+
+CmtEffectCreateFeCitadel = {
+	create_starbase = {
+		size = "starbase_citadel"
+		owner = prev
+		
+		module = "shipyard"
+		module = "anchorage"
+		module = "anchorage"
+		module = "hangar_bay"
+		module = "gun_battery"
+		module = "gun_battery"
+
+		building = "crew_quarters"
+		building = "command_center"
+		building = "target_uplink_computer"
+		building = "listening_post"
+		
+		effect = {
+			while = {
+				count = 4
+				create_fallen_empire_platform = yes
+			}
+		}
+	}
+}
+
+CmtEffectCreateFeHomeCitadel = {
+	create_starbase = {
+		size = "starbase_citadel"
+		owner = prev
+		
+		module = "shipyard"
+		module = "shipyard"
+		module = "shipyard"
+		module = "hangar_bay"
+		module = "gun_battery"
+		module = "gun_battery"
+		
+		building = "target_uplink_computer"
+		building = "defense_grid"
+		building = "colossus_yards"
+		building = "titan_yards"
+		
+		effect = {
+			while = {
+				count = 10
+				create_fallen_empire_platform = yes
+			}
+		}
+	}
+}

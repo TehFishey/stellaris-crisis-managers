@@ -1,0 +1,479 @@
+
+#######################################################
+#######################################################
+#####                                             #####
+#####    Crisis Manager                           #####
+#####                                             #####
+#####    Target Control of Forced End of Cycle    #####
+#####                                             #####
+#######################################################
+#######################################################
+
+###################
+###  Constants  ###
+###################
+
+@CmtConstForcedEocGalaxyPercentage_1 = 0.50
+@CmtConstForcedEocGalaxyPercentage_2 = 0.45
+@CmtConstForcedEocGalaxyPercentage_3 = 0.30
+@CmtConstForcedEocGalaxyPercentage_4 = 0.25
+@CmtConstForcedEocGalaxyPercentage_5 = 0.20
+@CmtConstForcedEocGalaxyPercentage_6 = 0.15
+@CmtConstForcedEocGalaxyPercentage_7 = 0.10
+@CmtConstForcedEocGalaxyPercentage_8 = 0.05
+
+@CmtConstForcedEocFleetPower_1 =  2000000	##  2000 k
+@CmtConstForcedEocFleetPower_2 =  1150000	##  1150 k
+@CmtConstForcedEocFleetPower_3 =   660000	##   660 k
+@CmtConstForcedEocFleetPower_4 =   380000	##   380 k
+@CmtConstForcedEocFleetPower_5 =   210000	##   210 k
+@CmtConstForcedEocFleetPower_6 =   120000	##   120 k
+@CmtConstForcedEocFleetPower_7 =    70000	##    70 k
+@CmtConstForcedEocFleetPower_8 =    40000	##    40 k
+
+@CmtConstForcedEocNumberOfPops_1 =  100
+@CmtConstForcedEocNumberOfPops_2 =  200
+@CmtConstForcedEocNumberOfPops_3 =  400
+@CmtConstForcedEocNumberOfPops_4 =  600
+@CmtConstForcedEocNumberOfPops_5 =  600
+@CmtConstForcedEocNumberOfPops_6 =  800
+@CmtConstForcedEocNumberOfPops_7 = 1000
+@CmtConstForcedEocNumberOfPops_8 = 1200
+
+
+#######################
+###  Actual Effect  ###
+#######################
+
+CmtEffectTargetingForcedEoc = {
+	event_target:CmtGlobalVar = {
+		
+		### Initialization
+		every_country = {
+			limit = { has_country_flag = CmtFlagForcedEocTargetList }
+			remove_country_flag = CmtFlagForcedEocTargetList
+		}
+		
+		
+		### Target Control 1: PC/NPC, Transcendence
+		if = {
+			limit = {
+				check_variable = { which = CmtVarForcedEocTranscendence value = 2 }
+				any_country = {
+					CmtTriggerForcedEocTargetList = yes
+					has_ascension_perk = ap_transcendence
+				}
+			}
+			every_country = {
+				limit = {
+					CmtTriggerForcedEocTargetList = yes
+					has_ascension_perk = ap_transcendence
+				}
+				set_country_flag = CmtFlagForcedEocTargetList
+			}
+			else = {
+				every_country = {
+					limit = { CmtTriggerForcedEocTargetList = yes }
+					set_country_flag = CmtFlagForcedEocTargetList
+				}
+			}
+		}
+		
+		
+		### Target Control 2a: Territory Area
+		if = {
+			limit = {
+				NOR = {
+					check_variable = { which = CmtVarForcedEocCountryStrength value = 1 }
+					check_variable = { which = CmtVarForcedEocCountryStrength value = 3 }
+					check_variable = { which = CmtVarForcedEocCountryStrength value = 4 }
+				}
+			}
+			if = {
+				limit = {
+					any_country = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						galaxy_percentage > @CmtConstForcedEocGalaxyPercentage_1
+					}
+				}
+				every_country = {
+					limit = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						NOT = { galaxy_percentage > @CmtConstForcedEocGalaxyPercentage_1 }
+					}
+					remove_country_flag = CmtFlagForcedEocTargetList
+				}
+			}
+			if = {
+				limit = {
+					any_country = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						galaxy_percentage > @CmtConstForcedEocGalaxyPercentage_2
+					}
+				}
+				every_country = {
+					limit = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						NOT = { galaxy_percentage > @CmtConstForcedEocGalaxyPercentage_2 }
+					}
+					remove_country_flag = CmtFlagForcedEocTargetList
+				}
+			}
+			if = {
+				limit = {
+					any_country = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						galaxy_percentage > @CmtConstForcedEocGalaxyPercentage_3
+					}
+				}
+				every_country = {
+					limit = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						NOT = { galaxy_percentage > @CmtConstForcedEocGalaxyPercentage_3 }
+					}
+					remove_country_flag = CmtFlagForcedEocTargetList
+				}
+			}
+			if = {
+				limit = {
+					any_country = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						galaxy_percentage > @CmtConstForcedEocGalaxyPercentage_4
+					}
+				}
+				every_country = {
+					limit = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						NOT = { galaxy_percentage > @CmtConstForcedEocGalaxyPercentage_4 }
+					}
+					remove_country_flag = CmtFlagForcedEocTargetList
+				}
+			}
+			if = {
+				limit = {
+					any_country = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						galaxy_percentage > @CmtConstForcedEocGalaxyPercentage_5
+					}
+				}
+				every_country = {
+					limit = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						NOT = { galaxy_percentage > @CmtConstForcedEocGalaxyPercentage_5 }
+					}
+					remove_country_flag = CmtFlagForcedEocTargetList
+				}
+			}
+			if = {
+				limit = {
+					any_country = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						galaxy_percentage > @CmtConstForcedEocGalaxyPercentage_6
+					}
+				}
+				every_country = {
+					limit = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						NOT = { galaxy_percentage > @CmtConstForcedEocGalaxyPercentage_6 }
+					}
+					remove_country_flag = CmtFlagForcedEocTargetList
+				}
+			}
+			if = {
+				limit = {
+					any_country = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						galaxy_percentage > @CmtConstForcedEocGalaxyPercentage_7
+					}
+				}
+				every_country = {
+					limit = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						NOT = { galaxy_percentage > @CmtConstForcedEocGalaxyPercentage_7 }
+					}
+					remove_country_flag = CmtFlagForcedEocTargetList
+				}
+			}
+			if = {
+				limit = {
+					any_country = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						galaxy_percentage > @CmtConstForcedEocGalaxyPercentage_8
+					}
+				}
+				every_country = {
+					limit = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						NOT = { galaxy_percentage > @CmtConstForcedEocGalaxyPercentage_8 }
+					}
+					remove_country_flag = CmtFlagForcedEocTargetList
+				}
+			}
+		}
+		
+		
+		### Target Control 2b: Fleet Power
+		if = {
+			limit = { check_variable = { which = CmtVarForcedEocCountryStrength value = 3 } }
+			if = {
+				limit = {
+					any_country = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						fleet_power > @CmtConstForcedEocFleetPower_1
+					}
+				}
+				every_country = {
+					limit = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						NOT = { fleet_power > @CmtConstForcedEocFleetPower_1 }
+					}
+					remove_country_flag = CmtFlagForcedEocTargetList
+				}
+			}
+			if = {
+				limit = {
+					any_country = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						fleet_power > @CmtConstForcedEocFleetPower_2
+					}
+				}
+				every_country = {
+					limit = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						NOT = { fleet_power > @CmtConstForcedEocFleetPower_2 }
+					}
+					remove_country_flag = CmtFlagForcedEocTargetList
+				}
+			}
+			if = {
+				limit = {
+					any_country = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						fleet_power > @CmtConstForcedEocFleetPower_3
+					}
+				}
+				every_country = {
+					limit = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						NOT = { fleet_power > @CmtConstForcedEocFleetPower_3 }
+					}
+					remove_country_flag = CmtFlagForcedEocTargetList
+				}
+			}
+			if = {
+				limit = {
+					any_country = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						fleet_power > @CmtConstForcedEocFleetPower_4
+					}
+				}
+				every_country = {
+					limit = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						NOT = { fleet_power > @CmtConstForcedEocFleetPower_4 }
+					}
+					remove_country_flag = CmtFlagForcedEocTargetList
+				}
+			}
+			if = {
+				limit = {
+					any_country = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						fleet_power > @CmtConstForcedEocFleetPower_5
+					}
+				}
+				every_country = {
+					limit = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						NOT = { fleet_power > @CmtConstForcedEocFleetPower_5 }
+					}
+					remove_country_flag = CmtFlagForcedEocTargetList
+				}
+			}
+			if = {
+				limit = {
+					any_country = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						fleet_power > @CmtConstForcedEocFleetPower_6
+					}
+				}
+				every_country = {
+					limit = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						NOT = { fleet_power > @CmtConstForcedEocFleetPower_6 }
+					}
+					remove_country_flag = CmtFlagForcedEocTargetList
+				}
+			}
+			if = {
+				limit = {
+					any_country = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						fleet_power > @CmtConstForcedEocFleetPower_7
+					}
+				}
+				every_country = {
+					limit = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						NOT = { fleet_power > @CmtConstForcedEocFleetPower_7 }
+					}
+					remove_country_flag = CmtFlagForcedEocTargetList
+				}
+			}
+			if = {
+				limit = {
+					any_country = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						fleet_power > @CmtConstForcedEocFleetPower_8
+					}
+				}
+				every_country = {
+					limit = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						NOT = { fleet_power > @CmtConstForcedEocFleetPower_8 }
+					}
+					remove_country_flag = CmtFlagForcedEocTargetList
+				}
+			}
+		}
+		
+		
+		### Target Control 2c: POPs
+		if = {
+			limit = { check_variable = { which = CmtVarForcedEocCountryStrength value = 4 } }
+			if = {
+				limit = {
+					any_country = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						num_pops > @CmtConstForcedEocNumberOfPops_1
+					}
+				}
+				every_country = {
+					limit = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						NOT = { num_pops > @CmtConstForcedEocNumberOfPops_1 }
+					}
+					remove_country_flag = CmtFlagForcedEocTargetList
+				}
+			}
+			if = {
+				limit = {
+					any_country = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						num_pops > @CmtConstForcedEocNumberOfPops_2
+					}
+				}
+				every_country = {
+					limit = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						NOT = { num_pops > @CmtConstForcedEocNumberOfPops_2 }
+					}
+					remove_country_flag = CmtFlagForcedEocTargetList
+				}
+			}
+			if = {
+				limit = {
+					any_country = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						num_pops > @CmtConstForcedEocNumberOfPops_3
+					}
+				}
+				every_country = {
+					limit = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						NOT = { num_pops > @CmtConstForcedEocNumberOfPops_3 }
+					}
+					remove_country_flag = CmtFlagForcedEocTargetList
+				}
+			}
+			if = {
+				limit = {
+					any_country = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						num_pops > @CmtConstForcedEocNumberOfPops_4
+					}
+				}
+				every_country = {
+					limit = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						NOT = { num_pops > @CmtConstForcedEocNumberOfPops_4 }
+					}
+					remove_country_flag = CmtFlagForcedEocTargetList
+				}
+			}
+			if = {
+				limit = {
+					any_country = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						num_pops > @CmtConstForcedEocNumberOfPops_5
+					}
+				}
+				every_country = {
+					limit = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						NOT = { num_pops > @CmtConstForcedEocNumberOfPops_5 }
+					}
+					remove_country_flag = CmtFlagForcedEocTargetList
+				}
+			}
+			if = {
+				limit = {
+					any_country = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						num_pops > @CmtConstForcedEocNumberOfPops_6
+					}
+				}
+				every_country = {
+					limit = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						NOT = { num_pops > @CmtConstForcedEocNumberOfPops_6 }
+					}
+					remove_country_flag = CmtFlagForcedEocTargetList
+				}
+			}
+			if = {
+				limit = {
+					any_country = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						num_pops > @CmtConstForcedEocNumberOfPops_7
+					}
+				}
+				every_country = {
+					limit = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						NOT = { num_pops > @CmtConstForcedEocNumberOfPops_7 }
+					}
+					remove_country_flag = CmtFlagForcedEocTargetList
+				}
+			}
+			if = {
+				limit = {
+					any_country = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						num_pops > @CmtConstForcedEocNumberOfPops_8
+					}
+				}
+				every_country = {
+					limit = {
+						has_country_flag = CmtFlagForcedEocTargetList
+						NOT = { num_pops > @CmtConstForcedEocNumberOfPops_8 }
+					}
+					remove_country_flag = CmtFlagForcedEocTargetList
+				}
+			}
+		}
+		
+		### Trigger End of Cycle
+		random_country = {
+			limit = { has_country_flag = CmtFlagForcedEocTargetList }
+			save_global_event_target_as = CmtTargetVictimForcedEoc
+		}
+		
+		### Clean up
+		every_country = {
+			limit = { has_country_flag = CmtFlagForcedEocTargetList }
+			remove_country_flag = CmtFlagForcedEocTargetList
+		}
+	}
+}
+

@@ -1,0 +1,87 @@
+
+###############################################
+###############################################
+#####                                     #####
+#####    Crisis Manager                   #####
+#####                                     #####
+#####    Scripted Effects to              #####
+#####    Create Other Fleets and Bases    #####
+#####    of Mid-Game Crises               #####
+#####                                     #####
+###############################################
+###############################################
+#
+# Information
+#	
+#
+
+###################
+###  Constants  ###
+###################
+
+
+
+##############
+###  Khan  ###
+##############
+
+### Base Over Satraps
+CmtEffectCreateEncouragingBase = {
+	create_fleet = {
+		effect = {
+			set_owner = event_target:raider_khanate
+			create_ship = {
+				name = "NAME_Garrison_Base"
+				design = "NAME_Void_Dwelling"
+				graphical_culture = "pirate_01"
+			}
+			set_location = {
+				target = event_target:capital_planet
+				distance = 50
+				angle = random
+			}
+		}
+	}
+	last_created_fleet = {
+		save_event_target_as = garrison_base
+		set_fleet_flag = satrapy_garrison
+		if = {
+			limit = {
+				event_target:CmtGlobalVar = {
+					OR = {
+						check_variable = { which = CmtVarReinforceCycle_Khan value = 2 }
+						check_variable = { which = CmtVarReinforceCycle_Khan value = 3 }
+						check_variable = { which = CmtVarReinforceCycle_Khan value = 4 }
+					}
+				}
+			}
+			set_variable = { which = CmtVarKhanReinforcementCounter value = 10 }
+		}
+		fleet_event = { id = marauder.560 days = 10 }
+	}
+}
+
+
+###########################
+###  Dessanu / Graygoo  ###
+###########################
+
+
+CmtEffectCreateNanitieFactory = {
+	create_fleet = {
+		effect = {
+			set_owner = event_target:graygoo_country
+			create_ship = {
+				name = random
+				design = "NAME_Nanite_Factory"
+				graphical_culture = "pirate_01"
+			}
+			set_location = {
+				target = event_target:main_star
+				distance = 55
+				angle = 270
+			}
+			save_global_event_target_as = nanite_factory
+		}
+	}
+}

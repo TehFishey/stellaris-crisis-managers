@@ -1,0 +1,818 @@
+namespace = CrisisManagerControl
+
+###############################################
+###############################################
+#####                                     #####
+#####    Crisis Manager                   #####
+#####                                     #####
+#####    Prethoryn Opening Event Chain    #####
+#####    Comming Storm                    #####
+#####                                     #####
+###############################################
+###############################################
+#
+# Most of events in this file are country_event for global_event.
+#
+# Following flags are deleted from Vanilla
+#	prethoryn_subspace_echoes
+#	prethoryn_approaching_rim
+#	prethoryn_transmission
+# 
+
+###################
+###  Constants  ###
+###################
+#
+# Days: Event Delay
+# Rand: Random part of days for event delay
+# Mtth: Mean time to happen in months
+# 
+
+### Very Slow
+@CmtConstCommingStormDays11 =  360	## Subspace Echoes
+@CmtConstCommingStormRand11 =  120
+@CmtConstCommingStormDays12 = 6120	## Approaching the Outer Rim
+@CmtConstCommingStormRand12 =  360
+@CmtConstCommingStormDays13 = 1440	## (Approaching) Subspace Signal
+@CmtConstCommingStormRand13 =  180
+@CmtConstCommingStormDays14 =  360	## Vanguard Arrives (The First Wave)
+@CmtConstCommingStormRand14 =   30
+@CmtConstCommingStormDays15 =  400	## Prethoryn Main Invasion Arrives (The Second Wave)
+@CmtConstCommingStormRand15 =  200
+
+### Random & Slow
+@CmtConstCommingStormDays21 =  180	## Subspace Echoes
+@CmtConstCommingStormRand21 = 1620
+@CmtConstCommingStormDays22 = 1080	## Approaching the Outer Rim
+@CmtConstCommingStormRand22 = 5760
+@CmtConstCommingStormMtth23 = 1800	## (Approaching) Subspace Signal
+#CmtConstCommingStorm----23 =  N/A
+@CmtConstCommingStormDays24 =  180	## Vanguard Arrives (The First Wave)
+@CmtConstCommingStormRand24 =  360
+@CmtConstCommingStormDays25 =  400	## Prethoryn Main Invasion Arrives (The Second Wave)
+@CmtConstCommingStormRand25 =  200
+
+### Vanilla
+@CmtConstCommingStormDays31 =  200	## Subspace Echoes
+@CmtConstCommingStormRand31 =  800
+@CmtConstCommingStormMtth32 =18000	## Approaching the Outer Rim, MTTH for all defaoult country
+#CmtConstCommingStorm----32 =  N/A
+@CmtConstCommingStormMtth33 = 3600	## (Approaching) Subspace Signal, MTTH for all country
+#CmtConstCommingStorm----33 =  N/A
+@CmtConstCommingStormMtth34 =  900	## Vanguard Arrives (The First Wave), MTTH for all country
+#CmtConstCommingStorm----34 =  N/A
+@CmtConstCommingStormDays35 =  400	## Prethoryn Main Invasion Arrives (The Second Wave)
+@CmtConstCommingStormRand35 =  200
+
+### Fast: Centrally Controled by Subspace Echoes
+@CmtConstCommingStormDays41 =  180	## Subspace Echoes
+@CmtConstCommingStormRand41 =   45
+@CmtConstCommingStormDays42 = 1080	## Approaching the Outer Rim
+@CmtConstCommingStormRand42 =   90
+@CmtConstCommingStormDays43 = 1410	## (Approaching) Subspace Signal
+@CmtConstCommingStormRand43 =   15
+@CmtConstCommingStormDays44 = 1440	## Vanguard Arrives (The First Wave)
+@CmtConstCommingStormRand44 =   45
+@CmtConstCommingStormDays45 =   60	## Prethoryn Main Invasion Arrives (The Second Wave)
+@CmtConstCommingStormRand45 =   15
+
+### Random & Fast
+@CmtConstCommingStormDays51 =    1	## Subspace Echoes
+@CmtConstCommingStormRand51 =  360
+@CmtConstCommingStormMtth52 =  540	## Approaching the Outer Rim
+#CmtConstCommingStorm----52 =  N/A
+@CmtConstCommingStormMtth53 =   30	## (Approaching) Subspace Signal
+#CmtConstCommingStorm----53 =  N/A
+@CmtConstCommingStormDays54 =  180	## Vanguard Arrives (The First Wave)
+@CmtConstCommingStormRand54 =    0
+@CmtConstCommingStormDays55 =   60	## Prethoryn Main Invasion Arrives (The Second Wave)
+@CmtConstCommingStormRand55 =   20
+
+### Foxhound
+@CmtConstCommingStormDays61 =    1	## Subspace Echoes
+@CmtConstCommingStormRand61 =    5
+@CmtConstCommingStormDays62 =    3	## Approaching the Outer Rim
+@CmtConstCommingStormRand62 =    8
+@CmtConstCommingStormDays63 =    1	## (Approaching) Subspace Signal
+@CmtConstCommingStormRand63 =    5
+@CmtConstCommingStormDays64 =    1	## Vanguard Arrives (The First Wave)
+@CmtConstCommingStormRand64 =    3
+@CmtConstCommingStormDays65 =    1	## Prethoryn Main Invasion Arrives (The Second Wave)
+@CmtConstCommingStormRand65 =    3
+
+
+
+################
+###  Common  ###
+################
+
+### Check Progress Speed of Opening Event Chain
+country_event = {
+	id = CrisisManagerControl.1000
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_global_flag = prethoryn_invasion_happened }
+	}
+	
+	immediate = {
+		endgame_telemetry = prethoryn
+		set_global_flag = galactic_crisis_happened
+		set_global_flag = prethoryn_invasion_happened
+		set_global_flag = CmtFlagPrethorynTriggered
+		observer_event = { id = observer.27 }
+		
+		event_target:CmtGlobalVar = {
+			if = {
+				limit = { check_variable = { which = CmtVarOpeningEventSpeed value = 1 } }
+				country_event = { id = CrisisManagerControl.1010 }
+			} else_if = {
+				limit = { check_variable = { which = CmtVarOpeningEventSpeed value = 2 } }
+				country_event = { id = CrisisManagerControl.1020 }
+			} else_if = {
+				limit = { check_variable = { which = CmtVarOpeningEventSpeed value = 4 } }
+				country_event = { id = CrisisManagerControl.1040 }
+			} else_if = {
+				limit = { check_variable = { which = CmtVarOpeningEventSpeed value = 5 } }
+				country_event = { id = CrisisManagerControl.1050 }
+			} else_if = {
+				limit = { check_variable = { which = CmtVarOpeningEventSpeed value = 6 } }
+				country_event = { id = CrisisManagerControl.1060 }
+			} else = { country_event = { id = CrisisManagerControl.1030 } }
+		}
+	}
+}
+
+
+
+
+
+###################
+###  Very Slow  ###
+###################
+
+### Internal Trigger
+country_event = {
+	id = CrisisManagerControl.1010
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		country_event = { id = CrisisManagerControl.1011 days = @CmtConstCommingStormDays11 random = @CmtConstCommingStormRand11 }
+	}
+}
+
+### Subspace Echoes (crisis.10 / 11)
+country_event = {
+	id = CrisisManagerControl.1011
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1011 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSubspaceEchoes = yes
+			country_event = { id = CrisisManagerControl.1012 days = @CmtConstCommingStormDays12 random = @CmtConstCommingStormRand12 }
+		}
+	}
+}
+
+### Approaching the Outer Rim (crisis.12 / 13)
+country_event = {
+	id = CrisisManagerControl.1012
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1012 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectApproachingOuterRim = yes
+			country_event = { id = CrisisManagerControl.1013 days = @CmtConstCommingStormDays13 random = @CmtConstCommingStormRand13 }
+		}
+	}
+}
+
+### Approaching Subspace Signal (crisis.14 / 15 / 16)
+country_event = {
+	id = CrisisManagerControl.1013
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1013 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSubspaceSignal = yes
+			country_event = { id = CrisisManagerControl.1014 days = @CmtConstCommingStormDays14 random = @CmtConstCommingStormRand14 }
+		}
+	}
+}
+
+### Vanguard Arrives (crisis.17)
+country_event = {
+	id = CrisisManagerControl.1014
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1014 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectVanguardArrives = yes
+			country_event = { id = CrisisManagerControl.1015 days = @CmtConstCommingStormDays15 random = @CmtConstCommingStormRand15 }
+		}
+	}
+}
+
+### Prethoryn Main Invasion Arrives (crisis.19)
+country_event = {
+	id = CrisisManagerControl.1015
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1015 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectPrethorynMainInvasionArrives = yes
+		}
+	}
+}
+
+
+
+#######################
+###  Randomly Slow  ###
+#######################
+
+### Internal Trigger
+country_event = {
+	id = CrisisManagerControl.1020
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		country_event = { id = CrisisManagerControl.1021 days = @CmtConstCommingStormDays21 random = @CmtConstCommingStormRand21 }
+	}
+}
+
+### Subspace Echoes (crisis.10 / 11)
+country_event = {
+	id = CrisisManagerControl.1021
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1021 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSubspaceEchoes = yes
+			country_event = { id = CrisisManagerControl.1022 days = @CmtConstCommingStormDays22 random = @CmtConstCommingStormRand22 }
+		}
+	}
+}
+
+### Approaching the Outer Rim (crisis.12 / 13)
+country_event = {
+	id = CrisisManagerControl.1022
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1022 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectApproachingOuterRim = yes
+			set_global_flag = CmtFlagAllow1023
+		}
+	}
+}
+
+### Approaching Subspace Signal (crisis.14 / 15 / 16)
+country_event = {
+	id = CrisisManagerControl.1023
+	hide_window = yes
+	
+	trigger = {
+		has_global_flag = CmtFlagAllow1023
+		is_country_type = global_event
+	}
+	mean_time_to_happen = { days = @CmtConstCommingStormMtth23 }
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1023 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSubspaceSignal = yes
+			remove_global_flag = CmtFlagAllow1023
+			country_event = { id = CrisisManagerControl.1024 days = @CmtConstCommingStormDays24 random = @CmtConstCommingStormRand24 }
+		}
+	}
+}
+
+### Vanguard Arrives (crisis.17)
+country_event = {
+	id = CrisisManagerControl.1024
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1024 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectVanguardArrives = yes
+			country_event = { id = CrisisManagerControl.1025 days = @CmtConstCommingStormDays25 random = @CmtConstCommingStormRand25 }
+		}
+	}
+}
+
+### Prethoryn Main Invasion Arrives (crisis.19)
+country_event = {
+	id = CrisisManagerControl.1025
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1025 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectPrethorynMainInvasionArrives = yes
+		}
+	}
+}
+
+
+
+#################
+###  Vanilla  ###
+#################
+
+### Internal Trigger
+country_event = {
+	id = CrisisManagerControl.1030
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		country_event = { id = CrisisManagerControl.1031 days = @CmtConstCommingStormDays31 random = @CmtConstCommingStormRand31 }
+	}
+}
+
+### Subspace Echoes (crisis.10 / 11)
+country_event = {
+	id = CrisisManagerControl.1031
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1031 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSubspaceEchoes = yes
+			set_global_flag = CmtFlagAllow1032
+		}
+	}
+}
+
+### Approaching the Outer Rim (crisis.12 / 13)
+country_event = {
+	id = CrisisManagerControl.1032
+	hide_window = yes
+	
+	trigger = {
+		CmtTriggerIsPlayableEmpire = yes
+		has_global_flag = CmtFlagAllow1032
+	}
+	mean_time_to_happen = { days = @CmtConstCommingStormMtth32 }
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1032 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectApproachingOuterRim = yes
+			remove_global_flag = CmtFlagAllow1032
+			set_global_flag = CmtFlagAllow1033
+		}
+	}
+}
+
+### Approaching Subspace Signal (crisis.14 / 15 / 16)
+country_event = {
+	id = CrisisManagerControl.1033
+	hide_window = yes
+	
+	trigger = {
+		has_global_flag = CmtFlagAllow1033
+	}
+	mean_time_to_happen = { days = @CmtConstCommingStormMtth33 }
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1033 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSubspaceSignal = yes
+			remove_global_flag = CmtFlagAllow1033
+			set_global_flag = CmtFlagAllow1034
+		}
+	}
+}
+
+### Vanguard Arrives (crisis.17)
+country_event = {
+	id = CrisisManagerControl.1034
+	hide_window = yes
+	
+	trigger = {
+		has_global_flag = CmtFlagAllow1034
+	}
+	mean_time_to_happen = { days = @CmtConstCommingStormMtth34 }
+	
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1034 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectVanguardArrives = yes
+			remove_global_flag = CmtFlagAllow1034
+			country_event = { id = CrisisManagerControl.1035 days = @CmtConstCommingStormDays35 random = @CmtConstCommingStormRand35 }
+		}
+	}
+}
+
+### Prethoryn Main Invasion Arrives (crisis.19)
+country_event = {
+	id = CrisisManagerControl.1035
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1035 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectPrethorynMainInvasionArrives = yes
+		}
+	}
+}
+
+
+
+##############
+###  Fast  ###
+##############
+
+### Internal Trigger
+country_event = {
+	id = CrisisManagerControl.1040
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		country_event = { id = CrisisManagerControl.1041 days = @CmtConstCommingStormDays41 random = @CmtConstCommingStormRand41 }
+	}
+}
+
+### Subspace Echoes (crisis.10 / 11)
+country_event = {
+	id = CrisisManagerControl.1041
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1041 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSubspaceEchoes = yes
+			country_event = { id = CrisisManagerControl.1042 days = @CmtConstCommingStormDays42 random = @CmtConstCommingStormRand42 }
+			country_event = { id = CrisisManagerControl.1043 days = @CmtConstCommingStormDays43 random = @CmtConstCommingStormRand43 }
+			country_event = { id = CrisisManagerControl.1044 days = @CmtConstCommingStormDays44 random = @CmtConstCommingStormRand44 }
+		}
+	}
+}
+
+### Approaching the Outer Rim (crisis.12 / 13)
+country_event = {
+	id = CrisisManagerControl.1042
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1042 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectApproachingOuterRim = yes
+		}
+	}
+}
+
+### Approaching Subspace Signal (crisis.14 / 15 / 16)
+country_event = {
+	id = CrisisManagerControl.1043
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1043 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSubspaceSignal = yes
+		}
+	}
+}
+
+### Vanguard Arrives (crisis.17)
+country_event = {
+	id = CrisisManagerControl.1044
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1044 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectVanguardArrives = yes
+			country_event = { id = CrisisManagerControl.1045 days = @CmtConstCommingStormDays45 random = @CmtConstCommingStormRand45 }
+		}
+	}
+}
+
+### Prethoryn Main Invasion Arrives (crisis.19)
+country_event = {
+	id = CrisisManagerControl.1045
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1045 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectPrethorynMainInvasionArrives = yes
+		}
+	}
+}
+
+
+
+#######################
+###  Randomly Fast  ###
+#######################
+
+### Internal Trigger
+country_event = {
+	id = CrisisManagerControl.1050
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		country_event = { id = CrisisManagerControl.1051 days = @CmtConstCommingStormDays51 random = @CmtConstCommingStormRand51 }
+	}
+}
+
+### Subspace Echoes (crisis.10 / 11)
+country_event = {
+	id = CrisisManagerControl.1051
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1051 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSubspaceEchoes = yes
+			set_global_flag = CmtFlagAllow1052
+		}
+	}
+}
+
+### Approaching the Outer Rim (crisis.12 / 13)
+country_event = {
+	id = CrisisManagerControl.1052
+	hide_window = yes
+	
+	trigger = {
+		has_global_flag = CmtFlagAllow1052
+		is_country_type = global_event
+	}
+	mean_time_to_happen = { days = @CmtConstCommingStormMtth52 }
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1052 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectApproachingOuterRim = yes
+			remove_global_flag = CmtFlagAllow1052
+			set_global_flag = CmtFlagAllow1053
+		}
+	}
+}
+
+### Approaching Subspace Signal (crisis.14 / 15 / 16)
+country_event = {
+	id = CrisisManagerControl.1053
+	hide_window = yes
+	
+	trigger = {
+		has_global_flag = CmtFlagAllow1053
+		is_country_type = global_event
+	}
+	mean_time_to_happen = { days = @CmtConstCommingStormMtth53 }
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1053 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSubspaceSignal = yes
+			remove_global_flag = CmtFlagAllow1053
+			country_event = { id = CrisisManagerControl.1054 days = @CmtConstCommingStormDays54 random = @CmtConstCommingStormRand54 }
+		}
+	}
+}
+
+### Vanguard Arrives (crisis.17)
+country_event = {
+	id = CrisisManagerControl.1054
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1054 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectVanguardArrives = yes
+			country_event = { id = CrisisManagerControl.1055 days = @CmtConstCommingStormDays55 random = @CmtConstCommingStormRand55 }
+		}
+	}
+}
+
+### Prethoryn Main Invasion Arrives (crisis.19)
+country_event = {
+	id = CrisisManagerControl.1055
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1055 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectPrethorynMainInvasionArrives = yes
+		}
+	}
+}
+
+
+
+##################
+###  Foxhound  ###
+##################
+
+### Internal Trigger
+country_event = {
+	id = CrisisManagerControl.1060
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		country_event = { id = CrisisManagerControl.1061 days = @CmtConstCommingStormDays61 random = @CmtConstCommingStormRand61 }
+	}
+}
+
+### Subspace Echoes (crisis.10 / 11)
+country_event = {
+	id = CrisisManagerControl.1061
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1061 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSubspaceEchoes = yes
+			country_event = { id = CrisisManagerControl.1062 days = @CmtConstCommingStormDays62 random = @CmtConstCommingStormRand62 }
+		}
+	}
+}
+
+### Approaching the Outer Rim (crisis.12 / 13)
+country_event = {
+	id = CrisisManagerControl.1062
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1062 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectApproachingOuterRim = yes
+			country_event = { id = CrisisManagerControl.1063 days = @CmtConstCommingStormDays63 random = @CmtConstCommingStormRand63 }
+		}
+	}
+}
+
+### Approaching Subspace Signal (crisis.14 / 15 / 16)
+country_event = {
+	id = CrisisManagerControl.1063
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1063 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectSubspaceSignal = yes
+			country_event = { id = CrisisManagerControl.1064 days = @CmtConstCommingStormDays64 random = @CmtConstCommingStormRand64 }
+		}
+	}
+}
+
+### Vanguard Arrives (crisis.17)
+country_event = {
+	id = CrisisManagerControl.1064
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1064 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectVanguardArrives = yes
+			country_event = { id = CrisisManagerControl.1065 days = @CmtConstCommingStormDays65 random = @CmtConstCommingStormRand65 }
+		}
+	}
+}
+
+### Prethoryn Main Invasion Arrives (crisis.19)
+country_event = {
+	id = CrisisManagerControl.1065
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.1065 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectPrethorynMainInvasionArrives = yes
+		}
+	}
+}

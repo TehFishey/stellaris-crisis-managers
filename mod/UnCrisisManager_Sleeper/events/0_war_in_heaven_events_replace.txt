@@ -1,0 +1,1492 @@
+namespace = war_in_heaven
+
+############################################
+############################################
+#####                                  #####
+#####    Events for War in Heaven      #####
+#####                                  #####
+#####    Replaced by Crisis Manager    #####
+#####                                  #####
+############################################
+############################################
+
+###################
+###  Constants  ###
+###################
+
+### For Seeking Leader for League of Non-Aligned Powers
+@CmtConstHeavenLeagueLeaderFleetPower_T1 =   10000		## 10 k
+@CmtConstHeavenLeagueLeaderFleetPower_T2 =   20000
+@CmtConstHeavenLeagueLeaderFleetPower_T3 =   30000
+@CmtConstHeavenLeagueLeaderFleetPower_T4 =   40000
+@CmtConstHeavenLeagueLeaderFleetPower_T5 =   50000
+@CmtConstHeavenLeagueLeaderFleetPower_T6 =   60000
+@CmtConstHeavenLeagueLeaderFleetPower_T7 =   70000
+@CmtConstHeavenLeagueLeaderFleetPower_T8 =   80000
+@CmtConstHeavenLeagueLeaderFleetPower_T9 =   90000
+@CmtConstHeavenLeagueLeaderFleetPower_TA =  100000		## 100 k
+@CmtConstHeavenLeagueLeaderFleetPower_TB =  150000
+@CmtConstHeavenLeagueLeaderFleetPower_TC =  200000
+@CmtConstHeavenLeagueLeaderFleetPower_TD =  300000
+@CmtConstHeavenLeagueLeaderFleetPower_TE =  500000
+@CmtConstHeavenLeagueLeaderFleetPower_TF = 1000000		## 1 M
+
+
+
+########################
+###  Trigger Events  ###
+########################
+
+### Ancient Rival Awakes
+country_event = {
+	id = war_in_heaven.1
+	hide_window = yes
+	
+	trigger = {
+		host_has_dlc = "Leviathans Story Pack"
+		has_country_flag = sleepers_awake_ancient_rival
+		NOT = { has_global_flag = sleepers_awake_rival_waking }		## This Event Happens
+		has_global_flag = sleepers_awake_happened
+		
+		CmtTriggerCandidateAncientRival = yes
+		exists = event_target:CmtTargetFirstSleeper
+		event_target:CmtTargetFirstSleeper = { is_country_type = awakened_fallen_empire }
+	}
+	
+	mean_time_to_happen = {
+		months = 60
+		modifier = {
+			factor = @CmtConstHeavenPreludeSpeed_4b
+			OR = {
+				NOT = { has_country_flag = timed_ancient_rival }
+				has_global_flag = war_in_heaven_debug
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 4 } }
+			}
+		}
+		modifier = {
+			factor = @CmtConstHeavenPreludeSpeed_1b
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 1 } }
+		}
+		modifier = {
+			factor = @CmtConstHeavenPreludeSpeed_3b
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 3 } }
+		}
+	}
+	
+	immediate = {
+		### Basic Flag Control
+		set_global_flag = sleepers_awake_rival_waking
+		if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 1 } } }
+			set_timed_country_flag = { flag = war_in_heaven_timer days = @CmtConstHeavenPreludeSpeed_1c }
+			set_timed_country_flag = { flag = war_in_heaven_timer_2 days = @CmtConstHeavenPreludeSpeed_1d }
+			set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_1d }
+			event_target:CmtTargetFirstSleeper = { set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_1d } }
+			every_country = {
+				limit = { CmtTriggerIsPlayableEmpire = yes }
+				set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_1d }
+			}
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 3 } } }
+			set_timed_country_flag = { flag = war_in_heaven_timer days = @CmtConstHeavenPreludeSpeed_3c }
+			set_timed_country_flag = { flag = war_in_heaven_timer_2 days = @CmtConstHeavenPreludeSpeed_3d }
+			set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_3d }
+			event_target:CmtTargetFirstSleeper = { set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_3d } }
+			every_country = {
+				limit = { CmtTriggerIsPlayableEmpire = yes }
+				set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_3d }
+			}
+		} else_if = {
+			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 4 } } }
+			set_timed_country_flag = { flag = war_in_heaven_timer days = @CmtConstHeavenPreludeSpeed_4c }
+			set_timed_country_flag = { flag = war_in_heaven_timer_2 days = @CmtConstHeavenPreludeSpeed_4d }
+			set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_4d }
+			event_target:CmtTargetFirstSleeper = { set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_4d } }
+			every_country = {
+				limit = { CmtTriggerIsPlayableEmpire = yes }
+				set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_4d }
+			}
+		} else = {
+			set_timed_country_flag = { flag = war_in_heaven_timer days = @CmtConstHeavenPreludeSpeed_2c }
+			set_timed_country_flag = { flag = war_in_heaven_timer_2 days = @CmtConstHeavenPreludeSpeed_2d }
+			set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_2d }
+			event_target:CmtTargetFirstSleeper = { set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_2d } }
+			every_country = {
+				limit = { CmtTriggerIsPlayableEmpire = yes }
+				set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_2d }
+			}
+		}
+		event_target:CmtTargetFirstSleeper = { save_event_target_as = FirstSleeper }
+		event_target:CmtTargetFirstSleeper = { save_global_event_target_as = FirstSleeper }
+		
+		### Goverment Changes
+		set_country_type = awakened_fallen_empire
+		change_government = {
+			civics = {
+				civic = civic_revanchist_fervor
+				civic = civic_ancient_caches_of_technology
+			}
+		}
+		add_awakened_fallen_empire_resources = yes
+		
+		### Initial Reinforcement
+		if = {
+			limit = {
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenIndomitableRival value = 3 } }
+				NOT = { CmtTriggerCheckSleeperFleetPower = yes }
+			}
+			country_event = { id = fallen_empires.13 }
+		}
+		country_event = { id = fallen_empires.13 }
+		if = {
+			limit = { CmtTriggerCheckYoungsFleetPower = yes }
+			country_event = { id = fallen_empires.13 }
+		}
+		
+		### Establish communications / Notification
+		every_country = {
+			limit = { CmtTriggerIsEmpire = yes }
+			if = {
+				limit = { NOT = { has_communications = root } }
+				establish_communications_no_message = root
+				root = { save_event_target_as = contact_empire }
+				country_event = { id = action.1 }
+			}
+			country_event = { id = war_in_heaven.2 }
+		}
+		observer_event = { id = observer.75 }
+	}
+}
+
+### Delear War in Heaven
+country_event = {
+	id = war_in_heaven.3
+	hide_window = yes
+	
+	trigger = {
+		host_has_dlc = "Leviathans Story Pack"
+		has_country_flag = sleepers_awake_ancient_rival		## We're Rival
+		has_global_flag = sleepers_awake_rival_waking		## Previous Event Happens
+		NOT = { has_global_flag = war_in_heaven_started }		## This Event Happens
+		OR = {
+			NOT = { has_country_flag = war_in_heaven_timer }		## Moratorium Term
+			has_global_flag = war_in_heaven_debug
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 4 } }
+		}
+		
+		is_country_type = awakened_fallen_empire
+		is_at_war = no
+		CmtTriggerCheckAncientRivalFleetPower = yes
+		
+		exists = event_target:CmtTargetFirstSleeper
+		event_target:CmtTargetFirstSleeper = {
+			has_country_flag = sleepers_awake_first_sleeper
+			is_country_type = awakened_fallen_empire
+			NOT = { is_same_value = root }
+			CmtTriggerCheckAncientRivalFleetPower = yes
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 12
+		modifier = {
+			factor = @CmtConstHeavenPreludeSpeed_4e
+			OR = {
+				NOT = { has_country_flag = war_in_heaven_timer_2 }
+				has_global_flag = war_in_heaven_debug
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 4 } }
+			}
+		}
+		modifier = {
+			factor = @CmtConstHeavenPreludeSpeed_1e
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 1 } }
+		}
+		modifier = {
+			factor = @CmtConstHeavenPreludeSpeed_3e
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 3 } }
+		}
+	}
+
+	immediate = {
+		### Basic Flag Control
+		set_global_flag = war_in_heaven_started
+		set_global_flag = war_in_heaven_ongoing
+		
+		### Effect for 2nd Sleeper
+		if = {
+			limit = {
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenIndomitableRival value = 3 } }
+				NOT = { CmtTriggerCheckSleeperFleetPower = yes }
+			}
+			country_event = { id = fallen_empires.13 }
+		}
+		country_event = { id = fallen_empires.13 }
+		if = {
+			limit = { CmtTriggerCheckYoungsFleetPower = yes }
+			country_event = { id = fallen_empires.13 }
+		}
+		remove_country_flag = ai_no_wars
+		
+		### Effect for 1st Sleeper
+		event_target:CmtTargetFirstSleeper = {
+			save_event_target_as = FirstSleeper
+			save_global_event_target_as = FirstSleeper
+			if = {
+				limit = {
+					event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenIndomitableRival value = 3 } }
+					NOT = { CmtTriggerCheckSleeperFleetPower = yes }
+				}
+				country_event = { id = fallen_empires.13 }
+			}
+			country_event = { id = fallen_empires.13 }
+			if = {
+				limit = { CmtTriggerCheckYoungsFleetPower = yes }
+				country_event = { id = fallen_empires.13 }
+			}
+			remove_country_flag = ai_no_wars
+		}
+		
+		### Declare War, Require to Subjects
+		event_target:FirstSleeper = { root = { CmtEffectDeclareWarInHeaven = yes } }
+		every_country = {
+			limit = { CmtTriggerIsPlayableEmpire = yes }
+			country_event = { id = war_in_heaven.4 }
+		}
+		
+		observer_event = { id = observer.76 }
+	}
+}
+
+### Required to Subjects
+country_event = {
+	id = war_in_heaven.4
+	title = war_in_heaven.4.name
+	desc = war_in_heaven.4.desc
+	picture = GFX_evt_fallen_empire_awakes
+	show_sound = event_alien_signal
+	location = from
+	
+	is_triggered_only = yes
+
+	option = {
+		name = war_in_heaven.4.a
+		trigger = {
+			CmtTriggerIsPlayableEmpire = yes
+			NOT = { CmtTriggerIsLostEmpire = yes }
+			is_subject = no
+			NOT = {
+				any_country = {
+					CmtTriggerIsHeavenSleeper = yes
+					is_at_war_with = prev
+				}
+			}
+		}
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 0
+				OR = {
+					is_homicidal = yes
+					event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcSubject value = 1 } }
+				}
+			}
+			modifier = {		## Not Has Similar Ethic -1
+				factor = 0.2
+				OR = {
+					AND = {
+						event_target:FirstSleeper = { has_ethic = ethic_fanatic_spiritualist }
+						NOR = {
+							has_ethic = ethic_spiritualist
+							has_ethic = ethic_fanatic_spiritualist
+						}
+					}
+					AND = {
+						event_target:FirstSleeper = { has_ethic = ethic_fanatic_materialist }
+						NOR = {
+							has_ethic = ethic_materialist
+							has_ethic = ethic_fanatic_materialist
+						}
+					}
+				}
+			}
+			modifier = {		## Not Has Similar Ethic -2
+				factor = 0.5
+				OR = {
+					AND = {
+						event_target:FirstSleeper = { has_ethic = ethic_fanatic_xenophobe }
+						NOR = {
+							has_ethic = ethic_militarist
+							has_ethic = ethic_fanatic_militarist
+							has_ethic = ethic_xenophobe
+							has_ethic = ethic_fanatic_xenophobe
+						}
+					}
+					AND = {
+						event_target:FirstSleeper = { has_ethic = ethic_fanatic_xenophile }
+						NOR = {
+							has_ethic = ethic_pacifist
+							has_ethic = ethic_fanatic_pacifist
+							has_ethic = ethic_xenophile
+							has_ethic = ethic_fanatic_xenophile
+						}
+					}
+				}
+			}
+			modifier = {		## Has Opposite Ethic
+				factor = 0.1
+				OR = {
+					AND = {
+						event_target:FirstSleeper = { has_ethic = ethic_fanatic_xenophobe }
+						OR = {
+							has_ethic = ethic_pacifist
+							has_ethic = ethic_fanatic_pacifist
+							has_ethic = ethic_xenophile
+							has_ethic = ethic_fanatic_xenophile
+						}
+					}
+					AND = {
+						event_target:FirstSleeper = { has_ethic = ethic_fanatic_xenophile }
+						OR = {
+							has_ethic = ethic_militarist
+							has_ethic = ethic_fanatic_militarist
+							has_ethic = ethic_xenophobe
+							has_ethic = ethic_fanatic_xenophobe
+						}
+					}
+					AND = {
+						event_target:FirstSleeper = { has_ethic = ethic_fanatic_materialist }
+						OR = {
+							has_ethic = ethic_spiritualist
+							has_ethic = ethic_fanatic_spiritualist
+						}
+					}
+					AND = {
+						event_target:FirstSleeper = { has_ethic = ethic_fanatic_spiritualist }
+						OR = {
+							has_ethic = ethic_materialist
+							has_ethic = ethic_fanatic_materialist
+						}
+					}
+				}
+			}
+		}
+		join_war = event_target:FirstSleeper
+		if = {
+			limit = { CmtTrigggerIsAscendedEmpire = yes }		## For ZoFE
+			every_subject = {
+				limit = { CmtTriggerIsPlayableEmpire = yes }
+				join_war = root
+		}
+		} else_if = {
+			limit = { event_target:FirstSleeper = { has_ethic = ethic_fanatic_xenophobe } }
+			set_subject_of = { who = event_target:FirstSleeper subject_type = thrall }
+		} else_if = {
+			limit = { event_target:FirstSleeper = { has_ethic = ethic_fanatic_xenophile } }
+			set_subject_of = { who = event_target:FirstSleeper subject_type = signatory }
+		} else_if = {
+			limit = { event_target:FirstSleeper = { has_ethic = ethic_fanatic_spiritualist } }
+			set_subject_of = { who = event_target:FirstSleeper subject_type = dominion }
+		} else_if = {
+			limit = { event_target:FirstSleeper = { has_ethic = ethic_fanatic_materialist } }
+			set_subject_of = { who = event_target:FirstSleeper subject_type = satellite }
+			}
+		hidden_effect = {
+			set_country_flag = war_in_heaven_picked_side
+			add_opinion_modifier = { who = event_target:FirstSleeper modifier = opinion_war_in_heaven_ally }
+			event_target:FirstSleeper = { add_opinion_modifier = { who = root modifier = opinion_war_in_heaven_ally } }
+			add_opinion_modifier = { who = from modifier = opinion_war_in_heaven_enemy }
+			from = { add_opinion_modifier = { who = root modifier = opinion_war_in_heaven_enemy } }
+		}
+	}
+	option = {
+		name = war_in_heaven.4.b
+		trigger = {
+			CmtTriggerIsPlayableEmpire = yes
+			NOT = { CmtTriggerIsLostEmpire = yes }
+			is_subject = no
+			NOT = {
+				any_country = {
+					CmtTriggerIsHeavenSleeper = yes
+					is_at_war_with = prev
+				}
+			}
+		}
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 0
+				OR = {
+					is_homicidal = yes
+					event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcSubject value = 1 } }
+				}
+			}
+			modifier = {		## Not Has Similar Ethic -1
+				factor = 0.2
+				OR = {
+					AND = {
+						from = { has_ethic = ethic_fanatic_spiritualist }
+						NOR = {
+							has_ethic = ethic_spiritualist
+							has_ethic = ethic_fanatic_spiritualist
+						}
+					}
+					AND = {
+						from = { has_ethic = ethic_fanatic_materialist }
+						NOR = {
+							has_ethic = ethic_materialist
+							has_ethic = ethic_fanatic_materialist
+						}
+					}
+				}
+			}
+			modifier = {		## Not Has Similar Ethic -2
+				factor = 0.5
+				OR = {
+					AND = {
+						from = { has_ethic = ethic_fanatic_xenophobe }
+						NOR = {
+							has_ethic = ethic_militarist
+							has_ethic = ethic_fanatic_militarist
+							has_ethic = ethic_xenophobe
+							has_ethic = ethic_fanatic_xenophobe
+						}
+					}
+					AND = {
+						from = { has_ethic = ethic_fanatic_xenophile }
+						NOR = {
+							has_ethic = ethic_pacifist
+							has_ethic = ethic_fanatic_pacifist
+							has_ethic = ethic_xenophile
+							has_ethic = ethic_fanatic_xenophile
+						}
+					}
+				}
+			}
+			modifier = {		## Has Opposite Ethic
+				factor = 0.1
+				OR = {
+					AND = {
+						from = { has_ethic = ethic_fanatic_xenophobe }
+						OR = {
+							has_ethic = ethic_pacifist
+							has_ethic = ethic_fanatic_pacifist
+							has_ethic = ethic_xenophile
+							has_ethic = ethic_fanatic_xenophile
+						}
+					}
+					AND = {
+						from = { has_ethic = ethic_fanatic_xenophile }
+						OR = {
+							has_ethic = ethic_militarist
+							has_ethic = ethic_fanatic_militarist
+							has_ethic = ethic_xenophobe
+							has_ethic = ethic_fanatic_xenophobe
+						}
+					}
+					AND = {
+						from = { has_ethic = ethic_fanatic_materialist }
+						OR = {
+							has_ethic = ethic_spiritualist
+							has_ethic = ethic_fanatic_spiritualist
+						}
+					}
+					AND = {
+						from = { has_ethic = ethic_fanatic_spiritualist }
+						OR = {
+							has_ethic = ethic_materialist
+							has_ethic = ethic_fanatic_materialist
+						}
+					}
+				}
+			}
+		}
+		join_war = from
+		if = {
+			limit = { CmtTrigggerIsAscendedEmpire = yes }		## For ZoFE
+			every_subject = {
+				limit = { CmtTriggerIsPlayableEmpire = yes }
+				join_war = root
+		}
+		} else_if = {
+			limit = { from = { has_ethic = ethic_fanatic_xenophobe } }
+			set_subject_of = { who = from subject_type = thrall }
+		} else_if = {
+			limit = { from = { has_ethic = ethic_fanatic_xenophile } }
+			set_subject_of = { who = from subject_type = signatory }
+		} else_if = {
+			limit = { from = { has_ethic = ethic_fanatic_spiritualist } }
+			set_subject_of = { who = from subject_type = dominion }
+		} else_if = {
+			limit = { from = { has_ethic = ethic_fanatic_materialist } }
+			set_subject_of = { who = from subject_type = satellite }
+			}
+		hidden_effect = {
+			set_country_flag = war_in_heaven_picked_side
+			add_opinion_modifier = { who = from modifier = opinion_war_in_heaven_ally }
+			from = { add_opinion_modifier = { who = root modifier = opinion_war_in_heaven_ally } }
+			add_opinion_modifier = { who = event_target:FirstSleeper modifier = opinion_war_in_heaven_enemy }
+			event_target:FirstSleeper = { add_opinion_modifier = { who = root modifier = opinion_war_in_heaven_enemy } }
+		}
+	}
+	option = {
+		name = war_in_heaven.4.c
+		trigger = { is_subject = no }
+		ai_chance = {
+			factor = 40
+			modifier = {
+				factor = 0.5
+				fleet_power < 25000
+			}
+			modifier = {
+				factor = 0.5
+				fleet_power < 50000
+			}
+			modifier = {
+				factor = 2
+				fleet_power > 80000
+			}
+			modifier = {
+				factor = 2
+				fleet_power > 10000
+			}
+			modifier = {
+				factor = 2
+				fleet_power > 125000
+			}
+			modifier = {
+				factor = 5
+				has_federation = yes
+			}
+			modifier = {
+				factor = 3
+				any_country = {
+					is_in_federation_with = root
+					fleet_power > 100000
+				}
+			}
+			modifier = {
+				factor = 2
+				any_country = {
+					is_ai = no
+					is_in_federation_with = root
+				}
+			}
+			modifier = {
+				factor = @CmtConstHeavenNpcSubject_2a
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcSubject value = 2 } }
+			}
+			modifier = {
+				factor = @CmtConstHeavenNpcSubject_4a
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcSubject value = 4 } }
+			}
+			modifier = {
+				factor = 0
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcSubject value = 5 } }
+			}
+		}
+	}
+	
+	option = {
+		name = war_in_heaven.4.c.2
+		trigger = { is_subject = no }
+		ai_chance = { factor = 0 }
+	}
+	
+	option = {
+		name = war_in_heaven.4.d
+		trigger = { is_subject = yes }
+		if = {
+			limit = { overlord = { is_country_type = awakened_fallen_empire } }
+			if = {
+				limit = { overlord = { is_same_value = event_target:FirstSleeper } }
+				join_war = event_target:FirstSleeper
+			}
+			if = {
+				limit = { overlord = { is_same_value = from } }
+				join_war = from
+			}
+		}
+	}
+	
+	option = {		## For ZoFE
+		name = war_in_heaven.4.e
+		trigger = { CmtTrigggerIsAscendedEmpire = yes }
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 0.5
+				fleet_power < 25000
+			}
+			modifier = {
+				factor = 0.5
+				fleet_power < 50000
+			}
+			modifier = {
+				factor = 2
+				fleet_power > 80000
+			}
+			modifier = {
+				factor = 2
+				fleet_power > 100000
+			}
+			modifier = {
+				factor = 2
+				fleet_power > 125000
+			}
+		}
+		hidden_effect = {
+			add_opinion_modifier = { who = from modifier = opinion_war_in_heaven_enemy }
+			from = { add_opinion_modifier = { who = root modifier = opinion_war_in_heaven_enemy } }		
+			add_opinion_modifier = { who = event_target:FirstSleeper modifier = opinion_war_in_heaven_enemy }
+			event_target:FirstSleeper = { add_opinion_modifier = { who = root modifier = opinion_war_in_heaven_enemy } }
+		}
+		declare_war = {
+			target = event_target:FirstSleeper
+			name = NAME_The_War_in_Heaven
+			attacker_war_goal = wg_war_in_heaven
+		}
+		declare_war = {
+			target = from
+			name = NAME_The_War_in_Heaven
+			attacker_war_goal = wg_war_in_heaven
+		}
+		every_subject = {
+			limit = { CmtTriggerIsPlayableEmpire = yes }
+			join_war = root
+		}
+	}
+	
+	option = {
+		name = war_in_heaven.4.f
+		trigger = { CmtTriggerIsLostEmpire = yes }
+		ai_chance = { factor = 1000 }
+	}
+}
+
+
+
+############################
+###  Non-aligned League  ###
+############################
+
+### Find Leader for League
+country_event = {
+	id = war_in_heaven.12
+	hide_window = yes
+	
+	trigger = {
+		has_global_flag = war_in_heaven_ongoing		## Previous Event Happens
+		NOR = {
+			has_global_flag = war_in_heaven_nonaligned_league		## Leader Chosen
+			has_global_flag = CmtFlagHeavenGiveUpLeague
+			has_global_flag = war_in_heaven_seeking_league_leader		## Now Ordering
+		}
+		
+		has_country_flag = sleepers_awake_first_sleeper
+		is_country_type = awakened_fallen_empire
+		
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+		modifier = {
+			factor = @CmtConstHeavenPreludeSpeed_4f
+			OR = {
+				has_global_flag = war_in_heaven_debug
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 4 } }
+			}
+		}
+		modifier = {
+			factor = @CmtConstHeavenPreludeSpeed_1f
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 1 } }
+		}
+		modifier = {
+			factor = @CmtConstHeavenPreludeSpeed_3f
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 3 } }
+		}
+	}
+	
+	immediate = {
+		### Search for federation leaders; offer leadership to strongest one that hasn't declined (if any)
+		if = {
+			limit = {
+				any_federation = {
+					NOT = { has_global_flag = war_in_heaven_seeking_league_leader }
+					any_member = {
+						is_federation_leader = yes
+						NOT = { has_country_flag = war_in_heaven_league_leader_declined }
+						NOT = {
+							any_country = {
+								is_country_type = awakened_fallen_empire
+								is_at_war_with = prev
+							}
+						}
+					}
+					NOT = {
+						any_federation = {
+							NOT = { is_same_value = prev }
+							relative_power = {
+								who = prev
+								value > equivalent
+								category = fleet
+							}
+							any_member = {
+								is_federation_leader = yes
+								NOT = { has_country_flag = war_in_heaven_league_leader_declined }
+								NOT = {
+									any_country = {
+										is_country_type = awakened_fallen_empire
+										is_at_war_with = prev
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			random_federation = {
+				limit = {
+					NOT = { has_global_flag = war_in_heaven_seeking_league_leader }
+					any_member = {
+						is_federation_leader = yes
+						NOT = { has_country_flag = war_in_heaven_league_leader_declined }
+						NOT = {
+							any_country = {
+								is_country_type = awakened_fallen_empire
+								is_at_war_with = prev
+							}
+						}
+					}
+					NOT = {
+						any_federation = {
+							NOT = { is_same_value = prev }
+							relative_power = {
+								who = prev
+								value > equivalent
+								category = fleet
+							}
+							any_member = {
+								is_federation_leader = yes
+								NOT = { has_country_flag = war_in_heaven_league_leader_declined }
+								NOT = {
+									any_country = {
+										is_country_type = awakened_fallen_empire
+										is_at_war_with = prev
+									}
+								}
+							}
+						}
+					}
+				}
+				random_member = {
+					limit = {
+						is_federation_leader = yes
+						NOT = { has_country_flag = war_in_heaven_league_leader_declined }
+						NOT = {
+							any_country = {
+								is_country_type = awakened_fallen_empire
+								is_at_war_with = prev
+							}
+						}
+					}
+					set_global_flag = war_in_heaven_seeking_league_leader
+					CmtEffectOrderLeagueLeader = yes
+				}
+			}
+		}
+		
+		### Otherwise, make a list of neutral powers and search for strongest member to offer leadership
+		else = {
+
+			### Nominate Potential Leaders/Members (Pre-Process)
+			every_country = {
+				limit = {
+					CmtTriggerIsPlayableEmpire = yes
+					is_subject = no
+					NOR = {
+						has_country_flag = war_in_heaven_league_leader_declined
+						is_homicidal = yes
+						any_country = {
+							CmtTriggerIsHeavenSleeper = yes
+							is_at_war_with = prev
+						}
+					}
+				}
+				set_country_flag = CmtFlagNominatedLeader
+			}
+			
+			### If there are fewer than 2 nominees, give up on forming league.
+			if = {
+				limit = {
+					OR = {
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcLeague value = 1 } }
+						count_country = {
+							limit = { has_country_flag = CmtFlagNominatedLeader }
+							count < 2
+						}
+					}
+				}
+				set_global_flag = CmtFlagHeavenGiveUpLeague
+				every_country = {
+					limit = { has_country_flag = CmtFlagNominatedLeader }
+					remove_country_flag = CmtFlagNominatedLeader
+				}
+				break = yes
+			}
+			
+			### Pick most powerful nominee & offer leadership.
+			random_country = {
+				limit = {
+					any_country = {
+						CmtTriggerIsPlayableEmpire = yes
+						has_country_flag = CmtFlagNominatedLeader
+						NOT = {
+							any_country = {
+								has_country_flag = CmtFlagNominatedLeader
+								relative_power = {
+									who = prev
+									value > equivalent
+								}
+							}
+						}
+					}	
+				}
+				CmtEffectOrderLeagueLeader = yes #calls war_in_heaven.13
+			}
+			
+			### Remove nomination flags for next run-through to re-apply
+			remove_global_flag = stop_further_leader_seek
+			every_country = {
+				limit = { has_country_flag = CmtFlagNominatedLeader }
+				remove_country_flag = CmtFlagNominatedLeader
+			}
+		}
+	}
+}
+
+### Order Leader for League
+country_event = {
+	id = war_in_heaven.13
+	title = war_in_heaven.13.name
+	desc = {
+		text = war_in_heaven.13.desc
+		trigger = {
+			OR = {
+				has_federation = no
+				is_federation_leader = no
+			}
+		}
+	}
+	desc = {
+		text = war_in_heaven.13.desc2
+		trigger = {
+			has_federation = yes
+			is_federation_leader = yes
+		}
+	}
+	picture = GFX_evt_fallen_empire_awakes
+	show_sound = event_alien_signal
+	location = root
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcLeague value = 1 } } }
+	}
+	immediate = {
+		set_country_flag = war_in_heaven_nonaligned_league_check
+	}
+	
+	after = {
+		hidden_effect = { remove_global_flag = war_in_heaven_seeking_league_leader }
+	}
+	
+	# League leadership acceptance
+	option = {
+		name = war_in_heaven.13.a
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 0
+				is_homicidal = yes
+				NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcLeague value = 5 } } }
+			}
+			modifier = {
+				factor = @CmtConstHeavenNpcLeague_2a
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcLeague value = 2 } }
+			}
+			modifier = {
+				factor = @CmtConstHeavenNpcLeague_3a
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcLeague value = 3 } }
+			}
+			modifier = {
+				factor = @CmtConstHeavenLeaguePersonality_5
+				CmtTriggerHeavenLeagueNpcWeight5 = yes
+			}
+			modifier = {
+				factor = @CmtConstHeavenLeaguePersonality_4
+				CmtTriggerHeavenLeagueNpcWeight4 = yes
+			}
+			modifier = {
+				factor = @CmtConstHeavenLeaguePersonality_2
+				CmtTriggerHeavenLeagueNpcWeight2 = yes
+			}
+			modifier = {
+				factor = @CmtConstHeavenLeaguePersonality_1
+				CmtTriggerHeavenLeagueNpcWeight1 = yes
+			}
+			modifier = {
+				factor = 2
+				fleet_power < 10000
+			}
+			modifier = {
+				factor = 1.5
+				fleet_power < 20000
+			}
+			modifier = {
+				factor = 1.5
+				fleet_power < 40000
+			}
+			modifier = {
+				factor = 1.5
+				fleet_power < 60000
+			}
+		}
+		# If a fed leader accepts, turn that fed into the League
+		if = {
+			limit = {
+				has_federation = yes
+				is_federation_leader = yes
+			}
+			federation = {
+			 	set_name = NAME_League_of_Non-Aligned_Powers
+				set_federation_flag = non_aligned_league
+			}
+			hidden_effect = {
+				set_country_flag = formed_nonaligned_league
+				every_country = {
+					limit = {
+						is_ai = yes
+						is_in_federation_with = root
+					}
+					set_country_flag = war_in_heaven_nonaligned_league_check
+					add_non_aligned_league_opinions = yes
+				}
+			}
+		}
+		# If a fed member accepts, they leave their fed to form League
+		else_if = {
+			limit = { has_federation = yes }
+			leave_alliance = {
+				override_requirements = yes
+			}
+		}
+		hidden_effect = {
+			set_global_flag = war_in_heaven_nonaligned_league
+			set_country_flag = war_in_heaven_league_leader
+			
+			# User-picked delays on fed membership evaluation
+			if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 1 } } }
+				set_timed_country_flag = { flag = war_in_heaven_nonaligned_league_timer days = @CmtConstHeavenPreludeSpeed_1g }
+				every_country = { country_event = { id = war_in_heaven.14 days = 1 random = @CmtConstHeavenPreludeSpeed_1g } }
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 3 } } }
+				set_timed_country_flag = { flag = war_in_heaven_nonaligned_league_timer days = @CmtConstHeavenPreludeSpeed_3g }
+				every_country = { country_event = { id = war_in_heaven.14 days = 1 random = @CmtConstHeavenPreludeSpeed_3g } }
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 4 } } }
+				set_timed_country_flag = { flag = war_in_heaven_nonaligned_league_timer days = @CmtConstHeavenPreludeSpeed_4g }
+				every_country = { country_event = { id = war_in_heaven.14 days = 1 random = @CmtConstHeavenPreludeSpeed_4g } }
+			} else = {
+				set_timed_country_flag = { flag = war_in_heaven_nonaligned_league_timer days = @CmtConstHeavenPreludeSpeed_2g }
+				every_country = { country_event = { id = war_in_heaven.14 days = 1 random = @CmtConstHeavenPreludeSpeed_2g } }
+			}
+			
+			# Awakened empires don't like League leader
+			every_country = {
+				limit = { CmtTriggerIsHeavenSleeper = yes }
+				add_opinion_modifier = { who = from modifier = opinion_non_aligned_league_fe }
+				from = { add_opinion_modifier = { who = root modifier = opinion_non_aligned_league_fe } }
+			}
+			
+			# Give other countries ___
+			every_country = {
+				limit = {
+					NOR = {
+						has_country_flag = war_in_heaven_nonaligned_league_check
+						is_ai = yes
+						is_same_value = root
+					}
+				}
+				if = {
+					limit = { 
+						OR = {
+							is_subject = no
+							is_in_federation_with = root
+						}
+					}
+					country_event = { id = war_in_heaven.19 }
+				} else = { country_event = { id = war_in_heaven.22 } }
+			}
+		}
+	}
+	
+	#League leadership declined
+	option = {
+		name = war_in_heaven.13.b
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 0
+				OR = {
+					event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcLeague value = 5 } }
+					NOR = {
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcLeague value = 2 } }
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcLeague value = 3 } }
+						is_homicidal = yes
+					}
+				}
+			}
+		}
+		hidden_effect = { set_country_flag = war_in_heaven_league_leader_declined }
+	}
+}
+
+### AI Evaluates Joining League
+country_event = {
+	id = war_in_heaven.14
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		CmtTriggerIsPlayableEmpire = yes
+		is_ai = yes
+		is_subject = no
+		NOR = {
+			has_country_flag = war_in_heaven_nonaligned_league_check		## Declines Already (Leader Event or This One)
+			any_country = {
+				is_country_type = awakened_fallen_empire
+				is_at_war_with = prev
+			}
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcLeague value = 1 } }
+		}
+		
+		any_country = {
+			has_country_flag = war_in_heaven_league_leader
+			CmtTriggerIsPlayableEmpire = yes
+			is_subject = no
+			NOT = { is_in_federation_with = root }
+		}
+	}
+	
+	immediate = {
+		set_country_flag = war_in_heaven_nonaligned_league_check
+		random_list = {
+			100 = {
+				modifier = {
+					factor = 0
+					is_homicidal = yes
+					NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcLeague value = 5 } } }
+				}
+				modifier = {
+					factor = @CmtConstHeavenNpcLeague_2b
+					event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcLeague value = 2 } }
+				}
+				modifier = {
+					factor = @CmtConstHeavenNpcLeague_3b
+					event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcLeague value = 3 } }
+				}
+				modifier = {
+					factor = @CmtConstHeavenLeaguePersonality_5
+					CmtTriggerHeavenLeagueNpcWeight5 = yes
+				}
+				modifier = {
+					factor = @CmtConstHeavenLeaguePersonality_4
+					CmtTriggerHeavenLeagueNpcWeight4 = yes
+				}
+				modifier = {
+					factor = @CmtConstHeavenLeaguePersonality_2
+					CmtTriggerHeavenLeagueNpcWeight2 = yes
+				}
+				modifier = {
+					factor = @CmtConstHeavenLeaguePersonality_1
+					CmtTriggerHeavenLeagueNpcWeight1 = yes
+				}
+				modifier = {
+					factor = 2
+					fleet_power < 10000
+				}
+				modifier = {
+					factor = 1.5
+					fleet_power < 20000
+				}
+				modifier = {
+					factor = 1.5
+					fleet_power < 40000
+				}
+				modifier = {
+					factor = 1.5
+					fleet_power < 60000
+				}
+				
+				random_country = {
+					limit = {
+						has_country_flag = war_in_heaven_league_leader
+						CmtTriggerIsPlayableEmpire = yes
+						is_subject = no
+					}
+					country_event = { id = war_in_heaven.15 }
+				}
+			}
+			100 = {
+				modifier = {
+					factor = 0
+					OR = {
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcLeague value = 5 } }
+						NOR = {
+							event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcLeague value = 2 } }
+							event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcLeague value = 3 } }
+							is_homicidal = yes
+						}
+					}
+				}
+				### Do Nothing
+			}
+		}
+	}
+}
+
+### Requested to Join to League
+country_event = {
+	id = war_in_heaven.15
+	title = war_in_heaven.15.name
+	desc = war_in_heaven.15.desc
+	picture = GFX_evt_fallen_empire_awakes
+	show_sound = event_alien_signal
+	location = from
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		OR = {
+			has_federation = yes
+			NOT = { has_country_flag = formed_nonaligned_league }
+		}
+	}
+
+	# Leader accepts League-join request
+	option = {
+		name = war_in_heaven.15.a
+		ai_chance = { factor = 100 }
+		hidden_effect = {
+			if = {
+				limit = { NOT = { has_country_flag = formed_nonaligned_league } }
+				set_country_flag = formed_nonaligned_league
+			}
+			from = {
+				add_non_aligned_league_opinions = yes
+				if = {
+					limit = { is_ai = no }
+					country_event = { id = war_in_heaven.20 }
+				}
+			}
+			
+			# If it's the first request and leader has no federation, then federate
+			if = {
+				limit = { has_federation = no }
+				from = {
+					set_timed_country_flag = { flag = ai_no_leave_fed days = 7200 }
+					join_alliance = {
+						who = root
+						name = NAME_League_of_Non-Aligned_Powers
+						override_requirements = yes
+					}
+					hidden_effect = {
+						root.federation = {
+							set_federation_flag = non_aligned_league
+							if = {
+								limit = { has_federation_perk = cohesion_join_1 }
+								add_cohesion = 50
+							} else = { add_cohesion = 100 }
+							add_federation_experience = 4200 #level 3 with some breathing room
+						}
+					}
+				}
+			} 
+			
+			# If a federation exists, do things based on the fed's rules
+			else = {	
+				from = {
+					set_timed_country_flag = { flag = ai_no_leave_fed days = 7200 }
+					join_alliance = {
+						who = root
+						verride_requirements = yes
+					}
+					hidden_effect = {
+						# counteract the -100 cohesion you'd normally get for new members
+						root.federation = { 
+							if = {
+								limit = { has_federation_perk = cohesion_join_1 }
+								add_cohesion = 50
+							}
+						else = { add_cohesion = 100 }
+						add_federation_experience = 150
+						}
+					}
+					if = {
+						limit = {
+							is_overlord = yes
+							root.federation = { has_federation_law = allow_subjects_to_join_yes }
+						}
+						every_subject = {
+							root = {
+								prev = { add_non_aligned_league_opinions = yes }
+							}
+							join_alliance = {
+								who = root
+								override_requirements = yes
+							}
+							hidden_effect = {
+								root.federation = {
+									add_cohesion = 100
+									add_federation_experience = 100
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	# Leader rejects League-join request
+	option = {
+		name = war_in_heaven.15.b
+		ai_chance = { factor = 0 }
+		hidden_effect = {
+			from = {
+				add_opinion_modifier = { who = root modifier = opinion_non_aligned_league_declined }
+				if = {
+					limit = { is_ai = no }
+					country_event = { id = war_in_heaven.21 }
+				}
+			}
+		}
+	}
+}
+
+
+### Declear War (League vs. Ancient)
+country_event = {
+	id = war_in_heaven.16
+	title = war_in_heaven.16.name
+	desc = war_in_heaven.16.desc
+	picture = GFX_evt_fallen_empire_awakes
+	show_sound = event_alien_signal
+	location = root
+	
+	trigger = {
+		has_global_flag = war_in_heaven_nonaligned_league		## Previous Event
+		NOT = { has_global_flag = war_in_heaven_nonaligned_league_war }		## This Event
+		has_country_flag = war_in_heaven_league_leader
+		NOT = { has_country_flag = war_in_heaven_nonaligned_league_timer }		## Control Min. Term
+		
+		CmtTriggerIsPlayableEmpire = yes
+		has_federation = yes
+		is_subject = no
+		NOT = {
+			any_country = {
+				CmtTriggerIsHeavenSleeper = yes
+				is_at_war_with = prev
+			}
+		}
+		
+		any_country = {
+			is_country_type = awakened_fallen_empire
+			has_country_flag = sleepers_awake_first_sleeper
+		}
+		any_country = {
+			is_country_type = awakened_fallen_empire
+			has_country_flag = sleepers_awake_ancient_rival
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 90
+		modifier = {
+			factor = @CmtConstHeavenPreludeSpeed_4h
+			OR = {
+				has_global_flag = war_in_heaven_debug
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 4 } }
+			}
+		}
+		modifier = {
+			factor = @CmtConstHeavenPreludeSpeed_1h
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 1 } }
+		}
+		modifier = {
+			factor = @CmtConstHeavenPreludeSpeed_3h
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 3 } }
+		}
+	}
+	
+	immediate = {
+		set_global_flag = war_in_heaven_nonaligned_league_war
+		
+		random_country = {
+			limit = {
+				is_country_type = awakened_fallen_empire
+				has_country_flag = sleepers_awake_first_sleeper
+			}
+			save_event_target_as = FirstAwakened
+			save_global_event_target_as = FirstAwakened
+		}
+		random_country = {
+			limit = {
+				is_country_type = awakened_fallen_empire
+				has_country_flag = sleepers_awake_ancient_rival
+			}
+			save_event_target_as = SecondAwakened
+			save_global_event_target_as = SecondAwakened
+		}
+	}
+	
+	option = {
+		name = war_in_heaven.16.a
+		every_country = {
+			limit = { CmtTriggerIsHeavenSleeper = yes }
+			root = { CmtEffectDeclareWarInHeaven = yes }
+			hidden_effect = { every_subject = { join_war = prev  } }
+		}
+	}
+}
+
+
+
+##########################
+###  Post War Process  ###
+##########################
+
+### War in Heaven Ends because of Both Ancients Gone
+country_event = {
+	id = war_in_heaven.17
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		CmtTriggerIsHeavenSleeper = yes
+		has_global_flag = war_in_heaven_ongoing
+		NOT = { 
+			any_country = { 
+				CmtTriggerIsHeavenSleeper = yes 
+				is_at_war_with = root
+			} 
+		}
+	}
+
+	immediate = {
+		
+		# Force-end War in Heaven if it's still running
+		if = {
+			limit = {
+				OR = {wg_war_in_heaven
+						any_war_participant = { prev = {
+							using_war_goal = {
+								type = wg_war_in_heaven
+								owner = prev
+							}
+						}}
+					}
+					any_war = {
+						any_war_participant = { prev = {
+							using_war_goal = {
+								type = wg_CmtWarInHeaven3
+								owner = prev
+							}
+						}}
+					}
+					any_war = {
+						any_war_participant = { prev = {
+							using_war_goal = {
+								type = wg_CmtWarInHeaven4
+								owner = prev
+							}
+						}}
+					}
+					any_war = {
+						any_war_participant = { prev = {
+							using_war_goal = {
+								type = wg_CmtWarInHeaven5
+								owner = prev
+							}
+						}}
+					}
+				}
+			}
+			every_war = {
+				limit = {
+					OR = {
+						any_war = {
+							any_war_participant = { prev = {
+								using_war_goal = {
+									type = wg_CmtWarInHeaven1
+									owner = prev
+								}
+							}}
+						}
+						any_war = {
+							any_war_participant = { prev = {
+								using_war_goal = {
+									type = wg_war_in_heaven
+									owner = prev
+								}
+							}}
+						}
+						any_war = {
+							any_war_participant = { prev = {
+								using_war_goal = {
+									type = wg_CmtWarInHeaven3
+									owner = prev
+								}
+							}}
+						}
+						any_war = {
+							any_war_participant = { prev = {
+								using_war_goal = {
+									type = wg_CmtWarInHeaven4
+									owner = prev
+								}
+							}}
+						}
+						any_war = {
+							any_war_participant = { prev = {
+								using_war_goal = {
+									type = wg_CmtWarInHeaven5
+									owner = prev
+								}
+							}}
+						}
+					}
+				}
+				end_war_effect = yes
+			}
+		}
+		
+		# Conduct War in Heaven cleanup
+		if = {
+			limit = { NOT = { has_global_flag = war_in_heaven_ended } }
+			remove_global_flag = war_in_heaven_ongoing
+			set_global_flag = war_in_heaven_ended
+			random_country = {
+				limit = { has_country_flag = war_in_heaven_league_leader }
+				set_country_flag = last_best_hope
+			}
+			every_country = {
+				limit = { is_ai = no }
+				country_event = { id = war_in_heaven.18 }
+			}
+			observer_event = { id = observer.80 }
+		}
+	}
+}

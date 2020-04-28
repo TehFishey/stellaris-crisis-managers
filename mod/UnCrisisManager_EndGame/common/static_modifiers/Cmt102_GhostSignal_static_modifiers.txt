@@ -1,0 +1,404 @@
+
+###########################################
+###########################################
+#####                                 #####
+#####    Crisis Manager               #####
+#####                                 #####
+#####    Modifiers of Ghost Signal    #####
+#####                                 #####
+###########################################
+###########################################
+
+
+###################
+###  Constants  ###
+###################
+
+### Weak
+@CmtConstOrganicPopGhostSignal_5b =  -0.40
+@CmtConstOrganicPopGhostSignal_4b =  -0.30
+@CmtConstOrganicPopGhostSignal_3b =  -0.25
+@CmtConstOrganicPopGhostSignal_2b =  -0.15
+@CmtConstOrganicPopGhostSignal_1b =  -0.05
+
+@CmtConstMachinePopGhostSignal_5b =  -0.25
+@CmtConstMachinePopGhostSignal_4b =  -0.15
+
+@CmtConstFirerateGhostSignal_5b   =  -0.25
+@CmtConstFirerateGhostSignal_4b   =  -0.20
+@CmtConstFirerateGhostSignal_3b   =  -0.15
+@CmtConstFirerateGhostSignal_2b   =  -0.10
+@CmtConstFirerateGhostSignal_1b   =  -0.05
+@CmtConstTrackingGhostSignal_5b   =  -3
+@CmtConstTrackingGhostSignal_4b   =  -2
+@CmtConstTrackingGhostSignal_3b   =  -2
+@CmtConstTrackingGhostSignal_2b   =  -1
+@CmtConstTrackingGhostSignal_1b   =  -1
+
+
+### Vanilla (Dummy)
+#CmtConstOrganicPopGhostSignal_5c =  -0.70
+#CmtConstOrganicPopGhostSignal_4c =  -0.55
+#CmtConstOrganicPopGhostSignal_3c =  -0.40
+#CmtConstOrganicPopGhostSignal_2c =  -0.25
+#CmtConstOrganicPopGhostSignal_1c =  -0.10
+
+#CmtConstMachinePopGhostSignal_5c =  -0.40
+#CmtConstMachinePopGhostSignal_4c =  -0.25
+
+#CmtConstFirerateGhostSignal_5c   =  -0.50
+#CmtConstFirerateGhostSignal_4c   =  -0.40
+#CmtConstFirerateGhostSignal_3c   =  -0.30
+#CmtConstFirerateGhostSignal_2c   =  -0.20
+#CmtConstFirerateGhostSignal_1c   =  -0.10
+#CmtConstTrackingGhostSignal_5c   =  -5
+#CmtConstTrackingGhostSignal_4c   =  -4
+#CmtConstTrackingGhostSignal_3c   =  -3
+#CmtConstTrackingGhostSignal_2c   =  -2
+#CmtConstTrackingGhostSignal_1c   =  -1
+
+
+### Strong
+@CmtConstOrganicPopGhostSignal_5d =  -0.85
+@CmtConstOrganicPopGhostSignal_4d =  -0.70
+@CmtConstOrganicPopGhostSignal_3d =  -0.55
+@CmtConstOrganicPopGhostSignal_2d =  -0.40
+@CmtConstOrganicPopGhostSignal_1d =  -0.25
+
+@CmtConstMachinePopGhostSignal_5d =  -0.60
+@CmtConstMachinePopGhostSignal_4d =  -0.40
+
+@CmtConstFirerateGhostSignal_5d   =  -0.75
+@CmtConstFirerateGhostSignal_4d   =  -0.60
+@CmtConstFirerateGhostSignal_3d   =  -0.45
+@CmtConstFirerateGhostSignal_2d   =  -0.30
+@CmtConstFirerateGhostSignal_1d   =  -0.15
+@CmtConstTrackingGhostSignal_5d   = -10
+@CmtConstTrackingGhostSignal_4d   =  -8
+@CmtConstTrackingGhostSignal_3d   =  -6
+@CmtConstTrackingGhostSignal_2d   =  -4
+@CmtConstTrackingGhostSignal_1d   =  -2
+
+
+### Full
+@CmtConstOrganicPopGhostSignal_5e =  -1.00
+@CmtConstOrganicPopGhostSignal_4e =  -1.00
+@CmtConstOrganicPopGhostSignal_3e =  -1.00
+@CmtConstOrganicPopGhostSignal_2e =  -1.00
+@CmtConstOrganicPopGhostSignal_1e =  -1.00
+
+@CmtConstMachinePopGhostSignal_5e =  -0.85
+@CmtConstMachinePopGhostSignal_4e =  -0.65
+
+@CmtConstFirerateGhostSignal_5e   =  -1.00
+@CmtConstFirerateGhostSignal_4e   =  -1.00
+@CmtConstFirerateGhostSignal_3e   =  -0.80
+@CmtConstFirerateGhostSignal_2e   =  -0.65
+@CmtConstFirerateGhostSignal_1e   =  -0.50
+@CmtConstTrackingGhostSignal_5e   = -50
+@CmtConstTrackingGhostSignal_4e   = -40
+@CmtConstTrackingGhostSignal_3e   = -30
+@CmtConstTrackingGhostSignal_2e   = -20
+@CmtConstTrackingGhostSignal_1e   = -10
+
+
+
+#############
+###  Non  ###
+#############
+
+### for Synth
+CmtModifierOrganicPopGhostSignal_5a = {}
+CmtModifierOrganicPopGhostSignal_4a = {}
+CmtModifierOrganicPopGhostSignal_3a = {}
+CmtModifierOrganicPopGhostSignal_2a = {}
+CmtModifierOrganicPopGhostSignal_1a = {}
+
+### for Mach Pops
+CmtModifierMachinePopGhostSignal_5a = {}
+CmtModifierMachinePopGhostSignal_4a = {}
+
+### for Ships
+CmtModifierCombatShipGhostSignal_5a = {}
+CmtModifierCombatShipGhostSignal_4a = {}
+CmtModifierCombatShipGhostSignal_3a = {}
+CmtModifierCombatShipGhostSignal_2a = {}
+CmtModifierCombatShipGhostSignal_1a = {}
+
+
+
+##############
+###  Weak  ###
+##############
+
+### for Synth
+CmtModifierOrganicPopGhostSignal_5b = {
+	planet_jobs_minerals_produces_mult = @CmtConstOrganicPopGhostSignal_5b
+	planet_jobs_energy_produces_mult = @CmtConstOrganicPopGhostSignal_5b
+	planet_jobs_physics_research_produces_mult = @CmtConstOrganicPopGhostSignal_5b
+	planet_jobs_society_research_produces_mult = @CmtConstOrganicPopGhostSignal_5b
+	planet_jobs_engineering_research_produces_mult = @CmtConstOrganicPopGhostSignal_5b
+	planet_jobs_unity_produces_mult = @CmtConstOrganicPopGhostSignal_5b
+	pop_government_ethic_attraction = @CmtConstOrganicPopGhostSignal_5b
+}
+CmtModifierOrganicPopGhostSignal_4b = {
+	planet_jobs_minerals_produces_mult = @CmtConstOrganicPopGhostSignal_4b
+	planet_jobs_energy_produces_mult = @CmtConstOrganicPopGhostSignal_4b
+	planet_jobs_physics_research_produces_mult = @CmtConstOrganicPopGhostSignal_4b
+	planet_jobs_society_research_produces_mult = @CmtConstOrganicPopGhostSignal_4b
+	planet_jobs_engineering_research_produces_mult = @CmtConstOrganicPopGhostSignal_4b
+	planet_jobs_unity_produces_mult = @CmtConstOrganicPopGhostSignal_4b
+	pop_government_ethic_attraction = @CmtConstOrganicPopGhostSignal_4b
+}
+CmtModifierOrganicPopGhostSignal_3b = {
+	planet_jobs_minerals_produces_mult = @CmtConstOrganicPopGhostSignal_3b
+	planet_jobs_energy_produces_mult = @CmtConstOrganicPopGhostSignal_3b
+	planet_jobs_physics_research_produces_mult = @CmtConstOrganicPopGhostSignal_3b
+	planet_jobs_society_research_produces_mult = @CmtConstOrganicPopGhostSignal_3b
+	planet_jobs_engineering_research_produces_mult = @CmtConstOrganicPopGhostSignal_3b
+	planet_jobs_unity_produces_mult = @CmtConstOrganicPopGhostSignal_3b
+	pop_government_ethic_attraction = @CmtConstOrganicPopGhostSignal_3b
+}
+CmtModifierOrganicPopGhostSignal_2b = {
+	planet_jobs_minerals_produces_mult = @CmtConstOrganicPopGhostSignal_2b
+	planet_jobs_energy_produces_mult = @CmtConstOrganicPopGhostSignal_2b
+	planet_jobs_physics_research_produces_mult = @CmtConstOrganicPopGhostSignal_2b
+	planet_jobs_society_research_produces_mult = @CmtConstOrganicPopGhostSignal_2b
+	planet_jobs_engineering_research_produces_mult = @CmtConstOrganicPopGhostSignal_2b
+	planet_jobs_unity_produces_mult = @CmtConstOrganicPopGhostSignal_2b
+	pop_government_ethic_attraction = @CmtConstOrganicPopGhostSignal_2b
+}
+CmtModifierOrganicPopGhostSignal_1b = {
+	planet_jobs_minerals_produces_mult = @CmtConstOrganicPopGhostSignal_1b
+	planet_jobs_energy_produces_mult = @CmtConstOrganicPopGhostSignal_1b
+	planet_jobs_physics_research_produces_mult = @CmtConstOrganicPopGhostSignal_1b
+	planet_jobs_society_research_produces_mult = @CmtConstOrganicPopGhostSignal_1b
+	planet_jobs_engineering_research_produces_mult = @CmtConstOrganicPopGhostSignal_1b
+	planet_jobs_unity_produces_mult = @CmtConstOrganicPopGhostSignal_1b
+	pop_government_ethic_attraction = @CmtConstOrganicPopGhostSignal_1b
+}
+
+### for Mach Pops
+CmtModifierMachinePopGhostSignal_5b = {
+	planet_jobs_minerals_produces_mult = @CmtConstMachinePopGhostSignal_5b
+	planet_jobs_energy_produces_mult = @CmtConstMachinePopGhostSignal_5b
+	planet_jobs_physics_research_produces_mult = @CmtConstMachinePopGhostSignal_5b
+	planet_jobs_society_research_produces_mult = @CmtConstMachinePopGhostSignal_5b
+	planet_jobs_engineering_research_produces_mult = @CmtConstMachinePopGhostSignal_5b
+}
+CmtModifierMachinePopGhostSignal_4b = {
+	planet_jobs_minerals_produces_mult = @CmtConstMachinePopGhostSignal_4b
+	planet_jobs_energy_produces_mult = @CmtConstMachinePopGhostSignal_4b
+	planet_jobs_physics_research_produces_mult = @CmtConstMachinePopGhostSignal_4b
+	planet_jobs_society_research_produces_mult = @CmtConstMachinePopGhostSignal_4b
+	planet_jobs_engineering_research_produces_mult = @CmtConstMachinePopGhostSignal_4b
+}
+
+### for Ships
+CmtModifierCombatShipGhostSignal_5b = {
+	ship_fire_rate_mult = @CmtConstFirerateGhostSignal_5b
+	ship_tracking_add = @CmtConstTrackingGhostSignal_5b
+}
+CmtModifierCombatShipGhostSignal_4b = {
+	ship_fire_rate_mult = @CmtConstFirerateGhostSignal_4b
+	ship_tracking_add = @CmtConstTrackingGhostSignal_4b
+}
+CmtModifierCombatShipGhostSignal_3b = {
+	ship_fire_rate_mult = @CmtConstFirerateGhostSignal_3b
+	ship_tracking_add = @CmtConstTrackingGhostSignal_3b
+}
+CmtModifierCombatShipGhostSignal_2b = {
+	ship_fire_rate_mult = @CmtConstFirerateGhostSignal_2b
+	ship_tracking_add = @CmtConstTrackingGhostSignal_2b
+}
+CmtModifierCombatShipGhostSignal_1b = {
+	ship_fire_rate_mult = @CmtConstFirerateGhostSignal_1b
+	ship_tracking_add = @CmtConstTrackingGhostSignal_1b
+}
+
+##########################
+###  Middle (Vanilla)  ###
+##########################
+#
+# Unwritten here.
+#
+
+################
+###  Strong  ###
+################
+
+### for Synth
+CmtModifierOrganicPopGhostSignal_5d = {
+	planet_jobs_minerals_produces_mult = @CmtConstOrganicPopGhostSignal_5d
+	planet_jobs_energy_produces_mult = @CmtConstOrganicPopGhostSignal_5d
+	planet_jobs_physics_research_produces_mult = @CmtConstOrganicPopGhostSignal_5d
+	planet_jobs_society_research_produces_mult = @CmtConstOrganicPopGhostSignal_5d
+	planet_jobs_engineering_research_produces_mult = @CmtConstOrganicPopGhostSignal_5d
+	planet_jobs_unity_produces_mult = @CmtConstOrganicPopGhostSignal_5d
+	pop_government_ethic_attraction = @CmtConstOrganicPopGhostSignal_5d
+}
+CmtModifierOrganicPopGhostSignal_4d = {
+	planet_jobs_minerals_produces_mult = @CmtConstOrganicPopGhostSignal_4d
+	planet_jobs_energy_produces_mult = @CmtConstOrganicPopGhostSignal_4d
+	planet_jobs_physics_research_produces_mult = @CmtConstOrganicPopGhostSignal_4d
+	planet_jobs_society_research_produces_mult = @CmtConstOrganicPopGhostSignal_4d
+	planet_jobs_engineering_research_produces_mult = @CmtConstOrganicPopGhostSignal_4d
+	planet_jobs_unity_produces_mult = @CmtConstOrganicPopGhostSignal_4d
+	pop_government_ethic_attraction = @CmtConstOrganicPopGhostSignal_4d
+}
+CmtModifierOrganicPopGhostSignal_3d = {
+	planet_jobs_minerals_produces_mult = @CmtConstOrganicPopGhostSignal_3d
+	planet_jobs_energy_produces_mult = @CmtConstOrganicPopGhostSignal_3d
+	planet_jobs_physics_research_produces_mult = @CmtConstOrganicPopGhostSignal_3d
+	planet_jobs_society_research_produces_mult = @CmtConstOrganicPopGhostSignal_3d
+	planet_jobs_engineering_research_produces_mult = @CmtConstOrganicPopGhostSignal_3d
+	planet_jobs_unity_produces_mult = @CmtConstOrganicPopGhostSignal_3d
+	pop_government_ethic_attraction = @CmtConstOrganicPopGhostSignal_3d
+}
+CmtModifierOrganicPopGhostSignal_2d = {
+	planet_jobs_minerals_produces_mult = @CmtConstOrganicPopGhostSignal_2d
+	planet_jobs_energy_produces_mult = @CmtConstOrganicPopGhostSignal_2d
+	planet_jobs_physics_research_produces_mult = @CmtConstOrganicPopGhostSignal_2d
+	planet_jobs_society_research_produces_mult = @CmtConstOrganicPopGhostSignal_2d
+	planet_jobs_engineering_research_produces_mult = @CmtConstOrganicPopGhostSignal_2d
+	planet_jobs_unity_produces_mult = @CmtConstOrganicPopGhostSignal_2d
+	pop_government_ethic_attraction = @CmtConstOrganicPopGhostSignal_2d
+}
+CmtModifierOrganicPopGhostSignal_1d = {
+	planet_jobs_minerals_produces_mult = @CmtConstOrganicPopGhostSignal_1d
+	planet_jobs_energy_produces_mult = @CmtConstOrganicPopGhostSignal_1d
+	planet_jobs_physics_research_produces_mult = @CmtConstOrganicPopGhostSignal_1d
+	planet_jobs_society_research_produces_mult = @CmtConstOrganicPopGhostSignal_1d
+	planet_jobs_engineering_research_produces_mult = @CmtConstOrganicPopGhostSignal_1d
+	planet_jobs_unity_produces_mult = @CmtConstOrganicPopGhostSignal_1d
+	pop_government_ethic_attraction = @CmtConstOrganicPopGhostSignal_1d
+}
+
+### for Mach Pops
+CmtModifierMachinePopGhostSignal_5d = {
+	planet_jobs_minerals_produces_mult = @CmtConstMachinePopGhostSignal_5d
+	planet_jobs_energy_produces_mult = @CmtConstMachinePopGhostSignal_5d
+	planet_jobs_physics_research_produces_mult = @CmtConstMachinePopGhostSignal_5d
+	planet_jobs_society_research_produces_mult = @CmtConstMachinePopGhostSignal_5d
+	planet_jobs_engineering_research_produces_mult = @CmtConstMachinePopGhostSignal_5d
+}
+CmtModifierMachinePopGhostSignal_4d = {
+	planet_jobs_minerals_produces_mult = @CmtConstMachinePopGhostSignal_4d
+	planet_jobs_energy_produces_mult = @CmtConstMachinePopGhostSignal_4d
+	planet_jobs_physics_research_produces_mult = @CmtConstMachinePopGhostSignal_4d
+	planet_jobs_society_research_produces_mult = @CmtConstMachinePopGhostSignal_4d
+	planet_jobs_engineering_research_produces_mult = @CmtConstMachinePopGhostSignal_4d
+}
+
+### for Ships
+CmtModifierCombatShipGhostSignal_5d = {
+	ship_fire_rate_mult = @CmtConstFirerateGhostSignal_5d
+	ship_tracking_add = @CmtConstTrackingGhostSignal_5d
+}
+CmtModifierCombatShipGhostSignal_4d = {
+	ship_fire_rate_mult = @CmtConstFirerateGhostSignal_4d
+	ship_tracking_add = @CmtConstTrackingGhostSignal_4d
+}
+CmtModifierCombatShipGhostSignal_3d = {
+	ship_fire_rate_mult = @CmtConstFirerateGhostSignal_3d
+	ship_tracking_add = @CmtConstTrackingGhostSignal_3d
+}
+CmtModifierCombatShipGhostSignal_2d = {
+	ship_fire_rate_mult = @CmtConstFirerateGhostSignal_2d
+	ship_tracking_add = @CmtConstTrackingGhostSignal_2d
+}
+CmtModifierCombatShipGhostSignal_1d = {
+	ship_fire_rate_mult = @CmtConstFirerateGhostSignal_1d
+	ship_tracking_add = @CmtConstTrackingGhostSignal_1d
+}
+
+
+
+##############
+###  Full  ###
+##############
+
+### for Synth
+CmtModifierOrganicPopGhostSignal_5e = {
+	planet_jobs_minerals_produces_mult = @CmtConstOrganicPopGhostSignal_5e
+	planet_jobs_energy_produces_mult = @CmtConstOrganicPopGhostSignal_5e
+	planet_jobs_physics_research_produces_mult = @CmtConstOrganicPopGhostSignal_5e
+	planet_jobs_society_research_produces_mult = @CmtConstOrganicPopGhostSignal_5e
+	planet_jobs_engineering_research_produces_mult = @CmtConstOrganicPopGhostSignal_5e
+	planet_jobs_unity_produces_mult = @CmtConstOrganicPopGhostSignal_5e
+	pop_government_ethic_attraction = @CmtConstOrganicPopGhostSignal_5e
+}
+CmtModifierOrganicPopGhostSignal_4e = {
+	planet_jobs_minerals_produces_mult = @CmtConstOrganicPopGhostSignal_4e
+	planet_jobs_energy_produces_mult = @CmtConstOrganicPopGhostSignal_4e
+	planet_jobs_physics_research_produces_mult = @CmtConstOrganicPopGhostSignal_4e
+	planet_jobs_society_research_produces_mult = @CmtConstOrganicPopGhostSignal_4e
+	planet_jobs_engineering_research_produces_mult = @CmtConstOrganicPopGhostSignal_4e
+	planet_jobs_unity_produces_mult = @CmtConstOrganicPopGhostSignal_4e
+	pop_government_ethic_attraction = @CmtConstOrganicPopGhostSignal_4e
+}
+CmtModifierOrganicPopGhostSignal_3e = {
+	planet_jobs_minerals_produces_mult = @CmtConstOrganicPopGhostSignal_3e
+	planet_jobs_energy_produces_mult = @CmtConstOrganicPopGhostSignal_3e
+	planet_jobs_physics_research_produces_mult = @CmtConstOrganicPopGhostSignal_3e
+	planet_jobs_society_research_produces_mult = @CmtConstOrganicPopGhostSignal_3e
+	planet_jobs_engineering_research_produces_mult = @CmtConstOrganicPopGhostSignal_3e
+	planet_jobs_unity_produces_mult = @CmtConstOrganicPopGhostSignal_3e
+	pop_government_ethic_attraction = @CmtConstOrganicPopGhostSignal_3e
+}
+CmtModifierOrganicPopGhostSignal_2e = {
+	planet_jobs_minerals_produces_mult = @CmtConstOrganicPopGhostSignal_2e
+	planet_jobs_energy_produces_mult = @CmtConstOrganicPopGhostSignal_2e
+	planet_jobs_physics_research_produces_mult = @CmtConstOrganicPopGhostSignal_2e
+	planet_jobs_society_research_produces_mult = @CmtConstOrganicPopGhostSignal_2e
+	planet_jobs_engineering_research_produces_mult = @CmtConstOrganicPopGhostSignal_2e
+	planet_jobs_unity_produces_mult = @CmtConstOrganicPopGhostSignal_2e
+	pop_government_ethic_attraction = @CmtConstOrganicPopGhostSignal_2e
+}
+CmtModifierOrganicPopGhostSignal_1e = {
+	planet_jobs_minerals_produces_mult = @CmtConstOrganicPopGhostSignal_1e
+	planet_jobs_energy_produces_mult = @CmtConstOrganicPopGhostSignal_1e
+	planet_jobs_physics_research_produces_mult = @CmtConstOrganicPopGhostSignal_1e
+	planet_jobs_society_research_produces_mult = @CmtConstOrganicPopGhostSignal_1e
+	planet_jobs_engineering_research_produces_mult = @CmtConstOrganicPopGhostSignal_1e
+	planet_jobs_unity_produces_mult = @CmtConstOrganicPopGhostSignal_1e
+	pop_government_ethic_attraction = @CmtConstOrganicPopGhostSignal_1e
+}
+
+### for Mach Pops
+CmtModifierMachinePopGhostSignal_5e = {
+	planet_jobs_minerals_produces_mult = @CmtConstMachinePopGhostSignal_5e
+	planet_jobs_energy_produces_mult = @CmtConstMachinePopGhostSignal_5e
+	planet_jobs_physics_research_produces_mult = @CmtConstMachinePopGhostSignal_5e
+	planet_jobs_society_research_produces_mult = @CmtConstMachinePopGhostSignal_5e
+	planet_jobs_engineering_research_produces_mult = @CmtConstMachinePopGhostSignal_5e
+}
+CmtModifierMachinePopGhostSignal_4e = {
+	planet_jobs_minerals_produces_mult = @CmtConstMachinePopGhostSignal_4e
+	planet_jobs_energy_produces_mult = @CmtConstMachinePopGhostSignal_4e
+	planet_jobs_physics_research_produces_mult = @CmtConstMachinePopGhostSignal_4e
+	planet_jobs_society_research_produces_mult = @CmtConstMachinePopGhostSignal_4e
+	planet_jobs_engineering_research_produces_mult = @CmtConstMachinePopGhostSignal_4e
+}
+
+### for Ships
+CmtModifierCombatShipGhostSignal_5e = {
+	ship_fire_rate_mult = @CmtConstFirerateGhostSignal_5e
+	ship_tracking_add = @CmtConstTrackingGhostSignal_5e
+}
+CmtModifierCombatShipGhostSignal_4e = {
+	ship_fire_rate_mult = @CmtConstFirerateGhostSignal_4e
+	ship_tracking_add = @CmtConstTrackingGhostSignal_4e
+}
+CmtModifierCombatShipGhostSignal_3e = {
+	ship_fire_rate_mult = @CmtConstFirerateGhostSignal_3e
+	ship_tracking_add = @CmtConstTrackingGhostSignal_3e
+}
+CmtModifierCombatShipGhostSignal_2e = {
+	ship_fire_rate_mult = @CmtConstFirerateGhostSignal_2e
+	ship_tracking_add = @CmtConstTrackingGhostSignal_2e
+}
+CmtModifierCombatShipGhostSignal_1e = {
+	ship_fire_rate_mult = @CmtConstFirerateGhostSignal_1e
+	ship_tracking_add = @CmtConstTrackingGhostSignal_1e
+}

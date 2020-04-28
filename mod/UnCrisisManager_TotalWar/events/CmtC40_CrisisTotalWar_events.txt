@@ -1,0 +1,386 @@
+namespace = CrisisManagerControl
+
+##################################################
+##################################################
+#####                                        #####
+#####    Crisis Manager - Total War Pack     #####
+#####                                        #####
+##################################################
+##################################################
+
+
+###################
+###  Constants  ###
+###################
+
+@CmtConstTotalWarCrisisActivateBackup = yes
+
+
+########################################
+###  Main Effect: Transfar Starbase  ###
+########################################
+#
+# Called by Trigger Events Written Later
+#
+
+country_event = {
+	id = CrisisManagerControl.0210
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		exists = event_target:CmtTargetTransferSystem
+		event_target:CmtTargetTransferSystem = {
+			NAND = {
+				exists = starbase
+				exists = starbase.owner
+				starbase.owner = { is_same_value = root }
+			}
+		}
+	}
+	
+	immediate = {
+		event_target:CmtTargetTransferSystem = { CmtEffectDestroySystemStarbase = yes }
+		
+		### Create New Starbase
+		if = {
+			limit = {
+				NAND = {
+					exists = event_target:CmtGlobalVar
+					event_target:CmtGlobalVar = { check_variable = { which = CmtVarTotalWarPriority value = 1 } }
+				}
+			}
+			if = {		## Return Starbase to Former Owner
+				limit = {
+					OR = {
+						AND = {
+							exists = event_target:CmtGlobalVar
+							event_target:CmtGlobalVar = { check_variable = { which = CmtVarTotalWarPriority value = 3 } }
+							CmtTriggerIsStandardStarbaseCountry = yes
+						}
+						CmtTriggerIsCrisisKillerCountry = yes
+					}
+					any_country = {
+						has_country_flag = CmtFlagSystemFormerOwner@event_target:CmtTargetTransferSystem
+						CmtTriggerIsStandardStarbaseCountry = yes
+					}
+				}
+				random_country = {
+					limit = { has_country_flag = CmtFlagSystemFormerOwner@event_target:CmtTargetTransferSystem }
+					CmtEffectCreateStarbase = yes
+					remove_country_flag = CmtFlagSystemFormerOwner@event_target:CmtTargetTransferSystem
+				}
+			} else_if = {		## Wining Standard Country Gets Starbase
+				limit = { CmtTriggerIsStandardStarbaseCountry = yes }
+				CmtEffectCreateStarbase = yes
+				every_country = {
+					limit = { has_country_flag = CmtFlagSystemFormerOwner@event_target:CmtTargetTransferSystem }
+					remove_country_flag = CmtFlagSystemFormerOwner@event_target:CmtTargetTransferSystem
+				}
+			} else_if = {		## Crisis Faction Gets Starbase & Set Flag for Former Owner
+				limit = { CmtTriggerIsCrisisStarbaseCountry = yes }
+				CmtEffectCreateStarbase = yes
+				if = {
+					limit = {
+						exists = event_target:CmtTargetSystemStarbaseLoser
+						event_target:CmtTargetSystemStarbaseLoser = { CmtTriggerIsStandardStarbaseCountry = yes }
+					}
+					every_country = {
+						limit = { has_country_flag = CmtFlagSystemFormerOwner@event_target:CmtTargetTransferSystem }
+						remove_country_flag = CmtFlagSystemFormerOwner@event_target:CmtTargetTransferSystem
+					}
+					event_target:CmtTargetSystemStarbaseLoser = {
+						set_country_flag = CmtFlagSystemFormerOwner@event_target:CmtTargetTransferSystem
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+##########################################
+###  Basic Trigger: Transfar Starbase  ###
+##########################################
+#
+# On Starbase Disabled/Destroyed
+#
+
+### Triggered from on_ship_disabled: this = victim ship, from = killer ship
+ship_event = {
+	id = CrisisManagerControl.0211
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		is_ship_class = shipclass_starbase
+		exists = owner
+		exists = from.owner
+		
+		OR = {
+			AND = {
+				owner = { CmtTriggerIsCrisisStarbaseCountry = yes }
+				from.owner = { CmtTriggerIsStarbaseCountry = yes }
+			}
+			from.owner = { CmtTriggerIsTotalWarCountry = yes }
+		}
+	}
+	
+	immediate = {
+		solar_system = { save_event_target_as = CmtTargetTransferSystem }
+		owner = { save_event_target_as = CmtTargetSystemStarbaseLoser }
+		from.owner = { country_event = { id = CrisisManagerControl.0210  } }
+	}
+}
+
+### Triggered from on_ship_destroyed_victim
+### this = victim country, from = killer country, fromfrom = this = victim ship, fromfromfrom = killer ship
+country_event = {
+	id = CrisisManagerControl.0212
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		fromfrom = { is_ship_class = shipclass_starbase }
+		OR = {
+			AND = {
+				CmtTriggerIsCrisisStarbaseCountry = yes
+				from = { CmtTriggerIsStarbaseCountry = yes }
+			}
+			from = { CmtTriggerIsTotalWarCountry = yes }
+		}
+	}
+	
+	immediate = {
+		fromfrom.solar_system = { save_event_target_as = CmtTargetTransferSystem }
+		save_event_target_as = CmtTargetSystemStarbaseLoser
+		from = { country_event = { id = CrisisManagerControl.0210 } }
+	}
+}
+
+
+
+
+
+###########################################
+###  Backup Trigger: Transfar Starbase  ###
+###########################################
+#
+# On Fleet Entireing System & Every 10 Days
+# For the case that Starbase is disabled by unexpected country and is unable to be re-enabled because of crisis fleet staying around. 
+#
+
+
+### Transfer Starbase, if Only Disbabled Starbase Exist when Fleet Entireing System
+fleet_event = {
+	id = CrisisManagerControl.0221
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		always = @CmtConstTotalWarCrisisActivateBackup
+		
+		exists = owner
+		exists = from.starbase
+		exists = from.starbase.owner
+		from.starbase.fleet = { is_disabled = yes }
+		
+		OR = {
+			owner = { CmtTriggerIsTotalWarCountry = yes }
+			AND = {
+				owner = { CmtTriggerIsStarbaseCountry = yes }
+				from.starbase.owner = { CmtTriggerIsCrisisStarbaseCountry = yes }
+			}
+		}
+		
+		from = {		## solar_system
+			any_ship_in_system = {
+				exists = owner
+				NOT = { owner = { is_same_value = prevprev.starbase.owner } }
+				is_ship_class = shipclass_military
+			}
+		}
+	}
+	
+	immediate = {
+		from = { save_event_target_as = CmtTargetTransferSystem }
+		from.starbase.owner = { save_event_target_as = CmtTargetSystemStarbaseLoser }
+		owner = { country_event = { id = CrisisManagerControl.0210 } }
+	}
+}
+
+### Call 0223 as on_10_dayly_pulse_event
+event = {
+	id = CrisisManagerControl.0222
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		always = @CmtConstTotalWarCrisisActivateBackup
+	}
+	
+	immediate = {
+		every_system = {
+			limit = { exists = starbase }
+			random_system_planet = {
+				limit = { is_star = yes }
+				planet_event = { id = CrisisManagerControl.0223 days =  5 }
+				planet_event = { id = CrisisManagerControl.0223 days = 15 }
+				planet_event = { id = CrisisManagerControl.0223 days = 25 }
+			}
+		}
+	}
+}
+
+### Regularly Check Disabled Starbase
+planet_event = {
+	id = CrisisManagerControl.0223
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		always = @CmtConstTotalWarCrisisActivateBackup
+		
+		### Check Starbase
+		exists = starbase.fleet
+		starbase.fleet = {
+			is_ship_class = shipclass_starbase
+			is_disabled = yes
+		}
+		
+		solar_system = {
+			### Fleet of Starbase Owner Unexists
+			NOT = {
+				any_ship_in_system = {
+					exists = owner
+					owner = { is_same_value = root.solar_system.starbase.owner }
+					is_ship_class = shipclass_military
+				}
+			}
+			
+			### Starbase Owner or Attaker is Total War Pack
+			any_ship_in_system = {
+				exists = owner
+				owner = { CmtTriggerIsCrisisStarbaseCountry = yes }
+				OR = {
+					is_ship_class = shipclass_starbase
+					is_ship_class = shipclass_military
+				}
+			}
+		}
+		
+		### Attacker is Only 1 Country
+		count_country = {
+			limit = {
+				OR = {
+					CmtTriggerIsStarbaseCountry = yes
+					CmtTriggerIsCrisisKillerCountry = yes
+				}
+				NOT = { is_same_value = root.solar_system.starbase.owner }
+				any_owned_fleet = {
+					is_ship_class = shipclass_military
+					any_owned_ship = { solar_system = { is_same_value = root.solar_system } }
+				}
+			}
+			count = 1
+		}
+	}
+	
+	immediate = {
+		solar_system = {
+			save_event_target_as = CmtTargetTransferSystem
+			starbase.owner = { save_event_target_as = CmtTargetSystemStarbaseLoser }
+		}
+		random_country = {
+			limit = {
+				OR = {
+					CmtTriggerIsStarbaseCountry = yes
+					CmtTriggerIsCrisisKillerCountry = yes
+				}
+				NOT = { is_same_value = root.solar_system.starbase.fleet.owner }
+				any_owned_fleet = {
+					is_ship_class = shipclass_military
+					solar_system = { is_same_value = root.solar_system }
+				}
+			}
+			country_event = { id = CrisisManagerControl.0210 }
+		}
+	}
+}
+
+
+
+###############################################
+###  Auto-Build Starbase to Unowned System  ###
+###############################################
+
+### on_entering_system_fleet, this = fleet, from = system
+fleet_event = {
+	id = CrisisManagerControl.0231
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { exists = from.starbase }
+		exists = owner
+		owner = { CmtTriggerIsCrisisStarbaseCountry = yes }
+		
+		OR = {
+			AND = {
+				OR = {
+					is_ship_class = shipclass_military
+					is_ship_class = shipclass_constructor
+				}
+				NAND = {
+					exists = event_target:CmtGlobalVar
+					event_target:CmtGlobalVar = {
+						OR = {
+							check_variable = { which = CmtVarTotalWarAutoBuild value = 1 }
+							check_variable = { which = CmtVarTotalWarAutoBuild value = 2 }
+						}
+					}
+				}
+			}
+			AND = {
+				is_ship_class = shipclass_constructor
+				exists = event_target:CmtGlobalVar
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarTotalWarAutoBuild value = 2 } }
+			}
+		}
+	}
+	
+	immediate = {
+		from = { save_event_target_as = CmtTargetTransferSystem }
+		owner = { CmtEffectCreateStarbase = yes }
+	}
+}
+
+
+
+#########################
+###  Unlock Starbase  ###
+#########################
+
+fleet_event = {
+	id = CrisisManagerControl.0240
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		is_ship_class = shipclass_starbase
+		has_fleet_flag = CmtFlagTotalWarLockedStarbase
+	}
+	
+	immediate = {
+		if = {
+			limit = { CmtTriggerStarbaseShouldLocked = yes }
+			fleet_event = { id = CrisisManagerControl.0240 days = 3 }
+		} else = {
+			set_event_locked = no
+			remove_fleet_flag = CmtFlagTotalWarLockedStarbase
+			remove_modifier = CmtModifierDisabledStarbase
+		}
+	}
+}
+

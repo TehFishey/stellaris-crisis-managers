@@ -1,0 +1,135 @@
+
+##############################################################
+##############################################################
+#####                                                    #####
+#####    Crisis Manager                                  #####
+#####                                                    #####
+#####    Scripted Effect for Creating Sleeper's Fleet    #####
+#####                                                    #####
+##############################################################
+##############################################################
+#
+# Required Scopes
+#	this = place to spawn
+#	prev = owner country
+#
+
+
+### Standard Fleet
+CmtEffectCreateSleeperStandard = {
+	create_fleet = {
+		effect = {
+			set_owner = prevprev
+			while = {
+				count = 8
+				create_fallen_empire_large_ship = yes
+			}
+			while = {
+				count = 18
+				create_fallen_empire_small_ship = yes
+			}
+			random_list = {
+				25 = {
+					set_location = {
+						target = prev
+						distance = 30
+						angle = random
+					}
+				}
+				25 = {
+					set_location = {
+						target = prev
+						distance = 45
+						angle = random
+					}
+				}
+				25 = {
+					set_location = {
+						target = prev
+						distance = 60
+						angle = random
+					}
+				}
+				25 = {
+					set_location = {
+						target = prev
+						distance = 75
+						angle = random
+					}
+				}
+			}
+		}
+	}
+}
+
+### Titan
+CmtEffectCreateSleeperTitan = {
+	create_fleet = {
+		effect = {
+			set_owner = prevprev
+			create_fallen_empire_titan = yes
+			set_location = {
+				target = prev
+				distance = 20
+				angle = random
+			}
+		}
+	}
+}
+
+### Colossus
+CmtEffectCreateSleeperColossus = {
+	create_fleet = {
+		effect = {
+			set_owner = prevprev
+			create_fallen_empire_colossus = yes
+			set_location = {
+				target = prev
+				distance = 30
+				angle = random
+			}
+		}
+	}
+}
+
+
+
+### Template of Fleets
+CmtEffectApplyTemplate201 = {
+	every_country = {
+		limit = {
+			is_country_type = fallen_empire
+			is_at_war = no
+		}
+		every_owned_ship = {
+			limit = {
+				OR = {
+					is_ship_class = shipclass_military
+					is_ship_size = colossus
+				}
+			}
+			delete_ship = this
+		}
+		capital_scope = {
+			while = {
+				count = @CmtT201_ConstSleeperFleet_Standard
+				CmtEffectCreateSleeperStandard = yes
+				if = {
+					limit = { always = @CmtT201_ConstSleeperFleet_FlagTitan }
+					last_created_fleet = { create_fallen_empire_titan = yes }
+				}
+			}
+			while = {
+				count = @CmtT201_ConstSleeperFleet_Titan
+				CmtEffectCreateSleeperTitan = yes
+			}
+			if = {
+				limit = { host_has_dlc = "Apocalypse" }
+				while = {
+					count = @CmtT201_ConstSleeperFleet_Colossus
+					CmtEffectCreateSleeperColossus = yes
+				}
+			}
+		}
+	}
+}

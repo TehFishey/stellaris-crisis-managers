@@ -1,0 +1,413 @@
+namespace = CrisisManagerControl
+
+######################################################
+######################################################
+#####                                            #####
+#####    Crisis Events 4: Forced End of Cycle    #####
+#####                                            #####
+#####    Replaced by Crisis Manager              #####
+#####                                            #####
+######################################################
+######################################################
+
+
+
+###################
+###  Constants  ###
+###################
+
+
+########################
+###  Opening Events  ###
+########################
+
+### Forced Convenant (utopia.3308, 3310)
+country_event = {
+	id = CrisisManagerControl.4101
+	title = CrisisManagerControl.4101.name
+	desc = {
+		text = CrisisManagerControl.4101.desc.d
+		trigger = { has_global_flag = CmtFlagForcedEocTermInDays }
+	}
+	desc = {
+		text = CrisisManagerControl.4101.desc.y
+		trigger = { NOT = { has_global_flag = CmtFlagForcedEocTermInDays } }
+	}
+	picture = GFX_evt_unspeakable_horror
+	show_sound = event_mystic_reveal
+	location = root
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		set_global_flag = end_of_the_cycle
+		set_global_flag = CmtFlagForcedEocTriggered
+		set_country_flag = has_shroud_patron
+		set_country_flag = covenant_end_of_the_cycle
+		
+		every_owned_planet = {
+			limit = { NOT = { has_modifier = covenant_shroud_marked } }
+			add_modifier = { modifier = covenant_shroud_marked days = -1 }
+		}
+		every_subject = {
+			every_owned_planet = {
+				limit = { NOT = { has_modifier = covenant_shroud_marked } }
+				add_modifier = { modifier = covenant_shroud_marked days = -1 }
+			}
+		}
+		
+		### Select Term of Forced End of Cycle
+		if = {
+			limit = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTermForcedEoc value = -1 } } } }
+			if = {
+				limit = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTermForcedEoc value > 0 } } } }
+				add_modifier = { modifier = CmtModifierCovenantFEoC_23yr days = 8280 }		## 23 years
+			} else_if = {
+				limit = { has_global_flag = CmtFlagForcedEocTermInDays }
+				if = {
+					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTermForcedEoc value < 50 } } }
+					add_modifier = { modifier = CmtModifierCovenantFEoC_013d days = 13 }
+				} else_if = {
+					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTermForcedEoc value < 388 } } }
+					add_modifier = { modifier = CmtModifierCovenantFEoC_088d days = 88 }
+				} else = {
+					add_modifier = { modifier = CmtModifierCovenantFEoC_666d days = 666 }
+				}
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTermForcedEoc value < 9 } } }
+				add_modifier = { modifier = CmtModifierCovenantFEoC_04yr days = 1440 }		## 4 years
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTermForcedEoc value < 15 } } }
+				add_modifier = { modifier = CmtModifierCovenantFEoC_13yr days = 4680 }		## 13 years
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTermForcedEoc value < 20 } } }
+				add_modifier = { modifier = CmtModifierCovenantFEoC_17yr days = 6120 }		## 17 years
+			} else_if = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTermForcedEoc value < 35 } } }
+				add_modifier = { modifier = CmtModifierCovenantFEoC_23yr days = 8280 }		## 23 years
+			} else = {
+				add_modifier = { modifier = covenant_end_of_the_cycle days = 18000 }		## 50 years
+			}
+		}
+	}
+	
+	option = {
+		name = CrisisManagerControl.4101a.name
+	}
+}
+
+
+
+### The End of the Cycle: Reckoning (utopia.3320)
+country_event = {
+	id = CrisisManagerControl.4102
+	title = CrisisManagerControl.4102.name
+	picture = GFX_evt_unspeakable_horror
+	show_sound = event_red_alert
+	location = root
+	
+	is_triggered_only = yes
+	
+	desc = {
+		text = CrisisManagerControl.4102.desc.a
+		trigger = { has_country_flag = exile_world }
+	}
+	desc = {
+		text = CrisisManagerControl.4102.desc.b
+		trigger = { NOT = { has_country_flag = exile_world } }
+	}
+	
+	trigger = {
+		NOT = { has_country_flag = end_of_the_cycle_reckoning }
+	}
+	
+	immediate = {
+		set_global_flag = end_of_the_cycle_complete
+		set_global_flag = forced_end_of_the_cycle_complete
+		set_global_flag = CmtFlagForcedEocTriggered
+		set_country_flag = end_of_the_cycle_reckoning
+		
+		### Create Shorud
+		if = {
+			limit = { NOT = { exists = event_target:shroud_country } }
+			create_country = {
+				name = "NAME_Creatures_of_the_Shroud"
+				type = shroud_spirits
+				flag = {
+					icon = {
+						category = "special"
+						file = "the_shroud.dds"
+					}
+					background= {
+						category = "backgrounds"
+						file = "00_solid.dds"
+					}
+					colors={ "dark_purple" "black" "null" "null" }
+				}
+				effect = {
+					establish_communications_no_message = root
+					save_global_event_target_as = shroud_country
+				}
+			}
+		}
+		
+		### Reckoning Former Country
+		capital_scope = { save_event_target_as = former_capital }
+		kill_leader = {
+			type = ruler
+			show_notification = no
+			heir = yes
+		}
+		kill_leader = {
+			type = ruler
+			show_notification = no
+			heir = no
+		}
+		every_owned_leader = { kill_leader = { show_notification = no } }
+		every_owned_fleet = { destroy_fleet = this }
+		every_subject = { set_subject_of = { who = none } }
+		
+		
+		### Create Exile
+		clear_resources = yes
+		add_resource = {
+			minerals = 1000
+			energy = 500
+			food = 100
+			influence = 100
+		}
+		
+		if = {
+			limit = { any_system = { CmtTriggerFeocExile1stPrioritySystem = yes } }
+			random_system = {
+				limit = { CmtTriggerFeocExile1stPrioritySystem = yes }
+				random_system_planet = {
+					limit = { CmtTriggerFeocExileCandidate = yes }
+					save_event_target_as = exile_world
+				}
+			}
+		} else_if = {
+			limit = { any_system = { CmtTriggerFeocExile2ndPrioritySystem = yes } }
+			random_system = {
+				limit = { CmtTriggerFeocExile2ndPrioritySystem = yes }
+				random_system_planet = {
+					limit = { CmtTriggerFeocExileCandidate = yes }
+					save_event_target_as = exile_world
+				}
+				CmtEffectDestroySystemStarbase = yes
+				create_starbase = { size = starbase_outpost owner = root }
+			}
+		} else_if = {
+			limit = { any_system = { CmtTriggerFeocExile3rdPrioritySystem = yes } }
+			random_system = {
+				limit = { CmtTriggerFeocExile3rdPrioritySystem = yes }
+				random_system_planet = {
+					limit = { CmtTriggerFeocExileCandidate = yes }
+					save_event_target_as = exile_world
+				}
+			}
+		}
+		
+		if = {
+			limit = { exists = event_target:exile_world }
+			set_country_flag = exile_world
+			event_target:exile_world = {
+				set_planet_flag = exile_planet
+				if = {
+					limit = { root = { exists = owner_main_species } }
+					create_colony = {
+						owner = root
+						species = owner_main_species
+						ethos = owner
+					}
+					create_pop = { species = root.owner_main_species }
+				} else = {
+					create_colony = {
+						owner = root
+						species = owner_species
+						ethos = owner
+					}
+					create_pop = { species = root.owner_species }
+				}
+				set_name = "NAME_Exile"
+				add_district = district_city
+				add_district = district_city
+				add_district = district_farming
+				add_district = district_mining
+				add_district = district_generator
+				add_building = building_capital
+				add_building = building_research_lab_1
+				add_building = building_foundry_1
+				add_building = building_factory_1
+				while = {
+					limit = { 
+						num_pops < 8
+						free_housing > 0
+					}
+					create_pop = { species = owner }
+				}
+			}
+			create_leader = {
+				class = ruler
+				species = root.owner_species
+				name = random
+				skill = 5
+			}
+			assign_leader = last_created_leader
+		}
+		
+		
+		### Reckoning Marked Planet
+		event_target:CmtGlobalVar = { set_variable = { which = CmtVarTemp value = 0 } }		## for CmtVarEndPower
+		every_planet = {
+			limit = { has_modifier = covenant_shroud_marked }
+			remove_modifier = covenant_shroud_marked
+			remove_all_armies = yes
+			every_owned_pop = {
+				root = { change_variable = { which = end_power value = 1 } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = 1 } }		## for CmtVarEndPower
+			}
+			
+			if = {
+				limit = { has_owner = yes }
+				owner = { set_country_flag = end_of_cycle_lost_planets }
+			}
+			
+			if = {
+				limit = { NOT = { is_same_value = event_target:former_capital } }
+				CmtEffectCreateShroudManifestation = yes
+			}
+			
+			
+			if = {
+				limit = { is_planet_class = pc_habitat }
+				destroy_colony = yes
+				remove_planet = yes
+			} else_if = {
+				limit = {
+					is_planet_class = pc_ringworld_habitable
+				}
+				change_pc = pc_ringworld_habitable_damaged
+				clear_planet_modifiers = yes
+				clear_deposits = yes
+			} else = {
+				change_pc = pc_shrouded
+				clear_planet_modifiers = yes
+				clear_deposits = yes
+			}
+		}
+		CmtEffectFriendlyCrisis = yes
+		
+		## The End
+		event_target:CmtGlobalVar = {
+			set_variable = { which = CmtVarEndPower value = 1 }
+			if = {
+				limit = { check_variable = { which = CmtVarTemp value > 50000 } }
+				set_variable = { which = CmtVarTemp value = 50000 }
+			}
+			while = {
+				limit = { check_variable = { which = CmtVarTemp value > 500 } }
+				change_variable = { which = CmtVarEndPower value = 0.25 }
+				multiply_variable = { which = CmtVarTemp value = 0.8254 }		## 1/{10^(1/3)}^0.25
+			}
+			multiply_variable = { which = CmtVarEndPower value = CmtVarEndPower }
+			multiply_variable = { which = CmtVarEndPower value = CmtVarFleetPower_ForcedEoc }
+		}
+		event_target:former_capital = { CmtEffectCreateShroudTheEnd = yes }
+		
+		### Notification
+		every_country = {
+			limit = {
+				CmtTriggerIsPlayableEmpire = yes
+				NOT = { is_same_value = root }
+			}
+			set_country_flag = end_of_the_cycle_reckoning
+			add_opinion_modifier = { modifier = opinion_doomed_us_all who = root }
+			country_event = { id = utopia.3321 }
+		}
+	}
+
+	option = {
+		name = CrisisManagerControl.4102a.name
+	}
+}
+
+
+
+#################################
+###  Defeated Shroud Spirits  ###
+#################################
+
+### on_ship_destroyed_victim
+country_event = {
+	id = CrisisManagerControl.4111
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		CmtTriggerIsShroudSpirit = yes
+		fromfrom = { is_ship_size = warped_consciousness }
+		NOT = {
+			any_owned_ship = {
+				is_ship_size = warped_consciousness
+				NOT = { is_same_value = fromfrom }
+			}
+		}
+	}
+	
+	immediate = {
+		from = {
+			save_event_target_as = ShroudSpiritKiller
+			country_event = { id = CrisisManagerControl.4116 }
+		}
+		every_country = {
+			limit = {
+				CmtTriggerIsPlayableEmpire = yes
+				NOT = { is_same_value = from }
+			}
+			country_event = { id = CrisisManagerControl.4117 }
+		}
+		country_event = { id = CrisisManagerControl.0310 }	## Post Crisis Process
+	}
+}
+
+
+### Not implemented yet
+country_event = {
+	id = CrisisManagerControl.4116
+	title = CrisisManagerControl.4116.name
+	desc = CrisisManagerControl.4116.desc
+	picture = GFX_evt_metropolis
+	show_sound = event_celebration
+	
+	is_triggered_only = yes
+	trigger = { always = no }
+	
+	hide_window = yes
+}
+
+### Not implemented yet
+country_event = {
+	id = CrisisManagerControl.4117
+	title = CrisisManagerControl.4117.name
+	desc = {
+		text = CrisisManagerControl.4117.desc1
+		trigger = { exists = event_target:ShroudSpiritKiller }
+	}
+	desc = {
+		text = CrisisManagerControl.4117.desc2
+		trigger = { NOT = { exists = event_target:ShroudSpiritKiller } }
+	}
+	picture = GFX_evt_metropolis
+	show_sound = event_celebration
+	
+	is_triggered_only = yes
+	trigger = { always = no }
+
+	hide_window = yes
+}
+
+
+
+
+

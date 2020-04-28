@@ -1,0 +1,154 @@
+
+##########################################
+##########################################
+#####                                #####
+#####    Crisis Manager              #####
+#####                                #####
+#####    Scripted Effects to         #####
+#####    Set Auxiliary Parameters    #####
+#####                                #####
+##########################################
+##########################################
+#
+# Information
+#	All script in this file require following scopes
+#	this = fleet
+#	prev = owner country
+#	prevprev = location for spawning fleet
+#	
+#
+
+###################
+###  Constants  ###
+###################
+
+
+
+###################
+###  Prethoryn  ###
+###################
+
+CmtFleetSetAuxParam_PrethorynCombat = {
+	set_location = {
+		target = prevprev
+		distance = 35
+		angle = random
+	}
+	set_fleet_stance = aggressive
+	set_aggro_range = 500
+	set_aggro_range_measure_from = self
+}
+
+CmtFleetSetAuxParam_FeralPrethorynInfighter = {
+	set_location = {
+		target = prevprev
+		distance = 80
+		angle = 0
+	}
+}
+
+CmtFleetSetAuxParam_PrethorynAuxiliary = {
+	set_location = {
+		target = prevprev
+		distance = 20	## Paramaters averaging vanilla, was 5 - 45
+		angle = random
+	}
+}
+
+
+###################
+###  Sentinels  ###
+###################
+
+CmtFleetSetAuxParam_SentinelCombat = {
+	set_location = {
+		target = prevprev
+		distance = 20
+		angle = random
+	}
+	set_aggro_range = 500
+	set_fleet_stance = aggressive
+	set_aggro_range_measure_from = self
+}
+
+CmtFleetSetAuxParam_SentinelGarisson = {
+	set_location = {
+		target = prevprev
+		distance = 50
+		angle = 220
+	}
+	set_formation_scale = 2
+	set_fleet_stance = aggressive
+	set_aggro_range = 500
+	set_aggro_range_measure_from = return_point
+}
+
+CmtFleetSetAuxParam_SentinelDonation = {
+	set_location = {
+		target = prevprev
+		distance = 45
+		angle = random
+	}
+}
+
+###########################
+###  Extradimensionals  ###
+###########################
+
+CmtFleetSetAuxParam_ExdsCombat = {
+	set_location = {
+		target = prevprev
+		distance = 5
+		angle = random
+	}
+	set_fleet_stance = aggressive
+	set_aggro_range = 500
+	set_aggro_range_measure_from = self
+}
+
+CmtFleetSetAuxParam_ExdsAuxiliary = {
+	set_location = {
+		target = prevprev
+		distance = 5
+		angle = random
+	}
+}
+
+
+#####################
+###  Contingency  ###
+#####################
+
+CmtFleetSetAuxParam_ContingencyCombat = {
+	set_location = {
+		target = prevprev
+		distance = 45
+		angle = random
+	}
+}
+
+CmtFleetSetAuxParam_ContingencyAuxiliary = {
+	set_location = {
+		target = prevprev
+		distance = 45
+		angle = random
+	}
+}
+
+
+################
+###  Cybrex  ###
+################
+
+CmtFleetSetAuxParam_CybrexCombat = {
+	set_location = {
+		target = prevprev
+		distance = 45
+		angle = random
+	}
+	set_aggro_range = 500
+	set_fleet_stance = aggressive
+	set_aggro_range_measure_from = self
+}
+
+

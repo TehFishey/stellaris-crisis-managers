@@ -1,0 +1,515 @@
+namespace = CrisisManagerControl
+
+################################################
+################################################
+#####                                      #####
+#####    Crisis Manager                    #####
+#####                                      #####
+#####    Events for Forced End of Cycle    #####
+#####                                      #####
+################################################
+################################################
+#
+# All events in this file are country_event for global_event.
+#
+
+###################
+###  Constants  ###
+###################
+#
+# Days: Event Delay
+# Rand: Random part of days for event delay
+# Mtth: Mean time to happen in months
+# 
+
+
+### Very Slow
+@CmtConstForcedCovenantEocDays11 =  360		## Convenant
+@CmtConstForcedCovenantEocRand11 =  720
+@CmtConstForcedCovenantEocYear1a =   23		## Reckoning in years
+@CmtConstForcedCovenantEocDays1a = 8280		## Reckoning
+
+### Random & Slow
+@CmtConstForcedCovenantEocDays21 = 1260		## Convenant
+@CmtConstForcedCovenantEocRand21 =  900
+@CmtConstForcedCovenantEocYear2a =    4		## Reckoning in years
+@CmtConstForcedCovenantEocDays2a = 1440		## Reckoning
+@CmtConstForcedCovenantEocYear2b =   13		## Reckoning in years
+@CmtConstForcedCovenantEocDays2b = 4680		## Reckoning
+@CmtConstForcedCovenantEocYear2c =   17		## Reckoning in years
+@CmtConstForcedCovenantEocDays2c = 6120		## Reckoning
+@CmtConstForcedCovenantEocYear2d =   23		## Reckoning in years
+@CmtConstForcedCovenantEocDays2d = 8280		## Reckoning
+#CmtConstForcedCovenantEocYear2e =  N/A		## Reckoning in years
+@CmtConstForcedCovenantEocDays2e =  666		## Reckoning
+
+### Vanilla
+@CmtConstForcedCovenantEocDays31 =  200		## Convenant
+@CmtConstForcedCovenantEocRand31 =  800
+@CmtConstForcedCovenantEocYear3a =   50		## Reckoning in years
+@CmtConstForcedCovenantEocDays3a = 7200		## Reckoning
+
+### Fast
+@CmtConstForcedCovenantEocDays41 =    1		## Convenant
+@CmtConstForcedCovenantEocRand41 =  360
+@CmtConstForcedCovenantEocYear4a =    4		## Reckoning in years
+@CmtConstForcedCovenantEocDays4a = 1440		## Reckoning
+
+### Random & Fast
+@CmtConstForcedCovenantEocDays51 =  540		## Convenant
+@CmtConstForcedCovenantEocRand51 =  900
+@CmtConstForcedCovenantEocYear5a =    4		## Reckoning in years
+@CmtConstForcedCovenantEocDays5a = 1440		## Reckoning
+#CmtConstForcedCovenantEocYear5b =  N/A		## Reckoning in years
+@CmtConstForcedCovenantEocDays5b =  666		## Reckoning
+
+### Foxhound
+@CmtConstForcedCovenantEocDays61 =    1		## Convenant 
+@CmtConstForcedCovenantEocRand61 =    3
+#CmtConstForcedCovenantEocYear6a =  N/A		## Reckoning in years
+@CmtConstForcedCovenantEocDays6a =   13		## Reckoning
+#CmtConstForcedCovenantEocYear6b =  N/A		## Reckoning in years
+@CmtConstForcedCovenantEocDays6b =   88		## Reckoning
+
+
+
+################
+###  Common  ###
+################
+
+### Check Progress Speed of Opening Event Chain
+country_event = {
+	id = CrisisManagerControl.4000
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_global_flag = forced_end_of_cycle_happened }
+	}
+	
+	immediate = {
+		endgame_telemetry = forced_end_of_cycle
+		set_global_flag = galactic_crisis_happened
+		set_global_flag = CmtFlagForcedEocTriggered
+		set_global_flag = forced_end_of_cycle_happened
+		
+		CmtEffectTargetingForcedEoc = yes
+		
+		event_target:CmtGlobalVar = {
+			if = {
+				limit = { check_variable = { which = CmtVarOpeningEventSpeed value = 1 } }
+				country_event = { id = CrisisManagerControl.4010 }
+			} else_if = {
+				limit = { check_variable = { which = CmtVarOpeningEventSpeed value = 2 } }
+				country_event = { id = CrisisManagerControl.4020 }
+			} else_if = {
+				limit = { check_variable = { which = CmtVarOpeningEventSpeed value = 4 } }
+				country_event = { id = CrisisManagerControl.4040 }
+			} else_if = {
+				limit = { check_variable = { which = CmtVarOpeningEventSpeed value = 5 } }
+				country_event = { id = CrisisManagerControl.4050 }
+			} else_if = {
+				limit = { check_variable = { which = CmtVarOpeningEventSpeed value = 6 } }
+				country_event = { id = CrisisManagerControl.4060 }
+			} else = { country_event = { id = CrisisManagerControl.4030 } }
+		}
+	}
+}
+
+
+
+###################
+###  Very Slow  ###
+###################
+
+### Internal Trigger
+country_event = {
+	id = CrisisManagerControl.4010
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		country_event = { id = CrisisManagerControl.4011 days = @CmtConstForcedCovenantEocDays11 random = @CmtConstForcedCovenantEocRand11 }
+	}
+}
+
+### Forced Convenant
+country_event = {
+	id = CrisisManagerControl.4011
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.4011 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			remove_global_flag = CmtFlagForcedEocTermInDays		## for initialization
+			if = {
+				limit = { has_global_flag = CmtFlagForcedEocCrisisTerm }
+				set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocYear1a }
+				country_event = { id = CrisisManagerControl.4012 days = @CmtConstForcedCovenantEocDays1a }
+				else = {
+					set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocYear3a }
+					country_event = { id = CrisisManagerControl.4012 days = @CmtConstForcedCovenantEocDays3a }
+				}
+			}
+			CmtEffectForcedCovenantEoc = yes
+		}
+	}
+}
+
+### The End of the Cycle: Reckoning
+country_event = {
+	id = CrisisManagerControl.4012
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.4012 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectReckoningForcedEoc = yes
+		}
+	}
+}
+
+
+#######################
+###  Randomly Slow  ###
+#######################
+
+### Internal Trigger
+country_event = {
+	id = CrisisManagerControl.4020
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		country_event = { id = CrisisManagerControl.4021 days = @CmtConstForcedCovenantEocDays21 random = @CmtConstForcedCovenantEocRand21 }
+	}
+}
+
+### Forced Convenant
+country_event = {
+	id = CrisisManagerControl.4021
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.4021 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			
+			remove_global_flag = CmtFlagForcedEocTermInDays		## for initialization
+			if = {
+				limit = { has_global_flag = CmtFlagForcedEocCrisisTerm }
+				random_list = {
+					10 = {
+						set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocYear2a }
+						country_event = { id = CrisisManagerControl.4022 days = @CmtConstForcedCovenantEocDays2a }
+					}
+					15 = {
+						set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocYear2b }
+						country_event = { id = CrisisManagerControl.4022 days = @CmtConstForcedCovenantEocDays2b }
+					}
+					20 = {
+						set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocYear2c }
+						country_event = { id = CrisisManagerControl.4022 days = @CmtConstForcedCovenantEocDays2c }
+					}
+					25 = {
+						set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocYear2d }
+						country_event = { id = CrisisManagerControl.4022 days = @CmtConstForcedCovenantEocDays2d }
+					}
+					2 = {
+						set_global_flag = CmtFlagForcedEocTermInDays
+						set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocDays2e }
+						country_event = { id = CrisisManagerControl.4022 days = @CmtConstForcedCovenantEocDays2e }
+					}
+				}
+			} else = {
+				set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocYear3a }
+				country_event = { id = CrisisManagerControl.4022 days = @CmtConstForcedCovenantEocDays3a }
+			}
+			CmtEffectForcedCovenantEoc = yes
+		}
+	}
+}
+
+### The End of the Cycle: Reckoning
+country_event = {
+	id = CrisisManagerControl.4022
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.4022 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectReckoningForcedEoc = yes
+		}
+	}
+}
+
+
+
+#################
+###  Vanilla  ###
+#################
+
+### Internal Trigger
+country_event = {
+	id = CrisisManagerControl.4030
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		country_event = { id = CrisisManagerControl.4031 days = @CmtConstForcedCovenantEocDays31 random = @CmtConstForcedCovenantEocRand31 }
+	}
+}
+
+### Forced Convenant
+country_event = {
+	id = CrisisManagerControl.4031
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.4031 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			remove_global_flag = CmtFlagForcedEocTermInDays		## for initialization
+			set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocYear3a }
+			country_event = { id = CrisisManagerControl.4032 days = @CmtConstForcedCovenantEocDays3a }
+			CmtEffectForcedCovenantEoc = yes
+		}
+	}
+}
+
+### The End of the Cycle: Reckoning
+country_event = {
+	id = CrisisManagerControl.4032
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.4032 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectReckoningForcedEoc = yes
+		}
+	}
+}
+
+##############
+###  Fast  ###
+##############
+
+### Internal Trigger
+country_event = {
+	id = CrisisManagerControl.4040
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		country_event = { id = CrisisManagerControl.4041 days = @CmtConstForcedCovenantEocDays41 random = @CmtConstForcedCovenantEocRand41 }
+	}
+}
+
+### Forced Convenant
+country_event = {
+	id = CrisisManagerControl.4041
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.4041 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			remove_global_flag = CmtFlagForcedEocTermInDays		## for initialization
+			if = {
+				limit = { has_global_flag = CmtFlagForcedEocCrisisTerm }
+				set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocYear4a }
+				country_event = { id = CrisisManagerControl.4042 days = @CmtConstForcedCovenantEocDays4a }
+				else = {
+					set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocYear3a }
+					country_event = { id = CrisisManagerControl.4042 days = @CmtConstForcedCovenantEocDays3a }
+				}
+			}
+			CmtEffectForcedCovenantEoc = yes
+		}
+	}
+}
+
+### The End of the Cycle: Reckoning
+country_event = {
+	id = CrisisManagerControl.4042
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.4042 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectReckoningForcedEoc = yes
+		}
+	}
+}
+
+
+
+#######################
+###  Randomly Fast  ###
+#######################
+
+### Internal Trigger
+country_event = {
+	id = CrisisManagerControl.4050
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		country_event = { id = CrisisManagerControl.4051 days = @CmtConstForcedCovenantEocDays51 random = @CmtConstForcedCovenantEocRand51 }
+	}
+}
+
+### Forced Convenant
+country_event = {
+	id = CrisisManagerControl.4051
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.4051 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			remove_global_flag = CmtFlagForcedEocTermInDays		## for initialization
+			if = {
+				limit = { has_global_flag = CmtFlagForcedEocCrisisTerm }
+				random_list = {
+					100 = {
+						set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocYear5a }
+						country_event = { id = CrisisManagerControl.4052 days = @CmtConstForcedCovenantEocDays5a }
+					}
+					2 = {
+						set_global_flag = CmtFlagForcedEocTermInDays
+						set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocDays5b }
+						country_event = { id = CrisisManagerControl.4052 days = @CmtConstForcedCovenantEocDays5b }
+					}
+				}
+			} else = {
+				set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocYear3a }
+				country_event = { id = CrisisManagerControl.4052 days = @CmtConstForcedCovenantEocDays3a }
+			}
+			CmtEffectForcedCovenantEoc = yes
+		}
+	}
+}
+
+### The End of the Cycle: Reckoning
+country_event = {
+	id = CrisisManagerControl.4052
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.4052 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectReckoningForcedEoc = yes
+		}
+	}
+}
+
+
+
+##################
+###  Foxhound  ###
+##################
+
+### Internal Trigger
+country_event = {
+	id = CrisisManagerControl.4060
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		country_event = { id = CrisisManagerControl.4061 days = @CmtConstForcedCovenantEocDays61 random = @CmtConstForcedCovenantEocRand61 }
+	}
+}
+
+### Forced Convenant
+country_event = {
+	id = CrisisManagerControl.4061
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.4061 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			remove_global_flag = CmtFlagForcedEocTermInDays		## for initialization
+			if = {
+				limit = { has_global_flag = CmtFlagForcedEocCrisisTerm }
+				random_list = {
+					90 = {
+						set_global_flag = CmtFlagForcedEocTermInDays
+						set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocDays6a }
+						country_event = { id = CrisisManagerControl.4062 days = @CmtConstForcedCovenantEocDays6a }
+					}
+					10 = {
+						set_global_flag = CmtFlagForcedEocTermInDays
+						set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocDays6b }
+						country_event = { id = CrisisManagerControl.4062 days = @CmtConstForcedCovenantEocDays6b }
+					}
+				}
+			} else = {
+				set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocYear3a }
+				country_event = { id = CrisisManagerControl.4062 days = @CmtConstForcedCovenantEocDays3a }
+			}
+			CmtEffectForcedCovenantEoc = yes
+		}
+	}
+}
+
+### The End of the Cycle: Reckoning
+country_event = {
+	id = CrisisManagerControl.4062
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_global_flag = CmtFlagWaitEvent }
+			country_event = { id = CrisisManagerControl.4062 days = 1 }
+		} else = {
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			CmtEffectReckoningForcedEoc = yes
+		}
+	}
+}
+
+
+
+

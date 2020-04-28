@@ -1,0 +1,354 @@
+namespace = CrisisManagerMenu
+
+#####################################################
+#####################################################
+#####                                           #####
+#####    Crisis Manager                         #####
+#####                                           #####
+#####    Apply Other Configuration Templates    #####
+#####                                           #####
+#####################################################
+#####################################################
+
+country_event = {
+	id = CrisisManagerMenu.2100
+	title = CrisisManagerMenu.2100.name
+	desc = CrisisManagerMenu.2100.desc
+	picture = GFX_evt_CmtMenuA
+	
+	is_triggered_only = yes
+	trigger = { is_ai = no }
+	
+	after = {
+		hidden_effect = { country_event = { id = CrisisManagerMenu.0100 } }
+	}
+	
+	option = {
+		name = CmtTextGoBack.name
+		custom_tooltip = CmtTextGoBack.tooltip
+	}
+	
+	
+	
+	## Separator
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = {
+			NOT = { has_global_flag = CmtFlagNoSeparator }
+			OR = {
+				CmtTriggerTemplateActivated_T101 = yes
+				CmtTriggerTemplateActivated_T102 = yes
+				CmtTriggerTemplateActivated_T103 = yes
+				CmtTriggerTemplateActivated_T104 = yes
+			}
+		}
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerTemplate_T101.name
+		custom_tooltip = CrisisManagerTemplate_T101.tooltip
+		trigger = {
+			CmtTriggerTemplateActivated_T101 = yes
+			OR = {
+				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				has_global_flag = CmtFlagDebugMode
+			}
+		}
+		hidden_effect = {
+			set_global_flag = CmtFlagTemplateAppliedNow
+			country_event = { id = CrisisManagerMenu.2101 }
+		}
+	}
+	option = {
+		name = CrisisManagerTemplate_T102.name
+		custom_tooltip = CrisisManagerTemplate_T102.tooltip
+		trigger = {
+			CmtTriggerTemplateActivated_T102 = yes
+			OR = {
+				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				has_global_flag = CmtFlagDebugMode
+			}
+		}
+		hidden_effect = {
+			set_global_flag = CmtFlagTemplateAppliedNow
+			country_event = { id = CrisisManagerMenu.2102 }
+		}
+	}
+	option = {
+		name = CrisisManagerTemplate_T103.name
+		custom_tooltip = CrisisManagerTemplate_T103.tooltip
+		trigger = {
+			CmtTriggerTemplateActivated_T103 = yes
+			OR = {
+				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				has_global_flag = CmtFlagDebugMode
+			}
+		}
+		hidden_effect = {
+			set_global_flag = CmtFlagTemplateAppliedNow
+			country_event = { id = CrisisManagerMenu.2103 }
+		}
+	}
+	option = {
+		name = CrisisManagerTemplate_T104.name
+		custom_tooltip = CrisisManagerTemplate_T104.tooltip
+		trigger = {
+			CmtTriggerTemplateActivated_T104 = yes
+			OR = {
+				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				has_global_flag = CmtFlagDebugMode
+			}
+		}
+		hidden_effect = {
+			set_global_flag = CmtFlagTemplateAppliedNow
+			country_event = { id = CrisisManagerMenu.2104 }
+		}
+	}
+	
+	
+	
+	## Separator
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = {
+			NOT = { has_global_flag = CmtFlagNoSeparator }
+			OR = {
+				CmtTriggerTemplateActivated_T105 = yes
+				CmtTriggerTemplateActivated_T106 = yes
+				CmtTriggerTemplateActivated_T107 = yes
+				CmtTriggerTemplateActivated_T108 = yes
+			}
+		}
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerTemplate_T105.name
+		custom_tooltip = CrisisManagerTemplate_T105.tooltip
+		trigger = {
+			CmtTriggerTemplateActivated_T105 = yes
+			OR = {
+				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				has_global_flag = CmtFlagDebugMode
+			}
+		}
+		hidden_effect = {
+			set_global_flag = CmtFlagTemplateAppliedNow
+			country_event = { id = CrisisManagerMenu.2105 }
+		}
+	}
+	option = {
+		name = CrisisManagerTemplate_T106.name
+		custom_tooltip = CrisisManagerTemplate_T106.tooltip
+		trigger = {
+			CmtTriggerTemplateActivated_T106 = yes
+			OR = {
+				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				has_global_flag = CmtFlagDebugMode
+			}
+		}
+		hidden_effect = {
+			set_global_flag = CmtFlagTemplateAppliedNow
+			country_event = { id = CrisisManagerMenu.2106 }
+		}
+	}
+	option = {
+		name = CrisisManagerTemplate_T107.name
+		custom_tooltip = CrisisManagerTemplate_T107.tooltip
+		trigger = {
+			CmtTriggerTemplateActivated_T107 = yes
+			OR = {
+				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				has_global_flag = CmtFlagDebugMode
+			}
+		}
+		hidden_effect = {
+			set_global_flag = CmtFlagTemplateAppliedNow
+			country_event = { id = CrisisManagerMenu.2107 }
+		}
+	}
+	option = {
+		name = CrisisManagerTemplate_T108.name
+		custom_tooltip = CrisisManagerTemplate_T108.tooltip
+		trigger = {
+			CmtTriggerTemplateActivated_T108 = yes
+			OR = {
+				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				has_global_flag = CmtFlagDebugMode
+			}
+		}
+		hidden_effect = {
+			set_global_flag = CmtFlagTemplateAppliedNow
+			country_event = { id = CrisisManagerMenu.2108 }
+		}
+	}
+	
+	
+	
+	## Separator
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = {
+			NOT = { has_global_flag = CmtFlagNoSeparator }
+			OR = {
+				CmtTriggerTemplateActivated_T109 = yes
+				CmtTriggerTemplateActivated_T110 = yes
+				CmtTriggerTemplateActivated_T111 = yes
+				CmtTriggerTemplateActivated_T112 = yes
+			}
+		}
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerTemplate_T109.name
+		custom_tooltip = CrisisManagerTemplate_T109.tooltip
+		trigger = {
+			CmtTriggerTemplateActivated_T109 = yes
+			OR = {
+				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				has_global_flag = CmtFlagDebugMode
+			}
+		}
+		hidden_effect = {
+			set_global_flag = CmtFlagTemplateAppliedNow
+			country_event = { id = CrisisManagerMenu.2109 }
+		}
+	}
+	option = {
+		name = CrisisManagerTemplate_T110.name
+		custom_tooltip = CrisisManagerTemplate_T110.tooltip
+		trigger = {
+			CmtTriggerTemplateActivated_T110 = yes
+			OR = {
+				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				has_global_flag = CmtFlagDebugMode
+			}
+		}
+		hidden_effect = {
+			set_global_flag = CmtFlagTemplateAppliedNow
+			country_event = { id = CrisisManagerMenu.2110 }
+		}
+	}
+	option = {
+		name = CrisisManagerTemplate_T111.name
+		custom_tooltip = CrisisManagerTemplate_T111.tooltip
+		trigger = {
+			CmtTriggerTemplateActivated_T111 = yes
+			OR = {
+				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				has_global_flag = CmtFlagDebugMode
+			}
+		}
+		hidden_effect = {
+			set_global_flag = CmtFlagTemplateAppliedNow
+			country_event = { id = CrisisManagerMenu.2111 }
+		}
+	}
+	option = {
+		name = CrisisManagerTemplate_T112.name
+		custom_tooltip = CrisisManagerTemplate_T112.tooltip
+		trigger = {
+			CmtTriggerTemplateActivated_T112 = yes
+			OR = {
+				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				has_global_flag = CmtFlagDebugMode
+			}
+		}
+		hidden_effect = {
+			set_global_flag = CmtFlagTemplateAppliedNow
+			country_event = { id = CrisisManagerMenu.2112 }
+		}
+	}
+	
+	
+	
+	## Separator
+	option = {
+		name = CmtTextSeparator.name
+		custom_tooltip = CmtTextSeparator.tooltip
+		trigger = {
+			NOT = { has_global_flag = CmtFlagNoSeparator }
+			OR = {
+				CmtTriggerTemplateActivated_T113 = yes
+				CmtTriggerTemplateActivated_T114 = yes
+				CmtTriggerTemplateActivated_T115 = yes
+				CmtTriggerTemplateActivated_T116 = yes
+			}
+		}
+		allow = { hidden_trigger = { always = no } }
+	}
+	
+	
+	
+	option = {
+		name = CrisisManagerTemplate_T113.name
+		custom_tooltip = CrisisManagerTemplate_T113.tooltip
+		trigger = {
+			CmtTriggerTemplateActivated_T113 = yes
+			OR = {
+				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				has_global_flag = CmtFlagDebugMode
+			}
+		}
+		hidden_effect = {
+			set_global_flag = CmtFlagTemplateAppliedNow
+			country_event = { id = CrisisManagerMenu.2113 }
+		}
+	}
+	option = {
+		name = CrisisManagerTemplate_T114.name
+		custom_tooltip = CrisisManagerTemplate_T114.tooltip
+		trigger = {
+			CmtTriggerTemplateActivated_T114 = yes
+			OR = {
+				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				has_global_flag = CmtFlagDebugMode
+			}
+		}
+		hidden_effect = {
+			set_global_flag = CmtFlagTemplateAppliedNow
+			country_event = { id = CrisisManagerMenu.2114 }
+		}
+	}
+	option = {
+		name = CrisisManagerTemplate_T115.name
+		custom_tooltip = CrisisManagerTemplate_T115.tooltip
+		trigger = {
+			CmtTriggerTemplateActivated_T115 = yes
+			OR = {
+				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				has_global_flag = CmtFlagDebugMode
+			}
+		}
+		hidden_effect = {
+			set_global_flag = CmtFlagTemplateAppliedNow
+			country_event = { id = CrisisManagerMenu.2115 }
+		}
+	}
+	option = {
+		name = CrisisManagerTemplate_T116.name
+		custom_tooltip = CrisisManagerTemplate_T116.tooltip
+		trigger = {
+			CmtTriggerTemplateActivated_T116 = yes
+			OR = {
+				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				has_global_flag = CmtFlagDebugMode
+			}
+		}
+		hidden_effect = {
+			set_global_flag = CmtFlagTemplateAppliedNow
+			country_event = { id = CrisisManagerMenu.2116 }
+		}
+	}
+}

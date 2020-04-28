@@ -1,0 +1,48 @@
+
+#########################################
+#########################################
+#####                               #####
+#####    Crisis Manager             #####
+#####                               #####
+#####    Edict for Player Crisis    #####
+#####                               #####
+#########################################
+#########################################
+
+### Trigger Player Crisis
+CmtEdictTriggerPlayerCrisis = {
+	length = 0
+	resources = {
+		category = campaigns
+		cost = {}
+	}
+	
+	potential = {
+		is_ai = no
+		end_game_years_passed >= 0
+		NOT = { exists = event_target:CmtTargetPlayerCrisisAggressor }
+	}
+	
+	allow = {
+		CmtTriggerPlayerCrisisAggressorCandidateEdict = yes
+		custom_tooltip = {
+			fail_text = CmtFailTextNowMenuOpened
+			NOT = { any_country = { has_country_flag = CmtFlagNowInMenu } }
+		}
+	}
+	
+	ai_weight = { weight = 0 }
+	
+	effect = {
+		hidden_effect = {
+			if = {
+				limit = { NOT = { exists = event_target:CmtGlobalVar } }
+				random_country = {
+					limit = { is_country_type = global_event }
+					save_global_event_target_as = CmtGlobalVar
+				}
+			}
+			country_event = { id = CrisisManagerControl.0510 }
+		}
+	}
+}

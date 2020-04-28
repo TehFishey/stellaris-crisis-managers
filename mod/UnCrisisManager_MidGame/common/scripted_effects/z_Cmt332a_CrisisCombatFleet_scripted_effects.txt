@@ -1,0 +1,791 @@
+
+#############################################################
+#############################################################
+#####                                                   #####
+#####    Crisis Manager                                 #####
+#####                                                   #####
+#####    Scripted Effects for Creating Combat Fleets    #####
+#####    of End-Game Crises Excluding Armies            #####
+#####                                                   #####
+#############################################################
+#############################################################
+#
+# Information
+#	All script in this file require following scopes
+#	this: Owner country
+#	prev: Location for creating fleets (e.g. planet)
+#
+
+
+
+###################
+###  Constants  ###
+###################
+
+
+
+##############
+###  Khan  ###
+##############
+
+### Fleet for Khan Own
+CmtEffectCreateFleet_Khan1stFleet = {	### Exception: Leader = event_target:great_khan
+	create_fleet = {
+		name = NAME_Chosen_of_the_Great_Khan
+		effect = {
+			set_owner = prev
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
+			CmtEffectResetLoop = yes
+			
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+				CmtEffectProgressLoop4 = yes
+				
+				while = { count =  4 CmtEffectCreateShip_Outrider = yes }    		## 18
+				while = { count =  3 CmtEffectCreateShip_Lancer = yes }      		## 12
+				CmtEffectCreateShip_VoidChampion = yes                       		##  6
+				switch = {
+					trigger = has_global_flag
+					CmtFlagLoopA = {
+						CmtEffectCreateShip_Outrider = yes
+						CmtEffectCreateShip_VoidChampion = yes
+					}
+					CmtFlagLoopB = { CmtEffectCreateShip_Outrider = yes }
+					CmtFlagLoopC = { CmtEffectCreateShip_AncestralGlory = yes }		##  1
+					CmtFlagLoopZ = { CmtEffectCreateShip_VoidChampion = yes }
+				}
+			}
+			CmtFleetSetAuxParam_KhanCombat = yes
+			assign_leader = event_target:great_khan
+		}
+		settings = {
+			can_upgrade = no
+			can_disband = no
+			can_change_composition = no
+			can_change_leader = no
+			uses_naval_capacity = no
+		}
+	}
+}
+
+CmtEffectCreateFleet_Khan2ndFleet = {	### Exception: Leader = exiled_khan
+	create_fleet = {
+		name = NAME_Chosen_of_the_Great_Khan
+		effect = {
+			set_owner = prev
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
+			CmtEffectResetLoop = yes
+			
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+				CmtEffectProgressLoop4 = yes
+				
+				while = { count =  4 CmtEffectCreateShip_Outrider = yes }    		## 18
+				while = { count =  3 CmtEffectCreateShip_Lancer = yes }      		## 12
+				CmtEffectCreateShip_VoidChampion = yes                       		##  6
+				switch = {
+					trigger = has_global_flag
+					CmtFlagLoopA = {
+						CmtEffectCreateShip_Outrider = yes
+						CmtEffectCreateShip_VoidChampion = yes
+					}
+					CmtFlagLoopB = { CmtEffectCreateShip_Outrider = yes }
+					CmtFlagLoopC = { CmtEffectCreateShip_AncestralGlory = yes }		##  1
+					CmtFlagLoopZ = { CmtEffectCreateShip_VoidChampion = yes }
+				}
+			}
+			CmtFleetSetAuxParam_KhanCombat = yes
+			set_leader = exiled_khan
+		}
+		settings = {
+			can_upgrade = no
+			can_disband = no
+			can_change_composition = no
+			can_change_leader = no
+			uses_naval_capacity = no
+		}
+	}
+}
+
+
+### Consorts of Khan
+CmtEffectCreateFleet_KhanStandard = {
+	CmtEffectCreateAdmiral_MarauderStandard = yes
+	create_fleet = {
+		effect = {
+			set_owner = prev
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
+			CmtEffectResetLoop = yes
+			
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+				CmtEffectProgressLoop4 = yes
+				
+				while = { count =  4 CmtEffectCreateShip_Outrider = yes }    		## 16
+				while = { count =  2 CmtEffectCreateShip_Lancer = yes }      		##  8
+				CmtEffectCreateShip_VoidChampion = yes                       		##  6
+				switch = {
+					trigger = has_global_flag
+					CmtFlagLoopA = { CmtEffectCreateShip_VoidChampion = yes }
+					CmtFlagLoopB = { }
+					CmtFlagLoopC = { CmtEffectCreateShip_AncestralGlory = yes }		##  1
+					CmtFlagLoopZ = { CmtEffectCreateShip_VoidChampion = yes }
+				}
+			}
+			
+			CmtFleetSetAuxParam_KhanCombat = yes
+			assign_leader = last_created_leader
+		}
+		settings = {
+			can_upgrade = no
+			can_change_composition = no
+			uses_naval_capacity = no
+		}
+	}
+}
+
+
+### Mercenaries
+CmtEffectCreateFleet_KhanArmadaVoidborn = {
+	CmtEffectCreateAdmiral_MarauderStandard = yes
+	create_fleet = {
+		name = "NAME_Armada_of_the_Voidborn"
+		effect = {
+			set_owner = prev
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
+			CmtEffectResetLoop = yes
+			
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+				CmtEffectProgressLoop2 = yes
+				
+				while = { count =  4 CmtEffectCreateShip_Outrider = yes }    		## 16
+				while = { count =  2 CmtEffectCreateShip_Lancer = yes }      		##  8
+				CmtEffectCreateShip_VoidChampion = yes                       		##  6
+				switch = {
+					trigger = has_global_flag
+					CmtFlagLoopA = { CmtEffectCreateShip_VoidChampion = yes }
+					CmtFlagLoopZ = { }
+				}
+			}
+			
+			CmtFleetSetAuxParam_KhanCombat = yes
+			assign_leader = last_created_leader
+		}
+		settings = {
+			can_upgrade = no
+			can_change_composition = no
+		}
+	}
+}
+
+CmtEffectCreateFleet_KhanStarRiderFlotilla = {
+	CmtEffectCreateAdmiral_MarauderStandard = yes
+	create_fleet = {
+		name = "NAME_Star_Rider_Flotilla"
+		effect = {
+			set_owner = prev
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
+			CmtEffectResetLoop = yes
+			
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+				CmtEffectProgressLoop2 = yes
+				
+				while = { count =  3 CmtEffectCreateShip_Outrider = yes }    		## 12
+				CmtEffectCreateShip_Lancer = yes                             		##  6
+				CmtEffectCreateShip_VoidChampion = yes                       		##  4
+				switch = {
+					trigger = has_global_flag
+					CmtFlagLoopA = { CmtEffectCreateShip_Lancer = yes }
+					CmtFlagLoopZ = { }
+				}
+			}
+			
+			CmtFleetSetAuxParam_KhanCombat = yes
+			assign_leader = last_created_leader
+		}
+		settings = {
+			can_upgrade = no
+			can_change_composition = no
+		}
+	}
+}
+
+CmtEffectCreateFleet_KhanFirstStormWing = {
+	CmtEffectCreateAdmiral_MarauderStandard = yes
+	create_fleet = {
+		name = "NAME_First_Storm_Wing"
+		effect = {
+			set_owner = prev
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
+			CmtEffectResetLoop = yes
+			
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+				CmtEffectProgressLoop2 = yes
+				
+				while = { count =  2 CmtEffectCreateShip_Outrider = yes }    		##  8
+				while = { count =  1 CmtEffectCreateShip_Lancer = yes }      		##  4
+				switch = {
+					trigger = has_global_flag
+					CmtFlagLoopA = { CmtEffectCreateShip_VoidChampion = yes }		##  2
+					CmtFlagLoopZ = { }
+				}
+			}
+			
+			CmtFleetSetAuxParam_KhanCombat = yes
+			assign_leader = last_created_leader
+		}
+		settings = {
+			can_upgrade = no
+			can_change_composition = no
+		}
+	}
+}
+
+CmtEffectCreateFleet_KhanDwamakBashers = {
+	CmtEffectCreateAdmiral_MarauderStandard = yes
+	create_fleet = {
+		name = "NAME_234th_Dwamak_Bashers"
+		effect = {
+			set_owner = prev
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
+			CmtEffectResetLoop = yes
+			
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+				CmtEffectProgressLoop2 = yes
+				
+				while = { count =  4 CmtEffectCreateShip_Outrider = yes }    		## 16
+				while = { count =  2 CmtEffectCreateShip_Lancer = yes }      		##  8
+				CmtEffectCreateShip_VoidChampion = yes                       		##  6
+				switch = {
+					trigger = has_global_flag
+					CmtFlagLoopA = { CmtEffectCreateShip_VoidChampion = yes }
+					CmtFlagLoopZ = { }
+				}
+			}
+			
+			CmtFleetSetAuxParam_KhanCombat = yes
+			assign_leader = last_created_leader
+		}
+		settings = {
+			can_upgrade = no
+			can_change_composition = no
+		}
+	}
+}
+
+CmtEffectCreateFleet_KhanUnhingedScreamerFlotilla = {
+	CmtEffectCreateAdmiral_MarauderStandard = yes
+	create_fleet = {
+		name = "NAME_Unhinged_Screamer_Flotilla"
+		effect = {
+			set_owner = prev
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
+			CmtEffectResetLoop = yes
+			
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+				CmtEffectProgressLoop2 = yes
+				
+				while = { count =  3 CmtEffectCreateShip_Outrider = yes }    		## 12
+				CmtEffectCreateShip_Lancer = yes                             		##  6
+				CmtEffectCreateShip_VoidChampion = yes                       		##  4
+				switch = {
+					trigger = has_global_flag
+					CmtFlagLoopA = { CmtEffectCreateShip_Lancer = yes }
+					CmtFlagLoopZ = { }
+				}
+			}
+			
+			CmtFleetSetAuxParam_KhanCombat = yes
+			assign_leader = last_created_leader
+		}
+		settings = {
+			can_upgrade = no
+			can_change_composition = no
+		}
+	}
+}
+
+CmtEffectCreateFleet_KhanFrenziedVolunteerSquadron = {
+	CmtEffectCreateAdmiral_MarauderStandard = yes
+	create_fleet = {
+		name = "NAME_Frenzied_Volunteer_Squadron"
+		effect = {
+			set_owner = prev
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
+			CmtEffectResetLoop = yes
+			
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+				CmtEffectProgressLoop2 = yes
+				
+				while = { count =  2 CmtEffectCreateShip_Outrider = yes }    		##  8
+				while = { count =  1 CmtEffectCreateShip_Lancer = yes }      		##  4
+				switch = {
+					trigger = has_global_flag
+					CmtFlagLoopA = { CmtEffectCreateShip_VoidChampion = yes }		##  2
+					CmtFlagLoopZ = { }
+				}
+			}
+			
+			CmtFleetSetAuxParam_KhanCombat = yes
+			assign_leader = last_created_leader
+		}
+		settings = {
+			can_upgrade = no
+			can_change_composition = no
+		}
+	}
+}
+
+CmtEffectCreateFleet_KhanHerChosenChampions = {
+	CmtEffectCreateAdmiral_MarauderStandard = yes
+	create_fleet = {
+		name = "NAME_Her_Chosen_Champions"
+		effect = {
+			set_owner = prev
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
+			CmtEffectResetLoop = yes
+			
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+				CmtEffectProgressLoop2 = yes
+				
+				while = { count =  4 CmtEffectCreateShip_Outrider = yes }    		## 16
+				while = { count =  2 CmtEffectCreateShip_Lancer = yes }      		##  8
+				CmtEffectCreateShip_VoidChampion = yes                       		##  6
+				switch = {
+					trigger = has_global_flag
+					CmtFlagLoopA = { CmtEffectCreateShip_VoidChampion = yes }
+					CmtFlagLoopZ = { }
+				}
+			}
+			
+			CmtFleetSetAuxParam_KhanCombat = yes
+			assign_leader = last_created_leader
+		}
+		settings = {
+			can_upgrade = no
+			can_change_composition = no
+		}
+	}
+}
+
+CmtEffectCreateFleet_KhanOrderEternalNight = {
+	CmtEffectCreateAdmiral_MarauderStandard = yes
+	create_fleet = {
+		name = "NAME_Order_of_Eternal_Night"
+		effect = {
+			set_owner = prev
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
+			CmtEffectResetLoop = yes
+			
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+				CmtEffectProgressLoop2 = yes
+				
+				while = { count =  3 CmtEffectCreateShip_Outrider = yes }    		## 12
+				CmtEffectCreateShip_Lancer = yes                             		##  6
+				CmtEffectCreateShip_VoidChampion = yes                       		##  4
+				switch = {
+					trigger = has_global_flag
+					CmtFlagLoopA = { CmtEffectCreateShip_Lancer = yes }
+					CmtFlagLoopZ = { }
+				}
+			}
+			
+			CmtFleetSetAuxParam_KhanCombat = yes
+			assign_leader = last_created_leader
+		}
+		settings = {
+			can_upgrade = no
+			can_change_composition = no
+		}
+	}
+}
+
+CmtEffectCreateFleet_KhanTwilightCongregation = {
+	CmtEffectCreateAdmiral_MarauderStandard = yes
+	create_fleet = {
+		name = "NAME_Twilight_Congregation"
+		effect = {
+			set_owner = prev
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
+			CmtEffectResetLoop = yes
+			
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+				CmtEffectProgressLoop2 = yes
+				
+				while = { count =  2 CmtEffectCreateShip_Outrider = yes }    		##  8
+				CmtEffectCreateShip_Lancer = yes                             		##  4
+				switch = {
+					trigger = has_global_flag
+					CmtFlagLoopA = { CmtEffectCreateShip_VoidChampion = yes }		##  2
+					CmtFlagLoopZ = { }
+				}
+			}
+			
+			CmtFleetSetAuxParam_KhanCombat = yes
+			assign_leader = last_created_leader
+		}
+		settings = {
+			can_upgrade = no
+			can_change_composition = no
+		}
+	}
+}
+
+### Encourager
+CmtEffectCreateFleet_KhanSubReinforcement1 = {
+	CmtEffectCreateAdmiral_MarauderEncourager = yes
+	create_fleet = {
+		name = "NAME_Horde_Auxiliary_Fleet"
+		effect = {
+			set_owner = prev
+			set_fleet_flag = horde_auxuliaries
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
+			CmtEffectResetLoop = yes
+			
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+				CmtEffectProgressLoop2 = yes
+				
+				while = { count =  2 CmtEffectCreateShip_Outrider = yes }    		## 10
+				CmtEffectCreateShip_Lancer = yes                             		##  4
+				switch = {
+					trigger = has_global_flag
+					CmtFlagLoopA = { CmtEffectCreateShip_VoidChampion = yes }		##  2
+					CmtFlagLoopZ = { CmtEffectCreateShip_Outrider = yes }
+				}
+			}
+			
+			CmtFleetSetAuxParam_KhanAuxiliary = yes
+			assign_leader = last_created_leader
+		}
+		settings = {
+			can_upgrade = no
+					# can_disband = no
+			can_change_composition = no
+			can_change_leader = no
+			uses_naval_capacity = no
+		}
+	}
+}
+
+CmtEffectCreateFleet_KhanSubReinforcement2 = {
+	CmtEffectCreateAdmiral_MarauderEncourager = yes
+	create_fleet = {
+		name = "NAME_Horde_Auxiliary_Fleet"
+		effect = {
+			set_owner = prev
+			set_fleet_flag = horde_auxuliaries
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
+			CmtEffectResetLoop = yes
+			
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+				CmtEffectProgressLoop4 = yes
+				
+				while = { count =  4 CmtEffectCreateShip_Outrider = yes }    		## 16
+				while = { count =  2 CmtEffectCreateShip_Lancer = yes }      		##  8
+				CmtEffectCreateShip_VoidChampion = yes                       		##  6
+				switch = {
+					trigger = has_global_flag
+					CmtFlagLoopA = { CmtEffectCreateShip_VoidChampion = yes }
+					CmtFlagLoopB = { }
+					CmtFlagLoopC = { CmtEffectCreateShip_VoidChampion = yes }
+					CmtFlagLoopZ = { CmtEffectCreateShip_AncestralGlory = yes }		##  1
+				}
+			}
+			
+			CmtFleetSetAuxParam_KhanAuxiliary = yes
+			assign_leader = last_created_leader
+		}
+		settings = {
+			can_upgrade = no
+					# can_disband = no
+			can_change_composition = no
+			can_change_leader = no
+			uses_naval_capacity = no
+		}
+	}
+}
+
+CmtEffectCreateFleet_KhanSubReinforcement3 = {
+	CmtEffectCreateAdmiral_MarauderEncourager = yes
+	create_fleet = {
+		name = "NAME_Horde_Auxiliary_Fleet"
+		effect = {
+			set_owner = prev
+			set_fleet_flag = horde_auxuliaries
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
+			CmtEffectResetLoop = yes
+			
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+				CmtEffectProgressLoop4 = yes
+				
+				while = { count =  5 CmtEffectCreateShip_Outrider = yes }    		## 22
+				while = { count =  4 CmtEffectCreateShip_Lancer = yes }      		## 12
+				while = { count =  2 CmtEffectCreateShip_VoidChampion = yes }		##  8
+				switch = {
+					trigger = has_global_flag
+					CmtFlagLoopA = { CmtEffectCreateShip_Outrider = yes }
+					CmtFlagLoopB = { CmtEffectCreateShip_AncestralGlory = yes }		##  1
+					CmtFlagLoopC = { }
+					CmtFlagLoopZ = { CmtEffectCreateShip_Outrider = yes }
+				}
+			}
+			
+			CmtFleetSetAuxParam_KhanAuxiliary = yes
+			assign_leader = last_created_leader
+		}
+		settings = {
+			can_upgrade = no
+					# can_disband = no
+			can_change_composition = no
+			can_change_leader = no
+			uses_naval_capacity = no
+		}
+	}
+}
+
+CmtEffectCreateFleet_KhanSubReinforcement4 = {
+	CmtEffectCreateAdmiral_MarauderEncourager = yes
+	create_fleet = {
+		name = "NAME_Horde_Auxiliary_Fleet"
+		effect = {
+			set_owner = prev
+			set_fleet_flag = horde_auxuliaries
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
+			CmtEffectResetLoop = yes
+			
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+				CmtEffectProgressLoop4 = yes
+				
+				while = { count =  7 CmtEffectCreateShip_Outrider = yes }    		## 26 -> 28
+				while = { count =  4 CmtEffectCreateShip_Lancer = yes }      		## 18
+				while = { count =  3 CmtEffectCreateShip_VoidChampion = yes }		## 12
+				switch = {
+					trigger = has_global_flag
+					CmtFlagLoopA = { CmtEffectCreateShip_AncestralGlory = yes }		##  1
+					CmtFlagLoopB = { CmtEffectCreateShip_Lancer = yes }
+					CmtFlagLoopC = { }
+					CmtFlagLoopZ = { CmtEffectCreateShip_Lancer = yes }
+				}
+			}
+			
+			CmtFleetSetAuxParam_KhanAuxiliary = yes
+			assign_leader = last_created_leader
+		}
+		settings = {
+			can_upgrade = no
+					# can_disband = no
+			can_change_composition = no
+			can_change_leader = no
+			uses_naval_capacity = no
+		}
+	}
+}
+
+CmtEffectCreateFleet_KhanSubReinforcement5 = {
+	CmtEffectCreateAdmiral_MarauderEncourager = yes
+	create_fleet = {
+		name = "NAME_Horde_Auxiliary_Fleet"
+		effect = {
+			set_owner = prev
+			set_fleet_flag = horde_auxuliaries
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
+			CmtEffectResetLoop = yes
+			
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+				CmtEffectProgressLoop2 = yes
+				
+				while = { count =  9 CmtEffectCreateShip_Outrider = yes }    		## -- -> 36
+				while = { count =  7 CmtEffectCreateShip_Lancer = yes }      		## -- -> 28
+				while = { count =  4 CmtEffectCreateShip_VoidChampion = yes }		## -- -> 18
+				switch = {
+					trigger = has_global_flag
+					CmtFlagLoopA = { CmtEffectCreateShip_AncestralGlory = yes }		## -- ->  2
+					CmtFlagLoopZ = { CmtEffectCreateShip_VoidChampion = yes }
+				}
+			}
+			
+			CmtFleetSetAuxParam_KhanAuxiliary = yes
+			assign_leader = last_created_leader
+		}
+		settings = {
+			can_upgrade = no
+					# can_disband = no
+			can_change_composition = no
+			can_change_leader = no
+			uses_naval_capacity = no
+		}
+	}
+}
+
+CmtEffectCreateFleet_KhanEncourager = {
+	create_fleet = {
+		name = "NAME_Garrison_Fleet"
+		effect = {
+			set_owner = prev
+			set_fleet_flag = satrapy_garrison_fleet
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
+			CmtEffectResetLoop = yes
+			
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+				CmtEffectProgressLoop2 = yes
+				
+				while = { count =  5 CmtEffectCreateShip_Outrider = yes }    		## 22
+				while = { count =  3 CmtEffectCreateShip_Lancer = yes }      		## 14
+				while = { count =  2 CmtEffectCreateShip_VoidChampion = yes }		##  8
+				switch = {
+					trigger = has_global_flag
+					CmtFlagLoopA = { CmtEffectCreateShip_Lancer = yes }
+					CmtFlagLoopZ = { CmtEffectCreateShip_Outrider = yes }
+				}
+			}
+			
+			CmtFleetSetAuxParam_KhanEncourager = yes
+		}
+		settings = { garrison = yes }
+	}
+}
+
+
+
+#################
+###  Dessanu  ###
+#################
+
+### Element
+CmtEffectCreateElement_DessanuStandard = {
+	event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Dessanu } }
+	CmtEffectResetLoop = yes
+	
+	while = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+		event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+		CmtEffectProgressLoop4 = yes
+		
+		CmtEffectCreateShip_DessanuInterdictor = yes
+		switch = {
+			trigger = has_global_flag
+			CmtFlagLoopA = { CmtEffectCreateShip_DessanuInterdictor = yes }
+			CmtFlagLoopB = { }
+			CmtFlagLoopC = { CmtEffectCreateShip_DessanuMother = yes }
+			CmtFlagLoopZ = { }
+		}
+	}
+}
+
+
+### Fleet
+CmtEffectCreateFleet_DessanuGarryson = {
+	CmtEffectCreateAdmiral_DessanuStandard = yes
+	create_fleet = {
+		name = "NAME_Dessanu_Fleet"
+		effect = {
+			set_owner = prev
+			CmtEffectCreateElement_DessanuStandard = yes
+			CmtFleetSetAuxParam_DessanuGarryson = yes
+			assign_leader = last_created_leader
+		}
+		settings = {
+			garrison = yes
+			uses_naval_capacity = no
+		}
+	}
+}
+
+CmtEffectCreateFleet_DessanuRoamer = {
+	CmtEffectCreateAdmiral_DessanuStandard = yes
+	create_fleet = {
+		name = "NAME_Dessanu_Fleet_2"
+		effect = {
+			set_owner = prev
+			CmtEffectCreateElement_DessanuStandard = yes
+			CmtFleetSetAuxParam_DessanuRoamerCommon = yes
+		}
+		settings = { uses_naval_capacity = no }
+	}
+}
+
+
+
+#################
+###  Graygoo  ###
+#################
+
+### Element
+CmtEffectCreateElement_GraygooStandard = {
+	event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Graygoo } }
+	CmtEffectResetLoop = yes
+	
+	while = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+		event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+		CmtEffectProgressLoop4 = yes
+		
+		CmtEffectCreateShip_GraygooInterdictor = yes
+		switch = {
+			trigger = has_global_flag
+			CmtFlagLoopA = { CmtEffectCreateShip_GraygooInterdictor = yes }
+			CmtFlagLoopB = { }
+			CmtFlagLoopC = { CmtEffectCreateShip_GraygooMother = yes }
+			CmtFlagLoopZ = { }
+		}
+	}
+}
+
+
+### Fleet
+CmtEffectCreateFleet_GraygooGarryson = {
+	create_fleet = {
+		name = "NAME_Tempest_Fleet"
+		effect = {
+			set_owner = prev
+			CmtEffectCreateElement_GraygooStandard = yes
+			CmtFleetSetAuxParam_GraygooGarryson = yes
+		}
+		settings = { garrison = yes }
+	}
+}
+
+CmtEffectCreateFleet_GraygooAttacker = {
+	create_fleet = {
+		name = "NAME_Tempest_Fleet"
+		effect = {
+			set_owner = prev
+			CmtEffectCreateElement_GraygooStandard = yes
+			CmtFleetSetAuxParam_GraygooAttacker = yes
+		}
+	}
+}
+

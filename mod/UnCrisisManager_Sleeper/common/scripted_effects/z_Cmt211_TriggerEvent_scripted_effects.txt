@@ -1,0 +1,222 @@
+
+
+########################################################
+########################################################
+#####                                              #####
+#####    Crisis Manager                            #####
+#####                                              #####
+#####    Scripted Effects for Sleeper Awakening    #####
+#####                                              #####
+########################################################
+########################################################
+
+
+####################################
+###  Sleeper Standard Awakening  ###
+####################################
+
+CmtEffectSetSleeperInterval = {
+	event_target:CmtGlobalVar = {
+		remove_global_flag = CmtFlagNowInSleeperInterval
+		if = {
+			limit = {
+				check_variable = { which = CmtVarSleeperInterval value < @CmtConstSleeperInterval_T0 }
+				NOT = { check_variable = { which = CmtVarSleeperInterval value = 0 } }
+			}
+			### Do nothing
+		} else_if = {
+			limit = { check_variable = { which = CmtVarSleeperInterval value < @CmtConstSleeperInterval_T1 } }
+			set_timed_global_flag = { flag = CmtFlagNowInSleeperInterval days = @CmtConstSleeperInterval_D1 }
+		} else_if = {
+			limit = { check_variable = { which = CmtVarSleeperInterval value < @CmtConstSleeperInterval_T2 } }
+			set_timed_global_flag = { flag = CmtFlagNowInSleeperInterval days = @CmtConstSleeperInterval_D2 }
+		} else_if = {
+			limit = { check_variable = { which = CmtVarSleeperInterval value < @CmtConstSleeperInterval_T3 } }
+			set_timed_global_flag = { flag = CmtFlagNowInSleeperInterval days = @CmtConstSleeperInterval_D3 }
+		} else_if = {
+			limit = { check_variable = { which = CmtVarSleeperInterval value < @CmtConstSleeperInterval_T4 } }
+			set_timed_global_flag = { flag = CmtFlagNowInSleeperInterval days = @CmtConstSleeperInterval_D4 }
+		} else_if = {
+			limit = { check_variable = { which = CmtVarSleeperInterval value < @CmtConstSleeperInterval_T5 } }
+			set_timed_global_flag = { flag = CmtFlagNowInSleeperInterval days = @CmtConstSleeperInterval_D5 }
+		} else = { set_timed_global_flag = { flag = CmtFlagNowInSleeperInterval days = @CmtConstTUnq_ConstSleeperInterval } }
+	}
+}
+
+### Scope: country (fallen empire)
+CmtEffectSetAnciantRival = {
+	set_country_flag = sleepers_awake_ancient_rival
+	set_global_flag = CmtFlagWarInHeavenTriggered
+	if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 1 } } }
+		set_timed_country_flag = { flag = timed_ancient_rival days = @CmtConstHeavenPreludeSpeed_1a }
+		set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_1a }
+		root = { set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_1a } }
+		every_country = {
+			limit = { CmtTriggerIsPlayableEmpire = yes }
+			set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_1a }
+		}
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 3 } } }
+		set_timed_country_flag = { flag = timed_ancient_rival days = @CmtConstHeavenPreludeSpeed_3a }
+		set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_3a }
+		root = { set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_3a } }
+		every_country = {
+			limit = { CmtTriggerIsPlayableEmpire = yes }
+			set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_3a }
+		}
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 4 } } }
+		set_timed_country_flag = { flag = timed_ancient_rival days = @CmtConstHeavenPreludeSpeed_4a }
+		set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_4a }
+		root = { set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_4a } }
+		every_country = {
+			limit = { CmtTriggerIsPlayableEmpire = yes }
+			set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_4a }
+		}
+	} else = {
+		set_timed_country_flag = { flag = timed_ancient_rival days = @CmtConstHeavenPreludeSpeed_2a }
+		set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_2a }
+		root = { set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_2a } }
+		every_country = {
+			limit = { CmtTriggerIsPlayableEmpire = yes }
+			set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_2a }
+		}
+	}
+}
+
+
+
+#######################
+###  War in Heaven  ###
+#######################
+
+## Scope: this = country (1st sleeper)
+CmtEffectSelectAncientRival = {
+	random_list = {
+		60 = {
+			modifier = {
+				factor = 0
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenProbability value = 1 } }
+			}
+			random_list = {
+				40 = {
+					modifier = {
+						factor = 0
+						OR = {
+							event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenAncientRival value = 1 } }
+							AND = {
+								event_target:CmtGlobalVar = {
+									OR = {
+										check_variable = { which = CmtVarHeavenAncientRival value = 2 }
+										check_variable = { which = CmtVarHeavenAncientRival value = 3 }
+									}
+								}
+								NOT = {
+									any_country = {
+										CmtTriggerSleeperOpposingEchos = yes
+										CmtTriggerCandidateAncientRival = yes
+									}
+								}
+							}
+						}
+					}
+					random_country = {
+						limit = {
+							CmtTriggerSleeperOpposingEchos = yes
+							CmtTriggerCandidateAncientRival = yes
+						}
+						CmtEffectSetAnciantRival = yes
+					}
+					### For Debugging Only
+					event_target:CmtGlobalVar = { change_variable = { which = GmtVarDebugCountAncientRivalOpposite value = 1 } }
+				}
+				20 = {
+					modifier = {
+						factor = 0
+						OR = {
+							event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenAncientRival value = 5 } }
+							AND = {
+								event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenAncientRival value = 3 } }
+								any_country = {
+									CmtTriggerSleeperOpposingEchos = yes
+									CmtTriggerCandidateAncientRival = yes
+								}
+							}
+						}
+					}
+					random_country = {
+						limit = { CmtTriggerCandidateAncientRival = yes }
+						CmtEffectSetAnciantRival = yes
+					}
+					### For Debugging Only
+					event_target:CmtGlobalVar = { change_variable = { which = GmtVarDebugCountAncientRivalRandom value = 1 } }
+				}
+			}
+		}
+		40 = {
+			modifier = {
+				factor = 3
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenProbability value = 2 } }
+			}
+			modifier = {
+				factor = 0.34
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenProbability value = 4 } }
+			}
+			modifier = {
+				factor = 0
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenProbability value = 5 } }
+			}
+			### Do nothing, For Debugging Only
+			event_target:CmtGlobalVar = { change_variable = { which = GmtVarDebugCountAncientRivalNon value = 1 } }
+		}
+	}
+}
+
+### Scope: this = country
+CmtEffectOrderLeagueLeader = {
+	set_global_flag = war_in_heaven_seeking_league_leader
+	set_global_flag = stop_further_leader_seek
+	country_event = { id = war_in_heaven.13 }
+}
+
+### Scope: this = attacker country, prev = defender country
+CmtEffectDeclareWarInHeaven = {
+	if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenExhaustion value = 1 } } }
+		declare_war = {
+			target = prev
+			name = NAME_The_War_in_Heaven
+			attacker_war_goal = wg_CmtWarInHeaven1
+		}
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenExhaustion value = 3 } } }
+		declare_war = {
+			target = prev
+			name = NAME_The_War_in_Heaven
+			attacker_war_goal = wg_CmtWarInHeaven3
+		}
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenExhaustion value = 4 } } }
+		declare_war = {
+			target = prev
+			name = NAME_The_War_in_Heaven
+			attacker_war_goal = wg_CmtWarInHeaven4
+		}
+	} else_if = {
+		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenExhaustion value = 5 } } }
+		declare_war = {
+			target = prev
+			name = NAME_The_War_in_Heaven
+			attacker_war_goal = wg_CmtWarInHeaven5
+		}
+	} else = {
+		declare_war = {
+			target = prev
+			name = NAME_The_War_in_Heaven
+			attacker_war_goal = wg_war_in_heaven
+		}
+	}
+}
+
+

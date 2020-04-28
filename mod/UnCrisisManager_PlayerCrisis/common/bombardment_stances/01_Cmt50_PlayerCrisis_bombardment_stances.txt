@@ -1,0 +1,63 @@
+
+#######################################################
+#######################################################
+#####                                             #####
+#####    Crisis Manager                           #####
+#####                                             #####
+#####    bombardment_stances for Player Crisis    #####
+#####                                             #####
+#######################################################
+#######################################################
+
+
+armageddon = {
+	trigger = {
+		owner = { 
+			has_policy_flag = orbital_bombardment_armageddon
+			NOT = { CmtTriggerIsPlayerCrisisAggressor = yes }
+		}
+	}
+	
+	icon_frame = 3
+	default = no
+	
+	stop_when_armies_dead = no
+	abduct_pops = no
+
+	planet_damage = 1.5
+	army_damage = 2.0	
+	
+	kill_pop_chance = { base = 1.0 }
+	min_pops_to_kill_pop = 0
+	
+	ai_weight = {
+		weight = 10
+		modifier = {
+			factor = 0.01
+			exists = from
+			from = { 
+				owner = { NOT = { is_hostile = root.owner } }
+			}
+		}
+	}
+}
+
+BombardmentPlayerCrisis = {
+	trigger = {
+		owner = { CmtTriggerIsPlayerCrisisAggressor = yes }
+	}
+	
+	icon_frame = 3
+	default = no
+	stop_when_armies_dead = no
+	abduct_pops = no
+	
+	planet_damage = 4.5		## cf. armageddon = 1.5
+	army_damage = 3.0		## cf. armageddon = 2.0
+	
+	kill_pop_chance = { base = 3.0 }	## cf. armageddon = 1.0
+	min_pops_to_kill_pop = 0
+	
+	ai_weight = { weight = 1000 }
+}
+

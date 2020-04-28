@@ -1,0 +1,47 @@
+
+################################################
+################################################
+#####                                      #####
+#####    Crisis Manager                    #####
+#####                                      #####
+#####    Random Names for War in Heaven    #####
+#####                                      #####
+################################################
+################################################
+
+### War in Heaven
+war_name_format = {
+	random_weight = {
+		factor = 0
+		modifier = {
+			add = 999
+			OR = {
+				using_war_goal = {
+					type = wg_war_in_heaven
+					owner = attacker
+				}
+				using_war_goal = {
+					type = wg_CmtWarInHeaven1
+					owner = attacker
+				}
+				using_war_goal = {
+					type = wg_CmtWarInHeaven3
+					owner = attacker
+				}
+				using_war_goal = {
+					type = wg_CmtWarInHeaven4
+					owner = attacker
+				}
+				using_war_goal = {
+					type = wg_CmtWarInHeaven5
+					owner = attacker
+				}
+			}
+			attacker = {
+			}
+			defender = {
+			}
+		}
+	}
+	format = "<war_in_heaven_war_names>"
+}

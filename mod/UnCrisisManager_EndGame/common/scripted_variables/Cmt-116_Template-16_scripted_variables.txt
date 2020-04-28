@@ -1,0 +1,663 @@
+
+################################
+################################
+#####                      #####
+#####    Crisis Manager    #####
+#####                      #####
+#####    Template T116     #####
+#####                      #####
+################################
+################################
+#
+#	This template is listed up into the ''Other Templates''
+#
+#	How to use: See ''ReadMe_for_making_template.txt''
+#
+
+
+################################
+###  Activation of Template  ###
+################################
+	
+	### Activate Template
+		@CmtT116_ConstActivatedEventEndgame = yes		## for events of End-Game Crisis, Guardians of Galaxy
+		@CmtT116_ConstActivatedEventMidgame = yes		## for events of Mid-Game Crisis (Khan, L-Gate)
+		@CmtT116_ConstActivatedEventSleeper = yes		## for events of Fallen Empire Awaking except Guarians of Galaxy
+		@CmtT116_ConstActivatedPowerEndgame = no		## for military power of End-Game Crisis
+		@CmtT116_ConstActivatedPowerMidgame = no		## for military power of Khan and Gray Tempest
+			### yes: this template is activated for specified parameters.
+			### no : this template is ignored for specified parameters.
+			### * No configurations exist for military power of Fallen/Awakened Empires.
+		
+	
+	### The version of Crisis Manager. This template corresponds to: 
+		@CmtT116_ConstVersionInfo = 1.10
+			### Never change this value.
+			### For example, ''1.03'' means ''ver.1.3'' but not ''ver.1.0.3''
+		
+	
+
+##############################################
+###  Event Conditions for End-Game Crises  ###
+##############################################
+#
+#	Required for activating: Crisis Manager - End-Game Edition
+#	Required for activating: @CmtT116_ConstActivatedEventEndgame = yes
+#
+
+	### Multiple Crises
+		@CmtT116_ConstMultiple = 5
+			### Forbid All Crises = 1, Allow Only One Crisis = 2 (Default)
+			### Allow multiple crisis = 3, Allow Simultaneous Crises = 4, Force Triple crises = 5
+	
+	### Interval of Crisis
+		@CmtT116_ConstTriggerInterval = 10
+			### Set in years
+			### It must be 0, 10, 25, 50, 75, 100 or 999 (Default = 0).
+			### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
+	
+	### Crises to Happen at Earliest
+		@CmtT116_ConstEarliestEgpy = -999
+			### Set x of ''End-Game Start Year + x years''.
+			### x must be -999, -100, -75, -50, -25, 0, 25, 50, 75, 100 or 999. (Default = 50)
+			### Exception: -999 means 'at the earliest 2205'
+			### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
+	
+	### MTTH for Crisis Triggered
+		@CmtT116_ConstTriggerProbability = 5
+			### Long = 1, Middle = 2 (Default), Short: 3, Very Short = 4, Almost Zero = 5
+			### Template Unique Value (Beta) = -1 (Actual value must be set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt'')
+	
+	### Equalization of Probability
+		@CmtT116_ConstEqualizingProbability = 1
+			### No = 1 (Default), Weak = 2, Strong = 3, Completely = 4
+	
+	### Progress Speed of Opening Event Chain
+		@CmtT116_ConstOpeningEventSpeed = 6
+			### Very Slow = 1, Random and Slow = 2, Standard = 3 (Default)
+			### Fast = 4, Random and Fast = 5, Foxhound = 6
+	
+	### Submarine Crisis
+		@CmtT116_ConstSubmarineCrisis = yes
+			### yes: Activate Submarine Crisis
+			### no : Disable Submarine Crisis (Default)
+		
+	
+
+#########################################################
+###  Configurations for Expansion of Crisis Factions  ###
+#########################################################
+#
+#	Required for activating: Crisis Manager - End-Game Edition
+#	Required for activating: @CmtT116_ConstActivatedEventEndgame = yes
+#
+
+	### Crises - Total War
+		@CmtT116_ConstTotalWarPriority = 2
+			### Disabled = 1 or { Disable ''Crisis Manager - Total War Pack'' } (Vanilla)
+			### Enabled, Combatant Has Priority of Dominion = 2 (Default, ''Total War Pack'' is required.)
+			### Enabled, Former Owner Has Priority of Dominion = 3 (''Total War Pack'' is required.)
+		
+	### Auto-Build Starbase
+		@CmtT116_ConstTotalWarAutoBuild = 3
+			### Disabled = 1 or { Disable ''Crisis Manager - Total War Pack'' } (Vanilla)
+			### Enabled for Crisis Constructors = 2 (''Total War Pack'' is required.)
+			### Fully Enabled for Crisis Factions = 3 (Default, ''Total War Pack'' is required.)
+	
+	### Occupy Planets
+		@CmtT116_ConstPlanetOccupy = 7
+			### Same as Vanilla = 1 (Default), Win Ground Combat = 2, Annihilate Armies = 3
+			### Only Orbital Bombardment = 4, N/A = 5, Short Orbital Bombardment = 6, Instant Orbital Bombardment = 7
+		
+	### Purge Speed
+		@CmtT116_ConstPurgeSpeed = 6
+			### Same as Vanilla = 1 (Default), 1 Pop Killed Every Year = 2, 1 Pop Killed Every 3 Months = 3, 1 Pop Killed Every Month = 4
+			### 1 Pop Killed Every 10 Days = 5, 1 Pop Killed Every 3 Days = 6, All Pops Killed Immediately = 7
+		
+	### Faster Combat Fleet
+		@CmtT116_ConstFasterCombatFleet = 4
+			### Very Slow = 1 (default), Slow = 2
+			### Middle = 3, Fast = 4, Crazy = 5
+		
+	### Faster Constructor
+		@CmtT116_ConstFasterConstructor = 4
+			### Very Slow = 1 (default), Slow = 2
+			### Middle = 3, Fast = 4, Crazy = 5
+	
+	### Friendly Crisis
+		@CmtT116_ConstFriendlyCrisis = 1
+			### Hostile to Each Other = 1 (Default)
+			### Only Extradimensionals Friendly with Each Other = 2
+			### Friendly with Each Other Except Extradimensionals = 3
+			### Friendly with Each Other = 4
+		
+	
+
+############################################
+###  Advanced Configurations: Prethoryn  ###
+############################################
+#
+#	Required for activating: Crisis Manager - End-Game Edition
+#	Required for activating: @CmtT116_ConstActivatedEventEndgame = yes
+#
+
+	### Advanced Configurations: Prethoryn Scourge
+		@CmtT116_ConstForbiddenPrethoryn = no
+			### yes: Forbid to happen
+			### no:  Allow to happen (Default)
+			
+		@CmtT116_ConstPrethorynNonRimAttack = yes
+			### yes: Their invasion may begin from inside of the galaxy. (Acrobatic Charge)
+			### no : Their invasion begin from surely rim of the galaxy. (Default)
+		
+	### Wounded Queen
+		@CmtT116_ConstPrethorynQueen = 4
+			### Never Found = 1. Long MTTH = 2 (Default), Short MTTH = 3, Very Short = 4
+		
+	### Sentinels Rising
+		@CmtT116_ConstSentinelRise = 5
+			### Never Rise = 1. Delay = 2, Standardly = 3 (Default), Early = 4, Waiting for Scramble = 5
+			
+	### Anatomy Files
+		@CmtT116_ConstForbiddenAnatomy = no
+			### yes: Forbid, no: Allow (Default)
+			
+	### Feral Prethoryn
+		@CmtT116_ConstFeralPrethoryn = 4
+			### Never Spawn = 1. Spawn a Little = 2, Spawn = 3 (Default), Spawn frequently = 4
+	
+	### Unlimited Flavor Text of Prethoryn
+		@CmtT116_ConstPrethorynUnlimitedFlavor = yes
+			### yes: Unlimited, no: Limited (Default)
+		
+	
+
+####################################################
+###  Advanced Configurations: Extradimensionals  ###
+####################################################
+#
+#	Required for activating: Crisis Manager - End-Game Edition
+#	Required for activating: @CmtT116_ConstActivatedEventEndgame = yes
+#
+
+	### Advanced Configurations: Extradimensional Invasion
+		@CmtT116_ConstForbiddenExds = no
+			### yes: Forbid to happen
+			### no:  Allow to happen (Default)
+		
+		@CmtT116_ConstNoJumpButExds = yes
+			### yes: Spawnable without empire has Jump Drive
+			### no : Any empires must have Jump Drive for spawning, (Default)
+		
+	### Extradimensional Chasers 1:  A condision for the summon of Aberrant and Vehement.
+		@CmtT116_ConstExdsChaserCondition = 6
+			### Never Opened = 1, Severe = 2, Standard = 3 (Default)
+			### Probability Scaling = 4, Anytime OK = 5, Avenger = 6
+		
+	### Extradimensional Chasers 2:  Location of the summon of Aberrant and Vehement.
+		@CmtT116_ConstExdsChaserAnywhere = yes
+			### yes: Spawn anywhere in the galaxy
+			### no : Spawn only inside border of Unbidden (Default)
+			### Caution: This option must be set ''yes'' if ''@CmtT116_ConstExdsChaserCondition = 6'' (Avenger) is selected.
+		
+	### Less Reinforcement on Starbases Built
+		@CmtT116_ConstReinforceCycle_OnExdAnchorBuilt = 1
+			### Set the number of starbases for reinforcement (Default = 1)
+			### This number must be positive integer less than 500, or 999.
+			### Exception: 999 means 'No Reinforcement on Starbases Built'
+		
+	### Unstable Portals
+		@CmtT116_ConstExdsPortalStability = 5
+			### Set the number of anchors (Default = 1)
+			### It must be 1, 3, 5, 10, 25, 50, 100, 250, 500 or 9999.
+			### Exception: 9999 means ''Never Stabilized''
+		
+	
+
+##############################################
+###  Advanced Configurations: Contingency  ###
+##############################################
+#
+#	Required for activating: Crisis Manager - End-Game Edition
+#	Required for activating: @CmtT116_ConstActivatedEventEndgame = yes
+#
+
+	### Advanced Configurations: Contingency Protocol
+		@CmtT116_ConstForbiddenContingency = no
+			### yes: Forbid to happen
+			### no:  Allow to happen (Default)
+			
+	### Strength of Ghost Signal
+		@CmtT116_ConstGhostStrength = 4
+			### Zero = 1, Weak = 2, Middle = 3 (Default)
+			### Strong = 4, Typhoon = 5
+		
+	### Progress Speed of Pre-Terror Events
+		@CmtT116_ConstSynthTerrorEventSpeed = 5
+			### No Terror Happens = 1, Slow = 2, Middle (Default) = 3
+			### Fast = 4, Zero-day Attack = 5
+		
+	### Frequency of Terror
+		@CmtT116_ConstFreqTerror = 5
+			### Low = 1, Middle = 2 (Default), High = 3
+			### Very High = 4, Ordinary Event = 5
+		
+	### Terror to Psi, Hive Empires
+		@CmtT116_ConstSynthTerrorAll = yes
+			### yes: Allow to Happen
+			### no : Forbid to Happen (Default)
+		
+	### Resurfacing of Cybrex
+		@CmtT116_ConstCybrexResurfacing = 5
+			### Never Resurface = 1, Resurface with Delay = 2
+			### Resurface Standardly = 3 (Default), Resurface Early = 4, Power State S1 = 5
+		
+	
+
+######################################################
+###  Advanced Configurations: Forced End of Cycle  ###
+######################################################
+#
+#	Required for activating: Crisis Manager - End-Game Edition
+#	Required for activating: @CmtT116_ConstActivatedEventEndgame = yes
+#
+
+	### Allow Forced End of Cycle
+		@CmtT116_ConstAllowForcedEoc = yes
+			### yes: Allow to happen
+			### no : Forbid to happen (Default)
+			### Caution: yes/no are inverse of another crisis
+			
+	### Target Control of FEoC 1 (PC/NPC)
+		@CmtT116_ConstForcedEocTargetPlayer = 3
+			### NPC Only = 1 (Default), Both of PC and NPC = 2, PC Only = 3
+		
+	### Target Control of FEoC 2 (Transcendence)
+		@CmtT116_ConstForcedEocTranscendence = 2
+			### Limited to Empire Having Transcendence = 1
+			### Prefer to Empire Having Transcendence = 2 (Default)
+			### Unlimited by Ascension Transcendence = 3
+		
+	### Target Control of FEoC 3 (Imperial Strength)
+		@CmtT116_ConstForcedEocCountryStrength = 3
+			### Victim §BSelected Indiscriminately = 1
+			### Prefer to Empire Owing Strong Fleets = 2
+			### Prefer to Empire Owing Larger Territory = 3 (Default)
+ 			### Prefer to Empire with Many POPs = 4
+		
+	### Term of Convenant End of Cycle
+		@CmtT116_ConstForcedEocCrisisTerm = yes
+			### yes: Term of the convenant conforms to ''Progress Speed of Opening Event Chain''
+			### no:  Term of the convenant is 50 years (Default)
+		
+	### * Don't forget ''Guardians of Galaxy'' and/or ''Crisis Power''
+		
+	
+
+########################################################
+###  Advanced Configurations: Awakening of Sleepers  ###
+########################################################
+#
+#	Required for activating: Crisis Manager - Sleeper Edition
+#	Required for activating: @CmtT116_ConstActivatedEventSleeper = yes
+#
+
+	### Multiple Awakening of Sleepers
+		@CmtT116_ConstSleeperMultiple = 4
+			### Never Awakening = 1, Only One = 2, Independently from Guardians = 3
+			### Multiple Awakening = 4, Simultaneous Awakening = 5
+		
+	### Interval of Sleepers Awakening
+		@CmtT116_ConstSleeperInterval = 10
+			### Set in years
+			### It must be 10, 25, 50, 75, 100 or 999 (Default = 10).
+			### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
+			### Zero(0) cannot be set.
+		
+	### Sleepers to Awake at Earliest
+		@CmtT116_ConstSleeperEarliestEgsy = -999
+			### Set x of ''End-Game Start Year + x years''.
+			### x must be -999, -100, -75, -50, -25, 0, 25, 50, 75, 100 or 999. (Default = 0)
+			### Exception: -999 means ''Half Awakening''
+			### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
+		
+	### MTTH for Sleeper Awakening
+		@CmtT116_ConstSleeperProbability = 5
+			### Very Long = 1, Long = 2 (Default), Middle = 3
+			### Short = 4, As Soon as Condition Satisfied = 5
+
+	### Fleet Power of Young for Awakening
+		@CmtT116_ConstSleeperFleetPowerYoung = -1
+			### Set Fleet Power in ** k. For example, ''10'' means 10 k
+			### It must be -1, 15, 25, 35, 50, 70, 90, 140, 210, 350 or 999 (Default = 70).
+			### Exception: -1 means ''Unlimited''
+			### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
+		
+	### Minimum Own Fleet Power for Awakening
+		@CmtT116_ConstSleeperFleetPowerOwn = -1
+			### Set Fleet Power in ** k. For example, ''10'' means 10 k
+			### It must be -1, 15, 20, 30, 45, 60, 75, 120, 180, 300 or 999 (Default = 60).
+			### Exception: -1 means ''Unlimited''
+			### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
+		
+	### Awakenable Sleepers
+		@CmtT116_ConstSleeperForbidMaterialist  = no		## Keepers of Knowledge
+		@CmtT116_ConstSleeperForbidSpirituarist = no		## Holy Guardians
+		@CmtT116_ConstSleeperForbidXenophile    = no		## Enigmatic Observers
+		@CmtT116_ConstSleeperForbidXenophobe    = no		## Militant Isolationists
+			### yes: Forbid to Standardly Awaken
+			### no:  Allow to Standardly Awaken (Default)
+		
+	### Punishment for Holy-Cracker
+		@CmtT116_ConstSleeperHolyClacker = 3
+			### No Punishment = 1, Punished Later = 2, Punished Urgently = 3 (Default)
+		
+	
+
+################################################
+###  Advanced Configurations: War in Heaven  ###
+################################################
+#
+#	Required for activating: Crisis Manager - Sleeper Edition
+#	Required for activating: @CmtT116_ConstActivatedEventSleeper = yes
+#
+
+	### Probability of War in Heaven
+		@CmtT116_ConstHeavenProbability = 5
+			### Happen = 1, Low = 2, Middle = 3 (Default)
+			### High = 4, Animosities Never Subside = 5
+		
+	### Ancient Rival for War in Heaven
+		@CmtT116_ConstHeavenAncientRival = 1
+			### Completely Random = 1. Opposite Ethics Prefered = 2, Opposite Ethics Has Priority = 3
+			### Opposite Ethics Highly Prefered = 4 (Default), Limited to Opposite Etics = 5
+		
+	### Awakenable Ancient Rival
+		@CmtT116_ConstHeavenForbidIndependently = no
+			### yes: Set Independently from Standard Awakening (Activate Following 4 Options)
+			### no:  Confilm to Standard Awakening (Ignore Following 4 Options, Default)
+		
+		@CmtT116_ConstHeavenForbidMaterialist   = no		### Keepers of Knowledge
+		@CmtT116_ConstHeavenForbidSpirituarist  = no		### Holy Guardians
+		@CmtT116_ConstHeavenForbidXenophile     = no		### Enigmatic Observers
+		@CmtT116_ConstHeavenForbidXenophobe     = no		### Militant Isolationists
+			### yes: Forbid to Awaken as Ancient Rival
+			### no:  Allow to Awaken as Ancient Rival (Default)
+		
+	### Indomitable Rival
+		@CmtT116_ConstHeavenIndomitableRival = 3
+			### Disallow = 1 (Default), Allow Indomitable = 2, Recovered = 3
+		
+	### Progress Speed of Prelude to War in Heaven
+		@CmtT116_ConstHeavenPreludeSpeed = 4
+			### Slow = 1, Middle = 2 (Default), Fast = 3, Super-Expless = 4
+		
+	### Subjecting to Precursor (NPCs)
+		@CmtT116_ConstHeavenNpcSubject = 2
+			### Hardly = 1, Possibly = 2, Maybe = 3 (Default)
+			### Probably = 4, Surly = 5
+		
+	### League of Non-Aligned Powers
+		@CmtT116_ConstHeavenNpcLeague = 3
+			### Never Formed = 1, Get Handful of Members = 2
+			### Get Middle Amount of Members = 3, Get Many Members = 4 (Default)
+		
+	### Exhaustion from War in Heaven
+		@CmtT116_ConstHeavenExhaustion = 1
+			### Spineless = 1, Fickle = 2 (Default), Tough = 3, Vindictive = 4, All-Out War = 5
+		
+	
+
+######################################################
+###  Advanced Configurations: Guardians of Galaxy  ###
+######################################################
+#
+#	Required for activating: Crisis Manager - End-Game Edition
+#	Required for activating: @CmtT116_ConstActivatedEventEndgame = yes
+#
+#	* NOT Sleeper Edition / @...EventSleeper
+#
+
+	### Probability of Guardians Awakening
+		@CmtT116_ConstGuardiansProbability = 4
+			### Never Awake = 1, Low Probability = 2
+			### High Probability = 3 (Default), Surely Awake = 4
+		
+	### Delay of Guardians Awakening
+		@CmtT116_ConstTimingAwakingGuardians = 4
+			### Oversleep = 1, Standard Timing = 2 (Default), Awake Quickly = 3, Powerful Alarm Clock = 4
+			
+	### Dual Guardians
+		@CmtT116_ConstDoubleGurdian = 4
+			### Forbidden = 1 (Default), Low Probability = 2, High Probability = 3, Forced = 4
+			### Only Materialist Can Awaken = 1.1, Only Xenophile Can Awaken = 1.1
+			### * Fallen Machine Empire Igore This Configuration
+			
+	### Worn-Out Guardians
+		@CmtT116_ConstGuardianWornOut = 3
+			### Disallow = 1 (Default), Allow Worn-Out = 2, Rallied = 3
+			
+	### Ancient Caretakers (Fallen Machine Empire)
+		@CmtT116_ConstMechFeAwaking = 2
+			### Never Awake = 1, Awakening Surely as Guardians = 2
+			### Awakening Randomly = 3 (Default), Awakening Surely as Berserkers = 4
+		
+	
+
+#######################################
+###  Advanced Configurations: Khan  ###
+#######################################
+#
+#	Required for activating: Crisis Manager - Mid-Game Edition
+#	Required for activating: @CmtT116_ConstActivatedEventMidgame = yes
+#
+
+	### Multiple Great Khans
+		@CmtT116_ConstKhanMultiple = 3
+			### No Khan = 1, Single Khan = 2 (Default), Multiple Khans = 3
+			### N/A = 4, Great Great Khan = 5 (Beta)
+		
+	### Interval of Khan Reigning
+		@CmtT116_ConstKhanInterval = 0
+			### Set in years
+			### It must be 0, 10, 25, 50, 75, 100 or 999 (Default = 0).
+			### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
+		
+	### Khan to Reign at Earliest
+		@CmtT116_ConstKhanEarliestMgpy = -999
+			### Set x of ''Mid-Game Start Year + x years''.
+			### x must be -999, -100, -75, -50, -25, 0, 10, 25, 50, 75 or 999. (Default = 10)
+			### Exception: -999 means 'at anytime'
+			### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
+		
+	### Last Chance of Khan Reigning
+		@CmtT116_ConstKhanLatestEgpy = 999
+			### Set x of ''End-Game Start Year + x years''.
+			### x must be -999, -100, -75, -50, -25, 0, 25, 50, 75, 100 or 999. (Default = 0)
+			### Exception: 999 means ''Chance Never Terminate''
+			### -999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
+			### Caution: 999 and -999 are inverse of other similar configurations.
+		
+	### MTTH for Khan Reigning
+		@CmtT116_ConstKhanTriggerProbability = 5
+			### Very Long = 1, Long = 2 (Default), Middle = 3
+			### Short = 4, Impatient Khan = 5
+		
+	### Probability of Khan to Rise Up for Vengeance
+		@CmtT116_ConstKhanVengeance = 5
+			### Never = 1, Low = 2 (Default), Middle = 3
+			### High = 4, Do Vengeance at Any Cost = 5
+		
+	### Resurgence of Khan
+		@CmtT116_ConstKhanResurgence = 1
+			### Set the one of followings (Default = 1)
+			### -1: Never
+			### 1 ~ 509: Once, Twice, Thrice, ...
+			### 512: ''Phoenix''.
+			### (0, 510, 511: Not Applicable)
+		
+	### Lifespan of Khan
+		@CmtT116_ConstKhanLifespan = 1
+			### Critical = 1, Fleeting = 2, Standard Lifespan = 3 (Default)
+			### Enduring = 4, Venerable = 5, Immortality = 6
+		
+	### Latent Strength of Horde in Adversity
+		@CmtT116_ConstReinforceCycle_Khan = 4
+			### Disable = 1 (Default), Weak = 2, Middle = 3, Strong = 4
+		
+	### Future of Horde
+		@CmtT116_ConstKhanPostDeathSummary = 1
+			### Random = 1 (Default), Democracy = 2, Democracy or New Khanate = 3
+			### New Khanate = 4, New Khanate or Splinter Diadochi = 5, Splinter Diadochi = 6
+		
+	
+
+#########################################
+###  Advanced Configurations: L-Gate  ###
+#########################################
+#
+#	Required for activating: Crisis Manager - Mid-Game Edition
+#	Required for activating: @CmtT116_ConstActivatedEventMidgame = yes
+#
+
+	### Insights for Opening L-Gates
+		@CmtT116_ConstLgateReqClues = 1
+			### Set the number of insights for opening L-Gate. (Default = 7)
+			### It must be -1 or positive integer. Zero(0) cannot be set.
+			### -1 means insights is not required.
+		
+	### Technology for Opening L-Gates
+		@CmtT116_ConstLgateSkipTech = yes
+			### yes: No Technology Required
+			### no : ''L-Gate Activation'' Technology Required (Default)
+		
+	### What Lurks Beyond L-Gates
+		@CmtT116_ConstLgateForbidSilence = no		## Eerie Silence
+		@CmtT116_ConstLgateForbidLdrake  = no		## L-Drake
+		@CmtT116_ConstLgateForbidDessanu = no		## Dessanu
+		@CmtT116_ConstLgateForbidGraygoo = no		## Gray Tempest
+			### yes: Forbid to happen
+			### no:  Allow to happen (Default)
+		
+	### Algorithm to Activate L-Gate (Common Setting)
+		@CmtT116_ConstLgateCycleCommon = 3
+		### Only One = 1, Open Slowly = 2, Vanilla = 3 (Default)
+		### Immediately All = 4, Set Individually = -1 (NOT 5)
+		
+	### Algorithm to Activate L-Gate (Individually Settings)
+		@CmtT116_ConstLgateCycleSilence = 4		## Eerie Silence
+		@CmtT116_ConstLgateCycleLdrake  = 5		## L-Drake
+		@CmtT116_ConstLgateCycleDessanu = 5		## Dessanu
+		@CmtT116_ConstLgateCycleGraygoo = 5		## Gray Tempest
+			### Only One = 1, After Crisis = 2 (For Only Gray Tempest)
+			### One by One Slowly = 3, One by One Quickly = 4, Immediately All = 5
+			### Caution
+			###     These configurations are activated only if ''@CmtT116_ConstLgateCycleCommon = -1'' is set.
+			###     Other cases, they are ignored.
+		
+	### Quiet Stroller
+		@CmtT116_ConstLgateAloneGrayCondition = 2
+			### Never Found = 1, In Silent L-Cluster = 2 (Default)
+			### In Silent/L-Drake L-Cluster = 3, In Any L-Cluster = 4
+		
+	### Dessanu Gift
+		@CmtT116_ConstLgateDessanuGift = 3
+			### No Gift = 1, Cheap Guift = 2, Standard Gift = 3 (Default)
+			### Righ Gifts = 4, Lavish Gifts = 5, Enigmatic Gifts = 6
+		
+	### Reinforcement Cycle of Gray Tempest's Fleets
+		@CmtT116_ConstReinforceCycle_Graygoo = 6
+			### Non = 1, Long = 2, Middle = 3 (Default)
+			### Short = 4, Nanite Storm = 5
+		
+	### Terraforming for Nanite World
+		@CmtT116_ConstLgateTerraformNanite = 4
+			### Unable to Terraformed = 1
+			### Can Terraformed after Tempest = 2, Auto-Terraformed after Tempest = 3
+			### Can Terraformed after War = 4 (Default), Auto-Terraformed after War = 5
+			### Can Terraformed for Any L-Cluster = 6
+		
+	
+
+######################
+###  Crisis Power  ###
+######################
+#
+#	Required for activating: Crisis Manager - End-Game Edition and/or Mid-Game Edition
+#	Required for activating: @CmtT116_ConstActivatedFleetPower = yes
+#
+
+
+### Template of Crisis Power
+	### Template of Crisis Power
+		@CmtT116_ConstCrisisStrengthEnd = 2		## for End-Game Crisis
+		@CmtT116_ConstCrisisStrengthMid = 2		## for Mid-Game Crisis (Khan & Gray Tempest)
+			### Set configurations individually = 0
+			### Easy = 1, Normal = 2 (Default), Hard = 3, Doomsday = 4
+		
+	### Common information for ''Individual Configurations''
+		### - '@CmtT116_ConstCrisisStrength' must be set zero(0) for using following configurations.
+		###     > If it is NOT zero(0), all of following configurations are ignored.
+		### - To set same parameter for all crisis
+		###     > Input scale factor to '@CmtT116_Const****_Common'.
+		###     > In this case, '@CmtT116_Const****_<name of faction>' are ignored.
+		###     > 0(Zero) or negative number can NOT be inputted.
+		### - To set parameter individually for each crisis
+		###     > Input 0(Zero) to '@CmtT116_Const****_Common'.
+		###     > Input scale factor to '@CmtT116_Const****_<name of crisis faction>'
+		### - All factors must be positive number that is multiple of 0.25.
+		### - Caution
+		###     > Immoderate factor makes heavy load on CPU and GPU
+		###       because these configurations modify the number of ships.
+		###     > Also factors grater than 3 can be inputted if you endure processing load excessive.
+		###
+		
+### Individual Configurations of Crisis Power
+	### Fleet Power
+		@CmtT116_ConstFleetPower_Common             = 1.00		## This value must be set to zero(0) if you set the value individually for each crisis.
+		@CmtT116_ConstFleetPower_Prethoryn          = 1.00
+		@CmtT116_ConstFleetPower_Sentinel           = 1.00
+		@CmtT116_ConstFleetPower_Unbidden           = 1.00
+		@CmtT116_ConstFleetPower_Aberrant           = 1.00
+		@CmtT116_ConstFleetPower_Vehement           = 1.00
+		@CmtT116_ConstFleetPower_Contingency        = 1.00
+		@CmtT116_ConstFleetPower_Cybrex             = 1.00
+		@CmtT116_ConstFleetPower_ForcedEoc          = 1.00		## Forced End of Cycle
+		@CmtT116_ConstFleetPower_Khan               = 1.00
+		@CmtT116_ConstFleetPower_Graygoo            = 1.00		## Gray Tempest
+		@CmtT116_ConstFleetPower_Dessanu            = 1.00
+		
+	### Army Power
+		@CmtT116_ConstArmyPower_Common              = 1.00		## This value must be set to zero(0) if you set the value individually for each crisis.
+		@CmtT116_ConstArmyPower_Prethoryn           = 1.00
+		@CmtT116_ConstArmyPower_Contingency         = 1.00
+		@CmtT116_ConstArmyPower_Khan                = 1.00
+	
+	### Number of Combat Fleets
+		@CmtT116_ConstCombatFleetNumber_Common      = 1.00		## This value must be set to zero(0) if you set the value individually for each crisis.
+		@CmtT116_ConstCombatFleetNumber_Prethoryn   = 1.00
+		@CmtT116_ConstCombatFleetNumber_Sentinel    = 1.00
+		@CmtT116_ConstCombatFleetNumber_Unbidden    = 1.00
+		@CmtT116_ConstCombatFleetNumber_Aberrant    = 1.00
+		@CmtT116_ConstCombatFleetNumber_Vehement    = 1.00
+		@CmtT116_ConstCombatFleetNumber_Contingency = 1.00
+		@CmtT116_ConstCombatFleetNumber_Cybrex      = 1.00
+		@CmtT116_ConstCombatFleetNumber_Khan        = 1.00
+		@CmtT116_ConstCombatFleetNumber_Graygoo     = 1.00		## Gray Tempest
+		@CmtT116_ConstCombatFleetNumber_Dessanu     = 1.00
+	
+	### Number of Army Fleets
+		@CmtT116_ConstArmyNumber_Common             = 1.00		## This value must be set to zero(0) if you set the value individually for each crisis.
+		@CmtT116_ConstArmyNumber_Prethoryn          = 1.00
+		@CmtT116_ConstArmyNumber_Contingency        = 1.00
+		@CmtT116_ConstArmyNumber_Khan               = 1.00
+	
+	### Number of Auxiliary Ships/Fleets (Constructor, Colonizer)
+		@CmtT116_ConstConstructorNumber_Common      = 1.00		## This value must be set to zero(0) if you set the value individually for each crisis.
+		@CmtT116_ConstConstructorNumber_Prethoryn   = 1.00
+		@CmtT116_ConstConstructorNumber_Unbidden    = 1.00
+		@CmtT116_ConstConstructorNumber_Aberrant    = 1.00
+		@CmtT116_ConstConstructorNumber_Vehement    = 1.00
+		@CmtT116_ConstConstructorNumber_Contingency = 1.00
+		@CmtT116_ConstConstructorNumber_Khan        = 1.00
+		

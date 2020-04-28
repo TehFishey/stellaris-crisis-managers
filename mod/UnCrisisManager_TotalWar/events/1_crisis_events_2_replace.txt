@@ -1,0 +1,339 @@
+namespace = crisis
+
+####################################################
+####################################################
+#####                                          #####
+#####    Crisis Events 2: Extradimensionals    #####
+#####                                          #####
+#####    Replaced by Crisis Manager            #####
+#####                                          #####
+####################################################
+####################################################
+#
+# End-Game Edition has a priority over this file.
+#
+
+
+### Reinforcements Arrive After Building Anchor (on_building_starbase_exd), OverWritten by End-Game Edition
+ship_event = {
+	id = crisis.1267
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {		## Must synchronize with CmtTriggerHasExdPortal in End-Game Edition
+		owner = {
+			OR = {
+				AND = {
+					is_country_type = extradimensional
+					OR = {
+						any_owned_ship = { has_ship_flag = unbidden_portal }
+						any_country = {
+							is_country_type = portal_holder
+							any_owned_ship = { has_ship_flag = unbidden_portal }
+						}
+					}
+				}
+				AND = {
+					is_country_type = extradimensional_2
+					OR = {
+						any_owned_ship = { has_ship_flag = aberrant_portal }
+						any_country = {
+							is_country_type = portal_holder
+							any_owned_ship = { has_ship_flag = aberrant_portal }
+						}
+					}
+				}
+				AND = {
+					is_country_type = extradimensional_3
+					OR = {
+						any_owned_ship = { has_ship_flag = vehement_portal }
+						any_country = {
+							is_country_type = portal_holder
+							any_owned_ship = { has_ship_flag = vehement_portal }
+						}
+					}
+				}
+			}
+			num_ships < 2001		## Only Here, but NOT in CmtTriggerHasExdPortal
+		}
+	}
+	
+	immediate = {
+		owner = {
+			change_variable = { which = CmtVarCountExdAnchorBuilt value = 1 }
+			if = {
+				limit = { check_variable = { which = CmtVarCountExdAnchorBuilt value > 9.9 } }
+				set_variable = { which = CmtVarCountExdAnchorBuilt value = 0 }
+				
+				### Copy of crisis.1267 in Vanilla
+				country_event = { id = crisis.1266 days = 6 } # Spawn Construction Ships if needed
+				random_country = {
+					limit = { is_country_type = portal_holder }
+					random_owned_ship = {
+						limit = { is_ship_size = dimensional_portal_ed }
+						save_event_target_as = dimensional_portal
+					}
+				}
+				random_owned_ship = {
+					limit = { is_ship_size = dimensional_portal_ed }
+					save_event_target_as = dimensional_portal
+				}
+				owner_species = { save_event_target_as = extradimensional_species }
+
+				# Extradimensionals 1
+				if = {
+					limit = { is_country_type = extradimensional }
+
+					# Create Admiral
+					random_list = {
+						25 = {
+							create_leader = {
+								class = admiral
+								species = event_target:extradimensional_species
+								name = random
+								skill = 3
+								traits = {
+									trait = leader_trait_ethereal
+								}
+							}
+						}
+						25 = {
+							create_leader = {
+								class = admiral
+								species = event_target:extradimensional_species
+								name = random
+								skill = 3
+								traits = {
+									trait = leader_trait_dimensional_stutter
+								}
+							}
+						}
+						50 = {
+							create_leader = {
+								class = admiral
+								species = event_target:extradimensional_species
+								name = random
+								skill = 3
+							}
+						}
+					}
+
+					# Create Fleet
+					create_fleet = {
+						effect = {
+							set_owner = ROOT.owner
+							create_ship = {
+								name = random
+								design = "NAME_Revenant"
+								graphical_culture = "extra_dimensional_01"
+							}
+							assign_leader = last_created_leader
+							while = {
+								count = 5
+								create_ship = {
+									name = random
+									design = "NAME_Revenant"
+									graphical_culture = "extra_dimensional_01"
+								}
+							}
+							while = {
+								count = 8
+								create_ship = {
+									name = random
+									design = "NAME_Phantom"
+									graphical_culture = "extra_dimensional_01"
+								}
+							}
+							while = {
+								count = 15
+								create_ship = {
+									name = random
+									design = "NAME_Wraith"
+									graphical_culture = "extra_dimensional_01"
+								}
+							}
+							set_location = {
+								target = event_target:dimensional_portal
+								distance = 5
+								angle = random
+							}
+							set_fleet_stance = aggressive
+							set_aggro_range = 500
+							set_aggro_range_measure_from = self
+						}
+					}
+				}
+
+				# Extradimensionals 2
+				else_if = {
+					limit = { is_country_type = extradimensional_2 }
+
+					# Create Admiral
+					random_list = {
+						25 = {
+							create_leader = {
+								class = admiral
+								species = event_target:extradimensional_species
+								name = random
+								skill = 3
+								traits = {
+									trait = leader_trait_ethereal
+								}
+							}
+						}
+						25 = {
+							create_leader = {
+								class = admiral
+								species = event_target:extradimensional_species
+								name = random
+								skill = 3
+								traits = {
+									trait = leader_trait_dimensional_stutter
+								}
+							}
+						}
+						50 = {
+							create_leader = {
+								class = admiral
+								species = event_target:extradimensional_species
+								name = random
+								skill = 3
+							}
+						}
+					}
+					
+					# Create Fleet
+					create_fleet = {
+						effect = {
+							set_owner = ROOT.owner
+							create_ship = {
+								name = random
+								design = "NAME_Huntress"
+								graphical_culture = "extra_dimensional_02"
+							}
+							assign_leader = last_created_leader
+							while = {
+								count = 5
+								create_ship = {
+									name = random
+									design = "NAME_Huntress"
+									graphical_culture = "extra_dimensional_02"
+								}
+							}
+							while = {
+								count = 8
+								create_ship = {
+									name = random
+									design = "NAME_Assassin"
+									graphical_culture = "extra_dimensional_02"
+								}
+							}
+							while = {
+								count = 15
+								create_ship = {
+									name = random
+									design = "NAME_Predator"
+									graphical_culture = "extra_dimensional_02"
+								}
+							}
+							set_location = {
+								target = event_target:dimensional_portal
+								distance = 5
+								angle = random
+							}
+							set_fleet_stance = aggressive
+							set_aggro_range = 500
+							set_aggro_range_measure_from = self
+						}
+					}
+				}
+
+				# Extradimensionals 3
+				else_if = {
+					limit = { is_country_type = extradimensional_3 }
+
+					# Create Admiral
+					random_list = {
+						25 = {
+							create_leader = {
+								class = admiral
+								species = event_target:extradimensional_species
+								name = random
+								skill = 3
+								traits = {
+									trait = leader_trait_ethereal
+								}
+							}
+						}
+						25 = {
+							create_leader = {
+								class = admiral
+								species = event_target:extradimensional_species
+								name = random
+								skill = 3
+								traits = {
+									trait = leader_trait_dimensional_stutter
+								}
+							}
+						}
+						50 = {
+							create_leader = {
+								class = admiral
+								species = event_target:extradimensional_species
+								name = random
+								skill = 3
+							}
+						}
+					}
+					
+					# Create Fleet
+					create_fleet = {
+						effect = {
+							set_owner = ROOT.owner
+							create_ship = {
+								name = random
+								design = "NAME_Eradicator"
+								graphical_culture = "extra_dimensional_03"
+							}
+							assign_leader = last_created_leader
+							while = {
+								count = 5
+								create_ship = {
+									name = random
+									design = "NAME_Eradicator"
+									graphical_culture = "extra_dimensional_03"
+								}
+							}
+							while = {
+								count = 8
+								create_ship = {
+									name = random
+									design = "NAME_Annihilator"
+									graphical_culture = "extra_dimensional_03"
+								}
+							}
+							while = {
+								count = 15
+								create_ship = {
+									name = random
+									design = "NAME_Obliterator"
+									graphical_culture = "extra_dimensional_03"
+								}
+							}
+							set_location = {
+								target = event_target:dimensional_portal
+								distance = 5
+								angle = random
+							}
+							set_fleet_stance = aggressive
+							set_aggro_range = 500
+							set_aggro_range_measure_from = self
+						}
+					}
+				}
+			}
+		}
+	}
+}
+

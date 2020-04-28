@@ -1,0 +1,176 @@
+namespace = CrisisManagerControl
+
+##############################################
+##############################################
+#####                                    #####
+#####    Crisis Manager                  #####
+#####                                    #####
+#####    Pre-Trigger Events of Crisis    #####
+#####                                    #####
+##############################################
+##############################################
+
+#####################################
+###  Event to Call Trigger Event  ###
+#####################################
+
+### Check Trgger Condision
+country_event = {
+	id = CrisisManagerControl.0011
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_crises_allowed = yes
+		event_target:CmtGlobalVar = {
+			NOT = { check_variable = { which = CmtVarMultiple value = 1 } }
+			NAND = {
+				CmtTriggerForbiddenPrethoryn = yes
+				CmtTriggerForbiddenExds = yes
+				CmtTriggerForbiddenContingency = yes
+				CmtTriggerForbiddenForcedEoc = yes
+			}
+			OR = {
+				NOT = { has_global_flag = galactic_crisis_happened }
+				AND = {
+					check_variable = { which = CmtVarMultiple value = 3 }
+					NOT = { CmtTriggerInCrisisNow = yes }
+				}
+				check_variable = { which = CmtVarMultiple value = 4 }
+			}
+			NOT = { has_global_flag = CmtFlagNowInInterval }
+			
+			### Check end_game_years_passed
+			OR = {
+				check_variable = { which = CmtVarEarliestEgpy value < @CmtConstTriggerEgpy_T1 }
+				AND = {
+					NOT = { check_variable = { which = CmtVarEarliestEgpy value < @CmtConstTriggerEgpy_T1 } }
+					check_variable = { which = CmtVarEarliestEgpy value < @CmtConstTriggerEgpy_T2 }
+					end_game_years_passed >= @CmtConstTriggerEgpy_V1
+				}
+				AND = {
+					NOT = { check_variable = { which = CmtVarEarliestEgpy value < @CmtConstTriggerEgpy_T2 } }
+					check_variable = { which = CmtVarEarliestEgpy value < @CmtConstTriggerEgpy_T3 }
+					end_game_years_passed >= @CmtConstTriggerEgpy_V2
+				}
+				AND = {
+					NOT = { check_variable = { which = CmtVarEarliestEgpy value < @CmtConstTriggerEgpy_T3 } }
+					check_variable = { which = CmtVarEarliestEgpy value < @CmtConstTriggerEgpy_T4 }
+					end_game_years_passed >= @CmtConstTriggerEgpy_V3
+				}
+				AND = {
+					NOT = { check_variable = { which = CmtVarEarliestEgpy value < @CmtConstTriggerEgpy_T4 } }
+					check_variable = { which = CmtVarEarliestEgpy value < @CmtConstTriggerEgpy_T5 }
+					end_game_years_passed >= @CmtConstTriggerEgpy_V4
+				}
+				AND = {
+					NOT = { check_variable = { which = CmtVarEarliestEgpy value < @CmtConstTriggerEgpy_T5 } }
+					check_variable = { which = CmtVarEarliestEgpy value < @CmtConstTriggerEgpy_T6 }
+					end_game_years_passed >= @CmtConstTriggerEgpy_V5
+				}
+				AND = {
+					NOT = { check_variable = { which = CmtVarEarliestEgpy value < @CmtConstTriggerEgpy_T6 } }
+					check_variable = { which = CmtVarEarliestEgpy value < @CmtConstTriggerEgpy_T7 }
+					end_game_years_passed >= @CmtConstTriggerEgpy_V6
+				}
+				AND = {
+					NOT = { check_variable = { which = CmtVarEarliestEgpy value < @CmtConstTriggerEgpy_T7 } }
+					check_variable = { which = CmtVarEarliestEgpy value < @CmtConstTriggerEgpy_T8 }
+					end_game_years_passed >= @CmtConstTriggerEgpy_V7
+				}
+				AND = {
+					NOT = { check_variable = { which = CmtVarEarliestEgpy value < @CmtConstTriggerEgpy_T8 } }
+					check_variable = { which = CmtVarEarliestEgpy value < @CmtConstTriggerEgpy_T9 }
+					end_game_years_passed >= @CmtConstTriggerEgpy_V8
+				}
+				AND = {
+					NOT = { check_variable = { which = CmtVarEarliestEgpy value < @CmtConstTriggerEgpy_T9 } }
+					check_variable = { which = CmtVarEarliestEgpy value < @CmtConstTriggerEgpy_TA }
+					end_game_years_passed >= @CmtConstTriggerEgpy_V9
+				}
+				AND = {
+					NOT = { check_variable = { which = CmtVarEarliestEgpy value < @CmtConstTriggerEgpy_TA } }
+					end_game_years_passed >= @CmtConstTUnq_ConstEarliestEgpy
+				}
+			}
+		}
+	}
+	
+	immediate = {
+		event_target:CmtGlobalVar = {
+			###  Control Flag for Probability of Triggering Prethoryn
+			if = {
+				limit = { NOT = { has_global_flag = CmtFlagCheckFirstTriggerChance } }
+				set_global_flag = CmtFlagCheckFirstTriggerChance
+				country_event = { id = CrisisManagerControl.0101 days =  3590 }	## 10 yr - 10 d
+				country_event = { id = CrisisManagerControl.0102 days = 10790 }	## 30 yr - 10 d
+				country_event = { id = CrisisManagerControl.0102 days = 17990 }	## 50 yr - 10 d
+			}
+			
+			###  Call Pre-Trigger Event
+			country_event = { id = CrisisManagerControl.0012 }
+		}
+	}
+}
+
+
+### Pre-Trigger / Manual Call Up
+country_event = {
+	id = CrisisManagerControl.0012
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = { is_crises_allowed = yes }
+	
+	immediate = {
+		event_target:CmtGlobalVar = {
+			###  Call Trigger Event for Each Equalization Strength
+			if = {
+				limit = { check_variable = { which = CmtVarEqualizingProbability value = 2 } }
+				country_event = { id = CrisisManagerControl.0022 }
+			} else_if = {
+				limit = { check_variable = { which = CmtVarEqualizingProbability value = 3 } }
+				country_event = { id = CrisisManagerControl.0023 }
+			} else_if = {
+				limit = { check_variable = { which = CmtVarEqualizingProbability value = 4 } }
+				country_event = { id = CrisisManagerControl.0024 }
+			} else = { country_event = { id = CrisisManagerControl.0021 } }
+		}
+	}
+}
+
+
+
+###################################################
+###  Control Flag for Probability of Prethoryn  ###
+###################################################
+
+country_event = {
+	id = CrisisManagerControl.0101
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		set_global_flag = CmtFlagCrisisAllowed_10yr
+	}
+}
+
+country_event = {
+	id = CrisisManagerControl.0102
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		set_global_flag = CmtFlagCrisisAllowed_30yr
+	}
+}
+
+country_event = {
+	id = CrisisManagerControl.0103
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		set_global_flag = CmtFlagCrisisAllowed_50yr
+	}
+}

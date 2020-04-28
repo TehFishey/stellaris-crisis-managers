@@ -1,0 +1,134 @@
+namespace = CrisisManagerControl
+
+################################
+################################
+#####                      #####
+#####    Crisis Manager    #####
+#####                      #####
+#####    L-Gates Events    #####
+#####                      #####
+################################
+################################
+
+################
+###  Common  ###
+################
+
+### Open L-Gate
+country_event = {
+	id = CrisisManagerControl.6201
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		any_megastructure = { CmtTriggerIsClosedLgate = yes }
+	}
+	
+	immediate = {
+		event_target:CmtGlobalVar = {
+			
+			### Transference Variable
+			if = {
+				limit = { has_global_flag = gray_goo_crisis_set }
+				set_variable = { which = CmtVarTemp value = CmtVarLgateCycleGraygoo }
+			} else_if = {
+				limit = { has_global_flag = gray_goo_empire_set }
+				set_variable = { which = CmtVarTemp value = CmtVarLgateCycleDessanu }
+			} else_if = {
+				limit = { has_global_flag = dragon_season }
+				set_variable = { which = CmtVarTemp value = CmtVarLgateCycleLdrake }
+			} else = { set_variable = { which = CmtVarTemp value = CmtVarLgateCycleSilence } }
+			
+			### Open L-Gate
+			if = {
+				limit = {
+					OR = {
+						check_variable = { which = CmtVarTemp value = 3 }
+						check_variable = { which = CmtVarTemp value = 4 }
+					}
+					NOT = { has_global_flag = CmtFlagLgateOpenedNow }
+				}
+				random_megastructure = {
+					limit = { CmtTriggerIsClosedLgate = yes }
+					CmtEffectOpenLgate = yes
+				}
+			} else_if = {
+				limit = {
+					NOR = {
+						check_variable = { which = CmtVarTemp value = 1 }
+						check_variable = { which = CmtVarTemp value = 2 }
+						check_variable = { which = CmtVarTemp value = 3 }
+						check_variable = { which = CmtVarTemp value = 4 }
+					}
+				}
+				every_megastructure = {
+					limit = { CmtTriggerIsClosedLgate = yes }
+					CmtEffectOpenLgate = yes
+				}
+			}
+			
+			### Time Cycle Control
+			if = {
+				limit = { check_variable = { which = CmtVarTemp value = 4 } }
+				country_event = { id = CrisisManagerControl.6201 days = 200 random = 500 }
+			} else_if = {
+				limit = { check_variable = { which = CmtVarTemp value = 3 } }
+				country_event = { id = CrisisManagerControl.6201 days = 3600 random = 5400 }		## 10 - 25 yr
+			}
+		}
+	}
+}
+
+### Open L-Gate after End of Crisis
+country_event = {
+	id = CrisisManagerControl.6202
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		any_megastructure = { CmtTriggerIsClosedLgate = yes }
+		event_target:CmtGlobalVar = { check_variable = { which = CmtVarLgateCycleGraygoo value = 2 } }
+	}
+	
+	immediate = {
+		every_megastructure = {
+			limit = { CmtTriggerIsClosedLgate = yes }
+			CmtEffectOpenLgate = yes
+		}
+	}
+}
+
+### Automatically Terraform Nanites
+planet_event = {
+	id = CrisisManagerControl.6211
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		is_planet_class = pc_gray_goo
+	}
+	
+	immediate = {
+		random_list = {
+			100 = { change_pc = pc_desert }
+			100 = { change_pc = pc_tropical }
+			100 = { change_pc = pc_arid }
+			100 = { change_pc = pc_ocean }
+			100 = { change_pc = pc_tundra }
+			100 = { change_pc = pc_continental }
+			100 = { change_pc = pc_arctic }
+			100 = { change_pc = pc_alpine }
+			100 = { change_pc = pc_savannah }
+			 10 = { change_pc = pc_gaia }
+			 10 = { change_pc = pc_nuked }
+		}
+		remove_modifier = CmtModifierAutoTerraform
+		reroll_deposits = yes
+		reroll_planet_modifiers = yes
+	}
+}
+
+
+
+
+

@@ -1,0 +1,43 @@
+
+#####################################################
+#####################################################
+#####                                           #####
+#####    Crisis Manager                         #####
+#####                                           #####
+#####    Opinion Modifiers for Player Crisis    #####
+#####                                           #####
+#####################################################
+#####################################################
+#
+#	root = Country Having Modifiers
+#	from = Target of Modifiers
+#
+
+
+
+################################
+###  Negate Border Friction  ###
+################################
+
+CmtOpinionPlayerCrisisAggressor = {
+	unique = yes
+	opinion = { base = -1000 }
+}
+
+CmtOpinionPlayerCrisisPrey = {
+	unique = yes
+	opinion = { base = -1000 }
+}
+
+CmtOpinionPlayerCrisisAlly = {
+	unique = yes
+	opinion = { base = 200 }
+}
+
+CmtOpinionPlayerCrisisWiner = {
+	unique = yes
+	opinion = { base = 200 }
+	
+	monthly = yes
+	decay = { base = 2 }
+}

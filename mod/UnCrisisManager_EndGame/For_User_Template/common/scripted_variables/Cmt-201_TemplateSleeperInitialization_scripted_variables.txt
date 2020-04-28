@@ -1,0 +1,73 @@
+
+#########################################################################
+#########################################################################
+#####                                                               #####
+#####    Crisis Manager                                             #####
+#####                                                               #####
+#####    Template for Initalization for Fleets of Fallen Empires    #####
+#####                                                               #####
+#########################################################################
+#########################################################################
+#
+#	This template controls the initialization for the fleets of fallen empires.
+#	It can be applied in "Manual Operations" -> "Create/Delete Fleets for Fallen Empires".
+#		* For only fallen empires, but not for awakened empires.
+#	
+#	How to use: See ''ReadMe_for_making_template.txt''
+#
+
+
+################################
+###  Activation of Template  ###
+################################
+	
+	### Activate Template
+		@CmtT201_ConstSleeperFleet_Activate = no
+			### yes: this template is activated.
+			### no : this template is ignored.
+			
+	### Apply Automatically
+		@CmtT201_ConstSleeperFleet_ApplyOnStart = no
+			### yes: this template is applied automatically on game start.
+			### no : this template is not applied automatically.
+	
+	### The version of Crisis Manager. This template corresponds to: 
+		@CmtT201_ConstVersionInfo = 1.10
+			### Never change this value.
+			### For example, ''1.03'' means ''ver.1.3'' but not ''ver.1.0.3''
+		
+	
+
+########################
+###  Configurations  ###
+########################
+#
+#	Required for activating: Crisis Manager - Sleeper Edition
+#	Required for activating: @CmtT201_ConstSleeperFleet_Activate = yes
+#
+	
+	### Number of Standard Fleets
+		@CmtT201_ConstSleeperFleet_Standard = 3
+			### Set the number of the fleets of battlecruisers and escorts.
+			### It must be zero(0) or positive integer.
+			### * Size of each fleets cannot be set.
+	
+	### Titans as Flag Ship
+		@CmtT201_ConstSleeperFleet_FlagTitan = no
+			### yes: every standard fleets have a Titan.
+			### no : no effects.
+		
+	### Additional Titans
+		@CmtT201_ConstSleeperFleet_Titan = 1
+			### Set the number of Titans that is created independently from standard fleets.
+			### It must be zero(0) or positive integer.
+			### * Owners (fallen empires) will marge this Titan into any other fleet soon.
+		
+	### Colossus
+		@CmtT201_ConstSleeperFleet_Colossus = 1
+			### Set the number of Colossus.
+			### It must be zero(0) or positive integer.
+			### Required DLC "Apocalypse". This configuration is ignored if this DLC is NOT installed.
+		
+	### This template cannot be give any randomness for the number of fleets.
+

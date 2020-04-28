@@ -1,0 +1,368 @@
+
+
+####################################################
+####################################################
+#####                                          #####
+#####    Crisis Manager                        #####
+#####                                          #####
+#####    Scripted Effects for L-Gate Events    #####
+#####                                          #####
+####################################################
+####################################################
+
+
+########################
+###  Initial Events  ###
+########################
+
+start_lcluster_chain = {
+	hidden_effect = {
+		set_global_flag = CmtFlagLgatePreludeTriggered
+		if = {
+			limit = { NOT = { has_global_flag = lgates_activated_globally } }
+			custom_tooltip = begin_lcluster_chain
+			if = {		## Skip Correct Clues
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarLgateReqClues value < -0.5 } } }
+				CmtEffectLgateClueComplete = yes
+			} else = {
+				custom_tooltip = begin_lcluster_chain
+				begin_event_chain = {
+					event_chain = l_cluster_chain
+					target = this
+				}
+				
+				event_target:CmtGlobalVar = {
+					if = {
+						limit = { check_variable = { which = CmtVarLgateReqClues value < 0.5 } }
+						set_variable = { which = CmtVarTemp value = 7 }
+					} else = { set_variable = { which = CmtVarTemp value = CmtVarLgateReqClues } }
+				}
+				while = {
+					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value < 6.5 } } }
+					add_event_chain_counter = { event_chain = l_cluster_chain counter = clues amount = 1 }
+					event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = 1 } }
+				}
+				while = {
+					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value > 7.5 } } }
+					add_event_chain_counter = { event_chain = l_cluster_chain counter = clues amount = -1 }
+					event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } }
+				}
+				
+				set_variable = { which = num_lcluster_clues value = 0 }		## for Liquidation
+			}
+		}
+	}
+}
+
+
+generate_lcluster_clue = {
+	hidden_effect = {
+		if = {
+			limit = {
+				has_distar = yes
+				NOT = { has_global_flag = l_cluster_opened }
+				has_event_chain = l_cluster_chain
+			}
+			custom_tooltip = add_lcluster_clue
+			add_event_chain_counter = { event_chain = l_cluster_chain counter = clues amount = 1 }
+			change_variable = { which = num_lcluster_clues value = 1 }
+		}
+		if = {
+			limit = { has_completed_event_chain_counter = { event_chain = l_cluster_chain counter = clues } }
+			CmtEffectLgateClueComplete = yes
+		}
+	}
+}
+
+CmtEffectLgateClueComplete = {
+	custom_tooltip = l_cluster_openable
+	set_country_flag = completed_lcluster_chain
+	if = {
+		limit = { has_global_flag = CmtFlagLgateSkipTech }
+		give_technology = { tech = tech_lgate_activation message = no }
+	} else = { country_event = { id = distar.10904 } }
+}
+
+CmtEffectOpenLgate = {		## Scope: this = megastructure (L-Gate)
+	activate_gateway = this
+	set_megastructure_flag = lgate_activated
+}
+
+
+
+#################
+###  Dessanu  ###
+#################
+
+CmtEffectAddDessanuGift4 = {
+	add_modifier = { modifier = dessanu_gift days = -1 }
+}
+
+CmtEffectAddDessanuGift2 = {
+	random_list = {
+		100 = { add_modifier = { modifier = CmtModifierDessanuGift_21 days = -1 } }
+		100 = { add_modifier = { modifier = CmtModifierDessanuGift_22 days = -1 } }
+		100 = { add_modifier = { modifier = CmtModifierDessanuGift_23 days = -1 } }
+		100 = { add_modifier = { modifier = CmtModifierDessanuGift_24 days = -1 } }
+		100 = { add_modifier = { modifier = CmtModifierDessanuGift_25 days = -1 } }
+		100 = { add_modifier = { modifier = CmtModifierDessanuGift_26 days = -1 } }
+	}
+}
+
+CmtEffectAddDessanuGift1 = {
+	random_list = {
+		100 = { add_modifier = { modifier = CmtModifierDessanuGift_11 days = -1 } }
+		100 = { add_modifier = { modifier = CmtModifierDessanuGift_12 days = -1 } }
+		100 = { add_modifier = { modifier = CmtModifierDessanuGift_13 days = -1 } }
+		100 = { add_modifier = { modifier = CmtModifierDessanuGift_14 days = -1 } }
+	}
+}
+
+CmtEffectRemoveDessanuGift = {
+	switch = {
+		trigger = has_modifier
+		dessanu_gift = { remove_modifier = dessanu_gift }
+		CmtModifierDessanuGift_21 = { remove_modifier = CmtModifierDessanuGift_21 }
+		CmtModifierDessanuGift_22 = { remove_modifier = CmtModifierDessanuGift_22 }
+		CmtModifierDessanuGift_23 = { remove_modifier = CmtModifierDessanuGift_23 }
+		CmtModifierDessanuGift_24 = { remove_modifier = CmtModifierDessanuGift_24 }
+		CmtModifierDessanuGift_25 = { remove_modifier = CmtModifierDessanuGift_25 }
+		CmtModifierDessanuGift_26 = { remove_modifier = CmtModifierDessanuGift_26 }
+		CmtModifierDessanuGift_11 = { remove_modifier = CmtModifierDessanuGift_11 }
+		CmtModifierDessanuGift_12 = { remove_modifier = CmtModifierDessanuGift_12 }
+		CmtModifierDessanuGift_13 = { remove_modifier = CmtModifierDessanuGift_13 }
+		CmtModifierDessanuGift_14 = { remove_modifier = CmtModifierDessanuGift_14 }
+	}
+}
+
+
+
+#################
+###  Graygoo  ###
+#################
+
+### End of Graygoo
+CmtEffectDestroyGraygoo = {
+	remove_global_flag = active_gray_goo
+	from = {
+		save_event_target_as = goo_slayer
+		country_event = { id = graygoo.15 }
+	}
+	every_playable_country = {
+		limit = {
+			is_ai = no
+			NOT = { is_same_value = event_target:goo_slayer }
+		}
+		country_event = { id = graygoo.16 }
+	}
+	observer_event = { id = observer.65 }
+	
+	event_target:CmtGlobalVar = {
+		if = {
+			limit = {
+				OR = {
+					check_variable = { which = CmtVarLgateTerraformNanite value = 3 }
+					check_variable = { which = CmtVarLgateTerraformNanite value = 5 }
+				}
+			}
+			every_planet = {
+				limit = { is_planet_class = pc_gray_goo }
+				add_modifier = { modifier = CmtModifierAutoTerraform days = -1 }
+				planet_event = { id = CrisisManagerControl.6211 days = 90 random = 450 }	## Auto-Terraform
+			}
+		} else_if = {
+			limit = { NOT = { check_variable = { which = CmtVarLgateTerraformNanite value = 1 } } }
+			every_planet = {
+				limit = { is_planet_class = pc_gray_goo }
+				add_modifier = { modifier = terraforming_candidate days = -1 }
+			}
+		}
+		country_event = { id = CrisisManagerControl.6202 }		## Open L-Gates
+	}
+	
+	event_target:graygoo_country = {
+		every_owned_fleet = { destroy_fleet = this }
+		destroy_country = yes
+	}
+}
+
+
+
+#################################
+###  Abosorbe Vanilla Script  ###
+#################################
+#
+# Roamer Script of Vanilla: for id in trigger being unique.
+#
+
+### Dessanu
+create_dessanu_roamers_1 = {
+	event_target:CmtGlobalVar = {
+		CmtEffectCreateFleet_DessanuRoamer = yes
+		random_system = {
+			limit = { has_star_flag = lcluster }
+			random_system_planet = {
+				limit = { is_planet_class = pc_gray_goo }
+				last_created_fleet = { CmtFleetSetAuxParam_DessanuRoamer01 = yes }
+			}
+		}
+	}
+}
+create_dessanu_roamers_2 = {
+	event_target:CmtGlobalVar = {
+		CmtEffectCreateFleet_DessanuRoamer = yes
+		random_system = {
+			limit = { has_star_flag = lcluster }
+			random_system_planet = {
+				limit = { is_planet_class = pc_gray_goo }
+				last_created_fleet = { CmtFleetSetAuxParam_DessanuRoamer02 = yes }
+			}
+		}
+	}
+}
+create_dessanu_roamers_3 = {
+	event_target:CmtGlobalVar = {
+		CmtEffectCreateFleet_DessanuRoamer = yes
+		random_system = {
+			limit = { has_star_flag = lcluster }
+			random_system_planet = {
+				limit = { is_planet_class = pc_gray_goo }
+				last_created_fleet = { CmtFleetSetAuxParam_DessanuRoamer03 = yes }
+			}
+		}
+	}
+}
+create_dessanu_roamers_4 = {
+	event_target:CmtGlobalVar = {
+		CmtEffectCreateFleet_DessanuRoamer = yes
+		random_system = {
+			limit = { has_star_flag = lcluster }
+			random_system_planet = {
+				limit = { is_planet_class = pc_gray_goo }
+				last_created_fleet = { CmtFleetSetAuxParam_DessanuRoamer04 = yes }
+			}
+		}
+	}
+}
+create_dessanu_roamers_5 = {
+	event_target:CmtGlobalVar = {
+		CmtEffectCreateFleet_DessanuRoamer = yes
+		random_system = {
+			limit = { has_star_flag = lcluster }
+			random_system_planet = {
+				limit = { is_planet_class = pc_gray_goo }
+				last_created_fleet = { CmtFleetSetAuxParam_DessanuRoamer05 = yes }
+			}
+		}
+	}
+}
+create_dessanu_roamers_6 = {
+	event_target:CmtGlobalVar = {
+		CmtEffectCreateFleet_DessanuRoamer = yes
+		random_system = {
+			limit = { has_star_flag = lcluster }
+			random_system_planet = {
+				limit = { is_planet_class = pc_gray_goo }
+				last_created_fleet = { CmtFleetSetAuxParam_DessanuRoamer06 = yes }
+			}
+		}
+	}
+}
+create_dessanu_roamers_7 = {
+	event_target:CmtGlobalVar = {
+		CmtEffectCreateFleet_DessanuRoamer = yes
+		random_system = {
+			limit = { has_star_flag = lcluster }
+			random_system_planet = {
+				limit = { is_planet_class = pc_gray_goo }
+				last_created_fleet = { CmtFleetSetAuxParam_DessanuRoamer07 = yes }
+			}
+		}
+	}
+}
+
+### Graygoo
+create_graygoo_roamers_1 = {
+	event_target:CmtGlobalVar = {
+		CmtEffectCreateFleet_GraygooAttacker = yes
+		random_system = {
+			limit = { has_star_flag = lcluster }
+			random_system_planet = {
+				limit = { is_planet_class = pc_gray_goo }
+				last_created_fleet = { CmtFleetSetAuxParam_GraygooRoamer01 = yes }
+			}
+		}
+	}
+}
+create_graygoo_roamers_2 = {
+	event_target:CmtGlobalVar = {
+		CmtEffectCreateFleet_GraygooAttacker = yes
+		random_system = {
+			limit = { has_star_flag = lcluster }
+			random_system_planet = {
+				limit = { is_planet_class = pc_gray_goo }
+				last_created_fleet = { CmtFleetSetAuxParam_GraygooRoamer02 = yes }
+			}
+		}
+	}
+}
+create_graygoo_roamers_3 = {
+	event_target:CmtGlobalVar = {
+		CmtEffectCreateFleet_GraygooAttacker = yes
+		random_system = {
+			limit = { has_star_flag = lcluster }
+			random_system_planet = {
+				limit = { is_planet_class = pc_gray_goo }
+				last_created_fleet = { CmtFleetSetAuxParam_GraygooRoamer03 = yes }
+			}
+		}
+	}
+}
+create_graygoo_roamers_4 = {
+	event_target:CmtGlobalVar = {
+		CmtEffectCreateFleet_GraygooAttacker = yes
+		random_system = {
+			limit = { has_star_flag = lcluster }
+			random_system_planet = {
+				limit = { is_planet_class = pc_gray_goo }
+				last_created_fleet = { CmtFleetSetAuxParam_GraygooRoamer04 = yes }
+			}
+		}
+	}
+}
+create_graygoo_roamers_5 = {
+	event_target:CmtGlobalVar = {
+		CmtEffectCreateFleet_GraygooAttacker = yes
+		random_system = {
+			limit = { has_star_flag = lcluster }
+			random_system_planet = {
+				limit = { is_planet_class = pc_gray_goo }
+				last_created_fleet = { CmtFleetSetAuxParam_GraygooRoamer05 = yes }
+			}
+		}
+	}
+}
+create_graygoo_roamers_6 = {
+	event_target:CmtGlobalVar = {
+		CmtEffectCreateFleet_GraygooAttacker = yes
+		random_system = {
+			limit = { has_star_flag = lcluster }
+			random_system_planet = {
+				limit = { is_planet_class = pc_gray_goo }
+				last_created_fleet = { CmtFleetSetAuxParam_GraygooRoamer06 = yes }
+			}
+		}
+	}
+}
+create_graygoo_roamers_7 = {
+	event_target:CmtGlobalVar = {
+		CmtEffectCreateFleet_GraygooAttacker = yes
+		random_system = {
+			limit = { has_star_flag = lcluster }
+			random_system_planet = {
+				limit = { is_planet_class = pc_gray_goo }
+				last_created_fleet = { CmtFleetSetAuxParam_GraygooRoamer07 = yes }
+			}
+		}
+	}
+}
