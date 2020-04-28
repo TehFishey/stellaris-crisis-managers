@@ -45,7 +45,7 @@ planet_event = {
 			} else_if = {
 				limit = {
 					NOR = {
-						is_at_war_with = outraged_FE
+						is_at_war_with = event_target:outraged_FE
 						exists = event_target:CmtTargetPlayerCrisisAggressor
 					}
 				}

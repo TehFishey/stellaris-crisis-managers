@@ -733,7 +733,7 @@ CmtEffectCreateFleet_DessanuRoamer = {
 			CmtEffectCreateElement_DessanuStandard = yes
 			CmtFleetSetAuxParam_DessanuRoamerCommon = yes
 		}
-		settings = { uses_naval_capacity = no }
+		settings = { uses_naval_capacity = no spawn_debris = no }
 	}
 }
 
@@ -752,8 +752,10 @@ CmtEffectCreateElement_GraygooStandard = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
 		event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
 		CmtEffectProgressLoop4 = yes
-		
-		CmtEffectCreateShip_GraygooInterdictor = yes
+		while = {
+			count = $AMOUNT$
+			CmtEffectCreateShip_GraygooInterdictor = yes
+		}
 		switch = {
 			trigger = has_global_flag
 			CmtFlagLoopA = { CmtEffectCreateShip_GraygooInterdictor = yes }
@@ -771,7 +773,7 @@ CmtEffectCreateFleet_GraygooGarryson = {
 		name = "NAME_Tempest_Fleet"
 		effect = {
 			set_owner = prev
-			CmtEffectCreateElement_GraygooStandard = yes
+			CmtEffectCreateElement_GraygooStandard = { AMOUNT = $AMOUNT|1$ }
 			CmtFleetSetAuxParam_GraygooGarryson = yes
 		}
 		settings = { garrison = yes }
@@ -783,9 +785,9 @@ CmtEffectCreateFleet_GraygooAttacker = {
 		name = "NAME_Tempest_Fleet"
 		effect = {
 			set_owner = prev
-			CmtEffectCreateElement_GraygooStandard = yes
+			CmtEffectCreateElement_GraygooStandard = { AMOUNT = $AMOUNT|1$ }
 			CmtFleetSetAuxParam_GraygooAttacker = yes
 		}
+		settings = { spawn_debris = no }
 	}
 }
-

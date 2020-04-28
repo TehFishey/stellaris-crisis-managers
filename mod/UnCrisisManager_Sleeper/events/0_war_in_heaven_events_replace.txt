@@ -1221,7 +1221,7 @@ country_event = {
 					set_timed_country_flag = { flag = ai_no_leave_fed days = 7200 }
 					join_alliance = {
 						who = root
-						verride_requirements = yes
+						override_requirements = yes
 					}
 					hidden_effect = {
 						# counteract the -100 cohesion you'd normally get for new members
@@ -1390,7 +1390,8 @@ country_event = {
 		# Force-end War in Heaven if it's still running
 		if = {
 			limit = {
-				OR = {wg_war_in_heaven
+				OR = {
+					any_war = {
 						any_war_participant = { prev = {
 							using_war_goal = {
 								type = wg_war_in_heaven
@@ -1427,46 +1428,36 @@ country_event = {
 			every_war = {
 				limit = {
 					OR = {
-						any_war = {
-							any_war_participant = { prev = {
-								using_war_goal = {
-									type = wg_CmtWarInHeaven1
-									owner = prev
-								}
-							}}
-						}
-						any_war = {
-							any_war_participant = { prev = {
-								using_war_goal = {
-									type = wg_war_in_heaven
-									owner = prev
-								}
-							}}
-						}
-						any_war = {
-							any_war_participant = { prev = {
-								using_war_goal = {
-									type = wg_CmtWarInHeaven3
-									owner = prev
-								}
-							}}
-						}
-						any_war = {
-							any_war_participant = { prev = {
-								using_war_goal = {
-									type = wg_CmtWarInHeaven4
-									owner = prev
-								}
-							}}
-						}
-						any_war = {
-							any_war_participant = { prev = {
-								using_war_goal = {
-									type = wg_CmtWarInHeaven5
-									owner = prev
-								}
-							}}
-						}
+						any_war_participant = { prev = {
+							using_war_goal = {
+								type = wg_CmtWarInHeaven1
+								owner = prev
+							}
+						}}
+						any_war_participant = { prev = {
+							using_war_goal = {
+								type = wg_war_in_heaven
+								owner = prev
+							}
+						}}
+						any_war_participant = { prev = {
+							using_war_goal = {
+								type = wg_CmtWarInHeaven3
+								owner = prev
+							}
+						}}
+						any_war_participant = { prev = {
+							using_war_goal = {
+								type = wg_CmtWarInHeaven4
+								owner = prev
+							}
+						}}
+						any_war_participant = { prev = {
+							using_war_goal = {
+								type = wg_CmtWarInHeaven5
+								owner = prev
+							}
+						}}
 					}
 				}
 				end_war_effect = yes

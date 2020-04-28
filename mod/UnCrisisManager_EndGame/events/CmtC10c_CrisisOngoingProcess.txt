@@ -107,7 +107,7 @@ country_event = {
 			set_controller = root
 			
 			# Create and kill a pop to force job assignment updates
-			create_pop = { }
+			create_pop = {}
 			last_created_pop = { kill_pop = yes }
 		}
 		

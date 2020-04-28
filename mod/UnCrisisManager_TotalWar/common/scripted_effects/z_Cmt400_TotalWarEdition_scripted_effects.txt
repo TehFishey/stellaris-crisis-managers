@@ -1,4 +1,3 @@
-
 ###########################################################
 ###########################################################
 #####                                                 #####
@@ -56,7 +55,7 @@ CmtEffectCreateStarbase = {
 		limit = { is_country_type = swarm }
 		event_target:CmtTargetTransferSystem = { create_starbase = { size = starbase_swarm owner = prev } }
 	} else_if = {
-		limit = { 
+		limit = {
 			is_country_type = extradimensional
 			exists = event_target:CmtTargetTransferSystem
 		}
@@ -146,8 +145,6 @@ CmtEffectCreateFeOutpost = {
 		}
 	}
 }
-
-
 
 CmtEffectCreateFeCitadel = {
 	create_starbase = {
