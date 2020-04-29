@@ -123,8 +123,8 @@ CmtEffectVersionUp = {
 				if = {
 					limit = { check_variable = { which = CmtVarLgateCycleSilence value = 0 } }
 					if = {
-						limit = { check_variable = { which = CmtVarLgateCycleStandard value > 0 } }
-						set_variable = { which = CmtVarLgateCycleSilence value = CmtVarLgateCycleStandard }
+						limit = { check_variable = { which = CmtVarLgateCycleCommon value > 0 } }
+						set_variable = { which = CmtVarLgateCycleSilence value = CmtVarLgateCycleCommon }
 					} else = { set_variable = { which = CmtVarLgateCycleSilence value = 4 } }
 				}
 				if = {

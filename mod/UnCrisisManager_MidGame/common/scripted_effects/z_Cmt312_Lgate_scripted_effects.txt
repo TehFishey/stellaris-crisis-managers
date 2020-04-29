@@ -66,7 +66,6 @@ generate_lcluster_clue = {
 			custom_tooltip = add_lcluster_clue
 			add_event_chain_counter = { event_chain = l_cluster_chain counter = clues amount = 1 }
 			change_variable = { which = num_lcluster_clues value = 1 }
-			#add_resource = { nanites = 25 }
 		}
 		if = {
 			limit = { has_completed_event_chain_counter = { event_chain = l_cluster_chain counter = clues } }
