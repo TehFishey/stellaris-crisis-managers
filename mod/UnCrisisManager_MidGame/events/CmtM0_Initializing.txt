@@ -39,7 +39,7 @@ event = {
 country_event = {
 	id = CrisisManagerMenu.0002
 	hide_window = yes
-	
+	#fire_only_once = yes
 	trigger = {
 		NOT = { has_global_flag = CmtFlagActivated }
 		is_country_type = global_event
@@ -119,6 +119,7 @@ country_event = {
 	option = {
 		name = CmtTextOK.name
 		custom_tooltip = CmtTextOK.tooltip
+		hidden_effect = { CmtEffectExitMenu = yes }									 
 	}
 }
 

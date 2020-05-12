@@ -5,6 +5,6 @@ tags={
 	"Military"
 }
 picture="thumbnail.png"
-supported_version="2.6.*"
+supported_version="2.7"
 path="mod/UnCrisisManager_PlayerCrisis"
 remote_file_id="2038762775"

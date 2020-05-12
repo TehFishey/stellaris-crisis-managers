@@ -6,6 +6,6 @@ tags={
 	"Crisis"
 }
 picture="thumbnail.png"
-supported_version="2.6.*"
+supported_version="2.7"
 path="mod/UnCrisisManager_MidGame"
 remote_file_id="2033764043"
