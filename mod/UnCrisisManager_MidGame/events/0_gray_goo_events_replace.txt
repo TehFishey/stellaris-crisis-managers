@@ -94,9 +94,46 @@ country_event = {
 				prevent_anomaly = yes
 				set_owner = event_target:graygoo_country
 				while = {
-					count = 8
+					count = 30
 					create_pop = { species = owner_main_species }
 				}
+				
+				##Add buildings + Districts (ToDo: Move to scripted effect)
+				while = {
+					count = 2
+					add_district_and_planet_size_if_needed_effect = { district = district_city }
+				}
+				while = {
+					count = 3
+					add_district_and_planet_size_if_needed_effect = { district = district_mining }
+				}
+				while = {
+					count = 4
+					add_district_and_planet_size_if_needed_effect = { district = district_generator }
+				}
+				if = {
+					limit = {
+						event_target:graygoo_country.species = { is_lithoid = yes }
+					}
+					while = {
+						count = 2
+						add_district_and_planet_size_if_needed_effect = { district = district_mining }
+					}
+					add_district_and_planet_size_if_needed_effect = { district = district_generator }
+				}
+				else = {
+					while = {
+						count = 3
+						add_district_and_planet_size_if_needed_effect = { district = district_farming }
+					}
+				}
+				add_building = building_capital
+				add_building = building_mineral_purification_hub
+				add_building = building_energy_grid
+				add_building = building_stronghold
+				add_building = building_factory_1
+				add_building = building_holo_theatres
+				add_building = building_foundry_1
 			}
 		}
 		event_target:graygoo_country = {

@@ -517,13 +517,13 @@ country_event = {
 		
 		NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanVengeance value = 1 } } }
 		OR = {
-			count_owned_ships = {
+			count_owned_ship = {
 				limit = { is_ship_size = marauder_void_dwelling }
 				count >= 3
 			}
 			AND = {
 				event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanVengeance value = 5 } }
-				count_owned_ships = {
+				count_owned_ship = {
 					limit = { is_ship_size = marauder_void_dwelling }
 					count >= 1
 				}

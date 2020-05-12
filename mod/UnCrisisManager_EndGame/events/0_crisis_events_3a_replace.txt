@@ -158,6 +158,22 @@ planet_event = {
 		solar_system = {
 			CmtEffectDestroySystemStarbase = yes
 			create_contingency_starbase = yes
+			
+			### 2.7 Create ambient audio (ToDo: Move to scripted effect)
+			star = {
+				create_ambient_object = {
+					type = "contingency_1"
+					location = this
+				}
+				last_created_ambient_object = {
+					set_ambient_object_flag = contingency_system_effect
+					set_location = {
+						target = prev
+						distance = 0
+						angle = random
+					}
+				}
+			}
 		}
 		planet_event = { id = crisis.2050 } # Start Fleet reinforcement cycle
 		planet_event = { id = crisis.2052 } # Start Army reinforcement cycle
@@ -209,6 +225,22 @@ planet_event = {
 		solar_system = {
 			CmtEffectDestroySystemStarbase = yes
 			create_contingency_starbase = yes
+
+			### 2.7 Create ambient audio (ToDo: Move to scripted effect)
+			star = {
+				create_ambient_object = {
+					type = "contingency_1"
+					location = this
+				}
+				last_created_ambient_object = {
+					set_ambient_object_flag = contingency_system_effect
+					set_location = {
+						target = prev
+						distance = 0
+						angle = random
+					}
+				}
+			}
 		}
 		planet_event = { id = crisis.2050 } # Start Fleet reinforcement cycle
 		planet_event = { id = crisis.2052 } # Start Army reinforcement cycle
@@ -249,6 +281,22 @@ planet_event = {
 		solar_system = {
 			CmtEffectDestroySystemStarbase = yes
 			create_contingency_starbase = yes
+
+			### 2.7 Create ambient audio (ToDo: Move to scripted effect)
+			star = {
+				create_ambient_object = {
+					type = "contingency_1"
+					location = this
+				}
+				last_created_ambient_object = {
+					set_ambient_object_flag = contingency_system_effect
+					set_location = {
+						target = prev
+						distance = 0
+						angle = random
+					}
+				}
+			}
 		}
 		planet_event = { id = crisis.2050 } # Start Fleet reinforcement cycle
 		planet_event = { id = crisis.2052 } # Start Army reinforcement cycle
@@ -288,6 +336,22 @@ planet_event = {
 		solar_system = {
 			CmtEffectDestroySystemStarbase = yes
 			create_contingency_starbase = yes
+
+			### 2.7 Create ambient audio (ToDo: Move to scripted effect)
+			star = {
+				create_ambient_object = {
+					type = "contingency_1"
+					location = this
+				}
+				last_created_ambient_object = {
+					set_ambient_object_flag = contingency_system_effect
+					set_location = {
+						target = prev
+						distance = 0
+						angle = random
+					}
+				}
+			}
 		}
 		planet_event = { id = crisis.2050 } # Start Fleet reinforcement cycle
 		planet_event = { id = crisis.2052 } # Start Army reinforcement cycle
@@ -1432,7 +1496,7 @@ country_event = {
 		check_variable = { which = contingency_fleet_kills value > 100 }
 		exists = event_target:cybrex
 		event_target:cybrex = {
-			count_owned_ships = { count > 30 }
+			count_owned_ship = { count > 30 }
 			root = { NOT = { is_at_war_with = prev } }
 		}
 	}

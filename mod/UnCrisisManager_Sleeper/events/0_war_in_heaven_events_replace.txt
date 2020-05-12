@@ -116,8 +116,10 @@ country_event = {
 				set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_2d }
 			}
 		}
-		event_target:CmtTargetFirstSleeper = { save_event_target_as = FirstSleeper }
-		event_target:CmtTargetFirstSleeper = { save_global_event_target_as = FirstSleeper }
+
+		# Save vanilla global event targets for compatibility
+		event_target:CmtTargetFirstSleeper = { save_global_event_target_as = FirstSleeper } 
+		save_global_event_target_as = SecondSleeper
 		
 		### Goverment Changes
 		set_country_type = awakened_fallen_empire
@@ -971,6 +973,7 @@ country_event = {
 					}
 					set_country_flag = war_in_heaven_nonaligned_league_check
 					add_non_aligned_league_opinions = yes
+					set_timed_country_flag = { flag = ai_no_leave_fed days = 7200 }
 				}
 			}
 		}
@@ -1011,7 +1014,7 @@ country_event = {
 			}
 			
 			# Give other countries ___
-			every_country = {
+			every_playable_country = {
 				limit = {
 					NOR = {
 						has_country_flag = war_in_heaven_nonaligned_league_check
@@ -1185,6 +1188,10 @@ country_event = {
 				set_country_flag = formed_nonaligned_league
 			}
 			from = {
+				if = {
+					limit = { has_federation = yes }
+					leave_alliance = { override_requirements = yes }
+				}
 				add_non_aligned_league_opinions = yes
 				if = {
 					limit = { is_ai = no }
@@ -1203,6 +1210,11 @@ country_event = {
 						override_requirements = yes
 					}
 					hidden_effect = {
+						if = { #end non-federation-sanctioned wars
+							limit = { is_at_war = yes }
+							every_war = { remove_war_participant = prev }
+							every_subject = { every_war = { remove_war_participant = prev } }
+						}
 						root.federation = {
 							set_federation_flag = non_aligned_league
 							if = {
@@ -1219,6 +1231,39 @@ country_event = {
 			else = {	
 				from = {
 					set_timed_country_flag = { flag = ai_no_leave_fed days = 7200 }
+					
+					hidden_effect = { #end rivalries, wars
+						if = {
+							limit = {
+								any_rival_country = {
+									has_federation = yes
+									federation = { is_same_value = root.federation }
+								}
+							}
+							every_rival_country = {
+								limit = {
+									has_federation = yes
+									federation = { is_same_value = root.federation }
+								}
+								prev = { end_rivalry = prev }
+							}
+						}
+						root.federation = {
+							if = {
+								limit = {
+									any_member = { is_rival = prevprev }
+								}
+								every_member = {
+									limit = { is_rival = prevprev }
+									end_rivalry = prevprev
+								}
+							}
+						}
+						if = {
+							limit = { is_at_war = yes }
+							every_war = { remove_war_participant = prev }
+						}
+					}
 					join_alliance = {
 						who = root
 						override_requirements = yes
@@ -1288,12 +1333,13 @@ country_event = {
 	
 	trigger = {
 		has_global_flag = war_in_heaven_nonaligned_league		## Previous Event
-		NOT = { has_global_flag = war_in_heaven_nonaligned_league_war }		## This Event
 		has_country_flag = war_in_heaven_league_leader
+		NOT = { has_global_flag = war_in_heaven_nonaligned_league_war }		## This Event
 		NOT = { has_country_flag = war_in_heaven_nonaligned_league_timer }		## Control Min. Term
 		
 		CmtTriggerIsPlayableEmpire = yes
 		has_federation = yes
+		federation = { has_federation_flag = non_aligned_league }
 		is_subject = no
 		NOT = {
 			any_country = {
@@ -1339,16 +1385,18 @@ country_event = {
 				is_country_type = awakened_fallen_empire
 				has_country_flag = sleepers_awake_first_sleeper
 			}
-			save_event_target_as = FirstAwakened
-			save_global_event_target_as = FirstAwakened
+			# Save vanilla global event targets for compatibility
+			save_event_target_as = FirstSleeper
+			save_global_event_target_as = FirstSleeper
 		}
 		random_country = {
 			limit = {
 				is_country_type = awakened_fallen_empire
 				has_country_flag = sleepers_awake_ancient_rival
 			}
-			save_event_target_as = SecondAwakened
-			save_global_event_target_as = SecondAwakened
+			# Save vanilla global event targets for compatibility
+			save_event_target_as = SecondSleeper
+			save_global_event_target_as = SecondSleeper
 		}
 	}
 	

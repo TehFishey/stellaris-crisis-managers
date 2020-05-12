@@ -258,6 +258,23 @@ CmtEffectCreateCountryAberrant = {
 		size = starbase_exd
 		owner = event_target:extradimensionals2
 	}
+
+	### 2.7 Create ambient audio (ToDo: Move to scripted effect)
+	star = {
+		create_ambient_object = {
+			type = "extradimensional_2"
+			location = this
+		}
+		last_created_ambient_object = {
+			set_ambient_object_flag = extradimensional_system_effect_2
+			set_location = {
+				target = prev
+				distance = 0
+				angle = random
+			}
+		}
+	}
+
 	event_target:extradimensionals2 = { random_owned_ship = { ship_event = { id = crisis.1280 } } }
 }
 
@@ -393,6 +410,23 @@ CmtEffectCreateCountryVehement = {	## Scope = Stellar System
 		size = starbase_exd
 		owner = event_target:extradimensionals3
 	}
+
+	### 2.7 Create ambient audio (ToDo: Move to scripted effect)
+	star = {
+		create_ambient_object = {
+			type = "extradimensional_2"
+			location = this
+		}
+		last_created_ambient_object = {
+			set_ambient_object_flag = extradimensional_system_effect_2
+			set_location = {
+				target = prev
+				distance = 0
+				angle = random
+			}
+		}
+	}
+
 	event_target:extradimensionals3 = { random_owned_ship = { ship_event = { id = crisis.1280 } } }
 }
 

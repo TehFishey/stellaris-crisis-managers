@@ -2816,12 +2816,12 @@ country_event = {
 				limit = { is_country_type = fallen_empire }
 				capital_scope = {
 					while = {
-						limit = { prev = { count_owned_ships = { limit = { is_ship_size = massive_ship_fallen_empire } count < 1 } } }
+						limit = { prev = { count_owned_ship = { limit = { is_ship_size = massive_ship_fallen_empire } count < 1 } } }
 						CmtEffectCreateSleeperTitan = yes
 					}
 				}
 				while = {
-					limit = { count_owned_ships = { limit = { is_ship_size = massive_ship_fallen_empire } count > 1 } }
+					limit = { count_owned_ship = { limit = { is_ship_size = massive_ship_fallen_empire } count > 1 } }
 					random_owned_ship = { limit = { is_ship_size = massive_ship_fallen_empire } delete_ship = this }
 				}
 			}
@@ -2835,12 +2835,12 @@ country_event = {
 				limit = { is_country_type = fallen_empire }
 				capital_scope = {
 					while = {
-						limit = { prev = { count_owned_ships = { limit = { is_ship_size = massive_ship_fallen_empire } count < 2 } } }
+						limit = { prev = { count_owned_ship = { limit = { is_ship_size = massive_ship_fallen_empire } count < 2 } } }
 						CmtEffectCreateSleeperTitan = yes
 					}
 				}
 				while = {
-					limit = { count_owned_ships = { limit = { is_ship_size = massive_ship_fallen_empire } count > 2 } }
+					limit = { count_owned_ship = { limit = { is_ship_size = massive_ship_fallen_empire } count > 2 } }
 					random_owned_ship = { limit = { is_ship_size = massive_ship_fallen_empire } delete_ship = this }
 				}
 			}
@@ -2854,12 +2854,12 @@ country_event = {
 				limit = { is_country_type = fallen_empire }
 				capital_scope = {
 					while = {
-						limit = { prev = { count_owned_ships = { limit = { is_ship_size = massive_ship_fallen_empire } count < 3 } } }
+						limit = { prev = { count_owned_ship = { limit = { is_ship_size = massive_ship_fallen_empire } count < 3 } } }
 						CmtEffectCreateSleeperTitan = yes
 					}
 				}
 				while = {
-					limit = { count_owned_ships = { limit = { is_ship_size = massive_ship_fallen_empire } count > 3 } }
+					limit = { count_owned_ship = { limit = { is_ship_size = massive_ship_fallen_empire } count > 3 } }
 					random_owned_ship = { limit = { is_ship_size = massive_ship_fallen_empire } delete_ship = this }
 				}
 			}
@@ -2873,12 +2873,12 @@ country_event = {
 				limit = { is_country_type = fallen_empire }
 				capital_scope = {
 					while = {
-						limit = { prev = { count_owned_ships = { limit = { is_ship_size = massive_ship_fallen_empire } count < 4 } } }
+						limit = { prev = { count_owned_ship = { limit = { is_ship_size = massive_ship_fallen_empire } count < 4 } } }
 						CmtEffectCreateSleeperTitan = yes
 					}
 				}
 				while = {
-					limit = { count_owned_ships = { limit = { is_ship_size = massive_ship_fallen_empire } count > 4 } }
+					limit = { count_owned_ship = { limit = { is_ship_size = massive_ship_fallen_empire } count > 4 } }
 					random_owned_ship = { limit = { is_ship_size = massive_ship_fallen_empire } delete_ship = this }
 				}
 			}
@@ -2892,12 +2892,12 @@ country_event = {
 				limit = { is_country_type = fallen_empire }
 				capital_scope = {
 					while = {
-						limit = { prev = { count_owned_ships = { limit = { is_ship_size = massive_ship_fallen_empire } count < 5 } } }
+						limit = { prev = { count_owned_ship = { limit = { is_ship_size = massive_ship_fallen_empire } count < 5 } } }
 						CmtEffectCreateSleeperTitan = yes
 					}
 				}
 				while = {
-					limit = { count_owned_ships = { limit = { is_ship_size = massive_ship_fallen_empire } count > 5 } }
+					limit = { count_owned_ship = { limit = { is_ship_size = massive_ship_fallen_empire } count > 5 } }
 					random_owned_ship = { limit = { is_ship_size = massive_ship_fallen_empire } delete_ship = this }
 				}
 			}
@@ -3072,12 +3072,12 @@ country_event = {
 				limit = { is_country_type = fallen_empire }
 				capital_scope = {
 					while = {
-						limit = { prev = { count_owned_ships = { limit = { is_ship_size = colossus } count < 1 } } }
+						limit = { prev = { count_owned_ship = { limit = { is_ship_size = colossus } count < 1 } } }
 						CmtEffectCreateSleeperColossus = yes
 					}
 				}
 				while = {
-					limit = { count_owned_ships = { limit = { is_ship_size = colossus } count > 1 } }
+					limit = { count_owned_ship = { limit = { is_ship_size = colossus } count > 1 } }
 					random_owned_ship = { limit = { is_ship_size = colossus } delete_ship = this }
 				}
 			}
@@ -3091,12 +3091,12 @@ country_event = {
 				limit = { is_country_type = fallen_empire }
 				capital_scope = {
 					while = {
-						limit = { prev = { count_owned_ships = { limit = { is_ship_size = colossus } count < 2 } } }
+						limit = { prev = { count_owned_ship = { limit = { is_ship_size = colossus } count < 2 } } }
 						CmtEffectCreateSleeperColossus = yes
 					}
 				}
 				while = {
-					limit = { count_owned_ships = { limit = { is_ship_size = colossus } count > 2 } }
+					limit = { count_owned_ship = { limit = { is_ship_size = colossus } count > 2 } }
 					random_owned_ship = { limit = { is_ship_size = colossus } delete_ship = this }
 				}
 			}
@@ -3110,12 +3110,12 @@ country_event = {
 				limit = { is_country_type = fallen_empire }
 				capital_scope = {
 					while = {
-						limit = { prev = { count_owned_ships = { limit = { is_ship_size = colossus } count < 3 } } }
+						limit = { prev = { count_owned_ship = { limit = { is_ship_size = colossus } count < 3 } } }
 						CmtEffectCreateSleeperColossus = yes
 					}
 				}
 				while = {
-					limit = { count_owned_ships = { limit = { is_ship_size = colossus } count > 3 } }
+					limit = { count_owned_ship = { limit = { is_ship_size = colossus } count > 3 } }
 					random_owned_ship = { limit = { is_ship_size = colossus } delete_ship = this }
 				}
 			}

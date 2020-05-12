@@ -305,6 +305,22 @@ country_event = {
 			}
 			random_system_planet = { CmtEffectCreateAdmiralty_PrethorynVanguard = yes }
 			
+			### 2.7 Create ambient audio (ToDo: Move to scripted effect)
+			star = {
+				create_ambient_object = {
+					type = "swarm_1"
+					location = this
+				}
+				last_created_ambient_object = {
+					set_ambient_object_flag = swarm_system_effect
+					set_location = {
+						target = prev
+						distance = 0
+						angle = random
+					}
+				}
+			}
+
 			### SECOND SYSTEM
 			random_system = {
 				limit = {
@@ -779,7 +795,7 @@ event = {
 		event_target:prethoryn = {
 			CmtTriggerIsPrethoryn = yes
 			num_ships > 10
-			count_owned_ships = {
+			count_owned_ship = {
 				limit = { is_ship_size = colony_ship_swarm }
 				count < @CmtConstPrethorynColonizerStdNum
 			}
@@ -996,7 +1012,7 @@ country_event = {
 		check_variable = { which = swarm_fleet_kills value > 6 }
 		exists = event_target:sentinels
 		event_target:sentinels = {
-			count_owned_ships = { count > 30 }
+			count_owned_ship = { count > 30 }
 			root = { NOT = { is_at_war_with = prev } }
 		}
 	}
