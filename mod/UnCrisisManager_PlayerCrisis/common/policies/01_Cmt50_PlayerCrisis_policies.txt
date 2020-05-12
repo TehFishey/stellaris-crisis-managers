@@ -125,6 +125,7 @@ orbital_bombardment = {
 	option = {
 		name = orbital_bombardment_indiscriminate
 		potential = { NOT = { CmtTriggerIsPlayerCrisisAggressor = yes } }
+		in_breach_of = { { key = resolution_rulesofwar_independent_tribunals } }
 		policy_flags = { orbital_bombardment_indiscriminate }
 		valid = {
 			NOR = {
@@ -152,6 +153,7 @@ orbital_bombardment = {
 				CmtTriggerIsPlayerCrisisAggressor = yes
 			}
 		}
+		in_breach_of = { { key = resolution_rulesofwar_independent_tribunals } }
 		policy_flags = { orbital_bombardment_armageddon }
 		AI_weight = {
 			modifier = {
@@ -172,6 +174,7 @@ interference = {
 		potential = { NOT = { CmtTriggerIsPlayerCrisisAggressor = yes } }
 		policy_flags = { interference_passive }
 		on_enabled = { hidden_effect = { set_country_flag = encountered_first_primitive } }
+		in_breach_of = { { key = resolution_galacticstudies_advanced_xenostudies } }
 		valid = {
 			OR = {
 				is_subject_type = signatory
@@ -443,6 +446,7 @@ purge = {
 	
 	option = {
 		name = purge_allowed
+		in_breach_of = { { key = resolution_rulesofwar_reverence_for_life } }
 		policy_flags = { purge_allowed }
 		modifier = {}
 		valid = {
