@@ -1,0 +1,173 @@
+
+######################################################
+######################################################
+#####                                            #####
+#####    Crisis Manager                          #####
+#####                                            #####
+#####    Scripted Effects for Creating Leader    #####
+#####    of End-Game Crises                      #####
+#####                                            #####
+######################################################
+######################################################
+#
+# Information
+#	All scripts to creating leader in this file is scope free
+#
+#
+
+###################
+###  Constants  ###
+###################
+
+
+
+##############
+###  Khan  ###
+##############
+
+CmtEffectCreateAdmiral_MarauderStandard = {
+	if = {
+		limit = {
+			prev = { solar_system = { has_star_flag = marauder_capital_1 } }
+			exists = event_target:CmtTargetSpecies_Marauder1
+		}
+		create_leader = {
+			class = admiral
+			species = event_target:CmtTargetSpecies_Marauder1
+			name = random
+			skill = 3
+			leader_age_min = 25
+			leader_age_max = 45
+			traits = {
+				trait = leader_trait_mercenary_warrior
+				trait = random_trait
+			}
+		}
+	} else_if = {
+		limit = {
+			prev = { solar_system = { has_star_flag = marauder_capital_2 } }
+			exists = event_target:CmtTargetSpecies_Marauder2
+		}
+		create_leader = {
+			class = admiral
+			species = event_target:CmtTargetSpecies_Marauder2
+			name = random
+			skill = 3
+			leader_age_min = 25
+			leader_age_max = 45
+			traits = {
+				trait = leader_trait_mercenary_warrior
+				trait = random_trait
+			}
+		}
+	} else_if = {
+		limit = {
+			prev = { solar_system = { has_star_flag = marauder_capital_3 } }
+			exists = event_target:CmtTargetSpecies_Marauder3
+		}
+		create_leader = {
+			class = admiral
+			species = event_target:CmtTargetSpecies_Marauder3
+			name = random
+			skill = 3
+			leader_age_min = 25
+			leader_age_max = 45
+			traits = {
+				trait = leader_trait_mercenary_warrior
+				trait = random_trait
+			}
+		}
+	} else = {
+		create_leader = {
+			class = admiral
+			species = owner_main_species
+			name = random
+			skill = 3
+			leader_age_min = 25
+			leader_age_max = 45
+			traits = {
+				trait = leader_trait_mercenary_warrior
+				trait = random_trait
+			}
+		}
+	}
+}
+
+
+CmtEffectCreateGeneral_Marauder = {
+	if = {
+		limit = {
+			prev = { solar_system = { has_star_flag = marauder_capital_1 } }
+			exists = event_target:CmtTargetSpecies_Marauder1
+		}
+		create_leader = {
+			class = general
+			species = event_target:CmtTargetSpecies_Marauder1
+			name = random
+			skill = 3
+			traits = { trait = random_trait }
+		}
+	} else_if = {
+		limit = {
+			prev = { solar_system = { has_star_flag = marauder_capital_2 } }
+			exists = event_target:CmtTargetSpecies_Marauder2
+		}
+		create_leader = {
+			class = general
+			species = event_target:CmtTargetSpecies_Marauder2
+			name = random
+			skill = 3
+			traits = { trait = random_trait }
+		}
+	} else_if = {
+		limit = {
+			prev = { solar_system = { has_star_flag = marauder_capital_3 } }
+			exists = event_target:CmtTargetSpecies_Marauder3
+		}
+		create_leader = {
+			class = general
+			species = event_target:CmtTargetSpecies_Marauder3
+			name = random
+			skill = 3
+			traits = { trait = random_trait }
+		}
+	} else = {
+		create_leader = {
+			class = general
+			species = owner_main_species
+			name = random
+			skill = 3
+			traits = { trait = random_trait }
+		}
+	}
+}
+
+CmtEffectCreateAdmiral_MarauderEncourager = {
+	create_leader = {
+		class = admiral
+		species = event_target:satrapy_species
+		name = random
+		leader_age_min = 34
+		leader_age_max = 45
+		traits = { trait = random_trait }
+	}
+}
+
+
+
+
+#################
+###  Dessanu  ###
+#################
+
+CmtEffectCreateAdmiral_DessanuStandard = {
+	create_leader = {
+		class = admiral
+		species = owner_main_species
+		name = random
+		skill = 3
+		leader_age_min = 25
+		leader_age_max = 45
+		traits = { trait = random_trait }
+	}
+}

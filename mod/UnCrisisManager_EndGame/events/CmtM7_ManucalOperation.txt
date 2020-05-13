@@ -2916,7 +2916,7 @@ country_event = {
 				every_owned_fleet = {
 					limit = {
 						is_ship_class = shipclass_military
-						count_fleet_ships = { limit = { NOT = { is_ship_size = massive_ship_fallen_empire } } count > 1 }
+						count_owned_ship = { limit = { NOT = { is_ship_size = massive_ship_fallen_empire } } count > 1 }
 					}
 					create_fallen_empire_titan = yes
 				}
@@ -2924,7 +2924,7 @@ country_event = {
 		}
 	}
 	
-	option = {
+	option = {	
 		name = CmtTextSeparator.name
 		custom_tooltip = CmtTextSeparator.tooltip
 		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }

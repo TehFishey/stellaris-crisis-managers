@@ -32,7 +32,7 @@ CmtEffectClearGhostSignalGalaxy = {
 			ghost_signal_4_machine = { remove_notification_modifier = ghost_signal_4_machine }
 		}
 	}
-	every_pop = {
+	every_galaxy_pop = {
 		limit = { has_trait = trait_mechanical }
 		switch = {
 			trigger = has_modifier
@@ -63,7 +63,7 @@ CmtEffectClearGhostSignalGalaxy = {
 			CmtModifierOrganicPopGhostSignal_1e = { remove_modifier = CmtModifierOrganicPopGhostSignal_1e }
 		}
 	}
-	every_pop = {
+	every_galaxy_pop = {
 		limit = { has_trait = trait_machine_unit }
 		switch = {
 			trigger = has_modifier
