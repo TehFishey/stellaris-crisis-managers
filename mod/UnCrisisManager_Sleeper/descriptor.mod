@@ -3,7 +3,6 @@ tags={
 	"Balance"
 	"Events"
 	"Overhaul"
-	"Crisis"
 }
 picture="thumbnail.png"
 supported_version="2.7.*"
