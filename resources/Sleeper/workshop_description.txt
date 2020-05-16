@@ -1,29 +1,17 @@
-This is an unofficial update of NaK1119's outstanding (and currently abandoned) [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1439935827]"Crisis Manager - Sleeper Edition"[/url] mod to Stellaris version 2.2.7.*. 
+This is an unofficial update of NaK1119's outstanding [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1439935827]"Crisis Manager - Sleeper Edition"[/url] mod to Stellaris version 2.7.*. 
 
-Compared to NaK1119's final release, this version adds:
-[list]
-[*]A few tweaks, changes, and bugfixes from vanilla updates (See changelog for complete list).
-[*]Changed the configuration options and templates for Awakening fleet-power trigger thresholds to bring them in line with current vanilla values.
-[*]Updated all templates, menus, and localization to account for the above changes.
-[*]Overhauled War in Heaven event chain to properly employ new vanilla behaviors and Federations content.
-[*]Compatibility/accessibility with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1840010432]Dynamic Mod Menu[/url]. Compatibility with [url=https://steamcommunity.com/workshop/filedetails/?id=1087781345]!Mod Menu[/url] is retained. [b]You only need one of these menu mods, not both.[/b]
-[/list]
+The Unofficial Crisis Managers are an ongoing, [url=https://github.com/TehFishey/stellaris-crisis-managers]open-source project[/url]. There's a lot of work to be done on them, and current events have left me with less time to do it on than I'd like. If you'd like to contribute, or help with bugfixing, code maintainence, or localization/translation, please don't hesitate to PM me or leave a comment!
 
-This update involved some significant changes to the mod's internal events and overrides; as such, I would consider it a 'Beta' version right now. Please report any bugs, issues, or odd behaviors that you come across - especially ones related to the formation of the League of Unaligned Powers. Thank you!
+Given the complexity of this mod, not all of its features have been fully tested in the latest versions of the game. If you come across any bugs, please report them either in the comments below or on GitHub.
 
 [h2]--------------------------------[/h2]
 [h1]Original Description[/h1]
 [h2]--------------------------------[/h2]
 
 [h2]Summary[/h2]
-This mod is a tool for customizing awakening events of fallen empires including the War in Heaven.
-For example, timing of F.E. Awakening, a probability of the War in Heaven, a probability of subjection at the War in Heaven, etc. The Guardians of the Galaxy events are not controlled by this mid, and are instead handled by the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2030057100]End-Game edition[/url].
+This mod provides in-game tools for customizing Fallen Empire Awakening events and the War in Heaven. Among other things, it provides options to make Fallen Empires stronger or weaker, to make them Awaken faster or slower, to make the War in Heaven more or less likely, and so on. Note that Guardian of the Galaxy events are not controlled by this mod, and are instead managed by the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2030057100]End-Game edition[/url].
 
-Although this is sub-mod of the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2030057100]End-Game Edition[/url], this mod works as a standalone as well (though the configuration menu might be a little more awkward to use).
-The configuration menu can be accessed in-game either through [url=https://steamcommunity.com/workshop/filedetails/?id=1087781345]!Mod Menu[/url] or [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1840010432]Dynamic Mod Menu[/url]. This mod comes with a default configuration template; more are available if you're using the End-Game Edition alongside it.
-
-[h2]Install/Uninstall for Saved Game[/h2]
-This mod can be installed/uninstalled for only save data that any end-game crisis or awakening of fallen empires have NOT happened or been triggered.
+Although this is sub-mod of the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2030057100]End-Game Edition[/url], this mod works as a standalone as well (though the configuration menu might be a little more awkward to use). The menu can be accessed in-game through your choice of [url=https://steamcommunity.com/workshop/filedetails/?id=1087781345]!Mod Menu[/url], [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1840010432]Dynamic Mod Menu[/url], or the [url=https://steamcommunity.com/workshop/filedetails/?id=1943060017]!! 00 Infinite Stellaris Framework[/url] (Thanks 小傘INFINI7E!). 
 
 [h2]Features[/h2]
 Players can access the following options via an in-game menu:
@@ -34,7 +22,22 @@ Players can access the following options via an in-game menu:
 [*]And more!
 [/list]
 
+Several preset templates for all of the above settings are included with the End-Game Crisis Manager mod. Additionally, user-designed template presets can be built as custom mods/addons; instructions for doing so can be found in the End-Game Crisis Manager's directory.
+
+[h2]Installation & Uninstallation[/h2]
+This mod should only be installed (or uninstalled) for games where NO end-game crisis or fallen empire awakening events have been triggered.
+
+[h2]Localization & Languages[/h2]
+[list]
+[*]English localization needs some editing/re-writing, but is available (obviously).
+[*]русские переводы завершены! Спасибо Аргокон Эстейл!
+[/list]
+
+If you would like to help with editing or UI cleanup, or translate Crisis Manager into your language, please let me know in the comments or a DM!
+
 [h2]Compatibility Information[/h2]
-This mod is NOT compatible with the mod modifying awakening of fallen empires and/or the War in Heaven.
-Maybe this mod is compatible with the mod modifying sleeping fallen empires.
-This mod is probably compatible with the mod modifying AI, fleet, ship and/or economy of fallen/awakened empires.
+This mod is NOT COMPATIBLE with mods that modify FE Awakening events or the War in Heaven
+This mod is POSSIBLY COMPATIBLE with mods modifying un-awakened fallen empires.
+This mod is PROBABLY COMPATIBLE with mods modifying the AI, fleet compositions, ship layouts and/or economy of fallen/awakened empires.
+
+Future compatibility patches/changes are planned, but may take a little while. Leave a comment if there are any that you are especially interested in.
