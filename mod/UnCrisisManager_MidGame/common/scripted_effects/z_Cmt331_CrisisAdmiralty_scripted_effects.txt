@@ -915,8 +915,7 @@ CmtEffectCreateAdmiralty_GraygooRoamer = {
 
 
 CmtEffectCreateAdmiralty_GraygooAttackerA = {
-	# event_target:graygoo_country = {
-	root = {
+	event_target:graygoo_country = {
 		if = {
 			limit = { num_ships < @CmtConstGraygooFleetNumberUpperLimit }
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Graygoo } }
@@ -941,8 +940,7 @@ CmtEffectCreateAdmiralty_GraygooAttackerA = {
 }
 
 CmtEffectCreateAdmiralty_GraygooAttackerB = {
-	# event_target:graygoo_country = {
-	root = {
+	event_target:graygoo_country = {
 		if = {
 			limit = { num_ships < @CmtConstGraygooFleetNumberUpperLimit }
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Graygoo } }
