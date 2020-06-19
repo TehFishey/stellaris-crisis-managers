@@ -1,5 +1,4 @@
 
-
 ####################################################
 ####################################################
 #####                                          #####
@@ -30,7 +29,7 @@ start_lcluster_chain = {
 					event_chain = l_cluster_chain
 					target = this
 				}
-				
+
 				event_target:CmtGlobalVar = {
 					if = {
 						limit = { check_variable = { which = CmtVarLgateReqClues value < 0.5 } }
@@ -47,7 +46,7 @@ start_lcluster_chain = {
 					add_event_chain_counter = { event_chain = l_cluster_chain counter = clues amount = -1 }
 					event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } }
 				}
-				
+
 				set_variable = { which = num_lcluster_clues value = 0 }		## for Liquidation
 			}
 		}
@@ -153,12 +152,12 @@ CmtEffectDestroyGraygoo = {
 	every_playable_country = {
 		limit = {
 			is_ai = no
-			NOT = { is_same_value = event_target:goo_slayer }
+			NOT = { is_same_empire = event_target:goo_slayer }
 		}
 		country_event = { id = graygoo.16 }
 	}
 	observer_event = { id = observer.65 }
-	
+
 	event_target:CmtGlobalVar = {
 		if = {
 			limit = {
@@ -181,15 +180,15 @@ CmtEffectDestroyGraygoo = {
 		}
 		country_event = { id = CrisisManagerControl.6202 }		## Open L-Gates
 	}
-	
+
 	event_target:graygoo_country = {
 		every_owned_fleet = { destroy_fleet = this }
 		destroy_country = yes
 	}
 	clear_global_event_target = graygoo_country
 	clear_global_event_target = nanite_factory
+	clear_global_event_target = lcluster_factory_system
 }
-
 
 
 #################################

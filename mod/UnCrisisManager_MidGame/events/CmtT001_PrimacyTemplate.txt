@@ -14,13 +14,13 @@ namespace = CrisisManagerMenu
 country_event = {
 	id = CrisisManagerMenu.2001
 	hide_window = yes
-	
+
 	is_triggered_only = yes
 	trigger = { CmtTriggerTemplateActivated_T001 = yes }
-	
+
 	immediate = {
 		event_target:CmtGlobalVar = {
-			
+
 			### Common Configurations
 			set_variable = { which = CmtVarVersion value = @CmtT001_ConstVersionInfo }
 			set_variable = { which = CmtVarTemplateCode value = 2001 }
@@ -28,13 +28,13 @@ country_event = {
 				limit = { always = @CmtT001_ConstCallOnGameStart }
 				remove_global_flag = CmtFlagNoCall
 			} else = { set_global_flag = CmtFlagNoCall }
-			
-			
-			
+
+
+
 			### End Game Edition
 			if = {
 				limit = { always = @CmtT001_ConstActivatedEventEndgame }
-				
+
 				### Basic Configurations
 				set_variable = { which = CmtVarMultiple value = @CmtT001_ConstMultiple }
 				set_variable = { which = CmtVarTriggerInterval value = @CmtT001_ConstTriggerInterval }
@@ -46,7 +46,7 @@ country_event = {
 					limit = { always = @CmtT001_ConstSubmarineCrisis }
 					set_global_flag = CmtFlagSubmarineCrisis
 				} else = { remove_global_flag = CmtFlagSubmarineCrisis }
-				
+
 				set_variable = { which = CmtVarTotalWarPriority value = @CmtT001_ConstTotalWarPriority }
 				set_variable = { which = CmtVarTotalWarAutoBuild value = @CmtT001_ConstTotalWarAutoBuild }
 				set_variable = { which = CmtVarPlanetOccupy value = @CmtT001_ConstPlanetOccupy }
@@ -54,8 +54,8 @@ country_event = {
 				set_variable = { which = CmtVarFasterCombatFleet_Common value = @CmtT001_ConstFasterCombatFleet }
 				set_variable = { which = CmtVarFasterConstructor_Common value = @CmtT001_ConstFasterConstructor }
 				set_variable = { which = CmtVarFriendlyCrisis value = @CmtT001_ConstFriendlyCrisis }
-				
-				
+
+
 				### Prethoryn
 				if = {
 					limit = { always = @CmtT001_ConstForbiddenPrethoryn }
@@ -76,8 +76,8 @@ country_event = {
 					limit = { always = @CmtT001_ConstPrethorynUnlimitedFlavor }
 					set_global_flag = CmtFlagPrethorynUnlimitedFlavor
 				} else = { remove_global_flag = CmtFlagPrethorynUnlimitedFlavor }
-				
-				
+
+
 				### Extradimensionals
 				if = {
 					limit = { always = @CmtT001_ConstForbiddenExds }
@@ -99,8 +99,8 @@ country_event = {
 				} else = { remove_global_flag = CmtFlagExdsChaserAnywhere }
 				set_variable = { which = CmtVarReinforceCycle_OnExdAnchorBuilt value = @CmtT001_ConstReinforceCycle_OnExdAnchorBuilt }
 				set_variable = { which = CmtVarExdsPortalStability value = @CmtT001_ConstExdsPortalStability }
-				
-				
+
+
 				### Contingency
 				if = {
 					limit = { always = @CmtT001_ConstForbiddenContingency }
@@ -114,8 +114,8 @@ country_event = {
 					set_global_flag = CmtFlagSynthTerrorAll
 				} else = { remove_global_flag = CmtFlagSynthTerrorAll }
 				set_variable = { which = CmtVarCybrexResurfacing value = @CmtT001_ConstCybrexResurfacing }
-				
-				
+
+
 				### Forced End of Cycle
 				if = {
 					limit = { always = @CmtT001_ConstAllowForcedEoc }
@@ -129,14 +129,14 @@ country_event = {
 					set_global_flag = CmtFlagForcedEocCrisisTerm
 				} else = { remove_global_flag = CmtFlagForcedEocCrisisTerm }
 			}
-			
-			
-			
+
+
+
 			### Fallen Empire Edition
 			if = {
 				limit = { always = @CmtT001_ConstActivatedEventSleeper }
-				
-				
+
+
 				### Standard Awakening of Sleepers
 				set_variable = { which = CmtVarSleeperMultiple value = @CmtT001_ConstSleeperMultiple }
 				set_variable = { which = CmtVarSleeperInterval value = @CmtT001_ConstSleeperInterval }
@@ -161,13 +161,13 @@ country_event = {
 					set_global_flag = CmtFlagSleeperForbidXenophobe
 				} else = { remove_global_flag = CmtFlagSleeperForbidXenophobe }
 				set_variable = { which = CmtVarSleeperHolyClacker value = @CmtT001_ConstSleeperHolyClacker }
-				
+
 				set_variable = { which = CmtVarSleeperFleetPowerYoungDisplay value = CmtVarSleeperFleetPowerYoung }
 				set_variable = { which = CmtVarSleeperFleetPowerOwnDisplay value = CmtVarSleeperFleetPowerOwn }
 				multiply_variable = { which = CmtVarSleeperFleetPowerYoung value = 1000 }
 				multiply_variable = { which = CmtVarSleeperFleetPowerOwn value = 1000 }
-				
-				
+
+
 				### War in Heaven
 				set_variable = { which = CmtVarHeavenProbability value = @CmtT001_ConstHeavenProbability }
 				set_variable = { which = CmtVarHeavenAncientRival value = @CmtT001_ConstHeavenAncientRival }
@@ -196,23 +196,23 @@ country_event = {
 				set_variable = { which = CmtVarHeavenNpcSubject value = @CmtT001_ConstHeavenNpcSubject }
 				set_variable = { which = CmtVarHeavenNpcLeague value = @CmtT001_ConstHeavenNpcLeague }
 				set_variable = { which = CmtVarHeavenExhaustion value = @CmtT001_ConstHeavenExhaustion }
-				
-				
+
+
 				### Guardians of Galaxy
 				set_variable = { which = CmtVarGuardiansProbability value = @CmtT001_ConstGuardiansProbability }
 				set_variable = { which = CmtVarTimingAwakingGuardians value = @CmtT001_ConstTimingAwakingGuardians }
 				set_variable = { which = CmtVarDoubleGurdian value = @CmtT001_ConstDoubleGurdian }
 				set_variable = { which = CmtVarGuardianWornOut value = @CmtT001_ConstGuardianWornOut }
 				set_variable = { which = CmtVarMechFeAwaking value = @CmtT001_ConstMechFeAwaking }
-				
+
 			}
-			
-			
-			
+
+
+
 			### Mid Game Edition
 			if = {
 				limit = { always = @CmtT001_ConstActivatedEventMidgame }
-				
+
 				### Khan
 				set_variable = { which = CmtVarKhanMultiple value = @CmtT001_ConstKhanMultiple }
 				set_variable = { which = CmtVarKhanInterval value = @CmtT001_ConstKhanInterval }
@@ -224,15 +224,15 @@ country_event = {
 				set_variable = { which = CmtVarKhanLifespan value = @CmtT001_ConstKhanLifespan }
 				set_variable = { which = CmtVarReinforceCycle_Khan value = @CmtT001_ConstReinforceCycle_Khan }
 				set_variable = { which = CmtVarKhanPostDeathSummary value = @CmtT001_ConstKhanPostDeathSummary }
-				
-				
+
+
 				### L-Gate
 				set_variable = { which = CmtVarLgateReqClues value = @CmtT001_ConstLgateReqClues }
 				if = {
 					limit = { always = @CmtT001_ConstLgateSkipTech }
 					set_global_flag = CmtFlagLgateSkipTech
 				} else = { remove_global_flag = CmtFlagLgateSkipTech }
-				set_variable = { which = CmtVarLgateClusterType value = @CmtT001_ConstLgateClusterType }
+				# set_variable = { which = CmtVarLgateClusterType value = @CmtT001_ConstLgateClusterType }
 				if = {
 					limit = { always = @CmtT001_ConstLgateForbidSilence }
 					set_global_flag = CmtFlagLgateForbidSilence
@@ -260,16 +260,16 @@ country_event = {
 				set_variable = { which = CmtVarLgateTerraformNanite value = @CmtT001_ConstLgateTerraformNanite }
 				set_variable = { which = CmtVarCrisisPower_Endgame value = @CmtT001_ConstCrisisStrengthEnd }
 			}
-			
-			
-			
+
+
+
 			### Crisis Power (End Game)
 			if = {
 				limit = { always = @CmtT001_ConstActivatedPowerEndgame }
-				
+
 				set_variable = { which = CmtVarCrisisPower_Endgame value = @CmtT001_ConstCrisisStrengthEnd }
 				CmtEffectApplyDifficulty_Endgame = yes
-				
+
 				if = {
 					limit = { check_variable = { which = CmtVarCrisisPower_Endgame value < 0.5 } }
 					set_variable = { which = CmtVarFleetPower_Common value = @CmtT001_ConstFleetPower_Common }
@@ -284,14 +284,14 @@ country_event = {
 						set_variable = { which = CmtVarFleetPower_Cybrex value = @CmtT001_ConstFleetPower_Cybrex }
 						set_variable = { which = CmtVarFleetPower_ForcedEoc value = @CmtT001_ConstFleetPower_ForcedEoc }
 					} else = { CmtEffectApplyCommonPowerEndgame_FleetPower = yes }
-					
+
 					set_variable = { which = CmtVarArmyPower_Common value = @CmtT001_ConstArmyPower_Common }
 					if = {
 						limit = { check_variable = { which = CmtVarArmyPower_Common value < 0.125 } }
 						set_variable = { which = CmtVarArmyPower_Prethoryn value = @CmtT001_ConstArmyPower_Prethoryn }
 						set_variable = { which = CmtVarArmyPower_Contingency value = @CmtT001_ConstArmyPower_Contingency }
 					} else = { CmtEffectApplyCommonPowerEndgame_ArmyPower = yes }
-					
+
 					set_variable = { which = CmtVarCombatFleetNumber_Common value = @CmtT001_ConstCombatFleetNumber_Common }
 					if = {
 						limit = { check_variable = { which = CmtVarCombatFleetNumber_Common value < 0.125 } }
@@ -303,14 +303,14 @@ country_event = {
 						set_variable = { which = CmtVarCombatFleetNumber_Contingency value = @CmtT001_ConstCombatFleetNumber_Contingency }
 						set_variable = { which = CmtVarCombatFleetNumber_Cybrex value = @CmtT001_ConstCombatFleetNumber_Cybrex }
 					} else = { CmtEffectApplyCommonPowerEndgame_CombatFleetNumber = yes }
-					
+
 					set_variable = { which = CmtVarArmyNumber_Common value = @CmtT001_ConstArmyNumber_Common }
 					if = {
 						limit = { check_variable = { which = CmtVarArmyNumber_Common value < 0.125 } }
 						set_variable = { which = CmtVarArmyNumber_Prethoryn value = @CmtT001_ConstArmyNumber_Prethoryn }
 						set_variable = { which = CmtVarArmyNumber_Contingency value = @CmtT001_ConstArmyNumber_Contingency }
 					} else = { CmtEffectApplyCommonPowerEndgame_ArmyNumber = yes }
-					
+
 					set_variable = { which = CmtVarConstructorNumber_Common value = @CmtT001_ConstConstructorNumber_Common }
 					if = {
 						limit = { check_variable = { which = CmtVarConstructorNumber_Common value < 0.125 } }
@@ -322,16 +322,16 @@ country_event = {
 					} else = { CmtEffectApplyCommonPowerEndgame_ConstructorNumber = yes }
 				}
 			}
-			
-			
-			
+
+
+
 			### Crisis Power (Mid Game)
 			if = {
 				limit = { always = @CmtT001_ConstActivatedPowerMidgame }
-				
+
 				set_variable = { which = CmtVarCrisisPower_Midgame value = @CmtT001_ConstCrisisStrengthMid }
 				CmtEffectApplyDifficulty_Midgame = yes
-				
+
 				if = {
 					limit = { check_variable = { which = CmtVarCrisisPower_Midgame value < 0.5 } }
 					set_variable = { which = CmtVarFleetPower_Common value = @CmtT001_ConstFleetPower_Common }
@@ -341,13 +341,13 @@ country_event = {
 						set_variable = { which = CmtVarFleetPower_Graygoo value = @CmtT001_ConstFleetPower_Graygoo }
 						set_variable = { which = CmtVarFleetPower_Dessanu value = @CmtT001_ConstFleetPower_Dessanu }
 					} else = { CmtEffectApplyCommonPowerMidgame_FleetPower = yes }
-					
+
 					set_variable = { which = CmtVarArmyPower_Common value = @CmtT001_ConstArmyPower_Common }
 					if = {
 						limit = { check_variable = { which = CmtVarArmyPower_Common value < 0.125 } }
 						set_variable = { which = CmtVarArmyPower_Khan value = @CmtT001_ConstArmyPower_Khan }
 					} else = { CmtEffectApplyCommonPowerMidgame_ArmyPower = yes }
-					
+
 					set_variable = { which = CmtVarCombatFleetNumber_Common value = @CmtT001_ConstCombatFleetNumber_Common }
 					if = {
 						limit = { check_variable = { which = CmtVarCombatFleetNumber_Common value < 0.125 } }
@@ -355,13 +355,13 @@ country_event = {
 						set_variable = { which = CmtVarCombatFleetNumber_Graygoo value = @CmtT001_ConstCombatFleetNumber_Graygoo }
 						set_variable = { which = CmtVarCombatFleetNumber_Dessanu value = @CmtT001_ConstCombatFleetNumber_Dessanu }
 					} else = { CmtEffectApplyCommonPowerMidgame_CombatFleetNumber = yes }
-					
+
 					set_variable = { which = CmtVarArmyNumber_Common value = @CmtT001_ConstArmyNumber_Common }
 					if = {
 						limit = { check_variable = { which = CmtVarArmyNumber_Common value < 0.125 } }
 						set_variable = { which = CmtVarArmyNumber_Khan value = @CmtT001_ConstArmyNumber_Khan }
 					} else = { CmtEffectApplyCommonPowerMidgame_ArmyNumber = yes }
-					
+
 					set_variable = { which = CmtVarConstructorNumber_Common value = @CmtT001_ConstConstructorNumber_Common }
 					if = {
 						limit = { check_variable = { which = CmtVarConstructorNumber_Common value < 0.125 } }
@@ -369,9 +369,9 @@ country_event = {
 					} else = { CmtEffectApplyCommonPowerMidgame_ConstructorNumber = yes }
 				}
 			}
-			
-			
-			
+
+
+
 			### Temporary Configurations
 			CmtEffectTransferAll = yes
 			### Around version up: "immediate" in main menu

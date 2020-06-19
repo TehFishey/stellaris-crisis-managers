@@ -38,8 +38,7 @@
 @CmtConstKhanFleetPowerUpperLimit_T6 =  375000		##  375 k
 @CmtConstKhanFleetPowerUpperLimit_T7 =  750000		##  750 k
 
-@CmtConstGraygooFleetNumberUpperLimit =   3000
-
+@CmtConstGraygooFleetNumberUpperLimit =  100		## >~4000 k
 
 ##############
 ###  Khan  ###
@@ -238,7 +237,6 @@ CmtEffectCreateAdmiralty_KhanReinforcement = {
 				}
 			}
 		}
-		
 		### Army
 		if = {
 			limit = {
@@ -276,7 +274,6 @@ CmtEffectCreateAdmiralty_KhanReinforcement = {
 				}
 			}
 		}
-		
 		### Navy Fleet
 		if = {
 			limit = {
@@ -535,7 +532,6 @@ CmtEffectCreateAdmiralty_DessanuRoamer = {
 		event_target:lcluster1b = {
 			CmtFleetSetAuxParam_DessanuRoamer = { NUM = 2 }
 		}
-		
 		if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Dessanu value > 0.375 } } }
 			CmtEffectCreateFleet_DessanuRoamer = yes
@@ -605,7 +601,6 @@ CmtEffectCreateAdmiralty_DessanuRoamer = {
 				CmtFleetSetAuxParam_DessanuRoamer = { NUM = 14 }
 			}
 		}
-		
 		if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Dessanu value > 2.125 } } }
 			CmtEffectCreateFleet_DessanuRoamer = yes
@@ -778,13 +773,11 @@ CmtEffectCreateAdmiralty_GraygooRoamer = {
 		event_target:lcluster1 = {
 			CmtFleetSetAuxParam_GraygooRoamer = { NUM = 01 }
 		}
-		
 		CmtEffectCreateFleet_GraygooAttacker = { AMOUNT = $AMOUNT|1$ }
 		random_system = {
 			limit = { has_star_flag = lcluster1 }
 			CmtFleetSetAuxParam_GraygooRoamer = { NUM = 02 }
 		}
-		
 		if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Graygoo value > 0.375 } } }
 			CmtEffectCreateFleet_GraygooAttacker = { AMOUNT = $AMOUNT|1$ }
@@ -819,7 +812,6 @@ CmtEffectCreateAdmiralty_GraygooRoamer = {
 				CmtFleetSetAuxParam_GraygooRoamer = { NUM = 07 }
 			}
 		}
-		
 		if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Graygoo value > 1.125 } } }
 			CmtEffectCreateFleet_GraygooAttacker = { AMOUNT = $AMOUNT|1$ }
@@ -867,7 +859,6 @@ CmtEffectCreateAdmiralty_GraygooRoamer = {
 				CmtFleetSetAuxParam_GraygooRoamer = { NUM = 14 }
 			}
 		}
-		
 		if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Graygoo value > 2.125 } } }
 			CmtEffectCreateFleet_GraygooAttacker = { AMOUNT = $AMOUNT|1$ }
@@ -915,10 +906,9 @@ CmtEffectCreateAdmiralty_GraygooRoamer = {
 
 
 CmtEffectCreateAdmiralty_GraygooAttackerA = {
-	# event_target:graygoo_country = {
-	root = {
+	event_target:graygoo_country = {
 		if = {
-			limit = { num_ships < @CmtConstGraygooFleetNumberUpperLimit }
+			limit = { num_fleets < @CmtConstGraygooFleetNumberUpperLimit }
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Graygoo } }
 			while = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
@@ -929,11 +919,11 @@ CmtEffectCreateAdmiralty_GraygooAttackerA = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
 				random_list = {
-					100 = {
+					10 = {
 						event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = 0 } }
 						CmtEffectCreateFleet_GraygooAttacker = { AMOUNT = $AMOUNT|1$ }
 					}
-					300 = { }
+					30 = { }
 				}
 			}
 		}
@@ -941,10 +931,9 @@ CmtEffectCreateAdmiralty_GraygooAttackerA = {
 }
 
 CmtEffectCreateAdmiralty_GraygooAttackerB = {
-	# event_target:graygoo_country = {
-	root = {
+	event_target:graygoo_country = {
 		if = {
-			limit = { num_ships < @CmtConstGraygooFleetNumberUpperLimit }
+			limit = { num_fleets < @CmtConstGraygooFleetNumberUpperLimit }
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Graygoo } }
 			while = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
@@ -957,8 +946,8 @@ CmtEffectCreateAdmiralty_GraygooAttackerB = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
 				random_list = {
-					300 = { CmtEffectCreateFleet_GraygooAttacker = { AMOUNT = $AMOUNT|1$ } }
-					100 = { }
+					30 = { CmtEffectCreateFleet_GraygooAttacker = { AMOUNT = $AMOUNT|1$ } }
+					10 = { }
 				}
 			}
 		}
