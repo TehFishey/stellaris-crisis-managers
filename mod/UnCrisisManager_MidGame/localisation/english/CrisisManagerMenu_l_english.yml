@@ -10,7 +10,6 @@
  ##############################################
  ##############################################
  
- 
  #############################
  ###  Common Words, Icons  ###
  #############################
@@ -34,7 +33,7 @@
  CmtTextGoBack.tooltip:1 ""
  CmtTextGoNextPage.name:0 "Go Next"
  CmtTextGoNextPage.tooltip:1 ""
- CmtTextGoNextConfig.name:0 "Go Next Configration"
+ CmtTextGoNextConfig.name:0 "Go Next Configuration"
  CmtTextGoNextConfig.tooltip:1 ""
  CmtTextGoBackMain.name:0 "Go Back to Main Menu"
  CmtTextGoBackMain.tooltip:1 ""
@@ -88,11 +87,9 @@
  CmtTextTurnOff:0 ": Current §GON§!, Turn OFF"
  
  
- 
  ###########################################
  ###  Common Sentences for Descriptions  ###
  ###########################################
- 
  
  ### For Templates
  CmtDescTemplateInfoFull:0 "$CmtIconTemplateEvent$: template for events of the crises (Basic Config & Adv. Config.).\n$CmtIconTemplatePower$: template for ''Crisis Power''[CmtGlobalVar.GetName_CmtTemplateDescEndGame][CmtGlobalVar.GetName_CmtTemplateDescMidGame][CmtGlobalVar.GetName_CmtTemplateDescSleeper]"
@@ -102,8 +99,8 @@
  CmtDescTemplateInfoNull:1 ""
  
  ### For Initial Words
- CmtDescNpc:0 "NPCs: the empire controled by AI, but not a human player."
- CmtDescPcNpc:0 "PCs: the empire controled by you or other person.\nNPCs: the empire controled by AI."
+ CmtDescNpc:0 "NPCs: the empire controlled by AI, but not a human player."
+ CmtDescPcNpc:0 "PCs: the empire controlled by you or other person.\nNPCs: the empire controlled by AI."
  CmtDescEgsy:0 "$CmtWarn0$: EGSY means ''End-Game Start Year''"
  CmtDescMgsy:0 "$CmtWarn0$: MGSY means ''Mid-Game Start Year''"
  CmtDescMtth:0 "$CmtWarn0$\nMTTH means ''Mean Time to Happen''.\nShorter MTTH makes higher probability per elapsed time of the event."
@@ -139,7 +136,6 @@
  
  ### Mid-Game Edition
  CmtDescListedNotAllLgate:0 "$CmtWarn0$\nAlthough [CmtGlobalVar.GetValue.CmtVarManualLgate] L-Gates exists, only 8 L-Gates are listed here.\nSelect ''$CrisisManagerMenu.7141d.name$'' if the L-Gate you want to select is not listed."
- 
  
  
  #######################################
@@ -189,7 +185,6 @@
  CmtNameMechUprising:0 "Machine Uprising"
  
  
- 
  #####################################
  ###  Initialization Events, etc.  ###
  #####################################
@@ -206,7 +201,6 @@
  CrisisManagerMenu.0014.desc:0 "§HDo NOT advance time while $CrisisManagerTitleB$ menu is opened.§!\nThat cause bugs if any event happens while the menu is opened."
  CrisisManagerMenu.0014b.name:0 "Never Show Warning."
  CrisisManagerMenu.0014b.tooltip:1 ""
- 
  
  
  ###################
@@ -234,7 +228,6 @@
  CrisisManagerMenu.0100.7000.tooltip:0 "Several events can be triggered from here."
  CrisisManagerMenu.0100.9000.name:0 "§HDebug Menu§!"
  CrisisManagerMenu.0100.9000.tooltip:0 "§RFor only debugging.§!"
- 
  
  
  ###############################
@@ -276,8 +269,8 @@
  
  CrisisManagerMenu.10xx.desc:0 "Current configurations are shown here."
  CrisisManagerMenu.10xx.desc1:0 "$CrisisManagerMenu.10xx.desc$\nAll configurations can be changed individually."
- CrisisManagerMenu.10xx.desc2a:0 "$CrisisManagerMenu.10xx.desc$\n§HAny configurations cannot be changed§! because events related to them have already happend."
- CrisisManagerMenu.10xx.desc2b:0 "$CrisisManagerMenu.10xx.desc$\n§HSome of parameters cannot be configured§! because events related to them have already happend."
+ CrisisManagerMenu.10xx.desc2a:0 "$CrisisManagerMenu.10xx.desc$\n§HAny configurations cannot be changed§! because events related to them have already happened."
+ CrisisManagerMenu.10xx.desc2b:0 "$CrisisManagerMenu.10xx.desc$\n§HSome of parameters cannot be configured§! because events related to them have already happened."
  CrisisManagerMenu.10xx.footnote:0 "§WThis Page: §!"
  
  CrisisManagerMenu.1010.name:1 "$CrisisManagerMenu.1000.title$ $CrisisManagerTitleC$"
@@ -311,7 +304,6 @@
  CrisisManagerMenu.1031.desc:1 "$CrisisManagerMenu.10xx.desc1$\n$CrisisManagerMenu.10xx.footnote$§W$CrisisManagerMenu.1000.1031.name$§!"
  CrisisManagerMenu.1032.desc:1 "$CrisisManagerMenu.10xx.desc1$\n$CrisisManagerMenu.10xx.footnote$§W$CrisisManagerMenu.1000.1032.name$§!"
  CrisisManagerMenu.1033.desc:1 "$CrisisManagerMenu.10xx.desc1$\n$CrisisManagerMenu.10xx.footnote$§W$CrisisManagerMenu.1000.1033.name$§!"
- 
  
  
  ###################
@@ -355,7 +347,6 @@
  CrisisManagerTemplate_T116.name:1 "[CmtGlobalVar.GetName_CmtTemplateEvent_T116][CmtGlobalVar.GetName_CmtTemplatePower_T116]:   $CrisisManagerTemplate_T116.title$"
  
  
- 
  ########################################
  ###  Basic Configurations of Crisis  ###
  ########################################
@@ -393,7 +384,6 @@
  CrisisManagerMenu.3110z.name:1 "$CrisisManagerMenu.3110x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.3110z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Interval of Crisis
  CrisisManagerMenu.3120.title:0 "Interval of Crisis"
  CrisisManagerMenu.3120.desc:0 "A configuration of interval of crisis.\nThis configuration works followings.\n\nIf ''$CrisisManagerMenu.3110c.title$'' is set, this configuration is minimum time from the end of previous crisis to next crisis triggered.\n\nIf ''$CrisisManagerMenu.3110d.title$'' is set, this configuration is minimum time from previous crisis triggered to next crisis triggered.\n\n$CmtWarn0$:  Next crisis is not always triggered immediately when the interval is over."
@@ -429,22 +419,21 @@
  CrisisManagerMenu.3120.VC.name:1 "$CrisisManagerMenu.3120x.title$$CrisisManagerMenu.3120.VC.title$"
  CrisisManagerMenu.3120.VN.name:1 "§L$CrisisManagerMenu.3120x.title$$CrisisManagerMenu.3120.VN.title$§!"
  
- 
  ### At the Earliest
  CrisisManagerMenu.3130.title:0 "Crises to Happen at Earliest"
- CrisisManagerMenu.3130.desc:0 "A configuration of the year crisis happens at the earliest.\n\n$CmtDescEgsy$"
+ CrisisManagerMenu.3130.desc:0 "A configuration of the year, the crisis happens at the earliest.\n\n$CmtDescEgsy$"
  CrisisManagerMenu.3130x.title:1 "$CrisisManagerMenu.3130.title$: "
- CrisisManagerMenu.3130.V9.title:0 "Crises to Happen at Earliest §YEGSY +100 Years§!"
- CrisisManagerMenu.3130.V8.title:0 "Crises to Happen at Earliest §YEGSY +75 Years§!"
- CrisisManagerMenu.3130.V7.title:0 "Crises to Happen at Earliest §YEGSY +50 Years§!"
- CrisisManagerMenu.3130.V6.title:0 "Crises to Happen at Earliest §YEGSY +25 Years§!"
- CrisisManagerMenu.3130.V5.title:0 "Crises to Happen at Earliest §YEGSY $CmtSignZero$ Years§!"
- CrisisManagerMenu.3130.V4.title:0 "Crises to Happen at Earliest §YEGSY -25 Years§!"
- CrisisManagerMenu.3130.V3.title:0 "Crises to Happen at Earliest §YEGSY -50 Years§!"
- CrisisManagerMenu.3130.V2.title:0 "Crises to Happen at Earliest §YEGSY -75 Years§!"
- CrisisManagerMenu.3130.V1.title:0 "Crises to Happen at Earliest §YEGSY -100 Years§!"
+ CrisisManagerMenu.3130.V9.title:0 "$CrisisManagerMenu.3130.title$ §YEGSY +100 Years§!"
+ CrisisManagerMenu.3130.V8.title:0 "$CrisisManagerMenu.3130.title$ §YEGSY +75 Years§!"
+ CrisisManagerMenu.3130.V7.title:0 "$CrisisManagerMenu.3130.title$ §YEGSY +50 Years§!"
+ CrisisManagerMenu.3130.V6.title:0 "$CrisisManagerMenu.3130.title$ §YEGSY +25 Years§!"
+ CrisisManagerMenu.3130.V5.title:0 "$CrisisManagerMenu.3130.title$ §YEGSY $CmtSignZero$ Years§!"
+ CrisisManagerMenu.3130.V4.title:0 "$CrisisManagerMenu.3130.title$ §YEGSY -25 Years§!"
+ CrisisManagerMenu.3130.V3.title:0 "$CrisisManagerMenu.3130.title$ §YEGSY -50 Years§!"
+ CrisisManagerMenu.3130.V2.title:0 "$CrisisManagerMenu.3130.title$ §YEGSY -75 Years§!"
+ CrisisManagerMenu.3130.V1.title:0 "$CrisisManagerMenu.3130.title$ §YEGSY -100 Years§!"
  CrisisManagerMenu.3130.V0.title:0 "Crises to Happen §Rat Earliest 2205§!"
- CrisisManagerMenu.3130.VC.title:0 "Crises to Happen at Earliest §YEGSY [CmtGlobalVar.GetSign_CmtVarEarliestEgpy][CmtGlobalVar.GetValue.CmtVarEarliestEgpy] Years§!"
+ CrisisManagerMenu.3130.VC.title:0 "$CrisisManagerMenu.3130.title$ §YEGSY [CmtGlobalVar.GetSign_CmtVarEarliestEgpy][CmtGlobalVar.GetValue.CmtVarEarliestEgpy] Years§!"
  CrisisManagerMenu.3130.V9.tooltip:1 "$CmtDescEgsy$"
  CrisisManagerMenu.3130.V8.tooltip:1 "$CmtDescEgsy$"
  CrisisManagerMenu.3130.V7.tooltip:1 "$CmtDescEgsy$"
@@ -475,7 +464,6 @@
  CrisisManagerMenu.3130z.name:1 "$CrisisManagerMenu.3130x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.3130t.tooltip:1 "$CmtTextTemplateUnique.desc$"
  CrisisManagerMenu.3130z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  ### MTTH for Crisis Triggered
  CrisisManagerMenu.3140.title:0 "MTTH for Crisis Triggered"
@@ -509,7 +497,6 @@
  CrisisManagerMenu.3140t.tooltip:1 "$CmtTextTemplateUnique.desc$"
  CrisisManagerMenu.3140z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Equalization of Probability
  CrisisManagerMenu.3150.title:0 "Equalization of Probability"
  CrisisManagerMenu.3150.desc:0 "A configuration to rebalance a probability of each crisis happening.\nThe relative probabilities of 3 crises happening will come near to 1:1:1 if stronger option is select.\nThis configuration changes total probability of 3 crises only a little."
@@ -534,7 +521,6 @@
  CrisisManagerMenu.3150d.name:1 "$CrisisManagerMenu.3150d.title$ $CmtTooltipInfo2$"
  CrisisManagerMenu.3150z.name:1 "$CrisisManagerMenu.3150x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.3150z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  ### Progress Speed of Opening Event Chain
  CrisisManagerMenu.3160.title:0 "Progress Speed of Opening Events"
@@ -574,7 +560,6 @@
  CrisisManagerMenu.3160z.name:1 "$CrisisManagerMenu.3160x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.3160z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Submarine Crisis
  CrisisManagerMenu.3170.title:0 "Submarine Crisis"
  CrisisManagerMenu.3170.desc:0 "A configuration to hide crises opening events.\nIf this configuration is activated, ''Subspace Echo'' and ''the Ghost Signal'' is hidden and any empires can not know the invension in advance.\n\n$CmtWarn0$\n$CmtNameCrisisExds$ and $CmtNameForcedEoc$ have not opening event originally."
@@ -588,7 +573,6 @@
  CrisisManagerMenu.3170.desc2:1 "$CrisisManagerMenu.3170.desc$\n\n$CmtTextCurrent$§W$CrisisManagerMenu.3170b.title$§!"
  CrisisManagerMenu.3170a.name:1 "$CrisisManagerMenu.3170a.title$ $CmtTextDefault$"
  CrisisManagerMenu.3170b.name:1 "$CrisisManagerMenu.3170b.title$"
- 
  
  ### Crises - Total War
  CrisisManagerMenu.3210.title:0 "Crises - Total War"
@@ -613,7 +597,6 @@
  CrisisManagerMenu.3210z.name:1 "$CrisisManagerMenu.3210x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.3210z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Auto-Build Starbase
  CrisisManagerMenu.3220.title:0 "Auto-Build Starbase"
  CrisisManagerMenu.3220.descA:0 "A configuration whether a starbase is built immediately when a crisis fleet enters stellar system unowned by anyone.\n\n$CmtDescNoTotalWarPack$"
@@ -637,7 +620,6 @@
  CrisisManagerMenu.3220c.name:1 "$CrisisManagerMenu.3220x.title$$CrisisManagerMenu.3220c.title$ $CmtTooltipInfo2$ $CmtTextDefault$"
  CrisisManagerMenu.3220z.name:1 "$CrisisManagerMenu.3220x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.3220z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  ### Occupy Planets
  CrisisManagerMenu.3231.title:0 "Occupy Planets"
@@ -676,7 +658,6 @@
  CrisisManagerMenu.3231z.name:1 "$CrisisManagerMenu.3231x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.3231z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Purge Speed
  CrisisManagerMenu.3232.title:0 "Purge Speed"
  CrisisManagerMenu.3232.desc:0 "A configuration for the speed of purging pops on the planet occupied by a crisis faction.\n\n$CmtDescForOnlyEndgame$"
@@ -713,7 +694,6 @@
  CrisisManagerMenu.3232z.name:1 "$CmtTextErrUndefined.name$"
  CrisisManagerMenu.3232z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Faster Combat Fleets
  CrisisManagerMenu.3240.title:0 "Faster Combat Fleets"
  CrisisManagerMenu.3240.desc:0 "A configuration for sublight speed and jump charge time of combat fleets of Crisis Factions including Sentinels and Cybrex.\n\n$CmtWarn0$:  Army transports are not modified.\n$CmtDescForOnlyEndgame$"
@@ -742,7 +722,6 @@
  CrisisManagerMenu.3240e.name:1 "$CrisisManagerMenu.3240e.title$"
  CrisisManagerMenu.3240z.name:1 "$CrisisManagerMenu.3240x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.3240z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  ### Faster Constructors
  CrisisManagerMenu.3250.title:0 "Faster Constructors"
@@ -799,7 +778,6 @@
  CrisisManagerMenu.3260z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
  
- 
  #########################################
  ###  Advanced Configurations: Common  ###
  #########################################
@@ -849,7 +827,6 @@
  CrisisManagerMenu.4000.5100.fail.tooltip:1 "§L$CrisisManagerMenu.4000.xxxx.fail.tooltip$§!"
  
  
- 
  ############################################
  ###  Advanced Configurations: Prethoryn  ###
  ############################################
@@ -871,7 +848,6 @@
  CrisisManagerMenu.4110a.name:1 "$CrisisManagerMenu.4110a.title$"
  CrisisManagerMenu.4110b.name:1 "$CrisisManagerMenu.4110b.title$ $CmtTextDefault$"
  CrisisManagerMenu.4110c.name:1 "$CrisisManagerMenu.4110c.title$ $CmtTooltipInfo2$"
- 
  
  ### MTTH for Wounded Queen Found
  CrisisManagerMenu.4120.title:0 "MTTH for Wounded Queen Found"
@@ -897,7 +873,6 @@
  CrisisManagerMenu.4120d.name:1 "$CrisisManagerMenu.4120x.title$$CrisisManagerMenu.4120d.title$ $CmtTooltipInfo1$"
  CrisisManagerMenu.4120z.name:1 "$CrisisManagerMenu.4120x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4120z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  ### Rise of Sentinels
  CrisisManagerMenu.4130.title:0 "Rise of Sentinels"
@@ -928,7 +903,6 @@
  CrisisManagerMenu.4130z.name:1 "$CrisisManagerMenu.4130x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4130z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Anatomy Files
  CrisisManagerMenu.4140.title:0 "Anatomy Files"
  CrisisManagerMenu.4140.desc:0 "A configuration of anatomy files of Prethoryn.\nThese are trump card of Sentinels."
@@ -942,7 +916,6 @@
  CrisisManagerMenu.4140.desc2:1 "$CrisisManagerMenu.4140.desc$\n\n$CmtTextCurrent$§W$CrisisManagerMenu.4140b.title$§!"
  CrisisManagerMenu.4140a.name:1 "$CrisisManagerMenu.4140a.title$"
  CrisisManagerMenu.4140b.name:1 "$CrisisManagerMenu.4140b.title$ $CmtTextDefault$"
- 
  
  ### Feral Prethoryn
  CrisisManagerMenu.4150.title:0 "Feral Prethoryn"
@@ -969,7 +942,6 @@
  CrisisManagerMenu.4150z.name:1 "$CrisisManagerMenu.4150x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4150z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Unlimited Flavor Text of Prethoryn
  CrisisManagerMenu.4160.title:0 "Unlimited Flavor Texts of Prethoryn"
  CrisisManagerMenu.4160.desc:0 "It is required empires have specific trait for Several flavor texts showing.\nThis configuration can remove this restriction and show the text for all empire."
@@ -985,14 +957,13 @@
  CrisisManagerMenu.4160a.name:1 "$CrisisManagerMenu.4160x.title$$CrisisManagerMenu.4160a.title$ $CmtTextDefault$"
  CrisisManagerMenu.4160b.name:1 "$CrisisManagerMenu.4160x.title$$CrisisManagerMenu.4160b.title$"
  
- 
  ####################################################
  ###  Advanced Configurations: Extradimensionals  ###
  ####################################################
  
  ### Forbid Extradimensional Invasion
  CrisisManagerMenu.4210.title:0 "Forbid $CmtNameCrisisExds$"
- CrisisManagerMenu.4210.desc:0 "A configuration for forbiding to open extradimensional portals.\n\n$CmtWarn2$: Following 4 options interfere with each other.\nThe priority of them:\n(1) $CrisisManagerMenu.4210a.title$\n(2) $CrisisManagerMenu.3110e.title$ / $CrisisManagerMenu.3150d.title$\n(3) $CrisisManagerMenu.4210b.title$\n\nThis means that if you select one of ''(2)'' in above list and §GRequire Jump Drive§!, Unbidden can come to the galaxy with no empires having Jump Drive technology."
+ CrisisManagerMenu.4210.desc:0 "A configuration for forbidding to open extra-dimensional portals.\n\n$CmtWarn2$: Following 4 options interfere with each other.\nThe priority of them:\n(1) $CrisisManagerMenu.4210a.title$\n(2) $CrisisManagerMenu.3110e.title$ / $CrisisManagerMenu.3150d.title$\n(3) $CrisisManagerMenu.4210b.title$\n\nThis means that if you select one of ''(2)'' in above list and §GRequire Jump Drive§!, Unbidden can come to the galaxy with no empires having Jump Drive technology."
  CrisisManagerMenu.4210a.title:0 "§BForbid§! Extradimensional Invasion"
  CrisisManagerMenu.4210b.title:0 "§GRequire Jump Drive§! to Summon Unbidden"
  CrisisManagerMenu.4210c.title:0 "§HAllow Always§! Unbidden to Invade."
@@ -1007,7 +978,6 @@
  CrisisManagerMenu.4210a.name:1 "$CrisisManagerMenu.4210a.title$"
  CrisisManagerMenu.4210b.name:1 "$CrisisManagerMenu.4210b.title$ $CmtTextDefault$"
  CrisisManagerMenu.4210c.name:1 "$CrisisManagerMenu.4210c.title$ $CmtTooltipInfo1$"
- 
  
  ### Extradimensional Chasers 1
  CrisisManagerMenu.4220.title:0 "Extradimensional Chasers 1"
@@ -1042,7 +1012,6 @@
  CrisisManagerMenu.4220z.name:1 "$CrisisManagerMenu.4220x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4220z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Extradimensional Chasers 2
  CrisisManagerMenu.4230.title:0 "Extradimensional Chasers 2"
  CrisisManagerMenu.4230.desc:0 "A configuration for the location of Aberrant and Vehement invading."
@@ -1060,7 +1029,6 @@
  CrisisManagerMenu.4230a1.name:1 "$CrisisManagerMenu.4230a1.title$ $CmtTextDefault$"
  CrisisManagerMenu.4230a2.name:1 "$CrisisManagerMenu.4230a2.title$ $CmtTooltipInfo2$"
  CrisisManagerMenu.4230b.name:1 "$CrisisManagerMenu.4230b.title$"
- 
  
  ### Less Reinforcements on Anchors Built
  CrisisManagerMenu.4240.title:0 "Less Reinforcements on Anchors Built"
@@ -1098,7 +1066,6 @@
  CrisisManagerMenu.4240n.name:1 "$CrisisManagerMenu.4240n.title$"
  CrisisManagerMenu.4240z.name:1 "$CrisisManagerMenu.4240x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4240z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  ### Unstable Portals
  CrisisManagerMenu.4250.title:0 "Unstable Portals"
@@ -1148,7 +1115,6 @@
  CrisisManagerMenu.4250z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
  
- 
  ##############################################
  ###  Advanced Configurations: Contingency  ###
  ##############################################
@@ -1166,7 +1132,6 @@
  CrisisManagerMenu.4310.desc2:1 "$CrisisManagerMenu.4310.desc$\n\n$CmtTextCurrent$§W$CrisisManagerMenu.4310b.title$§!"
  CrisisManagerMenu.4310a.name:1 "$CrisisManagerMenu.4310a.title$"
  CrisisManagerMenu.4310b.name:1 "$CrisisManagerMenu.4310b.title$ $CmtTextDefault$"
- 
  
  ### Not Implemented Yet: Number of AI Worlds of Contingency
  CrisisManagerMenu.4320.title:0 "Number of AI Worlds of Contingency"
@@ -1192,7 +1157,6 @@
  CrisisManagerMenu.4320d.name:1 "$CrisisManagerMenu.4320d.title$ $CmtTextDefault$"
  CrisisManagerMenu.4320z.name:1 "$CrisisManagerMenu.4320x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4320z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  ### Strength of Ghost Signal
  CrisisManagerMenu.4330.title:0 "Strength of Ghost Signal"
@@ -1223,7 +1187,6 @@
  CrisisManagerMenu.4330z.name:1 "$CrisisManagerMenu.4330x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4330z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Progress Speed of Pre-Terror Events
  CrisisManagerMenu.4340.title:0 "Progress Speed of Pre-Terror Events"
  CrisisManagerMenu.4340.desc:0 "A configuration for progress speed of pre-terror events (Synth infiltration events).\nIn other word, the time from appearance of 1st AI World to satisfying condition of terror event."
@@ -1252,7 +1215,6 @@
  CrisisManagerMenu.4340e.name:1 "$CrisisManagerMenu.4340x.title$$CrisisManagerMenu.4340e.title$ $CmtTooltipInfo1$"
  CrisisManagerMenu.4340z.name:1 "$CrisisManagerMenu.4340x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4340z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  ### Frequency of Terror
  CrisisManagerMenu.4350.title:0 "Frequency of Terror"
@@ -1283,7 +1245,6 @@
  CrisisManagerMenu.4350z.name:1 "$CrisisManagerMenu.4350x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4350z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Terror to Psi, Hive Empires
  CrisisManagerMenu.4360.title:0 "Terror to Psi, Hive Empires"
  CrisisManagerMenu.4360.desc:0 "A configuration for allowing terror to psionic empires and hive-mind empires."
@@ -1297,7 +1258,6 @@
  CrisisManagerMenu.4360.desc2:1 "$CrisisManagerMenu.4360.desc$\n\n$CmtTextCurrent$§W$CrisisManagerMenu.4360b.title$§!"
  CrisisManagerMenu.4360a.name:1 "$CrisisManagerMenu.4360a.title$ $CmtTextDefault$"
  CrisisManagerMenu.4360b.name:1 "$CrisisManagerMenu.4360b.title$"
- 
  
  ### Resurfacing of Cybrex
  CrisisManagerMenu.4370.title:0 "Resurfacing of Cybrex"
@@ -1329,7 +1289,6 @@
  CrisisManagerMenu.4370z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
  
- 
  ######################################################
  ###  Advanced Configurations: Forced End of Cycle  ###
  ######################################################
@@ -1347,7 +1306,6 @@
  CrisisManagerMenu.4410.desc2:1 "$CrisisManagerMenu.4410.desc$\n\n$CmtTextCurrent$§W$CrisisManagerMenu.4410b.title$§!"
  CrisisManagerMenu.4410a.name:1 "$CrisisManagerMenu.4410a.title$ $CmtTextDefault$"
  CrisisManagerMenu.4410b.name:1 "$CrisisManagerMenu.4410b.title$"
- 
  
  ### Target Control of FEoC 1
  CrisisManagerMenu.4420.title:0 "Target Control of FEoC 1"
@@ -1391,7 +1349,6 @@
  CrisisManagerMenu.4430z.name:1 "$CrisisManagerMenu.4430x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4430z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Target Control of FEoC 3
  CrisisManagerMenu.4440.title:0 "Target Control of FEoC 3"
  CrisisManagerMenu.4440.desc:0 "A configuration for the influence of the imperial power.\n\n$CmtWarn0$: This priority is set roughly."
@@ -1417,7 +1374,6 @@
  CrisisManagerMenu.4440z.name:1 "$CrisisManagerMenu.4440.title$: $CmtTextErrUndefined.name$"
  CrisisManagerMenu.4440z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Term of Covenant
  CrisisManagerMenu.4450.title:0 "Term of Covenant"
  CrisisManagerMenu.4450.desc:0 "A configuration for the term of the convenant."
@@ -1434,7 +1390,6 @@
  CrisisManagerMenu.4450b.name:1 "$CrisisManagerMenu.4450x.title$$CrisisManagerMenu.4450b.title$ $CmtTooltipInfo1$"
  CrisisManagerMenu.4450z.name:1 "$CrisisManagerMenu.4450x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4450z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  
  ########################################################
@@ -1470,7 +1425,6 @@
  CrisisManagerMenu.4510z.name:1 "$CrisisManagerMenu.4510x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4510z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Interval of Sleepers Awakening
  CrisisManagerMenu.4520.title:0 "Interval of Sleepers Awakening"
  CrisisManagerMenu.4520.desc:0 "A configuration of interval of fallen empires awakening.\nThis configuration works followings.\n\nIf ''$CrisisManagerMenu.4510d.title$'' is set, this configuration is minimum time from previous awakened empire destroyed to next empire awakening.\n\nIf ''$CrisisManagerMenu.4510e.title$'' is set, this configuration is minimum time from previous fallen empire awakening to next one awakening.\n\n$CmtWarn1$: Next fallen empire does not awaken always immediately when the interval is over."
@@ -1504,7 +1458,6 @@
  CrisisManagerMenu.4520.V0.name:1 "$CrisisManagerMenu.4520x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4520.VC.name:1 "$CrisisManagerMenu.4520x.title$$CrisisManagerMenu.4520.VC.title$"
  CrisisManagerMenu.4520.VN.name:1 "§L$CrisisManagerMenu.4520x.title$$CrisisManagerMenu.4520.VN.title$§!"
- 
  
  ### Sleepers to Awaken at Earliest
  CrisisManagerMenu.4530.title:0 "Sleepers to Awaken at Earliest"
@@ -1552,7 +1505,6 @@
  CrisisManagerMenu.4530t.tooltip:1 "$CmtTextTemplateUnique.desc$"
  CrisisManagerMenu.4530z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### MTTH for Sleeper Awakening
  CrisisManagerMenu.4540.title:0 "MTTH for Sleeper Awakening"
  CrisisManagerMenu.4540.desc:0 "A configuration of MTTH for a fallen empire awakening.\n\n$CmtDescMtth$\n\n$CmtDescStdAwakingOnly$"
@@ -1581,7 +1533,6 @@
  CrisisManagerMenu.4540e.name:1 "$CrisisManagerMenu.4540e.title$ $CmtTooltipInfo2$"
  CrisisManagerMenu.4540z.name:1 "$CrisisManagerMenu.4540x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4540z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  ### Fleet Power of Youngs for Awakening
  CrisisManagerMenu.4550.title:0 "Fleet Power of Youngs for Awakening"
@@ -1627,7 +1578,6 @@
  CrisisManagerMenu.4550.V0.name:1 "$CrisisManagerMenu.4550.V0.title$"
  CrisisManagerMenu.4550.VC.name:1 "$CrisisManagerMenu.4550.title$: $CrisisManagerMenu.4550.VC.title$"
  
- 
  ### Minimum Own Fleet Power for Awakening
  CrisisManagerMenu.4560.title:0 "Minimum Own Fleet Power for Awakening"
  CrisisManagerMenu.4560.desc:0 "Fallen empires will not awaken if their fleets are used up and the naval power become less than threshold value.\nThis is a configuration of this threshold.\n\n$CmtWarn2$\n$CrisisManagerMenu.4560.tooltip$\n\n$CmtWarn3$\nFallen empires never awaken if too large value is set. Highly recommended NOT to set the higher value than default without using another mod making fallen empires strong."
@@ -1672,7 +1622,6 @@
  CrisisManagerMenu.4560.V0.name:1 "$CrisisManagerMenu.4560.V0.title$ $CmtTooltipInfo1$"
  CrisisManagerMenu.4560.VC.name:1 "$CrisisManagerMenu.4560x.title$$CrisisManagerMenu.4560.VC.title$ $CmtTooltipInfo1$"
  
- 
  ### Awakenable Sleepers
  CrisisManagerMenu.4570.title:0 "Awakenable Sleepers"
  CrisisManagerMenu.4570.desc:0 "A configuration which fallen empires can awaken.\n\n$CmtDescStdAwakingOnly$\n\n$CmtDescToggleConfig$\n\n$CmtTextCurrent$§W$CrisisManagerMenu.4570x.title$§!$CrisisManagerMenu.4570.current$"
@@ -1699,7 +1648,6 @@
  CrisisManagerMenu.4570d2.name:1 "$CrisisManagerMenu.4570d.title$: $CmtTextSwitchToAllow$"
  CrisisManagerMenu.4570x.name:1 "$CrisisManagerMenu.4570x.title$$CrisisManagerMenu.4570.current$"
  
- 
  ### Punishment for Holy-Cracker
  CrisisManagerMenu.4580.title:0 "Punishment for Holy-Cracker"
  CrisisManagerMenu.4580.desc:0 "A configuration for the Holy Guardians awakening to punish the sin of destructing the Holy World.\n\n$CmtWarn1$\nThis configuration has a priority over any other configurations."
@@ -1722,7 +1670,6 @@
  CrisisManagerMenu.4580c.name:1 "$CrisisManagerMenu.4580c.title$ $CmtTextDefault$"
  CrisisManagerMenu.4580z.name:1 "$CrisisManagerMenu.4580x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4580z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  
  ################################################
@@ -1758,7 +1705,6 @@
  CrisisManagerMenu.4610z.name:1 "$CrisisManagerMenu.4610x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4610z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Ancient Rival for War in Heaven 1
  CrisisManagerMenu.4620.title:0 "Ancient Rival for War in Heaven 1"
  CrisisManagerMenu.4620.desc:0 "A configuration which fallen empire is selected as ancient rival for the War in Heaven.\n\n$CmtWarn0$\nA probability of the War in Heaven is decreased if $CrisisManagerMenu.4620d.title$ or $CrisisManagerMenu.4620e.title$ is selected.\nSo, these 2 options should not be selected if you want to absolutely trigger the War in Heaven."
@@ -1787,7 +1733,6 @@
  CrisisManagerMenu.4620e.name:1 "$CrisisManagerMenu.4620x.title$$CrisisManagerMenu.4620e.title$ $CmtTooltipInfo2$"
  CrisisManagerMenu.4620z.name:1 "$CrisisManagerMenu.4620x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4620z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  ### Ancient Rival for War in Heaven 2
  CrisisManagerMenu.4630.title:0 "Ancient Rival for War in Heaven 2"
@@ -1824,7 +1769,6 @@
  CrisisManagerMenu.4630d2.name:1 "$CrisisManagerMenu.4630d.title$: $CmtTextSwitchToAllow$"
  CrisisManagerMenu.4630x.name:1 "$CrisisManagerMenu.4630x2.title$: $CrisisManagerMenu.4630.current$"
  
- 
  ### Indomitable Rival
  CrisisManagerMenu.4640.title:0 "Indomitable Rival"
  CrisisManagerMenu.4640.desc:0 "Fallen empires cannot awakening as ancient rival if their fleets are used up and the naval power become too small.\nThis configuration can remove this limitation."
@@ -1845,7 +1789,6 @@
  CrisisManagerMenu.4640c.name:1 "$CrisisManagerMenu.4640c.title$ $CmtTooltipInfo2$"
  CrisisManagerMenu.4640z.name:1 "$CrisisManagerMenu.4640x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4640z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  ### Progress Speed of Prelude to War in Heaven
  CrisisManagerMenu.4650.title:0 "Progress Speed of Prelude to War in Heaven"
@@ -1871,7 +1814,6 @@
  CrisisManagerMenu.4650d.name:1 "$CrisisManagerMenu.4650x.title$$CrisisManagerMenu.4650d.title$ $CmtTooltipInfo2$"
  CrisisManagerMenu.4650z.name:1 "$CrisisManagerMenu.4650x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4650z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  ### Subjecting to Precursor (NPCs)
  CrisisManagerMenu.4660.title:0 "Subjecting to Precursor (NPCs)"
@@ -1902,7 +1844,6 @@
  CrisisManagerMenu.4660z.name:1 "$CrisisManagerMenu.4660x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4660z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### League of Non-Aligned Powers
  CrisisManagerMenu.4670.title:0 "League of Non-Aligned Powers"
  CrisisManagerMenu.4670.desc:0 "A configuration for a probability that each young NPC empires remaining neutral join the league of non-aligned Powers.\n\n$CmtWarn0$:  ''$CrisisManagerMenu.4660.title$'' has a priority over this configuration."
@@ -1931,7 +1872,6 @@
  CrisisManagerMenu.4670e.name:1 "$CrisisManagerMenu.4670e.title$ $CmtTooltipInfo2$"
  CrisisManagerMenu.4670z.name:1 "$CrisisManagerMenu.4670x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4670z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  ### Exhaustion from War in Heaven
  CrisisManagerMenu.4680.title:0 "Exhaustion from War in Heaven"
@@ -1963,7 +1903,6 @@
  CrisisManagerMenu.4680z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
  
- 
  ######################################################
  ###  Advanced Configurations: Guardians of Galaxy  ###
  ######################################################
@@ -1993,7 +1932,6 @@
  CrisisManagerMenu.4710z.name:1 "$CrisisManagerMenu.4710x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4710z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Delay of Guardians Awakening
  CrisisManagerMenu.4720.title:0 "Delay of Guardians Awakening"
  CrisisManagerMenu.4720.desc:0 "A configuration when fallen empires awaken as guardians of the galaxy.\n\n$CmtDescExceptMechFe$"
@@ -2018,7 +1956,6 @@
  CrisisManagerMenu.4720d.name:1 "$CrisisManagerMenu.4720d.title$ $CmtTooltipInfo1$"
  CrisisManagerMenu.4720z.name:1 "$CrisisManagerMenu.4720x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4720z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  ### Dual Guardians
  CrisisManagerMenu.4730.title:0 "Dual Guardians"
@@ -2053,7 +1990,6 @@
  CrisisManagerMenu.4730z.name:1 "$CrisisManagerMenu.4730x.title$: $CmtTextErrUndefined.name$"
  CrisisManagerMenu.4730z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Worn-Out Guardians
  CrisisManagerMenu.4740.title:0 "Worn-Out Guardians"
  CrisisManagerMenu.4740.desc:0 "Fallen empires cannot awaken as guarians of the galaxy if their fleets are used up and the naval power become too small.\nThis configuration can remove this limitation."
@@ -2074,7 +2010,6 @@
  CrisisManagerMenu.4740c.name:1 "$CrisisManagerMenu.4740c.title$ $CmtTooltipInfo2$"
  CrisisManagerMenu.4740z.name:1 "$CrisisManagerMenu.4740x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4740z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  ### Ancient Caretakers
  CrisisManagerMenu.4750.title:0 "Ancient Caretakers"
@@ -2100,7 +2035,6 @@
  CrisisManagerMenu.4750d.name:1 "$CrisisManagerMenu.4750x.title$$CrisisManagerMenu.4750d.title$"
  CrisisManagerMenu.4750z.name:1 "$CrisisManagerMenu.4750x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4750z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  
  #######################################
@@ -2136,7 +2070,6 @@
  CrisisManagerMenu.4810z.name:1 "$CrisisManagerMenu.4810x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4810z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Interval of Khan Reigning
  CrisisManagerMenu.4821.title:0 "Interval of Khan Reigning"
  CrisisManagerMenu.4821.desc:0 "A configuration of interval of Great Khan crowned.\nThis ''interval'' means minimum time from the end of previous Khan empire to next Great Khan crowned.\n\n$CmtWarn0$:  Next Great Khan is not always triggered immediately when the interval is over."
@@ -2171,7 +2104,6 @@
  CrisisManagerMenu.4821.V0.name:1 "$CrisisManagerMenu.4821.V0.title$ $CmtTextDefault$"
  CrisisManagerMenu.4821.VC.name:1 "$CrisisManagerMenu.4821x.title$$CrisisManagerMenu.4821.VC.title$"
  CrisisManagerMenu.4821.VN.name:1 "§L$CrisisManagerMenu.4821x.title$$CrisisManagerMenu.4821.VN.title$§!"
- 
  
  ### Khan to Reign at Earliest
  CrisisManagerMenu.4822.title:0 "Khan to Reign at Earliest"
@@ -2220,7 +2152,6 @@
  CrisisManagerMenu.4822t.tooltip:1 "$CmtTextTemplateUnique.desc$"
  CrisisManagerMenu.4822z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Last Chance of Khan Reigning
  CrisisManagerMenu.4823.title:0 "Last Chance of Khan Reigning"
  CrisisManagerMenu.4823.desc:0 "A configuration of the last year for Great Khan crowned.\nIf they do not awaken until this year, they never awaken.\n\n$CmtDescEgsy$"
@@ -2268,7 +2199,6 @@
  CrisisManagerMenu.4823t.tooltip:1 "$CmtTextTemplateUnique.desc$"
  CrisisManagerMenu.4823z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### MTTH for Khan Reigning
  CrisisManagerMenu.4831.title:0 "MTTH for Khan Reigning"
  CrisisManagerMenu.4831.desc:0 "A configuration of MTTH for Great Khan reigning.\n\n$CmtDescMtth$"
@@ -2298,7 +2228,6 @@
  CrisisManagerMenu.4831z.name:1 "$CrisisManagerMenu.4831x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4831z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Khan to Rise Up for Vengeance
  CrisisManagerMenu.4832.title:0 "Khan to Rise up for Vengeance"
  CrisisManagerMenu.4832.desc:0 "Hordes and Great Khan might rise up if their Void Dwelling is destroyed by any empire.\nThis is a configuration for this probability.\n\n$CmtWarn0$:  This is another vengeance events than vengeance events when ALL their Dwellings are destroyed."
@@ -2327,7 +2256,6 @@
  CrisisManagerMenu.4832e.name:1 "$CrisisManagerMenu.4832e.title$"
  CrisisManagerMenu.4832z.name:1 "$CrisisManagerMenu.4832x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4832z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  ### Resurgence of Khan
  CrisisManagerMenu.4841.title:0 "Resurgence of Khan"
@@ -2363,7 +2291,6 @@
  CrisisManagerMenu.4841z.name:1 "$CrisisManagerMenu.4841x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4841z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Lifespan of Khan
  CrisisManagerMenu.4842.title:0 "Lifespan of Khan"
  CrisisManagerMenu.4842.desc:0 "A configuration for lifespan of Great Khan. It control a probability/span that Great Khan dies all reason except the defeat in a combat.\n\n$CrisisManagerMenu.4842.warn$"
@@ -2398,7 +2325,6 @@
  CrisisManagerMenu.4842z.name:1 "$CrisisManagerMenu.4842x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4842z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Latent Strength of Horde in Adversity
  CrisisManagerMenu.4850.title:0 "Latent Strength of Horde in Adversity"
  CrisisManagerMenu.4850.desc:0 "A configuration to create more reinforcement fleets of Hordes with Great Khan when their combat ships are used up and the number of them gets small.\n\n$CmtWarn0$\nFor any options, the number of reinforcement fleets are same as vanilla if Horde has many ships."
@@ -2423,7 +2349,6 @@
  CrisisManagerMenu.4850d.name:1 "$CrisisManagerMenu.4850x.title$$CrisisManagerMenu.4850d.title$"
  CrisisManagerMenu.4850z.name:1 "$CrisisManagerMenu.4850x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4850z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  ### Future of Horde
  CrisisManagerMenu.4860.title:0 "Future of Horde"
@@ -2456,7 +2381,6 @@
  CrisisManagerMenu.4860f.name:1 "$CrisisManagerMenu.4860f.title$"
  CrisisManagerMenu.4860z.name:1 "$CrisisManagerMenu.4860x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4860z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  
  #########################################
@@ -2503,7 +2427,6 @@
  CrisisManagerMenu.4911z.name:1 "$CrisisManagerMenu.4911.title$: $CmtTextErrUndefined.name$"
  CrisisManagerMenu.4911z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Technology for Opening L-Gates
  CrisisManagerMenu.4912.title:0 "Technology for Opening L-Gates"
  CrisisManagerMenu.4912.desc:0 "A configuration whether the technology of ''L-Gate Activation'' is required to open L-Gates.\n\n$CmtWarn0$: Only physical research can be skipped, but special project cannot be skipped."
@@ -2517,7 +2440,6 @@
  CrisisManagerMenu.4912.desc2:1 "$CrisisManagerMenu.4912.desc$\n\n$CmtTextCurrent$§W$CrisisManagerMenu.4912b.title$§!"
  CrisisManagerMenu.4912a.name:1 "$CrisisManagerMenu.4912a.title$ $CmtTextDefault$"
  CrisisManagerMenu.4912b.name:1 "$CrisisManagerMenu.4912b.title$"
- 
  
  ### What Lurks Beyond L-Gates
  CrisisManagerMenu.4920.title:0 "What Lurks Beyond L-Gates"
@@ -2544,7 +2466,6 @@
  CrisisManagerMenu.4920d1.name:1 "$CrisisManagerMenu.4920d.title$: $CmtTextSwitchToForbid$"
  CrisisManagerMenu.4920d2.name:1 "$CrisisManagerMenu.4920d.title$: $CmtTextSwitchToAllow$"
  CrisisManagerMenu.4920x.name:1 "$CrisisManagerMenu.4920x.title$$CrisisManagerMenu.4920.current$"
- 
  
  ### Algorithm to Activate L-Gates (Common)
  CrisisManagerMenu.4930.title:0 "Algorithm to Activate L-Gates"
@@ -2573,7 +2494,6 @@
  CrisisManagerMenu.4930y.name:1 "$CrisisManagerMenu.4930.title$: $CrisisManagerMenu.4930y.title$ $CmtTooltipInfo1$"
  CrisisManagerMenu.4930z.name:1 "$CrisisManagerMenu.4930.title$: $CmtTextErrUndefined.name$"
  CrisisManagerMenu.4930z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  ### Algorithm to Activate L-Gates (Eerie Silence)
  CrisisManagerMenu.4931.title:1 "$CrisisManagerMenu.4930.title$ ($CmtNameSilense$)"
@@ -2604,7 +2524,6 @@
  CrisisManagerMenu.4931z.name:1 "$CrisisManagerMenu.4931.title$: $CmtTextErrUndefined.name$"
  CrisisManagerMenu.4931z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Algorithm to Activate L-Gates (L-Drake)
  CrisisManagerMenu.4932.title:1 "$CrisisManagerMenu.4930.title$ ($CmtNameLdrake$)"
  CrisisManagerMenu.4932.desc:0 "A configuration for end of maintenance cycle of L-Gates and it opened after 1st L-Gate opened, if L-Drakes appear from L-Gates.\n\n$CmtDescUnadjustedText$"
@@ -2633,7 +2552,6 @@
  CrisisManagerMenu.4932z.name:1 "$CrisisManagerMenu.4932.title$: $CmtTextErrUndefined.name$"
  CrisisManagerMenu.4932z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Algorithm to Activate L-Gates (Dessanu)
  CrisisManagerMenu.4933.title:1 "$CrisisManagerMenu.4930.title$ ($CmtNameDessanu$)"
  CrisisManagerMenu.4933.desc:0 "A configuration for end of maintenance cycle of L-Gates and it opened after 1st L-Gate opened, if there is Dessanu in L-Cluster.\n\n$CmtDescUnadjustedText$"
@@ -2659,7 +2577,6 @@
  CrisisManagerMenu.4933e.name:1 "$CrisisManagerMenu.4933.title$: $CrisisManagerMenu.4933e.title$ $CmtTextDefault$ $CmtTooltipInfo1$"
  CrisisManagerMenu.4933z.name:1 "$CrisisManagerMenu.4933.title$: $CmtTextErrUndefined.name$"
  CrisisManagerMenu.4933z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  ### Algorithm to Activate L-Gates (Gray Tempest)
  CrisisManagerMenu.4934.title:1 "$CrisisManagerMenu.4930.title$ ($CmtNameGraygoo$)"
@@ -2689,7 +2606,6 @@
  CrisisManagerMenu.4934z.name:1 "$CrisisManagerMenu.4934.title$: $CmtTextErrUndefined.name$"
  CrisisManagerMenu.4934z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Quiet Stroller
  CrisisManagerMenu.4940.title:0 "Quiet Stroller"
  CrisisManagerMenu.4940.desc:0 "A configuration of a condition for the events of ''$graygoo.400.name$''.\n\n$CmtWarn1$\nRecommended to set ''$CrisisManagerMenu.4940b.title$'' or ''$CrisisManagerMenu.4940c.title$'' if you have not seen the events.\n\n$CmtWarn0$: The events do not always happen even if this condition is satisfied."
@@ -2714,7 +2630,6 @@
  CrisisManagerMenu.4940x.name:1 "$CrisisManagerMenu.4940.title$: $CrisisManagerMenu.4940x.title$"
  CrisisManagerMenu.4940z.name:1 "$CrisisManagerMenu.4940.title$: $CmtTextErrUndefined.name$"
  CrisisManagerMenu.4940z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  ### Dessanu Gift
  CrisisManagerMenu.4950.title:0 "Dessanu Gift"
@@ -2748,7 +2663,6 @@
  CrisisManagerMenu.4950z.name:1 "$CrisisManagerMenu.4950.title$: $CmtTextErrUndefined.name$"
  CrisisManagerMenu.4950z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Reinforcement Cycle of Gray Tempest's Fleets
  CrisisManagerMenu.4960.title:0 "Reinforcement Cycle of Gray Tempest's Fleets"
  CrisisManagerMenu.4960.desc:0 "A configuration for reinforcement cycle of Gray Tempest's fleets.\n\n$CmtWarn2$\nThe number of reinforcement fleets §Hper one cycle§! are NOT changed by this configuration.\nSo, shorter cycle rises the number of the reinforcement fleets §Hper year§!, and makes Gray Tempest strong."
@@ -2781,7 +2695,6 @@
  CrisisManagerMenu.4960f.name:1 "$CrisisManagerMenu.4960x.title$$CrisisManagerMenu.4960f.title$ $CmtTooltipInfo2$"
  CrisisManagerMenu.4960z.name:1 "$CrisisManagerMenu.4960x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.4960z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  ### Terraforming for Nanite Worlds
  CrisisManagerMenu.4970.title:0 "Terraforming for Nanite Worlds"
@@ -2817,7 +2730,6 @@
  CrisisManagerMenu.4970z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
  
- 
  ###########################################
  ###  Advanced Configurations: Uprising  ###
  ###########################################
@@ -2851,7 +2763,6 @@
  CrisisManagerMenu.5111z.name:1 "$CrisisManagerMenu.5111x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.5111z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Uprisable Exploitees
  CrisisManagerMenu.5112.title:0 "Uprisable Exploitees"
  CrisisManagerMenu.5112.desc:0 "A configuration which type of exploited pops can uprise.\nIn vanilla, only $CrisisManagerMenu.5112a.title$ can uprise.\n\n$CmtDescToggleConfig$\n\n$CmtTextCurrent$§WAllow Followings.§!\n$CrisisManagerMenu.5112.current$"
@@ -2880,7 +2791,6 @@
  CrisisManagerMenu.5112d1.name:1 "$CrisisManagerMenu.5112d.title$: $CmtTextSwitchToForbid$"
  CrisisManagerMenu.5112d2.name:1 "$CrisisManagerMenu.5112d.title$: $CmtTextSwitchToAllow$"
  CrisisManagerMenu.5112x.name:1 "$CrisisManagerMenu.5112x.title$$CrisisManagerMenu.5112.current$"
- 
  
  ### Uprising at Earliest
  CrisisManagerMenu.5120.title:0 "Uprising at Earliest"
@@ -2929,8 +2839,6 @@
  CrisisManagerMenu.5120t.tooltip:1 "$CmtTextTemplateUnique.desc$"
  CrisisManagerMenu.5120z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
- 
  ### MTTH for Uprising
  CrisisManagerMenu.5131.title:0 "MTTH for Uprising"
  CrisisManagerMenu.5131.desc:0 "A configuration of MTTH for indication events of the uprising triggered.\nAlso progress speed of the indication events conform to this configuration.\n\n$CmtDescMtth$"
@@ -2956,7 +2864,6 @@
  CrisisManagerMenu.5131z.name:1 "$CrisisManagerMenu.5131x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.5131z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Suddenly Uprising
  CrisisManagerMenu.5133.title:0 "Suddenly Uprising"
  CrisisManagerMenu.5133.desc:0 "A configuration to skip indication events of uprising."
@@ -2977,7 +2884,6 @@
  CrisisManagerMenu.5133c.name:1 "$CrisisManagerMenu.5133c.title$ $CmtTooltipInfo2$"
  CrisisManagerMenu.5133z.name:1 "$CrisisManagerMenu.5133x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.5133z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  ### Uprising Privented or Outbreak of War
  CrisisManagerMenu.5134.title:0 "Uprising Privented or Outbreak of War"
@@ -3019,7 +2925,6 @@
  CrisisManagerMenu.5134z.name:1 "$CrisisManagerMenu.5134x.title$: $CrisisManagerMenu.5134x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.5134z.tooltip:1 "$CmtTextErrUndefined.tooltip$" 
  
- 
  ### Type of Uprising Machines
  CrisisManagerMenu.5141.title:0 "Type of Uprising Machines"
  CrisisManagerMenu.5141.desc:0 "A configuration for type (special civics) of uprising machines.\n\n$CmtWarn1$\nNavy of the machines will be stronger if $civic_machine_terminator$ is choosen, that is feature of vanilla."
@@ -3049,7 +2954,6 @@
  CrisisManagerMenu.5141z.name:1 "$CrisisManagerMenu.5141x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.5141z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Flip System on Uprising
  CrisisManagerMenu.5142.title:0 "Flip System on Uprising"
  CrisisManagerMenu.5142.desc:0 "A configuration how many stellar systems are transfered to a empire of uprisers."
@@ -3078,7 +2982,6 @@
  CrisisManagerMenu.5142e.name:1 "$CrisisManagerMenu.5142x.title$$CrisisManagerMenu.5142e.title$ $CmtTooltipInfo1$"
  CrisisManagerMenu.5142z.name:1 "$CrisisManagerMenu.5142x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.5142z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  ### Reserves for Uprising
  CrisisManagerMenu.5143.title:0 "Reserves for Uprising"
@@ -3125,7 +3028,6 @@
  CrisisManagerMenu.5143z.name:1 "$CrisisManagerMenu.5143x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.5143z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Military Intervention of Aliens
  CrisisManagerMenu.5151.title:0 "Military Intervention of Aliens"
  CrisisManagerMenu.5151.desc:0 "A configuration for alien empires intervening in (join to) a war of uprising.\nWhich side the NPC empires join to is chosen randomly. Its probability is depends on AI personality, galactic distance and some others.\nPC empires can choose which side join to (or not take side) if non-''$CrisisManagerMenu.5151a.title$'' option is set and the uprising happens in any empire.\n\n$CmtDescPcNpc$\n\n$CmtWarn2$: Defensive Pact(s) has a priority over this configuration."
@@ -3150,7 +3052,6 @@
  CrisisManagerMenu.5151d.name:1 "$CrisisManagerMenu.5151d.title$ $CmtTooltipInfo1$"
  CrisisManagerMenu.5151z.name:1 "$CrisisManagerMenu.5151x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.5151z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  ### Exhaustion from War of Uprising
  CrisisManagerMenu.5152.title:0 "Exhaustion from War of Uprising"
@@ -3181,7 +3082,6 @@
  CrisisManagerMenu.5152z.name:1 "$CrisisManagerMenu.5152x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.5152z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
  
- 
  ### Type of Uprising War
  CrisisManagerMenu.5153.title:0 "Type of Uprising War"
  CrisisManagerMenu.5153.desc:0 "A configuration for a type of uprising war: total war or not.\n\n$CmtWarn1$\nThis cofiguration should be used for alien empire joining to uprising war, So, highly recommended to set ''$CrisisManagerMenu.5153c.title$'' if you set ''$CrisisManagerMenu.5151a.title$'' in ''$CrisisManagerMenu.5151.title$''"
@@ -3202,7 +3102,6 @@
  CrisisManagerMenu.5153c.name:1 "$CrisisManagerMenu.5153x.title$$CrisisManagerMenu.5153c.title$ $CmtTextDefault$"
  CrisisManagerMenu.5153z.name:1 "$CrisisManagerMenu.5153x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.5153z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
  
  ### Claims of Upriser and Former Owner
  CrisisManagerMenu.5154.title:0 "Claims of Upriser and Former Owner"
@@ -3241,8 +3140,6 @@
  CrisisManagerMenu.5154.Vx.name:1 "$CrisisManagerMenu.5154x.title$$CrisisManagerMenu.5154.Vx.title$"
  CrisisManagerMenu.5154z.name:1 "$CrisisManagerMenu.5154x.title$$CmtTextErrUndefined.name$"
  CrisisManagerMenu.5154z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
- 
- 
  
  
  
@@ -3307,7 +3204,6 @@
  CrisisManagerMenu.MidgamePower3:1 "\n$CmtTextCurrentMid$§W$CrisisManagerMenu.6000c.title$§!"
  CrisisManagerMenu.MidgamePower4:1 "\n$CmtTextCurrentMid$§W$CrisisManagerMenu.6000d.title$§!"
  
- 
  ### Additional Description
  CrisisManagerMenu.6001.title:0 "More Information of Crisis Power 1"
  CrisisManagerMenu.6001.name:1 "$CrisisManagerMenu.6001.title$ $CrisisManagerTitleC$"
@@ -3317,7 +3213,6 @@
  CrisisManagerMenu.6002.name:1 "$CrisisManagerMenu.6002.title$ $CrisisManagerTitleC$"
  CrisisManagerMenu.6002.desc:0 "These configurations modify the strength following factions.\n- $CmtNamePrethoryn$, $CmtNameSentinels$\n- $CmtNameUnbidden$, $CmtNameAberrant$, $CmtNameVehement$\n- $CmtNameContingency$, $CmtNameCybrex$\n- $CmtNameShroudSpirits$ (Only $CmtNameForcedEoc$)\n\nThese configurations do §HNOT§! modify the strength following factions.\n- Standard End of Cycle\n- $CmtNameFallenEmpire$, $CmtNameAwakenedEmpire$"
      # CrisisManagerMenu.6002.desc:0 "These configurations modify the strength following factions.\n\n<$CrisisManagerEndgame$>\n- $CmtNamePrethoryn$, $CmtNameSentinels$\n- $CmtNameUnbidden$, $CmtNameAberrant$, $CmtNameVehement$\n- $CmtNameContingency$, $CmtNameCybrex$\n- $CmtNameShroudSpirits$ (Only $CmtNameForcedEoc$)\n\n<$CrisisManagerMidgame$>\n- $CmtNameKhan$\n- $CmtNameGraygoo$\n\nThese configurations do §HNOT§! modify the strength following factions.\n- Standard End of Cycle\n- $CmtNameFallenEmpire$, $CmtNameAwakenedEmpire$\n- Marauders with no Great Khan and the Empire after death of Great Khan\n- $CmtNameLdrake$"
- 
  
  ### Target of Template
  CrisisManagerMenu.601x.title:0 "Select Target of Difficulty"
@@ -3342,7 +3237,6 @@
  CrisisManagerMenu.6014.desc:1 "$CrisisManagerMenu.601x.desc$§W$CrisisManagerMenu.6000d.title$§!"
  CrisisManagerMenu.6015.desc:1 "$CrisisManagerMenu.601x.desc$§W$CrisisManagerMenu.6000e.title$§!"
  
- 
  ### Advanced Configuraitons
  CrisisManagerMenu.6x00a.desc:0 "This configuration apply to all crisis factions including Sentinels and Cybrex."
  CrisisManagerMenu.6x00b.desc:0 "This configuration apply to all crisis factions."
@@ -3359,7 +3253,6 @@
  CrisisManagerMenu.6300.desc:0 "A Configuration to modify the number of combat fleets excluding armies.\n$CmtDescYourOwnRisk$\nThis configurations is §Hnot§! modify following parameters: \n    - The garrison for the capital of each crisis factions\n    - The number of ships for each fleets\n"
  CrisisManagerMenu.6400.desc:0 "A Configuration to modify the number of army fleets.\n$CmtDescYourOwnRisk$\nThis configurations is §Hnot§! modify the number of ships for each fleets\n"
  CrisisManagerMenu.6500.desc:0 "A Configuration to modify the number of construction ships (and Colony Ships).\n$CmtDescYourOwnRisk$\n"
- 
  
  ### Fleet Power
  CrisisManagerMenu.6100.title:1 "$CrisisManagerMenu.61xx.title$ ($CmtNameCommon$)"
@@ -3684,7 +3577,6 @@
  CrisisManagerMenu.6113.300.tooltip:1 ""
  CrisisManagerMenu.6113.xxx.tooltip:1 ""
  
- 
  ### Army Power
  CrisisManagerMenu.6200.title:1 "$CrisisManagerMenu.62xx.title$ ($CmtNameCommon$)"
  CrisisManagerMenu.6200.name:1 "$CrisisManagerMenu.6200.title$ $CrisisManagerTitleC$"
@@ -3804,7 +3696,6 @@
  CrisisManagerMenu.6211.275.tooltip:1 ""
  CrisisManagerMenu.6211.300.tooltip:1 ""
  CrisisManagerMenu.6211.xxx.tooltip:1 ""
- 
  
  ### Number of Fleets
  CrisisManagerMenu.6300.title:1 "$CrisisManagerMenu.63xx.title$ ($CmtNameCommon$)"
@@ -4261,7 +4152,6 @@
  CrisisManagerMenu.6313.A00.tooltip:1 ""
  CrisisManagerMenu.6313.xxx.tooltip:1 ""
  
- 
  ### Number of Army Fleets
  CrisisManagerMenu.6400.title:1 "$CrisisManagerMenu.64xx.title$ ($CmtNameCommon$)"
  CrisisManagerMenu.6400.name:1 "$CrisisManagerMenu.6400.title$ $CrisisManagerTitleC$"
@@ -4429,7 +4319,6 @@
  CrisisManagerMenu.6411.800.tooltip:1 ""
  CrisisManagerMenu.6411.A00.tooltip:1 ""
  CrisisManagerMenu.6411.xxx.tooltip:1 ""
- 
  
  ### Number of Auxiliary Ships/Fleets
  CrisisManagerMenu.6500.title:1 "$CrisisManagerMenu.65xx.title$ ($CmtNameCommon$)"
@@ -4724,8 +4613,6 @@
  
  
  
- 
- 
  ###########################
  ###  Manual Operations  ###
  ###########################
@@ -4779,7 +4666,6 @@
  CrisisManagerMenu.7000.7400.B.tooltip:1 ""
  CrisisManagerMenu.7000.7500.tooltip:1 ""
  
- 
  ### Get Proper Nouns
  CmtProperNameSleeper1:1 "$CmtIconFanaticMaterialist$ §Y[CmtTargetManualSleeper1.GetName]§!"
  CmtProperNameSleeper2:1 "$CmtIconFanaticSpiritualist$ §Y[CmtTargetManualSleeper2.GetName]§!"
@@ -4789,7 +4675,6 @@
  CmtProperNameMarauder1:1 "§Y[CmtTargetManualMarauder1.GetName]§!"
  CmtProperNameMarauder2:1 "§Y[CmtTargetManualMarauder2.GetName]§!"
  CmtProperNameMarauder3:1 "§Y[CmtTargetManualMarauder3.GetName]§!"
- 
  
  ### Trigger End-Game Crisis
  CrisisManagerMenu.7110.title:1 "$CrisisManagerMenu.7000.7110.A.name$"
@@ -4834,7 +4719,6 @@
  CrisisManagerMenu.7110i1.tooltip:1 ""
  CrisisManagerMenu.7110i2.tooltip:1 "$CrisisManagerMenu.7110b2.tooltip$"
  CrisisManagerMenu.7110i3.tooltip:0 "No Empires is satisfying the condition for $CmtNameForcedEoc$"
- 
  
  ### Reconfirmation/Notification of Triggering Crisis
  CrisisManagerMenu.7111.title:0 "Trigger Crisis"
@@ -5016,7 +4900,6 @@
  CrisisManagerMenu.7150c.tooltip:0 "They are declaring a war on all empires in a minute.\n\n$CmtWarn0$\nYour control will NOT be switched. You will join war as one of defensive empires."
  CrisisManagerMenu.7150d.tooltip:1 ""
  
- 
  ### Forcibly Terminate Crises
  CrisisManagerMenu.7200.title:0 "Forcibly Terminate Crises"
  CrisisManagerMenu.7200.name:1 "$CrisisManagerMenu.7200.title$ $CrisisManagerTitleC$"
@@ -5039,7 +4922,6 @@
  CrisisManagerMenu.7200g.tooltip:1 ""
  CrisisManagerMenu.7200h.tooltip:1 ""
  CrisisManagerMenu.7200i.tooltip:1 ""
- 
  
  ### Reconfirmation of Destruction of Crisis Country
  CrisisManagerMenu.720x.desc:1 "$CrisisManagerMenu.71xx.desc$"
@@ -5207,7 +5089,6 @@
  CrisisManagerMenu.7419b9.tooltip:1 "$CrisisManagerTemplate_SleeperInitializing.title$\n\n$CmtDescApocalypseColossus$"
  
  
- 
  ### Create/Remove L-Gate
  CrisisManagerMenu.7500.title:0 "Create/Remove L-Gate"
  CrisisManagerMenu.7500.name:1 "$CrisisManagerMenu.7500.title$ $CrisisManagerTitleC$"
@@ -5262,7 +5143,6 @@
  CrisisManagerMenu.7521.desc:1 "$CrisisManagerMenu.75xx.desc$§W$CrisisManagerMenu.7500c1.name$§!"
  CrisisManagerMenu.7522.desc:1 "$CrisisManagerMenu.75xx.desc$§W$CrisisManagerMenu.7500c2.name$§!"
  
- 
  ####################
  ###  Debug Menu  ###
  ####################
@@ -5279,11 +5159,9 @@
  CrisisManagerMenu.9000.9910.name:0 "FIOS/LIOS Test"
  CrisisManagerMenu.9000.9920.name:0 "If/Else Test"
  
- 
  ### Variable Checker
  CrisisManagerMenu.9100.name:1 "$CrisisManagerMenu.9000.9200.name$ $CrisisManagerTitleC$"
  CrisisManagerMenu.9100.desc:1 "§WCmtVarColonizerNumber_Prethoryn: [CmtGlobalVar.GetValue.CmtVarColonizerNumber_Prethoryn]\n\nCmtVarKhanPostDeathDemocratic: [CmtGlobalVar.GetValue.CmtVarKhanPostDeathDemocratic]\nCmtVarKhanPostDeathSplinter: [CmtGlobalVar.GetValue.CmtVarKhanPostDeathSplinter]\nCmtVarKhanPostDeathKhanate: [CmtGlobalVar.GetValue.CmtVarKhanPostDeathKhanate]§!"
- 
  
  ### Flag Controller
  CrisisManagerMenu.9200.name:1 "$CrisisManagerMenu.9000.9200.name$ $CrisisManagerTitleC$"
@@ -5333,6 +5211,5 @@
  ### If/Else Test
  CrisisManagerMenu.9920.name:1 "$CrisisManagerMenu.9000.9920.name$ $CrisisManagerTitleC$"
  CrisisManagerMenu.9920.desc:0 "If/Else test\n§WCurrent Code: [CmtGlobalVar.GetValue.CmtVarIfElseCheck]\n\nCode x.1: New structure has a priority\nCode x.2: Old structure has a priority\n.x: Result of Nesting Test\n§!"
- 
  
  
