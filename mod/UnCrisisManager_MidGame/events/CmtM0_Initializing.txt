@@ -39,7 +39,8 @@ event = {
 country_event = {
 	id = CrisisManagerMenu.0002
 	hide_window = yes
-	#fire_only_once = yes
+	fire_only_once = yes
+
 	trigger = {
 		NOT = { has_global_flag = CmtFlagActivated }
 		is_country_type = global_event
@@ -48,10 +49,13 @@ country_event = {
 	immediate = {
 		CmtEffectSetDetectedEdition = yes
 		if = {
+			limit = { NOT = { has_global_flag = CmtFlagNoCall } }
+			country_event = { id = CrisisManagerMenu.0021 }		## Initializing Variables
+		} else_if = {
 			limit = { CmtTriggerAnyManagedEventTriggered = yes }
 			every_playable_country = {
 				limit = { is_ai = no }
-				country_event = { id = CrisisManagerMenu.0012 }		## Waning: Crisis Happened Already
+				country_event = { id = CrisisManagerMenu.0012 }		## Warning: Crisis Happened Already
 			}
 		} else = {
 			country_event = { id = CrisisManagerMenu.0021 }		## Initializing Variables
@@ -119,7 +123,7 @@ country_event = {
 	option = {
 		name = CmtTextOK.name
 		custom_tooltip = CmtTextOK.tooltip
-		hidden_effect = { CmtEffectExitMenu = yes }									 
+		hidden_effect = { CmtEffectExitMenu = yes }
 	}
 }
 
@@ -157,7 +161,7 @@ country_event = {
 	title = CrisisManagerMenu.0014.name
 	desc = CrisisManagerMenu.0014.desc
 	picture = GFX_evt_galactic_senate
-
+	
 	is_triggered_only = yes # no?
 	trigger = {
 		has_country_flag = CmtFlagNowInMenu
@@ -201,7 +205,7 @@ country_event = {
 					always = @CmtT201_ConstSleeperFleet_ApplyOnStart
 					has_global_flag = CmtFlagSleeperEdition
 				}
-				CmtEffectApplyTemplate201 = yes		## Apply Template for Initialization for Fleets of  Sleepers
+				CmtEffectApplyTemplate201 = yes		## Apply Template for Initialization for Fleets of Sleepers
 			}
 		}
 	}

@@ -232,7 +232,11 @@ country_event = {
 					limit = { always = @CmtT000_ConstLgateSkipTech }
 					set_global_flag = CmtFlagLgateSkipTech
 				} else = { remove_global_flag = CmtFlagLgateSkipTech }
-				set_variable = { which = CmtVarLgateClusterType value = @CmtT000_ConstLgateClusterType }
+				if = {
+					limit = { always = @CmtT000_ConstLgateReqPlayer }
+					set_global_flag = CmtFlagLgateReqPlayer
+				} else = { remove_global_flag = CmtFlagLgateReqPlayer }
+				# set_variable = { which = CmtVarLgateClusterType value = @CmtT000_ConstLgateClusterType }
 				if = {
 					limit = { always = @CmtT000_ConstLgateForbidSilence }
 					set_global_flag = CmtFlagLgateForbidSilence

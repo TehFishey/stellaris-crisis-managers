@@ -121,7 +121,6 @@ country_event = {
 }
 
 
-
 ### Khan Interval
 country_event = {
 	id = CrisisManagerMenu.4821
@@ -202,7 +201,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
 
 
 ### Khan to Reign at Earliest
@@ -317,7 +315,6 @@ country_event = {
 }
 
 
-
 ### Last Chance of Khan Reigning
 country_event = {
 	id = CrisisManagerMenu.4823
@@ -420,7 +417,6 @@ country_event = {
 }
 
 
-
 ### MTTH Khan Awake
 country_event = {
 	id = CrisisManagerMenu.4831
@@ -513,7 +509,6 @@ country_event = {
 }
 
 
-
 ### Khan Awakening for Vengeance
 country_event = {
 	id = CrisisManagerMenu.4832
@@ -604,7 +599,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
 
 
 ### Resurgence of Khan
@@ -718,7 +712,6 @@ country_event = {
 }
 
 
-
 ### Lifespan of Khan
 country_event = {
 	id = CrisisManagerMenu.4842
@@ -821,7 +814,6 @@ country_event = {
 }
 
 
-
 ### Latent Strength of Horde in Adversity
 country_event = {
 	id = CrisisManagerMenu.4850
@@ -902,7 +894,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
 
 
 ### After Death of Khan (See Also: CmtEffectTransferKhanPostDeath in ''z_Cmt003_Transcribe_Variable_scripted_effects.txt'')
@@ -1008,7 +999,6 @@ country_event = {
 }
 
 
-
 ################
 ###  L-gate  ###
 ################
@@ -1105,7 +1095,6 @@ country_event = {
 }
 
 
-
 ### Technology for Opening L-Gates
 country_event = {
 	id = CrisisManagerMenu.4912
@@ -1130,7 +1119,7 @@ country_event = {
 			} else_if = {
 				limit = { has_country_flag = CmtFlagIndividual }
 				country_event = { id = CrisisManagerMenu.1027 }
-			} else = { country_event = { id = CrisisManagerMenu.4920 } }
+			} else = { country_event = { id = CrisisManagerMenu.4913 } }
 		}
 	}
 	
@@ -1156,7 +1145,53 @@ country_event = {
 	}
 }
 
-
+### Player only Open L-Gates
+country_event = {
+	id = CrisisManagerMenu.4913
+	title = CrisisManagerMenu.4913.name
+	desc = {
+		text = CrisisManagerMenu.4913.desc1
+		trigger = { NOT = { has_global_flag = CmtFlagLgateReqPlayer } }
+	}
+	desc = {
+		text = CrisisManagerMenu.4913.desc2
+		trigger = { has_global_flag = CmtFlagLgateReqPlayer }
+	}
+	picture = GFX_evt_l-gateway
+	is_triggered_only = yes
+	after = {
+		hidden_effect = {
+			if = {
+				limit = { has_country_flag = CmtFlagGoBack }
+				remove_country_flag = CmtFlagGoBack
+				country_event = { id = CrisisManagerMenu.4912 }
+			} else_if = {
+				limit = { has_country_flag = CmtFlagIndividual }
+				country_event = { id = CrisisManagerMenu.1027 }
+			} else = { country_event = { id = CrisisManagerMenu.4920 } }
+		}
+	}
+	option = {
+		name = CmtTextKeepCurrent.name
+		custom_tooltip = CmtTextKeepCurrent.tooltip
+	}
+	option = {
+		name = CrisisManagerMenu.4913a.name
+		custom_tooltip = CrisisManagerMenu.4913a.tooltip
+		hidden_effect = { remove_global_flag = CmtFlagLgateReqPlayer }
+	}
+	option = {
+		name = CrisisManagerMenu.4913b.name
+		custom_tooltip = CrisisManagerMenu.4913b.tooltip
+		hidden_effect = { set_global_flag = CmtFlagLgateReqPlayer }
+	}
+	option = {
+		name = CmtTextGoBack.name
+		custom_tooltip = CmtTextGoBack.tooltip
+		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
+		hidden_effect = { set_country_flag = CmtFlagGoBack }
+	}
+}
 
 ### What Lurks Beyond L-Gates
 country_event = {
@@ -1247,7 +1282,7 @@ country_event = {
 			} else_if = {
 				limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.4912 }
+				country_event = { id = CrisisManagerMenu.4913 }
 			} else_if = {
 				limit = { has_country_flag = CmtFlagIndividual }
 				country_event = { id = CrisisManagerMenu.1027 }
@@ -1372,7 +1407,6 @@ country_event = {
 }
 
 
-
 ### Algorithm to Activate L-Gate (Common)
 country_event = {
 	id = CrisisManagerMenu.4930
@@ -1471,7 +1505,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
 
 
 ### Algorithm to Activate L-Gate (Silence)
@@ -1584,7 +1617,6 @@ country_event = {
 }
 
 
-
 ### Algorithm to Activate L-Gate (L-Drake)
 country_event = {
 	id = CrisisManagerMenu.4932
@@ -1695,7 +1727,6 @@ country_event = {
 }
 
 
-
 ### Algorithm to Activate L-Gate (Dessanu)
 country_event = {
 	id = CrisisManagerMenu.4933
@@ -1804,7 +1835,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
 
 
 ### Algorithm to Activate L-Gate (Gray Tempest)
@@ -1933,7 +1963,6 @@ country_event = {
 }
 
 
-
 ### Quiet Stroller
 country_event = {
 	id = CrisisManagerMenu.4940
@@ -2014,7 +2043,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
 
 
 ### Dessanu Gift
@@ -2119,7 +2147,6 @@ country_event = {
 }
 
 
-
 ### Reinforcement Cycle of Gray Tempest's Fleets
 country_event = {
 	id = CrisisManagerMenu.4960
@@ -2215,7 +2242,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
 
 
 ### Terraforming for Nanite World
@@ -2322,7 +2348,6 @@ country_event = {
 
 
 
-
 ##################
 ###  Uprising  ###
 ##################
@@ -2420,7 +2445,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
 
 
 ### Machines to Uprise at Earliest
@@ -2525,7 +2549,6 @@ country_event = {
 }
 
 
-
 ### MTTH for Machine Uprising
 country_event = {
 	id = CrisisManagerMenu.5131
@@ -2628,7 +2651,6 @@ country_event = {
 }
 
 
-
 ### Suddenly Uprising
 country_event = {
 	id = CrisisManagerMenu.5133
@@ -2708,7 +2730,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
 
 
 ### Hotfix or Uprising, Controlled by Also 5133
@@ -2853,7 +2874,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
 
 
 
@@ -3014,7 +3034,6 @@ country_event = {
 }
 
 
-
 ### Type of Uprising Machines
 country_event = {
 	id = CrisisManagerMenu.5141
@@ -3105,7 +3124,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
 
 
 ### Exhaustion from War of Uprising
@@ -3200,7 +3218,6 @@ country_event = {
 }
 
 
-
 ### Military Intervention of Aliens
 country_event = {
 	id = CrisisManagerMenu.5151
@@ -3281,7 +3298,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
 
 
 ### Buffer for Uprising Machine

@@ -1,4 +1,3 @@
-
 ####################################################
 ####################################################
 #####                                          #####
@@ -9,7 +8,6 @@
 ####################################################
 ####################################################
 
-
 ########################
 ###  Initial Events  ###
 ########################
@@ -18,9 +16,13 @@ start_lcluster_chain = {
 	hidden_effect = {
 		set_global_flag = CmtFlagLgatePreludeTriggered
 		if = {
-			limit = { NOT = { has_global_flag = lgates_activated_globally } }
+			limit = {
+				NOT = { has_global_flag = lgates_activated_globally }
+				NAND = { is_ai = yes has_global_flag = CmtFlagLgateReqPlayer }
+			}
 			custom_tooltip = begin_lcluster_chain
-			if = {		## Skip Correct Clues
+			## Skip Correct Clues
+			if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarLgateReqClues value < -0.5 } } }
 				CmtEffectLgateClueComplete = yes
 			} else = {
@@ -61,6 +63,7 @@ generate_lcluster_clue = {
 				has_distar = yes
 				NOT = { has_global_flag = l_cluster_opened }
 				has_event_chain = l_cluster_chain
+				NAND = { is_ai = yes has_global_flag = CmtFlagLgateReqPlayer }
 			}
 			custom_tooltip = add_lcluster_clue
 			add_event_chain_counter = { event_chain = l_cluster_chain counter = clues amount = 1 }

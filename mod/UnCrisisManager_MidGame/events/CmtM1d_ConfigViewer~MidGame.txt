@@ -754,6 +754,21 @@ country_event = {
 	
 	
 	option = {
+		name = CrisisManagerMenu.4913a.name
+		custom_tooltip = CrisisManagerMenu.4913a.tooltip
+		trigger = { NOT = { has_global_flag = CmtFlagLgateReqPlayer } }
+		hidden_effect = { CmtEffect1027TryCall4913 = yes }
+	}
+	option = {
+		name = CrisisManagerMenu.4913b.name
+		custom_tooltip = CrisisManagerMenu.4913b.tooltip
+		trigger = { has_global_flag = CmtFlagLgateReqPlayer }
+		hidden_effect = { CmtEffect1027TryCall4913 = yes }
+	}
+	
+	
+	
+	option = {
 		name = CrisisManagerMenu.4920x.name
 		custom_tooltip = CrisisManagerMenu.4920x.tooltip
 		hidden_effect = { CmtEffect1027TryCall4920 = yes }
