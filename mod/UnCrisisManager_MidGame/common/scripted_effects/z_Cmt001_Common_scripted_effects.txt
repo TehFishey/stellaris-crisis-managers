@@ -7,7 +7,6 @@
 ########################################
 ########################################
 
-
 ################################
 ###  Common Effect for Menu  ###
 ################################
@@ -15,7 +14,6 @@
 ### Hard Coated Option
 CmtEffectHardCoatedSettings = {
 	remove_global_flag = CmtFlagDebugMode
-	
 	#set_global_flag = CmtFlagDebugMode		## Hidden menu is shown and MTTH several event is short
 	#set_global_flag = CmtFlagNoSeparator
 }
@@ -87,39 +85,39 @@ CmtEffectVersionUp = {
 			}
 			if = {
 				limit = { check_variable = { which = CmtVarVersion value < 1.06 } }
-				if = {
-					limit = {
-						check_variable = { which = CmtVarLgateClusterType value > 0 }
-						NOR = {
-							has_global_flag = CmtFlagLgateForbidSilence
-							has_global_flag = CmtFlagLgateForbidLdrake
-							has_global_flag = CmtFlagLgateForbidDessanu
-							has_global_flag = CmtFlagLgateForbidGraygoo
-						}
-					}
-					if = {
-						limit = { check_variable = { which = CmtVarLgateClusterType value = 2 } }
-						set_global_flag = CmtFlagLgateForbidLdrake
-						set_global_flag = CmtFlagLgateForbidDessanu
-						set_global_flag = CmtFlagLgateForbidGraygoo
-					} else_if = {
-						limit = { check_variable = { which = CmtVarLgateClusterType value = 3 } }
-						set_global_flag = CmtFlagLgateForbidGraygoo
-					} else_if = {
-						limit = { check_variable = { which = CmtVarLgateClusterType value = 4 } }
-						set_global_flag = CmtFlagLgateForbidSilence
-						set_global_flag = CmtFlagLgateForbidDessanu
-						set_global_flag = CmtFlagLgateForbidGraygoo
-					} else_if = {
-						limit = { check_variable = { which = CmtVarLgateClusterType value = 5 } }
-						set_global_flag = CmtFlagLgateForbidSilence
-					} else_if = {
-						limit = { check_variable = { which = CmtVarLgateClusterType value = 6 } }
-						set_global_flag = CmtFlagLgateForbidSilence
-						set_global_flag = CmtFlagLgateForbidLdrake
-						set_global_flag = CmtFlagLgateForbidDessanu
-					}
-				}
+				# if = {
+				# 	limit = {
+				# 		check_variable = { which = CmtVarLgateClusterType value > 0 }
+				# 		NOR = {
+				# 			has_global_flag = CmtFlagLgateForbidSilence
+				# 			has_global_flag = CmtFlagLgateForbidLdrake
+				# 			has_global_flag = CmtFlagLgateForbidDessanu
+				# 			has_global_flag = CmtFlagLgateForbidGraygoo
+				# 		}
+				# 	}
+				# 	if = {
+				# 		limit = { check_variable = { which = CmtVarLgateClusterType value = 2 } }
+				# 		set_global_flag = CmtFlagLgateForbidLdrake
+				# 		set_global_flag = CmtFlagLgateForbidDessanu
+				# 		set_global_flag = CmtFlagLgateForbidGraygoo
+				# 	} else_if = {
+				# 		limit = { check_variable = { which = CmtVarLgateClusterType value = 3 } }
+				# 		set_global_flag = CmtFlagLgateForbidGraygoo
+				# 	} else_if = {
+				# 		limit = { check_variable = { which = CmtVarLgateClusterType value = 4 } }
+				# 		set_global_flag = CmtFlagLgateForbidSilence
+				# 		set_global_flag = CmtFlagLgateForbidDessanu
+				# 		set_global_flag = CmtFlagLgateForbidGraygoo
+				# 	} else_if = {
+				# 		limit = { check_variable = { which = CmtVarLgateClusterType value = 5 } }
+				# 		set_global_flag = CmtFlagLgateForbidSilence
+				# 	} else_if = {
+				# 		limit = { check_variable = { which = CmtVarLgateClusterType value = 6 } }
+				# 		set_global_flag = CmtFlagLgateForbidSilence
+				# 		set_global_flag = CmtFlagLgateForbidLdrake
+				# 		set_global_flag = CmtFlagLgateForbidDessanu
+				# 	}
+				# }
 				if = {
 					limit = { check_variable = { which = CmtVarLgateCycleSilence value = 0 } }
 					if = {
@@ -214,8 +212,6 @@ CmtEffectDetectTotalWarPack = {}
 CmtEffectDetectPlayerCrisisPack = {}
 CmtEffectDetectFeeCompatPatch = {}
 
-
-
 ########################
 ###  Common Actions  ###
 ########################
@@ -228,7 +224,6 @@ CmtEffectDestroySystemStarbase = {
 	}
 }
 
-
 ### scope: this = country (fallen empire), Overwritten by FFE_CMT
 CmtEffectChangeAwakenerCivic = {
 	change_government = {
@@ -239,7 +234,6 @@ CmtEffectChangeAwakenerCivic = {
 	}
 }
 
-
 ####################
 ###  Debug tool  ###
 ####################
@@ -248,6 +242,3 @@ CmtEffectChangeAwakenerCivic = {
 CmtEffectFiosLiosTest = {
 	event_target:CmtGlobalVar = { change_variable = { which = CmtVarFiosLios value = 1 } }
 }
-
-
-

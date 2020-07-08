@@ -22,7 +22,7 @@ country_event = {
 	id = distar.10903
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		last_increased_tech = tech_lgate_activation
 		NOR = {
@@ -30,7 +30,7 @@ country_event = {
 			has_country_flag = CmtFlagGetLgateTechNow
 		}
 	}
-	
+
 	immediate = {
 		set_timed_country_flag = { flag = CmtFlagGetLgateTechNow days = 3 }		## Kill Double Calling
 		country_event = { id = distar.10900 }
@@ -43,24 +43,24 @@ country_event = {
 	id = distar.10950
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		NOT = { has_global_flag = l_cluster_opened }
 	}
-	
+
 	immediate = {
 		set_global_flag = l_cluster_opened
 		set_global_flag = lgates_activated_globally
 		set_timed_global_flag = { flag = CmtFlagLgateOpenedNow days = 3 }
 		set_country_flag = lcluster_opener
 		country_event = { id = distar.11000 }		## Spawn L-Cluster
-		
-		### Set 1st L-Gate as Target 
+
+		### Set 1st L-Gate as Target
 		if = {
 			limit = { NOT = { exists = event_target:CmtTargetLgateOrininatingSystem } }
 			from.solar_system = { save_global_event_target_as = CmtTargetLgateOrininatingSystem }
 		}
-		
+
 		### Change Outcome
 		if = {
 			limit = {
@@ -91,7 +91,7 @@ country_event = {
 			remove_global_flag = gray_goo_empire_set
 			remove_global_flag = gray_goo_crisis_set
 			remove_global_flag = active_gray_goo
-			
+
 			random_list = {
 				30 = {
 					modifier = {
@@ -128,7 +128,7 @@ country_event = {
 				}
 			}
 		}
-		
+
 		### Activate L-Gate
 		country_event = { id = CrisisManagerControl.6201 }		## Open Other L-Gates
 		event_target:CmtTargetLgateOrininatingSystem = {
@@ -153,7 +153,7 @@ country_event = {
 				CmtEffectOpenLgate = yes
 			}
 		}
-		
+
 		### Call Outcome
 		if = {
 			limit = { has_global_flag = gray_goo_crisis_set }
@@ -165,7 +165,7 @@ country_event = {
 			limit = { has_global_flag = dragon_season }
 			country_event = { id = distar.13000 }
 		} else = { country_event = { id = distar.10951 } }
-		
+
 		### Terraformablity
 		if = {
 			limit = {
@@ -180,7 +180,7 @@ country_event = {
 				add_modifier = { modifier = terraforming_candidate days = -1 }
 			}
 		}
-		
+
 		### Technology Control: Put AFTER graygoo.100
 		every_playable_country = {
 			if = {
@@ -201,9 +201,9 @@ country_event = {
 	id = distar.13000
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
-		
+
 		### Create Country
 		create_country = {
 			name = "NAME_Spawning_Dragons"
@@ -213,7 +213,7 @@ country_event = {
 				every_playable_country = { establish_communications_no_message = prev }
 			}
 		}
-		
+
 		### Set Target for L-Drake
 		every_system = {
 			limit = { CmtTriggerIsGalaxyLgateSystem = yes }
@@ -228,8 +228,8 @@ country_event = {
 				set_star_flag = dragon_point
 			}
 		}
-		
-		
+
+
 		### Create L-Drake
 		while = {
 			limit = {
@@ -245,7 +245,7 @@ country_event = {
 					any_system_megastructure = { CmtTriggerIsOpenedLgate = yes }
 				}
 				set_star_flag = young_dragon_spawned
-				
+
 				random_system_megastructure = {
 					limit = { CmtTriggerIsOpenedLgate = yes }
 					closest_system = {
@@ -255,7 +255,7 @@ country_event = {
 							NOT = { has_star_flag = dragon_point_picked }
 						}
 						set_star_flag = dragon_point_picked
-						
+
 						# notify re: destination
 						if = {
 							limit = { prevprev = { exists = owner } }		## prevprev = L-Gate System
@@ -309,7 +309,7 @@ country_event = {
 				}
 			}
 		}
-		
+
 		### Notification 2
 		every_playable_country = {
 			limit = { NOT = { any_system_within_border = { CmtTriggerIsGalaxyLgateSystem = yes } } }

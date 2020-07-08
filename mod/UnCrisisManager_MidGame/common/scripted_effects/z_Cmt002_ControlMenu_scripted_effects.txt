@@ -974,6 +974,12 @@ CmtEffect1027TryCall4912 = {
 		country_event = { id = CrisisManagerMenu.4912 }
 	} else = { country_event = { id = CrisisManagerMenu.1027 } }
 }
+CmtEffect1027TryCall4913 = {
+	if = {
+		limit = { CmtTriggerLgateConfig = yes }
+		country_event = { id = CrisisManagerMenu.4913 }
+	} else = { country_event = { id = CrisisManagerMenu.1027 } }
+}
 CmtEffect1027TryCall4920 = {
 	if = {
 		limit = { CmtTriggerLgateConfig = yes }
