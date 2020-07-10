@@ -1,0 +1,66 @@
+# ## physics technologies
+
+tech_lgate_activation = {
+	cost = @tier3cost3
+	area = physics
+	tier = 3
+	is_rare = yes
+	is_dangerous = yes
+	category = { particles }
+	weight = 0
+
+	potential = {
+		NOT = { has_global_flag = l_cluster_opened }
+		NAND = { has_global_flag = CmtFlagLgateReqPlayer is_ai = yes }
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = lgate_activation_title
+			desc = lgate_activation_desc
+		}
+	}
+
+	weight_modifier = {
+		factor = 0
+	}
+}
+
+tech_repeatable_lcluster_clue = {
+	area = engineering
+	cost = 2000
+	cost_per_level = @repeatableTechLevelCost
+	tier = 2
+	is_rare = yes
+	category = { voidcraft }
+	levels = -1
+	weight = 70
+
+	potential = {
+		has_country_flag = encountered_first_lgate
+		NOT = { has_country_flag = completed_lcluster_chain }
+		NOT = { has_global_flag = l_cluster_opened }
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = add_lcluster_clue
+			desc = tech_repeatable_lcluster_clue_desc
+		}
+	}
+
+	ai_weight = {
+		factor = 1
+		modifier = {
+			factor = 0
+			has_global_flag = CmtFlagLgateReqPlayer
+		}
+	}
+
+	weight_groups = {
+		#repeatable
+	}
+	mod_weight_if_group_picked = {
+		#repeatable = 0.01
+	}
+}
