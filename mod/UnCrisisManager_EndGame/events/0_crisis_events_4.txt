@@ -259,7 +259,7 @@ country_event = {
 		
 		### Reckoning Marked Planet
 		event_target:CmtGlobalVar = { set_variable = { which = CmtVarTemp value = 0 } }		## for CmtVarEndPower
-		every_planet = {
+		every_galaxy_planet = {
 			limit = { has_modifier = covenant_shroud_marked }
 			remove_modifier = covenant_shroud_marked
 			remove_all_armies = yes

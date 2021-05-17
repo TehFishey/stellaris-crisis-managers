@@ -161,7 +161,7 @@ country_event = {
 		name = CrisisManagerMenu.7000.7140.A.name
 		custom_tooltip = CrisisManagerMenu.7000.7140.A.tooltip
 		trigger = {
-			host_has_dlc = "Distant Stars Story Pack"
+			no_scope = { has_distar = yes }
 			has_global_flag = CmtFlagMidGameEdition
 			any_megastructure = { CmtTriggerIsClosedLgate = yes }
 			NOT = { has_global_flag = l_cluster_opened }
@@ -172,7 +172,7 @@ country_event = {
 		name = CrisisManagerMenu.7000.7140.B.name
 		custom_tooltip = CrisisManagerMenu.7000.7140.B.tooltip
 		trigger = {
-			host_has_dlc = "Distant Stars Story Pack"
+			no_scope = { has_distar = yes }
 			has_global_flag = CmtFlagMidGameEdition
 			NOR = {
 				has_global_flag = l_cluster_opened
@@ -185,7 +185,7 @@ country_event = {
 		name = CrisisManagerMenu.7000.7140.C.name
 		custom_tooltip = CrisisManagerMenu.7000.7140.C.tooltip
 		trigger = {
-			host_has_dlc = "Distant Stars Story Pack"
+			no_scope = { has_distar = yes }
 			has_global_flag = CmtFlagMidGameEdition
 			has_global_flag = l_cluster_opened
 			NOT = { any_megastructure = { CmtTriggerIsClosedLgate = yes } }
@@ -196,7 +196,7 @@ country_event = {
 		name = CrisisManagerMenu.7000.7142.name
 		custom_tooltip = CrisisManagerMenu.7000.7142.tooltip
 		trigger = {
-			host_has_dlc = "Distant Stars Story Pack"
+			no_scope = { has_distar = yes }
 			has_global_flag = CmtFlagMidGameEdition
 			any_megastructure = { CmtTriggerIsClosedLgate = yes }
 			has_global_flag = l_cluster_opened
@@ -316,7 +316,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7000.7500.tooltip
 		trigger = {
 			has_global_flag = CmtFlagMidGameEdition
-			host_has_dlc = "Distant Stars Story Pack"
+			no_scope = { has_distar = yes }
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7500 } }
 	}

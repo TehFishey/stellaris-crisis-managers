@@ -45,7 +45,7 @@ country_event = {
 					civic = civic_meritocracy
 					civic = civic_environmentalist
 				}
-				species = last_created
+				species = last_created_species
 				ethos = {
 					ethic = "ethic_fanatic_xenophile"
 					ethic = "ethic_egalitarian"
@@ -425,7 +425,7 @@ country_event = {
 				remove_all_buildings = yes
 				destroy_colony = yes
 			}
-			every_planet = {
+			every_galaxy_planet = {
 				limit = { is_planet_class = pc_gray_goo }
 				add_modifier = { modifier = terraforming_candidate days = -1 }
 			}

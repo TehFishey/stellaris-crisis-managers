@@ -246,28 +246,28 @@ CmtEffectContingencyArrival = {
 }
 
 CmtEffect1stMachineWorld = {
-	random_planet = {
+	random_galaxy_planet = {
 		limit = { has_planet_flag = machine_world_1 }
 		planet_event = { id = crisis.2025 }
 	}
 }
 
 CmtEffect2ndMachineWorld = {
-	random_planet = {
+	random_galaxy_planet = {
 		limit = { has_planet_flag = machine_world_2 }
 		planet_event = { id = crisis.2026 }
 	}
 }
 
 CmtEffect3rdMachineWorld = {
-	random_planet = {
+	random_galaxy_planet = {
 		limit = { has_planet_flag = machine_world_3 }
 		planet_event = { id = crisis.2027 }
 	}
 }
 
 CmtEffect4thMachineWorld = {
-	random_planet = {
+	random_galaxy_planet = {
 		limit = { has_planet_flag = machine_world_4 }
 		planet_event = { id = crisis.2028 }
 	}

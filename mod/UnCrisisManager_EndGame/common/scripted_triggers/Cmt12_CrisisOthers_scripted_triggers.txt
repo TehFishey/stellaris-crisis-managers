@@ -464,7 +464,7 @@ CmtTriggerFeocExileCandidate = {
 CmtTriggerFeocExile1stPrioritySystem = {
 	OR = {
 		NOT = { exists = starbase.owner }
-		starbase.owner = { is_same_value = root }
+		starbase.owner = { is_same_empire = root }
 	}
 	CmtTriggerFeocExile3rdPrioritySystem = yes
 }

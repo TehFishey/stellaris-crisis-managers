@@ -60,7 +60,7 @@ generate_lcluster_clue = {
 	hidden_effect = {
 		if = {
 			limit = {
-				has_distar = yes
+				no_scope = { has_distar = yes }
 				NOT = { has_global_flag = l_cluster_opened }
 				has_event_chain = l_cluster_chain
 				NAND = { is_ai = yes has_global_flag = CmtFlagLgateReqPlayer }
@@ -169,14 +169,14 @@ CmtEffectDestroyGraygoo = {
 					check_variable = { which = CmtVarLgateTerraformNanite value = 5 }
 				}
 			}
-			every_planet = {
+			every_galaxy_planet = {
 				limit = { is_planet_class = pc_gray_goo }
 				add_modifier = { modifier = CmtModifierAutoTerraform days = -1 }
 				planet_event = { id = CrisisManagerControl.6211 days = 90 random = 450 }	## Auto-Terraform
 			}
 		} else_if = {
 			limit = { NOT = { check_variable = { which = CmtVarLgateTerraformNanite value = 1 } } }
-			every_planet = {
+			every_galaxy_planet = {
 				limit = { is_planet_class = pc_gray_goo }
 				add_modifier = { modifier = terraforming_candidate days = -1 }
 			}

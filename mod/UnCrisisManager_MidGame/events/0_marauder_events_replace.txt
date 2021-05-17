@@ -185,7 +185,7 @@ country_event = {
 				if = {
 					limit = {
 						exists = solar_system.owner
-						solar_system.owner = { is_same_value = root }
+						solar_system.owner = { is_same_empire = root }
 					}
 					save_global_event_target_as = marauder_rally_point
 					set_planet_flag = marauder_rally_point
@@ -199,7 +199,7 @@ country_event = {
 				if = {
 					limit = {
 						exists = solar_system.owner
-						solar_system.owner = { is_same_value = root }
+						solar_system.owner = { is_same_empire = root }
 					}
 					save_global_event_target_as = marauder_rally_point
 					set_planet_flag = marauder_rally_point
@@ -213,7 +213,7 @@ country_event = {
 				if = {
 					limit = {
 						exists = solar_system.owner
-						solar_system.owner = { is_same_value = root }
+						solar_system.owner = { is_same_empire = root }
 					}
 					save_global_event_target_as = marauder_rally_point
 					set_planet_flag = marauder_rally_point
@@ -384,7 +384,7 @@ country_event = {
 					has_country_flag = marauder_1
 					AND = {
 						exists = event_target:CmtTargetMarauderRallyPoint1.solar_system.owner
-						event_target:CmtTargetMarauderRallyPoint1.solar_system.owner = { is_same_value = root }
+						event_target:CmtTargetMarauderRallyPoint1.solar_system.owner = { is_same_empire = root }
 					}
 				}
 			}
@@ -399,7 +399,7 @@ country_event = {
 					has_country_flag = marauder_2
 					AND = {
 						exists = event_target:CmtTargetMarauderRallyPoint2.solar_system.owner
-						event_target:CmtTargetMarauderRallyPoint2.solar_system.owner = { is_same_value = root }
+						event_target:CmtTargetMarauderRallyPoint2.solar_system.owner = { is_same_empire = root }
 					}
 				}
 			}
@@ -414,7 +414,7 @@ country_event = {
 					has_country_flag = marauder_3
 					AND = {
 						exists = event_target:CmtTargetMarauderRallyPoint3.solar_system.owner
-						event_target:CmtTargetMarauderRallyPoint3.solar_system.owner = { is_same_value = root }
+						event_target:CmtTargetMarauderRallyPoint3.solar_system.owner = { is_same_empire = root }
 					}
 				}
 			}
@@ -1238,7 +1238,7 @@ fleet_event = {
 	
 	trigger = {
 		CmtTriggerExistKhanCountry = yes
-		owner = { is_same_value = event_target:raider_khanate }
+		owner = { is_same_empire = event_target:raider_khanate }
 	}
 	
 	immediate = {

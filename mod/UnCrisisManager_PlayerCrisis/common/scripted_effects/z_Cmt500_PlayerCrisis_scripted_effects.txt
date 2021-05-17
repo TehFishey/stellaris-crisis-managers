@@ -424,8 +424,8 @@ CmtEffectLiquidateAgressor = {
 			portrait = CmtPortraitPlayerCrisisNull
 			traits = {}
 		}
-		every_owned_pop = { change_species = last_created }
-		change_dominant_species = { species = last_created }
+		every_owned_pop = { change_species = last_created_species }
+		change_dominant_species = { species = last_created_species }
 		
 		### Leaders except Ruler
 		every_owned_leader = {
@@ -469,7 +469,7 @@ CmtEffectLiquidateAgressor = {
 		set_leader = last_created_leader
 		
 		### Colonies
-		every_planet = {
+		every_galaxy_planet = {
 			limit = { has_planet_flag = CmtFlagLiquidateTargetPlanet }
 			CmtEffectLiquidatePlanetFinal = yes
 		}

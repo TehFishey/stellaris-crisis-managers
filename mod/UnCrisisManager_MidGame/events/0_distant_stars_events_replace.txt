@@ -175,7 +175,7 @@ country_event = {
 					has_global_flag = gray_goo_empire_set
 				}
 			}
-			every_planet = {
+			every_galaxy_planet = {
 				limit = { is_planet_class = pc_gray_goo }
 				add_modifier = { modifier = terraforming_candidate days = -1 }
 			}

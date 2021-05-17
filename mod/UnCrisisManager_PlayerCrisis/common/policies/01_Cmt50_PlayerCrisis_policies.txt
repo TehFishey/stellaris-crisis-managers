@@ -287,7 +287,7 @@ pre_sapients = {
 	potential = {
 		OR = {
 			has_country_flag = found_presapients
-			any_planet_within_border = { any_pop = { is_sapient = no } }
+			any_planet_within_border = { any_owned_pop = { is_sapient = no } }
 		}
 	}
 	option = {

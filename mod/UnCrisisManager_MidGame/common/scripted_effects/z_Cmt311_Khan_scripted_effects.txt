@@ -74,7 +74,7 @@ CmtEffectKhanReinforceOnCapital = {		## Scope: root = Country (Khan)
 		} else_if = {
 			limit = {
 				exists = event_target:marauder_rally_point.solar_system.owner
-				event_target:marauder_rally_point.solar_system.owner = { is_same_value = root }
+				event_target:marauder_rally_point.solar_system.owner = { is_same_empire = root }
 			}
 			event_target:marauder_rally_point = { CmtEffectCreateAdmiralty_KhanReinforcement = yes }
 		}
