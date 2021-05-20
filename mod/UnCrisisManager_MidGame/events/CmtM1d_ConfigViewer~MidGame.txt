@@ -28,11 +28,11 @@ country_event = {
 	}
 	picture = GFX_evt_khan_throne_room
 	is_triggered_only = yes
-	
+
 	immediate = {
 		set_country_flag = CmtFlagConfigViewerShowing1026
 	}
-	
+
 	option = {
 		name = CmtTextGoNextPage.name
 		custom_tooltip = CmtTextGoNextPage.tooltip
@@ -64,16 +64,15 @@ country_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = CmtTextSeparator.name
 		custom_tooltip = CmtTextSeparator.tooltip
 		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
 		allow = { hidden_trigger = { always = no } }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.4810a.name
 		custom_tooltip = CrisisManagerMenu.4810a.tooltip
@@ -120,9 +119,8 @@ country_event = {
 		}
 		hidden_effect = { CmtEffect1026TryCall4810 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.4821.V0.name
 		custom_tooltip = CrisisManagerMenu.4821.tooltip
@@ -181,9 +179,8 @@ country_event = {
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.1026 } }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.4822.V0.name
 		custom_tooltip = CrisisManagerMenu.4822.V0.tooltip
@@ -234,9 +231,8 @@ country_event = {
 		}
 		hidden_effect = { CmtEffect1026TryCall4822 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.4823.VA.name
 		custom_tooltip = CrisisManagerMenu.4823.VA.tooltip
@@ -283,9 +279,8 @@ country_event = {
 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T1 } } }
 		hidden_effect = { CmtEffect1026TryCall4823 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.4831a.name
 		custom_tooltip = CrisisManagerMenu.4831a.tooltip
@@ -332,9 +327,8 @@ country_event = {
 		}
 		hidden_effect = { CmtEffect1026TryCall4831 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.4832a.name
 		custom_tooltip = CrisisManagerMenu.4832a.tooltip
@@ -381,9 +375,8 @@ country_event = {
 		}
 		hidden_effect = { CmtEffect1026TryCall4832 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.4841a.name
 		custom_tooltip = CrisisManagerMenu.4841a.tooltip
@@ -451,9 +444,8 @@ country_event = {
 		}
 		hidden_effect = { CmtEffect1026TryCall4841 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.4842a.name
 		custom_tooltip = CrisisManagerMenu.4842a.tooltip
@@ -507,9 +499,8 @@ country_event = {
 		}
 		hidden_effect = { CmtEffect1026TryCall4842 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.4850a.name
 		custom_tooltip = CrisisManagerMenu.4850a.tooltip
@@ -549,9 +540,8 @@ country_event = {
 		}
 		hidden_effect = { CmtEffect1026TryCall4850 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.4860a.name
 		custom_tooltip = CrisisManagerMenu.4860a.tooltip
@@ -605,9 +595,8 @@ country_event = {
 		}
 		hidden_effect = { CmtEffect1026TryCall4860 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CmtTextSeparator.name
 		custom_tooltip = CmtTextSeparator.tooltip
@@ -617,7 +606,7 @@ country_event = {
 		}
 		allow = { hidden_trigger = { always = no } }
 	}
-	
+
 	option = {
 		name = CmtTextGoBackViewerMenu.name
 		custom_tooltip = CmtTextGoBackViewerMenu.tooltip
@@ -628,10 +617,6 @@ country_event = {
 		}
 	}
 }
-
-
-
-
 
 ##################################
 ###  Configurations of L-gate  ###
@@ -650,11 +635,11 @@ country_event = {
 	}
 	picture = GFX_evt_l-gateway
 	is_triggered_only = yes
-	
+
 	immediate = {
 		set_country_flag = CmtFlagConfigViewerShowing1027
 	}
-	
+
 	option = {
 		name = CmtTextGoNextPage.name
 		custom_tooltip = CmtTextGoNextPage.tooltip
@@ -681,16 +666,15 @@ country_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = CmtTextSeparator.name
 		custom_tooltip = CmtTextSeparator.tooltip
 		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
 		allow = { hidden_trigger = { always = no } }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.4911.V0.name
 		custom_tooltip = CrisisManagerMenu.4911.V0.tooltip
@@ -735,9 +719,8 @@ country_event = {
 		}
 		hidden_effect = { CmtEffect1027TryCall4911 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.4912a.name
 		custom_tooltip = CrisisManagerMenu.4912a.tooltip
@@ -750,9 +733,8 @@ country_event = {
 		trigger = { has_global_flag = CmtFlagLgateSkipTech }
 		hidden_effect = { CmtEffect1027TryCall4912 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.4913a.name
 		custom_tooltip = CrisisManagerMenu.4913a.tooltip
@@ -765,17 +747,15 @@ country_event = {
 		trigger = { has_global_flag = CmtFlagLgateReqPlayer }
 		hidden_effect = { CmtEffect1027TryCall4913 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.4920x.name
 		custom_tooltip = CrisisManagerMenu.4920x.tooltip
 		hidden_effect = { CmtEffect1027TryCall4920 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.4930a.name
 		custom_tooltip = CrisisManagerMenu.4930a.tooltip
@@ -823,9 +803,8 @@ country_event = {
 		hidden_effect = { CmtEffect1027TryCall4930 = yes }
 	}
 
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.4931a.name
 		custom_tooltip = CrisisManagerMenu.4931a.tooltip
@@ -890,9 +869,8 @@ country_event = {
 		}
 		hidden_effect = { CmtEffect1027TryCall4931 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.4932a.name
 		custom_tooltip = CrisisManagerMenu.4932a.tooltip
@@ -957,9 +935,8 @@ country_event = {
 		}
 		hidden_effect = { CmtEffect1027TryCall4932 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.4933a.name
 		custom_tooltip = CrisisManagerMenu.4933a.tooltip
@@ -1024,9 +1001,8 @@ country_event = {
 		}
 		hidden_effect = { CmtEffect1027TryCall4933 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.4934a.name
 		custom_tooltip = CrisisManagerMenu.4934a.tooltip
@@ -1104,9 +1080,8 @@ country_event = {
 		}
 		hidden_effect = { CmtEffect1027TryCall4934 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.4940a.name
 		custom_tooltip = CrisisManagerMenu.4940a.tooltip
@@ -1146,9 +1121,8 @@ country_event = {
 		}
 		hidden_effect = { CmtEffect1027TryCall4940 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.4950a.name
 		custom_tooltip = CrisisManagerMenu.4950a.tooltip
@@ -1202,9 +1176,8 @@ country_event = {
 		}
 		hidden_effect = { CmtEffect1027TryCall4950 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.4960a.name
 		custom_tooltip = CrisisManagerMenu.4960a.tooltip
@@ -1258,9 +1231,8 @@ country_event = {
 		}
 		hidden_effect = { CmtEffect1027TryCall4960 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.4970a.name
 		custom_tooltip = CrisisManagerMenu.4970a.tooltip
@@ -1314,9 +1286,8 @@ country_event = {
 		}
 		hidden_effect = { CmtEffect1027TryCall4970 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CmtTextSeparator.name
 		custom_tooltip = CmtTextSeparator.tooltip
@@ -1326,7 +1297,7 @@ country_event = {
 		}
 		allow = { hidden_trigger = { always = no } }
 	}
-	
+
 	option = {
 		name = CmtTextGoBackViewerMenu.name
 		custom_tooltip = CmtTextGoBackViewerMenu.tooltip
@@ -1337,10 +1308,6 @@ country_event = {
 		}
 	}
 }
-
-
-
-
 
 ####################################
 ###  Configurations of Uprising  ###
@@ -1360,11 +1327,11 @@ country_event = {
 #!!#	}
 	picture = GFX_evt_organic_oppression
 	is_triggered_only = yes
-	
+
 	immediate = {
 		set_country_flag = CmtFlagConfigViewerShowing1028
 	}
-	
+
 	option = {
 		name = CmtTextGoNextPage.name
 		custom_tooltip = CmtTextGoNextPage.tooltip
@@ -1407,16 +1374,15 @@ country_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = CmtTextSeparator.name
 		custom_tooltip = CmtTextSeparator.tooltip
 		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
 		allow = { hidden_trigger = { always = no } }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.5111a.name
 		custom_tooltip = CrisisManagerMenu.5111a.tooltip
@@ -1463,9 +1429,8 @@ country_event = {
 		}
 		hidden_effect = { CmtEffect1028TryCall5111 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.5120.V0.name
 		custom_tooltip = CrisisManagerMenu.5120.V0.tooltip
@@ -1516,9 +1481,8 @@ country_event = {
 		}
 		hidden_effect = { CmtEffect1028TryCall5120 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.5131a.name
 		custom_tooltip = CrisisManagerMenu.5131a.tooltip
@@ -1558,9 +1522,8 @@ country_event = {
 		}
 		hidden_effect = { CmtEffect1028TryCall5131 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.5133a.name
 		custom_tooltip = CrisisManagerMenu.5133a.tooltip
@@ -1593,9 +1556,8 @@ country_event = {
 		}
 		hidden_effect = { CmtEffect1028TryCall5133 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.5134a.name
 		custom_tooltip = CrisisManagerMenu.5134a.tooltip
@@ -1642,17 +1604,15 @@ country_event = {
 		}
 		hidden_effect = { CmtEffect1028TryCall5134 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.5112x.name
 		custom_tooltip = CrisisManagerMenu.5112x.tooltip
 		hidden_effect = { CmtEffect1028TryCall5112 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.5141a.name
 		custom_tooltip = CrisisManagerMenu.5141a.tooltip
@@ -1699,9 +1659,8 @@ country_event = {
 		}
 		hidden_effect = { CmtEffect1028TryCall5141 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.5152a.name
 		custom_tooltip = CrisisManagerMenu.5152a.tooltip
@@ -1747,10 +1706,9 @@ country_event = {
 			}
 		}
 		hidden_effect = { CmtEffect1028TryCall5152 = yes }
-	}	
-	
-	
-	
+	}
+
+
 	option = {
 		name = CrisisManagerMenu.5151a.name
 		custom_tooltip = CrisisManagerMenu.5151a.tooltip
@@ -1797,9 +1755,8 @@ country_event = {
 		}
 		hidden_effect = { CmtEffect1028TryCall5151 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CrisisManagerMenu.5143a.name
 		custom_tooltip = CrisisManagerMenu.5143a.tooltip
@@ -1846,9 +1803,8 @@ country_event = {
 		}
 		hidden_effect = { CmtEffect1028TryCall5143 = yes }
 	}
-	
-	
-	
+
+
 	option = {
 		name = CmtTextSeparator.name
 		custom_tooltip = CmtTextSeparator.tooltip
@@ -1858,7 +1814,7 @@ country_event = {
 		}
 		allow = { hidden_trigger = { always = no } }
 	}
-	
+
 	option = {
 		name = CmtTextGoBackViewerMenu.name
 		custom_tooltip = CmtTextGoBackViewerMenu.tooltip
@@ -1869,5 +1825,4 @@ country_event = {
 		}
 	}
 }
-
 

@@ -55,7 +55,7 @@ country_event = {
 	}
 	picture = GFX_evt_khan_throne_room
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -81,7 +81,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4822 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -120,7 +120,6 @@ country_event = {
 	}
 }
 
-
 ### Khan Interval
 country_event = {
 	id = CrisisManagerMenu.4821
@@ -146,7 +145,7 @@ country_event = {
 	}
 	picture = GFX_evt_khan_throne_room
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -159,7 +158,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4822 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -202,7 +201,6 @@ country_event = {
 	}
 }
 
-
 ### Khan to Reign at Earliest
 country_event = {
 	id = CrisisManagerMenu.4822
@@ -228,7 +226,7 @@ country_event = {
 	}
 	picture = GFX_evt_khan_throne_room
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -251,7 +249,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4823 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -314,7 +312,6 @@ country_event = {
 	}
 }
 
-
 ### Last Chance of Khan Reigning
 country_event = {
 	id = CrisisManagerMenu.4823
@@ -340,7 +337,7 @@ country_event = {
 	}
 	picture = GFX_evt_khan_throne_room
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -353,7 +350,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4831 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -416,7 +413,6 @@ country_event = {
 	}
 }
 
-
 ### MTTH Khan Awake
 country_event = {
 	id = CrisisManagerMenu.4831
@@ -457,7 +453,7 @@ country_event = {
 	}
 	picture = GFX_evt_khan_throne_room
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -470,7 +466,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4832 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -507,7 +503,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
 
 ### Khan Awakening for Vengeance
 country_event = {
@@ -549,7 +544,7 @@ country_event = {
 	}
 	picture = GFX_evt_khan_throne_room
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -562,7 +557,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4841 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -599,7 +594,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
 
 ### Resurgence of Khan
 country_event = {
@@ -660,7 +654,7 @@ country_event = {
 	}
 	picture = GFX_evt_khan_throne_room
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -673,7 +667,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4842 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -710,7 +704,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
 
 ### Lifespan of Khan
 country_event = {
@@ -757,7 +750,7 @@ country_event = {
 	}
 	picture = GFX_evt_khan_throne_room
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -770,7 +763,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4850 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -813,7 +806,6 @@ country_event = {
 	}
 }
 
-
 ### Latent Strength of Horde in Adversity
 country_event = {
 	id = CrisisManagerMenu.4850
@@ -849,7 +841,7 @@ country_event = {
 	}
 	picture = GFX_evt_khan_throne_room
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -862,7 +854,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4860 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -894,7 +886,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
 
 ### After Death of Khan (See Also: CmtEffectTransferKhanPostDeath in ''z_Cmt003_Transcribe_Variable_scripted_effects.txt'')
 country_event = {
@@ -941,7 +932,7 @@ country_event = {
 	}
 	picture = GFX_evt_khan_throne_room
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			CmtEffectTransferKhanPostDeath = yes
@@ -955,7 +946,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4000 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -998,7 +989,6 @@ country_event = {
 	}
 }
 
-
 ################
 ###  L-gate  ###
 ################
@@ -1028,7 +1018,7 @@ country_event = {
 	}
 	picture = GFX_evt_l-gateway
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1041,7 +1031,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4912 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1094,7 +1084,6 @@ country_event = {
 	}
 }
 
-
 ### Technology for Opening L-Gates
 country_event = {
 	id = CrisisManagerMenu.4912
@@ -1109,7 +1098,7 @@ country_event = {
 	}
 	picture = GFX_evt_l-gateway
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1122,7 +1111,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4913 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1272,7 +1261,7 @@ country_event = {
 		picture = GFX_evt_gray_goo
 	}
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1289,7 +1278,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4930 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextGoNextConfig.name		## Go Next Configration
 		custom_tooltip = CmtTextGoNextConfig.tooltip
@@ -1316,7 +1305,7 @@ country_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = CrisisManagerMenu.4920a1.name
 		custom_tooltip = CrisisManagerMenu.4920a.tooltip
@@ -1389,7 +1378,7 @@ country_event = {
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -1405,7 +1394,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
 
 ### Algorithm to Activate L-Gate (Common)
 country_event = {
@@ -1447,11 +1435,11 @@ country_event = {
 	}
 	picture = GFX_evt_l-gateway
 	is_triggered_only = yes
-	
+
 	immediate = {
 		remove_country_flag = CmtFlagSpMenu
 	}
-	
+
 	after = {
 		hidden_effect = {
 			CmtEffectTransferLgateCycle = yes
@@ -1468,7 +1456,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4940 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1506,7 +1494,6 @@ country_event = {
 	}
 }
 
-
 ### Algorithm to Activate L-Gate (Silence)
 country_event = {
 	id = CrisisManagerMenu.4931
@@ -1542,7 +1529,7 @@ country_event = {
 	}
 	picture = GFX_evt_ruined_system
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1558,7 +1545,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4932 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1616,7 +1603,6 @@ country_event = {
 	}
 }
 
-
 ### Algorithm to Activate L-Gate (L-Drake)
 country_event = {
 	id = CrisisManagerMenu.4932
@@ -1652,7 +1638,7 @@ country_event = {
 	}
 	picture = GFX_evt_space_dragon
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1668,7 +1654,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4933 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1726,7 +1712,6 @@ country_event = {
 	}
 }
 
-
 ### Algorithm to Activate L-Gate (Dessanu)
 country_event = {
 	id = CrisisManagerMenu.4933
@@ -1762,7 +1747,7 @@ country_event = {
 	}
 	picture = GFX_evt_gray_goo_ships
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1778,7 +1763,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4934 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1836,7 +1821,6 @@ country_event = {
 	}
 }
 
-
 ### Algorithm to Activate L-Gate (Gray Tempest)
 country_event = {
 	id = CrisisManagerMenu.4934
@@ -1877,7 +1861,7 @@ country_event = {
 	}
 	picture = GFX_evt_gray_goo
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1894,7 +1878,7 @@ country_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1962,7 +1946,6 @@ country_event = {
 	}
 }
 
-
 ### Quiet Stroller
 country_event = {
 	id = CrisisManagerMenu.4940
@@ -1998,7 +1981,7 @@ country_event = {
 	}
 	picture = GFX_evt_ruined_system
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -2011,7 +1994,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4950 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2043,7 +2026,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
 
 ### Dessanu Gift
 country_event = {
@@ -2090,7 +2072,7 @@ country_event = {
 	}
 	picture = GFX_evt_l-gateway
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -2103,7 +2085,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4960 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2145,7 +2127,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
 
 ### Reinforcement Cycle of Gray Tempest's Fleets
 country_event = {
@@ -2192,7 +2173,7 @@ country_event = {
 	}
 	picture = GFX_evt_gray_goo
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -2205,7 +2186,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4970 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2242,7 +2223,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
 
 ### Terraforming for Nanite World
 country_event = {
@@ -2289,7 +2269,7 @@ country_event = {
 	}
 	picture = GFX_evt_gray_gooed_planet
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -2302,7 +2282,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4000 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2344,9 +2324,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
-
 
 ##################
 ###  Uprising  ###
@@ -2392,7 +2369,7 @@ country_event = {
 	}
 	picture = GFX_evt_organic_oppression
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -2408,7 +2385,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.5120 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2446,7 +2423,6 @@ country_event = {
 	}
 }
 
-
 ### Machines to Uprise at Earliest
 country_event = {
 	id = CrisisManagerMenu.5120
@@ -2472,7 +2448,7 @@ country_event = {
 	}
 	picture = GFX_evt_organic_oppression
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -2485,7 +2461,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.5131 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2548,7 +2524,6 @@ country_event = {
 	}
 }
 
-
 ### MTTH for Machine Uprising
 country_event = {
 	id = CrisisManagerMenu.5131
@@ -2584,7 +2559,7 @@ country_event = {
 	}
 	picture = GFX_evt_organic_oppression
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -2597,7 +2572,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.5133 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2650,7 +2625,6 @@ country_event = {
 	}
 }
 
-
 ### Suddenly Uprising
 country_event = {
 	id = CrisisManagerMenu.5133
@@ -2681,7 +2655,7 @@ country_event = {
 	}
 	picture = GFX_evt_organic_oppression
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -2697,7 +2671,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.5134 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2730,7 +2704,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
 
 ### Hotfix or Uprising, Controlled by Also 5133
 country_event = {
@@ -2772,7 +2745,7 @@ country_event = {
 	}
 	picture = GFX_evt_organic_oppression
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -2789,7 +2762,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.5112 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2875,8 +2848,6 @@ country_event = {
 	}
 }
 
-
-
 ### Uprisable Exploitee
 country_event = {
 	id = CrisisManagerMenu.5112
@@ -2884,7 +2855,7 @@ country_event = {
 	desc = CrisisManagerMenu.5112.desc
 	picture = GFX_evt_organic_oppression
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -2904,7 +2875,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.5141 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextGoNextConfig.name		## Go Next Configration
 		custom_tooltip = CmtTextGoNextConfig.tooltip
@@ -2931,7 +2902,7 @@ country_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = CrisisManagerMenu.5112a1.name
 		custom_tooltip = CrisisManagerMenu.5112a.tooltip
@@ -3016,7 +2987,7 @@ country_event = {
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -3032,7 +3003,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
 
 ### Type of Uprising Machines
 country_event = {
@@ -3074,7 +3044,7 @@ country_event = {
 	}
 	picture = GFX_evt_organic_oppression
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -3087,7 +3057,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.5152 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -3124,7 +3094,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
 
 ### Exhaustion from War of Uprising
 country_event = {
@@ -3166,7 +3135,7 @@ country_event = {
 	}
 	picture = GFX_evt_organic_oppression
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -3179,7 +3148,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.5151 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -3217,7 +3186,6 @@ country_event = {
 	}
 }
 
-
 ### Military Intervention of Aliens
 country_event = {
 	id = CrisisManagerMenu.5151
@@ -3253,7 +3221,7 @@ country_event = {
 	}
 	picture = GFX_evt_organic_oppression
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -3266,7 +3234,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.5143 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -3298,7 +3266,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
 
 ### Buffer for Uprising Machine
 country_event = {
@@ -3340,7 +3307,7 @@ country_event = {
 	}
 	picture = GFX_evt_organic_oppression
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -3353,7 +3320,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4000 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -3390,5 +3357,4 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
 

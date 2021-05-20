@@ -9,7 +9,6 @@
 ##########################################
 ##########################################
 
-
 ######################
 ###  Basic Effect  ###
 ######################
@@ -30,7 +29,6 @@ CmtEffectSaveOriginalCountry = {
 		save_global_event_target_as = OriginalCountry
 	}
 }
-
 
 ###########################
 ###  Manual Operations  ###
@@ -82,11 +80,10 @@ CmtEffectClearTargetSleepers = {
 	}
 }
 
-
 CmtEffectManualTargetLgates = {
 	random_system = {
 		limit = {
-			CmtTriggerIsGalaxyLgateSystem = yes
+			has_star_flag = lgate
 			NOT = { has_star_flag = CmtFlagListedLgateSystem }
 		}
 		save_global_event_target_as = CmtTargetManualLgateSystem1
@@ -94,7 +91,7 @@ CmtEffectManualTargetLgates = {
 	}
 	random_system = {
 		limit = {
-			CmtTriggerIsGalaxyLgateSystem = yes
+			has_star_flag = lgate
 			NOT = { has_star_flag = CmtFlagListedLgateSystem }
 		}
 		save_global_event_target_as = CmtTargetManualLgateSystem2
@@ -102,7 +99,7 @@ CmtEffectManualTargetLgates = {
 	}
 	random_system = {
 		limit = {
-			CmtTriggerIsGalaxyLgateSystem = yes
+			has_star_flag = lgate
 			NOT = { has_star_flag = CmtFlagListedLgateSystem }
 		}
 		save_global_event_target_as = CmtTargetManualLgateSystem3
@@ -110,7 +107,7 @@ CmtEffectManualTargetLgates = {
 	}
 	random_system = {
 		limit = {
-			CmtTriggerIsGalaxyLgateSystem = yes
+			has_star_flag = lgate
 			NOT = { has_star_flag = CmtFlagListedLgateSystem }
 		}
 		save_global_event_target_as = CmtTargetManualLgateSystem4
@@ -118,7 +115,7 @@ CmtEffectManualTargetLgates = {
 	}
 	random_system = {
 		limit = {
-			CmtTriggerIsGalaxyLgateSystem = yes
+			has_star_flag = lgate
 			NOT = { has_star_flag = CmtFlagListedLgateSystem }
 		}
 		save_global_event_target_as = CmtTargetManualLgateSystem5
@@ -126,7 +123,7 @@ CmtEffectManualTargetLgates = {
 	}
 	random_system = {
 		limit = {
-			CmtTriggerIsGalaxyLgateSystem = yes
+			has_star_flag = lgate
 			NOT = { has_star_flag = CmtFlagListedLgateSystem }
 		}
 		save_global_event_target_as = CmtTargetManualLgateSystem6
@@ -134,7 +131,7 @@ CmtEffectManualTargetLgates = {
 	}
 	random_system = {
 		limit = {
-			CmtTriggerIsGalaxyLgateSystem = yes
+			has_star_flag = lgate
 			NOT = { has_star_flag = CmtFlagListedLgateSystem }
 		}
 		save_global_event_target_as = CmtTargetManualLgateSystem7
@@ -142,7 +139,7 @@ CmtEffectManualTargetLgates = {
 	}
 	random_system = {
 		limit = {
-			CmtTriggerIsGalaxyLgateSystem = yes
+			has_star_flag = lgate
 			NOT = { has_star_flag = CmtFlagListedLgateSystem }
 		}
 		save_global_event_target_as = CmtTargetManualLgateSystem8
@@ -410,13 +407,11 @@ CmtEffectClearTargetPlayerCrisis = {
 #	}
 #}
 
-
 ##############################
 ###  Configuration Viewer  ###
 ##############################
 
 ### Scope: this = country using Crisis Manager menu for configurations
-
 
 ### Trigger Event
 CmtEffect1010TryCall3110 = {
@@ -504,7 +499,6 @@ CmtEffect1010TryCall3260 = {
 	} else = { country_event = { id = CrisisManagerMenu.1010 } }
 }
 
-
 ### Prethoryn
 CmtEffect1021TryCall4110 = {
 	if = {
@@ -560,7 +554,6 @@ CmtEffect1021TryCall4190 = {
 		country_event = { id = CrisisManagerMenu.4190 }
 	} else = { country_event = { id = CrisisManagerMenu.1021 } }
 }
-
 
 ### Extradimensionals
 CmtEffect1022TryCall4210 = {
@@ -618,7 +611,6 @@ CmtEffect1022TryCall4290 = {
 	} else = { country_event = { id = CrisisManagerMenu.1022 } }
 }
 
-
 ### Contingency
 CmtEffect1023TryCall4310 = {
 	if = {
@@ -668,7 +660,6 @@ CmtEffect1023TryCall4390 = {
 		country_event = { id = CrisisManagerMenu.4390 }
 	} else = { country_event = { id = CrisisManagerMenu.1023 } }
 }
-
 
 ### Awakening of Sleepers
 CmtEffect1024TryCall4510 = {
@@ -726,7 +717,6 @@ CmtEffect1024TryCall4590 = {
 	} else = { country_event = { id = CrisisManagerMenu.1024 } }
 }
 
-
 ### War in Heaven
 CmtEffect1024TryCall4610 = {
 	if = {
@@ -782,7 +772,6 @@ CmtEffect1024TryCall4690 = {
 		country_event = { id = CrisisManagerMenu.4690 }
 	} else = { country_event = { id = CrisisManagerMenu.1024 } }
 }
-
 
 ### Guardians of Galaxy
 CmtEffect1024TryCall4710 = {
@@ -840,7 +829,6 @@ CmtEffect1024TryCall4790 = {
 	} else = { country_event = { id = CrisisManagerMenu.1024 } }
 }
 
-
 ### Forced End of Cycle
 CmtEffect1022TryCall4410 = {
 	if = {
@@ -896,7 +884,6 @@ CmtEffect1022TryCall4490 = {
 		country_event = { id = CrisisManagerMenu.4490 }
 	} else = { country_event = { id = CrisisManagerMenu.1022 } }
 }
-
 
 ### Khan
 CmtEffect1026TryCall4810 = {
@@ -959,7 +946,6 @@ CmtEffect1026TryCall4860 = {
 		country_event = { id = CrisisManagerMenu.4860 }
 	} else = { country_event = { id = CrisisManagerMenu.1026 } }
 }
-
 
 ### L-Gate
 CmtEffect1027TryCall4911 = {
@@ -1041,7 +1027,6 @@ CmtEffect1027TryCall4970 = {
 	} else = { country_event = { id = CrisisManagerMenu.1027 } }
 }
 
-
 ### Uprising
 CmtEffect1028TryCall5111 = {
 	if = {
@@ -1103,6 +1088,4 @@ CmtEffect1028TryCall5143 = {
 		country_event = { id = CrisisManagerMenu.5143 }
 	} else = { country_event = { id = CrisisManagerMenu.1028 } }
 }
-
-
 

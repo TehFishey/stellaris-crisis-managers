@@ -19,7 +19,7 @@ event = {
 	id = CrisisManagerControl.6101
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		event_target:CmtGlobalVar = {
 			### Check Earliest Year
@@ -75,7 +75,7 @@ event = {
 					mid_game_years_passed >= @CmtConstTUnq_ConstKhanEarliestMgpy
 				}
 			}
-			
+
 			### Check Latest Year
 			OR = {
 				AND = {
@@ -129,11 +129,11 @@ event = {
 				}
 				NOT = { check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_TA } }
 			}
-			
+
 			CmtTriggerKhanAwakingMultipleCheck = yes
 		}
 	}
-	
+
 	immediate = {
 		event_target:CmtGlobalVar = {
 			if = {
@@ -142,11 +142,11 @@ event = {
 				country_event = { id = CrisisManagerControl.6111 days = 17990 }	## 50 yr - 10 d
 			}
 		}
-		
+
 		remove_global_flag = CmtFlagKillDoubleBookingKhan
 		every_country = {
 			limit = { CmtTriggerHasPotentialKhanAwaking = yes }
-			
+
 			random_list = {
 				10 = {		## MTTH = 100 yr
 					modifier = {		## >= Earliest Year + 50 yr
@@ -199,10 +199,6 @@ event = {
 	}
 }
 
-
-
-
-
 ##############################################
 ###  Control Flag for Probability of Khan  ###
 ##############################################
@@ -211,7 +207,7 @@ country_event = {
 	id = CrisisManagerControl.6111
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		set_global_flag = CmtFlagKhanProbabilityIncrease
 	}

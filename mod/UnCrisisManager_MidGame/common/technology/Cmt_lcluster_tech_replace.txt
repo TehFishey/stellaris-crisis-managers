@@ -28,18 +28,21 @@ tech_lgate_activation = {
 
 tech_repeatable_lcluster_clue = {
 	area = engineering
-	cost = 2000
+	cost = @tier1cost3
 	cost_per_level = @repeatableTechLevelCost
 	tier = 2
 	is_rare = yes
+	is_dangerous = yes
 	category = { voidcraft }
 	levels = -1
 	weight = 70
 
 	potential = {
 		has_country_flag = encountered_first_lgate
-		NOT = { has_country_flag = completed_lcluster_chain }
-		NOT = { has_global_flag = l_cluster_opened }
+		NOR = {
+			has_country_flag = completed_lcluster_chain
+			has_global_flag = l_cluster_opened
+		}
 	}
 
 	prereqfor_desc = {

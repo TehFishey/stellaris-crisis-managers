@@ -41,7 +41,7 @@ country_event = {
 	}
 	picture = GFX_evt_physics_research
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -57,7 +57,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4120 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -94,8 +94,6 @@ country_event = {
 	}
 }
 
-
-
 ### Wounded Queen
 country_event = {
 	id = CrisisManagerMenu.4120
@@ -131,7 +129,7 @@ country_event = {
 	}
 	picture = GFX_evt_physics_research
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -144,7 +142,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4130 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -176,8 +174,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### Sentinels
 country_event = {
@@ -219,7 +215,7 @@ country_event = {
 	}
 	picture = GFX_evt_federation_fleet
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -239,7 +235,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4140 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -277,8 +273,6 @@ country_event = {
 	}
 }
 
-
-
 ### Anatomy Files: Controled by Also CrisisManagerMenu.4130 (Previous Event)
 country_event = {
 	id = CrisisManagerMenu.4140
@@ -293,7 +287,7 @@ country_event = {
 	}
 	picture = GFX_evt_federation_fleet
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -306,7 +300,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4150 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -328,8 +322,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### Feral Prethoryn
 country_event = {
@@ -366,7 +358,7 @@ country_event = {
 	}
 	picture = GFX_evt_physics_research
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -382,7 +374,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4160 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -415,8 +407,6 @@ country_event = {
 	}
 }
 
-
-
 ### Unlimited Flaver Text of Prethoryn
 country_event = {
 	id = CrisisManagerMenu.4160
@@ -431,7 +421,7 @@ country_event = {
 	}
 	picture = GFX_evt_physics_research
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -444,7 +434,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4000 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -467,8 +457,6 @@ country_event = {
 	}
 }
 
-
-
 ### Dummy
 country_event = {
 	id = CrisisManagerMenu.4170
@@ -488,8 +476,6 @@ country_event = {
 	is_triggered_only = yes
 	trigger = { always = no }
 }
-
-
 
 ###########################
 ###  Extradimensionals  ###
@@ -521,7 +507,7 @@ country_event = {
 	}
 	picture = GFX_evt_wormhole
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -537,7 +523,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4220 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -573,8 +559,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### Condition of opeing 2nd/3rd portal
 country_event = {
@@ -621,7 +605,7 @@ country_event = {
 	}
 	picture = GFX_evt_wormhole
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -644,7 +628,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4230 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -690,8 +674,6 @@ country_event = {
 	}
 }
 
-
-
 ### Location of opeing 2nd/3rd portal: Controled by Also CrisisManagerMenu.4220 (Previous Event)
 country_event = {
 	id = CrisisManagerMenu.4230
@@ -706,7 +688,7 @@ country_event = {
 	}
 	picture = GFX_evt_wormhole
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -723,7 +705,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4240 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -752,8 +734,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### Less Reinforcement on Starbases Built
 country_event = {
@@ -787,7 +767,7 @@ country_event = {
 	}
 	picture = GFX_evt_wormhole
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -810,7 +790,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4250 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -853,8 +833,6 @@ country_event = {
 	}
 }
 
-
-
 ### Unstable Portals
 country_event = {
 	id = CrisisManagerMenu.4250
@@ -880,7 +858,7 @@ country_event = {
 	}
 	picture = GFX_evt_wormhole
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -893,7 +871,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4000 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -946,8 +924,6 @@ country_event = {
 	}
 }
 
-
-
 ### Dummy
 country_event = {
 	id = CrisisManagerMenu.4260
@@ -974,8 +950,6 @@ country_event = {
 	trigger = { always = no }
 }
 
-
-
 #####################
 ###  Contingency  ###
 #####################
@@ -994,7 +968,7 @@ country_event = {
 	}
 	picture = GFX_evt_glitchy_matrix
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1010,7 +984,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4330 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1033,11 +1007,7 @@ country_event = {
 	}
 }
 
-
-
 ### Not Implemented Yet: Number of Machine World
-
-
 
 ### Strength of Ghost Signal
 country_event = {
@@ -1079,7 +1049,7 @@ country_event = {
 	}
 	picture = GFX_evt_glitchy_matrix
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1092,7 +1062,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4340 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1129,8 +1099,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### Synth Infiltration Event Speed
 country_event = {
@@ -1172,7 +1140,7 @@ country_event = {
 	}
 	picture = GFX_evt_glitchy_matrix
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1188,7 +1156,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4350 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1225,8 +1193,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### Frequency of Terrors
 country_event = {
@@ -1268,7 +1234,7 @@ country_event = {
 	}
 	picture = GFX_evt_glitchy_matrix
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1281,7 +1247,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4360 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1319,8 +1285,6 @@ country_event = {
 	}
 }
 
-
-
 ### Terrors to Psi, Hive
 country_event = {
 	id = CrisisManagerMenu.4360
@@ -1335,7 +1299,7 @@ country_event = {
 	}
 	picture = GFX_evt_glitchy_matrix
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1348,7 +1312,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4370 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1370,8 +1334,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### Cybrex Resurfacing
 country_event = {
@@ -1413,7 +1375,7 @@ country_event = {
 	}
 	picture = GFX_evt_ringworld
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1429,7 +1391,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4000 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1467,8 +1429,6 @@ country_event = {
 	}
 }
 
-
-
 ### Dummy
 country_event = {
 	id = CrisisManagerMenu.4380
@@ -1482,8 +1442,6 @@ country_event = {
 	is_triggered_only = yes
 	trigger = { always = no }
 }
-
-
 
 #############################
 ###  Forced End of Cycle  ###
@@ -1503,7 +1461,7 @@ country_event = {
 	}
 	picture = GFX_evt_unspeakable_horror
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1519,7 +1477,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4420 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1541,8 +1499,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### Target Control of FEoC 1
 country_event = {
@@ -1574,7 +1530,7 @@ country_event = {
 	}
 	picture = GFX_evt_unspeakable_horror
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1587,7 +1543,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4430 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1614,8 +1570,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### Target Control of FEoC 2
 country_event = {
@@ -1647,7 +1601,7 @@ country_event = {
 	}
 	picture = GFX_evt_unspeakable_horror
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1660,7 +1614,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4440 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1687,8 +1641,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### Target Control of FEoC 3
 country_event = {
@@ -1725,7 +1677,7 @@ country_event = {
 	}
 	picture = GFX_evt_unspeakable_horror
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1738,7 +1690,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4450 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1771,8 +1723,6 @@ country_event = {
 	}
 }
 
-
-
 ### Term of Covenant
 country_event = {
 	id = CrisisManagerMenu.4450
@@ -1787,7 +1737,7 @@ country_event = {
 	}
 	picture = GFX_evt_unspeakable_horror
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1800,7 +1750,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4000 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1822,8 +1772,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### Dummy
 country_event = {
@@ -1850,8 +1798,6 @@ country_event = {
 	is_triggered_only = yes
 	trigger = { always = no }
 }
-
-
 
 #############################
 ###  Guardians of Galaxy  ###
@@ -1892,7 +1838,7 @@ country_event = {
 	}
 	picture = GFX_evt_fallen_empire_awakes
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1908,7 +1854,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4720 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1940,8 +1886,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### Delay of Guardians Awakening
 country_event = {
@@ -1978,7 +1922,7 @@ country_event = {
 	}
 	picture = GFX_evt_fallen_empire_awakes
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1991,7 +1935,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4730 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2023,8 +1967,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### Dual Guardians
 country_event = {
@@ -2069,7 +2011,7 @@ country_event = {
 	}
 	picture = GFX_evt_fallen_empire_awakes
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -2082,7 +2024,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4740 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2125,8 +2067,6 @@ country_event = {
 	}
 }
 
-
-
 ### Worn-Out Guardians
 country_event = {
 	id = CrisisManagerMenu.4740
@@ -2157,7 +2097,7 @@ country_event = {
 	}
 	picture = GFX_evt_fallen_empire_awakes
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -2170,7 +2110,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4750 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2197,8 +2137,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### Awakening of Fallen Machine Empire
 country_event = {
@@ -2235,7 +2173,7 @@ country_event = {
 	}
 	picture = GFX_evt_fallen_empire_awakes
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -2251,7 +2189,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4000 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2284,8 +2222,6 @@ country_event = {
 	}
 }
 
-
-
 ### Dummy
 country_event = {
 	id = CrisisManagerMenu.4760
@@ -2311,5 +2247,4 @@ country_event = {
 	is_triggered_only = yes
 	trigger = { always = no }
 }
-
 

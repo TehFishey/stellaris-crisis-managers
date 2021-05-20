@@ -135,7 +135,7 @@ country_event = {
 			if = {
 				limit = {		## 2 or More L-Gates Exist in Galaxy
 					any_system = {
-						CmtTriggerIsGalaxyLgateSystem = yes
+						has_star_flag = lgate
 						NOT = { is_same_value = prev }
 						any_system_megastructure = { CmtTriggerIsOpenedLgate = yes }
 					}
@@ -216,7 +216,7 @@ country_event = {
 
 		### Set Target for L-Drake
 		every_system = {
-			limit = { CmtTriggerIsGalaxyLgateSystem = yes }
+			limit = { has_star_flag = lgate }
 			closest_system = {
 				min_steps = 3
 				limit = {
@@ -234,13 +234,13 @@ country_event = {
 		while = {
 			limit = {
 				any_system = {
-					CmtTriggerIsGalaxyLgateSystem = yes
+					has_star_flag = lgate
 					NOT = { has_star_flag = young_dragon_spawned }
 				}
 			}
 			random_system = {
 				limit = {
-					CmtTriggerIsGalaxyLgateSystem = yes
+					has_star_flag = lgate
 					NOT = { has_star_flag = young_dragon_spawned }
 					any_system_megastructure = { CmtTriggerIsOpenedLgate = yes }
 				}
@@ -312,7 +312,7 @@ country_event = {
 
 		### Notification 2
 		every_playable_country = {
-			limit = { NOT = { any_system_within_border = { CmtTriggerIsGalaxyLgateSystem = yes } } }
+			limit = { NOT = { any_system_within_border = { has_star_flag = lgate } } }
 			country_event = { id = distar.13011 }
 		}
 	}

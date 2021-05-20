@@ -55,7 +55,6 @@ start_lcluster_chain = {
 	}
 }
 
-
 generate_lcluster_clue = {
 	hidden_effect = {
 		if = {
@@ -89,8 +88,6 @@ CmtEffectOpenLgate = {		## Scope: this = megastructure (L-Gate)
 	activate_gateway = this
 	set_megastructure_flag = lgate_activated
 }
-
-
 
 #################
 ###  Dessanu  ###
@@ -137,8 +134,6 @@ CmtEffectRemoveDessanuGift = {
 	}
 }
 
-
-
 #################
 ###  Graygoo  ###
 #################
@@ -146,7 +141,7 @@ CmtEffectRemoveDessanuGift = {
 ### End of Graygoo
 CmtEffectDestroyGraygoo = {
 	remove_global_flag = active_gray_goo
-	remove_global_flag = gray_goo_crisis_active # Fix vanilla Federation resolution
+	remove_global_flag = gray_goo_crisis_active
 
 	from = {
 		save_event_target_as = goo_slayer
@@ -185,14 +180,21 @@ CmtEffectDestroyGraygoo = {
 	}
 
 	event_target:graygoo_country = {
-		every_owned_fleet = { destroy_fleet = this }
+		every_owned_fleet = {
+			every_owned_ship = {
+				limit = { is_disabled = yes }
+				set_disable_at_health = -1
+				set_disabled = no
+				destroy_ship = this
+			}
+			destroy_fleet = this
+		}
 		destroy_country = yes
 	}
 	clear_global_event_target = graygoo_country
 	clear_global_event_target = nanite_factory
 	clear_global_event_target = lcluster_factory_system
 }
-
 
 #################################
 ###  Abosorbe Vanilla Script  ###

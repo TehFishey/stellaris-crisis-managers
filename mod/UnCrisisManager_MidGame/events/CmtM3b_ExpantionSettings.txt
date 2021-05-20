@@ -10,8 +10,6 @@ namespace = CrisisManagerMenu
 #########################################################
 #########################################################
 
-
-
 ### Crises - Total War
 country_event = {
 	id = CrisisManagerMenu.3210
@@ -56,7 +54,7 @@ country_event = {
 	}
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -69,7 +67,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.3220 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -99,8 +97,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### Auto-Build Starbase
 country_event = {
@@ -146,7 +142,7 @@ country_event = {
 	}
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -159,7 +155,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.3231 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -189,8 +185,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### Occupy Planets
 country_event = {
@@ -242,7 +236,7 @@ country_event = {
 	}
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -258,7 +252,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.3232 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -305,8 +299,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### Purge Planet
 country_event = {
@@ -358,7 +350,7 @@ country_event = {
 	}
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -371,7 +363,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.3240 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -419,8 +411,6 @@ country_event = {
 	}
 }
 
-
-
 ### Faster Combat Fleets
 country_event = {
 	id = CrisisManagerMenu.3240
@@ -461,7 +451,7 @@ country_event = {
 	}
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			CmtEffectFasterCombatShipChanged = yes
@@ -475,7 +465,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.3250 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -512,8 +502,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### Faster Constructor
 country_event = {
@@ -555,7 +543,7 @@ country_event = {
 	}
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			CmtEffectFasterConstructorChanged = yes
@@ -569,7 +557,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.3260 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -607,8 +595,6 @@ country_event = {
 	}
 }
 
-
-
 ### Friendly Crisis
 country_event = {
 	id = CrisisManagerMenu.3260
@@ -644,7 +630,7 @@ country_event = {
 	}
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			CmtEffectFriendlyCrisis = yes
@@ -658,7 +644,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.0100 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -690,6 +676,4 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 

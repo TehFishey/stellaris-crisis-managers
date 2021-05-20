@@ -3392,7 +3392,7 @@ country_event = {
 			remove_star_flag = CmtFlagListedLgateSystem
 		}
 		every_system = {
-			limit = { CmtTriggerIsGalaxyLgateSystem = yes }
+			limit = { has_star_flag = lgate }
 			event_target:CmtGlobalVar = { change_variable = { which = CmtVarManualLgate value = 1 } }
 		}
 	}
@@ -3585,7 +3585,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.75xxc.tooltip
 		hidden_effect = {
 			every_system = {
-				limit = { CmtTriggerIsGalaxyLgateSystem = yes }
+				limit = { has_star_flag = lgate }
 				CmtEffectDeleteLgateInSystem = yes
 			}
 		}
@@ -3611,7 +3611,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.75xxc.tooltip
 		hidden_effect = {
 			random_system = {
-				limit = { CmtTriggerIsGalaxyLgateSystem = yes }
+				limit = { has_star_flag = lgate }
 				CmtEffectDeleteLgateInSystem = yes
 			}
 		}

@@ -9,7 +9,6 @@
 ###############################################################
 ###############################################################
 
-
 ######################
 ###  Basic Effect  ###
 ######################
@@ -18,7 +17,6 @@
 CmtEffectDetectMidGameEdition = {
 	set_global_flag = CmtFlagMidGameEdition
 }
-
 
 ################################
 ###  Trigger Event Manually  ###
@@ -53,8 +51,4 @@ CmtEffectDeleteLgateInSystem = {
 		remove_megastructure = this
 	}
 }
-
-
-
-
 

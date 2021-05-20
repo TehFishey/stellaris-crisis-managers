@@ -614,7 +614,7 @@
  CrisisManagerMenu.3220.desc1:1 "$CrisisManagerMenu.3220.descB$\n\n$CmtTextCurrent$§W$CrisisManagerMenu.3220a.title$§!"
  CrisisManagerMenu.3220.desc2:1 "$CrisisManagerMenu.3220.descB$\n\n$CmtTextCurrent$§W$CrisisManagerMenu.3220b.title$§!"
  CrisisManagerMenu.3220.desc3:1 "$CrisisManagerMenu.3220.descB$\n\n$CmtTextCurrent$§W$CrisisManagerMenu.3220c.title$§!"
- CrisisManagerMenu.3220.desc4:1 "$CrisisManagerMenu.3220.descB$\n\n$CmtTextCurrent$§W$CrisisManagerMenu.3220d.title$§!"
+#  CrisisManagerMenu.3220.desc4:1 "$CrisisManagerMenu.3220.descB$\n\n$CmtTextCurrent$§W$CrisisManagerMenu.3220d.title$§!"
  CrisisManagerMenu.3220a.name:1 "$CrisisManagerMenu.3220x.title$$CrisisManagerMenu.3220a.title$ $CmtTextVanilla$"
  CrisisManagerMenu.3220b.name:1 "$CrisisManagerMenu.3220x.title$$CrisisManagerMenu.3220b.title$ $CmtTooltipInfo2$"
  CrisisManagerMenu.3220c.name:1 "$CrisisManagerMenu.3220x.title$$CrisisManagerMenu.3220c.title$ $CmtTooltipInfo2$ $CmtTextDefault$"
@@ -2351,7 +2351,7 @@
  
  ### Future of Horde
  CrisisManagerMenu.4860.title:0 "Future of Horde"
- CrisisManagerMenu.4860.desc:0 "A configuration for the future of Horde after death of Great Khan.\n\n$CmtWarn1$\nEach future has a necessary condition. This configuration will be ignored if Horde the conditions are not satisfied when Great Khan dies.\nThe required conditions are to own at least followings.\n    - Democracy: 2 satraps, and 1 habitable planet\n    - New Khanate: 1 habitable planet\n    - Splinter Diadochi: 6 habitable planets\n      * They revert to old ways if they have no planets."
+ CrisisManagerMenu.4860.desc:0 "A configuration for the future of Horde after death of Great Khan.\n\n$CmtWarn1$\nEach future has a necessary condition. This configuration will be ignored if Horde the conditions are not satisfied when Great Khan dies.\nThe required conditions are to own at least followings.\n- Democracy: 2 satraps, and 1 habitable planet\n- New Khanate: 1 habitable planet\n- Splinter Diadochi: 6 habitable planets\n * They revert to old ways if they have no planets."
  CrisisManagerMenu.4860a.title:0 "Future of Horde §BVariable§!"
  CrisisManagerMenu.4860b.title:0 "Horde to §YDemocracy§! after Death of Khan"
  CrisisManagerMenu.4860c.title:0 "Horde to §YKeep Single Country§! after Death of Khan"
@@ -3264,7 +3264,7 @@
  CrisisManagerMenu.65xx.title:0 "Number of Construction Ships"
  CrisisManagerMenu.6100.desc:0 "A Configuration to modify fleet power.\nRecommended to set 0.75 - 2.00.$CmtDescYourOwnRisk$\n"
  CrisisManagerMenu.6200.desc:0 "A Configuration to modify army power.\n$CmtDescYourOwnRisk$\n"
- CrisisManagerMenu.6300.desc:0 "A Configuration to modify the number of combat fleets excluding armies.\n$CmtDescYourOwnRisk$\nThis configurations is §Hnot§! modify following parameters: \n    - The garrison for the capital of each crisis factions\n    - The number of ships for each fleets\n"
+ CrisisManagerMenu.6300.desc:0 "A Configuration to modify the number of combat fleets excluding armies.\n$CmtDescYourOwnRisk$\nThis configurations is §Hnot§! modify following parameters: \n- The garrison for the capital of each crisis factions\n- The number of ships for each fleets\n"
  CrisisManagerMenu.6400.desc:0 "A Configuration to modify the number of army fleets.\n$CmtDescYourOwnRisk$\nThis configurations is §Hnot§! modify the number of ships for each fleets\n"
  CrisisManagerMenu.6500.desc:0 "A Configuration to modify the number of construction ships (and Colony Ships).\n$CmtDescYourOwnRisk$\n"
  

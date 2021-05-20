@@ -28,26 +28,29 @@ event = {
 				country_event = { id = CrisisManagerMenu.0100 }		## Main Menu
 			}
 		}
+		# log="Game started 1"
 	}
 }
 
 ### Activation for Saved Game
-country_event = {
+event = {
 	id = CrisisManagerMenu.0002
 	hide_window = yes
+	is_triggered_only = yes
 	# dayly MTTH for fire_only_once event is a big waste of performance, but there is still no other way
 	# fire_only_once = yes
 	trigger = {
 		NOT = { has_global_flag = CmtFlagActivated }
-		is_country_type = global_event
+		# is_country_type = global_event
 	}
 	immediate = {
 		CmtEffectSetDetectedEdition = yes
 		if = {
-			limit = {
-				NOT = { has_global_flag = CmtFlagNoCall }
+			limit = { NOT = { has_global_flag = CmtFlagNoCall } }
+			random_country = {
+				limit = { is_country_type = global_event }
+				country_event = { id = CrisisManagerMenu.0021 }		## Initializing Variables
 			}
-			country_event = { id = CrisisManagerMenu.0021 }			## Initializing Variables
 		}
 		else_if = {
 			limit = { CmtTriggerAnyManagedEventTriggered = yes }
@@ -57,12 +60,16 @@ country_event = {
 			}
 		}
 		else = {
-			country_event = { id = CrisisManagerMenu.0021 }			## Initializing Variables
+			random_country = {
+				limit = { is_country_type = global_event }
+				country_event = { id = CrisisManagerMenu.0021 }		## Initializing Variables
+			}
 			random_playable_country = {
 				limit = { is_ai = no }
 				country_event = { id = CrisisManagerMenu.0011 }		## Activating Notification
 			}
 		}
+		# log="Save loaded 2" # [This.GetName]
 	}
 }
 
@@ -181,21 +188,21 @@ country_event = {
 			save_global_event_target_as = CmtGlobalVar
 			CmtEffectHardCoatedSettings = yes
 			country_event = { id = CrisisManagerControl.9011 }		## For only debugging
-			country_event = { id = CrisisManagerMenu.2000 }			## Apply Vanilla Template
-			country_event = { id = CrisisManagerMenu.2001 }			## Auto apply of Template
+			country_event = { id = CrisisManagerMenu.2000 }		## Apply Vanilla Template
+			country_event = { id = CrisisManagerMenu.2001 }		## Auto apply of Template
 			if = {
 				limit = {
 					always = @CmtT201_ConstSleeperFleet_ApplyOnStart
 					has_global_flag = CmtFlagSleeperEdition
 				}
-				CmtEffectApplyTemplate201 = yes				## Apply Template for Initialization for Fleets of Sleepers
+				CmtEffectApplyTemplate201 = yes					## Apply Template for Initialization for Fleets of Sleepers
 			}
 			# Dynamic L-Gate clue req counter
 			event_target:CmtGlobalVar = {
 				switch = {
 					trigger = galaxy_size
 					tiny = {
-						change_variable = { which = CmtVarLgateReqClues value = -1 }
+						change_variable = { which = CmtVarLgateReqClues value = -2 }
 					}
 					small = {
 						change_variable = { which = CmtVarLgateReqClues value = -1 }
@@ -204,7 +211,7 @@ country_event = {
 						change_variable = { which = CmtVarLgateReqClues value = 1 }
 					}
 					huge = {
-						change_variable = { which = CmtVarLgateReqClues value = 1 }
+						change_variable = { which = CmtVarLgateReqClues value = 2 }
 					}
 				}
 				# if = { limit = { galaxy_size = tiny }

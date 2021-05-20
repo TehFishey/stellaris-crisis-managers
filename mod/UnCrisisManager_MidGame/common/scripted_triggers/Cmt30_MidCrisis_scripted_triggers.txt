@@ -31,7 +31,6 @@ CmtTriggerKhanAwakingMultipleCheck = {
 	}
 }
 
-
 ### Country Conditions
 
 CmtTriggerHasPotentialKhanAwaking = {		## Scope = country
@@ -60,7 +59,6 @@ CmtTriggerMarauderCapitalSystem = {
 	}
 }
 
-
 ### Mercenaries
 
 CmtTriggerHiredMarauderFleet1 = {
@@ -87,7 +85,6 @@ CmtTriggerHiredMarauderFleet3 = {
 	}
 }
 
-
 CmtTriggerCountryHiringMarauder1 = {
 	OR = {
 		any_owned_fleet = { CmtTriggerHiredMarauderFleet1 = yes }
@@ -109,7 +106,6 @@ CmtTriggerCountryHiringMarauder3 = {
 	}
 }
 
-
 #######################
 ###  L-Gate Common  ###
 #######################
@@ -128,7 +124,6 @@ CmtTriggerIsGalaxyLgateSystem = {
 	has_star_flag = lgate
 	NOT = { has_star_flag = lcluster_lgate }
 }
-
 
 #################
 ###  Dessanu  ###

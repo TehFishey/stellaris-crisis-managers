@@ -29,8 +29,6 @@ country_event = {
 				remove_global_flag = CmtFlagNoCall
 			} else = { set_global_flag = CmtFlagNoCall }
 
-
-
 			### End Game Edition
 			if = {
 				limit = { always = @CmtT001_ConstActivatedEventEndgame }
@@ -55,7 +53,6 @@ country_event = {
 				set_variable = { which = CmtVarFasterConstructor_Common value = @CmtT001_ConstFasterConstructor }
 				set_variable = { which = CmtVarFriendlyCrisis value = @CmtT001_ConstFriendlyCrisis }
 
-
 				### Prethoryn
 				if = {
 					limit = { always = @CmtT001_ConstForbiddenPrethoryn }
@@ -76,7 +73,6 @@ country_event = {
 					limit = { always = @CmtT001_ConstPrethorynUnlimitedFlavor }
 					set_global_flag = CmtFlagPrethorynUnlimitedFlavor
 				} else = { remove_global_flag = CmtFlagPrethorynUnlimitedFlavor }
-
 
 				### Extradimensionals
 				if = {
@@ -100,7 +96,6 @@ country_event = {
 				set_variable = { which = CmtVarReinforceCycle_OnExdAnchorBuilt value = @CmtT001_ConstReinforceCycle_OnExdAnchorBuilt }
 				set_variable = { which = CmtVarExdsPortalStability value = @CmtT001_ConstExdsPortalStability }
 
-
 				### Contingency
 				if = {
 					limit = { always = @CmtT001_ConstForbiddenContingency }
@@ -114,7 +109,6 @@ country_event = {
 					set_global_flag = CmtFlagSynthTerrorAll
 				} else = { remove_global_flag = CmtFlagSynthTerrorAll }
 				set_variable = { which = CmtVarCybrexResurfacing value = @CmtT001_ConstCybrexResurfacing }
-
 
 				### Forced End of Cycle
 				if = {
@@ -130,12 +124,9 @@ country_event = {
 				} else = { remove_global_flag = CmtFlagForcedEocCrisisTerm }
 			}
 
-
-
 			### Fallen Empire Edition
 			if = {
 				limit = { always = @CmtT001_ConstActivatedEventSleeper }
-
 
 				### Standard Awakening of Sleepers
 				set_variable = { which = CmtVarSleeperMultiple value = @CmtT001_ConstSleeperMultiple }
@@ -167,7 +158,6 @@ country_event = {
 				multiply_variable = { which = CmtVarSleeperFleetPowerYoung value = 1000 }
 				multiply_variable = { which = CmtVarSleeperFleetPowerOwn value = 1000 }
 
-
 				### War in Heaven
 				set_variable = { which = CmtVarHeavenProbability value = @CmtT001_ConstHeavenProbability }
 				set_variable = { which = CmtVarHeavenAncientRival value = @CmtT001_ConstHeavenAncientRival }
@@ -197,7 +187,6 @@ country_event = {
 				set_variable = { which = CmtVarHeavenNpcLeague value = @CmtT001_ConstHeavenNpcLeague }
 				set_variable = { which = CmtVarHeavenExhaustion value = @CmtT001_ConstHeavenExhaustion }
 
-
 				### Guardians of Galaxy
 				set_variable = { which = CmtVarGuardiansProbability value = @CmtT001_ConstGuardiansProbability }
 				set_variable = { which = CmtVarTimingAwakingGuardians value = @CmtT001_ConstTimingAwakingGuardians }
@@ -206,8 +195,6 @@ country_event = {
 				set_variable = { which = CmtVarMechFeAwaking value = @CmtT001_ConstMechFeAwaking }
 
 			}
-
-
 
 			### Mid Game Edition
 			if = {
@@ -224,7 +211,6 @@ country_event = {
 				set_variable = { which = CmtVarKhanLifespan value = @CmtT001_ConstKhanLifespan }
 				set_variable = { which = CmtVarReinforceCycle_Khan value = @CmtT001_ConstReinforceCycle_Khan }
 				set_variable = { which = CmtVarKhanPostDeathSummary value = @CmtT001_ConstKhanPostDeathSummary }
-
 
 				### L-Gate
 				set_variable = { which = CmtVarLgateReqClues value = @CmtT001_ConstLgateReqClues }
@@ -264,8 +250,6 @@ country_event = {
 				set_variable = { which = CmtVarLgateTerraformNanite value = @CmtT001_ConstLgateTerraformNanite }
 				set_variable = { which = CmtVarCrisisPower_Endgame value = @CmtT001_ConstCrisisStrengthEnd }
 			}
-
-
 
 			### Crisis Power (End Game)
 			if = {
@@ -327,8 +311,6 @@ country_event = {
 				}
 			}
 
-
-
 			### Crisis Power (Mid Game)
 			if = {
 				limit = { always = @CmtT001_ConstActivatedPowerMidgame }
@@ -373,8 +355,6 @@ country_event = {
 					} else = { CmtEffectApplyCommonPowerMidgame_ConstructorNumber = yes }
 				}
 			}
-
-
 
 			### Temporary Configurations
 			CmtEffectTransferAll = yes

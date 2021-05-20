@@ -9,8 +9,6 @@
 ###############################################################
 ###############################################################
 
-
-
 ###################################
 ###  Apply Difficulty Template  ###
 ###################################
@@ -51,12 +49,9 @@ CmtEffectApplyDifficulty_Midgame = {
 	}
 }
 
-
-
 #####################################
 ###  Apply Common Strenght Value  ###
 #####################################
-
 
 ### Fleet Power
 CmtEffectApplyCommonPower_FleetPower = {
@@ -90,7 +85,6 @@ CmtEffectApplyCommonPowerMidgame_FleetPower = {
 	}
 }
 
-
 ### Army Power
 CmtEffectApplyCommonPower_ArmyPower = {
 	CmtEffectApplyCommonPowerEndgame_ArmyPower = yes
@@ -114,7 +108,6 @@ CmtEffectApplyCommonPowerMidgame_ArmyPower = {
 		}
 	}
 }
-
 
 ### Number of Combat Fleets
 CmtEffectApplyCommonPower_CombatFleetNumber = {
@@ -147,7 +140,6 @@ CmtEffectApplyCommonPowerMidgame_CombatFleetNumber = {
 	}
 }
 
-
 ### Number of Army Fleets
 CmtEffectApplyCommonPower_ArmyNumber = {
 	CmtEffectApplyCommonPowerEndgame_ArmyNumber = yes
@@ -172,7 +164,6 @@ CmtEffectApplyCommonPowerMidgame_ArmyNumber = {
 		}
 	}
 }
-
 
 ### Number of Constructor
 CmtEffectApplyCommonPower_ConstructorNumber = {
@@ -201,8 +192,6 @@ CmtEffectApplyCommonPowerMidgame_ConstructorNumber = {
 		}
 	}
 }
-
-
 
 ############################
 ###  Reset Common Value  ###

@@ -240,5 +240,8 @@ CmtEffectChangeAwakenerCivic = {
 
 ### Test of FIOS/LIOS
 CmtEffectFiosLiosTest = {
-	event_target:CmtGlobalVar = { change_variable = { which = CmtVarFiosLios value = 1 } }
+	event_target:CmtGlobalVar = {
+		# log="Debug [This.CmtVarFiosLios]"
+		change_variable = { which = CmtVarFiosLios value = 1 }
+	}
 }

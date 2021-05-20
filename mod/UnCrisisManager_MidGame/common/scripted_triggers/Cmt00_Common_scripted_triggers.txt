@@ -9,7 +9,6 @@
 ############################################
 ############################################
 
-
 #######################
 ###  Basic Trigger  ###
 #######################
@@ -56,7 +55,6 @@ CmtTriggerIsStarbase = {		## Scope: this = ship
 ###  Check Country Type  ###
 ############################
 
-
 ### Standard
 CmtTriggerIsPlayableEmpire = {		## Written in also Cmt40 and Cmt50
 	is_country_type = default
@@ -77,22 +75,20 @@ CmtTriggerIsFallenEmpire = {
 	}
 }
 
-
 ### Standard For ZoFE
-CmtTriggerIsLostEmpire = {
-	always = no
-}
+# CmtTriggerIsLostEmpire = {
+# 	always = no
+# }
 
-CmtTrigggerIsAscendedEmpire = {
-	always = no
-}
+# CmtTrigggerIsAscendedEmpire = {
+# 	always = no
+# }
 
-CmtTriggerIsZofeEmpireA = { 
-	always = no
-}
+# CmtTriggerIsZofeEmpireA = {
+# 	always = no
+# }
 
-
-### End-Game Crisis
+### End-Game Crises ###
 CmtTriggerIsPrethoryn = {
 	is_country_type = swarm
 }
@@ -178,8 +174,7 @@ CmtTriggerIsOrganicSleeper = {		## change to CmtTriggerSleeperPotentialAwakening
 	}
 }
 
-
-### Mid-Game Crisis
+### Mid-Game Crises ###
 CmtTriggerIsMarauder = {
 	OR = {
 		is_country_type = dormant_marauders
@@ -201,7 +196,6 @@ CmtTriggerIsKhanCountry = {
 CmtTriggerIsGraygoo = {
 	is_country_type = gray_goo
 }
-
 
 ##############################
 ###  Exist Crisis Country  ###
@@ -241,7 +235,6 @@ CmtTriggerExistGraygoo = {
 	any_country = { CmtTriggerIsGraygoo = yes }
 }
 
-
 #######################
 ###  Now in Crisis  ###
 #######################
@@ -279,8 +272,6 @@ CmtTriggerNowInKhanCrisis = {
 	any_country = { is_country_type = awakened_marauders }
 }
 
-
-
 #################################
 ###  Trigger Check of Events  ###
 #################################
@@ -294,7 +285,6 @@ CmtTriggerAnyCrisisTriggered = {
 		has_global_flag = CmtFlagForcedEocTriggered
 	}
 }
-
 
 CmtTriggerSleepersAwakingTriggered = {
 	OR = {
@@ -312,7 +302,6 @@ CmtTriggerKhanTriggered = {
 		has_global_flag = CmtFlagKhanTriggered
 	}
 }
-
 
 CmtTriggerLgateEventTriggered = {
 	OR = {
@@ -362,7 +351,6 @@ CmtTriggerAnyManagedEventTriggered = {
 	}
 }
 
-
 ######################
 ###  Control Menu  ###
 ######################
@@ -383,7 +371,6 @@ CmtTriggerAllViewerClosed = {
 		has_country_flag = CmtFlagConfigViewerShowing1033
 	}
 }
-
 
 CmtTriggerCrisisConfig = {
 	OR = {
@@ -475,7 +462,6 @@ CmtTriggerUprisingConfig = {
 	has_global_flag = CmtFlagUprisingEdition
 }
 
-
 ###################################
 ###  Check Template Activation  ###
 ###################################
@@ -549,7 +535,6 @@ CmtTriggerTemplateActivated_T105 = {
 		always = @CmtT105_ConstActivatedPowerMidgame
 	}
 }
-
 
 CmtTriggerTemplateActivated_T106 = {
 	OR = {
@@ -660,6 +645,4 @@ CmtTriggerTemplateActivated_T116 = {
 		always = @CmtT116_ConstActivatedPowerMidgame
 	}
 }
-
-
 

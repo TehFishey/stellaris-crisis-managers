@@ -19,21 +19,38 @@ country_event = {
 	id = graygoo.100
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
+		set_update_modifiers_batch = begin
+		# Do open all same time!?
+		every_megastructure = {
+			limit = { CmtTriggerIsClosedLgate = yes }
+			CmtEffectOpenLgate = yes
+		}
+
 		### Create Country
-		random_system = {
-			limit = { has_star_flag = graygoo_factory_system }
-			save_global_event_target_as = lcluster_factory_system
+		if = { # Fallback (second attempt)
+			limit = { NOT = { exists = event_target:lcluster_factory_system } }
+			random_system = {
+				limit = { has_star_flag = graygoo_factory_system }
+				save_global_event_target_as = lcluster_factory_system
+			}
+		}
+		event_target:lcluster_factory_system = {
 			random_system_planet = {
 				limit = { has_planet_flag = main_star }
 				save_event_target_as = main_star
+			}
+			random_system_planet = {
+				limit = { is_planet_class = pc_gray_goo }
+				save_event_target_as = start_5
 			}
 			create_species = {
 				name = "NAME_Dessanu"
 				class = random_non_machine
 				portrait = random
 				traits = random
+				homeworld = event_target:start_5
 				immortal = yes
 			}
 			create_country = {
@@ -65,7 +82,7 @@ country_event = {
 			add_ship_design = last_created_design
 		}
 		every_country = { establish_communications_no_message = event_target:graygoo_country }
-			
+
 		### Create Factory/Fleets/Starbases
 		CmtEffectCreateNanitieFactory = yes
 		event_target:nanite_factory = { CmtEffectCreateAdmiralty_DessanuCapitalDefence = yes }
@@ -81,8 +98,8 @@ country_event = {
 			}
 		}
 		CmtEffectCreateAdmiralty_DessanuRoamer = yes
-		
-		
+
+
 		### Change Planet to Gaia, Create Buildings, Orbital Station
 		every_system = {
 			limit = { has_star_flag = lcluster }
@@ -97,7 +114,7 @@ country_event = {
 					count = 30
 					create_pop = { species = owner_main_species }
 				}
-				
+
 				##Add buildings + Districts (ToDo: Move to scripted effect)
 				while = {
 					count = 2
@@ -148,6 +165,7 @@ country_event = {
 			}
 		}
 		country_event = { id = graygoo.110 }
+		set_update_modifiers_batch = end
 		observer_event = { id = observer.66 }
 	}
 }
@@ -160,33 +178,35 @@ country_event = {
 	picture = GFX_evt_l-gateway
 	show_sound = event_radio_chatter
 	is_triggered_only = yes
-	
-	immediate = {
-		every_playable_country = {
-			limit = { NOT = { is_same_value = root } }
-			if = {
-				limit = {
-					OR = {
-						is_researching_technology = tech_lgate_activation
-						has_technology = tech_lgate_activation
-						has_special_project = LCLUSTER_PROJECT
+
+	after = {
+		hidden_effect = {
+			every_playable_country = {
+				limit = { NOR = { is_same_empire = root has_country_flag = lcluster_opener } }
+				if = {
+					limit = {
+						OR = {
+							is_researching_technology = tech_lgate_activation
+							has_technology = tech_lgate_activation
+							has_special_project = LCLUSTER_PROJECT
+						}
 					}
+					set_country_flag = CmtFlagLgateOpenFinalPhase
 				}
-				set_country_flag = CmtFlagLgateOpenFinalPhase
+				if = {
+					limit = {
+						OR = {
+							has_special_project = LCLUSTER_PROJECT
+							has_event_chain = l_cluster_chain
+						}
+					}
+					country_event = { id = graygoo.111 }
+					liquidate_clues = yes # Remove Quest (FIX vanilla)
+				} else = { country_event = { id = graygoo.112 } }
 			}
-			
-			if = {
-				limit = {
-					OR = {
-						has_special_project = LCLUSTER_PROJECT
-						has_event_chain = l_cluster_chain
-					}
-				}
-				country_event = { id = graygoo.111 }
-			} else = { country_event = { id = graygoo.112 } }
 		}
 	}
-	
+
 	option = {
 		name = graygoo.10.a
 		hidden_effect = {
@@ -200,15 +220,15 @@ country_event = {
 	id = graygoo.115
 	title = "TRANSMISSION"
 	desc = "graygoo.115.desc"
-	
+
 	diplomatic = yes
-	
+
 	picture_event_data = {
 		portrait = event_target:graygoo_country
 	}
-	
+
 	is_triggered_only = yes
-	
+
 	option = {
 		name = graygoo.115.a
 		response_text = graygoo.115.a.response
@@ -247,15 +267,15 @@ country_event = {
 	id = graygoo.116
 	title = "TRANSMISSION"
 	desc = "graygoo.116.desc"
-	
+
 	diplomatic = yes
-	
+
 	picture_event_data = {
 		portrait = event_target:graygoo_country
 	}
-	
+
 	is_triggered_only = yes
-	
+
 	option = {
 		name = graygoo.116.d
 		if = {
@@ -301,7 +321,7 @@ country_event = {
 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarLgateTerraformNanite value = 5 } } }
 		picture = GFX_evt_gaia
 	}
-	
+
 	show_sound = event_ground_battle
 	location = fromfrom
 
@@ -339,7 +359,7 @@ country_event = {
 			set_country_flag = invaded_graygoo_planet
 		}
 	}
-	
+
 	option = {
 		name = graygoo.150.a
 	}
@@ -386,7 +406,7 @@ country_event = {
 			CmtEffectRemoveDessanuGift = yes
 		}
 	}
-	
+
 	option = {
 		name = graygoo.184.a
 		tooltip = { CmtEffectRemoveDessanuGift = yes }
@@ -400,12 +420,12 @@ country_event = {
 	id = graygoo.180
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		is_country_type = gate_builders
 		fromfrom = { is_ship_size = graygoo_factory }
 	}
-	
+
 	immediate = {
 		fromfromfrom = { save_event_target_as = goo_slayer_ship }
 		from = {
@@ -413,11 +433,14 @@ country_event = {
 			country_event = { id = graygoo.181 }
 		}
 		every_playable_country = {
-			limit = { NOT = { is_same_value = event_target:goo_slayer } }
+			limit = {
+				is_ai = no
+				NOT = { is_same_value = event_target:goo_slayer }
+			}
 			country_event = { id = graygoo.182 }
 		}
 		observer_event = { id = observer.67 }
-		
+
 		if = {		## Change Gaia Planet to Graygoo
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarLgateTerraformNanite value = 5 } } }
 			every_owned_planet = {
@@ -468,6 +491,7 @@ country_event = {
 	desc = "graygoo.181.desc"
 	picture = GFX_evt_large_explosion
 	show_sound = event_ship_explosion
+	location = event_target:lcluster_factory_system
 
 	is_triggered_only = yes
 
@@ -525,7 +549,7 @@ country_event = {
 		### Pre-treatment
 		awaken_guardians_of_the_galaxy = yes
 		set_global_flag = gray_goo_crisis_active
-		
+
 		### Create Country & Factory
 		random_system = {
 			limit = { has_star_flag = graygoo_factory_system }
@@ -536,7 +560,7 @@ country_event = {
 			create_country = {
 				name = "NAME_Gray_Goo"
 				type = "gray_goo"
-				name_list = "Graygoo"
+				name_list = "graygoo"
 				flag = {
 					icon = {
 						category = "special"
@@ -552,7 +576,7 @@ country_event = {
 			}
 			CmtEffectCreateNanitieFactory = yes
 		}
-		
+
 		### Create Fleets
 		event_target:nanite_factory = { CmtEffectCreateAdmiralty_GraygooCapitalDefence = yes }		## Garrison Fleets at Capital
 		every_system = {		## Garisson Fleet for L-Cluster
@@ -565,7 +589,7 @@ country_event = {
 		event_target:nanite_factory = { CmtEffectCreateAdmiralty_GraygooRoamer = yes }		## Roamers
 		every_system = {		## Initial Attack Fleets
 			limit = {
-				CmtTriggerIsGalaxyLgateSystem = yes
+				has_star_flag = lgate
 				NOT = { has_star_flag = lgate_originating_system }
 				any_system_megastructure = { CmtTriggerIsOpenedLgate = yes }
 			}
@@ -575,7 +599,7 @@ country_event = {
 			}
 		}
 		event_target:graygoo_country = { country_event = { id = graygoo.3 } }		## Reinforcement Fleets (Call AFTER Create Factory)
-		
+
 		### Notifications
 		every_country = { establish_communications_no_message = event_target:graygoo_country }
 		country_event = { id = graygoo.10 }
@@ -621,13 +645,13 @@ country_event = {
 	id = graygoo.3
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		exists = event_target:nanite_factory
 		event_target:nanite_factory = { is_ship_size = graygoo_factory }
 		NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarReinforceCycle_Graygoo value = 1 } } }
 	}
-	
+
 	immediate = {
 		### Time Control
 		if = {
@@ -643,7 +667,7 @@ country_event = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarReinforceCycle_Graygoo value = 6 } } }
 			country_event = { id = graygoo.3 days = 14 }
 		} else = { country_event = { id = graygoo.3 days = 3600 } }		## 10 yr
-		
+
 		### Actual Effect
 		if = {
 			limit = { NOT = { has_global_flag = CmtFlagLgateOpenedNow } }
@@ -658,7 +682,7 @@ country_event = {
 			} else = {
 				every_system = {
 					limit = {
-						CmtTriggerIsGalaxyLgateSystem = yes
+						has_star_flag = lgate
 						NOT = { has_star_flag = lgate_originating_system }
 						any_system_megastructure = { CmtTriggerIsOpenedLgate = yes }
 					}
@@ -684,7 +708,7 @@ country_event = {
 	id = graygoo.6
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		is_country_type = gray_goo
 		fromfrom = { is_ship_size = graygoo_factory }
