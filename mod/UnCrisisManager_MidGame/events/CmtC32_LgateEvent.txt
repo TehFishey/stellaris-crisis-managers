@@ -1,42 +1,44 @@
 namespace = CrisisManagerControl
-#################################
-#################################
-#####						#####
-#####	Crisis Manager		#####
-#####						#####
-#####	L-Gates Events		#####
-#####						#####
-#################################
-#################################
-##############
-### Common ###
-##############
+
+################################
+################################
+#####                      #####
+#####    Crisis Manager    #####
+#####                      #####
+#####    L-Gates Events    #####
+#####                      #####
+################################
+################################
+
+################
+###  Common  ###
+################
+
 ### Open L-Gate
 country_event = {
 	id = CrisisManagerControl.6201
 	hide_window = yes
 	is_triggered_only = yes
+
 	trigger = {
 		any_megastructure = { CmtTriggerIsClosedLgate = yes }
 	}
+
 	immediate = {
 		event_target:CmtGlobalVar = {
+
 			### Transference Variable
 			if = {
 				limit = { has_global_flag = gray_goo_crisis_set }
 				set_variable = { which = CmtVarTemp value = CmtVarLgateCycleGraygoo }
-			}
-			else_if = {
+			} else_if = {
 				limit = { has_global_flag = gray_goo_empire_set }
 				set_variable = { which = CmtVarTemp value = CmtVarLgateCycleDessanu }
-			}
-			else_if = {
+			} else_if = {
 				limit = { has_global_flag = dragon_season }
 				set_variable = { which = CmtVarTemp value = CmtVarLgateCycleLdrake }
-			}
-			else = {
-				set_variable = { which = CmtVarTemp value = CmtVarLgateCycleSilence }
-			}
+			} else = { set_variable = { which = CmtVarTemp value = CmtVarLgateCycleSilence } }
+
 			### Open L-Gate
 			if = {
 				limit = {
@@ -50,8 +52,7 @@ country_event = {
 					limit = { CmtTriggerIsClosedLgate = yes }
 					CmtEffectOpenLgate = yes
 				}
-			}
-			else_if = {
+			} else_if = {
 				limit = {
 					NOR = {
 						check_variable = { which = CmtVarTemp value = 1 }
@@ -65,22 +66,14 @@ country_event = {
 					CmtEffectOpenLgate = yes
 				}
 			}
+
 			### Time Cycle Control
 			if = {
-				limit = {
-					check_variable = { which = CmtVarTemp value = 4 }
-				}
-				country_event = { id = CrisisManagerControl.6201 days = 200 }
-			}
-			else_if = {
-				limit = {
-					check_variable = { which = CmtVarTemp value = 3 }
-				}
-				country_event = {
-					id = CrisisManagerControl.6201
-					days = 3600
-					random = 5400
-				}				## 10 - 25 yr
+				limit = { check_variable = { which = CmtVarTemp value = 4 } }
+				country_event = { id = CrisisManagerControl.6201 days = 200 random = 500 }
+			} else_if = {
+				limit = { check_variable = { which = CmtVarTemp value = 3 } }
+				country_event = { id = CrisisManagerControl.6201 days = 3600 random = 5400 }		## 10 - 25 yr
 			}
 		}
 	}
@@ -91,12 +84,12 @@ country_event = {
 	id = CrisisManagerControl.6202
 	hide_window = yes
 	is_triggered_only = yes
+
 	trigger = {
 		any_megastructure = { CmtTriggerIsClosedLgate = yes }
-		event_target:CmtGlobalVar = {
-			check_variable = { which = CmtVarLgateCycleGraygoo value = 2 }
-		}
+		event_target:CmtGlobalVar = { check_variable = { which = CmtVarLgateCycleGraygoo value = 2 } }
 	}
+
 	immediate = {
 		every_megastructure = {
 			limit = { CmtTriggerIsClosedLgate = yes }
@@ -110,7 +103,11 @@ planet_event = {
 	id = CrisisManagerControl.6211
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = { is_planet_class = pc_gray_goo }
+
+	trigger = {
+		is_planet_class = pc_gray_goo
+	}
+
 	immediate = {
 		random_list = {
 			10 = { change_pc = pc_desert }
@@ -122,11 +119,12 @@ planet_event = {
 			10 = { change_pc = pc_arctic }
 			10 = { change_pc = pc_alpine }
 			10 = { change_pc = pc_savannah }
-			1 = { change_pc = pc_gaia }
-			1 = { change_pc = pc_nuked }
+			 1 = { change_pc = pc_gaia }
+			 1 = { change_pc = pc_nuked }
 		}
 		remove_modifier = CmtModifierAutoTerraform
 		reroll_deposits = yes
 		reroll_planet_modifiers = yes
 	}
 }
+

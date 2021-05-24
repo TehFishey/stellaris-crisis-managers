@@ -38,7 +38,6 @@ event = {
 	hide_window = yes
 	is_triggered_only = yes
 	# dayly MTTH for fire_only_once event is a big waste of performance, but there is still no other way
-	# fire_only_once = yes
 	trigger = {
 		NOT = { has_global_flag = CmtFlagActivated }
 		# is_country_type = global_event
@@ -187,7 +186,7 @@ country_event = {
 			set_global_flag = CmtFlagActivated
 			save_global_event_target_as = CmtGlobalVar
 			CmtEffectHardCoatedSettings = yes
-			country_event = { id = CrisisManagerControl.9011 }		## For only debugging
+			# country_event = { id = CrisisManagerControl.9011 }		## For only debugging
 			country_event = { id = CrisisManagerMenu.2000 }		## Apply Vanilla Template
 			country_event = { id = CrisisManagerMenu.2001 }		## Auto apply of Template
 			if = {

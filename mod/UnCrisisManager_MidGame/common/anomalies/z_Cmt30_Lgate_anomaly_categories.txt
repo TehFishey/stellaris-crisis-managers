@@ -13,9 +13,13 @@ disco_gray_cat = {
 	desc = "disco_gray_cat_desc"
 	picture = "GFX_evt_ship_in_orbit_2"
 	level = 3
+	max_once = yes
+	# max_once_global = yes
+	# should_ai_and_humans_use = yes
+
 	spawn_chance = {
 		modifier = {
-			add = 6
+			add = 8
 			is_planet_class = pc_gray_goo
 			solar_system = { has_star_flag = lcluster }
 			event_target:CmtGlobalVar = {
@@ -35,8 +39,27 @@ disco_gray_cat = {
 			}
 		}
 		modifier = {
+			factor = 0
+			OR = {
+				from.owner = { is_country_type = gate_builders }
+				exists = event_target:graygoo_country
+				exists = event_target:gate_builders
+				AND = {
+					exists = event_target:goo_slayer
+					from.owner = { is_same_empire = event_target:goo_slayer }
+				}
+			}
+		}
+		modifier = {
 			factor = 100
 			has_global_flag = CmtFlagDebugMode
+		}
+	}
+	# this/root: planet, from: ship
+	on_spawn = {
+		if = {
+			limit = { exists = from exists = from.owner }
+			from.owner = { set_country_flag = disco_gray }
 		}
 	}
 	on_success = graygoo.400

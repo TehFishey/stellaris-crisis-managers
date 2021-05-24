@@ -168,13 +168,13 @@ CmtEffectDifficulty_MidgameHard = {
 	event_target:CmtGlobalVar = {
 		CmtEffectResetCrisisPowerCommon = yes
 		set_variable = { which = CmtVarFleetPower_Khan               value = 1.25 }
-		set_variable = { which = CmtVarFleetPower_Graygoo            value = 1.50 }
+		set_variable = { which = CmtVarFleetPower_Graygoo            value = 1.25 }
 		set_variable = { which = CmtVarFleetPower_Dessanu            value = 1.50 }
 
 		set_variable = { which = CmtVarArmyPower_Khan                value = 1.25 }
 
 		set_variable = { which = CmtVarCombatFleetNumber_Khan        value = 1.25 }
-		set_variable = { which = CmtVarCombatFleetNumber_Graygoo     value = 1.50 }
+		set_variable = { which = CmtVarCombatFleetNumber_Graygoo     value = 1.25 }
 		set_variable = { which = CmtVarCombatFleetNumber_Dessanu     value = 1.25 }
 
 		set_variable = { which = CmtVarArmyNumber_Khan               value = 1.25 }

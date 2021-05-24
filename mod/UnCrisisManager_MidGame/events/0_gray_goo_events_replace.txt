@@ -164,8 +164,8 @@ country_event = {
 				}
 			}
 		}
-		country_event = { id = graygoo.110 }
 		set_update_modifiers_batch = end
+		country_event = { id = graygoo.110 }
 		observer_event = { id = observer.66 }
 	}
 }
@@ -177,6 +177,7 @@ country_event = {
 	desc = "graygoo.110.desc"
 	picture = GFX_evt_l-gateway
 	show_sound = event_radio_chatter
+	location = event_target:CmtTargetLgateOrininatingSystem
 	is_triggered_only = yes
 
 	after = {
@@ -225,6 +226,10 @@ country_event = {
 
 	picture_event_data = {
 		portrait = event_target:graygoo_country
+		planet_background = event_target:graygoo_country
+		graphical_culture = event_target:graygoo_country
+		city_level = event_target:graygoo_country
+		room = event_target:graygoo_country.ruler
 	}
 
 	is_triggered_only = yes
@@ -272,6 +277,10 @@ country_event = {
 
 	picture_event_data = {
 		portrait = event_target:graygoo_country
+		planet_background = event_target:graygoo_country
+		graphical_culture = event_target:graygoo_country
+		city_level = event_target:graygoo_country
+		room = event_target:graygoo_country.ruler
 	}
 
 	is_triggered_only = yes
@@ -289,6 +298,7 @@ country_event = {
 				has_country_flag = CmtFlagLgateOpenFinalPhase
 			}
 			CmtEffectAddDessanuGift2 = yes
+			remove_country_flag = CmtFlagLgateOpenFinalPhase
 		} else_if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarLgateDessanuGift value = 5 } } }
 			CmtEffectAddDessanuGift1 = yes
@@ -328,6 +338,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		NOT = { is_country_type = gate_builders }
 		from = { is_country_type = gate_builders }
 	}
 
@@ -518,6 +529,7 @@ country_event = {
 	}
 	picture = GFX_evt_large_explosion
 	show_sound = event_ship_explosion
+	location = event_target:lcluster_factory_system
 
 	is_triggered_only = yes
 
@@ -546,13 +558,24 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = {
+		set_update_modifiers_batch = begin
 		### Pre-treatment
 		awaken_guardians_of_the_galaxy = yes
 		set_global_flag = gray_goo_crisis_active
-
+		# Do open all same time!?
+		every_megastructure = {
+			limit = { CmtTriggerIsClosedLgate = yes }
+			CmtEffectOpenLgate = yes
+		}
 		### Create Country & Factory
-		random_system = {
-			limit = { has_star_flag = graygoo_factory_system }
+		if = { # Fallback only
+			limit = { NOT = { exists = event_target:lcluster_factory_system } }
+			random_system = {
+				limit = { has_star_flag = graygoo_factory_system }
+				save_global_event_target_as = lcluster_factory_system
+			}
+		}
+		event_target:lcluster_factory_system = {
 			random_system_planet = {
 				limit = { has_planet_flag = main_star }
 				save_event_target_as = main_star
@@ -587,6 +610,7 @@ country_event = {
 			}
 		}
 		event_target:nanite_factory = { CmtEffectCreateAdmiralty_GraygooRoamer = yes }		## Roamers
+
 		every_system = {		## Initial Attack Fleets
 			limit = {
 				has_star_flag = lgate
@@ -598,6 +622,8 @@ country_event = {
 				CmtEffectCreateAdmiralty_GraygooAttackerA = yes
 			}
 		}
+		set_update_modifiers_batch = end
+
 		event_target:graygoo_country = { country_event = { id = graygoo.3 } }		## Reinforcement Fleets (Call AFTER Create Factory)
 
 		### Notifications
@@ -637,8 +663,6 @@ country_event = {
 		observer_event = { id = observer.64 }
 	}
 }
-
-
 
 ### Reinforcements
 country_event = {
@@ -702,7 +726,6 @@ country_event = {
 	}
 }
 
-
 ### Factory Destroyed
 country_event = {
 	id = graygoo.6
@@ -719,6 +742,3 @@ country_event = {
 		CmtEffectDestroyGraygoo = yes
 	}
 }
-
-
-

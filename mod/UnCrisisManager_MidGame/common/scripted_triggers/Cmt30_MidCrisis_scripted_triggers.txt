@@ -120,10 +120,10 @@ CmtTriggerIsOpenedLgate = {
 	has_megastructure_flag = lgate_activated
 }
 
-CmtTriggerIsGalaxyLgateSystem = {
-	has_star_flag = lgate
-	NOT = { has_star_flag = lcluster_lgate }
-}
+# CmtTriggerIsGalaxyLgateSystem = {
+# 	has_star_flag = lgate
+# 	NOT = { has_star_flag = lcluster_lgate }
+# }
 
 #################
 ###  Dessanu  ###
