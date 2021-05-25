@@ -12,14 +12,12 @@
 ###############################################
 #
 # Information
-#	
+#
 #
 
 ###################
 ###  Constants  ###
 ###################
-
-
 
 ##############
 ###  Khan  ###
@@ -61,16 +59,14 @@ CmtEffectCreateEncouragingBase = {
 	}
 }
 
-
 ###########################
 ###  Dessanu / Graygoo  ###
 ###########################
 
-
 CmtEffectCreateNanitieFactory = {
 	create_fleet = {
 		effect = {
-			set_owner = event_target:graygoo_country
+			set_owner = PREV
 			create_ship = {
 				name = random
 				design = "NAME_Nanite_Factory"

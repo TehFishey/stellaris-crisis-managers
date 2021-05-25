@@ -343,10 +343,10 @@ CmtTriggerAnyManagedEventTriggered = {
 		}
 		AND = {
 			has_global_flag = CmtFlagMidGameEdition
-			OR = {
-				CmtTriggerLgateEventTriggered = yes
-				CmtTriggerKhanTriggered = yes
-			}
+			# OR = {
+			CmtTriggerLgateEventTriggered = yes
+			CmtTriggerKhanTriggered = yes
+			# }
 		}
 	}
 }

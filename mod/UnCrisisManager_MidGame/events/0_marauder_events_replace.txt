@@ -1332,11 +1332,11 @@ country_event = {
 
 			if = {
 				limit = { free_housing < 1 }
-				random_pop = { kill_pop = yes }
+				random_owned_pop = { kill_pop = yes }
 			}
 			if = {
 				limit = { free_housing < 2 }
-				while = { count = 4 random_pop = { kill_pop = yes } }
+				while = { count = 4 random_owned_pop = { kill_pop = yes } }
 				if = {
 					limit = { exists = event_target:CmtTargetSpecies_Marauder1 }
 					create_pop = { species = event_target:CmtTargetSpecies_Marauder1 }
@@ -1351,7 +1351,7 @@ country_event = {
 				}
 			} else_if = {
 				limit = { free_housing < 6 }
-				while = { count = 3 random_pop = { kill_pop = yes } }
+				while = { count = 3 random_owned_pop = { kill_pop = yes } }
 				create_pop = { species = root.species }
 				if = {
 					limit = { exists = event_target:CmtTargetSpecies_Marauder1 }
