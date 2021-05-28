@@ -226,7 +226,6 @@ country_event = {
 					limit = { always = @CmtT101_ConstLgateSkipTech }
 					set_global_flag = CmtFlagLgateSkipTech
 				} else = { remove_global_flag = CmtFlagLgateSkipTech }
-				set_variable = { which = CmtVarLgateClusterType value = @CmtT101_ConstLgateClusterType }
 				if = {
 					limit = { always = @CmtT101_ConstLgateForbidSilence }
 					set_global_flag = CmtFlagLgateForbidSilence

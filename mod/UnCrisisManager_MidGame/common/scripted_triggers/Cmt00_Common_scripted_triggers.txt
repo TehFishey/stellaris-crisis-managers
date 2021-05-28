@@ -56,8 +56,11 @@ CmtTriggerIsStarbase = {		## Scope: this = ship
 ############################
 
 ### Standard
-CmtTriggerIsPlayableEmpire = {		## Written in also Cmt40 and Cmt50
-	is_country_type = default
+CmtTriggerIsPlayableEmpire = {
+	OR = {		## Written in also Cmt40 and Cmt50
+		is_country_type = default
+		is_zofe_country = yes # is_zofe_compatible
+	}
 }
 
 CmtTriggerIsEmpire = {		## Written in also Cmt50
@@ -70,23 +73,39 @@ CmtTriggerIsEmpire = {		## Written in also Cmt50
 
 CmtTriggerIsFallenEmpire = {
 	OR = {
-		is_country_type = fallen_empire
-		is_country_type = awakened_fallen_empire
+		is_zofe_fe = yes # is_country_type = fallen_empire
+		is_zofe_ae = yes # is_country_type = awakened_fallen_empire
 	}
 }
 
-### Standard For ZoFE
-# CmtTriggerIsLostEmpire = {
-# 	always = no
-# }
+### Standard For ZoFE - Legacy (replaced by own trigger)
+# CmtTriggerIsLostEmpire = { always = no }
+# CmtTrigggerIsAscendedEmpire = { always = no }
+# CmtTriggerIsZofeEmpireA = { always = no }
+is_zofe_fe = {
+	is_country_type = fallen_empire
+	# always = no
+	# OR = {
+	# 	is_country_type = fallen_empire
+	# 	is_country_type = lost_empire
+	# }
+}
+is_zofe_ae = {
+	is_country_type = awakened_fallen_empire
+	# always = no
+	# OR = {
+	# 	is_country_type = awakened_fallen_empire
+	# 	is_country_type = ascended_empire
+	# }
+}
 
-# CmtTrigggerIsAscendedEmpire = {
-# 	always = no
-# }
-
-# CmtTriggerIsZofeEmpireA = {
-# 	always = no
-# }
+is_zofe_country = {
+	always = no
+	# OR = {
+	# 	is_country_type = ascended_empire
+	# 	is_country_type = lost_empire
+	# }
+}
 
 ### End-Game Crises ###
 CmtTriggerIsPrethoryn = {
@@ -190,7 +209,8 @@ CmtTriggerIsSleepingMarauder = {		## Scope = country
 
 CmtTriggerIsKhanCountry = {
 	is_country_type = awakened_marauders
-	NOT = { has_country_flag = CmtFlagKhanDeadCountry }
+	# CmtFlagKhanDeadCountry replaced with vanilla
+	NOT = { has_country_flag = khan_dead_event_fine }
 }
 
 CmtTriggerIsGraygoo = {

@@ -222,7 +222,6 @@ country_event = {
 					limit = { always = @CmtT001_ConstLgateReqPlayer }
 					set_global_flag = CmtFlagLgateReqPlayer
 				} else = { remove_global_flag = CmtFlagLgateReqPlayer }
-				# set_variable = { which = CmtVarLgateClusterType value = @CmtT001_ConstLgateClusterType }
 				if = {
 					limit = { always = @CmtT001_ConstLgateForbidSilence }
 					set_global_flag = CmtFlagLgateForbidSilence

@@ -9,11 +9,9 @@
 ###########################################
 ###########################################
 
-
 ###################
 ###  Constants  ###
 ###################
-
 
 ### Reinforcement Cycle of Khan Fleets on Capital
 @CmtConstReinforceCycle_Khan1a =  1.0		## if disabled or x > Ta
@@ -55,7 +53,6 @@
 #	Encourager	: { 22, 14,  8, 0} =  82
 #	Reinforce 2	: {  -,  -,  -, -} =  26 - 180
 #
-
 
 #################
 ###  Scripts  ###
@@ -123,7 +120,7 @@ CmtEffectKhanIncreasementReinforcementCycle = {		## Scope: this = Strage of Vari
 				divide_variable = { which = CmtVarTemp value = CmtVarWhileControlFleet }
 			}
 		}		## Current: CmtVarTemp = regularized military ship number of Khan
-		
+
 		### Increment of Counter, Call Next Cycle
 		if = {
 			limit = { check_variable = { which = CmtVarReinforceCycle_Khan value = 2 } }

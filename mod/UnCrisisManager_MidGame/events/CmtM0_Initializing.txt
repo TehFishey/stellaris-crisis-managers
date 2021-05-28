@@ -44,24 +44,17 @@ event = {
 	immediate = {
 		CmtEffectSetDetectedEdition = yes
 		if = {
-			limit = { has_global_flag = CmtFlagNoCall }
-			# random_country = { limit = { is_country_type = global_event }
-			event_target:global_event_country = {
-				country_event = { id = CrisisManagerMenu.0021 }		## Initializing Variables
-			}
-		}
-		else_if = {
 			limit = { CmtTriggerAnyManagedEventTriggered = yes }
 			every_playable_country = {
 				limit = { is_ai = no }
 				country_event = { id = CrisisManagerMenu.0012 }		## Warning: Crisis Happened Already
 			}
-		}
-		else = {
+		} else = {
 			# random_country = { limit = { is_country_type = global_event }
 			event_target:global_event_country = {
 				country_event = { id = CrisisManagerMenu.0021 }		## Initializing Variables
 			}
+			# if = { limit = { NOT = { has_global_flag = CmtFlagNoCall } }
 			random_playable_country = {
 				limit = { is_ai = no }
 				country_event = { id = CrisisManagerMenu.0011 }		## Activating Notification
@@ -104,9 +97,7 @@ country_event = {
 	after = {
 		hidden_effect = {
 			if = {
-				limit = {
-					NOT = { has_global_flag = CmtFlagNoCall }
-				}
+				limit = { NOT = { has_global_flag = CmtFlagNoCall } }
 				country_event = { id = CrisisManagerMenu.0100 }
 			}
 		}
