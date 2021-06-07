@@ -183,7 +183,7 @@ country_event = {
 	}
 
 	immediate = {
-		set_global_flag = CmtFlagKhanTriggered
+		# set_global_flag = CmtFlagKhanTriggered
 		set_global_flag = marauder_crisis_started
 		set_global_flag = marauder_crisis_ongoing
 		if = {
@@ -357,7 +357,7 @@ country_event = {
 				category = "pirate"
 				file = "flag_pirate_11.dds"
 			}
-			background= {
+			background = {
 				category = "backgrounds"
 				file = "00_solid.dds"
 			}
@@ -449,7 +449,7 @@ country_event = {
 		### Should not attack Enclaves
 		every_country = {
 			limit = { is_country_type = enclave }
-			event_target:raider_khanate = {
+			prev = {
 				set_faction_hostility = {
 					target = prev
 					set_hostile = no
@@ -1016,7 +1016,7 @@ country_event = {
 	}
 }
 
-### Regular Reinforcements at Captal(s)
+### Regular Marauder Reinforcements (Cycle) at Capital
 country_event = {
 	id = marauder.520
 	hide_window = yes
@@ -1365,6 +1365,7 @@ country_event = {
 }
 
 ### Initial Reinforcement for Encouraging Satrap
+### Marauder Establishes Base in Capital System
 country_event = {
 	id = marauder.553
 	title = "marauder.553.name"
@@ -1405,23 +1406,12 @@ country_event = {
 		CmtTriggerIsPlayableEmpire = yes
 		is_subject = no
 		is_ai = yes
-		NOR = {
-			has_valid_civic = "civic_fanatic_purifiers"
-			has_valid_civic = "civic_hive_devouring_swarm"
-			has_valid_civic = "civic_machine_terminator"
-		}
+		is_homicidal = no
 		check_variable = { which = "planets_lost_to_marauder" value > 2 }
-		OR = {
-			relative_power = {
-				who = event_target:raider_khanate
-				category = fleet
-				value = inferior
-			}
-			relative_power = {
-				who = event_target:raider_khanate
-				category = fleet
-				value = pathetic
-			}
+		relative_power = {
+			who = event_target:raider_khanate
+			category = fleet
+			value < equivalent
 		}
 	}
 

@@ -316,12 +316,12 @@ CmtTriggerSleepersAwakingTriggered = {
 	}
 }
 
-CmtTriggerKhanTriggered = {
-	OR = {
-		has_global_flag = marauder_crisis_started
-		has_global_flag = CmtFlagKhanTriggered
-	}
-}
+# CmtTriggerKhanTriggered = {
+# 	OR = {
+# 		has_global_flag = marauder_crisis_started
+# 		has_global_flag = CmtFlagKhanTriggered
+# 	}
+# }
 
 CmtTriggerLgateEventTriggered = {
 	OR = {
@@ -365,7 +365,8 @@ CmtTriggerAnyManagedEventTriggered = {
 			has_global_flag = CmtFlagMidGameEdition
 			# OR = {
 			CmtTriggerLgateEventTriggered = yes
-			CmtTriggerKhanTriggered = yes
+			has_global_flag = marauder_crisis_started
+			# CmtTriggerKhanTriggered = yes
 			# }
 		}
 	}
@@ -460,7 +461,8 @@ CmtTriggerGuardianFeConfig = {
 
 CmtTriggerKhanConfig = {
 	OR = {
-		NOT = { CmtTriggerKhanTriggered = yes }
+		# CmtTriggerKhanTriggered = no
+		NOT = { has_global_flag = marauder_crisis_started }
 		has_global_flag = CmtFlagDebugMode
 	}
 	has_global_flag = CmtFlagMidGameEdition
@@ -665,4 +667,3 @@ CmtTriggerTemplateActivated_T116 = {
 		always = @CmtT116_ConstActivatedPowerMidgame
 	}
 }
-

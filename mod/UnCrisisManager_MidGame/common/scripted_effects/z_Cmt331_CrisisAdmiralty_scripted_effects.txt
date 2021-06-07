@@ -89,16 +89,13 @@ CmtEffectCreateAdmiralty_KhanStarterPack = {
 		while = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
 			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -1 } }
-			CmtEffectCreateFleet_KhanStandard = yes
-			CmtEffectCreateFleet_KhanStandard = yes
-			CmtEffectCreateFleet_KhanStandard = yes
+			while = {
+				count = 3
+				CmtEffectCreateFleet_KhanStandard = yes
+				CmtEffectCreateFleet_KhanArmy = yes
+				CmtEffectCreateFleet_KhanConstructor = yes
+			}
 			CmtEffectCreateFleet_KhanArmy = yes
-			CmtEffectCreateFleet_KhanArmy = yes
-			CmtEffectCreateFleet_KhanArmy = yes
-			CmtEffectCreateFleet_KhanArmy = yes
-			CmtEffectCreateFleet_KhanConstructor = yes
-			CmtEffectCreateFleet_KhanConstructor = yes
-			CmtEffectCreateFleet_KhanConstructor = yes
 		}
 		while = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }

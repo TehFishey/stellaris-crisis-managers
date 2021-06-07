@@ -212,6 +212,10 @@ country_event = {
 					set_global_flag = CmtFlagLgateSkipTech
 				} else = { remove_global_flag = CmtFlagLgateSkipTech }
 				if = {
+					limit = { always = @CmtT109_ConstLgateReqPlayer }
+					set_global_flag = CmtFlagLgateReqPlayer
+				} else = { remove_global_flag = CmtFlagLgateReqPlayer }
+				if = {
 					limit = { always = @CmtT109_ConstLgateForbidSilence }
 					set_global_flag = CmtFlagLgateForbidSilence
 				} else = { remove_global_flag = CmtFlagLgateForbidSilence }

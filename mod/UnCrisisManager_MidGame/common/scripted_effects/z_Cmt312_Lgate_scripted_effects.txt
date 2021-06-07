@@ -255,14 +255,23 @@ CmtEffectDestroyGraygoo = {
 	remove_global_flag = active_gray_goo
 	remove_global_flag = gray_goo_crisis_active
 
-	from = {
-		save_event_target_as = goo_slayer
-		country_event = { id = graygoo.15 }
+	if = {
+		limit = {
+			NOT = { exists = event_target:goo_slayer }
+			exists = from
+		}
+		from = {
+			save_global_event_target_as = goo_slayer
+			country_event = { id = graygoo.15 }
+		}
 	}
 	every_playable_country = {
 		limit = {
 			is_ai = no
-			NOT = { is_same_empire = event_target:goo_slayer }
+			NAND = {
+				exists = event_target:goo_slayer
+				is_same_empire = event_target:goo_slayer
+			}
 		}
 		country_event = { id = graygoo.16 }
 	}

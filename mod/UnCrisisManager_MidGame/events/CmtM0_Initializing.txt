@@ -170,6 +170,9 @@ country_event = {
 	id = CrisisManagerMenu.0021
 	hide_window = yes
 	is_triggered_only = yes
+	trigger = {
+		is_country_type = global_event
+	}
 	immediate = {
 		# random_country = { limit = { is_country_type = global_event }
 		set_global_flag = CmtFlagActivated
@@ -186,7 +189,6 @@ country_event = {
 			CmtEffectApplyTemplate201 = yes					## Apply Template for Initialization for Fleets of Sleepers
 		}
 		# Dynamic L-Gate clue req counter
-		# event_target:CmtGlobalVar = {
 		switch = {
 			trigger = galaxy_size
 			tiny = {
@@ -202,31 +204,6 @@ country_event = {
 				change_variable = { which = CmtVarLgateReqClues value = 2 }
 			}
 		}
-		# if = { limit = { galaxy_size = tiny }
-		# 	change_variable = {
-		# 		which = CmtVarLgateReqClues
-		# 		value = -1
-		# 	}
-		# }
-		# if = { limit = { galaxy_size = small }
-		# 	change_variable = {
-		# 		which = CmtVarLgateReqClues
-		# 		value = -1
-		# 	}
-		# }
-		# # if = { limit = { galaxy_size = medium # } }
-		# if = { limit = { galaxy_size = large }
-		# 	change_variable = {
-		# 		which = CmtVarLgateReqClues
-		# 		value = 1
-		# 	}
-		# }
-		# if = { limit = { galaxy_size = huge }
-		# 	change_variable = {
-		# 		which = CmtVarLgateReqClues
-		# 		value = 1
-		# 	}
-		# }
 	}
 }
 

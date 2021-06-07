@@ -21,7 +21,8 @@ CmtTriggerKhanAwakingMultipleCheck = {
 			has_global_flag = CmtFlagNowInKhanInterval
 		}
 		OR = {
-			NOT = { has_global_flag = CmtFlagKhanTriggered }
+			# NOT = { has_global_flag = CmtFlagKhanTriggered }
+			NOT = { has_global_flag = marauder_crisis_started }
 			AND = {
 				check_variable = { which = CmtVarKhanMultiple value = 3 }
 				NOT = { CmtTriggerNowInKhanCrisis = yes }

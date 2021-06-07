@@ -31,20 +31,19 @@ country_event = {
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
 	trigger = { is_ai = no }
-	
+
 	immediate = {
 		remove_country_flag = CmtFlagIndividual
 		remove_country_flag = CmtFlagSpMenu
 		remove_country_flag = CmtFlagGoBack
 		remove_country_flag = CmtFlagKeepCurrent
 		set_country_flag = CmtFlagNowInMenu
-		
+
 		CmtEffectClearDetectedEdition = yes
 		CmtEffectSetDetectedEdition = yes
 		CmtEffectVersionUp = yes
 	}
-	
-	
+
 	### Configurations Viewer
 	option = {
 		name = CrisisManagerMenu.0100.1000.name
@@ -54,7 +53,7 @@ country_event = {
 			remove_global_flag = CmtFlagTemplateAppliedNow
 		}
 	}
-	
+
 	### Trigger Configurations
 	option = {
 		name = CrisisManagerMenu.0100.3100.name
@@ -71,7 +70,7 @@ country_event = {
 			remove_global_flag = CmtFlagTemplateAppliedNow
 		}
 	}
-	
+
 	### Expantion Configurations
 	option = {
 		name = CrisisManagerMenu.0100.3200.name
@@ -85,7 +84,7 @@ country_event = {
 			remove_global_flag = CmtFlagTemplateAppliedNow
 		}
 	}
-	
+
 	### Advanced Configurations
 	option = {
 		name = CrisisManagerMenu.0100.4000.name
@@ -95,7 +94,7 @@ country_event = {
 			remove_global_flag = CmtFlagTemplateAppliedNow
 		}
 	}
-	
+
 	### Crisis Power
 	option = {
 		name = CrisisManagerMenu.0100.6000.name
@@ -111,9 +110,7 @@ country_event = {
 			remove_global_flag = CmtFlagTemplateAppliedNow
 		}
 	}
-	
-	
-	
+
 	### Separator
 	option = {
 		name = CmtTextSeparator.name
@@ -121,9 +118,7 @@ country_event = {
 		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
 		allow = { hidden_trigger = { always = no } }
 	}
-	
-	
-	
+
 	### Manual Operations
 	option = {
 		name = CrisisManagerMenu.0100.7000.name
@@ -133,9 +128,7 @@ country_event = {
 			remove_global_flag = CmtFlagTemplateAppliedNow
 		}
 	}
-	
-	
-	
+
 	### Separator
 	option = {
 		name = CmtTextSeparator.name
@@ -149,9 +142,7 @@ country_event = {
 		}
 		allow = { hidden_trigger = { always = no } }
 	}
-	
-	
-	
+
 	### Apply Configuration Template: Vanilla
 	option = {
 		name = CrisisManagerTemplate_T000.name
@@ -169,7 +160,7 @@ country_event = {
 			country_event = { id = CrisisManagerMenu.0100 }
 		}
 	}
-	
+
 	### Apply Configuration Template: Primacy Template
 	option = {
 		name = CrisisManagerTemplate_T001.name
@@ -187,7 +178,7 @@ country_event = {
 			country_event = { id = CrisisManagerMenu.0100 }
 		}
 	}
-	
+
 	### Other Configuration Templetes
 	option = {
 		name = CrisisManagerMenu.0100.2100.name
@@ -221,9 +212,7 @@ country_event = {
 			remove_global_flag = CmtFlagTemplateAppliedNow
 		}
 	}
-	
-	
-	
+
 	### Separator
 	option = {
 		name = CmtTextSeparator.name
@@ -231,7 +220,7 @@ country_event = {
 		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
 		allow = { hidden_trigger = { always = no } }
 	}
-	
+
 	### Debag Menu
 	option = {
 		name = CrisisManagerMenu.0100.9000.name
@@ -243,7 +232,7 @@ country_event = {
 			remove_global_flag = CmtFlagTemplateAppliedNow
 		}
 	}
-	
+
 	### Exit Menu
 	option = {
 		name = CmtTextExit.name
