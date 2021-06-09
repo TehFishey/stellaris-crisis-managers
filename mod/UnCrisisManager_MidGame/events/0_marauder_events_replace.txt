@@ -325,7 +325,7 @@ country_event = {
 			}
 		}
 
-		### Unify All Marauders if Great Great Khan
+		### Unify All Marauders if Great Khan
 		if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanMultiple value = 5 } } }
 			every_country = {

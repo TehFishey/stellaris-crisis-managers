@@ -59,7 +59,7 @@ generate_lcluster_clue = {
 	hidden_effect = {
 		if = {
 			limit = {
-				no_scope = { has_distar = yes }
+				has_distar = yes
 				NOT = { has_global_flag = l_cluster_opened }
 				has_event_chain = l_cluster_chain
 				NAND = { is_ai = yes has_global_flag = CmtFlagLgateReqPlayer }

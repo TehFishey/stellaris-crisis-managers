@@ -371,23 +371,13 @@ country_event = {
 	picture = GFX_evt_l-gateway
 	show_sound = event_radio_chatter
 	# location = event_target:candidate_gateway_system
-	location = event_target:CmtTargetLgateOrininatingSystem
+	location = event_target:CmtTargetLgateOriginatingSystem
 	is_triggered_only = yes
 
 	after = {
 		hidden_effect = {
 			every_playable_country = {
 				limit = { NOR = { is_same_empire = root has_country_flag = lcluster_opener } }
-				if = {
-					limit = {
-						OR = {
-							is_researching_technology = tech_lgate_activation
-							has_technology = tech_lgate_activation
-							has_special_project = LCLUSTER_PROJECT
-						}
-					}
-					set_country_flag = CmtFlagLgateOpenFinalPhase
-				}
 				if = {
 					limit = {
 						OR = {
@@ -399,6 +389,7 @@ country_event = {
 					country_event = { id = graygoo.111 }
 				} else = { country_event = { id = graygoo.112 } }
 			}
+			clear_global_event_target = candidate_gateway_system
 		}
 	}
 
