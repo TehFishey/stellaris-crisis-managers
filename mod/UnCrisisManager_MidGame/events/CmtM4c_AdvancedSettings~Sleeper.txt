@@ -55,7 +55,7 @@ country_event = {
 	}
 	picture = GFX_evt_fallen_empire
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -81,7 +81,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4530 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -119,7 +119,6 @@ country_event = {
 	}
 }
 
-
 ### Interval for Awakening of Sleeper
 country_event = {
 	id = CrisisManagerMenu.4520
@@ -145,7 +144,7 @@ country_event = {
 	}
 	picture = GFX_evt_fallen_empire
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -158,7 +157,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4530 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -196,8 +195,6 @@ country_event = {
 	}
 }
 
-
-
 ### Sleeper to Awake at Earliest
 country_event = {
 	id = CrisisManagerMenu.4530
@@ -223,7 +220,7 @@ country_event = {
 	}
 	picture = GFX_evt_fallen_empire
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -246,7 +243,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4540 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -309,8 +306,6 @@ country_event = {
 	}
 }
 
-
-
 ### MTTH for Sleeper Awakening
 country_event = {
 	id = CrisisManagerMenu.4540
@@ -351,7 +346,7 @@ country_event = {
 	}
 	picture = GFX_evt_fallen_empire
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -364,7 +359,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4550 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -402,8 +397,6 @@ country_event = {
 	}
 }
 
-
-
 ### Required Fleet Power of Young for Awakening
 country_event = {
 	id = CrisisManagerMenu.4550
@@ -429,7 +422,7 @@ country_event = {
 	}
 	picture = GFX_evt_fallen_empire
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			event_target:CmtGlobalVar = {
@@ -446,7 +439,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4560 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -509,8 +502,6 @@ country_event = {
 	}
 }
 
-
-
 ### Required Fleet Power of Own for Awakening
 country_event = {
 	id = CrisisManagerMenu.4560
@@ -536,7 +527,7 @@ country_event = {
 	}
 	picture = GFX_evt_fallen_empire
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			event_target:CmtGlobalVar = {
@@ -553,7 +544,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4570 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -616,7 +607,6 @@ country_event = {
 	}
 }
 
-
 ### Awakenable Sleepers
 country_event = {
 	id = CrisisManagerMenu.4570
@@ -624,7 +614,7 @@ country_event = {
 	desc = CrisisManagerMenu.4570.desc
 	picture = GFX_evt_fallen_empire
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -641,14 +631,14 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4580 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextGoNextConfig.name
 		custom_tooltip = CmtTextGoNextConfig.tooltip
 		trigger = {
 			NOT = { has_country_flag = CmtFlagIndividual }
 			NAND = {
-				has_global_flag = CmtFlagSleeperForbidMaterialist 
+				has_global_flag = CmtFlagSleeperForbidMaterialist
 				has_global_flag = CmtFlagSleeperForbidSpirituarist
 				has_global_flag = CmtFlagSleeperForbidXenophile
 				has_global_flag = CmtFlagSleeperForbidXenophobe
@@ -661,29 +651,29 @@ country_event = {
 		trigger = {
 			has_country_flag = CmtFlagIndividual
 			NAND = {
-				has_global_flag = CmtFlagSleeperForbidMaterialist 
+				has_global_flag = CmtFlagSleeperForbidMaterialist
 				has_global_flag = CmtFlagSleeperForbidSpirituarist
 				has_global_flag = CmtFlagSleeperForbidXenophile
 				has_global_flag = CmtFlagSleeperForbidXenophobe
 			}
 		}
 	}
-	
+
 	option = {
 		name = CrisisManagerMenu.4570a1.name
 		custom_tooltip = CrisisManagerMenu.4570a.tooltip
-		trigger = { NOT = { has_global_flag = CmtFlagSleeperForbidMaterialist  } }
+		trigger = { NOT = { has_global_flag = CmtFlagSleeperForbidMaterialist } }
 		hidden_effect = {
-			set_global_flag = CmtFlagSleeperForbidMaterialist 
+			set_global_flag = CmtFlagSleeperForbidMaterialist
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
 	option = {
 		name = CrisisManagerMenu.4570a2.name
 		custom_tooltip = CrisisManagerMenu.4570a.tooltip
-		trigger = { has_global_flag = CmtFlagSleeperForbidMaterialist  }
+		trigger = { has_global_flag = CmtFlagSleeperForbidMaterialist }
 		hidden_effect = {
-			remove_global_flag = CmtFlagSleeperForbidMaterialist 
+			remove_global_flag = CmtFlagSleeperForbidMaterialist
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
@@ -726,22 +716,22 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.4570d1.name
 		custom_tooltip = CrisisManagerMenu.4570d.tooltip
-		trigger = { NOT = { has_global_flag = CmtFlagSleeperForbidXenophobe    } }
+		trigger = { NOT = { has_global_flag = CmtFlagSleeperForbidXenophobe } }
 		hidden_effect = {
-			set_global_flag = CmtFlagSleeperForbidXenophobe   
+			set_global_flag = CmtFlagSleeperForbidXenophobe
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
 	option = {
 		name = CrisisManagerMenu.4570d2.name
 		custom_tooltip = CrisisManagerMenu.4570d.tooltip
-		trigger = { has_global_flag = CmtFlagSleeperForbidXenophobe    }
+		trigger = { has_global_flag = CmtFlagSleeperForbidXenophobe }
 		hidden_effect = {
-			remove_global_flag = CmtFlagSleeperForbidXenophobe   
+			remove_global_flag = CmtFlagSleeperForbidXenophobe
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -757,7 +747,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
 
 ### Punishment for Holy-Cracker
 country_event = {
@@ -789,7 +778,7 @@ country_event = {
 	}
 	picture = GFX_evt_fallen_empire
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -802,7 +791,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4000 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -830,7 +819,6 @@ country_event = {
 	}
 }
 
-
 ### Dummy
 country_event = {
 	id = CrisisManagerMenu.4590
@@ -838,8 +826,6 @@ country_event = {
 	is_triggered_only = yes
 	trigger = { always = no }
 }
-
-
 
 #######################
 ###  War in Heaven  ###
@@ -885,7 +871,7 @@ country_event = {
 	}
 	picture = GFX_evt_fallen_empire_awakes
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -901,7 +887,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4620 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -938,8 +924,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### Ancient Rival
 country_event = {
@@ -981,7 +965,7 @@ country_event = {
 	}
 	picture = GFX_evt_fallen_empire_awakes
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -994,7 +978,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4630 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1032,8 +1016,6 @@ country_event = {
 	}
 }
 
-
-
 ### Awakenable Ancient Rival
 country_event = {
 	id = CrisisManagerMenu.4630
@@ -1048,7 +1030,7 @@ country_event = {
 	}
 	picture = GFX_evt_fallen_empire_awakes
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1065,7 +1047,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4640 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextGoNextConfig.name
 		custom_tooltip = CmtTextGoNextConfig.tooltip
@@ -1094,7 +1076,7 @@ country_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = CrisisManagerMenu.4630n1.name
 		custom_tooltip = CrisisManagerMenu.4630n1.tooltip
@@ -1209,7 +1191,7 @@ country_event = {
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -1226,8 +1208,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### Indomitable Rival
 country_event = {
@@ -1259,7 +1239,7 @@ country_event = {
 	}
 	picture = GFX_evt_fallen_empire_awakes
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1272,7 +1252,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4650 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1299,8 +1279,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### Progress Speed of Prelude Event to War in Heaven
 country_event = {
@@ -1337,7 +1315,7 @@ country_event = {
 	}
 	picture = GFX_evt_fallen_empire_awakes
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1350,7 +1328,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4660 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1382,8 +1360,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### League of Non-Aligned Powers
 country_event = {
@@ -1425,7 +1401,7 @@ country_event = {
 	}
 	picture = GFX_evt_fallen_empire_awakes
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1438,7 +1414,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4670 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1475,8 +1451,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### League of Non-Aligned Powers
 country_event = {
@@ -1518,7 +1492,7 @@ country_event = {
 	}
 	picture = GFX_evt_fallen_empire_awakes
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1531,7 +1505,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4680 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1568,8 +1542,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### Exhaustion from War in Heaven
 country_event = {
@@ -1611,7 +1583,7 @@ country_event = {
 	}
 	picture = GFX_evt_fallen_empire_awakes
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1624,7 +1596,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4000 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1662,8 +1634,6 @@ country_event = {
 	}
 }
 
-
-
 ### Dummy
 country_event = {
 	id = CrisisManagerMenu.4690
@@ -1671,5 +1641,4 @@ country_event = {
 	is_triggered_only = yes
 	trigger = { always = no }
 }
-
 

@@ -1254,7 +1254,7 @@ fleet_event = {
 	
 	trigger = {
 		has_fleet_flag = pet_queen
-		any_ship = { is_ship_size = queen_swarm }
+		any_galaxy_fleet = { is_ship_size = queen_swarm }
 		OR = {
 			AND = {
 				event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Prethoryn value > 2.875 } }

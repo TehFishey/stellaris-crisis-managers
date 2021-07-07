@@ -9,67 +9,60 @@
 #################################################################
 #################################################################
 
-
-
 ###################
 ###  Constants  ###
 ###################
-
-
 
 ################
 ###  Effect  ###
 ################
 
 CmtEffectResetLoop = {
-	remove_global_flag = CmtFlagLoopA
-	remove_global_flag = CmtFlagLoopB
-	remove_global_flag = CmtFlagLoopC
-	set_global_flag = CmtFlagLoopZ
+	remove_country_flag = CmtFlagLoopA
+	remove_country_flag = CmtFlagLoopB
+	remove_country_flag = CmtFlagLoopC
+	set_country_flag = CmtFlagLoopZ
 }
 
 CmtEffectProgressLoop4 = {
 	switch = {
-		trigger = has_global_flag
+		trigger = has_country_flag
 		CmtFlagLoopA = {
-			remove_global_flag = CmtFlagLoopA
-			set_global_flag = CmtFlagLoopB
+			remove_country_flag = CmtFlagLoopA
+			set_country_flag = CmtFlagLoopB
 		}
 		CmtFlagLoopB = {
-			remove_global_flag = CmtFlagLoopB
-			set_global_flag = CmtFlagLoopC
+			remove_country_flag = CmtFlagLoopB
+			set_country_flag = CmtFlagLoopC
 		}
 		CmtFlagLoopC = {
-			remove_global_flag = CmtFlagLoopC
-			set_global_flag = CmtFlagLoopZ
+			remove_country_flag = CmtFlagLoopC
+			set_country_flag = CmtFlagLoopZ
 		}
 		CmtFlagLoopZ = {
-			remove_global_flag = CmtFlagLoopZ
-			set_global_flag = CmtFlagLoopA
+			remove_country_flag = CmtFlagLoopZ
+			set_country_flag = CmtFlagLoopA
 		}
 	}
 }
-
 
 CmtEffectProgressLoop2 = {
 	switch = {
-		trigger = has_global_flag
+		trigger = has_country_flag
 		CmtFlagLoopA = {
-			remove_global_flag = CmtFlagLoopA
-			set_global_flag = CmtFlagLoopZ
+			remove_country_flag = CmtFlagLoopA
+			set_country_flag = CmtFlagLoopZ
 		}
 		CmtFlagLoopZ = {
-			remove_global_flag = CmtFlagLoopZ
-			set_global_flag = CmtFlagLoopA
+			remove_country_flag = CmtFlagLoopZ
+			set_country_flag = CmtFlagLoopA
 		}
 	}
 }
-
 
 ###########################
 ###  Modify Ship Speed  ###
 ###########################
-
 
 ### Apply Modifier
 
@@ -265,8 +258,6 @@ CmtEffectFasterCybrexCombatShip = {
 	}
 }
 
-
-
 ### Change Modifier
 
 CmtEffectFasterConstructorChanged = {
@@ -329,7 +320,6 @@ CmtEffectFasterConstructorChanged = {
 		}
 	}
 }
-
 
 CmtEffectFasterCombatShipChanged = {
 	every_country = {

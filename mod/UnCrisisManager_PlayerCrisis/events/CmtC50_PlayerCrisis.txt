@@ -826,13 +826,13 @@ country_event = {
 			every_system_planet = {
 				limit = {
 					is_colony = yes
-					NOT = { owner = { is_same_value = root } }
+					NOT = { is_owned_by = root }
 				}
 				if = {
 					limit = {
 						NOT = { exists = event_target:CmtTargetCheaplyLiquidatedOwner }
 						exists = owner
-						NOT = { owner = { is_same_value = root } }
+						NOT = { is_owned_by = root }
 					}
 					owner = { save_event_target_as = CmtTargetCheaplyLiquidatedOwner }
 				}
@@ -840,12 +840,12 @@ country_event = {
 				root = { set_timed_country_flag = { flag = CmtFlagParamilitaryLiquidateColony days = 1 } }
 			}
 			every_fleet_in_system = {
-				limit = { NOT = { owner = { is_same_value = root } } }
+				limit = { NOT = { is_owned_by = root } }
 				if = {
 					limit = {
 						NOT = { exists = event_target:CmtTargetCheaplyLiquidatedOwner }
 						exists = owner
-						NOT = { owner = { is_same_value = root } }
+						NOT = { is_owned_by = root }
 					}
 					owner = { save_event_target_as = CmtTargetCheaplyLiquidatedOwner }
 				}
@@ -1297,17 +1297,17 @@ country_event = {
 #			80 = {
 #				modifier = {
 #					factor = 0
-#					count_owned_pops = { limit = { is_growing = no } count < 3 }
+#					count_owned_pop = { limit = { is_growing = no } count < 3 }
 #				}
 #			}
 #			20 = {
 #				modifier = {
 #					factor = 1.5
-#					count_owned_pops = { limit = { is_growing = no } count < 6 }
+#					count_owned_pop = { limit = { is_growing = no } count < 6 }
 #				}
 #				modifier = {
 #					factor = 0
-#					count_owned_pops = { limit = { is_growing = no } count > 10 }
+#					count_owned_pop = { limit = { is_growing = no } count > 10 }
 #				}
 #				random_tile = {
 #				limit = { CmtTriggerAntiBomberdmentBuildings = yes }

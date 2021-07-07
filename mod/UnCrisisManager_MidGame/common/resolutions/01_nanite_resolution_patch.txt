@@ -1,0 +1,157 @@
+@resolution_weight_normal = 6
+@resolution_cost_t1 = 100
+@resolution_flag_timer = 360
+## Vanilla Workaround Fix (still only static and more expensively)! Needs to be tested! (dynamic would be in relation to galaxy_size)
+## Using event_target for better performance and usability
+resolution_galactic_focus_crisis_nanites = {
+	icon = "GFX_resolution_emergency_measure"
+	resources = {
+		category = resolutions
+		cost = { influence = @resolution_cost_t1 }
+	}
+	target = no
+	# harmful = yes
+	effect = {
+		custom_tooltip = resolution_galactic_focus_crisis_nanites_effect_success
+		hidden_effect = {
+			repeal_all_galactic_focus_resolutions = yes
+			set_global_flag = galactic_focus_crisis_nanites
+			set_global_flag = galactic_community_crisis_fighting
+			set_global_flag = galactic_community_resolution_passed
+			set_timed_country_flag = {
+				flag = galactic_community_resolution_passed_general
+				days = @resolution_flag_timer
+			}
+			add_modifier = {
+				modifier = resolution_passed_diplomatic_weight
+				days = 2200
+			}
+		}
+	}
+	fail_effects = {
+		hidden_effect = {
+			set_timed_country_flag = {
+				flag = galactic_community_resolution_failed_general
+				days = @resolution_flag_timer
+			}
+			add_modifier = {
+				modifier = resolution_failed_diplomatic_weight
+				days = 2200
+			}
+		}
+	}
+	potential = {
+		has_global_flag = gray_goo_crisis_active
+		NOT = { has_global_flag = galactic_focus_crisis_nanites }
+	}
+	active = {
+		# Resolution only in effect while this trigger is met
+		has_global_flag = gray_goo_crisis_active
+	}
+	ai_weight = {
+		base = @resolution_weight_normal
+		modifier = {
+			factor = 2
+			# any_neighbor_country = { is_same_empire = event_target:graygoo_country }
+			OR = {
+				has_country_flag = nanite_bomb_affected
+				event_target:graygoo_country = { num_killed_ships = { target = prev value > 15 } }
+				event_target:graygoo_country = {
+					any_owned_fleet = {
+						exists = solar_system
+						solar_system = {
+							NOT = { has_star_flag = lcluster }
+							any_neighbor_system = {
+								has_owner = yes
+								is_owned_by = prevprevprevprev
+							}
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.75
+			event_target:graygoo_country = {
+				# galaxy_percentage < 0.1
+				fleet_power <= 300000
+			}
+		}
+		modifier = {
+			factor = 1.1
+			event_target:graygoo_country = {
+				fleet_power > 300000
+				# fleet_power <= 500000 # not needed as the next modifier triggers anyway (simple math op. should be cheaper than EUD conditional statements)
+				# galaxy_percentage > 0.1
+				# galaxy_percentage <= 0.2
+			}
+		}
+		modifier = {
+			factor = 1.37 # 1.5
+			event_target:graygoo_country = {
+				fleet_power > 500000
+				# fleet_power <= 750000
+				# galaxy_percentage > 0.2
+				# galaxy_percentage <= 0.3
+			}
+		}
+		modifier = {
+			factor = 1.33 # 2
+			event_target:graygoo_country = {
+				fleet_power > 750000
+				# fleet_power <= 1100000
+				# galaxy_percentage > 0.3
+				# galaxy_percentage <= 0.4
+			}
+		}
+		modifier = {
+			factor = 1.5 # 3
+			event_target:graygoo_country = {
+				fleet_power > 1100000
+				# fleet_power <= 1600000
+				# galaxy_percentage > 0.4
+				# galaxy_percentage <= 0.5
+			}
+		}
+		modifier = {
+			factor = 3.33 # 10
+			event_target:graygoo_country = {
+				fleet_power > 1600000
+				# galaxy_percentage > 0.5
+			}
+		}
+		modifier = {
+			factor = 10
+			has_ascension_perk = ap_defender_of_the_galaxy
+		}
+		modifier = {
+			factor = 1.2
+			is_militarist = yes
+		}
+		modifier = {
+			factor = 1.2
+			is_materialist = yes
+		}
+		modifier = {
+			factor = 0.5
+			is_xenophobe = yes
+			NOR = {
+				# any_neighbor_country = { is_same_empire = event_target:graygoo_country }
+				has_country_flag = nanite_bomb_affected
+				event_target:graygoo_country = { num_killed_ships = { target = prev value > 15 } }
+				event_target:graygoo_country = {
+					any_owned_fleet = {
+						exists = solar_system
+						solar_system = {
+							NOT = { has_star_flag = lcluster }
+							any_neighbor_system = {
+								has_owner = yes
+								is_owned_by = prevprevprevprev
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -79,7 +79,7 @@ CmtEffectClearGhostSignalGalaxy = {
 			CmtModifierMachinePopGhostSignal_4e = { remove_modifier = CmtModifierMachinePopGhostSignal_4e }
 		}
 	}
-	every_ship = {
+	every_galaxy_fleet = {
 		limit = { has_sapient_combat_computer = yes }
 		CmtEffectClearGhostSignalShip = yes
 	}

@@ -19,9 +19,9 @@ country_event = {
 	title = CrisisManagerMenu.6000.name
 	desc = CrisisManagerMenu.6000.desc
 	picture = GFX_evt_small_space_battle
-	
+
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			CmtEffectTransferCrisisPower = yes
@@ -34,7 +34,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6000 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -152,7 +152,7 @@ country_event = {
 			}
 		}
 	}
-	
+
 	### Advanced Configurations
 	option = {
 		name = CrisisManagerMenu.6000y.name
@@ -163,7 +163,7 @@ country_event = {
 			country_event = { id = CrisisManagerMenu.6100 }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextSeparator.name
 		custom_tooltip = CmtTextSeparator.tooltip
@@ -219,9 +219,9 @@ country_event = {
 	title = CrisisManagerMenu.6001.name
 	desc = CrisisManagerMenu.6001.desc
 	picture = GFX_evt_small_space_battle
-	
+
 	is_triggered_only = yes
-	
+
 	option = {
 		name = CmtTextGoNextPage.name
 		custom_tooltip = CmtTextGoNextPage.tooltip
@@ -240,9 +240,9 @@ country_event = {
 	title = CrisisManagerMenu.6002.name
 	desc = CrisisManagerMenu.6002.desc
 	picture = GFX_evt_small_space_battle
-	
+
 	is_triggered_only = yes
-	
+
 	option = {
 		name = CmtTextOK.name
 		custom_tooltip = CmtTextOK.tooltip
@@ -256,9 +256,9 @@ country_event = {
 	title = CrisisManagerMenu.6011.name
 	desc = CrisisManagerMenu.6011.desc
 	picture = GFX_evt_small_space_battle
-	
+
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -267,7 +267,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6000 } }
 		}
 	}
-	
+
 	option = {
 		name = CrisisManagerMenu.601xa.name
 		custom_tooltip = CrisisManagerMenu.601xa.tooltip
@@ -308,9 +308,9 @@ country_event = {
 	title = CrisisManagerMenu.6012.name
 	desc = CrisisManagerMenu.6012.desc
 	picture = GFX_evt_small_space_battle
-	
+
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -319,7 +319,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6000 } }
 		}
 	}
-	
+
 	option = {
 		name = CrisisManagerMenu.601xa.name
 		custom_tooltip = CrisisManagerMenu.601xa.tooltip
@@ -360,9 +360,9 @@ country_event = {
 	title = CrisisManagerMenu.6013.name
 	desc = CrisisManagerMenu.6013.desc
 	picture = GFX_evt_small_space_battle
-	
+
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -371,7 +371,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6000 } }
 		}
 	}
-	
+
 	option = {
 		name = CrisisManagerMenu.601xa.name
 		custom_tooltip = CrisisManagerMenu.601xa.tooltip
@@ -412,9 +412,9 @@ country_event = {
 	title = CrisisManagerMenu.6014.name
 	desc = CrisisManagerMenu.6014.desc
 	picture = GFX_evt_small_space_battle
-	
+
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -423,7 +423,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6000 } }
 		}
 	}
-	
+
 	option = {
 		name = CrisisManagerMenu.601xa.name
 		custom_tooltip = CrisisManagerMenu.601xa.tooltip
@@ -464,9 +464,9 @@ country_event = {
 	title = CrisisManagerMenu.6015.name
 	desc = CrisisManagerMenu.6015.desc
 	picture = GFX_evt_small_space_battle
-	
+
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -475,7 +475,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6000 } }
 		}
 	}
-	
+
 	option = {
 		name = CrisisManagerMenu.601xa.name
 		custom_tooltip = CrisisManagerMenu.601xa.tooltip
@@ -509,8 +509,6 @@ country_event = {
 		}
 	}
 }
-
-
 
 #####################
 ###  Fleet Power  ###
@@ -550,7 +548,7 @@ country_event = {
 				} else = { country_event = { id = CrisisManagerMenu.6000 } }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -569,7 +567,7 @@ country_event = {
 			country_event = { id = CrisisManagerMenu.6200 }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -630,15 +628,14 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6100.300.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarFleetPower_Common value = 3.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextSetIndividually.name
 		custom_tooltip = CmtTextSetIndividually.tooltip
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagSpMenu }
 	}
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -662,7 +659,7 @@ country_event = {
 				country_event = { id = CrisisManagerMenu.6100 }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -679,7 +676,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6102 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -740,8 +737,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6101.300.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarFleetPower_Prethoryn value = 3.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -765,7 +761,7 @@ country_event = {
 				country_event = { id = CrisisManagerMenu.6101 }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -782,7 +778,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6103 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -843,8 +839,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6102.300.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarFleetPower_Sentinel value = 3.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -868,7 +863,7 @@ country_event = {
 				country_event = { id = CrisisManagerMenu.6102 }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -885,7 +880,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6104 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -946,8 +941,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6103.300.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarFleetPower_Unbidden value = 3.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -971,7 +965,7 @@ country_event = {
 				country_event = { id = CrisisManagerMenu.6103 }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -988,7 +982,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6105 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1049,8 +1043,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6104.300.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarFleetPower_Aberrant value = 3.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -1074,7 +1067,7 @@ country_event = {
 				country_event = { id = CrisisManagerMenu.6104 }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -1091,7 +1084,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6106 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1152,8 +1145,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6105.300.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarFleetPower_Vehement value = 3.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -1177,7 +1169,7 @@ country_event = {
 				country_event = { id = CrisisManagerMenu.6105 }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -1194,7 +1186,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6107 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1255,8 +1247,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6106.300.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarFleetPower_Contingency value = 3.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -1280,7 +1271,7 @@ country_event = {
 				country_event = { id = CrisisManagerMenu.6106 }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -1300,7 +1291,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6200 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1361,8 +1352,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6107.300.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarFleetPower_Cybrex value = 3.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -1389,7 +1379,7 @@ country_event = {
 				} else = { country_event = { id = CrisisManagerMenu.6100 } }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -1406,7 +1396,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6112 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1467,8 +1457,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6111.300.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarFleetPower_Khan value = 3.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -1491,7 +1480,7 @@ country_event = {
 				remove_country_flag = CmtFlagGoBack
 				country_event = { id = CrisisManagerMenu.6111 }
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -1508,7 +1497,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6113 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1569,8 +1558,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6112.300.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarFleetPower_Graygoo value = 3.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -1593,7 +1581,7 @@ country_event = {
 				remove_country_flag = CmtFlagGoBack
 				country_event = { id = CrisisManagerMenu.6112 }
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -1610,7 +1598,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6200 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1671,8 +1659,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6113.300.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarFleetPower_Dessanu value = 3.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -1680,8 +1667,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ####################
 ###  Army Power  ###
@@ -1700,7 +1685,7 @@ country_event = {
 	}
 	picture = GFX_evt_ground_combat
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1727,7 +1712,7 @@ country_event = {
 				} else = { country_event = { id = CrisisManagerMenu.6000 } }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -1744,7 +1729,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6300 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1805,15 +1790,14 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6200.300.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarArmyPower_Common value = 3.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextSetIndividually.name
 		custom_tooltip = CmtTextSetIndividually.tooltip
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagSpMenu }
 	}
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -1837,7 +1821,7 @@ country_event = {
 				country_event = { id = CrisisManagerMenu.6200 }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -1854,7 +1838,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6206 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1915,8 +1899,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6201.300.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarArmyPower_Prethoryn value = 3.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -1940,7 +1923,7 @@ country_event = {
 				country_event = { id = CrisisManagerMenu.6201 }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -1960,7 +1943,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6300 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2021,8 +2004,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6206.300.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarArmyPower_Contingency value = 3.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -2049,7 +2031,7 @@ country_event = {
 				} else = { country_event = { id = CrisisManagerMenu.6200 } }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -2066,7 +2048,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6300 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2127,8 +2109,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6211.300.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarArmyPower_Khan value = 3.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -2136,8 +2117,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 #################################
 ###  Number of Combat Fleets  ###
@@ -2177,7 +2156,7 @@ country_event = {
 				} else = { country_event = { id = CrisisManagerMenu.6000 } }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -2194,7 +2173,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6400 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2285,15 +2264,14 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6300.A00.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarCombatFleetNumber_Common value = 10.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextSetIndividually.name
 		custom_tooltip = CmtTextSetIndividually.tooltip
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagSpMenu }
 	}
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -2317,7 +2295,7 @@ country_event = {
 				country_event = { id = CrisisManagerMenu.6300 }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -2334,7 +2312,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6302 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2425,8 +2403,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6301.A00.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarCombatFleetNumber_Prethoryn value = 10.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -2450,7 +2427,7 @@ country_event = {
 				country_event = { id = CrisisManagerMenu.6301 }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -2467,7 +2444,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6303 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2558,8 +2535,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6302.A00.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarCombatFleetNumber_Sentinel value = 10.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -2583,7 +2559,7 @@ country_event = {
 				country_event = { id = CrisisManagerMenu.6302 }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -2600,7 +2576,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6304 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2691,8 +2667,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6303.A00.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarCombatFleetNumber_Unbidden value = 10.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -2716,7 +2691,7 @@ country_event = {
 				country_event = { id = CrisisManagerMenu.6303 }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -2733,7 +2708,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6305 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2824,8 +2799,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6304.A00.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarCombatFleetNumber_Aberrant value = 10.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -2849,7 +2823,7 @@ country_event = {
 				country_event = { id = CrisisManagerMenu.6304 }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -2866,7 +2840,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6306 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2957,8 +2931,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6305.A00.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarCombatFleetNumber_Vehement value = 10.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -2998,7 +2971,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6307 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -3089,8 +3062,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6306.A00.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarCombatFleetNumber_Contingency value = 10.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -3114,7 +3086,7 @@ country_event = {
 				country_event = { id = CrisisManagerMenu.6306 }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -3134,7 +3106,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6400 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -3225,8 +3197,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6307.A00.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarCombatFleetNumber_Cybrex value = 10.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -3253,7 +3224,7 @@ country_event = {
 				} else = { country_event = { id = CrisisManagerMenu.6300 } }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -3270,7 +3241,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6312 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -3361,8 +3332,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6311.A00.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarCombatFleetNumber_Khan value = 10.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -3386,7 +3356,7 @@ country_event = {
 				country_event = { id = CrisisManagerMenu.6311 }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -3403,7 +3373,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6313 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -3494,8 +3464,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6312.A00.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarCombatFleetNumber_Graygoo value = 10.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -3519,7 +3488,7 @@ country_event = {
 				country_event = { id = CrisisManagerMenu.6312 }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -3536,7 +3505,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6400 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -3627,8 +3596,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6313.A00.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarCombatFleetNumber_Dessanu value = 10.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -3636,8 +3604,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ##############################
 ###  Number of Army Fleets ###
@@ -3677,7 +3643,7 @@ country_event = {
 				} else = { country_event = { id = CrisisManagerMenu.6000 } }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -3694,7 +3660,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6500 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -3785,15 +3751,14 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6400.A00.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarArmyNumber_Common value = 10.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextSetIndividually.name
 		custom_tooltip = CmtTextSetIndividually.tooltip
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagSpMenu }
 	}
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -3817,7 +3782,7 @@ country_event = {
 				country_event = { id = CrisisManagerMenu.6400 }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -3834,7 +3799,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6406 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -3925,8 +3890,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6401.A00.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarArmyNumber_Prethoryn value = 10.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -3950,7 +3914,7 @@ country_event = {
 				country_event = { id = CrisisManagerMenu.6401 }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -3970,7 +3934,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6500 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -4061,8 +4025,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6406.A00.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarArmyNumber_Contingency value = 10.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -4089,7 +4052,7 @@ country_event = {
 				} else = { country_event = { id = CrisisManagerMenu.6400 } }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -4106,7 +4069,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6500 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -4197,8 +4160,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6411.A00.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarArmyNumber_Khan value = 10.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -4206,8 +4168,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ###################################
 ###  Number of Auxiliary Ships  ###
@@ -4247,7 +4207,7 @@ country_event = {
 				} else = { country_event = { id = CrisisManagerMenu.6000 } }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -4264,7 +4224,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6000 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -4355,15 +4315,14 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6500.A00.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarConstructorNumber_Common value = 10.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextSetIndividually.name
 		custom_tooltip = CmtTextSetIndividually.tooltip
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagSpMenu }
 	}
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -4387,7 +4346,7 @@ country_event = {
 				country_event = { id = CrisisManagerMenu.6500 }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -4404,7 +4363,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6503 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -4495,8 +4454,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6501.A00.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarConstructorNumber_Prethoryn value = 10.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -4520,7 +4478,7 @@ country_event = {
 				country_event = { id = CrisisManagerMenu.6501 }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -4537,7 +4495,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6504 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -4628,8 +4586,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6503.A00.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarConstructorNumber_Unbidden value = 10.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -4653,7 +4610,7 @@ country_event = {
 				country_event = { id = CrisisManagerMenu.6503 }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -4670,7 +4627,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6505 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -4761,8 +4718,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6504.A00.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarConstructorNumber_Aberrant value = 10.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -4786,7 +4742,7 @@ country_event = {
 				country_event = { id = CrisisManagerMenu.6504 }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -4803,7 +4759,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6506 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -4894,8 +4850,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6505.A00.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarConstructorNumber_Vehement value = 10.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -4919,7 +4874,7 @@ country_event = {
 				country_event = { id = CrisisManagerMenu.6505 }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -4939,7 +4894,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6000 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -5030,8 +4985,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6506.A00.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarConstructorNumber_Contingency value = 10.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -5058,7 +5012,7 @@ country_event = {
 				} else = { country_event = { id = CrisisManagerMenu.6500 } }
 				break = yes
 			}
-			
+
 			if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
@@ -5075,7 +5029,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.6000 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -5166,8 +5120,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.6511.A00.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarConstructorNumber_Khan value = 10.00 } } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -5175,6 +5128,4 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 

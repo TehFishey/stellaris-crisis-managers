@@ -11,7 +11,6 @@ namespace = crisis
 ####################################
 ####################################
 
-
 ### Debug Menu
 country_event = {
 	id = CrisisManagerMenu.9000
@@ -19,21 +18,21 @@ country_event = {
 	desc = CrisisManagerMenu.9000.desc
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-	
+
 	## Variable Checker
 	option = {
 		name = CrisisManagerMenu.9000.9100.name
 		trigger = { has_global_flag = CmtFlagDebugMode }
 		country_event = { id = CrisisManagerMenu.9100 }
 	}
-	
+
 	## Flag Controller
 	option = {
 		name = CrisisManagerMenu.9000.9200.name
 		trigger = { has_global_flag = CmtFlagDebugMode }
 		country_event = { id = CrisisManagerMenu.9200 }
 	}
-	
+
 	## Separator
 	option = {
 		name = CmtTextSeparator.name
@@ -41,35 +40,35 @@ country_event = {
 		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
 		allow = { hidden_trigger = { always = no } }
 	}
-	
+
 	## Count Triggered Crisis
 	option = {
 		name = CrisisManagerMenu.9000.9310.name
 		trigger = { has_global_flag = CmtFlagDebugMode }
 		country_event = { id = CrisisManagerMenu.9310 }
 	}
-	
+
 	## Count Awakening of Sleeper
 	option = {
 		name = CrisisManagerMenu.9000.9320.name
 		trigger = { has_global_flag = CmtFlagDebugMode }
 		country_event = { id = CrisisManagerMenu.9320 }
 	}
-	
+
 	## Count Ancient Rival
 	option = {
 		name = CrisisManagerMenu.9000.9330.name
 		trigger = { has_global_flag = CmtFlagDebugMode }
 		country_event = { id = CrisisManagerMenu.9330 }
 	}
-	
+
 	## Count Guardians of Galaxy
 	option = {
 		name = CrisisManagerMenu.9000.9340.name
 		trigger = { has_global_flag = CmtFlagDebugMode }
 		country_event = { id = CrisisManagerMenu.9340 }
 	}
-	
+
 	## Separator
 	option = {
 		name = CmtTextSeparator.name
@@ -77,30 +76,28 @@ country_event = {
 		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
 		allow = { hidden_trigger = { always = no } }
 	}
-	
+
 	## FIOS/LIOS Test
 	option = {
 		name = CrisisManagerMenu.9000.9910.name
 		trigger = { has_global_flag = CmtFlagDebugMode }
 		country_event = { id = CrisisManagerMenu.9910 }
 	}
-	
+
 	## If/Else Test
 	option = {
 		name = CrisisManagerMenu.9000.9920.name
 		trigger = { has_global_flag = CmtFlagDebugMode }
 		country_event = { id = CrisisManagerMenu.9920 }
 	}
-	
+
 	## Go Back to Main Menu
 	option = {
 		name = CmtTextGoBack.name
 		country_event = { id = CrisisManagerMenu.0100 }
 	}
-	
+
 }
-
-
 
 ### Variable Checker
 country_event = {
@@ -109,13 +106,13 @@ country_event = {
 	desc = CrisisManagerMenu.9100.desc
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-	
+
 	option = {
 		name = CmtTextOK.name
 		country_event = { id = CrisisManagerMenu.9000 }
 	}
 }
-	
+
 ### Flag Controller
 country_event = {
 	id = CrisisManagerMenu.9200
@@ -123,7 +120,7 @@ country_event = {
 	desc = CrisisManagerMenu.9200.desc
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-	
+
 	option = {
 		name = CrisisManagerMenu.9200.11a.name
 		trigger = { NOT = { has_global_flag = galactic_crisis_happened } }
@@ -184,16 +181,14 @@ country_event = {
 		remove_global_flag = CmtFlagNowInInterval
 		country_event = { id = CrisisManagerMenu.9200 }
 	}
-	
-	
+
 	option = {
 		name = CmtTextSeparator.name
 		custom_tooltip = CmtTextSeparator.tooltip
 		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
 		allow = { hidden_trigger = { always = no } }
 	}
-	
-	
+
 	option = {
 		name = CrisisManagerMenu.9200.21a.name
 		trigger = { NOT = { has_global_flag = CmtFlagActivated } }
@@ -206,24 +201,20 @@ country_event = {
 		remove_global_flag = CmtFlagActivated
 		country_event = { id = CrisisManagerMenu.9200 }
 	}
-	
-	
+
 	option = {
 		name = CmtTextSeparator.name
 		custom_tooltip = CmtTextSeparator.tooltip
 		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
 		allow = { hidden_trigger = { always = no } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
 		hidden_effect = { country_event = { id = CrisisManagerMenu.9000 } }
 	}
 }
-
-
 
 ### Count Triggered Crisis
 country_event = {
@@ -232,8 +223,7 @@ country_event = {
 	desc = CrisisManagerMenu.9310.desc
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-	
-	
+
 	option = {
 		name = CrisisManagerMenu.9310a.name
 		while = {
@@ -241,7 +231,7 @@ country_event = {
 			country_event = { id = CrisisManagerControl.0012 }
 		}
 	}
-	
+
 	option = {
 		name = CrisisManagerMenu.9310b.name
 		event_target:CmtGlobalVar = {
@@ -252,7 +242,7 @@ country_event = {
 			set_variable = { which = GmtVarDebugCountTriggerNon value = 0 }
 		}
 	}
-	
+
 	## Separator
 	option = {
 		name = CmtTextSeparator.name
@@ -260,14 +250,13 @@ country_event = {
 		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
 		allow = { hidden_trigger = { always = no } }
 	}
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
-	
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -284,8 +273,6 @@ country_event = {
 	}
 }
 
-
-
 ### Count Awakening of Sleeper
 country_event = {
 	id = CrisisManagerMenu.9320
@@ -293,8 +280,7 @@ country_event = {
 	desc = CrisisManagerMenu.9320.desc
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-	
-	
+
 	option = {
 		name = CrisisManagerMenu.9320a1.name
 		every_country = {
@@ -305,7 +291,7 @@ country_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = CrisisManagerMenu.9320a2.name
 		random_country = {
@@ -316,7 +302,7 @@ country_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = CrisisManagerMenu.9320b.name
 		event_target:CmtGlobalVar = {
@@ -324,7 +310,7 @@ country_event = {
 			set_variable = { which = GmtVarDebugCountSleeperSleeping value = 0 }
 		}
 	}
-	
+
 	## Separator
 	option = {
 		name = CmtTextSeparator.name
@@ -332,14 +318,13 @@ country_event = {
 		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
 		allow = { hidden_trigger = { always = no } }
 	}
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
-	
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -356,8 +341,6 @@ country_event = {
 	}
 }
 
-
-
 ### Count Ancient Rival
 country_event = {
 	id = CrisisManagerMenu.9330
@@ -365,8 +348,7 @@ country_event = {
 	desc = CrisisManagerMenu.9330.desc
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-	
-	
+
 	option = {
 		name = CrisisManagerMenu.9330a.name
 		random_country = {
@@ -378,7 +360,7 @@ country_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = CrisisManagerMenu.9330b.name
 		event_target:CmtGlobalVar = {
@@ -387,7 +369,7 @@ country_event = {
 			set_variable = { which = GmtVarDebugCountAncientRivalNon value = 0 }
 		}
 	}
-	
+
 	## Separator
 	option = {
 		name = CmtTextSeparator.name
@@ -395,14 +377,13 @@ country_event = {
 		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
 		allow = { hidden_trigger = { always = no } }
 	}
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
-	
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -419,8 +400,6 @@ country_event = {
 	}
 }
 
-
-
 ### Count Guardians of Galaxy
 country_event = {
 	id = CrisisManagerMenu.9340
@@ -428,8 +407,7 @@ country_event = {
 	desc = CrisisManagerMenu.9340.desc
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-	
-	
+
 	option = {
 		name = CrisisManagerMenu.9340a.name
 		while = {
@@ -437,7 +415,7 @@ country_event = {
 			awaken_guardians_of_the_galaxy = yes
 		}
 	}
-	
+
 	option = {
 		name = CrisisManagerMenu.9340b.name
 		event_target:CmtGlobalVar = {
@@ -446,7 +424,7 @@ country_event = {
 			set_variable = { which = GmtVarDebugCountTriggerNoGuardians value = 0 }
 		}
 	}
-	
+
 	## Separator
 	option = {
 		name = CmtTextSeparator.name
@@ -454,14 +432,13 @@ country_event = {
 		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
 		allow = { hidden_trigger = { always = no } }
 	}
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
-	
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -478,8 +455,6 @@ country_event = {
 	}
 }
 
-
-
 ### FIOS/LIOS Test
 country_event = {
 	id = CrisisManagerMenu.9910
@@ -487,7 +462,7 @@ country_event = {
 	desc = CrisisManagerMenu.9910.desc
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -502,7 +477,7 @@ country_event = {
 	desc = CrisisManagerMenu.9920.desc
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-	
+
 	immediate = {
 		event_target:CmtGlobalVar = {
 			set_variable = { which = CmtVarIfElseCheck value = 0 }
@@ -520,8 +495,7 @@ country_event = {
 					change_variable = { which = CmtVarIfElseCheck value = -1000 }
 				} else = { change_variable = { which = CmtVarIfElseCheck value = 0.2 } }		## Old Structure
 			}
-			
-			
+
 			if = {
 				limit = { always = no }
 			} else_if = {
@@ -531,25 +505,7 @@ country_event = {
 			} else_if = {
 				limit = { always = no }
 			} else = { change_variable = { which = CmtVarIfElseCheck value = 4 } }
-			
-			if = {
-				limit = { always = no }
-			} else_if = {
-				limit = { always = no }
-			} else_if = {
-				limit = { always = no }
-			} else_if = {
-				limit = { always = no }
-			} else_if = {
-				limit = { always = no }
-			} else_if = {
-				limit = { always = no }
-			} else_if = {
-				limit = { always = no }
-			} else_if = {
-				limit = { always = no }
-			} else = { change_variable = { which = CmtVarIfElseCheck value = 4 } }
-			
+
 			if = {
 				limit = { always = no }
 			} else_if = {
@@ -566,6 +522,24 @@ country_event = {
 				limit = { always = no }
 			} else_if = {
 				limit = { always = no }
+			} else = { change_variable = { which = CmtVarIfElseCheck value = 4 } }
+
+			if = {
+				limit = { always = no }
+			} else_if = {
+				limit = { always = no }
+			} else_if = {
+				limit = { always = no }
+			} else_if = {
+				limit = { always = no }
+			} else_if = {
+				limit = { always = no }
+			} else_if = {
+				limit = { always = no }
+			} else_if = {
+				limit = { always = no }
+			} else_if = {
+				limit = { always = no }
 			} else_if = {
 				limit = { always = no }
 			} else_if = {
@@ -575,7 +549,7 @@ country_event = {
 			} else_if = {
 				limit = { always = no }
 			} else = { change_variable = { which = CmtVarIfElseCheck value = 4 } }
-			
+
 			if = {
 				limit = { always = no }
 			} else_if = {
@@ -618,7 +592,6 @@ country_event = {
 	}
 }
 
-
 ### Call Debug Mode from Console
 country_event = {
 	id = crisis.9999
@@ -626,7 +599,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = { always = no }
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagDebugMode }
@@ -634,4 +607,4 @@ country_event = {
 		} else = { set_global_flag = CmtFlagDebugMode }
 	}
 }
-	
+

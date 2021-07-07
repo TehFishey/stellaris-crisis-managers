@@ -1442,7 +1442,7 @@ country_event = {
 	after = {
 		hidden_effect = {
 			if = {
-				limit = { exists = event_target:CmtTargetLgateOrininatingSystem }
+				limit = { exists = event_target:CmtTargetLgateOriginatingSystem }
 				set_global_flag = CmtFlagLgatePreludeTriggered
 				event_target:CmtGlobalVar = {
 					if = {
@@ -1466,7 +1466,7 @@ country_event = {
 						remove_global_flag = CmtFlagLgateForbidGraygoo
 					}
 				}
-				event_target:CmtTargetLgateOrininatingSystem = {
+				event_target:CmtTargetLgateOriginatingSystem = {
 					if = {
 						limit = {
 							exists = owner
@@ -1512,7 +1512,7 @@ country_event = {
 		hidden_effect = {
 			random_megastructure = {
 				limit = { CmtTriggerIsClosedLgate = yes }
-				solar_system = { save_global_event_target_as = CmtTargetLgateOrininatingSystem }
+				solar_system = { save_global_event_target_as = CmtTargetLgateOriginatingSystem }
 			}
 		}
 	}
@@ -1520,49 +1520,49 @@ country_event = {
 		name = CrisisManagerMenu.7141c1.name
 		custom_tooltip = CrisisManagerMenu.7141c.tooltip
 		trigger = { exists = event_target:CmtTargetManualLgateSystem1 }
-		hidden_effect = { event_target:CmtTargetManualLgateSystem1 = { save_global_event_target_as = CmtTargetLgateOrininatingSystem } }
+		hidden_effect = { event_target:CmtTargetManualLgateSystem1 = { save_global_event_target_as = CmtTargetLgateOriginatingSystem } }
 	}
 	option = {
 		name = CrisisManagerMenu.7141c2.name
 		custom_tooltip = CrisisManagerMenu.7141c.tooltip
 		trigger = { exists = event_target:CmtTargetManualLgateSystem2 }
-		hidden_effect = { event_target:CmtTargetManualLgateSystem2 = { save_global_event_target_as = CmtTargetLgateOrininatingSystem } }
+		hidden_effect = { event_target:CmtTargetManualLgateSystem2 = { save_global_event_target_as = CmtTargetLgateOriginatingSystem } }
 	}
 	option = {
 		name = CrisisManagerMenu.7141c3.name
 		custom_tooltip = CrisisManagerMenu.7141c.tooltip
 		trigger = { exists = event_target:CmtTargetManualLgateSystem3 }
-		hidden_effect = { event_target:CmtTargetManualLgateSystem3 = { save_global_event_target_as = CmtTargetLgateOrininatingSystem } }
+		hidden_effect = { event_target:CmtTargetManualLgateSystem3 = { save_global_event_target_as = CmtTargetLgateOriginatingSystem } }
 	}
 	option = {
 		name = CrisisManagerMenu.7141c4.name
 		custom_tooltip = CrisisManagerMenu.7141c.tooltip
 		trigger = { exists = event_target:CmtTargetManualLgateSystem4 }
-		hidden_effect = { event_target:CmtTargetManualLgateSystem4 = { save_global_event_target_as = CmtTargetLgateOrininatingSystem } }
+		hidden_effect = { event_target:CmtTargetManualLgateSystem4 = { save_global_event_target_as = CmtTargetLgateOriginatingSystem } }
 	}
 	option = {
 		name = CrisisManagerMenu.7141c5.name
 		custom_tooltip = CrisisManagerMenu.7141c.tooltip
 		trigger = { exists = event_target:CmtTargetManualLgateSystem5 }
-		hidden_effect = { event_target:CmtTargetManualLgateSystem5 = { save_global_event_target_as = CmtTargetLgateOrininatingSystem } }
+		hidden_effect = { event_target:CmtTargetManualLgateSystem5 = { save_global_event_target_as = CmtTargetLgateOriginatingSystem } }
 	}
 	option = {
 		name = CrisisManagerMenu.7141c6.name
 		custom_tooltip = CrisisManagerMenu.7141c.tooltip
 		trigger = { exists = event_target:CmtTargetManualLgateSystem6 }
-		hidden_effect = { event_target:CmtTargetManualLgateSystem6 = { save_global_event_target_as = CmtTargetLgateOrininatingSystem } }
+		hidden_effect = { event_target:CmtTargetManualLgateSystem6 = { save_global_event_target_as = CmtTargetLgateOriginatingSystem } }
 	}
 	option = {
 		name = CrisisManagerMenu.7141c7.name
 		custom_tooltip = CrisisManagerMenu.7141c.tooltip
 		trigger = { exists = event_target:CmtTargetManualLgateSystem7 }
-		hidden_effect = { event_target:CmtTargetManualLgateSystem7 = { save_global_event_target_as = CmtTargetLgateOrininatingSystem } }
+		hidden_effect = { event_target:CmtTargetManualLgateSystem7 = { save_global_event_target_as = CmtTargetLgateOriginatingSystem } }
 	}
 	option = {
 		name = CrisisManagerMenu.7141c8.name
 		custom_tooltip = CrisisManagerMenu.7141c.tooltip
 		trigger = { exists = event_target:CmtTargetManualLgateSystem8 }
-		hidden_effect = { event_target:CmtTargetManualLgateSystem8 = { save_global_event_target_as = CmtTargetLgateOrininatingSystem } }
+		hidden_effect = { event_target:CmtTargetManualLgateSystem8 = { save_global_event_target_as = CmtTargetLgateOriginatingSystem } }
 	}
 }
 
@@ -3392,7 +3392,7 @@ country_event = {
 			remove_star_flag = CmtFlagListedLgateSystem
 		}
 		every_system = {
-			limit = { CmtTriggerIsGalaxyLgateSystem = yes }
+			limit = { has_star_flag = lgate }
 			event_target:CmtGlobalVar = { change_variable = { which = CmtVarManualLgate value = 1 } }
 		}
 	}
@@ -3585,7 +3585,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.75xxc.tooltip
 		hidden_effect = {
 			every_system = {
-				limit = { CmtTriggerIsGalaxyLgateSystem = yes }
+				limit = { has_star_flag = lgate }
 				CmtEffectDeleteLgateInSystem = yes
 			}
 		}
@@ -3611,7 +3611,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.75xxc.tooltip
 		hidden_effect = {
 			random_system = {
-				limit = { CmtTriggerIsGalaxyLgateSystem = yes }
+				limit = { has_star_flag = lgate }
 				CmtEffectDeleteLgateInSystem = yes
 			}
 		}

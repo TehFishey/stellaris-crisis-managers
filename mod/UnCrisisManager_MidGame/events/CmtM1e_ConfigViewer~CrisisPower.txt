@@ -11,8 +11,6 @@ namespace = CrisisManagerMenu
 ######################################
 ######################################
 
-
-
 ###################################
 ###  Crisis Power: Fleet Power  ###
 ###################################
@@ -23,11 +21,11 @@ country_event = {
 	desc = CrisisManagerMenu.1031.desc
 	picture = GFX_evt_small_space_battle
 	is_triggered_only = yes
-	
+
 	immediate = {
 		set_country_flag = CmtFlagConfigViewerShowing1031
 	}
-	
+
 	option = {
 		name = CmtTextGoNextPage.name
 		custom_tooltip = CmtTextGoNextPage.tooltip
@@ -63,9 +61,7 @@ country_event = {
 		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
 		allow = { hidden_trigger = { always = no } }
 	}
-	
-	
-	
+
 	option = {
 		name = CrisisManagerMenu.6000a.Endgame.name
 		custom_tooltip = CrisisManagerMenu.6000a.tooltip
@@ -118,7 +114,7 @@ country_event = {
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.6000 } }
 	}
-	
+
 	option = {
 		name = CrisisManagerMenu.6000a.Midgame.name
 		custom_tooltip = CrisisManagerMenu.6000a.tooltip
@@ -171,14 +167,14 @@ country_event = {
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.6000 } }
 	}
-	
+
 	option = {
 		name = CmtTextSeparator.name
 		custom_tooltip = CmtTextSeparator.tooltip
 		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
 		allow = { hidden_trigger = { always = no } }
 	}
-	
+
 	option = {
 		name = CrisisManagerMenu.6100.xxx.name
 		custom_tooltip = CrisisManagerMenu.6100.xxx.tooltip
@@ -257,15 +253,14 @@ country_event = {
 		trigger = { has_global_flag = CmtFlagMidGameEdition }
 		hidden_effect = { country_event = { id = CrisisManagerMenu.6113 } }
 	}
-	
+
 	option = {
 		name = CmtTextSeparator.name
 		custom_tooltip = CmtTextSeparator.tooltip
 		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
 		allow = { hidden_trigger = { always = no } }
 	}
-	
-	
+
 	option = {
 		name = CrisisManagerMenu.6200.xxx.name
 		custom_tooltip = CrisisManagerMenu.6200.xxx.tooltip
@@ -299,8 +294,7 @@ country_event = {
 		trigger = { has_global_flag = CmtFlagMidGameEdition }
 		hidden_effect = { country_event = { id = CrisisManagerMenu.6211 } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextSeparator.name
 		custom_tooltip = CmtTextSeparator.tooltip
@@ -310,7 +304,7 @@ country_event = {
 		}
 		allow = { hidden_trigger = { always = no } }
 	}
-	
+
 	option = {
 		name = CmtTextGoBackViewerMenu.name
 		custom_tooltip = CmtTextGoBackViewerMenu.tooltip
@@ -322,7 +316,6 @@ country_event = {
 	}
 }
 
-
 #######################################
 ###  Crisis Power: Number of Fleet  ###
 #######################################
@@ -333,11 +326,11 @@ country_event = {
 	desc = CrisisManagerMenu.1032.desc
 	picture = GFX_evt_small_space_battle
 	is_triggered_only = yes
-	
+
 	immediate = {
 		set_country_flag = CmtFlagConfigViewerShowing1032
 	}
-	
+
 	option = {
 		name = CmtTextGoNextPage.name
 		custom_tooltip = CmtTextGoNextPage.tooltip
@@ -367,9 +360,7 @@ country_event = {
 		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
 		allow = { hidden_trigger = { always = no } }
 	}
-	
-	
-	
+
 	option = {
 		name = CrisisManagerMenu.6300.xxx.name
 		custom_tooltip = CrisisManagerMenu.6300.xxx.tooltip
@@ -448,15 +439,14 @@ country_event = {
 		trigger = { has_global_flag = CmtFlagMidGameEdition }
 		hidden_effect = { country_event = { id = CrisisManagerMenu.6313 } }
 	}
-	
+
 	option = {
 		name = CmtTextSeparator.name
 		custom_tooltip = CmtTextSeparator.tooltip
 		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
 		allow = { hidden_trigger = { always = no } }
 	}
-	
-	
+
 	option = {
 		name = CrisisManagerMenu.6400.xxx.name
 		custom_tooltip = CrisisManagerMenu.6400.xxx.tooltip
@@ -464,7 +454,6 @@ country_event = {
 			has_global_flag = CmtFlagEndGameEdition
 			event_target:CmtGlobalVar = { check_variable = { which = CmtVarArmyNumber_Common value > 0.125 } }
 		}
-		trigger = { has_global_flag = CmtFlagEndGameEdition }
 		hidden_effect = { country_event = { id = CrisisManagerMenu.6400 } }
 	}
 	option = {
@@ -474,7 +463,6 @@ country_event = {
 			has_global_flag = CmtFlagEndGameEdition
 			event_target:CmtGlobalVar = { check_variable = { which = CmtVarArmyNumber_Common value < 0.125 } }
 		}
-		trigger = { has_global_flag = CmtFlagEndGameEdition }
 		hidden_effect = { country_event = { id = CrisisManagerMenu.6400 } }
 	}
 	option = {
@@ -495,9 +483,7 @@ country_event = {
 		trigger = { has_global_flag = CmtFlagMidGameEdition }
 		hidden_effect = { country_event = { id = CrisisManagerMenu.6411 } }
 	}
-	
-	
-	
+
 	option = {
 		name = CmtTextSeparator.name
 		custom_tooltip = CmtTextSeparator.tooltip
@@ -507,7 +493,7 @@ country_event = {
 		}
 		allow = { hidden_trigger = { always = no } }
 	}
-	
+
 	option = {
 		name = CmtTextGoBackViewerMenu.name
 		custom_tooltip = CmtTextGoBackViewerMenu.tooltip
@@ -519,10 +505,6 @@ country_event = {
 	}
 }
 
-
-
-
-
 ###################################
 ###  Crisis Power: Constructor  ###
 ###################################
@@ -533,11 +515,11 @@ country_event = {
 	desc = CrisisManagerMenu.1033.desc
 	picture = GFX_evt_small_space_battle
 	is_triggered_only = yes
-	
+
 	immediate = {
 		set_country_flag = CmtFlagConfigViewerShowing1033
 	}
-	
+
 	option = {
 		name = CmtTextGoNextPage.name
 		custom_tooltip = CmtTextGoNextPage.tooltip
@@ -567,9 +549,7 @@ country_event = {
 		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
 		allow = { hidden_trigger = { always = no } }
 	}
-	
-	
-	
+
 	option = {
 		name = CrisisManagerMenu.6500.xxx.name
 		custom_tooltip = CrisisManagerMenu.6500.xxx.tooltip
@@ -624,7 +604,7 @@ country_event = {
 		trigger = { has_global_flag = CmtFlagMidGameEdition }
 		hidden_effect = { country_event = { id = CrisisManagerMenu.6511 } }
 	}
-	
+
 	option = {
 		name = CmtTextSeparator.name
 		custom_tooltip = CmtTextSeparator.tooltip
@@ -634,7 +614,7 @@ country_event = {
 		}
 		allow = { hidden_trigger = { always = no } }
 	}
-	
+
 	option = {
 		name = CmtTextGoBackViewerMenu.name
 		custom_tooltip = CmtTextGoBackViewerMenu.tooltip
@@ -645,4 +625,3 @@ country_event = {
 		}
 	}
 }
-

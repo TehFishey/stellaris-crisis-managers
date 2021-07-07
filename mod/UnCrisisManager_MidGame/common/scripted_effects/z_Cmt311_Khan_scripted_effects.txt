@@ -9,11 +9,9 @@
 ###########################################
 ###########################################
 
-
 ###################
 ###  Constants  ###
 ###################
-
 
 ### Reinforcement Cycle of Khan Fleets on Capital
 @CmtConstReinforceCycle_Khan1a =  1.0		## if disabled or x > Ta
@@ -56,28 +54,26 @@
 #	Reinforce 2	: {  -,  -,  -, -} =  26 - 180
 #
 
-
 #################
 ###  Scripts  ###
 #################
 
-CmtEffectKhanReinforceOnCapital = {		## Scope: root = Country (Khan)
-	event_target:CmtGlobalVar = {
-		if = {
-			limit = { check_variable = { which = CmtVarKhanMultiple value = 5 } }
-			root = {
-				every_planet_within_border = {
-					limit = { has_planet_flag = CmtFlagMarauderExpRallyPoint }
-					CmtEffectCreateAdmiralty_KhanReinforcement = yes
-				}
+## Scope: root = Country (Khan) this = event_target:CmtGlobalVar
+CmtEffectKhanReinforceOnCapital = {
+	if = {
+		limit = { check_variable = { which = CmtVarKhanMultiple value = 5 } }
+		root = {
+			every_planet_within_border = {
+				limit = { has_planet_flag = CmtFlagMarauderExpRallyPoint }
+				CmtEffectCreateAdmiralty_KhanReinforcement = yes
 			}
-		} else_if = {
-			limit = {
-				exists = event_target:marauder_rally_point.solar_system.owner
-				event_target:marauder_rally_point.solar_system.owner = { is_same_value = root }
-			}
-			event_target:marauder_rally_point = { CmtEffectCreateAdmiralty_KhanReinforcement = yes }
 		}
+	} else_if = {
+		limit = {
+			exists = event_target:marauder_rally_point.solar_system.owner
+			event_target:marauder_rally_point.solar_system.owner = { is_same_empire = root }
+		}
+		event_target:marauder_rally_point = { CmtEffectCreateAdmiralty_KhanReinforcement = yes }
 	}
 }
 
@@ -123,7 +119,7 @@ CmtEffectKhanIncreasementReinforcementCycle = {		## Scope: this = Strage of Vari
 				divide_variable = { which = CmtVarTemp value = CmtVarWhileControlFleet }
 			}
 		}		## Current: CmtVarTemp = regularized military ship number of Khan
-		
+
 		### Increment of Counter, Call Next Cycle
 		if = {
 			limit = { check_variable = { which = CmtVarReinforceCycle_Khan value = 2 } }
@@ -174,4 +170,3 @@ CmtEffectKhanIncreasementReinforcementCycle = {		## Scope: this = Strage of Vari
 	}
 			#log = "Cycle = [This.GetValue.CmtVarKhanReinforcementCounter], Ships = [CmtGlobalVar.GetValue.CmtVarTemp], This = [This.GetName]"
 }
-

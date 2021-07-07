@@ -86,7 +86,7 @@ CmtEffectClearTargetSleepers = {
 CmtEffectManualTargetLgates = {
 	random_system = {
 		limit = {
-			CmtTriggerIsGalaxyLgateSystem = yes
+			has_star_flag = lgate
 			NOT = { has_star_flag = CmtFlagListedLgateSystem }
 		}
 		save_global_event_target_as = CmtTargetManualLgateSystem1
@@ -94,7 +94,7 @@ CmtEffectManualTargetLgates = {
 	}
 	random_system = {
 		limit = {
-			CmtTriggerIsGalaxyLgateSystem = yes
+			has_star_flag = lgate
 			NOT = { has_star_flag = CmtFlagListedLgateSystem }
 		}
 		save_global_event_target_as = CmtTargetManualLgateSystem2
@@ -102,7 +102,7 @@ CmtEffectManualTargetLgates = {
 	}
 	random_system = {
 		limit = {
-			CmtTriggerIsGalaxyLgateSystem = yes
+			has_star_flag = lgate
 			NOT = { has_star_flag = CmtFlagListedLgateSystem }
 		}
 		save_global_event_target_as = CmtTargetManualLgateSystem3
@@ -110,7 +110,7 @@ CmtEffectManualTargetLgates = {
 	}
 	random_system = {
 		limit = {
-			CmtTriggerIsGalaxyLgateSystem = yes
+			has_star_flag = lgate
 			NOT = { has_star_flag = CmtFlagListedLgateSystem }
 		}
 		save_global_event_target_as = CmtTargetManualLgateSystem4
@@ -118,7 +118,7 @@ CmtEffectManualTargetLgates = {
 	}
 	random_system = {
 		limit = {
-			CmtTriggerIsGalaxyLgateSystem = yes
+			has_star_flag = lgate
 			NOT = { has_star_flag = CmtFlagListedLgateSystem }
 		}
 		save_global_event_target_as = CmtTargetManualLgateSystem5
@@ -126,7 +126,7 @@ CmtEffectManualTargetLgates = {
 	}
 	random_system = {
 		limit = {
-			CmtTriggerIsGalaxyLgateSystem = yes
+			has_star_flag = lgate
 			NOT = { has_star_flag = CmtFlagListedLgateSystem }
 		}
 		save_global_event_target_as = CmtTargetManualLgateSystem6
@@ -134,7 +134,7 @@ CmtEffectManualTargetLgates = {
 	}
 	random_system = {
 		limit = {
-			CmtTriggerIsGalaxyLgateSystem = yes
+			has_star_flag = lgate
 			NOT = { has_star_flag = CmtFlagListedLgateSystem }
 		}
 		save_global_event_target_as = CmtTargetManualLgateSystem7
@@ -142,7 +142,7 @@ CmtEffectManualTargetLgates = {
 	}
 	random_system = {
 		limit = {
-			CmtTriggerIsGalaxyLgateSystem = yes
+			has_star_flag = lgate
 			NOT = { has_star_flag = CmtFlagListedLgateSystem }
 		}
 		save_global_event_target_as = CmtTargetManualLgateSystem8

@@ -1,10 +1,11 @@
-name="Crisis Manager - Mid-Game Edition [Unofficial]"
+version="3.0.3.3"
 tags={
 	"Balance"
 	"Events"
 	"Overhaul"
+	"Utilities"
+	"Crisis"
 }
-picture="thumbnail.png"
-supported_version="2.7.*"
-path="mod/UnCrisisManager_MidGame"
-remote_file_id="2033764043"
+name="Crisis Manager - Mid-Game Edition (3.0.¢)"
+supported_version="3.0.*"
+remote_file_id="2491573516"

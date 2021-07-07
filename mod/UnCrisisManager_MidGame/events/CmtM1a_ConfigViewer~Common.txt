@@ -10,11 +10,9 @@ namespace = CrisisManagerMenu
 ######################################
 ######################################
 
-
 ##############
 ###  Menu  ###
 ##############
-
 
 country_event = {
 	id = CrisisManagerMenu.1000
@@ -29,7 +27,7 @@ country_event = {
 	}
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-	
+
 	immediate = {
 		set_country_flag = CmtFlagIndividual
 		remove_country_flag = CmtFlagConfigViewerSeq
@@ -47,14 +45,14 @@ country_event = {
 		remove_country_flag = CmtFlagConfigViewerShowing1033
 		CmtEffectTransferCrisisPower = yes
 	}
-	
+
 	option = {
 		name = CmtTextSeparator.name
 		custom_tooltip = CmtTextSeparator.tooltip
 		trigger = { NOT = { has_global_flag = CmtFlagNoSeparator } }
 		allow = { hidden_trigger = { always = no } }
 	}
-	
+
 	option = {
 		name = CrisisManagerMenu.1000a.name
 		custom_tooltip = CrisisManagerMenu.1000a.tooltip
@@ -125,7 +123,7 @@ country_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = CmtTextSeparator.name
 		custom_tooltip = CmtTextSeparator.tooltip
@@ -138,7 +136,7 @@ country_event = {
 		}
 		allow = { hidden_trigger = { always = no } }
 	}
-	
+
 	option = {
 		name = CrisisManagerMenu.1000.1010.name
 		custom_tooltip = CrisisManagerMenu.1000.1010.tooltip
@@ -163,8 +161,7 @@ country_event = {
 		trigger = { has_global_flag = CmtFlagEndGameEdition }
 		hidden_effect = { country_event = { id = CrisisManagerMenu.1023 } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextSeparator.name
 		custom_tooltip = CmtTextSeparator.tooltip
@@ -175,7 +172,7 @@ country_event = {
 		}
 		allow = { hidden_trigger = { always = no } }
 	}
-	
+
 	option = {
 		name = CrisisManagerMenu.1000.1024.name
 		custom_tooltip = CrisisManagerMenu.1000.1024.tooltip
@@ -205,8 +202,7 @@ country_event = {
 		trigger = { has_global_flag = CmtFlagUprisingEdition }
 		hidden_effect = { country_event = { id = CrisisManagerMenu.1028 } }
 	}
-	
-	
+
 	option = {
 		name = CmtTextSeparator.name
 		custom_tooltip = CmtTextSeparator.tooltip
@@ -216,8 +212,7 @@ country_event = {
 		}
 		allow = { hidden_trigger = { always = no } }
 	}
-	
-	
+
 	option = {
 		name = CrisisManagerMenu.1000.1031.name
 		custom_tooltip = CrisisManagerMenu.1000.1031.tooltip
@@ -251,7 +246,7 @@ country_event = {
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.1033 } }
 	}
-	
+
 	option = {
 		name = CmtTextSeparator.name
 		custom_tooltip = CmtTextSeparator.tooltip
@@ -272,4 +267,4 @@ country_event = {
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
 }
-	
+

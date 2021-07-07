@@ -7,8 +7,6 @@
 ########################################
 ########################################
 
-
-
 #######################
 ###  Title of Menu  ###
 #######################
@@ -21,7 +19,7 @@ defined_text = {
 		}
 		localization_key = CmtNameFallenEmpire
 	}
-	
+
 	text = {
 		trigger = {
 			has_global_flag = CmtFlagEndGameEdition
@@ -46,8 +44,6 @@ defined_text = {
 		localization_key = CmtTextErrUndefined.name
 	}
 }
-
-
 
 ##############################################
 ###  Return Plus/Minus Sign  for Variable  ###
@@ -133,8 +129,6 @@ defined_text = {
 	}
 }
 
-
-
 ########################
 ###  Toggle Options  ###
 ########################
@@ -143,11 +137,11 @@ defined_text = {
 defined_text = {
 	name = GetCurrnentSetting_SleeperMaterialist
 	text = {
-		trigger = { has_global_flag = CmtFlagSleeperForbidMaterialist  }
+		trigger = { has_global_flag = CmtFlagSleeperForbidMaterialist }
 		localization_key = CmtTextListedNone
 	}
 	text = {
-		trigger = { NOT = { has_global_flag = CmtFlagSleeperForbidMaterialist  } }
+		trigger = { NOT = { has_global_flag = CmtFlagSleeperForbidMaterialist } }
 		localization_key = CmtIconFanaticMaterialist
 	}
 }
@@ -179,15 +173,14 @@ defined_text = {
 defined_text = {
 	name = GetCurrnentSetting_SleeperXenophobe
 	text = {
-		trigger = { has_global_flag = CmtFlagSleeperForbidXenophobe    }
+		trigger = { has_global_flag = CmtFlagSleeperForbidXenophobe }
 		localization_key = CmtTextListedNone
 	}
 	text = {
-		trigger = { NOT = { has_global_flag = CmtFlagSleeperForbidXenophobe    } }
+		trigger = { NOT = { has_global_flag = CmtFlagSleeperForbidXenophobe } }
 		localization_key = CmtIconFanaticXenophobe
 	}
 }
-
 
 ### Awakenable Ancient Rival
 defined_text = {
@@ -238,7 +231,6 @@ defined_text = {
 	}
 }
 
-
 ### What Lurks Beyond L-Gates
 defined_text = {
 	name = GetCurrnentSetting_LgateSilence
@@ -288,7 +280,6 @@ defined_text = {
 	}
 }
 
-
 ### Uprisable Exploitee
 defined_text = {
 	name = GetCurrnentSetting_UprisingSynth
@@ -337,8 +328,6 @@ defined_text = {
 		localization_key = CrisisManagerMenu.5112d.title
 	}
 }
-
-
 
 ######################
 ###  Crisis Power  ###
@@ -440,8 +429,6 @@ defined_text = {
 	}
 }
 
-
-
 ###########################
 ###  Manual Operations  ###
 ###########################
@@ -520,8 +507,6 @@ defined_text = {
 		localization_key = CrisisManagerMenu.7140c4.name
 	}
 }
-
-
 
 ######################
 ###  For Template  ###
@@ -629,12 +614,4 @@ defined_text = {
 		localization_key = CmtTemplateError
 	}
 }
-
-
-
-
-
-
-
-
 

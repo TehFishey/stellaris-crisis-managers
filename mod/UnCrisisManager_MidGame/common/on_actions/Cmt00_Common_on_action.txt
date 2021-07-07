@@ -12,13 +12,18 @@
 on_game_start = {
 	events = {
 		CrisisManagerMenu.0001		## Calling menu
-		
 		## crisis_trigger.0001 		## For only debugging
 	}
 }
 
-on_monthly_pulse = {
+on_single_player_save_game_load = {
 	events = {
-		## crisis_trigger.0001 		## For only debugging
+		CrisisManagerMenu.0002		## Calling menu
 	}
 }
+
+# on_monthly_pulse = {
+# 	events = {
+# 		# crisis_trigger.0001 		## For only debugging
+# 	}
+# }
