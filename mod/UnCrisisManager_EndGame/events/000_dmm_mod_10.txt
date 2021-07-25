@@ -1,5 +1,4 @@
 namespace = dmm_mod
-
 #####################################
 #####################################
 #####                           #####
@@ -10,24 +9,55 @@ namespace = dmm_mod
 #####################################
 #####################################
 
-country_event = {
-    id = dmm_mod.10
-    hide_window = yes
+# New Dynamic Mod Menu support.
+event = {
+	id = dmm_mod.101
+	hide_window = yes
 	is_triggered_only = yes
-	
-	trigger = { 
-		is_ai = no
-		has_global_flag = dmm_mod_10 
+	immediate = {
+		if = { limit = { NOT = { has_global_flag = dmm_installed } }
+			set_global_flag = dmm_mod_10
+		} else = {
+			dmm_register_mod = {
+				DMM_NAME = dmm_mod_10
+				DMM_FLAG = dmm_mod_10
+			}
+			if = { limit = { has_global_flag = dmm_mod_10 }
+				remove_global_flag = dmm_mod_10
+			}
+		}
 	}
-	
+}
+
+country_event = {
+	id = dmm_mod.10
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = {
+		is_ai = no
+		OR = {
+			has_global_flag = dmm_mod_10 # 2.8 version
+			AND = {
+				exists = from
+				has_global_flag = dmm_installed # 3.0 version
+				from = { has_leader_flag = dmm_mod_10 }
+			}
+		}
+	}
 	immediate = {
 		if = {
-			limit = { any_country = { has_country_flag = CmtFlagNowInMenu } }
+			limit = {
+				any_playable_country = { is_ai = no has_country_flag = CmtFlagNowInMenu }
+			}
 			country_event = { id = CrisisManagerMenu.0013 }
-		} else = { country_event = { id = CrisisManagerMenu.0100 } }
+		}
+		else = {
+			country_event = { id = CrisisManagerMenu.0100 }
+		}
 	}
-	
 	after = {
-        remove_global_flag = dmm_mod_10_opened
-    }
+		if = { limit = { has_global_flag = dmm_mod_10_opened }
+			remove_global_flag = dmm_mod_10_opened
+		}
+	}
 }

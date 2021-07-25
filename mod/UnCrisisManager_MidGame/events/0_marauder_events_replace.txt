@@ -179,7 +179,7 @@ country_event = {
 
 	trigger = {
 		CmtTriggerHasPotentialKhanAwaking = yes
-		NOT = { CmtTriggerNowInKhanCrisis = yes }
+		CmtTriggerNowInKhanCrisis = no
 	}
 
 	immediate = {
@@ -288,7 +288,7 @@ country_event = {
 				set_planet_flag = CmtFlagMarauderExpRallyPoint
 				if = {
 					limit = {
-						exists = solar_system.owner
+						has_owner = yes
 						solar_system.owner = { is_same_empire = root }
 					}
 					save_global_event_target_as = marauder_rally_point
@@ -302,7 +302,7 @@ country_event = {
 				set_planet_flag = CmtFlagMarauderExpRallyPoint
 				if = {
 					limit = {
-						exists = solar_system.owner
+						has_owner = yes
 						solar_system.owner = { is_same_empire = root }
 					}
 					save_global_event_target_as = marauder_rally_point
@@ -316,7 +316,7 @@ country_event = {
 				set_planet_flag = CmtFlagMarauderExpRallyPoint
 				if = {
 					limit = {
-						exists = solar_system.owner
+						has_owner = yes
 						solar_system.owner = { is_same_empire = root }
 					}
 					save_global_event_target_as = marauder_rally_point
@@ -476,13 +476,6 @@ country_event = {
 				observer_event = { id = observer.13 }
 			}
 		}
-		# every_country = {
-		# 	limit = {
-		# 		is_ai = yes
-		# 		is_country_type = default # is_country_type_with_subjects = yes
-		# 	}
-		# 	establish_communications_no_message = root
-		# }
 
 		### Mercenaries Defect
 		if = {
@@ -720,7 +713,7 @@ country_event = {
 				exile_leader_as = exiled_khan
 			}
 		}
-		every_country = {
+		every_playable_country = {
 			limit = { is_ai = no }
 			country_event = { id = marauder.506 }
 		}
@@ -747,7 +740,7 @@ country_event = {
 
 	immediate = {
 		event_target:marauder_rally_point = { CmtEffectCreateAdmiralty_Khan2ndFleetSet = yes }
-		every_country = {
+		every_playable_country = {
 			limit = { is_ai = no }
 			country_event = { id = marauder.508 }
 		}
@@ -801,7 +794,7 @@ country_event = {
 			}
 		}
 		fromfrom = { solar_system = { save_event_target_as = khan_death_system } }
-		every_country = {
+		every_playable_country = {
 			limit = { is_ai = no }
 			country_event = { id = marauder.510 }
 		}
@@ -906,7 +899,7 @@ country_event = {
 			event_target:great_khan = { kill_leader = { show_notification = no } }
 		}
 
-		every_country = {
+		every_playable_country = {
 			limit = { is_ai = no }
 			country_event = { id = marauder.513 }
 		}
@@ -991,7 +984,7 @@ country_event = {
 			event_target:great_khan = { kill_leader = { show_notification = no } }
 		}
 
-		every_country = {
+		every_playable_country = {
 			limit = { is_ai = no }
 			country_event = { id = marauder.513 }
 		}

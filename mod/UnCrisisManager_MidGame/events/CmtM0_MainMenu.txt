@@ -136,7 +136,7 @@ country_event = {
 		trigger = {
 			NOT = { has_global_flag = CmtFlagNoSeparator }
 			OR = {
-				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				CmtTriggerAnyManagedEventTriggered = no
 				has_global_flag = CmtFlagDebugMode
 			}
 		}
@@ -150,7 +150,7 @@ country_event = {
 		trigger = {
 			CmtTriggerTemplateActivated_T000 = yes
 			OR = {
-				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				CmtTriggerAnyManagedEventTriggered = no
 				has_global_flag = CmtFlagDebugMode
 			}
 		}
@@ -168,7 +168,7 @@ country_event = {
 		trigger = {
 			CmtTriggerTemplateActivated_T001 = yes
 			OR = {
-				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				CmtTriggerAnyManagedEventTriggered = no
 				has_global_flag = CmtFlagDebugMode
 			}
 		}
@@ -185,7 +185,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.0100.2100.tooltip
 		trigger = {
 			OR = {
-				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				CmtTriggerAnyManagedEventTriggered = no
 				has_global_flag = CmtFlagDebugMode
 			}
 			OR = {

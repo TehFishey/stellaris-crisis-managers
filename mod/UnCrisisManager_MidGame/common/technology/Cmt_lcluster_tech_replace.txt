@@ -28,14 +28,14 @@ tech_lgate_activation = {
 
 tech_repeatable_lcluster_clue = {
 	area = engineering
-	cost = @tier1cost3
+	cost = @tier2cost1
 	cost_per_level = @repeatableTechLevelCost
-	tier = 2
+	tier = 3
 	is_rare = yes
 	is_dangerous = yes
 	category = { voidcraft }
 	levels = -1
-	weight = 70
+	weight = @tier3weight2
 
 	potential = {
 		has_country_flag = encountered_first_lgate
@@ -51,12 +51,50 @@ tech_repeatable_lcluster_clue = {
 			desc = tech_repeatable_lcluster_clue_desc
 		}
 	}
+	weight_modifier = {
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_nanite_transmutation }
+			}
+		}
+		modifier = {
+			factor = 0.2
+			NOT = {
+				any_system_within_border = { has_star_flag = lgate }
+			}
+		}
+	}
 
 	ai_weight = {
-		factor = 1
+		# factor = 1
 		modifier = {
 			factor = 0
 			has_global_flag = CmtFlagLgateReqPlayer
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_global_flag = gray_goo_crisis_set
+				has_global_flag = marauder_crisis_ongoing
+			}
+		}
+		modifier = {
+			factor = 0.5
+			end_game_years_passed < -50
+		}
+		modifier = {
+			factor = 0.75
+			is_at_war = yes
+		}
+		modifier = {
+			factor = 0.75
+			research_leader = {
+				area = engineering
+				NOT = { has_trait = "leader_trait_expertise_voidcraft" }
+			}
 		}
 	}
 

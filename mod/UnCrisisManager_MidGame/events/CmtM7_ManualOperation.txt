@@ -129,7 +129,7 @@ country_event = {
 		trigger = {
 			host_has_dlc = "Apocalypse"
 			has_global_flag = CmtFlagMidGameEdition
-			NOT = { CmtTriggerNowInKhanCrisis = yes }
+			CmtTriggerNowInKhanCrisis = no
 			any_country = { CmtTriggerHasPotentialKhanAwaking = yes }
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7138 } }
@@ -1252,34 +1252,43 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		random_country = {
-			limit = { has_country_flag = marauder_1 }
-			save_global_event_target_as = CmtTargetManualMarauder1
+		if = {
+			limit = { NOT = { exists = event_target:marauder_country_1 } }
+			random_country = {
+				limit = { has_country_flag = marauder_1 }
+				save_global_event_target_as = marauder_country_1
+			}
 		}
-		random_country = {
-			limit = { has_country_flag = marauder_2 }
-			save_global_event_target_as = CmtTargetManualMarauder2
+		if = {
+			limit = { NOT = { exists = event_target:marauder_country_2 } }
+			random_country = {
+				limit = { has_country_flag = marauder_2 }
+				save_global_event_target_as = marauder_country_2
+			}
 		}
-		random_country = {
-			limit = { has_country_flag = marauder_3 }
-			save_global_event_target_as = CmtTargetManualMarauder3
+		if = {
+			limit = { NOT = { exists = event_target:marauder_country_3 } }
+			random_country = {
+				limit = { has_country_flag = marauder_3 }
+				save_global_event_target_as = marauder_country_3
+			}
 		}
 	}
 
-	after = {
-		if = {
-			limit = { exists = event_target:CmtTargetManualMarauder1 }
-			clear_global_event_target = CmtTargetManualMarauder1
-		}
-		if = {
-			limit = { exists = event_target:CmtTargetManualMarauder2 }
-			clear_global_event_target = CmtTargetManualMarauder2
-		}
-		if = {
-			limit = { exists = event_target:CmtTargetManualMarauder3 }
-			clear_global_event_target = CmtTargetManualMarauder3
-		}
-	}
+	# after = {
+	# 	if = {
+	# 		limit = { exists = event_target:CmtTargetManualMarauder1 }
+	# 		clear_global_event_target = CmtTargetManualMarauder1
+	# 	}
+	# 	if = {
+	# 		limit = { exists = event_target:CmtTargetManualMarauder2 }
+	# 		clear_global_event_target = CmtTargetManualMarauder2
+	# 	}
+	# 	if = {
+	# 		limit = { exists = event_target:CmtTargetManualMarauder3 }
+	# 		clear_global_event_target = CmtTargetManualMarauder3
+	# 	}
+	# }
 
 	option = {
 		name = CrisisManagerMenu.71xxa.name
@@ -1301,11 +1310,11 @@ country_event = {
 		name = CrisisManagerMenu.7138c1.name
 		custom_tooltip = CrisisManagerMenu.7135c.tooltip
 		trigger = {
-			exists = event_target:CmtTargetManualMarauder1
-			event_target:CmtTargetManualMarauder1 = { CmtTriggerHasPotentialKhanAwaking = yes }
+			exists = event_target:marauder_country_1
+			event_target:marauder_country_1 = { CmtTriggerHasPotentialKhanAwaking = yes }
 		}
 		hidden_effect = {
-			event_target:CmtTargetManualMarauder1 = { CmtEffectTriggerMarauderManually = yes }
+			event_target:marauder_country_1 = { CmtEffectTriggerMarauderManually = yes }
 			country_event = { id = CrisisManagerMenu.7000 }
 		}
 	}
@@ -1313,11 +1322,11 @@ country_event = {
 		name = CrisisManagerMenu.7138c2.name
 		custom_tooltip = CrisisManagerMenu.7135c.tooltip
 		trigger = {
-			exists = event_target:CmtTargetManualMarauder2
-			event_target:CmtTargetManualMarauder2 = { CmtTriggerHasPotentialKhanAwaking = yes }
+			exists = event_target:marauder_country_2
+			event_target:marauder_country_2 = { CmtTriggerHasPotentialKhanAwaking = yes }
 		}
 		hidden_effect = {
-			event_target:CmtTargetManualMarauder2 = { CmtEffectTriggerMarauderManually = yes }
+			event_target:marauder_country_2 = { CmtEffectTriggerMarauderManually = yes }
 			country_event = { id = CrisisManagerMenu.7000 }
 		}
 	}
@@ -1325,11 +1334,11 @@ country_event = {
 		name = CrisisManagerMenu.7138c3.name
 		custom_tooltip = CrisisManagerMenu.7135c.tooltip
 		trigger = {
-			exists = event_target:CmtTargetManualMarauder3
-			event_target:CmtTargetManualMarauder3 = { CmtTriggerHasPotentialKhanAwaking = yes }
+			exists = event_target:marauder_country_3
+			event_target:marauder_country_3 = { CmtTriggerHasPotentialKhanAwaking = yes }
 		}
 		hidden_effect = {
-			event_target:CmtTargetManualMarauder3 = { CmtEffectTriggerMarauderManually = yes }
+			event_target:marauder_country_3 = { CmtEffectTriggerMarauderManually = yes }
 			country_event = { id = CrisisManagerMenu.7000 }
 		}
 	}
@@ -2316,34 +2325,43 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		random_country = {
-			limit = { has_country_flag = marauder_1 }
-			save_global_event_target_as = CmtTargetManualMarauder1
+		if = {
+			limit = { NOT = { exists = event_target:marauder_country_1 } }
+			random_country = {
+				limit = { has_country_flag = marauder_1 }
+				save_global_event_target_as = marauder_country_1
+			}
 		}
-		random_country = {
-			limit = { has_country_flag = marauder_2 }
-			save_global_event_target_as = CmtTargetManualMarauder2
+		if = {
+			limit = { NOT = { exists = event_target:marauder_country_2 } }
+			random_country = {
+				limit = { has_country_flag = marauder_2 }
+				save_global_event_target_as = marauder_country_2
+			}
 		}
-		random_country = {
-			limit = { has_country_flag = marauder_3 }
-			save_global_event_target_as = CmtTargetManualMarauder3
+		if = {
+			limit = { NOT = { exists = event_target:marauder_country_3 } }
+			random_country = {
+				limit = { has_country_flag = marauder_3 }
+				save_global_event_target_as = marauder_country_3
+			}
 		}
 	}
 
-	after = {
-		if = {
-			limit = { exists = event_target:CmtTargetManualMarauder1 }
-			clear_global_event_target = CmtTargetManualMarauder1
-		}
-		if = {
-			limit = { exists = event_target:CmtTargetManualMarauder2 }
-			clear_global_event_target = CmtTargetManualMarauder2
-		}
-		if = {
-			limit = { exists = event_target:CmtTargetManualMarauder3 }
-			clear_global_event_target = CmtTargetManualMarauder3
-		}
-	}
+	# after = {
+	# 	if = {
+	# 		limit = { exists = event_target:CmtTargetManualMarauder1 }
+	# 		clear_global_event_target = CmtTargetManualMarauder1
+	# 	}
+	# 	if = {
+	# 		limit = { exists = event_target:CmtTargetManualMarauder2 }
+	# 		clear_global_event_target = CmtTargetManualMarauder2
+	# 	}
+	# 	if = {
+	# 		limit = { exists = event_target:CmtTargetManualMarauder3 }
+	# 		clear_global_event_target = CmtTargetManualMarauder3
+	# 	}
+	# }
 
 	option = {
 		name = CrisisManagerMenu.720xa.name
@@ -2370,27 +2388,30 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7208c1.name
 		custom_tooltip = CrisisManagerMenu.7208c.tooltip
-		trigger = { exists = event_target:CmtTargetManualMarauder1 }
+		trigger = { exists = event_target:marauder_country_1 }
 		hidden_effect = {
-			event_target:CmtTargetManualMarauder1 = { destroy_country = yes }
+			event_target:marauder_country_1 = { destroy_country = yes }
+			clear_global_event_target = marauder_country_1
 			country_event = { id = CrisisManagerMenu.7200 }
 		}
 	}
 	option = {
 		name = CrisisManagerMenu.7208c2.name
 		custom_tooltip = CrisisManagerMenu.7208c.tooltip
-		trigger = { exists = event_target:CmtTargetManualMarauder2 }
+		trigger = { exists = event_target:marauder_country_2 }
 		hidden_effect = {
-			event_target:CmtTargetManualMarauder2 = { destroy_country = yes }
+			event_target:marauder_country_2 = { destroy_country = yes }
+			clear_global_event_target = marauder_country_2
 			country_event = { id = CrisisManagerMenu.7200 }
 		}
 	}
 	option = {
 		name = CrisisManagerMenu.7208c3.name
 		custom_tooltip = CrisisManagerMenu.7208c.tooltip
-		trigger = { exists = event_target:CmtTargetManualMarauder3 }
+		trigger = { exists = event_target:marauder_country_3 }
 		hidden_effect = {
-			event_target:CmtTargetManualMarauder3 = { destroy_country = yes }
+			event_target:marauder_country_3 = { destroy_country = yes }
+			clear_global_event_target = marauder_country_3
 			country_event = { id = CrisisManagerMenu.7200 }
 		}
 	}

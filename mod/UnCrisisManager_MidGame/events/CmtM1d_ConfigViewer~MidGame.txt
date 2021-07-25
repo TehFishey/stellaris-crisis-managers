@@ -24,7 +24,7 @@ country_event = {
 	}
 	desc = {
 		text = CrisisManagerMenu.1026.desc2
-		trigger = { NOT = { CmtTriggerKhanConfig = yes } }
+		trigger = { CmtTriggerKhanConfig = no }
 	}
 	picture = GFX_evt_khan_throne_room
 	is_triggered_only = yes
@@ -107,12 +107,9 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4810z.tooltip
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarKhanMultiple value = 1 }
-					check_variable = { which = CmtVarKhanMultiple value = 2 }
-					check_variable = { which = CmtVarKhanMultiple value = 3 }
-					check_variable = { which = CmtVarKhanMultiple value = 4 }
-					check_variable = { which = CmtVarKhanMultiple value = 5 }
+				OR = {
+					check_variable = { which = CmtVarKhanMultiple value < 1 }
+					check_variable = { which = CmtVarKhanMultiple value > 5 }
 				}
 			}
 		}
@@ -311,12 +308,9 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4831z.tooltip
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarKhanTriggerProbability value = 1 }
-					check_variable = { which = CmtVarKhanTriggerProbability value = 2 }
-					check_variable = { which = CmtVarKhanTriggerProbability value = 3 }
-					check_variable = { which = CmtVarKhanTriggerProbability value = 4 }
-					check_variable = { which = CmtVarKhanTriggerProbability value = 5 }
+				OR = {
+					check_variable = { which = CmtVarKhanTriggerProbability value < 1 }
+					check_variable = { which = CmtVarKhanTriggerProbability value > 5 }
 				}
 			}
 		}
@@ -358,12 +352,9 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4832z.tooltip
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarKhanVengeance value = 1 }
-					check_variable = { which = CmtVarKhanVengeance value = 2 }
-					check_variable = { which = CmtVarKhanVengeance value = 3 }
-					check_variable = { which = CmtVarKhanVengeance value = 4 }
-					check_variable = { which = CmtVarKhanVengeance value = 5 }
+				OR = {
+					check_variable = { which = CmtVarKhanVengeance value < 1 }
+					check_variable = { which = CmtVarKhanVengeance value > 5 }
 				}
 			}
 		}
@@ -479,13 +470,9 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4842z.tooltip
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarKhanLifespan value = 1 }
-					check_variable = { which = CmtVarKhanLifespan value = 2 }
-					check_variable = { which = CmtVarKhanLifespan value = 3 }
-					check_variable = { which = CmtVarKhanLifespan value = 4 }
-					check_variable = { which = CmtVarKhanLifespan value = 5 }
-					check_variable = { which = CmtVarKhanLifespan value = 6 }
+				OR = {
+					check_variable = { which = CmtVarKhanLifespan value < 1 }
+					check_variable = { which = CmtVarKhanLifespan value > 6 }
 				}
 			}
 		}
@@ -521,11 +508,9 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4850z.tooltip
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarReinforceCycle_Khan value = 1 }
-					check_variable = { which = CmtVarReinforceCycle_Khan value = 2 }
-					check_variable = { which = CmtVarReinforceCycle_Khan value = 3 }
-					check_variable = { which = CmtVarReinforceCycle_Khan value = 4 }
+				OR = {
+					check_variable = { which = CmtVarReinforceCycle_Khan value < 1 }
+					check_variable = { which = CmtVarReinforceCycle_Khan value > 4 }
 				}
 			}
 		}
@@ -573,13 +558,9 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4860z.tooltip
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarKhanPostDeathSummary value = 1 }
-					check_variable = { which = CmtVarKhanPostDeathSummary value = 2 }
-					check_variable = { which = CmtVarKhanPostDeathSummary value = 3 }
-					check_variable = { which = CmtVarKhanPostDeathSummary value = 4 }
-					check_variable = { which = CmtVarKhanPostDeathSummary value = 5 }
-					check_variable = { which = CmtVarKhanPostDeathSummary value = 6 }
+				OR = {
+					check_variable = { which = CmtVarKhanPostDeathSummary value < 1 }
+					check_variable = { which = CmtVarKhanPostDeathSummary value > 6 }
 				}
 			}
 		}
@@ -620,7 +601,7 @@ country_event = {
 	}
 	desc = {
 		text = CrisisManagerMenu.1027.desc2
-		trigger = { NOT = { CmtTriggerLgateConfig = yes } }
+		trigger = { CmtTriggerLgateConfig = no }
 	}
 	picture = GFX_evt_l-gateway
 	is_triggered_only = yes
@@ -1047,12 +1028,9 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4934z.tooltip
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarLgateCycleGraygoo value = 1 }
-					check_variable = { which = CmtVarLgateCycleGraygoo value = 2 }
-					check_variable = { which = CmtVarLgateCycleGraygoo value = 3 }
-					check_variable = { which = CmtVarLgateCycleGraygoo value = 4 }
-					check_variable = { which = CmtVarLgateCycleGraygoo value = 5 }
+				OR = {
+					check_variable = { which = CmtVarLgateCycleGraygoo value < 1 }
+					check_variable = { which = CmtVarLgateCycleGraygoo value > 5 }
 				}
 			}
 			NOT = { has_global_flag = CmtFlagLgateForbidGraygoo }
@@ -1089,11 +1067,9 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4940z.tooltip
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarLgateAloneGrayCondition value = 1 }
-					check_variable = { which = CmtVarLgateAloneGrayCondition value = 2 }
-					check_variable = { which = CmtVarLgateAloneGrayCondition value = 3 }
-					check_variable = { which = CmtVarLgateAloneGrayCondition value = 4 }
+				OR = {
+					check_variable = { which = CmtVarLgateAloneGrayCondition value < 1 }
+					check_variable = { which = CmtVarLgateAloneGrayCondition value > 4 }
 				}
 			}
 		}
@@ -1141,13 +1117,9 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4950z.tooltip
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarLgateDessanuGift value = 1 }
-					check_variable = { which = CmtVarLgateDessanuGift value = 2 }
-					check_variable = { which = CmtVarLgateDessanuGift value = 3 }
-					check_variable = { which = CmtVarLgateDessanuGift value = 4 }
-					check_variable = { which = CmtVarLgateDessanuGift value = 5 }
-					check_variable = { which = CmtVarLgateDessanuGift value = 6 }
+				OR = {
+					check_variable = { which = CmtVarLgateDessanuGift value < 1 }
+					check_variable = { which = CmtVarLgateDessanuGift value > 6 }
 				}
 			}
 		}
@@ -1195,13 +1167,9 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4960z.tooltip
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarReinforceCycle_Graygoo value = 1 }
-					check_variable = { which = CmtVarReinforceCycle_Graygoo value = 2 }
-					check_variable = { which = CmtVarReinforceCycle_Graygoo value = 3 }
-					check_variable = { which = CmtVarReinforceCycle_Graygoo value = 4 }
-					check_variable = { which = CmtVarReinforceCycle_Graygoo value = 5 }
-					check_variable = { which = CmtVarReinforceCycle_Graygoo value = 6 }
+				OR = {
+					check_variable = { which = CmtVarReinforceCycle_Graygoo value < 1 }
+					check_variable = { which = CmtVarReinforceCycle_Graygoo value > 6 }
 				}
 			}
 		}
@@ -1249,13 +1217,9 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4970z.tooltip
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarLgateTerraformNanite value = 1 }
-					check_variable = { which = CmtVarLgateTerraformNanite value = 2 }
-					check_variable = { which = CmtVarLgateTerraformNanite value = 3 }
-					check_variable = { which = CmtVarLgateTerraformNanite value = 4 }
-					check_variable = { which = CmtVarLgateTerraformNanite value = 5 }
-					check_variable = { which = CmtVarLgateTerraformNanite value = 6 }
+				OR = {
+					check_variable = { which = CmtVarLgateTerraformNanite value < 1 }
+					check_variable = { which = CmtVarLgateTerraformNanite value > 6 }
 				}
 			}
 		}
@@ -1297,7 +1261,7 @@ country_event = {
 #!!#	}
 #!!#	desc = {
 #!!#		text = CrisisManagerMenu.1028.desc2
-#!!#		trigger = { NOT = { CmtTriggerUprisingConfig = yes } }
+#!!#		trigger = { CmtTriggerUprisingConfig = no }
 #!!#	}
 	picture = GFX_evt_organic_oppression
 	is_triggered_only = yes
@@ -1391,12 +1355,9 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.5111z.tooltip
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarUprisingMultiple value = 1 }
-					check_variable = { which = CmtVarUprisingMultiple value = 2 }
-					check_variable = { which = CmtVarUprisingMultiple value = 3 }
-					check_variable = { which = CmtVarUprisingMultiple value = 4 }
-					check_variable = { which = CmtVarUprisingMultiple value = 5 }
+				OR = {
+					check_variable = { which = CmtVarUprisingMultiple value < 1 }
+					check_variable = { which = CmtVarUprisingMultiple value > 5 }
 				}
 			}
 		}
@@ -1483,11 +1444,9 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.5131z.tooltip
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarUprisingMtth value = 1 }
-					check_variable = { which = CmtVarUprisingMtth value = 2 }
-					check_variable = { which = CmtVarUprisingMtth value = 3 }
-					check_variable = { which = CmtVarUprisingMtth value = 4 }
+				OR = {
+					check_variable = { which = CmtVarUprisingMtth value < 1 }
+					check_variable = { which = CmtVarUprisingMtth value > 4 }
 				}
 			}
 		}
@@ -1562,12 +1521,9 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.5134z.tooltip
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarUprisingWarProbability value = 1 }
-					check_variable = { which = CmtVarUprisingWarProbability value = 2 }
-					check_variable = { which = CmtVarUprisingWarProbability value = 3 }
-					check_variable = { which = CmtVarUprisingWarProbability value = 4 }
-					check_variable = { which = CmtVarUprisingWarProbability value = 5 }
+				OR = {
+					check_variable = { which = CmtVarUprisingWarProbability value < 1 }
+					check_variable = { which = CmtVarUprisingWarProbability value > 5 }
 				}
 			}
 		}
@@ -1615,12 +1571,9 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.5141z.tooltip
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarUprisingCivics value = 1 }
-					check_variable = { which = CmtVarUprisingCivics value = 2 }
-					check_variable = { which = CmtVarUprisingCivics value = 3 }
-					check_variable = { which = CmtVarUprisingCivics value = 4 }
-					check_variable = { which = CmtVarUprisingCivics value = 5 }
+				OR = {
+					check_variable = { which = CmtVarUprisingCivics value < 1 }
+					check_variable = { which = CmtVarUprisingCivics value > 5 }
 				}
 			}
 		}
@@ -1662,12 +1615,9 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.5152z.tooltip
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarUprisingExhaustion value = 1 }
-					check_variable = { which = CmtVarUprisingExhaustion value = 2 }
-					check_variable = { which = CmtVarUprisingExhaustion value = 3 }
-					check_variable = { which = CmtVarUprisingExhaustion value = 4 }
-					check_variable = { which = CmtVarUprisingExhaustion value = 5 }
+				OR = {
+					check_variable = { which = CmtVarUprisingExhaustion value < 1 }
+					check_variable = { which = CmtVarUprisingExhaustion value > 5 }
 				}
 			}
 		}
@@ -1709,12 +1659,10 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.5151z.tooltip
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarUprisingJoinWar value = 1 }
-					check_variable = { which = CmtVarUprisingJoinWar value = 2 }
-					check_variable = { which = CmtVarUprisingJoinWar value = 3 }
-					check_variable = { which = CmtVarUprisingJoinWar value = 4 }
-					check_variable = { which = CmtVarUprisingJoinWar value = 5 }
+
+				OR = {
+					check_variable = { which = CmtVarUprisingJoinWar value < 1 }
+					check_variable = { which = CmtVarUprisingJoinWar value > 5 }
 				}
 			}
 		}
@@ -1756,12 +1704,9 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.5143z.tooltip
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarUprisingModifier value = 1 }
-					check_variable = { which = CmtVarUprisingModifier value = 2 }
-					check_variable = { which = CmtVarUprisingModifier value = 3 }
-					check_variable = { which = CmtVarUprisingModifier value = 4 }
-					check_variable = { which = CmtVarUprisingModifier value = 5 }
+				OR = {
+					check_variable = { which = CmtVarUprisingModifier value < 1 }
+					check_variable = { which = CmtVarUprisingModifier value > 5 }
 				}
 			}
 		}
@@ -1788,4 +1733,3 @@ country_event = {
 		}
 	}
 }
-

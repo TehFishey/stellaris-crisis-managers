@@ -28,7 +28,7 @@ CmtEffectTriggerMarauderManually = {
 		limit = {
 			count_owned_ship = {
 				limit = { is_ship_size = marauder_void_dwelling }
-				count >= 2
+				count > 1
 			}
 			exists = prev
 			prev = { CmtTriggerIsPlayableEmpire = yes }
@@ -51,4 +51,3 @@ CmtEffectDeleteLgateInSystem = {
 		remove_megastructure = this
 	}
 }
-

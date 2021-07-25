@@ -177,7 +177,7 @@ country_event = {
 			if = {
 				# flag prevents the Tempest from using this gate,
 				# do not set the flag if there's only one l-gate system
-				limit = {		## 2 or More L-Gates Exist in Galaxy
+				limit = {		## 2 or more L-Gates exist in Galaxy
 					any_system = {
 						has_star_flag = lgate
 						NOT = { is_same_value = prev }

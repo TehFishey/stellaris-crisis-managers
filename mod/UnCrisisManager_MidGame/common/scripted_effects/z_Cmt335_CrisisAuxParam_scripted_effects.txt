@@ -31,6 +31,10 @@ CmtFleetSetAuxParam_KhanCombat = {
 		distance = 45
 		angle = random
 	}
+	if = {
+		limit = { exists = prevprev.solar_system.starbase }
+		set_home_base = prevprev.solar_system.starbase
+	}
 }
 
 CmtFleetSetAuxParam_KhanEncourager = {

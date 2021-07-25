@@ -395,7 +395,7 @@ CmtTriggerAllViewerClosed = {
 
 CmtTriggerCrisisConfig = {
 	OR = {
-		NOT = { CmtTriggerAnyCrisisTriggered = yes }
+		CmtTriggerAnyCrisisTriggered = no
 		has_global_flag = CmtFlagDebugMode
 	}
 	has_global_flag = CmtFlagEndGameEdition
@@ -470,7 +470,7 @@ CmtTriggerKhanConfig = {
 
 CmtTriggerLgateConfig = {
 	OR = {
-		NOT = { CmtTriggerLgateEventTriggered = yes }
+		CmtTriggerLgateEventTriggered = no
 		has_global_flag = CmtFlagDebugMode
 	}
 	has_global_flag = CmtFlagMidGameEdition
@@ -478,7 +478,7 @@ CmtTriggerLgateConfig = {
 
 CmtTriggerUprisingConfig = {
 	OR = {
-		NOT = { CmtTriggerUprisingTriggered = yes }
+		CmtTriggerUprisingTriggered = no
 		has_global_flag = CmtFlagDebugMode
 	}
 	has_global_flag = CmtFlagUprisingEdition

@@ -31,7 +31,7 @@ CmtEffectCreateEncouragingBase = {
 			create_ship = {
 				name = "NAME_Garrison_Base"
 				design = "NAME_Void_Dwelling"
-				graphical_culture = "pirate_01"
+				graphical_culture = event_target:raider_khanate
 			}
 			set_location = {
 				target = event_target:capital_planet

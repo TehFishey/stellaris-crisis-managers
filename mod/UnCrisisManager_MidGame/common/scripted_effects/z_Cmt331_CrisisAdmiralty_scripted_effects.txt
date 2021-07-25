@@ -46,11 +46,11 @@
 ##############
 
 ### The Fleet for Khan Own
-CmtEffectCreateAdmiralty_Khan1stFleet = {		### Exception: Leader = event_target:great_khan
-	event_target:raider_khanate = {
-		CmtEffectCreateFleet_Khan1stFleet = yes
-	}
-}
+# CmtEffectCreateAdmiralty_Khan1stFleet = {		### Exception: Leader = event_target:great_khan
+# 	event_target:raider_khanate = {
+# 		CmtEffectCreateFleet_Khan1stFleet = yes
+# 	}
+# }
 
 CmtEffectCreateAdmiralty_Khan2ndFleetSet = {		### Exception: Leader = exiled_khan
 	event_target:raider_khanate = {
@@ -84,7 +84,8 @@ CmtEffectCreateAdmiralty_Khan2ndFleetSet = {		### Exception: Leader = exiled_kha
 
 ### Consorts of Khan
 CmtEffectCreateAdmiralty_KhanStarterPack = {
-	event_target:raider_khanate = {
+	# event_target:raider_khanate = {
+	prev = {
 		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Khan } }
 		while = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
@@ -96,6 +97,7 @@ CmtEffectCreateAdmiralty_KhanStarterPack = {
 				CmtEffectCreateFleet_KhanConstructor = yes
 			}
 			CmtEffectCreateFleet_KhanArmy = yes
+			CmtEffectCreateFleet_KhanConstructor = yes
 		}
 		while = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
@@ -341,11 +343,11 @@ CmtEffectCreateAdmiralty_KhanReinforcement = {
 }
 
 ### Garrison (Satrap)
-CmtEffectCreateAdmiralty_KhanEncourager = {
-	event_target:raider_khanate = {
-		CmtEffectCreateFleet_KhanEncourager = yes
-	}
-}
+# CmtEffectCreateAdmiralty_KhanEncourager = {
+# 	event_target:raider_khanate = {
+# 		CmtEffectCreateFleet_KhanEncourager = yes
+# 	}
+# }
 
 ### Reinforcement (Satrap)
 CmtEffectCreateAdmiralty_KhanSubReinforcement = {

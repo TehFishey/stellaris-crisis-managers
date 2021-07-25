@@ -36,6 +36,7 @@ CmtEffectCreateFleet_KhanArmy = {
 				while = { count = 5 CmtEffectCreateShip_KhanArmy = yes }
 			}
 			CmtFleetSetAuxParam_KhanAuxiliary = yes
+			set_fleet_stance = evasive
 		}
 	}
 	last_created_army = { assign_leader = last_created_leader }
@@ -67,6 +68,7 @@ CmtEffectCreateShip_KhanConstructor = {
 				# effect = { CmtEffectFasterKhanConstructor = yes }
 			}
 			CmtFleetSetAuxParam_KhanAuxiliary = yes
+			set_fleet_stance = evasive
 		}
 	}
 }

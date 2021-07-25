@@ -14,7 +14,7 @@ namespace = CrisisManagerControl
 ###  Standard Awakening of Khan (Not Vengeance)  ###
 ####################################################
 
-### Check Trgger Condision
+### Check Trigger Condition
 event = {
 	id = CrisisManagerControl.6101
 	hide_window = yes
@@ -148,7 +148,7 @@ event = {
 			limit = { CmtTriggerHasPotentialKhanAwaking = yes }
 
 			random_list = {
-				10 = {		## MTTH = 100 yr
+				2 = {		## MTTH = 100 yr
 					modifier = {		## >= Earliest Year + 50 yr
 						factor = 1.5
 						has_global_flag = CmtFlagKhanProbabilityIncrease
@@ -173,10 +173,10 @@ event = {
 					}
 					# set_global_flag = CmtFlagKhanTriggered
 					set_global_flag = marauder_crisis_started
-					set_timed_global_flag = { flag = CmtFlagKillDoubleBookingKhan days = 3 }
-					country_event = { id = marauder.500 days = 1 random = 358 }
+					set_timed_global_flag = { flag = CmtFlagKillDoubleBookingKhan days = 5 }
+					country_event = { id = marauder.500 days = 2 random = 358 }
 				}
-				990 = {
+				99 = {
 					modifier = {
 						factor = 3
 						event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanTriggerProbability value = 1 } }

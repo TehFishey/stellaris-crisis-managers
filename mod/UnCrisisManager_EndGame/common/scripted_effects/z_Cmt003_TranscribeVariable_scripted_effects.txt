@@ -9,7 +9,6 @@
 #####################################
 #####################################
 
-
 ################
 ###  Common  ###
 ################
@@ -18,10 +17,8 @@ CmtEffectTransferAll = {
 	CmtEffectTransferCrisisPower = yes
 	CmtEffectTransferKhanPostDeath = yes
 	CmtEffectTransferLgateCycle = yes
-	CmtEffectTransferUprisingVariables = yes
+	# CmtEffectTransferUprisingVariables = yes
 }
-
-
 
 ##############
 ###  Khan  ###
@@ -82,8 +79,6 @@ CmtEffectTransferKhanPostDeath = {
 	}
 }
 
-
-
 ################
 ###  L-Gate  ###
 ################
@@ -118,8 +113,6 @@ CmtEffectTransferLgateCycle = {
 	}
 }
 
-
-
 ##################
 ###  Uprising  ###
 ##################
@@ -127,12 +120,12 @@ CmtEffectTransferLgateCycle = {
 CmtEffectTransferUprisingVariables = {
 	event_target:CmtGlobalVar = {
 		set_variable = { which = CmtVarUprisingPreludeCycle value = CmtVarUprisingMtth }
-		
+
 		if = {
 			limit = { check_variable = { which = CmtVarUprisingUnwarned value = 3 } }
 			set_variable = { which = CmtVarUprisingWarProbability value = 5 }
 		}
-		
+
 		if = {
 			limit = { check_variable = { which = CmtVarUprisingWarProbability value = 1 } }
 			set_variable = { which = CmtVarUprisingHotfixProbability value = 5 }
@@ -146,15 +139,13 @@ CmtEffectTransferUprisingVariables = {
 			limit = { check_variable = { which = CmtVarUprisingWarProbability value = 5 } }
 			set_variable = { which = CmtVarUprisingHotfixProbability value = 1 }
 		} else = { set_variable = { which = CmtVarUprisingHotfixProbability value = 3 } }
-		
+
 		if = {
 			limit = { has_global_flag = CmtFlagUprisingForbidSynthetic }
 			remove_global_flag = CmtFlagUprisingAllowDroid
 		}
 	}
 }
-
-
 
 ######################
 ###  Crisis Power  ###
@@ -172,6 +163,4 @@ CmtEffectTransferCrisisPower = {
 		### y = 1 + (x - 1) / 2		if x >= 1.5
 	}
 }
-
-
 

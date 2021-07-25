@@ -24,7 +24,7 @@ country_event = {
 	}
 	desc = {
 		text = CrisisManagerMenu.1010.desc2
-		trigger = { NOT = { CmtTriggerCrisisConfig = yes } }
+		trigger = { CmtTriggerCrisisConfig = no }
 	}
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
@@ -778,7 +778,7 @@ country_event = {
 	}
 	desc = {
 		text = CrisisManagerMenu.1021.desc2
-		trigger = { NOT = { CmtTriggerPrethorynConfig = yes } }
+		trigger = { CmtTriggerPrethorynConfig = no }
 	}
 	picture = GFX_evt_physics_research
 	is_triggered_only = yes
@@ -1422,7 +1422,7 @@ country_event = {
 	}
 	desc = {
 		text = CrisisManagerMenu.1023.desc2
-		trigger = { NOT = { CmtTriggerContingencyConfig = yes } }
+		trigger = { CmtTriggerContingencyConfig = no }
 	}
 	picture = GFX_evt_glitchy_matrix
 	is_triggered_only = yes
