@@ -358,14 +358,16 @@ country_event = {
 		name = CrisisManagerMenu.7110a1.name
 		custom_tooltip = CrisisManagerMenu.7110a1.tooltip
 		trigger = {
-			NOT = { has_global_flag = galactic_crisis_happened }
+			NOR = {
+				has_global_flag = galactic_crisis_happened
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarMultiple value = 5 } }
+			}
 			NAND = {
 				CmtTriggerForbiddenPrethoryn = yes
 				CmtTriggerForbiddenExds = yes
 				CmtTriggerForbiddenContingency = yes
 				CmtTriggerForbiddenForcedEoc = yes
 			}
-			NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMultiple value = 5 } } }
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7111 } }
 	}
@@ -2096,7 +2098,6 @@ country_event = {
 		name = CrisisManagerMenu.7200f.name
 		custom_tooltip = CrisisManagerMenu.7200f.tooltip
 		trigger = {
-			always = no
 			has_global_flag = CmtFlagSleeperEdition
 			CmtTriggerExistShroudSpirit = yes
 		}

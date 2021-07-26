@@ -14,7 +14,6 @@
 #	How to use: See ''ReadMe_for_making_template.txt''
 #
 
-
 ################################
 ###  Activation of Template  ###
 ################################
@@ -29,13 +28,10 @@
 		### no : this template is ignored for specified parameters.
 		### * No configurations exist for military power of Fallen/Awakened Empires.
 
-
 ### The version of Crisis Manager. This template corresponds to:
 	@CmtT105_ConstVersionInfo = 1.11
 		### Never change this value.
 		### For example, ''1.03'' means ''ver.1.3'' but not ''ver.1.0.3''
-
-
 
 ##############################################
 ###  Event Conditions for End-Game Crises  ###
@@ -81,8 +77,6 @@
 	@CmtT105_ConstSubmarineCrisis = no
 		### yes: Activate Submarine Crisis
 		### no : Disable Submarine Crisis (Default)
-
-
 
 #########################################################
 ###  Configurations for Expansion of Crisis Factions  ###
@@ -131,8 +125,6 @@
 		### Friendly with Each Other Except Extradimensionals = 3
 		### Friendly with Each Other = 4
 
-
-
 ############################################
 ###  Advanced Configurations: Prethoryn  ###
 ############################################
@@ -169,8 +161,6 @@
 ### Unlimited Flavor Text of Prethoryn
 	@CmtT105_ConstPrethorynUnlimitedFlavor = no
 		### yes: Unlimited, no: Limited (Default)
-
-
 
 ####################################################
 ###  Advanced Configurations: Extradimensionals  ###
@@ -212,8 +202,6 @@
 		### It must be 1, 3, 5, 10, 25, 50, 100, 250, 500 or 9999.
 		### Exception: 9999 means ''Never Stabilized''
 
-
-
 ##############################################
 ###  Advanced Configurations: Contingency  ###
 ##############################################
@@ -252,8 +240,6 @@
 		### Never Resurface = 1, Resurface with Delay = 2
 		### Resurface Standardly = 3 (Default), Resurface Early = 4, Power State S1 = 5
 
-
-
 ######################################################
 ###  Advanced Configurations: Forced End of Cycle  ###
 ######################################################
@@ -285,14 +271,12 @@
 		### Prefer to Empire Owing Larger Territory = 3 (Default)
 		### Prefer to Empire with Many POPs = 4
 
-### Term of Convenant End of Cycle
+### Term of Covenant End of Cycle
 	@CmtT105_ConstForcedEocCrisisTerm = no
-		### yes: Term of the convenant conforms to ''Progress Speed of Opening Event Chain''
-		### no:  Term of the convenant is 50 years (Default)
+		### yes: Term of the covenant conforms to ''Progress Speed of Opening Event Chain''
+		### no:  Term of the covenant is 50 years (Default)
 
 ### * Don't forget ''Guardians of Galaxy'' and/or ''Crisis Power''
-
-
 
 ########################################################
 ###  Advanced Configurations: Awakening of Sleepers  ###
@@ -342,7 +326,7 @@
 
 ### Awakenable Sleepers
 	@CmtT105_ConstSleeperForbidMaterialist  = no		## Keepers of Knowledge
-	@CmtT105_ConstSleeperForbidSpirituarist = no		## Holy Guardians
+	@CmtT105_ConstSleeperForbidSpiritualist = no		## Holy Guardians
 	@CmtT105_ConstSleeperForbidXenophile    = no		## Enigmatic Observers
 	@CmtT105_ConstSleeperForbidXenophobe    = no		## Militant Isolationists
 		### yes: Forbid to Standardly Awaken
@@ -351,8 +335,6 @@
 ### Punishment for Holy-Cracker
 	@CmtT105_ConstSleeperHolyClacker = 3
 		### No Punishment = 1, Punished Later = 2, Punished Urgently = 3 (Default)
-
-
 
 ################################################
 ###  Advanced Configurations: War in Heaven  ###
@@ -369,8 +351,8 @@
 
 ### Ancient Rival for War in Heaven
 	@CmtT105_ConstHeavenAncientRival = 4
-		### Completely Random = 1. Opposite Ethics Prefered = 2, Opposite Ethics Has Priority = 3
-		### Opposite Ethics Highly Prefered = 4 (Default), Limited to Opposite Etics = 5
+		### Completely Random = 1. Opposite Ethics Preferred = 2, Opposite Ethics Has Priority = 3
+		### Opposite Ethics Highly Preferred = 4 (Default), Limited to Opposite Etics = 5
 
 ### Awakenable Ancient Rival
 	@CmtT105_ConstHeavenForbidIndependently = no
@@ -378,7 +360,7 @@
 		### no:  Confilm to Standard Awakening (Ignore Following 4 Options, Default)
 
 	@CmtT105_ConstHeavenForbidMaterialist   = no		### Keepers of Knowledge
-	@CmtT105_ConstHeavenForbidSpirituarist  = no		### Holy Guardians
+	@CmtT105_ConstHeavenForbidSpiritualist  = no		### Holy Guardians
 	@CmtT105_ConstHeavenForbidXenophile     = no		### Enigmatic Observers
 	@CmtT105_ConstHeavenForbidXenophobe     = no		### Militant Isolationists
 		### yes: Forbid to Awaken as Ancient Rival
@@ -405,8 +387,6 @@
 ### Exhaustion from War in Heaven
 	@CmtT105_ConstHeavenExhaustion = 2
 		### Spineless = 1, Fickle = 2 (Default), Tough = 3, Vindictive = 4, All-Out War = 5
-
-
 
 ######################################################
 ###  Advanced Configurations: Guardians of Galaxy  ###
@@ -441,8 +421,6 @@
 	@CmtT105_ConstMechFeAwaking = 3
 		### Never Awake = 1, Awakening Surely as Guardians = 2
 		### Awakening Randomly = 3 (Default), Awakening Surely as Berserkers = 4
-
-
 
 #######################################
 ###  Advanced Configurations: Khan  ###
@@ -509,8 +487,6 @@
 	@CmtT105_ConstKhanPostDeathSummary = 1
 		### Random = 1 (Default), Democracy = 2, Democracy or New Khanate = 3
 		### New Khanate = 4, New Khanate or Splinter Diadochi = 5, Splinter Diadochi = 6
-
-
 
 #########################################
 ###  Advanced Configurations: L-Gate  ###
@@ -582,8 +558,6 @@
 		### Can Terraformed after War = 4 (Default), Auto-Terraformed after War = 5
 		### Can Terraformed for Any L-Cluster = 6
 
-
-
 ######################
 ###  Crisis Power  ###
 ######################
@@ -591,7 +565,6 @@
 #	Required for activating: Crisis Manager - End-Game Edition and/or Mid-Game Edition
 #	Required for activating: @CmtT105_ConstActivatedFleetPower = yes
 #
-
 
 ### Template of Crisis Power
 ### Template of Crisis Power

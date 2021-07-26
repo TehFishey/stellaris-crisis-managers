@@ -274,10 +274,10 @@
 		### Prefer to Empire Owing Larger Territory = 3 (Default)
 		### Prefer to Empire with Many POPs = 4
 
-### Term of Convenant End of Cycle
+### Term of Covenant End of Cycle
 	@CmtT000_ConstForcedEocCrisisTerm = no
-		### yes: Term of the convenant conforms to ''Progress Speed of Opening Event Chain''
-		### no:  Term of the convenant is 50 years (Default)
+		### yes: Term of the covenant conforms to ''Progress Speed of Opening Event Chain''
+		### no:  Term of the covenant is 50 years (Default)
 
 ### * Don't forget ''Guardians of Galaxy'' and/or ''Crisis Power''
 
@@ -329,7 +329,7 @@
 
 ### Awakenable Sleepers
 	@CmtT000_ConstSleeperForbidMaterialist  = no		## Keepers of Knowledge
-	@CmtT000_ConstSleeperForbidSpirituarist = no		## Holy Guardians
+	@CmtT000_ConstSleeperForbidSpiritualist = no		## Holy Guardians
 	@CmtT000_ConstSleeperForbidXenophile    = no		## Enigmatic Observers
 	@CmtT000_ConstSleeperForbidXenophobe    = no		## Militant Isolationists
 		### yes: Forbid to Standardly Awaken
@@ -354,8 +354,8 @@
 
 ### Ancient Rival for War in Heaven
 	@CmtT000_ConstHeavenAncientRival = 4
-		### Completely Random = 1. Opposite Ethics Prefered = 2, Opposite Ethics Has Priority = 3
-		### Opposite Ethics Highly Prefered = 4 (Default), Limited to Opposite Etics = 5
+		### Completely Random = 1. Opposite Ethics Preferred = 2, Opposite Ethics Has Priority = 3
+		### Opposite Ethics Highly Preferred = 4 (Default), Limited to Opposite Etics = 5
 
 ### Awakenable Ancient Rival
 	@CmtT000_ConstHeavenForbidIndependently = no
@@ -363,7 +363,7 @@
 		### no:  Confilm to Standard Awakening (Ignore Following 4 Options, Default)
 
 	@CmtT000_ConstHeavenForbidMaterialist   = no		### Keepers of Knowledge
-	@CmtT000_ConstHeavenForbidSpirituarist  = no		### Holy Guardians
+	@CmtT000_ConstHeavenForbidSpiritualist  = no		### Holy Guardians
 	@CmtT000_ConstHeavenForbidXenophile     = no		### Enigmatic Observers
 	@CmtT000_ConstHeavenForbidXenophobe     = no		### Militant Isolationists
 		### yes: Forbid to Awaken as Ancient Rival

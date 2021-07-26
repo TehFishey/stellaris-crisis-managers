@@ -583,7 +583,12 @@ country_event = {
 		}
 
 		# Custodian/Emperor Announcements (3.0.2)
-		event_target:prethoryn = { save_event_target_as = crisis_country }
+		event_target:prethoryn = {
+			save_event_target_as = crisis_country
+			if = { limit = { NOT = { exists = event_target:prethoryn_species } }
+				species = { save_global_event_target_as = prethoryn_species }
+			}
+		}
 		if = {
 			limit = { has_galactic_custodian = yes }
 			random_playable_country = {
@@ -1087,7 +1092,7 @@ country_event = {
 	immediate = {
 		if = {
 			limit = { from = { CmtTriggerIsPrethoryn = yes } }
-			every_country = {
+			every_playable_country = {
 				limit = { is_ai = no }
 				country_event = { id = crisis.81 }
 			}
@@ -1552,7 +1557,7 @@ event = {
 						every_country = { establish_communications_no_message = event_target:feral_prethoryn }
 						if = {
 							limit = { NOT = { has_global_flag = feral_prethoryn_appeared } }
-							every_country = {
+							every_playable_country = {
 								limit = { is_ai = no }
 								country_event = { id = crisis.121 }
 							}

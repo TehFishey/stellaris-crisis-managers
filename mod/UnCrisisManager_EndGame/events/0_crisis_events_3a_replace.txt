@@ -11,7 +11,6 @@ namespace = crisis
 ##############################################
 ##############################################
 
-
 ###################
 ###  Constants  ###
 ###################
@@ -21,8 +20,6 @@ namespace = crisis
 @CmtConstContingencyArmyUpperLimit = 140
 
 @CmtConstCybrexShipsUpperLimit = 300
-
-
 
 ###########################################
 ###  Trigger Forced by Command Console  ###
@@ -68,7 +65,6 @@ country_event = {
 		country_event = { id = CrisisManagerControl.3000 }
 	}
 }
-
 
 ###############################
 ###  Create Machine Worlds  ###
@@ -181,7 +177,7 @@ planet_event = {
 		planet_event = { id = crisis.2052 } # Start Army reinforcement cycle
 		CmtEffectFriendlyCrisis = yes
 
-		every_country = {
+		every_playable_country = {
 			limit = { is_ai = no }
 			country_event = { id = crisis.2030 }
 		}
@@ -247,7 +243,7 @@ planet_event = {
 		planet_event = { id = crisis.2050 } # Start Fleet reinforcement cycle
 		planet_event = { id = crisis.2052 } # Start Army reinforcement cycle
 
-		every_country = {
+		every_playable_country = {
 			limit = { is_ai = no }
 			country_event = { id = crisis.2031 }
 		}
@@ -303,7 +299,7 @@ planet_event = {
 		planet_event = { id = crisis.2050 } # Start Fleet reinforcement cycle
 		planet_event = { id = crisis.2052 } # Start Army reinforcement cycle
 
-		every_country = {
+		every_playable_country = {
 			limit = { is_ai = no }
 			country_event = { id = crisis.2032 }
 		}
@@ -380,7 +376,7 @@ planet_event = {
 		planet_event = { id = crisis.2050 } # Start Fleet reinforcement cycle
 		planet_event = { id = crisis.2052 } # Start Army reinforcement cycle
 
-		every_country = {
+		every_playable_country = {
 			limit = { is_ai = no }
 			country_event = { id = crisis.2033 }
 		}
@@ -395,7 +391,6 @@ planet_event = {
 		random_playable_country = { observer_event = { id = observer.48 } }
 	}
 }
-
 
 #######################################################
 ###  Reinforcement of Fleet for Each Machine World  ###
@@ -480,8 +475,10 @@ planet_event = {
 		### Reinforcement of Contructor
 		if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value > 0 } } }
-			CmtEffectCreateAdmiralty_ContingencyConstructor = yes
-			CmtEffectCreateAdmiralty_ContingencyConstructor = yes
+			event_target:AI_crisis = {
+				CmtEffectCreateFleet_Constructor = yes
+				CmtEffectCreateFleet_Constructor = yes
+			}
 		}
 
 		### Next Cycle
@@ -551,8 +548,6 @@ planet_event = {
 		planet_event = { id = crisis.2052 }
 	}
 }
-
-
 
 
 ###########################################
@@ -664,7 +659,6 @@ event = {
 		}
 	}
 }
-
 
 ### Synth Terror
 country_event = {
@@ -970,8 +964,6 @@ country_event = {
 	}
 }
 
-
-
 #########################################
 ###  Terror Event for Machine Empire  ###
 #########################################
@@ -1148,7 +1140,6 @@ country_event = {
 	}
 }
 
-
 ### Scientist Terminated
 country_event = {
 	id = crisis.2302
@@ -1285,7 +1276,6 @@ country_event = {
 	}
 }
 
-
 ### Corrupted Units
 country_event = {
 	id = crisis.2307
@@ -1385,7 +1375,6 @@ country_event = {
 		custom_tooltip = crisis.2309.tooltip_2
 	}
 }
-
 
 ################
 ###  Cybrex  ###
@@ -1502,7 +1491,6 @@ country_event = {
 	}
 }
 
-
 ### Fleet Donation
 country_event = {
 	id = crisis.2473
@@ -1546,8 +1534,6 @@ country_event = {
 		name = crisis.2473.b
 	}
 }
-
-
 
 ################
 ###  Others  ###

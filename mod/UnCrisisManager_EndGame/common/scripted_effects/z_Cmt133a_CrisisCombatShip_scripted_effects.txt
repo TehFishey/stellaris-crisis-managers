@@ -20,8 +20,6 @@
 ###  Constants  ###
 ###################
 
-
-
 ###################
 ###  Prethoryn  ###
 ###################
@@ -102,7 +100,6 @@ CmtEffectCreateShip_PetQueenSmall = {
 	}
 }
 
-
 ###################
 ###  Sentinels  ###
 ###################
@@ -135,7 +132,6 @@ CmtEffectCreateShip_SentinelGamma = {
 		effect = { CmtEffectFasterSentinelCombatShip = yes }
 	}
 }
-
 
 ### Spearhead
 
@@ -184,7 +180,6 @@ CmtEffectCreateShip_SpearheadMolluscoid = {
 	}
 }
 
-
 ### Death Head
 
 CmtEffectCreateShip_DeathsHeadMammalian = {
@@ -223,7 +218,6 @@ CmtEffectCreateShip_DeathsHeadAvian = {
 	}
 }
 
-
 ### Bug Crusher
 
 CmtEffectCreateShip_BugCrusherAvian = {
@@ -253,7 +247,6 @@ CmtEffectCreateShip_BugCrusherReptilian = {
 	}
 }
 
-
 ### Blade
 
 CmtEffectCreateShip_BladeReptilian = {
@@ -282,7 +275,6 @@ CmtEffectCreateShip_BladeArthropoid = {
 		effect = { CmtEffectFasterSentinelCombatShip = yes }
 	}
 }
-
 
 ###########################
 ###  Extradimensionals  ###
@@ -317,7 +309,6 @@ CmtEffectCreateShip_Wraith = {
 	}
 }
 
-
 ### Aberrant
 
 CmtEffectCreateShip_Huntress = {
@@ -347,7 +338,6 @@ CmtEffectCreateShip_Predator = {
 	}
 }
 
-
 ### Vehement
 
 CmtEffectCreateShip_Eradicator = {
@@ -376,8 +366,6 @@ CmtEffectCreateShip_Obliterator = {
 		effect = { CmtEffectFasterVehementCombatShip = yes }
 	}
 }
-
-
 
 #####################
 ###  Contingency  ###
@@ -429,5 +417,4 @@ CmtEffectCreateShip_Reticent = {
 		effect = { CmtEffectFasterCybrexCombatShip = yes }
 	}
 }
-
 

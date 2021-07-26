@@ -10,18 +10,15 @@ namespace = CrisisManagerControl
 ######################################################
 ######################################################
 
-
-
 ###################
 ###  Constants  ###
 ###################
-
 
 ########################
 ###  Opening Events  ###
 ########################
 
-### Forced Convenant (utopia.3308, 3310)
+### Forced Covenant (utopia.3308, 3310)
 country_event = {
 	id = CrisisManagerControl.4101
 	title = CrisisManagerControl.4101.name
@@ -96,8 +93,6 @@ country_event = {
 	}
 }
 
-
-
 ### The End of the Cycle: Reckoning (utopia.3320)
 country_event = {
 	id = CrisisManagerControl.4102
@@ -166,7 +161,6 @@ country_event = {
 		every_owned_leader = { kill_leader = { show_notification = no } }
 		every_owned_fleet = { destroy_fleet = this }
 		every_subject = { set_subject_of = { who = none } }
-
 
 		### Create Exile
 		clear_resources = yes
@@ -256,7 +250,6 @@ country_event = {
 			assign_leader = last_created_leader
 		}
 
-
 		### Reckoning Marked Planet
 		event_target:CmtGlobalVar = { set_variable = { which = CmtVarTemp value = 0 } }		## for CmtVarEndPower
 		every_galaxy_planet = {
@@ -277,7 +270,6 @@ country_event = {
 				limit = { NOT = { is_same_value = event_target:former_capital } }
 				CmtEffectCreateShroudManifestation = yes
 			}
-
 
 			if = {
 				limit = { is_planet_class = pc_habitat }
@@ -332,8 +324,6 @@ country_event = {
 	}
 }
 
-
-
 #################################
 ###  Defeated Shroud Spirits  ###
 #################################
@@ -371,7 +361,6 @@ country_event = {
 		country_event = { id = CrisisManagerControl.0310 }	## Post Crisis Process
 	}
 }
-
 
 ### Not implemented yet
 # country_event = {

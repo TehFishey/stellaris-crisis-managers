@@ -21,7 +21,7 @@ CmtEffectCreatePrethorynCountry = {
 		portrait = random
 		traits = random
 		immortal = yes
-		effect = { save_event_target_as = prethoryn_species }
+		effect = { save_global_event_target_as = prethoryn_species }
 	}
 	create_country = {
 		name = "NAME_Prethoryn_Scourge"

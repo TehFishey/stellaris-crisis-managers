@@ -639,7 +639,7 @@ country_event = {
 			NOT = { has_country_flag = CmtFlagIndividual }
 			NAND = {
 				has_global_flag = CmtFlagSleeperForbidMaterialist
-				has_global_flag = CmtFlagSleeperForbidSpirituarist
+				has_global_flag = CmtFlagSleeperForbidSpiritualist
 				has_global_flag = CmtFlagSleeperForbidXenophile
 				has_global_flag = CmtFlagSleeperForbidXenophobe
 			}
@@ -652,7 +652,7 @@ country_event = {
 			has_country_flag = CmtFlagIndividual
 			NAND = {
 				has_global_flag = CmtFlagSleeperForbidMaterialist
-				has_global_flag = CmtFlagSleeperForbidSpirituarist
+				has_global_flag = CmtFlagSleeperForbidSpiritualist
 				has_global_flag = CmtFlagSleeperForbidXenophile
 				has_global_flag = CmtFlagSleeperForbidXenophobe
 			}
@@ -680,18 +680,18 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.4570b1.name
 		custom_tooltip = CrisisManagerMenu.4570b.tooltip
-		trigger = { NOT = { has_global_flag = CmtFlagSleeperForbidSpirituarist } }
+		trigger = { NOT = { has_global_flag = CmtFlagSleeperForbidSpiritualist } }
 		hidden_effect = {
-			set_global_flag = CmtFlagSleeperForbidSpirituarist
+			set_global_flag = CmtFlagSleeperForbidSpiritualist
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
 	option = {
 		name = CrisisManagerMenu.4570b2.name
 		custom_tooltip = CrisisManagerMenu.4570b.tooltip
-		trigger = { has_global_flag = CmtFlagSleeperForbidSpirituarist }
+		trigger = { has_global_flag = CmtFlagSleeperForbidSpiritualist }
 		hidden_effect = {
-			remove_global_flag = CmtFlagSleeperForbidSpirituarist
+			remove_global_flag = CmtFlagSleeperForbidSpiritualist
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
@@ -739,7 +739,7 @@ country_event = {
 			NOT = { has_country_flag = CmtFlagIndividual }
 			NAND = {
 				has_global_flag = CmtFlagSleeperForbidMaterialist
-				has_global_flag = CmtFlagSleeperForbidSpirituarist
+				has_global_flag = CmtFlagSleeperForbidSpiritualist
 				has_global_flag = CmtFlagSleeperForbidXenophile
 				has_global_flag = CmtFlagSleeperForbidXenophobe
 			}
@@ -1056,7 +1056,7 @@ country_event = {
 			NAND = {
 				has_global_flag = CmtFlagHeavenForbidIndependently
 				has_global_flag = CmtFlagHeavenForbidMaterialist
-				has_global_flag = CmtFlagHeavenForbidSpirituarist
+				has_global_flag = CmtFlagHeavenForbidSpiritualist
 				has_global_flag = CmtFlagHeavenForbidXenophile
 				has_global_flag = CmtFlagHeavenForbidXenophobe
 			}
@@ -1070,7 +1070,7 @@ country_event = {
 			NAND = {
 				has_global_flag = CmtFlagHeavenForbidIndependently
 				has_global_flag = CmtFlagHeavenForbidMaterialist
-				has_global_flag = CmtFlagHeavenForbidSpirituarist
+				has_global_flag = CmtFlagHeavenForbidSpiritualist
 				has_global_flag = CmtFlagHeavenForbidXenophile
 				has_global_flag = CmtFlagHeavenForbidXenophobe
 			}
@@ -1124,10 +1124,10 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4630b.tooltip
 		trigger = {
 			has_global_flag = CmtFlagHeavenForbidIndependently
-			NOT = { has_global_flag = CmtFlagHeavenForbidSpirituarist }
+			NOT = { has_global_flag = CmtFlagHeavenForbidSpiritualist }
 		}
 		hidden_effect = {
-			set_global_flag = CmtFlagHeavenForbidSpirituarist
+			set_global_flag = CmtFlagHeavenForbidSpiritualist
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
@@ -1136,10 +1136,10 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4630b.tooltip
 		trigger = {
 			has_global_flag = CmtFlagHeavenForbidIndependently
-			has_global_flag = CmtFlagHeavenForbidSpirituarist
+			has_global_flag = CmtFlagHeavenForbidSpiritualist
 		}
 		hidden_effect = {
-			remove_global_flag = CmtFlagHeavenForbidSpirituarist
+			remove_global_flag = CmtFlagHeavenForbidSpiritualist
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
@@ -1200,7 +1200,7 @@ country_event = {
 			NAND = {
 				has_global_flag = CmtFlagHeavenForbidIndependently
 				has_global_flag = CmtFlagHeavenForbidMaterialist
-				has_global_flag = CmtFlagHeavenForbidSpirituarist
+				has_global_flag = CmtFlagHeavenForbidSpiritualist
 				has_global_flag = CmtFlagHeavenForbidXenophile
 				has_global_flag = CmtFlagHeavenForbidXenophobe
 			}
@@ -1641,4 +1641,3 @@ country_event = {
 	is_triggered_only = yes
 	trigger = { always = no }
 }
-

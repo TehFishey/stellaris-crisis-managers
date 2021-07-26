@@ -38,7 +38,6 @@ CmtEffectSetIntervalFlag = {
 	}
 }
 
-
 CmtEffectFriendlyCrisis = {
 	event_target:CmtGlobalVar = {
 		if = {
@@ -166,8 +165,6 @@ CmtEffectHostileCrisis = {
 	}
 }
 
-
-
 ###########################
 ###  Extradimensionals  ###
 ###########################
@@ -238,7 +235,7 @@ CmtEffectSaveTargetExdPortal = {
 	}
 
 	if = { limit = { NOT = { exists = event_target:extradimensional_species } }
-		owner_species = { save_event_target_as = extradimensional_species }
+		 exists = owner_species owner_species = { save_event_target_as = extradimensional_species }
 	}
 }
 

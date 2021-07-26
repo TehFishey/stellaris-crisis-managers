@@ -11,7 +11,7 @@
 ###  Title of Menu  ###
 #######################
 defined_text = {
-	name = GetName_CmtViewerModeFallemEmpire
+	name = GetName_CmtViewerModeFallenEmpire
 	text = {
 		trigger = {
 			has_global_flag = CmtFlagEndGameEdition
@@ -135,7 +135,7 @@ defined_text = {
 
 ### Awakenable Sleepers
 defined_text = {
-	name = GetCurrnentSetting_SleeperMaterialist
+	name = GetCurrentSetting_SleeperMaterialist
 	text = {
 		trigger = { has_global_flag = CmtFlagSleeperForbidMaterialist }
 		localization_key = CmtTextListedNone
@@ -147,19 +147,19 @@ defined_text = {
 }
 
 defined_text = {
-	name = GetCurrnentSetting_SleeperSpirituarist
+	name = GetCurrentSetting_SleeperSpiritualist
 	text = {
-		trigger = { has_global_flag = CmtFlagSleeperForbidSpirituarist }
+		trigger = { has_global_flag = CmtFlagSleeperForbidSpiritualist }
 		localization_key = CmtTextListedNone
 	}
 	text = {
-		trigger = { NOT = { has_global_flag = CmtFlagSleeperForbidSpirituarist } }
+		trigger = { NOT = { has_global_flag = CmtFlagSleeperForbidSpiritualist } }
 		localization_key = CmtIconFanaticSpiritualist
 	}
 }
 
 defined_text = {
-	name = GetCurrnentSetting_SleeperXenophile
+	name = GetCurrentSetting_SleeperXenophile
 	text = {
 		trigger = { has_global_flag = CmtFlagSleeperForbidXenophile }
 		localization_key = CmtTextListedNone
@@ -171,7 +171,7 @@ defined_text = {
 }
 
 defined_text = {
-	name = GetCurrnentSetting_SleeperXenophobe
+	name = GetCurrentSetting_SleeperXenophobe
 	text = {
 		trigger = { has_global_flag = CmtFlagSleeperForbidXenophobe }
 		localization_key = CmtTextListedNone
@@ -184,7 +184,7 @@ defined_text = {
 
 ### Awakenable Ancient Rival
 defined_text = {
-	name = GetCurrnentSetting_HeavenMaterialist
+	name = GetCurrentSetting_HeavenMaterialist
 	text = {
 		trigger = { has_global_flag = CmtFlagHeavenForbidMaterialist }
 		localization_key = CmtTextListedNone
@@ -196,19 +196,19 @@ defined_text = {
 }
 
 defined_text = {
-	name = GetCurrnentSetting_HeavenSpirituarist
+	name = GetCurrentSetting_HeavenSpiritualist
 	text = {
-		trigger = { has_global_flag = CmtFlagHeavenForbidSpirituarist }
+		trigger = { has_global_flag = CmtFlagHeavenForbidSpiritualist }
 		localization_key = CmtTextListedNone
 	}
 	text = {
-		trigger = { NOT = { has_global_flag = CmtFlagHeavenForbidSpirituarist } }
+		trigger = { NOT = { has_global_flag = CmtFlagHeavenForbidSpiritualist } }
 		localization_key = CmtIconFanaticSpiritualist
 	}
 }
 
 defined_text = {
-	name = GetCurrnentSetting_HeavenXenophile
+	name = GetCurrentSetting_HeavenXenophile
 	text = {
 		trigger = { has_global_flag = CmtFlagHeavenForbidXenophile }
 		localization_key = CmtTextListedNone
@@ -220,7 +220,7 @@ defined_text = {
 }
 
 defined_text = {
-	name = GetCurrnentSetting_HeavenXenophobe
+	name = GetCurrentSetting_HeavenXenophobe
 	text = {
 		trigger = { has_global_flag = CmtFlagHeavenForbidXenophobe }
 		localization_key = CmtTextListedNone
@@ -233,7 +233,7 @@ defined_text = {
 
 ### What Lurks Beyond L-Gates
 defined_text = {
-	name = GetCurrnentSetting_LgateSilence
+	name = GetCurrentSetting_LgateSilence
 	text = {
 		trigger = { has_global_flag = CmtFlagLgateForbidSilence }
 		localization_key = CmtTextListedNone
@@ -245,7 +245,7 @@ defined_text = {
 }
 
 defined_text = {
-	name = GetCurrnentSetting_LgateLdrake
+	name = GetCurrentSetting_LgateLdrake
 	text = {
 		trigger = { has_global_flag = CmtFlagLgateForbidLdrake }
 		localization_key = CmtTextListedNone
@@ -257,7 +257,7 @@ defined_text = {
 }
 
 defined_text = {
-	name = GetCurrnentSetting_LgateDessanu
+	name = GetCurrentSetting_LgateDessanu
 	text = {
 		trigger = { has_global_flag = CmtFlagLgateForbidDessanu }
 		localization_key = CmtTextListedNone
@@ -269,7 +269,7 @@ defined_text = {
 }
 
 defined_text = {
-	name = GetCurrnentSetting_LgateGraygoo
+	name = GetCurrentSetting_LgateGraygoo
 	text = {
 		trigger = { has_global_flag = CmtFlagLgateForbidGraygoo }
 		localization_key = CmtTextListedNone
@@ -282,7 +282,7 @@ defined_text = {
 
 ### Uprisable Exploitee
 defined_text = {
-	name = GetCurrnentSetting_UprisingSynth
+	name = GetCurrentSetting_UprisingSynth
 	text = {
 		trigger = { has_global_flag = CmtFlagUprisingForbidSynthetic }
 		localization_key = CmtTextListedNone
@@ -294,7 +294,7 @@ defined_text = {
 }
 
 defined_text = {
-	name = GetCurrnentSetting_UprisingDroid
+	name = GetCurrentSetting_UprisingDroid
 	text = {
 		trigger = { NOT = { has_global_flag = CmtFlagUprisingAllowDroid } }
 		localization_key = CmtTextListedNone
@@ -306,7 +306,7 @@ defined_text = {
 }
 
 defined_text = {
-	name = GetCurrnentSetting_UprisingOrgSlave
+	name = GetCurrentSetting_UprisingOrgSlave
 	text = {
 		trigger = { NOT = { has_global_flag = CmtFlagUprisingAllowOrgSlave } }
 		localization_key = CmtTextListedNone
@@ -318,7 +318,7 @@ defined_text = {
 }
 
 defined_text = {
-	name = GetCurrnentSetting_UprisingBiotrophy
+	name = GetCurrentSetting_UprisingBiotrophy
 	text = {
 		trigger = { NOT = { has_global_flag = CmtFlagUprisingAllowBiotrophy } }
 		localization_key = CmtTextListedNone
@@ -334,7 +334,7 @@ defined_text = {
 ######################
 
 defined_text = {
-	name = GetCurrnentSetting_EndgamePower
+	name = GetCurrentSetting_EndgamePower
 	text = {
 		trigger = { NOT = { has_global_flag = CmtFlagEndGameEdition } }
 		localization_key = ""
@@ -382,7 +382,7 @@ defined_text = {
 }
 
 defined_text = {
-	name = GetCurrnentSetting_MidgamePower
+	name = GetCurrentSetting_MidgamePower
 	text = {
 		trigger = { NOT = { has_global_flag = CmtFlagMidGameEdition } }
 		localization_key = ""
@@ -614,4 +614,3 @@ defined_text = {
 		localization_key = CmtTemplateError
 	}
 }
-

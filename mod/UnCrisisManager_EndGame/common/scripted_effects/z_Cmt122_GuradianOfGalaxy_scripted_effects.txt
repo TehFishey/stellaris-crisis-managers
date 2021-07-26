@@ -11,13 +11,9 @@
 ##########################################
 ##########################################
 
-
-
 ###################
 ###  Constants  ###
 ###################
-
-
 
 ###############
 ###  Event  ###
@@ -48,7 +44,6 @@ awaken_fallen_machine_empire = {
 		}
 	}
 }
-
 
 awaken_guardians_of_the_galaxy = {
 	if = {
@@ -116,7 +111,6 @@ awaken_guardians_of_the_galaxy = {
 	}
 }
 
-
 CmtEffectAwakingAsGuardians = {
 	set_country_flag = guardians_of_the_galaxy
 	if = {
@@ -152,6 +146,4 @@ CmtEffectAwakingAsGuardians = {
 # guardians_of_the_galaxy        :	Awake as the gurdian
 # timed_guardians_of_the_galaxy  :	Don't awake yet,
 # timed_guardians_of_the_galaxy_2:	Awake immediately if this flag is expired.
-
-
 

@@ -120,32 +120,47 @@ country_event = {
 		### Ghost Signal for Ships
 		if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
-			every_owned_ship = {
+			every_owned_fleet = {
+				limit = { is_civilian = no }
+				every_owned_ship = {
 				limit = { has_sapient_combat_computer = yes }
-				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5a days = -1 }
+					add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5a days = -1 }
+				}
 			}
 		} else_if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
-			every_owned_ship = {
+			every_owned_fleet = {
+				limit = { is_civilian = no }
+				every_owned_ship = {
 				limit = { has_sapient_combat_computer = yes }
-				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5b days = -1 }
+					add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5b days = -1 }
+				}
 			}
 		} else_if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
-			every_owned_ship = {
+			every_owned_fleet = {
+				limit = { is_civilian = no }
+				every_owned_ship = {
 				limit = { has_sapient_combat_computer = yes }
-				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5d days = -1 }
+					add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5d days = -1 }
+				}
 			}
 		} else_if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
-			every_owned_ship = {
+			every_owned_fleet = {
+				limit = { is_civilian = no }
+				every_owned_ship = {
 				limit = { has_sapient_combat_computer = yes }
-				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5e days = -1 }
+					add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5e days = -1 }
+				}
 			}
 		} else = {
-			every_owned_ship = {
+			every_owned_fleet = {
+				limit = { is_civilian = no }
+				every_owned_ship = {
 				limit = { has_sapient_combat_computer = yes }
-				add_modifier = { modifier = ship_ghost_signal_5 days = -1 }
+					add_modifier = { modifier = ship_ghost_signal_5 days = -1 }
+				}
 			}
 		}
 		if = {
@@ -175,7 +190,6 @@ country_event = {
 		hidden_effect = { country_event = { id = crisis.2023 } }
 	}
 }
-
 
 ### Machine Empire Special Project Finished
 country_event = {
@@ -388,37 +402,52 @@ planet_event = {
 					}
 					if = {
 						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = CmtModifierCombatShipGhostSignal_5a
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4a days = -1 }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = CmtModifierCombatShipGhostSignal_5a
+								add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4a days = -1 }
+							}
 						}
 					} else_if = {
 						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = CmtModifierCombatShipGhostSignal_5b
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4b days = -1 }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = CmtModifierCombatShipGhostSignal_5b
+								add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4b days = -1 }
+							}
 						}
 					} else_if = {
 						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = CmtModifierCombatShipGhostSignal_5d
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4d days = -1 }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = CmtModifierCombatShipGhostSignal_5d
+								add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4d days = -1 }
+							}
 						}
 					} else_if = {
 						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = CmtModifierCombatShipGhostSignal_5e
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4e days = -1 }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = CmtModifierCombatShipGhostSignal_5e
+								add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4e days = -1 }
+							}
 						}
 					} else = {
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = ship_ghost_signal_5
-							add_modifier = { modifier = ship_ghost_signal_4 days = -1 }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = ship_ghost_signal_5
+								add_modifier = { modifier = ship_ghost_signal_4 days = -1 }
+							}
 						}
 					}
 				}
@@ -463,41 +492,56 @@ planet_event = {
 					}
 					if = {
 						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = CmtModifierCombatShipGhostSignal_5a
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4a days = -1 }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = CmtModifierCombatShipGhostSignal_5a
+								add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4a days = -1 }
+							}
 						}
 					} else_if = {
 						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = CmtModifierCombatShipGhostSignal_5b
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4b days = -1 }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = CmtModifierCombatShipGhostSignal_5b
+								add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4b days = -1 }
+							}
 						}
 					} else_if = {
 						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = CmtModifierCombatShipGhostSignal_5d
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4d days = -1 }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = CmtModifierCombatShipGhostSignal_5d
+								add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4d days = -1 }
+							}
 						}
 					} else_if = {
 						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = CmtModifierCombatShipGhostSignal_5e
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4e days = -1 }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = CmtModifierCombatShipGhostSignal_5e
+								add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4e days = -1 }
+							}
 						}
 					} else = {
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = ship_ghost_signal_5
-							add_modifier = { modifier = ship_ghost_signal_4 days = -1 }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = ship_ghost_signal_5
+								add_modifier = { modifier = ship_ghost_signal_4 days = -1 }
+							}
 						}
 					}
 				}
-				every_country = {
+				every_playable_country = {
 					limit = { is_ai = no }
 					country_event = { id = crisis.2037 }
 				}
@@ -548,37 +592,52 @@ planet_event = {
 					}
 					if = {
 						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = CmtModifierCombatShipGhostSignal_4a
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3a days = -1 }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = CmtModifierCombatShipGhostSignal_4a
+								add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3a days = -1 }
+							}
 						}
 					} else_if = {
 						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = CmtModifierCombatShipGhostSignal_4b
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3b days = -1 }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = CmtModifierCombatShipGhostSignal_4b
+								add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3b days = -1 }
+							}
 						}
 					} else_if = {
 						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = CmtModifierCombatShipGhostSignal_4d
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3d days = -1 }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = CmtModifierCombatShipGhostSignal_4d
+								add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3d days = -1 }
+							}
 						}
 					} else_if = {
 						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = CmtModifierCombatShipGhostSignal_4e
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3e days = -1 }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = CmtModifierCombatShipGhostSignal_4e
+								add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3e days = -1 }
+							}
 						}
 					} else = {
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = ship_ghost_signal_4
-							add_modifier = { modifier = ship_ghost_signal_3 days = -1 }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = ship_ghost_signal_4
+								add_modifier = { modifier = ship_ghost_signal_3 days = -1 }
+							}
 						}
 					}
 				}
@@ -617,40 +676,55 @@ planet_event = {
 					}
 					if = {
 						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = CmtModifierCombatShipGhostSignal_4a
-						}
-					} else_if = {
-						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = CmtModifierCombatShipGhostSignal_4b
-						}
-					} else_if = {
-						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = CmtModifierCombatShipGhostSignal_4d
-						}
-					} else_if = {
-						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = CmtModifierCombatShipGhostSignal_4e
-						}
-					} else = {
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = ship_ghost_signal_4
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = CmtModifierCombatShipGhostSignal_4a
 						}
 					}
+						} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = CmtModifierCombatShipGhostSignal_4b
+						}
+					}
+						} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = CmtModifierCombatShipGhostSignal_4d
+						}
+					}
+						} else_if = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = CmtModifierCombatShipGhostSignal_4e
+						}
+					}
+						} else = {
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = ship_ghost_signal_4
+						}
+					}
+						}
 				}
 				every_country = {
 					limit = { has_special_project = AI_CRISIS_PROJECT }
 					abort_special_project = { type = AI_CRISIS_PROJECT }
 				}
-				every_country = {
+				every_playable_country = {
 					limit = { is_ai = no }
 					country_event = { id = crisis.2037 }
 				}
@@ -700,41 +774,56 @@ planet_event = {
 					}
 					if = {
 						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = CmtModifierCombatShipGhostSignal_3a
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2a days = -1 }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = CmtModifierCombatShipGhostSignal_3a
+								add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2a days = -1 }
+							}
 						}
 					} else_if = {
 						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = CmtModifierCombatShipGhostSignal_3b
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2b days = -1 }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = CmtModifierCombatShipGhostSignal_3b
+								add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2b days = -1 }
+							}
 						}
 					} else_if = {
 						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = CmtModifierCombatShipGhostSignal_3d
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2d days = -1 }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = CmtModifierCombatShipGhostSignal_3d
+								add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2d days = -1 }
+							}
 						}
 					} else_if = {
 						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = CmtModifierCombatShipGhostSignal_3e
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2e days = -1 }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = CmtModifierCombatShipGhostSignal_3e
+								add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2e days = -1 }
+							}
 						}
 					} else = {
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = ship_ghost_signal_3
-							add_modifier = { modifier = ship_ghost_signal_2 days = -1 }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = ship_ghost_signal_3
+								add_modifier = { modifier = ship_ghost_signal_2 days = -1 }
+							}
 						}
 					}
 				}
-				every_country = {
+				every_playable_country = {
 					limit = { is_ai = no }
 					country_event = { id = crisis.2037 }
 				}
@@ -783,37 +872,52 @@ planet_event = {
 					}
 					if = {
 						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = CmtModifierCombatShipGhostSignal_2a
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1a days = -1 }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = CmtModifierCombatShipGhostSignal_2a
+								add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1a days = -1 }
+							}
 						}
 					} else_if = {
 						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = CmtModifierCombatShipGhostSignal_2b
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1b days = -1 }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = CmtModifierCombatShipGhostSignal_2b
+								add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1b days = -1 }
+							}
 						}
 					} else_if = {
 						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = CmtModifierCombatShipGhostSignal_2d
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1d days = -1 }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = CmtModifierCombatShipGhostSignal_2d
+								add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1d days = -1 }
+							}
 						}
 					} else_if = {
 						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = CmtModifierCombatShipGhostSignal_2e
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1e days = -1 }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = CmtModifierCombatShipGhostSignal_2e
+								add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1e days = -1 }
+							}
 						}
 					} else = {
-						every_owned_ship = {
-							limit = { has_sapient_combat_computer = yes }
-							remove_modifier = ship_ghost_signal_2
-							add_modifier = { modifier = ship_ghost_signal_1 days = -1 }
+						every_owned_fleet = {
+							limit = { is_civilian = no }
+							every_owned_ship = {
+								limit = { has_sapient_combat_computer = yes }
+								remove_modifier = ship_ghost_signal_2
+								add_modifier = { modifier = ship_ghost_signal_1 days = -1 }
+							}
 						}
 					}
 				}
@@ -948,8 +1052,6 @@ planet_event = {
 		}
 	}
 }
-
-
 
 #########################
 ###  Ordinary Events  ###
@@ -1133,7 +1235,6 @@ planet_event = {
 	}
 }
 
-
 ### for New ships
 ship_event = {
 	id = crisis.2056
@@ -1309,7 +1410,6 @@ ship_event = {
 		}
 	}
 }
-
 
 ### for Upgraded Ships
 ship_event = {

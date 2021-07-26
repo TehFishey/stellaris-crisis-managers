@@ -9,7 +9,6 @@
 ##################################################################
 ##################################################################
 
-
 ##########################################################
 ###  For Modifier of Lottery to Trigger/Select Crisis  ###
 ##########################################################
@@ -37,8 +36,6 @@ CmtTriggerCrisisAllowed_30yr = {
 CmtTriggerCrisisAllowed_50yr = {
 	has_global_flag = CmtFlagCrisisAllowed_50yr
 }
-
-
 
 ### Extradimensionals
 
@@ -104,8 +101,6 @@ CmtTriggerRougeScientist = {
 	}
 }
 
-
-
 ### Contingency
 
 CmtTriggerForbiddenContingency = {
@@ -157,7 +152,6 @@ CmtTriggerExistMechFe = {
 	}
 }
 
-
 ### Forced End of Cycle
 #
 # CmtTriggerPotentialForcedEoc -> Cmt2_Others_scripted_triggers.txt
@@ -190,7 +184,6 @@ CmtTriggerShroudPatron = {
 CmtTriggerExdsTriggered = {
 	has_global_flag = CmtFlagExdsTriggered
 }
-
 
 ### Probability Control by This Mod
 

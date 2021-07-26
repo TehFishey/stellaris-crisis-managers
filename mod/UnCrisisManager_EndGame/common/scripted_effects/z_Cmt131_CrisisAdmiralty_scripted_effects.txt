@@ -1,4 +1,3 @@
-
 ##########################################################
 ##########################################################
 #####                                                #####
@@ -14,10 +13,6 @@
 #	All script in this file require following scopes
 #	this: Location for creating fleets (e.g. planet)
 #
-
-###################
-###  Constants  ###
-###################
 
 ###################
 ###  Prethoryn  ###
@@ -261,13 +256,6 @@ CmtEffectCreateAdmiralty_SentinelAttacker = {
 				300 = { }
 			}
 		}
-	}
-}
-
-### Require Additional Scope: root = donated empire
-CmtEffectCreateAdmiraltyDonation_SentinelTaskforce = {
-	event_target:sentinels = {
-		CmtEffectCreateFleetDonation_SentinelTaskforce = yes
 	}
 }
 
@@ -527,21 +515,9 @@ CmtEffectCreateAdmiralty_ContingencyArmy = {
 	}
 }
 
-CmtEffectCreateAdmiralty_ContingencyConstructor = {
-	event_target:AI_crisis = {
-		CmtEffectCreateFleet_Constructor = yes
-	}
-}
-
 ################
 ###  Cybrex  ###
 ################
-
-CmtEffectCreateAdmiralty_CybrexCapitalDefense = {
-	event_target:cybrex = {
-		CmtEffectCreateFleet_CybrexCapitalDefense = yes
-	}
-}
 
 CmtEffectCreateAdmiralty_CybrexLarge = {
 	event_target:cybrex = {
@@ -587,16 +563,35 @@ CmtEffectCreateAdmiralty_CybrexSmall = {
 	}
 }
 
-### Require Additional Scope: root = donated empire
-CmtEffectCreateAdmiraltyDonation_CybrexSmall = {
-	event_target:cybrex = {
-		CmtEffectCreateFleetDonation_CybrexSmall = yes
-	}
-}
-
 ################
 ###  Legacy  ###
 ################
+
+# CmtEffectCreateAdmiralty_CybrexCapitalDefense = {
+# 	event_target:cybrex = {
+# 		CmtEffectCreateFleet_CybrexCapitalDefense = yes
+# 	}
+# }
+
+# CmtEffectCreateAdmiralty_ContingencyConstructor = {
+# 	event_target:AI_crisis = {
+# 		CmtEffectCreateFleet_Constructor = yes
+# 	}
+# }
+
+### Require Additional Scope: root = donated empire
+# CmtEffectCreateAdmiraltyDonation_SentinelTaskforce = {
+# 	event_target:sentinels = {
+# 		CmtEffectCreateFleetDonation_SentinelTaskforce = yes
+# 	}
+# }
+
+### Require Additional Scope: root = donated empire
+# CmtEffectCreateAdmiraltyDonation_CybrexSmall = {
+# 	event_target:cybrex = {
+# 		CmtEffectCreateFleetDonation_CybrexSmall = yes
+# 	}
+# }
 
 # CmtEffectCreateAdmiralty_PrethorynConstructor = {
 # 	event_target:prethoryn = {

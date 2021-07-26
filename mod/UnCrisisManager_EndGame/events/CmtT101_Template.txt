@@ -133,9 +133,9 @@ country_event = {
 					set_global_flag = CmtFlagSleeperForbidMaterialist
 				} else = { remove_global_flag = CmtFlagSleeperForbidMaterialist }
 				if = {
-					limit = { always = @CmtT101_ConstSleeperForbidSpirituarist }
-					set_global_flag = CmtFlagSleeperForbidSpirituarist
-				} else = { remove_global_flag = CmtFlagSleeperForbidSpirituarist }
+					limit = { always = @CmtT101_ConstSleeperForbidSpiritualist }
+					set_global_flag = CmtFlagSleeperForbidSpiritualist
+				} else = { remove_global_flag = CmtFlagSleeperForbidSpiritualist }
 				if = {
 					limit = { always = @CmtT101_ConstSleeperForbidXenophile }
 					set_global_flag = CmtFlagSleeperForbidXenophile
@@ -164,9 +164,9 @@ country_event = {
 					set_global_flag = CmtFlagHeavenForbidMaterialist
 				} else = { remove_global_flag = CmtFlagHeavenForbidMaterialist }
 				if = {
-					limit = { always = @CmtT101_ConstHeavenForbidSpirituarist }
-					set_global_flag = CmtFlagHeavenForbidSpirituarist
-				} else = { remove_global_flag = CmtFlagHeavenForbidSpirituarist }
+					limit = { always = @CmtT101_ConstHeavenForbidSpiritualist }
+					set_global_flag = CmtFlagHeavenForbidSpiritualist
+				} else = { remove_global_flag = CmtFlagHeavenForbidSpiritualist }
 				if = {
 					limit = { always = @CmtT101_ConstHeavenForbidXenophile }
 					set_global_flag = CmtFlagHeavenForbidXenophile
@@ -354,4 +354,3 @@ country_event = {
 		}
 	}
 }
-

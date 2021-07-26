@@ -51,8 +51,6 @@ namespace = CrisisManagerControl
 @CmtConstTerrorDays53 =   3 	## Synth Detection Project
 @CmtConstTerrorRand53 =   3
 
-
-
 ###############
 ###  Event  ###
 ###############
@@ -62,7 +60,7 @@ country_event = {
 	id = CrisisManagerControl.3300
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { NOT = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 1 } } }
@@ -85,15 +83,15 @@ country_event = {
 	id = CrisisManagerControl.3301
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		CmtTriggerExistContingency = yes
 	}
-	
+
 	immediate = {
 		every_country = {
 			limit = { CmtTriggerIsPlayableEmpire = yes }
-			
+
 			### Notification Event
 			if = {
 				limit = { CmtTriggerContingencyOrganicCountry = yes }
@@ -108,6 +106,7 @@ country_event = {
 			}
 			if = {
 				limit = {
+					exists = owner_species
 					owner_species = { has_trait = trait_psionic }
 					NOT = { has_global_flag = CmtFlagSynthTerrorAll }
 				}
@@ -118,7 +117,7 @@ country_event = {
 				country_event = { id = crisis.2313 }
 			}
 		}
-		
+
 		### Call Next Event
 		if = {
 			limit = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 2 } }
@@ -138,15 +137,15 @@ country_event = {
 	id = CrisisManagerControl.3302
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		CmtTriggerExistContingency = yes
 	}
-	
+
 	immediate = {
 		every_country = {
 			limit = { CmtTriggerIsPlayableEmpire = yes }
-			
+
 			### Notification Event
 			if = {
 				limit = { CmtTriggerContingencyOrganicCountry = yes }
@@ -157,7 +156,7 @@ country_event = {
 				country_event = { id = crisis.2314 }
 			}
 		}
-		
+
 		### Call Next Event
 		if = {
 			limit = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 2 } }
@@ -177,11 +176,11 @@ country_event = {
 	id = CrisisManagerControl.3303
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		CmtTriggerExistContingency = yes
 	}
-	
+
 	immediate = {
 		every_country = {
 			limit = { CmtTriggerContingencyOrganicCountry = yes }
@@ -189,7 +188,3 @@ country_event = {
 		}
 	}
 }
-
-
-
-
