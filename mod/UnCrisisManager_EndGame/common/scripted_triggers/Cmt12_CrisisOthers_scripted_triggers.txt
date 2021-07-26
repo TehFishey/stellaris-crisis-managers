@@ -25,7 +25,7 @@ CmtTriggerPrethoryn1stTarget = {
 		# Owned but not by fallen mpire
 		AND = {
 			exists = space_owner
-			space_owner = { NOT = { CmtTriggerIsFallenEmpire = yes } }
+			space_owner = { CmtTriggerIsFallenEmpire = no }
 		}
 	}
 	# No neighboring fallen empires
@@ -41,6 +41,7 @@ CmtTriggerPrethoryn1stTarget = {
 
 CmtTriggerFeralPrethorynSpawnableSystem = {
 	has_owner = no
+	is_capital_system = no
 	NOR = {
 		has_star_flag = feral_prethoryn_system
 		has_star_flag = extradimensional_origin_system
@@ -48,7 +49,7 @@ CmtTriggerFeralPrethorynSpawnableSystem = {
 		has_star_flag = extradimensional_third_portal_system
 		has_star_flag = AI_hub		## Machiene World 1-4, cf. planet_flag = machine_world_1
 		has_star_flag = AI_lair		## Final MAchiene World, cf. planet flag = machine_lair
-		any_system_planet = { is_capital = yes }
+		# any_system_planet = { is_capital = yes }
 	}
 	any_system_planet = { has_planet_flag = previously_infested }
 }
@@ -402,7 +403,7 @@ CmtTriggerPotentialForcedEoc = {	## Used for Trigger Lottery (Modify 'Nothing')
 
 CmtTriggerForbiddenForcedEoc = {	## Used for Trigger Lottery (Modify 'FEoc')
 	OR = {
-		NOT = { CmtTriggerPotentialForcedEoc = yes }
+		CmtTriggerPotentialForcedEoc = no
 		AND = {
 			OR = {
 				has_global_flag = end_of_the_cycle

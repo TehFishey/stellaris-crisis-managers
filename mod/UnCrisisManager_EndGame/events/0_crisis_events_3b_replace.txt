@@ -34,11 +34,11 @@ country_event = {
 
 	immediate = {
 		set_global_flag = ghost_signal_5_flag
-		
+
 		observer_event = { id = observer.44 }
 		end_event_chain = ghost_signal_chain
 		begin_event_chain = { event_chain = ai_crisis_chain target = ROOT }
-		
+
 		### Ghost Signal for POPs
 		if = {
 			limit = { has_authority = auth_machine_intelligence }
@@ -106,13 +106,10 @@ country_event = {
 				}
 			}
 		}
-		
+
 		if = {
 			limit = {
-				OR = {
-					has_authority = auth_machine_intelligence
-					has_country_flag = synthetic_empire
-				}
+				is_synthetic_empire = yes
 			}
 			enable_special_project = {
 				name = "AI_CRISIS_PROJECT"
@@ -156,15 +153,16 @@ country_event = {
 			country_event = { id = crisis.2099 days = 10 }
 		}
 	}
-	
+
 	option = {
 		name = ONSCREEN
 		if = {
 			limit = {
-				OR = {
-					has_authority = auth_machine_intelligence
-					has_country_flag = synthetic_empire
-				}
+				is_synthetic_empire = yes
+			}
+			if = {
+				limit = { has_technology = tech_decryption_3 }
+				custom_tooltip = tooltip_synth_crisis_encryption_bonus
 			}
 			tooltip = {
 				enable_special_project = {
@@ -191,7 +189,7 @@ country_event = {
 	immediate = {
 		set_country_flag = ghost_signal_blocked
 	}
-	
+
 	option = {
 		name = EXCELLENT
 		hidden_effect = {
@@ -262,6 +260,14 @@ country_event = {
 					}
 				}
 			}
+			if = {
+				limit = { has_notification_modifier = ghost_signal_5 }
+				remove_notification_modifier = ghost_signal_5
+			}
+			every_owned_pop = {
+				limit = { has_modifier = pop_ghost_signal_5 }
+				remove_modifier = pop_ghost_signal_5
+			}
 		}
 	}
 }
@@ -271,7 +277,7 @@ planet_event = {
 	id = crisis.2040
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		is_planet_class = pc_ai
 		OR = {
@@ -283,7 +289,7 @@ planet_event = {
 		}
 		NOT = { has_planet_flag = machine_lair }
 	}
-	
+
 	immediate = {
 		if = {
 			limit = { has_planet_flag = machine_world_1 }
@@ -318,9 +324,9 @@ planet_event = {
 				amount = -1
 			}
 		}
-		
+
 		if = {
-			limit = { 
+			limit = {
 				OR = {
 					NOT = { has_planet_flag = destroyed_by_colossus }
 					has_planet_flag = planet_godrayed
@@ -334,7 +340,7 @@ planet_event = {
 			add_deposit = d_minerals_3
 			add_deposit = d_energy_3
 		}
-		
+
 		event_target:AI_crisis = {
 			change_variable = { which = machine_worlds_destroyed value = 1 }
 			if = {
@@ -823,14 +829,19 @@ planet_event = {
 	id = crisis.2046
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		remove_global_flag = synth_terror
 		remove_global_flag = ai_ghost_signal
 		remove_global_flag = ai_invasion_ongoing
-		
+		solar_system = {
+			random_system_ambient_object = {
+				limit = { has_ambient_object_flag = contingency_system_effect_2 }
+				destroy_ambient_object = this
+			}
+		}
 		if = {
-			limit = { 
+			limit = {
 				OR = {
 					NOT = { has_planet_flag = destroyed_by_colossus }
 					has_planet_flag = planet_godrayed
@@ -847,24 +858,45 @@ planet_event = {
 		if = {
 			limit = {
 				event_target:final_machine_world_destroyer = { is_ai = no }
-				NOT = { has_planet_flag = planet_shielded }
 			}
-			event_target:final_machine_world_destroyer = {
-				country_event = { id = crisis.2480 days = 10 random = 10 }
+			event_target:final_machine_world_destroyer = { save_event_target_as = final_machine_world_player_destroyer }
+		}
+		else_if = {
+			limit = {
+				any_playable_country = {
+					is_ai = no
+					has_country_flag = does_not_compute
+				}
+			}
+			random_playable_country = {
+				limit = {
+					is_ai = no
+					has_country_flag = does_not_compute
+				}
+				save_event_target_as = final_machine_world_player_destroyer
 			}
 		}
 		if = {
 			limit = {
-				event_target:final_machine_world_destroyer = { is_ai = no }
-				has_planet_flag = planet_shielded
+				exists = event_target:final_machine_world_player_destroyer
+				NOT = { has_planet_flag = planet_shielded }
 			}
-			event_target:final_machine_world_destroyer = {
-				country_event = { id = crisis.2481 days = 10 random = 10 }
+			if = {
+				limit = { NOT = { has_planet_flag = planet_shielded } }
+				event_target:final_machine_world_player_destroyer = {
+					country_event = { id = crisis.2480 days = 10 random = 10 }
+				}
+			}
+			else_if = {
+				limit = { has_planet_flag = planet_shielded }
+				event_target:final_machine_world_player_destroyer = {
+					country_event = { id = crisis.2481 days = 10 random = 10 }
+				}
 			}
 		}
-		
+
 		CmtEffectClearGhostSignalGalaxy = yes
-		
+
 		every_country = {
 			limit = { has_event_chain = "ai_crisis_chain" }
 			end_event_chain = "ai_crisis_chain"
@@ -886,18 +918,20 @@ planet_event = {
 			}
 		}
 		observer_event = { id = observer.51 }
-		
+
+		# Destroy the Contingency
 		event_target:AI_crisis = {
 			destroy_country = yes
 			### 2.2.4: should end their purges too
 		}
-		
+		end_crisis = yes
+
 		### Fallen Machine Empire & Cybrex
 		every_country = {
 			limit = { is_fallen_machine_empire = yes }
 			country_event = { id = fallen_machine_empire.3 days = 1 }
 		}
-		
+		# Cybrex
 		if = {
 			limit = {
 				has_global_flag = cybrex_resurface
@@ -926,7 +960,7 @@ planet_event = {
 	id = crisis.2055
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_global_flag = ai_ghost_signal
 		fromfrom = {
@@ -937,7 +971,7 @@ planet_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		fromfrom = {
 			if = {
@@ -1039,7 +1073,7 @@ planet_event = {
 	id = crisis.2312
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_global_flag = ai_ghost_signal
 		fromfrom = {
@@ -1047,7 +1081,7 @@ planet_event = {
 			owner = { CmtTriggerUnderGhostSignalCountry = yes }
 		}
 	}
-	
+
 	immediate = {
 		fromfrom = {
 			if = {
@@ -1111,7 +1145,7 @@ ship_event = {
 		has_sapient_combat_computer = yes
 		owner = { CmtTriggerUnderGhostSignalCountry = yes }
 	}
-	
+
 	immediate = {
 		if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
@@ -1315,7 +1349,7 @@ ship_event = {
 			has_modifier = CmtModifierCombatShipGhostSignal_1e
 		}
 	}
-	
+
 	immediate = {
 		remove_modifier = ship_ghost_signal_5
 		remove_modifier = ship_ghost_signal_4
@@ -1342,8 +1376,7 @@ ship_event = {
 		remove_modifier = CmtModifierCombatShipGhostSignal_1b
 		remove_modifier = CmtModifierCombatShipGhostSignal_1d
 		remove_modifier = CmtModifierCombatShipGhostSignal_1e
-		
+
 		ship_event = { id = crisis.2056 }		## Set Modifier if Ship Has Sapient CPU
 	}
 }
-

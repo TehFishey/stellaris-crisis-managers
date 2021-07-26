@@ -15,20 +15,16 @@
 #	this: Location for creating fleets (e.g. planet)
 #
 
-
 ###################
 ###  Constants  ###
 ###################
-
-
-
 
 ###################
 ###  Prethoryn  ###
 ###################
 
 CmtEffectCreateAdmiralty_PrethorynVanguard = {
-	event_target:prethoryn_vgrd= {
+	event_target:prethoryn_vgrd = {
 		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Prethoryn } }
 		while = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
@@ -42,7 +38,7 @@ CmtEffectCreateAdmiralty_PrethorynVanguard = {
 			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
 			random_list = { 300 = { CmtEffectCreateFleet_PrethorynVanguard = yes } 100 = { } }
 		}
-		
+
 		CmtEffectCreateFleet_PrethorynConstructor = yes
 	}
 }
@@ -63,7 +59,7 @@ CmtEffectCreateAdmiralty_PrethorynBrood = {
 			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
 			random_list = { 300 = { CmtEffectCreateFleet_PrethorynBrood = yes } 100 = { } }
 		}
-		
+
 		### Create Army
 		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarArmyNumber_Prethoryn } }
 		while = {
@@ -78,10 +74,10 @@ CmtEffectCreateAdmiralty_PrethorynBrood = {
 			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
 			random_list = { 300 = { CmtEffectCreateFleet_PrethorynArmy = yes } 100 = { } }
 		}
-		
+
 		CmtEffectCreateFleet_PrethorynColonyzer = yes
 		CmtEffectCreateFleet_PrethorynColonyzer = yes
-		
+
 		CmtEffectCreateFleet_PrethorynConstructor = yes
 		CmtEffectCreateFleet_PrethorynConstructor = yes
 	}
@@ -109,9 +105,10 @@ CmtEffectCreateAdmiralty_PrethorynReinforcement = {
 	}
 }
 
-
+# This = location
+# Prev = owner
 CmtEffectCreateAdmiralty_PrethorynArmy = {
-	event_target:prethoryn = {
+	prev = {
 		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarArmyNumber_Prethoryn } }
 		while = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
@@ -132,36 +129,11 @@ CmtEffectCreateAdmiralty_PrethorynArmy = {
 	}
 }
 
-
-CmtEffectCreateAdmiralty_PrethorynConstructor = {
-	event_target:prethoryn = {
-		CmtEffectCreateFleet_PrethorynConstructor = yes
-	}
-}
-
-CmtEffectCreateAdmiralty_PrethorynColonizer = {
-	event_target:prethoryn = {
-		CmtEffectCreateFleet_PrethorynColonyzer = yes
-	}
-}
-
-CmtEffectCreateAdmiralty_PrethorynPetQueen = {
-	root.owner = {
-		CmtEffectCreateFleet_PrethorynPetQueen = yes
-	}
-}
-
-CmtEffectCreateAdmiralty_PrethorynRelicQueen = {
-	root = {
-		CmtEffectCreateFleet_PrethorynRelicQueen = yes
-	}
-}
-
 #########################
 ###  Feral Prethoryn  ###
 #########################
 
-### scope: this = stellar system
+### This = stellar system
 CmtEffectCreateAdmiraltySystem_FeralPrethorynGarrisonLarge = {
 	event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Prethoryn } }
 	while = {
@@ -260,7 +232,6 @@ CmtEffectCreateAdmiralty_FeralPrethorynInfighter = {
 	}
 }
 
-
 ###################
 ###  Sentinels  ###
 ###################
@@ -300,20 +271,19 @@ CmtEffectCreateAdmiraltyDonation_SentinelTaskforce = {
 	}
 }
 
-
 ###########################
 ###  Extradimensionals  ###
 ###########################
 
 ### Unbidden
 CmtEffectCreateAdmiralty_UnbiddenCapitalDefense = {
-	event_target:extradimensionals1 = {
+	event_target:extradimensionals = {
 		CmtEffectCreateFleet_UnbiddenCapitalDefense = yes
 	}
 }
 
 CmtEffectCreateAdmiralty_UnbiddenVanguard = {
-	event_target:extradimensionals1 = {
+	event_target:extradimensionals = {
 		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Unbidden } }
 		while = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
@@ -335,7 +305,7 @@ CmtEffectCreateAdmiralty_UnbiddenVanguard = {
 }
 
 CmtEffectCreateAdmiralty_UnbiddenReinforcement = {
-	event_target:extradimensionals1 = {
+	event_target:extradimensionals = {
 		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Unbidden } }
 		while = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
@@ -357,11 +327,10 @@ CmtEffectCreateAdmiralty_UnbiddenReinforcement = {
 }
 
 CmtEffectCreateAdmiralty_UnbiddenConstructor = {
-	event_target:extradimensionals1 = {
+	event_target:extradimensionals = {
 		CmtEffectCreateFleet_UnbiddenConstructor = yes
 	}
 }
-
 
 ### Aberrant
 CmtEffectCreateAdmiralty_AberrantCapitalDefense = {
@@ -420,7 +389,6 @@ CmtEffectCreateAdmiralty_AberrantConstructor = {
 	}
 }
 
-
 ### Vehement
 CmtEffectCreateAdmiralty_VehementCapitalDefense = {
 	event_target:extradimensionals3 = {
@@ -478,7 +446,6 @@ CmtEffectCreateAdmiralty_VehementConstructor = {
 	}
 }
 
-
 #####################
 ###  Contingency  ###
 #####################
@@ -487,7 +454,7 @@ CmtEffectCreateAdmiralty_ContingencyCapital = {
 	event_target:AI_crisis = {
 		### Create Capital Defence Force
 		CmtEffectCreateFleet_ContingencyCapitalDefense = yes
-		
+
 		### Create Attecker
 		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Contingency } }
 		while = {
@@ -500,8 +467,7 @@ CmtEffectCreateAdmiralty_ContingencyCapital = {
 			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
 			random_list = { 500 = { CmtEffectCreateFleet_ContingencyAttacker = yes } 500 = { } }
 		}
-		
-		
+
 		### Create Army
 		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarArmyNumber_Contingency } }
 		while = {
@@ -514,7 +480,7 @@ CmtEffectCreateAdmiralty_ContingencyCapital = {
 			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.5 } }
 			random_list = { 500 = { CmtEffectCreateFleet_ContingencyArmy = yes } 500 = { } }
 		}
-		
+
 		### Create Constructor
 		while = {
 			count = 3
@@ -631,13 +597,37 @@ CmtEffectCreateAdmiraltyDonation_CybrexSmall = {
 ################
 ###  Legacy  ###
 ################
-#
+
+# CmtEffectCreateAdmiralty_PrethorynConstructor = {
+# 	event_target:prethoryn = {
+# 		CmtEffectCreateFleet_PrethorynConstructor = yes
+# 	}
+# }
+
+# CmtEffectCreateAdmiralty_PrethorynColonizer = {
+# 	event_target:prethoryn = {
+# 		CmtEffectCreateFleet_PrethorynColonyzer = yes
+# 	}
+# }
+
+# CmtEffectCreateAdmiralty_PrethorynPetQueen = {
+# 	root.owner = {
+# 		CmtEffectCreateFleet_PrethorynPetQueen = yes
+# 	}
+# }
+
+# CmtEffectCreateAdmiralty_PrethorynRelicQueen = {
+# 	root = {
+# 		CmtEffectCreateFleet_PrethorynRelicQueen = yes
+# 	}
+# }
+
 #CmtEffectCreateAdmiralty_FeralPrethorynGarrison1 = {
 #	event_target:feral_prethoryn = {
 #		CmtEffectCreateFleet_FeralPrethorynGarrision1 = yes
 #	}
 #}
-#
+
 #CmtEffectCreateAdmiralty_FeralPrethorynGarrison2 = {
 #	event_target:feral_prethoryn = {
 #		CmtEffectCreateFleet_FeralPrethorynGarrision2 = yes

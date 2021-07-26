@@ -18,9 +18,7 @@ namespace = crisis
 @CmtConstPrethorynArmyUpperLimit = 140
 @CmtConstPrethorynColonizerStdNum = 5
 @CmtConstPrethorynConstructorStdNum = 4
-
 @CmtConstSentinelShipsUpperLimit = 200
-
 
 ###########################################
 ###  Trigger Forced by Command Console  ###
@@ -78,7 +76,6 @@ country_event = {
 	}
 }
 
-
 ### Standard
 country_event = {
 	id = crisis.10
@@ -92,13 +89,9 @@ country_event = {
 	}
 }
 
-
-
-
 ########################
 ###  Opening Events  ###
 ########################
-
 
 ### Notification of Approaching Subspace Echoes
 country_event = {
@@ -445,6 +438,7 @@ country_event = {
 	option = {
 		name = crisis.18.a
 		trigger = {
+			# first_contact_spiritualist_desc = yes
 			has_spiritualist_government = yes
 			NOR = {
 				has_ethic = "ethic_fanatic_egalitarian"
@@ -457,6 +451,7 @@ country_event = {
 	option = {
 		name = crisis.18.b
 		trigger = {
+			# first_contact_militarist_desc = yes
 			has_militarist_government = yes
 			NOR = {
 				has_ethic = "ethic_fanatic_egalitarian"
@@ -469,6 +464,7 @@ country_event = {
 	option = {
 		name = crisis.18.c
 		trigger = {
+			# first_contact_materialist_desc = yes
 			has_materialist_government = yes
 			NOR = {
 				has_ethic = "ethic_fanatic_egalitarian"
@@ -481,6 +477,7 @@ country_event = {
 	option = {
 		name = crisis.18.d
 		trigger = {
+			# first_contact_pacifist_desc = yes
 			has_pacifist_government = yes
 			NOR = {
 				has_ethic = "ethic_fanatic_egalitarian"
@@ -493,7 +490,11 @@ country_event = {
 	option = {
 		name = crisis.18.e
 		trigger = {
-			has_government = gov_megacorporation
+			OR = {
+				has_government = gov_megacorporation
+				has_government = gov_trade_league
+				has_authority = auth_corporate
+			}
 			NOR = {
 				has_ethic = "ethic_fanatic_egalitarian"
 				has_ethic = "ethic_fanatic_authoritarian"
@@ -505,11 +506,14 @@ country_event = {
 	option = {
 		name = crisis.18.f
 		trigger = {
+			# first_contact_default_desc = yes
 			OR = {
 				has_generic_government = yes
 				has_government = gov_enlightened_monarchy
 				has_government = gov_elective_monarchy
 				has_government = gov_hive_mind
+				has_government = gov_successor_khanate
+				has_government = gov_diadochi
 				has_ethic = ethic_gestalt_consciousness
 				is_zofe_country = yes
 			}
@@ -567,9 +571,32 @@ country_event = {
 		}
 		observer_event = { id = observer.30 }
 
+		# Recreate Prethoryn if Vanguard was destroyed
 		if = {
-			limit = { NOT = { any_country = { is_country_type = swarm } } }		## For Case of Vanguard Annihilated
-			CmtEffectCreatePrethorynCountry = yes
+			limit = {
+				NOR = {
+					exists = event_target:prethoryn
+					any_country = { is_country_type = swarm }
+				}
+			}
+			CmtEffectCreatePrethorynCountry = yes ## For Case of Vanguard Annihilated
+		}
+
+		# Custodian/Emperor Announcements (3.0.2)
+		event_target:prethoryn = { save_event_target_as = crisis_country }
+		if = {
+			limit = { has_galactic_custodian = yes }
+			random_playable_country = {
+				limit = { is_galactic_custodian = yes }
+				country_event = { id = custodian.50 days = 30 }
+			}
+		}
+		if = {
+			limit = { has_galactic_emperor = yes }
+			random_playable_country = {
+				limit = { is_galactic_emperor = yes }
+				country_event = { id = emperor.90 days = 30 }
+			}
 		}
 
 		### FIRST SYSTEM
@@ -747,7 +774,6 @@ country_event = {
 	}
 }
 
-
 ### Reinforcement of Prethoryn Armies (on_yearly_pulse)
 event = {
 	id = crisis.240
@@ -778,7 +804,12 @@ event = {
 						limit = { is_planet_class = pc_infested }
 						CmtEffectCreateAdmiralty_PrethorynArmy = yes
 					}
-				} else = { random_owned_ship = { CmtEffectCreateAdmiralty_PrethorynArmy = yes } }
+				} else = {
+					random_owned_ship = {
+						limit = { exists = solar_system }
+						CmtEffectCreateAdmiralty_PrethorynArmy = yes
+					}
+				}
 			}
 		}
 	}
@@ -806,7 +837,10 @@ event = {
 		event_target:prethoryn = {
 			while = {
 				count = @CmtConstPrethorynColonizerStdNum
-				random_owned_ship = { CmtEffectCreateAdmiralty_PrethorynColonizer = yes }
+				random_owned_ship = {
+					limit = { exists = solar_system }
+					prev = { CmtEffectCreateFleet_PrethorynColonyzer = yes }
+				}
 			}
 		}
 	}
@@ -840,15 +874,15 @@ event = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value > 0 } } }
 				while = {
 					count = @CmtConstPrethorynConstructorStdNum
-					random_owned_ship = { CmtEffectCreateAdmiralty_PrethorynConstructor = yes }
+					random_owned_ship = {
+						limit = { exists = solar_system }
+						prev = { CmtEffectCreateFleet_PrethorynConstructor = yes }
+					}
 				}
 			}
 		}
 	}
 }
-
-
-
 
 ###################
 ###  Sentinels  ###
@@ -897,9 +931,9 @@ country_event = {
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
-			country_event = { id = crisis.50 days = 1 }
+			country_event = { id = crisis.50 days = 2 }
 		} else = {
-			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 2 }
 			CmtEffectCallSentinel = yes
 		}
 	}
@@ -1062,10 +1096,6 @@ country_event = {
 		destroy_country = yes
 	}
 }
-
-
-
-
 
 #########################
 ###  Prethoryn Queen  ###
@@ -1234,8 +1264,10 @@ ship_event = {
 	option = {
 		name = crisis.105.a
 		hidden_effect = {
-			owner = { CmtEffectCreateAdmiral_PetQueen = yes }
-			root = { CmtEffectCreateAdmiralty_PrethorynPetQueen = yes }
+			owner = {
+				CmtEffectCreateAdmiral_PetQueen = yes
+				CmtEffectCreateFleet_PrethorynPetQueen = yes
+			}
 			solar_system = {
 				every_system_ambient_object = {
 					limit = { has_ambient_object_flag = dead_prethoryn }
@@ -1245,7 +1277,6 @@ ship_event = {
 		}
 	}
 }
-
 
 ### Queen Breeds (Pet Queen)
 fleet_event = {
@@ -1316,8 +1347,9 @@ country_event = {
 
 	trigger = {
 		CmtTriggerIsPlayableEmpire = yes
+		has_crisis = no
 		any_owned_leader = { has_leader_flag = captured_queen }
-		NOT = { CmtTriggerExistPrethoryn = yes }
+		CmtTriggerExistPrethoryn = no
 		OR = {
 			has_global_flag = CmtFlagPrethorynUnlimitedFlavor
 			owner_species = { has_trait = trait_psionic }
@@ -1348,7 +1380,6 @@ country_event = {
 	}
 }
 
-
 ### Queen Captured (Relic Queen)
 country_event = {
 	id = crisis.250
@@ -1361,10 +1392,11 @@ country_event = {
 
 	option = {
 		name = GOOD
-		hidden_effect = { capital_scope = { CmtEffectCreateAdmiralty_PrethorynRelicQueen = yes } }
+		hidden_effect = {
+			capital_scope = { prev = { CmtEffectCreateFleet_PrethorynRelicQueen = yes } }
+		}
 	}
 }
-
 
 ############################
 ###  Defeated Prethoryn  ###
@@ -1398,10 +1430,14 @@ country_event = {
 
 	trigger = {
 		is_country_type = swarm
+		has_global_flag = prethoryn_main_invasion
 	}
 
 	immediate = {
+		stop_crisis_sound = yes
+		end_crisis = yes
 		remove_global_flag = ongoing_prethoryn_invasion
+		set_global_flag = prethoryn_invasion_defeated
 		event_target:CmtGlobalVar = { country_event = { id = crisis.119 days = 360 } }		## Feral Prethoryn
 		every_country = {
 			limit = {
@@ -1418,12 +1454,9 @@ country_event = {
 	}
 }
 
-
-
 #########################
 ###  Feral Prethoryn  ###
 #########################
-
 
 ### Feral Prethoryn Can Spawn Flag, called by crisis.210 (Prethoryn Defeated)
 country_event = {
@@ -1435,17 +1468,17 @@ country_event = {
 	immediate = {
 		set_variable = { which = feral_prethoryn_spawned value = 0 }
 		if = {
-			limit = { check_variable = { which = CmtVarFeralPrethoryn value = 1 } }
-		} else_if = {
 			limit = { check_variable = { which = CmtVarFeralPrethoryn value = 2 } }
 			set_timed_global_flag = { flag = feral_prethoryn_can_spawn days = 3600 }	## 10 yr
 		} else_if = {
 			limit = { check_variable = { which = CmtVarFeralPrethoryn value = 4 } }
 			set_timed_global_flag = { flag = feral_prethoryn_can_spawn days = 18000 }	## 50 yr
-		} else = { set_timed_global_flag = { flag = feral_prethoryn_can_spawn days = 5400 } }	## 15 yr
+		} else_if = {
+			limit = { NOT = { check_variable = { which = CmtVarFeralPrethoryn value = 1 } } }
+			set_timed_global_flag = { flag = feral_prethoryn_can_spawn days = 5400 }	## 15 yr
+		}
 	}
 }
-
 
 ### Spawning to Planet (on_monthly_pulse)
 event = {
@@ -1483,6 +1516,7 @@ event = {
 						create_species = {
 							name = "NAME_Prethoryn"
 							class = SWARM
+							namelist = "Prethoryn"
 							portrait = random
 							traits = random
 							immortal = yes
@@ -1589,17 +1623,14 @@ event = {
 	}
 }
 
-
 ### Feral Prethoryn Infighting (on_monthly_pulse)
 event = {
 	id = crisis.123
 	hide_window = yes
-
 	is_triggered_only = yes
-
 	trigger = {
-		any_country = { is_country_type = feral_prethoryn }
 		NOT = { has_global_flag = feral_prethoryn_infighting_ongoing }
+		any_country = { is_country_type = feral_prethoryn }
 	}
 
 	immediate = {
@@ -1623,7 +1654,6 @@ event = {
 		}
 	}
 }
-
 
 ################################
 ###  Diplomacy of Prethoryn  ###
@@ -1667,8 +1697,6 @@ country_event = {
 		trigger = { owner_species = { has_trait = trait_hive_mind } }
 	}
 }
-
-
 
 ### Swarm Diplomacy
 country_event = {
@@ -1845,8 +1873,6 @@ country_event = {
 		is_dialog_only = yes
 	}
 }
-
-
 
 ################
 ###  Others  ###

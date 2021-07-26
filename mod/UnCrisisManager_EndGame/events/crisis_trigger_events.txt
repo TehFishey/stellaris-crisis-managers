@@ -8,11 +8,24 @@ event = {
 	id = crisis_trigger.1
 	hide_window = yes
 	is_triggered_only = yes
-	
+	trigger = {
+		is_crises_allowed = yes
+		# end_game_years_passed >= 0
+		# OR = {
+		# 	end_game_years_passed >= 50
+		# 	default_endgame_early_start_triggers = yes
+		# 	any_country = {
+		# 		is_country_type = default
+		# 		OR = {
+		# 			has_technology = tech_jump_drive_1
+		# 			has_technology = tech_psi_jump_drive_1
+		# 		}
+		# 	}
+		# 	is_active_resolution = resolution_galacticstudies_extradimensional_experimentation
+		# }
+		# NOT = { has_global_flag = galactic_crisis_happened }
+	}
 	immediate = {
 		event_target:CmtGlobalVar = { country_event = { id = CrisisManagerControl.0011 } }
 	}
 }
-
-
-

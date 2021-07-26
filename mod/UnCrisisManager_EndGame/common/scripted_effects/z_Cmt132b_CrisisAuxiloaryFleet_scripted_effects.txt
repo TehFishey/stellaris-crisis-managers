@@ -16,13 +16,6 @@
 #	prev: Location for creating fleets (e.g. planet)
 #
 
-
-
-###################
-###  Constants  ###
-###################
-
-
 ###################
 ###  Prethoryn  ###
 ###################
@@ -33,19 +26,21 @@ CmtEffectCreateFleet_PrethorynArmy = {
 		effect = {
 			set_owner = prev
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarArmyPower_Prethoryn } }
-			
+
 			while = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
-				
+
 				while = { count =  5 CmtEffectCreateShip_SwarmArmy = yes }		## 20 -> 20
 			}
-			
+
 			CmtFleetSetAuxParam_PrethorynAuxiliary = yes
 		}
 	}
 }
 
+# This = Owner
+# Prev = location
 CmtEffectCreateFleet_PrethorynConstructor = {
 	event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarConstructorNumber_Prethoryn } }
 	while = {
@@ -62,7 +57,7 @@ CmtEffectCreateFleet_PrethorynConstructor = {
 
 CmtEffectCreateFleet_PrethorynColonyzer = {
 	event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarColonizerNumber_Prethoryn } }
-	
+
 	while = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
 		event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -1 } }
@@ -74,7 +69,6 @@ CmtEffectCreateFleet_PrethorynColonyzer = {
 		random_list = { 100 = { CmtEffectCreateShip_PrethorynColonyzer = yes } 300 = { } }
 	}
 }
-
 
 ###########################
 ###  Extradimensionals  ###
@@ -122,8 +116,6 @@ CmtEffectCreateFleet_VehementConstructor = {
 	}
 }
 
-
-
 #####################
 ###  Contingency  ###
 #####################
@@ -133,14 +125,14 @@ CmtEffectCreateFleet_ContingencyArmy = {
 		effect = {
 			set_owner = prev
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarArmyPower_Contingency } }
-			
+
 			while = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
-				
+
 				while = { count =  5 CmtEffectCreateShip_ContingencyArmy = yes }		## 20 -> 20
 			}
-			
+
 			CmtFleetSetAuxParam_ContingencyAuxiliary = yes
 		}
 	}
@@ -151,7 +143,7 @@ CmtEffectCreateFleet_Constructor = {
 	while = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
 		event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -1 } }
-		
+
 		CmtEffectCreateShip_ContingencyConstructor = yes
 	}
 	while = {
@@ -160,5 +152,3 @@ CmtEffectCreateFleet_Constructor = {
 		random_list = { 100 = { CmtEffectCreateShip_ContingencyConstructor = yes } 300 = { } }
 	}
 }
-
-

@@ -16,17 +16,9 @@
 #	prev: Location for creating fleets (e.g. planet)
 #
 
-
-
-###################
-###  Constants  ###
-###################
-
-
 ###################
 ###  Prethoryn  ###
 ###################
-
 
 CmtEffectCreateShip_PrethorynConstructor = {
 	create_fleet = {
@@ -59,7 +51,6 @@ CmtEffectCreateShip_PrethorynColonyzer = {
 		}
 	}
 }
-
 
 ###########################
 ###  Extradimensionals  ###
@@ -110,12 +101,9 @@ CmtEffectCreateShip_VehementConstructor = {
 	}
 }
 
-
-
 #####################
 ###  Contingency  ###
 #####################
-
 
 CmtEffectCreateShip_ContingencyConstructor = {
 	create_fleet = {
@@ -131,8 +119,3 @@ CmtEffectCreateShip_ContingencyConstructor = {
 		}
 	}
 }
-
-
-
-
-

@@ -356,36 +356,37 @@ country_event = {
 	}
 
 	immediate = {
-		from = {
-			save_event_target_as = ShroudSpiritKiller
-			country_event = { id = CrisisManagerControl.4116 }
-		}
-		every_country = {
-			limit = {
-				CmtTriggerIsPlayableEmpire = yes
-				NOT = { is_same_value = from }
-			}
-			country_event = { id = CrisisManagerControl.4117 }
-		}
+		# TODO
+		# from = {
+		# 	save_event_target_as = ShroudSpiritKiller
+		# 	country_event = { id = CrisisManagerControl.4116 }
+		# }
+		# every_playable_country = {
+		# 	limit = {
+		# 		CmtTriggerIsPlayableEmpire = yes
+		# 		NOT = { is_same_value = from }
+		# 	}
+		# 	country_event = { id = CrisisManagerControl.4117 }
+		# }
 		country_event = { id = CrisisManagerControl.0310 }	## Post Crisis Process
 	}
 }
 
 
 ### Not implemented yet
-country_event = {
-	id = CrisisManagerControl.4116
-	title = CrisisManagerControl.4116.name
-	desc = CrisisManagerControl.4116.desc
-	picture = GFX_evt_metropolis
-	show_sound = event_celebration
+# country_event = {
+# 	id = CrisisManagerControl.4116
+# 	title = CrisisManagerControl.4116.name
+# 	desc = CrisisManagerControl.4116.desc
+# 	picture = GFX_evt_metropolis
+# 	show_sound = event_celebration
 
-	is_triggered_only = yes
-	trigger = { always = no }
+# 	is_triggered_only = yes
+# 	trigger = { always = no }
 
-	#NYI
-	hide_window = yes
-}
+# 	#NYI
+# 	hide_window = yes
+# }
 
 # ### Not implemented yet
 # country_event = {

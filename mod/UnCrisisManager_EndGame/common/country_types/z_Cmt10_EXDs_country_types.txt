@@ -23,7 +23,8 @@
 #	home_system = extradimensional_origin_system
 #	custom_starbase = starbase_exd_0
 #	observable = yes
-#	targets = { 
+#	uses_origins = no
+#	targets = {
 #		extradimensional_2
 #		extradimensional_3
 #	}
@@ -42,9 +43,9 @@
 #		hostile = yes
 #		needs_border_access = no
 #	}
-#	
+#
 #	custom_diplomacy = yes
-#	
+#
 #	modules = {
 #		standard_event_module = {}
 #		standard_leader_module = {}
@@ -68,6 +69,7 @@ extradimensional_2 = {
 	home_system = extradimensional_second_portal_system
 	custom_starbase = starbase_exd
 	observable = yes
+	uses_origins = no
 	targets = {
 		extradimensional
 		extradimensional_3
@@ -87,9 +89,9 @@ extradimensional_2 = {
 		hostile = yes
 		needs_border_access = no
 	}
-	
+
 	custom_diplomacy = yes
-	
+
 	modules = {
 		standard_event_module = {}
 		standard_leader_module = {}
@@ -113,6 +115,7 @@ extradimensional_3 = {
 	home_system = extradimensional_third_portal_system
 	custom_starbase = starbase_exd
 	observable = yes
+	uses_origins = no
 	targets = {
 		extradimensional
 		extradimensional_2
@@ -132,9 +135,9 @@ extradimensional_3 = {
 		hostile = yes
 		needs_border_access = no
 	}
-	
+
 	custom_diplomacy = yes
-	
+
 	modules = {
 		standard_event_module = {}
 		standard_leader_module = {}

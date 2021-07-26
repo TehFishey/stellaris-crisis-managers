@@ -172,18 +172,21 @@ CmtEffectHostileCrisis = {
 ###  Extradimensionals  ###
 ###########################
 
-CmtEffectSaveTargetExdPortal = {	## Scope: This = Owner Country (Exds)
+## Scope: This = Owner Country (Exds)
+CmtEffectSaveTargetExdPortal = {
 	if = {
 		limit = { is_country_type = extradimensional }
 		random_owned_ship = {
 			limit = { has_ship_flag = unbidden_portal }
 			save_event_target_as = dimensional_portal
 		}
-		every_country = {
-			limit = { is_country_type = portal_holder }
-			random_owned_ship = {
-				limit = { has_ship_flag = unbidden_portal }
-				save_event_target_as = dimensional_portal
+		if = { limit = { NOT = { exists = event_target:dimensional_portal } }
+			every_country = {
+				limit = { is_country_type = portal_holder }
+				random_owned_ship = {
+					limit = { has_ship_flag = unbidden_portal }
+					save_event_target_as = dimensional_portal
+				}
 			}
 		}
 	} else_if = {
@@ -192,11 +195,13 @@ CmtEffectSaveTargetExdPortal = {	## Scope: This = Owner Country (Exds)
 			limit = { has_ship_flag = aberrant_portal }
 			save_event_target_as = dimensional_portal
 		}
-		every_country = {
-			limit = { is_country_type = portal_holder }
-			random_owned_ship = {
-				limit = { has_ship_flag = aberrant_portal }
-				save_event_target_as = dimensional_portal
+		if = { limit = { NOT = { exists = event_target:dimensional_portal } }
+			every_country = {
+				limit = { is_country_type = portal_holder }
+				random_owned_ship = {
+					limit = { has_ship_flag = aberrant_portal }
+					save_event_target_as = dimensional_portal
+				}
 			}
 		}
 	} else_if = {
@@ -205,13 +210,35 @@ CmtEffectSaveTargetExdPortal = {	## Scope: This = Owner Country (Exds)
 			limit = { has_ship_flag = vehement_portal }
 			save_event_target_as = dimensional_portal
 		}
-		every_country = {
+		if = { limit = { NOT = { exists = event_target:dimensional_portal } }
+			every_country = {
+				limit = { is_country_type = portal_holder }
+				random_owned_ship = {
+					limit = { has_ship_flag = vehement_portal }
+					save_event_target_as = dimensional_portal
+				}
+			}
+		}
+	}
+	# Fallback
+	if = { limit = { NOT = { exists = event_target:dimensional_portal } }
+		random_country = {
 			limit = { is_country_type = portal_holder }
 			random_owned_ship = {
-				limit = { has_ship_flag = vehement_portal }
+				limit = { is_ship_size = dimensional_portal_ed }
 				save_event_target_as = dimensional_portal
 			}
 		}
+		if = { limit = { NOT = { exists = event_target:dimensional_portal } }
+			random_owned_ship = {
+				limit = { is_ship_size = dimensional_portal_ed }
+				save_event_target_as = dimensional_portal
+			}
+		}
+	}
+
+	if = { limit = { NOT = { exists = event_target:extradimensional_species } }
+		owner_species = { save_event_target_as = extradimensional_species }
 	}
 }
 
@@ -228,7 +255,3 @@ CmtEffectReinforcementExdCombat = {		## Scope: This = Owner Country (Exds)
 		event_target:dimensional_portal = { CmtEffectCreateAdmiralty_VehementReinforcement = yes }
 	}
 }
-
-
-
-
