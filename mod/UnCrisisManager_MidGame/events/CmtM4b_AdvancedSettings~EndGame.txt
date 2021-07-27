@@ -118,11 +118,9 @@ country_event = {
 		text = CrisisManagerMenu.4120.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarPrethorynQueen value = 1 }
-					check_variable = { which = CmtVarPrethorynQueen value = 2 }
-					check_variable = { which = CmtVarPrethorynQueen value = 3 }
-					check_variable = { which = CmtVarPrethorynQueen value = 4 }
+				OR = {
+					check_variable = { which = CmtVarPrethorynQueen value < 1 }
+					check_variable = { which = CmtVarPrethorynQueen value > 4 }
 				}
 			}
 		}
@@ -203,12 +201,9 @@ country_event = {
 		text = CrisisManagerMenu.4130.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarSentinelRise value = 1 }
-					check_variable = { which = CmtVarSentinelRise value = 2 }
-					check_variable = { which = CmtVarSentinelRise value = 3 }
-					check_variable = { which = CmtVarSentinelRise value = 4 }
-					check_variable = { which = CmtVarSentinelRise value = 5 }
+				OR = {
+					check_variable = { which = CmtVarSentinelRise value < 1 }
+					check_variable = { which = CmtVarSentinelRise value > 5 }
 				}
 			}
 		}
@@ -347,11 +342,9 @@ country_event = {
 		text = CrisisManagerMenu.4150.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarFeralPrethoryn value = 1 }
-					check_variable = { which = CmtVarFeralPrethoryn value = 2 }
-					check_variable = { which = CmtVarFeralPrethoryn value = 3 }
-					check_variable = { which = CmtVarFeralPrethoryn value = 4 }
+				OR = {
+					check_variable = { which = CmtVarFeralPrethoryn value < 1 }
+					check_variable = { which = CmtVarFeralPrethoryn value > 4 }
 				}
 			}
 		}
@@ -592,13 +585,9 @@ country_event = {
 		text = CrisisManagerMenu.4220.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarExdsChaserCondition value = 1 }
-					check_variable = { which = CmtVarExdsChaserCondition value = 2 }
-					check_variable = { which = CmtVarExdsChaserCondition value = 3 }
-					check_variable = { which = CmtVarExdsChaserCondition value = 4 }
-					check_variable = { which = CmtVarExdsChaserCondition value = 5 }
-					check_variable = { which = CmtVarExdsChaserCondition value = 6 }
+				OR = {
+					check_variable = { which = CmtVarExdsChaserCondition value < 1 }
+					check_variable = { which = CmtVarExdsChaserCondition value > 6 }
 				}
 			}
 		}
@@ -1037,12 +1026,9 @@ country_event = {
 		text = CrisisManagerMenu.4330.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarGhostStrength value = 1 }
-					check_variable = { which = CmtVarGhostStrength value = 2 }
-					check_variable = { which = CmtVarGhostStrength value = 3 }
-					check_variable = { which = CmtVarGhostStrength value = 4 }
-					check_variable = { which = CmtVarGhostStrength value = 5 }
+				OR = {
+					check_variable = { which = CmtVarGhostStrength value < 1 }
+					check_variable = { which = CmtVarGhostStrength value > 5 }
 				}
 			}
 		}
@@ -1128,12 +1114,9 @@ country_event = {
 		text = CrisisManagerMenu.4340.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarSynthTerrorEventSpeed value = 1 }
-					check_variable = { which = CmtVarSynthTerrorEventSpeed value = 2 }
-					check_variable = { which = CmtVarSynthTerrorEventSpeed value = 3 }
-					check_variable = { which = CmtVarSynthTerrorEventSpeed value = 4 }
-					check_variable = { which = CmtVarSynthTerrorEventSpeed value = 5 }
+				OR = {
+					check_variable = { which = CmtVarSynthTerrorEventSpeed value < 1 }
+					check_variable = { which = CmtVarSynthTerrorEventSpeed value > 5 }
 				}
 			}
 		}
@@ -1222,12 +1205,9 @@ country_event = {
 		text = CrisisManagerMenu.4350.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarFreqTerror value = 1 }
-					check_variable = { which = CmtVarFreqTerror value = 2 }
-					check_variable = { which = CmtVarFreqTerror value = 3 }
-					check_variable = { which = CmtVarFreqTerror value = 4 }
-					check_variable = { which = CmtVarFreqTerror value = 5 }
+				OR = {
+					check_variable = { which = CmtVarFreqTerror value < 1 }
+					check_variable = { which = CmtVarFreqTerror value > 5 }
 				}
 			}
 		}
@@ -1363,12 +1343,9 @@ country_event = {
 		text = CrisisManagerMenu.4370.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarCybrexResurfacing value = 1 }
-					check_variable = { which = CmtVarCybrexResurfacing value = 2 }
-					check_variable = { which = CmtVarCybrexResurfacing value = 3 }
-					check_variable = { which = CmtVarCybrexResurfacing value = 4 }
-					check_variable = { which = CmtVarCybrexResurfacing value = 5 }
+				OR = {
+					check_variable = { which = CmtVarCybrexResurfacing value < 1 }
+					check_variable = { which = CmtVarCybrexResurfacing value > 5 }
 				}
 			}
 		}
@@ -1666,11 +1643,9 @@ country_event = {
 		text = CrisisManagerMenu.4440.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarForcedEocCountryStrength value = 1 }
-					check_variable = { which = CmtVarForcedEocCountryStrength value = 2 }
-					check_variable = { which = CmtVarForcedEocCountryStrength value = 3 }
-					check_variable = { which = CmtVarForcedEocCountryStrength value = 4 }
+				OR = {
+					check_variable = { which = CmtVarForcedEocCountryStrength value < 1 }
+					check_variable = { which = CmtVarForcedEocCountryStrength value > 4 }
 				}
 			}
 		}
@@ -1827,11 +1802,9 @@ country_event = {
 		text = CrisisManagerMenu.4710.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarGuardiansProbability value = 1 }
-					check_variable = { which = CmtVarGuardiansProbability value = 2 }
-					check_variable = { which = CmtVarGuardiansProbability value = 3 }
-					check_variable = { which = CmtVarGuardiansProbability value = 4 }
+				OR = {
+					check_variable = { which = CmtVarGuardiansProbability value < 1 }
+					check_variable = { which = CmtVarGuardiansProbability value > 4 }
 				}
 			}
 		}
@@ -1911,11 +1884,9 @@ country_event = {
 		text = CrisisManagerMenu.4720.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarTimingAwakingGuardians value = 1 }
-					check_variable = { which = CmtVarTimingAwakingGuardians value = 2 }
-					check_variable = { which = CmtVarTimingAwakingGuardians value = 3 }
-					check_variable = { which = CmtVarTimingAwakingGuardians value = 4 }
+				OR = {
+					check_variable = { which = CmtVarTimingAwakingGuardians value < 1 }
+					check_variable = { which = CmtVarTimingAwakingGuardians value > 4 }
 				}
 			}
 		}
@@ -2000,11 +1971,9 @@ country_event = {
 		text = CrisisManagerMenu.4730.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarDoubleGurdian value = 1 }
-					check_variable = { which = CmtVarDoubleGurdian value = 2 }
-					check_variable = { which = CmtVarDoubleGurdian value = 3 }
-					check_variable = { which = CmtVarDoubleGurdian value = 4 }
+				OR = {
+					check_variable = { which = CmtVarDoubleGurdian value < 1 }
+					check_variable = { which = CmtVarDoubleGurdian value > 4 }
 				}
 			}
 		}
@@ -2162,11 +2131,9 @@ country_event = {
 		text = CrisisManagerMenu.4750.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarMechFeAwaking value = 1 }
-					check_variable = { which = CmtVarMechFeAwaking value = 2 }
-					check_variable = { which = CmtVarMechFeAwaking value = 3 }
-					check_variable = { which = CmtVarMechFeAwaking value = 4 }
+				OR = {
+					check_variable = { which = CmtVarMechFeAwaking value < 1 }
+					check_variable = { which = CmtVarMechFeAwaking value > 4 }
 				}
 			}
 		}
@@ -2247,4 +2214,3 @@ country_event = {
 	is_triggered_only = yes
 	trigger = { always = no }
 }
-

@@ -234,8 +234,9 @@ CmtEffectSaveTargetExdPortal = {
 		}
 	}
 
-	if = { limit = { NOT = { exists = event_target:extradimensional_species } }
-		 exists = owner_species owner_species = { save_event_target_as = extradimensional_species }
+	if = {
+		limit = { NOT = { exists = event_target:extradimensional_species } }
+		owner_species = { save_event_target_as = extradimensional_species }
 	}
 }
 
