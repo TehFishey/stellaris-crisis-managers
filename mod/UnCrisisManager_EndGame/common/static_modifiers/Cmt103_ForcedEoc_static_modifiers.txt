@@ -9,7 +9,6 @@
 ###################################################
 ###################################################
 
-
 ###################
 ###  Constants  ###
 ###################
@@ -40,8 +39,6 @@
 @CmtConstEndOfCycleModifierInfluence_17yr  =    15
 @CmtConstEndOfCycleModifierInfluence_23yr  =    10
 #CmtConstEndOfCycleModifierInfluence_50yr  =     5
-
-
 
 ###############################
 ###  Covenant End of Cycle  ###
@@ -112,8 +109,6 @@ CmtModifierCovenantFEoC_23yr = {
 	country_base_influence_produces_add = @CmtConstEndOfCycleModifierInfluence_23yr
 }
 
-
-
 ##################
 ###  Absorber  ###
 ##################
@@ -159,7 +154,6 @@ CmtModifierCovenantFEoC_23yr = {
 #		ship_fire_rate_mult = 6
 #	}
 #
-
 
 CmtModifierAbsorvedConsciousness_6 = {
 	ship_shield_add = 600000

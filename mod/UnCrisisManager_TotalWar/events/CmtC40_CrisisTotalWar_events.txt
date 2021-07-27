@@ -34,7 +34,7 @@ country_event = {
 			NAND = {
 				exists = starbase
 				exists = starbase.owner
-				starbase.owner = { is_same_value = root }
+				starbase.owner = { is_same_empire = root }
 			}
 		}
 	}
@@ -195,9 +195,9 @@ fleet_event = {
 		}
 		
 		from = {		## solar_system
-			any_ship_in_system = {
+			any_fleet_in_system = {
 				exists = owner
-				NOT = { owner = { is_same_value = prevprev.starbase.owner } }
+				NOT = { owner = { is_same_empire = prevprev.starbase.owner } }
 				is_ship_class = shipclass_military
 			}
 		}
@@ -252,15 +252,15 @@ planet_event = {
 		solar_system = {
 			### Fleet of Starbase Owner Unexists
 			NOT = {
-				any_ship_in_system = {
+				any_fleet_in_system = {
 					exists = owner
-					owner = { is_same_value = root.solar_system.starbase.owner }
+					owner = { is_same_empire = root.solar_system.starbase.owner }
 					is_ship_class = shipclass_military
 				}
 			}
 			
 			### Starbase Owner or Attaker is Total War Pack
-			any_ship_in_system = {
+			any_fleet_in_system = {
 				exists = owner
 				owner = { CmtTriggerIsCrisisStarbaseCountry = yes }
 				OR = {

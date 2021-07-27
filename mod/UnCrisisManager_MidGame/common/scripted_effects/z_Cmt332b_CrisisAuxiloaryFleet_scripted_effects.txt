@@ -1,4 +1,3 @@
-
 ###################################################################
 ###################################################################
 #####                                                         #####
@@ -16,12 +15,9 @@
 #	prev: Location for creating fleets (e.g. planet)
 #
 
-
-
 ###################
 ###  Constants  ###
 ###################
-
 
 ##############
 ###  Khan  ###
@@ -33,13 +29,61 @@ CmtEffectCreateFleet_KhanArmy = {
 		effect = {
 			set_owner = prev
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarArmyPower_Khan } }
-			
 			while = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
-				while = { count = 5 CmtEffectCreateShip_KhanArmy = yes }
+				random_list = {
+					4 = {
+						while = { count = 4 CmtEffectCreateShip_KhanArmy = { TYPE = "gene_warrior_army" } }
+						modifier = {
+							factor = 0
+							prev = { NOT = { has_technology = tech_gene_seed_purification } }
+						}
+					}
+					3 = {
+						while = { count = 4 CmtEffectCreateShip_KhanArmy = { TYPE = "psionic_army" } }
+						modifier = {
+							factor = 0
+							prev = { NOT = { has_technology = tech_telepathy } }
+						}
+					}
+					2 = {
+						while = { count = 6 CmtEffectCreateShip_KhanArmy = { TYPE = "clone_army" } }
+						modifier = {
+							factor = 0
+							prev = {
+								OR = {
+									NOT = { has_technology = tech_gene_banks }
+									has_technology = tech_telepathy
+									has_technology = tech_gene_seed_purification
+									has_technology = tech_neural_implants
+									has_technology = tech_droid_workers
+								}
+							}
+						}
+					}
+					2 = {
+						while = { count = 6 CmtEffectCreateShip_KhanArmy = { TYPE = "slave_army" } }
+						modifier = {
+							factor = 0
+							prev = {
+								OR = {
+									NOT = { has_technology = tech_neural_implants }
+									has_technology = tech_telepathy
+									has_technology = tech_gene_seed_purification
+									has_technology = tech_gene_banks
+									has_technology = tech_droid_workers
+								}
+							}
+						}
+					}
+					1 = {
+						while = { count = 5 CmtEffectCreateShip_KhanArmy = yes }
+					}
+				}
 			}
 			CmtFleetSetAuxParam_KhanAuxiliary = yes
+			set_fleet_stance = evasive
 		}
 	}
 	last_created_army = { assign_leader = last_created_leader }
@@ -56,5 +100,22 @@ CmtEffectCreateFleet_KhanConstructor = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
 		event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
 		random_list = { 100 = { CmtEffectCreateShip_KhanConstructor = yes } 300 = { } }
+	}
+}
+
+CmtEffectCreateShip_KhanConstructor = {
+	create_fleet = {
+		# name = "NAME_Constructor"
+		effect = {
+			set_owner = prev
+			create_ship = {
+				name = random
+				design = "NAME_Clan_Builder"
+				graphical_culture = "pirate_01"
+				# effect = { CmtEffectFasterKhanConstructor = yes }
+			}
+			CmtFleetSetAuxParam_KhanAuxiliary = yes
+			set_fleet_stance = evasive
+		}
 	}
 }

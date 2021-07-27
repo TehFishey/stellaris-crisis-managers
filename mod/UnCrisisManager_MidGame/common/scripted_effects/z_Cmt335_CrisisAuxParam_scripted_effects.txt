@@ -1,4 +1,3 @@
-
 ##########################################
 ##########################################
 #####                                #####
@@ -15,14 +14,12 @@
 #	this = fleet
 #	prev = owner country
 #	prevprev = location for spawning fleet
-#	
+#
 #
 
 ###################
 ###  Constants  ###
 ###################
-
-
 
 ##############
 ###  Khan  ###
@@ -33,6 +30,10 @@ CmtFleetSetAuxParam_KhanCombat = {
 		target = prevprev
 		distance = 45
 		angle = random
+	}
+	if = {
+		limit = { exists = prevprev.solar_system.starbase }
+		set_home_base = prevprev.solar_system.starbase
 	}
 }
 
@@ -55,8 +56,6 @@ CmtFleetSetAuxParam_KhanAuxiliary = {
 		angle = random
 	}
 }
-
-
 
 #################
 ###  Dessanu  ###
@@ -89,7 +88,7 @@ CmtFleetSetAuxParam_DessanuRoamerCommon = {
 ### For Roamers: 			set_location = event_target:start_x (x = \d)
 CmtFleetSetAuxParam_DessanuRoamer = {
 	random_system_planet = {
-		limit = { is_planet_class = pc_gray_goo }
+		limit = { is_planet_class = pc_gray_goo } # get changed after to pc_gaia
 		last_created_fleet = {
 			set_location = prev
 			queue_actions = {
@@ -101,18 +100,51 @@ CmtFleetSetAuxParam_DessanuRoamer = {
 						}
 						found_system = {
 							move_to = THIS
+							find_random_planet = {
+								trigger = {
+									id = dessanu_roamers_$NUM$.trigger.3
+									is_star = yes
+									exists = starbase
+								}
+								found_planet = {
+									orbit_planet = THIS
+									move_to = THIS.starbase
+									wait = {
+										duration = 60
+										random = 30
+									}
+								}
+								failed = {
+									find_random_planet = {
+										trigger = {
+											id = dessanu_roamers_$NUM$.failed
+											is_star = yes
+										}
+										found_planet = {
+											orbit_planet = THIS
+											wait = {
+												duration = 30
+												random = 15
+											}
+										}
+									}
+								}
+							}
 						}
 					}
 					find_closest_planet = {
 						trigger = {
 							id = dessanu_roamers_$NUM$.trigger.2
-							is_planet_class = "pc_gaia"
+							OR = {
+								is_planet_class = "pc_gray_goo"
+								is_planet_class = "pc_gaia"
+							}
 						}
 						found_planet = {
 							orbit_planet = THIS
 							wait = {
-								duration = 50
-								random = 25
+								duration = 60
+								random = 30
 							}
 						}
 					}
@@ -150,8 +182,7 @@ CmtFleetSetAuxParam_GraygooAttacker = {
 	}
 }
 
-
-### For Roamers: 			set_location = event_target:start_x (x = \d)
+### For Roamers: 	set_location = event_target:start_x (x = \d)
 CmtFleetSetAuxParam_GraygooRoamer = {
 	random_system_planet = {
 		limit = { is_planet_class = pc_gray_goo }
@@ -166,6 +197,19 @@ CmtFleetSetAuxParam_GraygooRoamer = {
 						}
 						found_system = {
 							move_to = THIS
+							find_random_planet = {
+								trigger = {
+									id = graygoo_roamers_$NUM$.trigger.3
+									is_star = yes
+								}
+								found_planet = {
+									orbit_planet = THIS
+									wait = {
+										duration = 30
+										random = 15
+									}
+								}
+							}
 						}
 					}
 					find_closest_planet = {
@@ -175,9 +219,13 @@ CmtFleetSetAuxParam_GraygooRoamer = {
 						}
 						found_planet = {
 							orbit_planet = THIS
+							effect = {
+								id = graygoo_roamers_$NUM$.trigger.4
+								root.fromfrom = { random_owned_ship = { repair_ship = yes } }
+							}
 							wait = {
 								duration = 60
-								random = 25
+								random = 30
 							}
 						}
 					}
@@ -198,6 +246,19 @@ CmtFleetSetAuxParam_Roamer = {
 				}
 				found_system = {
 					move_to = THIS
+					find_random_planet = {
+						trigger = {
+							id = graygoo_roamers_$NUM$.trigger.3
+							is_star = yes
+						}
+						found_planet = {
+							orbit_planet = THIS
+							wait = {
+								duration = 30
+								random = 15
+							}
+						}
+					}
 				}
 			}
 			find_closest_planet = {
@@ -210,9 +271,13 @@ CmtFleetSetAuxParam_Roamer = {
 				}
 				found_planet = {
 					orbit_planet = THIS
+					effect = {
+						id = graygoo_roamers_$NUM$.trigger.4
+						root.fromfrom = { random_owned_ship = { repair_ship = yes } }
+					}
 					wait = {
 						duration = 60
-						random = 25
+						random = 30
 					}
 				}
 			}

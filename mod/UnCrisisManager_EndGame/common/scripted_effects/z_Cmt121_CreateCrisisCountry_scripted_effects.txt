@@ -17,10 +17,11 @@ CmtEffectCreatePrethorynCountry = {
 	create_species = {
 		name = "NAME_Prethoryn"
 		class = SWARM
+		namelist = "Prethoryn"
 		portrait = random
 		traits = random
 		immortal = yes
-		effect = { save_event_target_as = prethoryn_species }
+		effect = { save_global_event_target_as = prethoryn_species }
 	}
 	create_country = {
 		name = "NAME_Prethoryn_Scourge"
@@ -51,7 +52,7 @@ CmtEffectCreatePrethorynCountry = {
 			add_ship_design = last_created_design
 		}
 	}
-	
+
 	### Communications and Opinion Modifiers
 	every_country = {
 		limit = { CmtTriggerIsEmpire = yes }
@@ -68,8 +69,6 @@ CmtEffectCreatePrethorynCountry = {
 		}
 	}
 }
-
-
 
 ###################
 ###  Sentinels  ###
@@ -89,12 +88,18 @@ CmtEffectCallSentinel = {
 
 	random_system = {
 		limit = {
-			exists = space_owner
-			space_owner = { NOT = { CmtTriggerIsPrethoryn = yes } }
+			NOR = {
+				has_star_flag = sealed_system
+				has_star_flag = lcluster
+			}
+			NAND = {
+				exists = space_owner
+				space_owner = { CmtTriggerIsPrethoryn = yes }
+			}
 		}
 		spawn_system = {
-			max_distance <= 50
-			min_distance >= 20
+			max_distance <= 35
+			min_distance >= 15
 			initializer = "sentinel_system"
 		}
 	}
@@ -121,8 +126,6 @@ CmtEffectCallSentinel = {
 	observer_event = { id = observer.31 }
 }
 
-
-
 ##################
 ###  Aberrant  ###
 ##################
@@ -131,29 +134,38 @@ CmtEffectCallAberrant = {
 	set_crisis_sound = extradimensional_crisis_ambient_stage_3
 	set_crisis_stage_3 = yes
 	set_global_flag = extradimensional_second_portal
-	
+
 	if = {
 		limit = {
 			OR = {
 				has_global_flag = CmtFlagExdsChaserAnywhere
-				NOT = { CmtTriggerUnbiddenExpand = yes }
+				CmtTriggerUnbiddenExpand = no
 			}
 		}
 		random_system = {
-			limit = { CmtTriggerSpawnableSystem = yes }
+			limit = {
+				CmtTriggerSpawnableSystem = yes
+				NAND  = {
+					exists = owner
+					owner = { is_country_type = extradimensional }
+				}
+				any_neighbor_system_euclidean = {
+					exists = owner
+					owner = { is_country_type = extradimensional }
+				}
+			}
 			CmtEffectCreateCountryAberrant = yes
 		}
-		else = {
-			event_target:extradimensionals1 = {
-				random_system_within_border = {
-					limit = { CmtTriggerSpawnableSystem = yes }
-					CmtEffectCreateCountryAberrant = yes
-				}
+	} else = {
+		event_target:extradimensionals = {
+			random_system_within_border = {
+				limit = { CmtTriggerSpawnableSystem = yes }
+				CmtEffectCreateCountryAberrant = yes
 			}
 		}
 	}
 	CmtEffectFriendlyCrisis = yes
-	
+
 	every_country = {
 		limit = { CmtTriggerIsEmpire = yes }
 		country_event = { id = crisis.1110 days = 1 }
@@ -163,7 +175,7 @@ CmtEffectCallAberrant = {
 		establish_communications_no_message = event_target:extradimensionals
 	}
 	observer_event = { id = observer.36 }
-	
+
 	### For Controling Arrival of Vehement
 	set_timed_global_flag = { flag = CmtFlagAberrantFirstDecade days = 3600 }
 	set_timed_global_flag = { flag = CmtFlagAberrantFirstTwoDecades days = 7200 }
@@ -181,6 +193,7 @@ CmtEffectCreateCountryAberrant = {
 		create_species = {
 			name = "NAME_Aberrant"
 			class = EXD
+			namelist = "Extradimensional"
 			portrait = exd2
 			traits = random
 			effect = { save_global_event_target_as = extradimensional_hunters_species }
@@ -207,7 +220,7 @@ CmtEffectCreateCountryAberrant = {
 				add_ship_design = last_created_design
 				create_ship_design = { design = "NAME_Aberrant_Anchor" }
 				add_ship_design = last_created_design
-				
+
 				set_graphical_culture = extra_dimensional_02
 				save_global_event_target_as = extradimensionals2
 				save_event_target_as = extradimensional_hunters
@@ -275,10 +288,8 @@ CmtEffectCreateCountryAberrant = {
 		}
 	}
 
-	event_target:extradimensionals2 = { random_owned_ship = { ship_event = { id = crisis.1280 } } }
+	event_target:extradimensionals2 = { country_event = { id = crisis.1280 } }
 }
-
-
 
 ##################
 ###  Vehement  ###
@@ -286,29 +297,48 @@ CmtEffectCreateCountryAberrant = {
 
 CmtEffectCallVehement = {
 	set_global_flag = extradimensional_third_portal
-	
+
 	if = {
 		limit = {
 			OR = {
 				has_global_flag = CmtFlagExdsChaserAnywhere
-				NOT = { CmtTriggerUnbiddenExpand = yes }
+				CmtTriggerUnbiddenExpand = no
 			}
 		}
 		random_system = {
-			limit = { CmtTriggerSpawnableSystem = yes }
+			limit = {
+				CmtTriggerSpawnableSystem = yes
+				NAND  = {
+					exists = owner
+					owner = {
+						OR = {
+							is_country_type = extradimensional
+							is_country_type = extradimensional_2
+						}
+					}
+				}
+				any_neighbor_system_euclidean = {
+					exists = owner
+					owner = {
+						OR = {
+							is_country_type = extradimensional
+							is_country_type = extradimensional_2
+						}
+					}
+				}
+			}
 			CmtEffectCreateCountryVehement = yes
 		}
-		else = {
-			event_target:extradimensionals1 = {
-				random_system_within_border = {
-					limit = { CmtTriggerSpawnableSystem = yes }
-					CmtEffectCreateCountryVehement = yes
-				}
+	} else = {
+		event_target:extradimensionals = {
+			random_system_within_border = {
+				limit = { CmtTriggerSpawnableSystem = yes }
+				CmtEffectCreateCountryVehement = yes
 			}
 		}
 	}
 	CmtEffectFriendlyCrisis = yes
-	
+
 	every_country = {
 		limit = { CmtTriggerIsEmpire = yes }
 		country_event = { id = crisis.1210 days = 1 }
@@ -320,11 +350,10 @@ CmtEffectCallVehement = {
 				is_country_type = extradimensional_2
 			}
 		}
-		establish_communications_no_message = event_target:extradimensional_trespassers
+		establish_communications_no_message = event_target:extradimensionals3
 	}
 	observer_event = { id = observer.38 }
 }
-
 
 CmtEffectCreateCountryVehement = {	## Scope = Stellar System
 	set_star_flag = extradimensional_third_portal_system
@@ -333,6 +362,7 @@ CmtEffectCreateCountryVehement = {	## Scope = Stellar System
 		create_species = {
 			name = "NAME_Vehement"
 			class = EXD
+			namelist = "Extradimensional"
 			portrait = exd3
 			traits = random
 			effect = { save_global_event_target_as = extradimensional_trespassers_species }
@@ -359,10 +389,10 @@ CmtEffectCreateCountryVehement = {	## Scope = Stellar System
 				add_ship_design = last_created_design
 				create_ship_design = { design = "NAME_Vehement_Anchor" }
 				add_ship_design = last_created_design
-				
+
 				set_graphical_culture = extra_dimensional_03
 				save_global_event_target_as = extradimensionals3
-				save_event_target_as = extradimensional_trespassers
+				# save_event_target_as = extradimensional_trespassers # Vanilla bug not needed
 				establish_communications_no_message = event_target:portal_holder_1
 				set_faction_hostility = {
 					target = event_target:portal_holder_1
@@ -399,7 +429,7 @@ CmtEffectCreateCountryVehement = {	## Scope = Stellar System
 					fleet_event = { id = crisis.1206 days = 25 } # Constructor Arrives
 					fleet_event = { id = crisis.1206 days = 90 } # Constructor Arrives
 					fleet_event = { id = crisis.1206 days = 210 } # Constructor Arrives
-					event_target:extradimensional_trespassers = { country_event = { id = crisis.1260 days = 550 } } # Spawn Cycle starts
+					prev = { country_event = { id = crisis.1260 days = 550 } } # Spawn Cycle starts
 					CmtEffectCreateAdmiralty_VehementCapitalDefense = yes
 				}
 			}
@@ -427,10 +457,8 @@ CmtEffectCreateCountryVehement = {	## Scope = Stellar System
 		}
 	}
 
-	event_target:extradimensionals3 = { random_owned_ship = { ship_event = { id = crisis.1280 } } }
+	event_target:extradimensionals3 = { country_event = { id = crisis.1280 } }
 }
-
-
 
 ################
 ###  Cybrex  ###
@@ -439,9 +467,10 @@ CmtEffectCreateCountryVehement = {	## Scope = Stellar System
 CmtEffectCallCybrex = {
 	set_global_flag = cybrex_resurface
 	random_rim_system = {
+		limit = { NOT = { has_star_flag = sealed_system } }
 		spawn_system = {
-			max_distance <= 50
-			min_distance >= 20
+			max_distance <= 35
+			min_distance >= 15
 			initializer = "cybrex_beta"
 		}
 	}
@@ -450,7 +479,7 @@ CmtEffectCallCybrex = {
 		country_event = { id = crisis.2401 days = 2 }
 	}
 	observer_event = { id = observer.52 }
-	
+
 	random_country = {
 		limit = { is_country_type = cybrex_empire }
 		country_event = { id = crisis.2421 days = 4 }
@@ -460,4 +489,3 @@ CmtEffectCallCybrex = {
 	}
 	CmtEffectFriendlyCrisis = yes
 }
-

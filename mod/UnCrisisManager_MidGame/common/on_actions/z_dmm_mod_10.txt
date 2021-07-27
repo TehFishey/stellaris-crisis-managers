@@ -1,0 +1,15 @@
+on_game_start = {
+	events = {
+		dmm_mod.101
+	}
+}
+on_single_player_save_game_load = {
+	events = {
+		dmm_mod.101
+	}
+}
+dmm_mod_selected = {
+	events = {
+		dmm_mod.10
+	}
+}

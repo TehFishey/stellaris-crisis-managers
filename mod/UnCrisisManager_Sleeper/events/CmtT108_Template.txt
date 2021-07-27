@@ -226,7 +226,6 @@ country_event = {
 					limit = { always = @CmtT108_ConstLgateSkipTech }
 					set_global_flag = CmtFlagLgateSkipTech
 				} else = { remove_global_flag = CmtFlagLgateSkipTech }
-				set_variable = { which = CmtVarLgateClusterType value = @CmtT108_ConstLgateClusterType }
 				if = {
 					limit = { always = @CmtT108_ConstLgateForbidSilence }
 					set_global_flag = CmtFlagLgateForbidSilence
@@ -252,7 +251,7 @@ country_event = {
 				set_variable = { which = CmtVarLgateDessanuGift value = @CmtT108_ConstLgateDessanuGift }
 				set_variable = { which = CmtVarReinforceCycle_Graygoo value = @CmtT108_ConstReinforceCycle_Graygoo }
 				set_variable = { which = CmtVarLgateTerraformNanite value = @CmtT108_ConstLgateTerraformNanite }
-				set_variable = { which = CmtVarCrisisPower_Endgame value = @CmtT108_ConstCrisisPower_Endgame }
+				set_variable = { which = CmtVarCrisisPower_Endgame value = @CmtT108_ConstCrisisStrengthEnd }
 			}
 			
 			

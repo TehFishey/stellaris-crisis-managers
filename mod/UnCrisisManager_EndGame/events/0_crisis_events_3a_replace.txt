@@ -11,7 +11,6 @@ namespace = crisis
 ##############################################
 ##############################################
 
-
 ###################
 ###  Constants  ###
 ###################
@@ -22,8 +21,6 @@ namespace = crisis
 
 @CmtConstCybrexShipsUpperLimit = 300
 
-
-
 ###########################################
 ###  Trigger Forced by Command Console  ###
 ###########################################
@@ -33,24 +30,24 @@ country_event = {
 	id = crisis.2000
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		NOT = { has_global_flag = ai_invasion_happened }
 	}
-	
+
 	immediate = {
 		endgame_telemetry = ai_revolt
 		set_global_flag = galactic_crisis_happened
 		set_global_flag = ai_invasion_happened
 		set_global_flag = ai_ghost_signal
 		set_global_flag = CmtFlagContingencyTriggerd
-		
+
 		# The Arrival
 		every_country = {
 			limit = { CmtTriggerIsEmpire = yes }
 			country_event = { id = crisis.2022 }
 		}
-		
+
 		# Machine Worlds & Terror
 		event_target:CmtGlobalVar = { country_event = { id = CrisisManagerControl.3067 days = 10 random = 5} }
 	}
@@ -61,14 +58,13 @@ country_event = {
 	id = crisis.2005
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = { always = no }
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.3000 }
 	}
 }
-
 
 ###############################
 ###  Create Machine Worlds  ###
@@ -78,19 +74,20 @@ country_event = {
 planet_event = {
 	id = crisis.2025
 	hide_window = yes
-	
+
 	is_triggered_only = yes
-	
+
 	immediate = {
 		set_crisis_sound = ai_empire_ambient_stage_1
 		set_crisis_stage_1 = yes
 		set_global_flag = ai_planet_appearance
 		set_global_flag = ai_invasion_ongoing
 		set_global_flag = synth_terror
-		
+
 		create_species = {
 			name = "NAME_Custodian_Bot"
 			class = "ROBOT"
+			namelist = "AI"
 			portrait = "hum_robot_red"
 			traits = { trait = trait_mechanical }
 			effect = { save_global_event_target_as = custodian_bot }
@@ -98,13 +95,14 @@ planet_event = {
 		create_species = {
 			name = "NAME_Contingency"
 			class = "ROBOT"
+			namelist = "AI"
 			portrait = "ai_crisis_1"
 			immortal = yes
 			traits = { trait = "trait_mechanical" }
 			effect = { save_global_event_target_as = contingency_bot }
 		}
 		create_country = {
-			name = NAME_Contingency
+			name = "NAME_Contingency"
 			species = event_target:custodian_bot # for pops
 			authority = auth_ancient_machine_intelligence
 			ethos = { ethic = ethic_gestalt_consciousness }
@@ -152,13 +150,13 @@ planet_event = {
 		set_name = "NAME_Sterilization_Hub_1"
 		set_owner = event_target:AI_crisis
 		set_controller = event_target:AI_crisis
-		
+
 		CmtEffectCreateContingencyCore = yes
 		CmtEffectCreateAdmiralty_ContingencyCapital = yes
 		solar_system = {
 			CmtEffectDestroySystemStarbase = yes
 			create_contingency_starbase = yes
-			
+
 			### 2.7 Create ambient audio (ToDo: Move to scripted effect)
 			star = {
 				create_ambient_object = {
@@ -178,8 +176,8 @@ planet_event = {
 		planet_event = { id = crisis.2050 } # Start Fleet reinforcement cycle
 		planet_event = { id = crisis.2052 } # Start Army reinforcement cycle
 		CmtEffectFriendlyCrisis = yes
-		
-		every_country = {
+
+		every_playable_country = {
 			limit = { is_ai = no }
 			country_event = { id = crisis.2030 }
 		}
@@ -196,7 +194,7 @@ planet_event = {
 			}
 		}
 		random_playable_country = { observer_event = { id = observer.47 } }
-		
+
 		awaken_guardians_of_the_galaxy = yes
 		awaken_fallen_machine_empire = yes
 		if = {
@@ -210,16 +208,16 @@ planet_event = {
 planet_event = {
 	id = crisis.2026
 	hide_window = yes
-	
+
 	is_triggered_only = yes
-	
+
 	immediate = {
 		change_pc = pc_ai
 		reset_planet = yes
 		set_name = "NAME_Sterilization_Hub_2"
 		set_owner = event_target:AI_crisis
 		set_controller = event_target:AI_crisis
-		
+
 		CmtEffectCreateContingencyCore = yes
 		CmtEffectCreateAdmiralty_ContingencyCapital = yes
 		solar_system = {
@@ -244,8 +242,8 @@ planet_event = {
 		}
 		planet_event = { id = crisis.2050 } # Start Fleet reinforcement cycle
 		planet_event = { id = crisis.2052 } # Start Army reinforcement cycle
-		
-		every_country = {
+
+		every_playable_country = {
 			limit = { is_ai = no }
 			country_event = { id = crisis.2031 }
 		}
@@ -265,9 +263,9 @@ planet_event = {
 planet_event = {
 	id = crisis.2027
 	hide_window = yes
-	
+
 	is_triggered_only = yes
-	
+
 	immediate = {
 		change_pc = pc_ai
 		reset_planet = yes
@@ -275,7 +273,7 @@ planet_event = {
 		set_name = "NAME_Sterilization_Hub_3"
 		set_owner = event_target:AI_crisis
 		set_controller = event_target:AI_crisis
-		
+
 		CmtEffectCreateContingencyCore = yes
 		CmtEffectCreateAdmiralty_ContingencyCapital = yes
 		solar_system = {
@@ -300,8 +298,8 @@ planet_event = {
 		}
 		planet_event = { id = crisis.2050 } # Start Fleet reinforcement cycle
 		planet_event = { id = crisis.2052 } # Start Army reinforcement cycle
-		
-		every_country = {
+
+		every_playable_country = {
 			limit = { is_ai = no }
 			country_event = { id = crisis.2032 }
 		}
@@ -321,18 +319,40 @@ planet_event = {
 planet_event = {
 	id = crisis.2028
 	hide_window = yes
-	
+
 	is_triggered_only = yes
-	
+
 	immediate = {
+		random_country = {
+			limit = { is_country_type = ai_empire }
+			save_event_target_as = AI_crisis
+		}
 		change_pc = pc_ai
 		reset_planet = yes
 		set_name = "NAME_Sterilization_Hub_4"
 		set_owner = event_target:AI_crisis
 		set_controller = event_target:AI_crisis
-		
+
 		CmtEffectCreateContingencyCore = yes
 		CmtEffectCreateAdmiralty_ContingencyCapital = yes
+
+		# Custodian/Emperor Announcements
+		event_target:AI_crisis = { save_event_target_as = crisis_country }
+		if = {
+			limit = { has_galactic_custodian = yes }
+			random_playable_country = {
+				limit = { is_galactic_custodian = yes }
+				country_event = { id = custodian.50 days = 30 }
+			}
+		}
+		if = {
+			limit = { has_galactic_emperor = yes }
+			random_playable_country = {
+				limit = { is_galactic_emperor = yes }
+				country_event = { id = emperor.90 days = 30 }
+			}
+		}
+
 		solar_system = {
 			CmtEffectDestroySystemStarbase = yes
 			create_contingency_starbase = yes
@@ -355,8 +375,8 @@ planet_event = {
 		}
 		planet_event = { id = crisis.2050 } # Start Fleet reinforcement cycle
 		planet_event = { id = crisis.2052 } # Start Army reinforcement cycle
-		
-		every_country = {
+
+		every_playable_country = {
 			limit = { is_ai = no }
 			country_event = { id = crisis.2033 }
 		}
@@ -371,7 +391,6 @@ planet_event = {
 		random_playable_country = { observer_event = { id = observer.48 } }
 	}
 }
-
 
 #######################################################
 ###  Reinforcement of Fleet for Each Machine World  ###
@@ -388,7 +407,7 @@ planet_event = {
 		NOT = { has_planet_flag = machine_lair }
 		owner = { is_country_type = "ai_empire" }
 	}
-	
+
 	immediate = {
 		event_target:CmtGlobalVar = {
 			set_variable = { which = CmtVarTemp value = @CmtConstContingencyShipsUpperLimit }
@@ -424,7 +443,7 @@ planet_event = {
 planet_event = {
 	id = crisis.2051
 	hide_window = yes
-	
+
 	is_triggered_only = yes
 
 	trigger = {
@@ -432,12 +451,15 @@ planet_event = {
 		NOT = { has_planet_flag = machine_lair }
 		owner = { is_country_type = "ai_empire" }
 	}
-	
+
 	immediate = {
-		
+		if = {
+			limit = { NOT = { exists = event_target:AI_crisis } }
+			owner = { save_global_event_target_as = AI_crisis }
+		}
 		### Reinforcement of Combat Fleet
 		CmtEffectCreateAdmiralty_ContingencyReinforcement = yes
-		
+
 		### Check if the number of constructor is less than upper limit
 		event_target:CmtGlobalVar = {
 			set_variable = { which = CmtVarTemp value = @CmtConstContingencyConstructorUpperLimit }
@@ -449,13 +471,16 @@ planet_event = {
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } }
 			}
 		}
-		
+
 		### Reinforcement of Contructor
 		if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value > 0 } } }
-			CmtEffectCreateAdmiralty_ContingencyConstructor = yes
+			event_target:AI_crisis = {
+				CmtEffectCreateFleet_Constructor = yes
+				CmtEffectCreateFleet_Constructor = yes
+			}
 		}
-		
+
 		### Next Cycle
 		planet_event = { id = crisis.2050 }
 	}
@@ -465,7 +490,7 @@ planet_event = {
 planet_event = {
 	id = crisis.2052
 	hide_window = yes
-	
+
 	is_triggered_only = yes
 
 	trigger = {
@@ -473,7 +498,7 @@ planet_event = {
 		NOT = { has_planet_flag = machine_lair }
 		owner = { is_country_type = "ai_empire" }
 	}
-	
+
 	immediate = {
 		event_target:CmtGlobalVar = {
 			set_variable = { which = CmtVarTemp value = @CmtConstContingencyArmyUpperLimit }
@@ -509,7 +534,7 @@ planet_event = {
 planet_event = {
 	id = crisis.2053
 	hide_window = yes
-	
+
 	is_triggered_only = yes
 
 	trigger = {
@@ -517,14 +542,12 @@ planet_event = {
 		NOT = { has_planet_flag = machine_lair }
 		owner = { is_country_type = "ai_empire" }
 	}
-	
+
 	immediate = {
 		CmtEffectCreateAdmiralty_ContingencyArmy = yes
 		planet_event = { id = crisis.2052 }
 	}
 }
-
-
 
 
 ###########################################
@@ -537,9 +560,9 @@ country_event = {
 	desc = "crisis.2085.desc"
 	picture = GFX_evt_robot_assembly_plant
 	show_sound = event_robo
-	
+
 	is_triggered_only = yes
-	
+
 	trigger = {
 		any_owned_planet = {
 			exists = controller
@@ -548,7 +571,7 @@ country_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		random_owned_planet = {
 			limit = {
@@ -558,7 +581,7 @@ country_event = {
 			save_event_target_as = infil_planet
 		}
 	}
-	
+
 	option = {
 		name = crisis.2085.a
 	}
@@ -571,7 +594,7 @@ country_event = {
 	desc = "crisis.2090.desc"
 	picture = GFX_evt_cybernetics
 	show_sound = event_robo
-	
+
 	is_triggered_only = yes
 
 	immediate = {
@@ -584,7 +607,7 @@ country_event = {
 		}
 		set_country_flag = synth_terror_country
 	}
-	
+
 	option = {
 		name = crisis.2090.a
 	}
@@ -599,7 +622,7 @@ event = {
 	trigger = {
 		CmtTriggerTerrorOrganicGlobal = yes
 	}
-	
+
 	immediate = {
 		every_country = {
 			limit = { CmtTriggerTerrorOrganicCountry = yes }
@@ -637,18 +660,17 @@ event = {
 	}
 }
 
-
 ### Synth Terror
 country_event = {
 	id = crisis.2081
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		CmtTriggerTerrorOrganicGlobal = yes
 		CmtTriggerTerrorOrganicCountry = yes
 	}
-	
+
 	immediate = {
 		random_list = {
 			40 = {
@@ -696,13 +718,13 @@ planet_event = {
 	picture = GFX_evt_nuclear_explosion
 	show_sound = event_super_explosion
 	location = root
-	
+
 	is_triggered_only = yes
 
 	pre_triggers = {
 		has_ground_combat = no
 	}
-	
+
 	option = {
 		name = crisis.2091.a
 		custom_tooltip = synth_bombing_tooltip
@@ -728,29 +750,29 @@ planet_event = {
 	picture = GFX_evt_sabotaged_ship
 	show_sound = event_ship_explosion
 	location = root
-	
+
 	is_triggered_only = yes
-	
+
 	pre_triggers = {
 		has_ground_combat = no
 	}
-	
+
 	trigger = {
 		solar_system = {
 			exists = starbase
-			starbase = { owner = { is_same_value = root.owner } }
+			starbase = { is_owned_by = root.owner }
 		}
 		OR = {
 			CmtTriggerRepeatableTerror = yes
 			NOT = { owner = { has_country_flag = synth_spaceport_bombing } }
 		}
 	}
-	
+
 	immediate = {
 		owner = { set_country_flag = synth_spaceport_bombing }
 		solar_system = { starbase = { fleet = { destroy_fleet = this } } }
 	}
-	
+
 	option = {
 		name = crisis.2092.a
 		custom_tooltip = synths_destroy_spaceport
@@ -765,25 +787,25 @@ planet_event = {
 	picture = GFX_evt_alien_propaganda
 	show_sound = event_planetary_riot
 	location = root
-	
+
 	is_triggered_only = yes
-	
+
 	pre_triggers = {
 		has_ground_combat = no
 	}
-	
+
 	trigger = {
 		OR = {
 			CmtTriggerRepeatableTerror = yes
 			NOT = { owner = { has_country_flag = synth_fear } }
 		}
 	}
-	
+
 	immediate = {
 		owner = { set_country_flag = synth_fear }
 		add_modifier = { modifier = synth_planet_paranoia days = 7200 }
 	}
-	
+
 	option = {
 		name = crisis.2093.a
 	}
@@ -793,7 +815,7 @@ planet_event = {
 country_event = {
 	id = crisis.2094
 	hide_window = yes
-	
+
 	is_triggered_only = yes
 
 	trigger = {
@@ -802,7 +824,7 @@ country_event = {
 			NOT = { has_country_flag = synth_assassination_attempt }
 		}
 	}
-	
+
 	immediate = {
 		set_country_flag = synth_assassination_attempt
 		leader = { save_event_target_as = ruler }
@@ -820,9 +842,9 @@ country_event = {
 	desc = "crisis.2095.desc"
 	picture = GFX_evt_synth_sabotage
 	show_sound = event_robo
-	
+
 	is_triggered_only = yes
-	
+
 	option = {
 		name = crisis.2095.a
 		add_monthly_resource_mult = {
@@ -841,7 +863,7 @@ country_event = {
 	desc = "crisis.2096.desc"
 	picture = GFX_evt_organic_oppression
 	show_sound = event_life_support_fail
-	
+
 	is_triggered_only = yes
 
 	immediate = {
@@ -850,7 +872,7 @@ country_event = {
 			show_notification = no
 		}
 	}
-	
+
 	option = {
 		name = crisis.2096.a
 		custom_tooltip = synth_assassination_tooltip
@@ -864,7 +886,7 @@ country_event = {
 	desc = "crisis.2097.desc"
 	picture = GFX_evt_interior_battle
 	show_sound = event_robo
-	
+
 	is_triggered_only = yes
 
 	trigger = {
@@ -883,7 +905,7 @@ country_event = {
 			kill_leader = { show_notification = no }
 		}
 	}
-	
+
 	option = {
 		name = crisis.2097.a
 		custom_tooltip = synths_kill_scientist
@@ -897,7 +919,7 @@ country_event = {
 	desc = "crisis.2098.desc"
 	picture = GFX_evt_interior_battle
 	show_sound = event_robo
-	
+
 	is_triggered_only = yes
 
 	trigger = {
@@ -916,7 +938,7 @@ country_event = {
 			kill_leader = { show_notification = no }
 		}
 	}
-	
+
 	option = {
 		name = crisis.2098.a
 		custom_tooltip = synths_kill_admiral
@@ -930,19 +952,17 @@ country_event = {
 	desc = "crisis.2099.desc"
 	picture = GFX_evt_glitchy_matrix
 	show_sound = event_robo
-	
+
 	is_triggered_only = yes
 
 	trigger = {
 		any_owned_ship = { has_sapient_combat_computer = yes }
 	}
-	
+
 	option = {
 		name = crisis.2099.a
 	}
 }
-
-
 
 #########################################
 ###  Terror Event for Machine Empire  ###
@@ -956,9 +976,9 @@ country_event = {
 	picture = GFX_evt_glitchy_matrix
 	show_sound = event_ai_started
 	location = root
-	
+
 	is_triggered_only = yes
-	
+
 	option = {
 		name = crisis.2313.a
 	}
@@ -972,13 +992,13 @@ country_event = {
 	picture = GFX_evt_glitchy_matrix
 	show_sound = event_red_alert
 	location = root
-	
+
 	is_triggered_only = yes
-	
+
 	immediate = {
 		set_country_flag = post_arrival_events_machine
 	}
-	
+
 	option = {
 		name = crisis.2314.a
 	}
@@ -989,11 +1009,11 @@ event = {
 	id = crisis.2310
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		CmtTriggerTerrorMachineGlobal = yes
 	}
-	
+
 	immediate = {
 		every_country = {
 			limit = { CmtTriggerTerrorMachineCountry = yes }
@@ -1035,12 +1055,12 @@ country_event = {
 	id = crisis.2311
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		CmtTriggerTerrorMachineGlobal = yes
 		CmtTriggerTerrorMachineCountry = yes
 	}
-	
+
 	immediate = {
 		if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFreqTerror value = 5 } } }
@@ -1083,7 +1103,7 @@ country_event = {
 	picture = GFX_evt_sabotaged_ship
 	show_sound = event_ship_explosion
 	location = root
-	
+
 	is_triggered_only = yes
 
 	trigger = {
@@ -1097,7 +1117,7 @@ country_event = {
 			controller = { is_same_value = root }
 			solar_system = {
 				exists = starbase
-				starbase = { owner = { is_same_value = root } }
+				starbase = { is_owned_by = root }
 			}
 		}
 	}
@@ -1113,13 +1133,12 @@ country_event = {
 			solar_system = { starbase = { fleet = { destroy_fleet = this } } }
 		}
 	}
-	
+
 	option = {
 		name = crisis.2092.a
 		custom_tooltip = spaceport_hijacked
 	}
 }
-
 
 ### Scientist Terminated
 country_event = {
@@ -1128,7 +1147,7 @@ country_event = {
 	desc = "crisis.2302.desc"
 	picture = GFX_evt_synth_sabotage
 	show_sound = event_robo
-	
+
 	is_triggered_only = yes
 
 	trigger = {
@@ -1148,7 +1167,7 @@ country_event = {
 		}
 		set_country_flag = machine_scientist_terminated
 	}
-	
+
 	option = {
 		name = crisis.2302.a
 		custom_tooltip = scientist_terminated
@@ -1162,7 +1181,7 @@ country_event = {
 	desc = "crisis.2303.desc"
 	picture = GFX_evt_synth_sabotage
 	show_sound = event_robo
-	
+
 	is_triggered_only = yes
 
 	trigger = {
@@ -1182,7 +1201,7 @@ country_event = {
 		}
 		set_country_flag = machine_admiral_terminated
 	}
-	
+
 	option = {
 		name = crisis.2303.a
 		custom_tooltip = admiral_terminated
@@ -1197,7 +1216,7 @@ country_event = {
 	picture = GFX_evt_nuclear_explosion
 	show_sound = event_super_explosion
 	location = root
-	
+
 	is_triggered_only = yes
 
 	trigger = {
@@ -1222,7 +1241,7 @@ country_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = crisis.2304.a
 		custom_tooltip = machine_power_failure_2
@@ -1237,7 +1256,7 @@ country_event = {
 	picture = GFX_evt_synth_sabotage
 	show_sound = event_robo
 	location = root
-	
+
 	is_triggered_only = yes
 
 	trigger = {
@@ -1251,12 +1270,11 @@ country_event = {
 	immediate = {
 		set_country_flag = machine_mineral_failure
 	}
-	
+
 	option = {
 		name = crisis.2305.a
 	}
 }
-
 
 ### Corrupted Units
 country_event = {
@@ -1266,7 +1284,7 @@ country_event = {
 	picture = GFX_evt_glitchy_matrix
 	show_sound = event_robo
 	location = capital_scope
-	
+
 	is_triggered_only = yes
 
 	trigger = {
@@ -1285,7 +1303,7 @@ country_event = {
 	immediate = {
 		set_country_flag = potentially_corrupted_units
 	}
-	
+
 	option = {
 		name = crisis.2307.a
 	}
@@ -1310,9 +1328,9 @@ country_event = {
 	desc = "crisis.2308.desc"
 	picture = GFX_evt_circuitry_modification
 	show_sound = event_robo
-	
+
 	is_triggered_only = yes
-	
+
 	option = {
 		name = EXCELLENT
 	}
@@ -1326,7 +1344,7 @@ country_event = {
 	picture = GFX_evt_glitchy_matrix
 	show_sound = event_robo
 	location = from
-	
+
 	is_triggered_only = yes
 
 	trigger = {
@@ -1351,13 +1369,12 @@ country_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = crisis.2309.a
 		custom_tooltip = crisis.2309.tooltip_2
 	}
 }
-
 
 ################
 ###  Cybrex  ###
@@ -1367,14 +1384,14 @@ country_event = {
 country_event = {
 	id = crisis.2400
 	hide_window = yes
-	
+
 	trigger = {
 		has_global_flag = ai_invasion_ongoing
 		NOT = { has_global_flag = cybrex_resurface }
 		NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCybrexResurfacing value = 1 } } }
-		
+
 		CmtTriggerIsContingency = yes
-		
+
 		OR = {
 			galaxy_percentage > 0.45
 			AND = {
@@ -1388,7 +1405,7 @@ country_event = {
 			event_target:CmtGlobalVar = { check_variable = { which = CmtVarCybrexResurfacing value = 5 } }
 		}
 	}
-	
+
 	## Also called by crisis.2025 if CmtVarCybrexResurfacing = 5
 	mean_time_to_happen = {
 		months = 12
@@ -1401,13 +1418,13 @@ country_event = {
 			has_global_flag = CmtFlagDebugMode
 		}
 	}
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
-			country_event = { id = crisis.2400 days = 1 }
+			country_event = { id = crisis.2400 days = 2 }
 		} else = {
-			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
+			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 2 }
 			CmtEffectCallCybrex = yes
 		}
 	}
@@ -1417,12 +1434,12 @@ country_event = {
 country_event = {
 	id = crisis.2420
 	hide_window = yes
-	
+
 	trigger = {
 		has_global_flag = ai_invasion_ongoing
 		is_country_type = cybrex_empire
 	}
-	
+
 	mean_time_to_happen = {
 		months = 100
 		modifier = {
@@ -1430,7 +1447,7 @@ country_event = {
 			has_global_flag = CmtFlagDebugMode
 		}
 	}
-	
+
 	immediate = {
 		event_target:CmtGlobalVar = {
 			set_variable = { which = CmtVarTemp value = @CmtConstCybrexShipsUpperLimit }
@@ -1457,11 +1474,11 @@ country_event = {
 	id = crisis.2421
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_global_flag = ai_invasion_ongoing
 	}
-	
+
 	immediate = {
 		random_country = {
 			limit = { CmtTriggerIsContingency = yes }
@@ -1474,20 +1491,19 @@ country_event = {
 	}
 }
 
-
 ### Fleet Donation
 country_event = {
 	id = crisis.2473
 	title = "TRANSMISSION"
 	desc = "crisis.2473.desc"
-	
+
 	diplomatic = yes
-	
+
 	picture_event_data = {
 		portrait = event_target:cybrex
 		room = event_target:cybrex
 	}
-	
+
 	trigger = {
 		CmtTriggerIsPlayableEmpire = yes
 		has_global_flag = cybrex_resurface
@@ -1500,15 +1516,15 @@ country_event = {
 			root = { NOT = { is_at_war_with = prev } }
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 22
 	}
-	
+
 	immediate = {
 		set_country_flag = cybrex_donation
 	}
-	
+
 	option = {
 		name = crisis.2473.a
 		custom_tooltip = cybrex_fleet_gained
@@ -1519,8 +1535,6 @@ country_event = {
 	}
 }
 
-
-
 ################
 ###  Others  ###
 ################
@@ -1530,8 +1544,6 @@ country_event = {
 	id = crisis.2041
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = { always = no }
 }
-
-

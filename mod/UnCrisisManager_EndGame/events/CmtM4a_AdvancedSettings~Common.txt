@@ -20,7 +20,7 @@ country_event = {
 	desc = CrisisManagerMenu.4000.desc
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-	
+
 	option = {
 		name = CmtTextSeparator.name
 		custom_tooltip = CmtTextSeparator.tooltip
@@ -30,7 +30,7 @@ country_event = {
 		}
 		allow = { hidden_trigger = { always = no } }
 	}
-	
+
 	### Prethoryn
 	option = {
 		name = CrisisManagerMenu.4000.4100.name
@@ -42,12 +42,12 @@ country_event = {
 		name = CrisisManagerMenu.4000.4100.fail.name
 		custom_tooltip = CrisisManagerMenu.4000.4100.fail.tooltip
 		trigger = {
-			NOT = { CmtTriggerPrethorynConfig = yes }
+			CmtTriggerPrethorynConfig = no
 			has_global_flag = CmtFlagEndGameEdition
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.4000 } }
 	}
-	
+
 	### Extradimensionals
 	option = {
 		name = CrisisManagerMenu.4000.4200.name
@@ -59,12 +59,12 @@ country_event = {
 		name = CrisisManagerMenu.4000.4200.fail.name
 		custom_tooltip = CrisisManagerMenu.4000.4200.fail.tooltip
 		trigger = {
-			NOT = { CmtTriggerExdsConfig = yes }
+			CmtTriggerExdsConfig = no
 			has_global_flag = CmtFlagEndGameEdition
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.4000 } }
 	}
-	
+
 	### Contingency
 	option = {
 		name = CrisisManagerMenu.4000.4300.name
@@ -76,12 +76,12 @@ country_event = {
 		name = CrisisManagerMenu.4000.4300.fail.name
 		custom_tooltip = CrisisManagerMenu.4000.4300.fail.tooltip
 		trigger = {
-			NOT = { CmtTriggerContingencyConfig = yes }
+			CmtTriggerContingencyConfig = no
 			has_global_flag = CmtFlagEndGameEdition
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.4000 } }
 	}
-	
+
 	### Forced End of Cycle
 	option = {
 		name = CrisisManagerMenu.4000.4400.name
@@ -93,14 +93,12 @@ country_event = {
 		name = CrisisManagerMenu.4000.4400.fail.name
 		custom_tooltip = CrisisManagerMenu.4000.4400.fail.tooltip
 		trigger = {
-			NOT = { CmtTriggerForcedEocConfig = yes }
+			CmtTriggerForcedEocConfig = no
 			has_global_flag = CmtFlagEndGameEdition
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.4000 } }
 	}
-	
-	
-	
+
 	option = {
 		name = CmtTextSeparator.name
 		custom_tooltip = CmtTextSeparator.tooltip
@@ -110,9 +108,7 @@ country_event = {
 		}
 		allow = { hidden_trigger = { always = no } }
 	}
-	
-	
-	
+
 	### Sleeper Awakening
 	option = {
 		name = CrisisManagerMenu.4000.4500.name
@@ -124,14 +120,12 @@ country_event = {
 		name = CrisisManagerMenu.4000.4500.fail.name
 		custom_tooltip = CrisisManagerMenu.4000.4500.fail.tooltip
 		trigger = {
-			NOT = { CmtTriggerSleeperConfig = yes }
+			CmtTriggerSleeperConfig = no
 			has_global_flag = CmtFlagSleeperEdition
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.4000 } }
 	}
-	
-	
-	
+
 	### War in Heaven
 	option = {
 		name = CrisisManagerMenu.4000.4600.name
@@ -143,14 +137,12 @@ country_event = {
 		name = CrisisManagerMenu.4000.4600.fail.name
 		custom_tooltip = CrisisManagerMenu.4000.4600.fail.tooltip
 		trigger = {
-			NOT = { CmtTriggerHeavenConfig = yes }
+			CmtTriggerHeavenConfig = no
 			has_global_flag = CmtFlagSleeperEdition
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.4000 } }
 	}
-	
-	
-	
+
 	### Guardians of Galaxy
 	option = {
 		name = CrisisManagerMenu.4000.4700.name
@@ -162,14 +154,12 @@ country_event = {
 		name = CrisisManagerMenu.4000.4700.fail.name
 		custom_tooltip = CrisisManagerMenu.4000.4700.fail.tooltip
 		trigger = {
-			NOT = { CmtTriggerGuardianFeConfig = yes }
+			CmtTriggerGuardianFeConfig = no
 			has_global_flag = CmtFlagEndGameEdition
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.4000 } }
 	}
-	
-	
-	
+
 	option = {
 		name = CmtTextSeparator.name
 		custom_tooltip = CmtTextSeparator.tooltip
@@ -179,9 +169,7 @@ country_event = {
 		}
 		allow = { hidden_trigger = { always = no } }
 	}
-	
-	
-	
+
 	### Khan
 	option = {
 		name = CrisisManagerMenu.4000.4800.name
@@ -193,12 +181,12 @@ country_event = {
 		name = CrisisManagerMenu.4000.4800.fail.name
 		custom_tooltip = CrisisManagerMenu.4000.4800.fail.tooltip
 		trigger = {
-			NOT = { CmtTriggerKhanConfig = yes }
+			CmtTriggerKhanConfig = no
 			has_global_flag = CmtFlagMidGameEdition
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.4000 } }
 	}
-	
+
 	### L-gate
 	option = {
 		name = CrisisManagerMenu.4000.4900.name
@@ -210,12 +198,12 @@ country_event = {
 		name = CrisisManagerMenu.4000.4900.fail.name
 		custom_tooltip = CrisisManagerMenu.4000.4900.fail.tooltip
 		trigger = {
-			NOT = { CmtTriggerLgateConfig = yes }
+			CmtTriggerLgateConfig = no
 			has_global_flag = CmtFlagMidGameEdition
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.4000 } }
 	}
-	
+
 	### Machine Uprising
 	option = {
 		name = CrisisManagerMenu.4000.5100.name
@@ -230,12 +218,12 @@ country_event = {
 		name = CrisisManagerMenu.4000.5100.fail.name
 		custom_tooltip = CrisisManagerMenu.4000.5100.fail.tooltip
 		trigger = {
-			NOT = { CmtTriggerUprisingConfig = yes }
+			CmtTriggerUprisingConfig = no
 			has_global_flag = CmtFlagUprisingEdition
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.4000 } }
 	}
-	
+
 	### Common
 	option = {
 		name = CmtTextSeparator.name

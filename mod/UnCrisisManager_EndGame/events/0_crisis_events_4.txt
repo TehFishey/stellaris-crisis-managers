@@ -10,18 +10,15 @@ namespace = CrisisManagerControl
 ######################################################
 ######################################################
 
-
-
 ###################
 ###  Constants  ###
 ###################
-
 
 ########################
 ###  Opening Events  ###
 ########################
 
-### Forced Convenant (utopia.3308, 3310)
+### Forced Covenant (utopia.3308, 3310)
 country_event = {
 	id = CrisisManagerControl.4101
 	title = CrisisManagerControl.4101.name
@@ -36,15 +33,15 @@ country_event = {
 	picture = GFX_evt_unspeakable_horror
 	show_sound = event_mystic_reveal
 	location = root
-	
+
 	is_triggered_only = yes
-	
+
 	immediate = {
 		set_global_flag = end_of_the_cycle
 		set_global_flag = CmtFlagForcedEocTriggered
 		set_country_flag = has_shroud_patron
 		set_country_flag = covenant_end_of_the_cycle
-		
+
 		every_owned_planet = {
 			limit = { NOT = { has_modifier = covenant_shroud_marked } }
 			add_modifier = { modifier = covenant_shroud_marked days = -1 }
@@ -55,7 +52,7 @@ country_event = {
 				add_modifier = { modifier = covenant_shroud_marked days = -1 }
 			}
 		}
-		
+
 		### Select Term of Forced End of Cycle
 		if = {
 			limit = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTermForcedEoc value = -1 } } } }
@@ -90,13 +87,11 @@ country_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = CrisisManagerControl.4101a.name
 	}
 }
-
-
 
 ### The End of the Cycle: Reckoning (utopia.3320)
 country_event = {
@@ -105,9 +100,9 @@ country_event = {
 	picture = GFX_evt_unspeakable_horror
 	show_sound = event_red_alert
 	location = root
-	
+
 	is_triggered_only = yes
-	
+
 	desc = {
 		text = CrisisManagerControl.4102.desc.a
 		trigger = { has_country_flag = exile_world }
@@ -116,17 +111,17 @@ country_event = {
 		text = CrisisManagerControl.4102.desc.b
 		trigger = { NOT = { has_country_flag = exile_world } }
 	}
-	
+
 	trigger = {
 		NOT = { has_country_flag = end_of_the_cycle_reckoning }
 	}
-	
+
 	immediate = {
 		set_global_flag = end_of_the_cycle_complete
 		set_global_flag = forced_end_of_the_cycle_complete
 		set_global_flag = CmtFlagForcedEocTriggered
 		set_country_flag = end_of_the_cycle_reckoning
-		
+
 		### Create Shorud
 		if = {
 			limit = { NOT = { exists = event_target:shroud_country } }
@@ -150,7 +145,7 @@ country_event = {
 				}
 			}
 		}
-		
+
 		### Reckoning Former Country
 		capital_scope = { save_event_target_as = former_capital }
 		kill_leader = {
@@ -166,8 +161,7 @@ country_event = {
 		every_owned_leader = { kill_leader = { show_notification = no } }
 		every_owned_fleet = { destroy_fleet = this }
 		every_subject = { set_subject_of = { who = none } }
-		
-		
+
 		### Create Exile
 		clear_resources = yes
 		add_resource = {
@@ -176,7 +170,7 @@ country_event = {
 			food = 100
 			influence = 100
 		}
-		
+
 		if = {
 			limit = { any_system = { CmtTriggerFeocExile1stPrioritySystem = yes } }
 			random_system = {
@@ -207,7 +201,7 @@ country_event = {
 				}
 			}
 		}
-		
+
 		if = {
 			limit = { exists = event_target:exile_world }
 			set_country_flag = exile_world
@@ -240,7 +234,7 @@ country_event = {
 				add_building = building_foundry_1
 				add_building = building_factory_1
 				while = {
-					limit = { 
+					limit = {
 						num_pops < 8
 						free_housing > 0
 					}
@@ -255,11 +249,10 @@ country_event = {
 			}
 			assign_leader = last_created_leader
 		}
-		
-		
+
 		### Reckoning Marked Planet
 		event_target:CmtGlobalVar = { set_variable = { which = CmtVarTemp value = 0 } }		## for CmtVarEndPower
-		every_planet = {
+		every_galaxy_planet = {
 			limit = { has_modifier = covenant_shroud_marked }
 			remove_modifier = covenant_shroud_marked
 			remove_all_armies = yes
@@ -267,18 +260,17 @@ country_event = {
 				root = { change_variable = { which = end_power value = 1 } }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = 1 } }		## for CmtVarEndPower
 			}
-			
+
 			if = {
 				limit = { has_owner = yes }
 				owner = { set_country_flag = end_of_cycle_lost_planets }
 			}
-			
+
 			if = {
 				limit = { NOT = { is_same_value = event_target:former_capital } }
 				CmtEffectCreateShroudManifestation = yes
 			}
-			
-			
+
 			if = {
 				limit = { is_planet_class = pc_habitat }
 				destroy_colony = yes
@@ -297,7 +289,7 @@ country_event = {
 			}
 		}
 		CmtEffectFriendlyCrisis = yes
-		
+
 		## The End
 		event_target:CmtGlobalVar = {
 			set_variable = { which = CmtVarEndPower value = 1 }
@@ -314,7 +306,7 @@ country_event = {
 			multiply_variable = { which = CmtVarEndPower value = CmtVarFleetPower_ForcedEoc }
 		}
 		event_target:former_capital = { CmtEffectCreateShroudTheEnd = yes }
-		
+
 		### Notification
 		every_country = {
 			limit = {
@@ -332,8 +324,6 @@ country_event = {
 	}
 }
 
-
-
 #################################
 ###  Defeated Shroud Spirits  ###
 #################################
@@ -343,7 +333,7 @@ country_event = {
 	id = CrisisManagerControl.4111
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		CmtTriggerIsShroudSpirit = yes
 		fromfrom = { is_ship_size = warped_consciousness }
@@ -354,62 +344,57 @@ country_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
-		from = {
-			save_event_target_as = ShroudSpiritKiller
-			country_event = { id = CrisisManagerControl.4116 }
-		}
-		every_country = {
-			limit = {
-				CmtTriggerIsPlayableEmpire = yes
-				NOT = { is_same_value = from }
-			}
-			country_event = { id = CrisisManagerControl.4117 }
-		}
+		# TODO
+		# from = {
+		# 	save_event_target_as = ShroudSpiritKiller
+		# 	country_event = { id = CrisisManagerControl.4116 }
+		# }
+		# every_playable_country = {
+		# 	limit = {
+		# 		CmtTriggerIsPlayableEmpire = yes
+		# 		NOT = { is_same_value = from }
+		# 	}
+		# 	country_event = { id = CrisisManagerControl.4117 }
+		# }
 		country_event = { id = CrisisManagerControl.0310 }	## Post Crisis Process
 	}
 }
 
-
 ### Not implemented yet
-country_event = {
-	id = CrisisManagerControl.4116
-	title = CrisisManagerControl.4116.name
-	desc = CrisisManagerControl.4116.desc
-	picture = GFX_evt_metropolis
-	show_sound = event_celebration
-	
-	is_triggered_only = yes
-	trigger = { always = no }
-	
-	#NYI
-	hide_window = yes
-}
+# country_event = {
+# 	id = CrisisManagerControl.4116
+# 	title = CrisisManagerControl.4116.name
+# 	desc = CrisisManagerControl.4116.desc
+# 	picture = GFX_evt_metropolis
+# 	show_sound = event_celebration
 
-### Not implemented yet
-country_event = {
-	id = CrisisManagerControl.4117
-	title = CrisisManagerControl.4117.name
-	desc = {
-		text = CrisisManagerControl.4117.desc1
-		trigger = { exists = event_target:ShroudSpiritKiller }
-	}
-	desc = {
-		text = CrisisManagerControl.4117.desc2
-		trigger = { NOT = { exists = event_target:ShroudSpiritKiller } }
-	}
-	picture = GFX_evt_metropolis
-	show_sound = event_celebration
-	
-	is_triggered_only = yes
-	trigger = { always = no }
+# 	is_triggered_only = yes
+# 	trigger = { always = no }
 
-	#NYI
-	hide_window = yes
-}
+# 	#NYI
+# 	hide_window = yes
+# }
 
+# ### Not implemented yet
+# country_event = {
+# 	id = CrisisManagerControl.4117
+# 	title = CrisisManagerControl.4117.name
+# 	desc = {
+# 		text = CrisisManagerControl.4117.desc1
+# 		trigger = { exists = event_target:ShroudSpiritKiller }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerControl.4117.desc2
+# 		trigger = { NOT = { exists = event_target:ShroudSpiritKiller } }
+# 	}
+# 	picture = GFX_evt_metropolis
+# 	show_sound = event_celebration
 
+# 	is_triggered_only = yes
+# 	trigger = { always = no }
 
-
-
+# 	#NYI
+# 	hide_window = yes
+# }

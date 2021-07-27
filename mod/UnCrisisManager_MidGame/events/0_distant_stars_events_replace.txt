@@ -10,19 +10,16 @@ namespace = distar
 ###############################################
 ###############################################
 
-
-
 ################
 ###  Common  ###
 ################
-
 
 ### L-Gate Technology Researched
 country_event = {
 	id = distar.10903
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		last_increased_tech = tech_lgate_activation
 		NOR = {
@@ -30,41 +27,86 @@ country_event = {
 			has_country_flag = CmtFlagGetLgateTechNow
 		}
 	}
-	
+
 	immediate = {
 		set_timed_country_flag = { flag = CmtFlagGetLgateTechNow days = 3 }		## Kill Double Calling
 		country_event = { id = distar.10900 }
 	}
 }
 
-
 ### Open L-Gate
 country_event = {
 	id = distar.10950
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		NOT = { has_global_flag = l_cluster_opened }
 	}
-	
+
 	immediate = {
-		set_global_flag = l_cluster_opened
-		set_global_flag = lgates_activated_globally
-		set_timed_global_flag = { flag = CmtFlagLgateOpenedNow days = 3 }
+		set_timed_global_flag = { flag = CmtFlagLgateOpenedNow days = 5 }
 		set_country_flag = lcluster_opener
-		country_event = { id = distar.11000 }		## Spawn L-Cluster
-		
-		### Set 1st L-Gate as Target 
+		country_event = { id = distar.11000 }	# Spawn L-Cluster
+
+		### Set 1st L-Gate as Target
 		if = {
-			limit = { NOT = { exists = event_target:CmtTargetLgateOrininatingSystem } }
-			from.solar_system = { save_global_event_target_as = CmtTargetLgateOrininatingSystem }
+			limit = {
+				NOT = { exists = event_target:CmtTargetLgateOriginatingSystem }
+			}
+			# from = ship
+			if = {
+				limit = {
+					exists = from
+					from = { is_scope_type = ship }
+				}
+				from.solar_system = { save_global_event_target_as = CmtTargetLgateOriginatingSystem }
+			}
+			else_if = {
+				limit = { exists = event_target:candidate_gateway_system }
+				event_target:candidate_gateway_system = { save_global_event_target_as = CmtTargetLgateOriginatingSystem }
+			}
+			else_if = {
+				limit = { exists = event_target:candidate_gateway }
+				event_target:candidate_gateway = {
+					solar_system = { save_global_event_target_as = CmtTargetLgateOriginatingSystem }
+				}
+			}
+			else = {
+				# If no valid scope search generally
+				every_system_within_border = {
+					limit = { has_star_flag = lgate }
+					every_fleet_in_system = {
+						limit = {
+							exists = owner
+							exists = leader
+							exists = solar_system
+							is_owned_by = root
+						}
+						every_owned_ship = {
+							limit = { is_ship_class = shipclass_science_ship }
+							solar_system = { save_global_event_target_as = CmtTargetLgateOriginatingSystem }
+						}
+					}
+				}
+			}
+			if = {
+				# only last fallback
+				limit = {
+					NOT = { exists = event_target:CmtTargetLgateOriginatingSystem }
+				}
+				random_megastructure = {
+					limit = { CmtTriggerIsClosedLgate = yes }
+					solar_system = { save_global_event_target_as = CmtTargetLgateOriginatingSystem }
+				}
+			}
 		}
-		
+
 		### Change Outcome
 		if = {
 			limit = {
 				OR = {
+					has_global_flag = dragon_season # vanilla temp workaround fix (save game): must be re-run due bug in 3.0 at game_start
 					AND = {
 						has_global_flag = CmtFlagLgateForbidSilence
 						NOR = {
@@ -91,14 +133,13 @@ country_event = {
 			remove_global_flag = gray_goo_empire_set
 			remove_global_flag = gray_goo_crisis_set
 			remove_global_flag = active_gray_goo
-			
+
 			random_list = {
 				30 = {
 					modifier = {
 						factor = 0
 						has_global_flag = CmtFlagLgateForbidSilence
 						NAND = {
-							has_global_flag = CmtFlagLgateForbidSilence
 							has_global_flag = CmtFlagLgateForbidLdrake
 							has_global_flag = CmtFlagLgateForbidDessanu
 							has_global_flag = CmtFlagLgateForbidGraygoo
@@ -129,21 +170,25 @@ country_event = {
 				}
 			}
 		}
-		
+
 		### Activate L-Gate
-		country_event = { id = CrisisManagerControl.6201 }		## Open Other L-Gates
-		event_target:CmtTargetLgateOrininatingSystem = {
+		country_event = { id = CrisisManagerControl.6201 }		## Open L-Gates Cycle
+		event_target:CmtTargetLgateOriginatingSystem = {
 			if = {
-				limit = {		## 2 or More L-Gates Exist in Galaxy
+				# flag prevents the Tempest from using this gate,
+				# do not set the flag if there's only one l-gate system
+				limit = {		## 2 or more L-Gates exist in Galaxy
 					any_system = {
-						CmtTriggerIsGalaxyLgateSystem = yes
+						has_star_flag = lgate
 						NOT = { is_same_value = prev }
 						any_system_megastructure = { CmtTriggerIsOpenedLgate = yes }
 					}
 				}
 				set_star_flag = lgate_originating_system		## For Graygoo (Non-spawn from Here)
 			} else = { root = { set_country_flag = only_one_lgate } }
-			every_system_megastructure = {
+			# Try to refresh the posssible missing target (for unusual reason)
+			save_global_event_target_as = candidate_gateway_system
+			random_system_megastructure = {
 				limit = { CmtTriggerIsClosedLgate = yes }
 				CmtEffectOpenLgate = yes
 			}
@@ -154,7 +199,7 @@ country_event = {
 				CmtEffectOpenLgate = yes
 			}
 		}
-		
+
 		### Call Outcome
 		if = {
 			limit = { has_global_flag = gray_goo_crisis_set }
@@ -166,7 +211,7 @@ country_event = {
 			limit = { has_global_flag = dragon_season }
 			country_event = { id = distar.13000 }
 		} else = { country_event = { id = distar.10951 } }
-		
+
 		### Terraformablity
 		if = {
 			limit = {
@@ -176,23 +221,32 @@ country_event = {
 					has_global_flag = gray_goo_empire_set
 				}
 			}
-			every_planet = {
+			every_galaxy_planet = {
 				limit = { is_planet_class = pc_gray_goo }
 				add_modifier = { modifier = terraforming_candidate days = -1 }
 			}
 		}
-		
+
 		### Technology Control: Put AFTER graygoo.100
 		every_playable_country = {
-			if = {
-				limit = { is_researching_technology = tech_lgate_activation }
-				give_technology = { tech = tech_lgate_activation message = no }
+			limit = {
+				OR = {
+					is_researching_technology = tech_lgate_activation
+					has_technology = tech_lgate_activation
+					has_special_project = LCLUSTER_PROJECT
+				}
 			}
+			# For Dessanu Gift
+			if = {
+				limit = { has_global_flag = gray_goo_empire_set }
+				set_timed_country_flag = { flag = CmtFlagLgateOpenFinalPhase days = 15 }
+			}
+			give_technology = { tech = tech_lgate_activation message = no }
 		}
+		set_global_flag = l_cluster_opened
+		set_global_flag = lgates_activated_globally
 	}
 }
-
-
 
 #################
 ###  L-Drake  ###
@@ -202,22 +256,23 @@ country_event = {
 	id = distar.13000
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
-		
+
 		### Create Country
 		create_country = {
 			name = "NAME_Spawning_Dragons"
 			type = ldragon_country
 			effect = {
 				save_global_event_target_as = spawning_dragons
-				every_playable_country = { establish_communications_no_message = prev }
+					every_playable_country = { establish_communications_no_message = prev
+				}
 			}
 		}
-		
+
 		### Set Target for L-Drake
 		every_system = {
-			limit = { CmtTriggerIsGalaxyLgateSystem = yes }
+			limit = { has_star_flag = lgate }
 			closest_system = {
 				min_steps = 3
 				limit = {
@@ -229,24 +284,23 @@ country_event = {
 				set_star_flag = dragon_point
 			}
 		}
-		
-		
+
 		### Create L-Drake
 		while = {
 			limit = {
 				any_system = {
-					CmtTriggerIsGalaxyLgateSystem = yes
+					has_star_flag = lgate
 					NOT = { has_star_flag = young_dragon_spawned }
 				}
 			}
 			random_system = {
 				limit = {
-					CmtTriggerIsGalaxyLgateSystem = yes
+					has_star_flag = lgate
 					NOT = { has_star_flag = young_dragon_spawned }
 					any_system_megastructure = { CmtTriggerIsOpenedLgate = yes }
 				}
 				set_star_flag = young_dragon_spawned
-				
+
 				random_system_megastructure = {
 					limit = { CmtTriggerIsOpenedLgate = yes }
 					closest_system = {
@@ -256,7 +310,7 @@ country_event = {
 							NOT = { has_star_flag = dragon_point_picked }
 						}
 						set_star_flag = dragon_point_picked
-						
+
 						# notify re: destination
 						if = {
 							limit = { prevprev = { exists = owner } }		## prevprev = L-Gate System
@@ -268,7 +322,7 @@ country_event = {
 										limit = { NOT = { has_country_flag = knows_ldragon } }
 										set_country_flag = knows_ldragon
 									}
-									country_event = { id = distar.13010 }		## Notification 1
+									country_event = { id = distar.13010 }		## Notify 1
 								}
 							}
 						}
@@ -310,12 +364,21 @@ country_event = {
 				}
 			}
 		}
-		
-		### Notification 2
+		# Cancel project for others with compensation (vanilla fix)
 		every_playable_country = {
-			limit = { NOT = { any_system_within_border = { CmtTriggerIsGalaxyLgateSystem = yes } } }
+			limit = {
+				NOT = { is_same_empire = root }
+				OR = {
+					has_event_chain = l_cluster_chain
+					has_special_project = LCLUSTER_PROJECT
+				}
+			}
+			liquidate_clues = yes
+		}
+		### Notify 2 those without l-gate systems
+		every_playable_country = {
+			limit = { NOT = { any_system_within_border = { has_star_flag = lgate } } }
 			country_event = { id = distar.13011 }
 		}
 	}
 }
-

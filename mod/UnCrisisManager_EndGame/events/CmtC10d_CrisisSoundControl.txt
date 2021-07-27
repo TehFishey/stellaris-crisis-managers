@@ -41,11 +41,11 @@ event = {
 	id = CrisisManagerControl.0400
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_crisis = yes
 	}
-	
+
 	immediate = {
 		event_target:CmtGlobalVar = {
 			country_event = { id = CrisisManagerControl.0412 days = @CmtConstSoundControlDate }
@@ -58,8 +58,6 @@ event = {
 	}
 }
 
-
-
 #####################
 ###  Progression  ###
 #####################
@@ -69,7 +67,7 @@ country_event = {
 	id = CrisisManagerControl.0412
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_crisis_stage_1 = yes
 		any_country = {
@@ -77,7 +75,7 @@ country_event = {
 			galaxy_percentage > @CmtConstCrisisStage12
 		}
 	}
-	
+
 	immediate = {
 		set_crisis_stage_2 = yes
 		random_list = {
@@ -121,13 +119,12 @@ country_event = {
 	}
 }
 
-
 ### Stage 2 -> 3
 country_event = {
 	id = CrisisManagerControl.0413
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_crisis_stage_2 = yes
 		OR = {
@@ -144,7 +141,7 @@ country_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		set_crisis_stage_3 = yes
 		random_list = {
@@ -188,13 +185,12 @@ country_event = {
 	}
 }
 
-
 ### Stage 3 -> 4
 country_event = {
 	id = CrisisManagerControl.0414
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_crisis_stage_3 = yes
 		OR = {
@@ -211,16 +207,18 @@ country_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		set_crisis_stage_4 = yes
 		random_list = {
 			10 = {
 				modifier = {
 					factor = 0
-					NOT = { any_country = { CmtTriggerIsPrethoryn = yes }
-						
-						galaxy_percentage > @CmtConstCrisisStage34b
+					NOT = {
+						any_country = {
+							CmtTriggerIsPrethoryn = yes
+							galaxy_percentage > @CmtConstCrisisStage34b
+						}
 					}
 				}
 				set_crisis_sound = swarm_crisis_ambient_stage_final
@@ -249,8 +247,6 @@ country_event = {
 	}
 }
 
-
-
 ####################
 ###  Regression  ###
 ####################
@@ -260,7 +256,7 @@ country_event = {
 	id = CrisisManagerControl.0421
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_crisis_stage_2 = yes
 		NOT = {
@@ -270,7 +266,7 @@ country_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		set_crisis_stage_1 = yes
 		random_list = {
@@ -299,13 +295,12 @@ country_event = {
 	}
 }
 
-
 ### Stage 3 -> 2
 country_event = {
 	id = CrisisManagerControl.0422
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_crisis_stage_3 = yes
 		NOR = {
@@ -322,7 +317,7 @@ country_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		set_crisis_stage_2 = yes
 		random_list = {
@@ -372,13 +367,12 @@ country_event = {
 	}
 }
 
-
 ### Stage 4 -> 3
 country_event = {
 	id = CrisisManagerControl.0423
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_crisis_stage_4 = yes
 		NOR = {
@@ -395,7 +389,7 @@ country_event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		set_crisis_stage_3 = yes
 		random_list = {
@@ -445,7 +439,6 @@ country_event = {
 	}
 }
 
-
 ####################
 ###  Crisis End  ###
 ####################
@@ -454,11 +447,11 @@ country_event = {
 	id = CrisisManagerControl.0430
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		CmtTriggerIsBasicCrisisCountry = yes
 	}
-	
+
 	immediate = {
 		if = {
 			limit = {
@@ -515,7 +508,3 @@ country_event = {
 		}
 	}
 }
-
-
-
-

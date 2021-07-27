@@ -1,0 +1,107 @@
+# ## physics technologies
+
+tech_lgate_activation = {
+	cost = @tier3cost3
+	area = physics
+	tier = 3
+	is_rare = yes
+	is_dangerous = yes
+	category = { particles }
+	weight = 0
+
+	potential = {
+		NOT = { has_global_flag = l_cluster_opened }
+		NAND = { has_global_flag = CmtFlagLgateReqPlayer is_ai = yes }
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = lgate_activation_title
+			desc = lgate_activation_desc
+		}
+	}
+
+	weight_modifier = {
+		factor = 0
+	}
+}
+
+tech_repeatable_lcluster_clue = {
+	area = engineering
+	cost = @tier2cost1
+	cost_per_level = @repeatableTechLevelCost
+	tier = 3
+	is_rare = yes
+	is_dangerous = yes
+	category = { voidcraft }
+	levels = -1
+	weight = @tier3weight2
+
+	potential = {
+		has_country_flag = encountered_first_lgate
+		NOR = {
+			has_country_flag = completed_lcluster_chain
+			has_global_flag = l_cluster_opened
+		}
+	}
+
+	prereqfor_desc = {
+		custom = {
+			title = add_lcluster_clue
+			desc = tech_repeatable_lcluster_clue_desc
+		}
+	}
+	weight_modifier = {
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_nanite_transmutation }
+			}
+		}
+		modifier = {
+			factor = 0.2
+			NOT = {
+				any_system_within_border = { has_star_flag = lgate }
+			}
+		}
+	}
+
+	ai_weight = {
+		# factor = 1
+		modifier = {
+			factor = 0
+			has_global_flag = CmtFlagLgateReqPlayer
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_global_flag = gray_goo_crisis_set
+				has_global_flag = marauder_crisis_ongoing
+			}
+		}
+		modifier = {
+			factor = 0.5
+			end_game_years_passed < -50
+		}
+		modifier = {
+			factor = 0.75
+			is_at_war = yes
+		}
+		modifier = {
+			factor = 0.75
+			research_leader = {
+				area = engineering
+				NOT = { has_trait = "leader_trait_expertise_voidcraft" }
+			}
+		}
+	}
+
+	weight_groups = {
+		#repeatable
+	}
+	mod_weight_if_group_picked = {
+		#repeatable = 0.01
+	}
+}

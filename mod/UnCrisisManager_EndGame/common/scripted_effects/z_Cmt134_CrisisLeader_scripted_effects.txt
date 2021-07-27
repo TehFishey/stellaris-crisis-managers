@@ -19,8 +19,6 @@
 ###  Constants  ###
 ###################
 
-
-
 ###################
 ###  Prethoryn  ###
 ###################
@@ -172,7 +170,7 @@ CmtEffectCreateAdmiral_PetQueen = {
 
 CmtEffectCreateAdmiral_SentinelAttacker = {
 	random_country = {
-		limit = { CmtTriggerIsPlayableEmpire = yes }
+		limit = { exists = owner_species CmtTriggerIsPlayableEmpire = yes }
 		owner_species = { save_event_target_as = random_species }
 	}
 	create_leader = {
@@ -201,8 +199,6 @@ CmtEffectCreateAdmiral_SentinelCapitalDefense = {
 		}
 	}
 }
-
-
 
 ###########################
 ###  Extradimensionals  ###
@@ -251,7 +247,6 @@ CmtEffectCreateAdmiral_UnbiddenStandard = {
 	}
 }
 
-
 ### Aberrant
 CmtEffectCreateAdmiral_Aberrant = {
 	random_list = {
@@ -283,7 +278,6 @@ CmtEffectCreateAdmiral_Aberrant = {
 		}
 	}
 }
-
 
 ### Vehement
 
@@ -318,8 +312,6 @@ CmtEffectCreateAdmiral_Vehement = {
 	}
 }
 
-
-
 #####################
 ###  Contingency  ###
 #####################
@@ -337,7 +329,6 @@ CmtEffectCreateAdmiral_Contingency = {
 	}
 }
 
-
 ################
 ###  Cybrex  ###
 ################
@@ -352,17 +343,3 @@ CmtEffectCreateAdmiral_Cybrex = {
 	}
 	last_created_leader = { set_age = 0 }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

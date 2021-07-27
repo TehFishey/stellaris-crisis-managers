@@ -19,8 +19,6 @@
 ###  Constants  ###
 ###################
 
-
-
 ##############
 ###  Khan  ###
 ##############
@@ -93,7 +91,6 @@ CmtEffectCreateAdmiral_MarauderStandard = {
 	}
 }
 
-
 CmtEffectCreateGeneral_Marauder = {
 	if = {
 		limit = {
@@ -152,9 +149,6 @@ CmtEffectCreateAdmiral_MarauderEncourager = {
 		traits = { trait = random_trait }
 	}
 }
-
-
-
 
 #################
 ###  Dessanu  ###

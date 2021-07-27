@@ -14,19 +14,20 @@ namespace = CrisisManagerControl
 ###  Common  ###
 ################
 
-### Open L-Gate
+### Open L-Gate Cycle
 country_event = {
 	id = CrisisManagerControl.6201
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
+		exists = event_target:CmtGlobalVar
 		any_megastructure = { CmtTriggerIsClosedLgate = yes }
 	}
-	
+
 	immediate = {
 		event_target:CmtGlobalVar = {
-			
+
 			### Transference Variable
 			if = {
 				limit = { has_global_flag = gray_goo_crisis_set }
@@ -38,7 +39,7 @@ country_event = {
 				limit = { has_global_flag = dragon_season }
 				set_variable = { which = CmtVarTemp value = CmtVarLgateCycleLdrake }
 			} else = { set_variable = { which = CmtVarTemp value = CmtVarLgateCycleSilence } }
-			
+
 			### Open L-Gate
 			if = {
 				limit = {
@@ -66,7 +67,7 @@ country_event = {
 					CmtEffectOpenLgate = yes
 				}
 			}
-			
+
 			### Time Cycle Control
 			if = {
 				limit = { check_variable = { which = CmtVarTemp value = 4 } }
@@ -84,12 +85,12 @@ country_event = {
 	id = CrisisManagerControl.6202
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		any_megastructure = { CmtTriggerIsClosedLgate = yes }
 		event_target:CmtGlobalVar = { check_variable = { which = CmtVarLgateCycleGraygoo value = 2 } }
 	}
-	
+
 	immediate = {
 		every_megastructure = {
 			limit = { CmtTriggerIsClosedLgate = yes }
@@ -103,32 +104,27 @@ planet_event = {
 	id = CrisisManagerControl.6211
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		is_planet_class = pc_gray_goo
 	}
-	
+
 	immediate = {
 		random_list = {
-			100 = { change_pc = pc_desert }
-			100 = { change_pc = pc_tropical }
-			100 = { change_pc = pc_arid }
-			100 = { change_pc = pc_ocean }
-			100 = { change_pc = pc_tundra }
-			100 = { change_pc = pc_continental }
-			100 = { change_pc = pc_arctic }
-			100 = { change_pc = pc_alpine }
-			100 = { change_pc = pc_savannah }
-			 10 = { change_pc = pc_gaia }
-			 10 = { change_pc = pc_nuked }
+			10 = { change_pc = pc_desert }
+			10 = { change_pc = pc_tropical }
+			10 = { change_pc = pc_arid }
+			10 = { change_pc = pc_ocean }
+			10 = { change_pc = pc_tundra }
+			10 = { change_pc = pc_continental }
+			10 = { change_pc = pc_arctic }
+			10 = { change_pc = pc_alpine }
+			10 = { change_pc = pc_savannah }
+			 1 = { change_pc = pc_gaia }
+			 1 = { change_pc = pc_nuked }
 		}
 		remove_modifier = CmtModifierAutoTerraform
 		reroll_deposits = yes
 		reroll_planet_modifiers = yes
 	}
 }
-
-
-
-
-

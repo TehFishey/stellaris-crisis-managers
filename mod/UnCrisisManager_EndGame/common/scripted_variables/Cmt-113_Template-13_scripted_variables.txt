@@ -14,28 +14,24 @@
 #	How to use: See ''ReadMe_for_making_template.txt''
 #
 
-
 ################################
 ###  Activation of Template  ###
 ################################
-	
-	### Activate Template
-		@CmtT113_ConstActivatedEventEndgame = no		## for events of End-Game Crisis, Guardians of Galaxy
-		@CmtT113_ConstActivatedEventMidgame = no		## for events of Mid-Game Crisis (Khan, L-Gate)
-		@CmtT113_ConstActivatedEventSleeper = no		## for events of Fallen Empire Awaking except Guarians of Galaxy
-		@CmtT113_ConstActivatedPowerEndgame = no		## for military power of End-Game Crisis
-		@CmtT113_ConstActivatedPowerMidgame = no		## for military power of Khan and Gray Tempest
-			### yes: this template is activated for specified parameters.
-			### no : this template is ignored for specified parameters.
-			### * No configurations exist for military power of Fallen/Awakened Empires.
-		
-	
-	### The version of Crisis Manager. This template corresponds to: 
-		@CmtT113_ConstVersionInfo = 1.10
-			### Never change this value.
-			### For example, ''1.03'' means ''ver.1.3'' but not ''ver.1.0.3''
-		
-	
+
+### Activate Template
+	@CmtT113_ConstActivatedEventEndgame = no		## for events of End-Game Crisis, Guardians of Galaxy
+	@CmtT113_ConstActivatedEventMidgame = no		## for events of Mid-Game Crisis (Khan, L-Gate)
+	@CmtT113_ConstActivatedEventSleeper = no		## for events of Fallen Empire Awaking except Guarians of Galaxy
+	@CmtT113_ConstActivatedPowerEndgame = no		## for military power of End-Game Crisis
+	@CmtT113_ConstActivatedPowerMidgame = no		## for military power of Khan and Gray Tempest
+		### yes: this template is activated for specified parameters.
+		### no : this template is ignored for specified parameters.
+		### * No configurations exist for military power of Fallen/Awakened Empires.
+
+### The version of Crisis Manager. This template corresponds to:
+	@CmtT113_ConstVersionInfo = 1.11
+		### Never change this value.
+		### For example, ''1.03'' means ''ver.1.3'' but not ''ver.1.0.3''
 
 ##############################################
 ###  Event Conditions for End-Game Crises  ###
@@ -45,44 +41,42 @@
 #	Required for activating: @CmtT113_ConstActivatedEventEndgame = yes
 #
 
-	### Multiple Crises
-		@CmtT113_ConstMultiple = 2
-			### Forbid All Crises = 1, Allow Only One Crisis = 2 (Default)
-			### Allow multiple crisis = 3, Allow Simultaneous Crises = 4, Force Triple crises = 5
-	
-	### Interval of Crisis
-		@CmtT113_ConstTriggerInterval = 0
-			### Set in years
-			### It must be 0, 10, 25, 50, 75, 100 or 999 (Default = 0).
-			### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
-	
-	### Crises to Happen at Earliest
-		@CmtT113_ConstEarliestEgpy = 50
-			### Set x of ''End-Game Start Year + x years''.
-			### x must be -999, -100, -75, -50, -25, 0, 25, 50, 75, 100 or 999. (Default = 50)
-			### Exception: -999 means 'at the earliest 2205'
-			### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
-	
-	### MTTH for Crisis Triggered
-		@CmtT113_ConstTriggerProbability = 2
-			### Long = 1, Middle = 2 (Default), Short: 3, Very Short = 4, Almost Zero = 5
-			### Template Unique Value (Beta) = -1 (Actual value must be set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt'')
-	
-	### Equalization of Probability
-		@CmtT113_ConstEqualizingProbability = 1
-			### No = 1 (Default), Weak = 2, Strong = 3, Completely = 4
-	
-	### Progress Speed of Opening Event Chain
-		@CmtT113_ConstOpeningEventSpeed = 3
-			### Very Slow = 1, Random and Slow = 2, Standard = 3 (Default)
-			### Fast = 4, Random and Fast = 5, Foxhound = 6
-	
-	### Submarine Crisis
-		@CmtT113_ConstSubmarineCrisis = no
-			### yes: Activate Submarine Crisis
-			### no : Disable Submarine Crisis (Default)
-		
-	
+### Multiple Crises
+	@CmtT113_ConstMultiple = 2
+		### Forbid All Crises = 1, Allow Only One Crisis = 2 (Default)
+		### Allow multiple crisis = 3, Allow Simultaneous Crises = 4, Force Triple crises = 5
+
+### Interval of Crisis
+	@CmtT113_ConstTriggerInterval = 0
+		### Set in years
+		### It must be 0, 10, 25, 50, 75, 100 or 999 (Default = 0).
+		### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
+
+### Crises to Happen at Earliest
+	@CmtT113_ConstEarliestEgpy = 50
+		### Set x of ''End-Game Start Year + x years''.
+		### x must be -999, -100, -75, -50, -25, 0, 25, 50, 75, 100 or 999. (Default = 50)
+		### Exception: -999 means 'at the earliest 2205'
+		### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
+
+### MTTH for Crisis Triggered
+	@CmtT113_ConstTriggerProbability = 2
+		### Long = 1, Middle = 2 (Default), Short: 3, Very Short = 4, Almost Zero = 5
+		### Template Unique Value (Beta) = -1 (Actual value must be set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt'')
+
+### Equalization of Probability
+	@CmtT113_ConstEqualizingProbability = 1
+		### No = 1 (Default), Weak = 2, Strong = 3, Completely = 4
+
+### Progress Speed of Opening Event Chain
+	@CmtT113_ConstOpeningEventSpeed = 3
+		### Very Slow = 1, Random and Slow = 2, Standard = 3 (Default)
+		### Fast = 4, Random and Fast = 5, Foxhound = 6
+
+### Submarine Crisis
+	@CmtT113_ConstSubmarineCrisis = no
+		### yes: Activate Submarine Crisis
+		### no : Disable Submarine Crisis (Default)
 
 #########################################################
 ###  Configurations for Expansion of Crisis Factions  ###
@@ -92,46 +86,44 @@
 #	Required for activating: @CmtT113_ConstActivatedEventEndgame = yes
 #
 
-	### Crises - Total War
-		@CmtT113_ConstTotalWarPriority = 2
-			### Disabled = 1 or { Disable ''Crisis Manager - Total War Pack'' } (Vanilla)
-			### Enabled, Combatant Has Priority of Dominion = 2 (Default, ''Total War Pack'' is required.)
-			### Enabled, Former Owner Has Priority of Dominion = 3 (''Total War Pack'' is required.)
-		
-	### Auto-Build Starbase
-		@CmtT113_ConstTotalWarAutoBuild = 3
-			### Disabled = 1 or { Disable ''Crisis Manager - Total War Pack'' } (Vanilla)
-			### Enabled for Crisis Constructors = 2 (''Total War Pack'' is required.)
-			### Fully Enabled for Crisis Factions = 3 (Default, ''Total War Pack'' is required.)
-	
-	### Occupy Planets
-		@CmtT113_ConstPlanetOccupy = 1
-			### Same as Vanilla = 1 (Default), Win Ground Combat = 2, Annihilate Armies = 3
-			### Only Orbital Bombardment = 4, N/A = 5, Short Orbital Bombardment = 6, Instant Orbital Bombardment = 7
-		
-	### Purge Speed
-		@CmtT113_ConstPurgeSpeed = 1
-			### Same as Vanilla = 1 (Default), 1 Pop Killed Every Year = 2, 1 Pop Killed Every 3 Months = 3, 1 Pop Killed Every Month = 4
-			### 1 Pop Killed Every 10 Days = 5, 1 Pop Killed Every 3 Days = 6, All Pops Killed Immediately = 7
-		
-	### Faster Combat Fleet
-		@CmtT113_ConstFasterCombatFleet = 1
-			### Very Slow = 1 (default), Slow = 2
-			### Middle = 3, Fast = 4, Crazy = 5
-		
-	### Faster Constructor
-		@CmtT113_ConstFasterConstructor = 1
-			### Very Slow = 1 (default), Slow = 2
-			### Middle = 3, Fast = 4, Crazy = 5
-	
-	### Friendly Crisis
-		@CmtT113_ConstFriendlyCrisis = 1
-			### Hostile to Each Other = 1 (Default)
-			### Only Extradimensionals Friendly with Each Other = 2
-			### Friendly with Each Other Except Extradimensionals = 3
-			### Friendly with Each Other = 4
-		
-	
+### Crises - Total War
+	@CmtT113_ConstTotalWarPriority = 2
+		### Disabled = 1 or { Disable ''Crisis Manager - Total War Pack'' } (Vanilla)
+		### Enabled, Combatant Has Priority of Dominion = 2 (Default, ''Total War Pack'' is required.)
+		### Enabled, Former Owner Has Priority of Dominion = 3 (''Total War Pack'' is required.)
+
+### Auto-Build Starbase
+	@CmtT113_ConstTotalWarAutoBuild = 3
+		### Disabled = 1 or { Disable ''Crisis Manager - Total War Pack'' } (Vanilla)
+		### Enabled for Crisis Constructors = 2 (''Total War Pack'' is required.)
+		### Fully Enabled for Crisis Factions = 3 (Default, ''Total War Pack'' is required.)
+
+### Occupy Planets
+	@CmtT113_ConstPlanetOccupy = 1
+		### Same as Vanilla = 1 (Default), Win Ground Combat = 2, Annihilate Armies = 3
+		### Only Orbital Bombardment = 4, N/A = 5, Short Orbital Bombardment = 6, Instant Orbital Bombardment = 7
+
+### Purge Speed
+	@CmtT113_ConstPurgeSpeed = 1
+		### Same as Vanilla = 1 (Default), 1 Pop Killed Every Year = 2, 1 Pop Killed Every 3 Months = 3, 1 Pop Killed Every Month = 4
+		### 1 Pop Killed Every 10 Days = 5, 1 Pop Killed Every 3 Days = 6, All Pops Killed Immediately = 7
+
+### Faster Combat Fleet
+	@CmtT113_ConstFasterCombatFleet = 1
+		### Very Slow = 1 (default), Slow = 2
+		### Middle = 3, Fast = 4, Crazy = 5
+
+### Faster Constructor
+	@CmtT113_ConstFasterConstructor = 1
+		### Very Slow = 1 (default), Slow = 2
+		### Middle = 3, Fast = 4, Crazy = 5
+
+### Friendly Crisis
+	@CmtT113_ConstFriendlyCrisis = 1
+		### Hostile to Each Other = 1 (Default)
+		### Only Extradimensionals Friendly with Each Other = 2
+		### Friendly with Each Other Except Extradimensionals = 3
+		### Friendly with Each Other = 4
 
 ############################################
 ###  Advanced Configurations: Prethoryn  ###
@@ -141,36 +133,34 @@
 #	Required for activating: @CmtT113_ConstActivatedEventEndgame = yes
 #
 
-	### Advanced Configurations: Prethoryn Scourge
-		@CmtT113_ConstForbiddenPrethoryn = no
-			### yes: Forbid to happen
-			### no:  Allow to happen (Default)
-			
-		@CmtT113_ConstPrethorynNonRimAttack = no
-			### yes: Their invasion may begin from inside of the galaxy. (Acrobatic Charge)
-			### no : Their invasion begin from surely rim of the galaxy. (Default)
-		
-	### Wounded Queen
-		@CmtT113_ConstPrethorynQueen = 2
-			### Never Found = 1. Long MTTH = 2 (Default), Short MTTH = 3, Very Short = 4
-		
-	### Sentinels Rising
-		@CmtT113_ConstSentinelRise = 3
-			### Never Rise = 1. Delay = 2, Standardly = 3 (Default), Early = 4, Waiting for Scramble = 5
-			
-	### Anatomy Files
-		@CmtT113_ConstForbiddenAnatomy = no
-			### yes: Forbid, no: Allow (Default)
-			
-	### Feral Prethoryn
-		@CmtT113_ConstFeralPrethoryn = 3
-			### Never Spawn = 1. Spawn a Little = 2, Spawn = 3 (Default), Spawn frequently = 4
-	
-	### Unlimited Flavor Text of Prethoryn
-		@CmtT113_ConstPrethorynUnlimitedFlavor = no
-			### yes: Unlimited, no: Limited (Default)
-		
-	
+### Advanced Configurations: Prethoryn Scourge
+	@CmtT113_ConstForbiddenPrethoryn = no
+		### yes: Forbid to happen
+		### no:  Allow to happen (Default)
+
+	@CmtT113_ConstPrethorynNonRimAttack = no
+		### yes: Their invasion may begin from inside of the galaxy. (Acrobatic Charge)
+		### no : Their invasion begin from surely rim of the galaxy. (Default)
+
+### Wounded Queen
+	@CmtT113_ConstPrethorynQueen = 2
+		### Never Found = 1. Long MTTH = 2 (Default), Short MTTH = 3, Very Short = 4
+
+### Sentinels Rising
+	@CmtT113_ConstSentinelRise = 3
+		### Never Rise = 1. Delay = 2, Standardly = 3 (Default), Early = 4, Waiting for Scramble = 5
+
+### Anatomy Files
+	@CmtT113_ConstForbiddenAnatomy = no
+		### yes: Forbid, no: Allow (Default)
+
+### Feral Prethoryn
+	@CmtT113_ConstFeralPrethoryn = 3
+		### Never Spawn = 1. Spawn a Little = 2, Spawn = 3 (Default), Spawn frequently = 4
+
+### Unlimited Flavor Text of Prethoryn
+	@CmtT113_ConstPrethorynUnlimitedFlavor = no
+		### yes: Unlimited, no: Limited (Default)
 
 ####################################################
 ###  Advanced Configurations: Extradimensionals  ###
@@ -180,39 +170,37 @@
 #	Required for activating: @CmtT113_ConstActivatedEventEndgame = yes
 #
 
-	### Advanced Configurations: Extradimensional Invasion
-		@CmtT113_ConstForbiddenExds = no
-			### yes: Forbid to happen
-			### no:  Allow to happen (Default)
-		
-		@CmtT113_ConstNoJumpButExds = no
-			### yes: Spawnable without empire has Jump Drive
-			### no : Any empires must have Jump Drive for spawning, (Default)
-		
-	### Extradimensional Chasers 1:  A condision for the summon of Aberrant and Vehement.
-		@CmtT113_ConstExdsChaserCondition = 3
-			### Never Opened = 1, Severe = 2, Standard = 3 (Default)
-			### Probability Scaling = 4, Anytime OK = 5, Avenger = 6
-		
-	### Extradimensional Chasers 2:  Location of the summon of Aberrant and Vehement.
-		@CmtT113_ConstExdsChaserAnywhere = no
-			### yes: Spawn anywhere in the galaxy
-			### no : Spawn only inside border of Unbidden (Default)
-			### Caution: This option must be set ''yes'' if ''@CmtT113_ConstExdsChaserCondition = 6'' (Avenger) is selected.
-		
-	### Less Reinforcement on Starbases Built
-		@CmtT113_ConstReinforceCycle_OnExdAnchorBuilt = 1
-			### Set the number of starbases for reinforcement (Default = 1)
-			### This number must be positive integer less than 500, or 999.
-			### Exception: 999 means 'No Reinforcement on Starbases Built'
-		
-	### Unstable Portals
-		@CmtT113_ConstExdsPortalStability = 1
-			### Set the number of anchors (Default = 1)
-			### It must be 1, 3, 5, 10, 25, 50, 100, 250, 500 or 9999.
-			### Exception: 9999 means ''Never Stabilized''
-		
-	
+### Advanced Configurations: Extradimensional Invasion
+	@CmtT113_ConstForbiddenExds = no
+		### yes: Forbid to happen
+		### no:  Allow to happen (Default)
+
+	@CmtT113_ConstNoJumpButExds = no
+		### yes: Spawnable without empire has Jump Drive
+		### no : Any empires must have Jump Drive for spawning, (Default)
+
+### Extradimensional Chasers 1:  A condision for the summon of Aberrant and Vehement.
+	@CmtT113_ConstExdsChaserCondition = 3
+		### Never Opened = 1, Severe = 2, Standard = 3 (Default)
+		### Probability Scaling = 4, Anytime OK = 5, Avenger = 6
+
+### Extradimensional Chasers 2:  Location of the summon of Aberrant and Vehement.
+	@CmtT113_ConstExdsChaserAnywhere = no
+		### yes: Spawn anywhere in the galaxy
+		### no : Spawn only inside border of Unbidden (Default)
+		### Caution: This option must be set ''yes'' if ''@CmtT113_ConstExdsChaserCondition = 6'' (Avenger) is selected.
+
+### Less Reinforcement on Starbases Built
+	@CmtT113_ConstReinforceCycle_OnExdAnchorBuilt = 1
+		### Set the number of starbases for reinforcement (Default = 1)
+		### This number must be positive integer less than 500, or 999.
+		### Exception: 999 means 'No Reinforcement on Starbases Built'
+
+### Unstable Portals
+	@CmtT113_ConstExdsPortalStability = 1
+		### Set the number of anchors (Default = 1)
+		### It must be 1, 3, 5, 10, 25, 50, 100, 250, 500 or 9999.
+		### Exception: 9999 means ''Never Stabilized''
 
 ##############################################
 ###  Advanced Configurations: Contingency  ###
@@ -222,37 +210,35 @@
 #	Required for activating: @CmtT113_ConstActivatedEventEndgame = yes
 #
 
-	### Advanced Configurations: Contingency Protocol
-		@CmtT113_ConstForbiddenContingency = no
-			### yes: Forbid to happen
-			### no:  Allow to happen (Default)
-			
-	### Strength of Ghost Signal
-		@CmtT113_ConstGhostStrength = 3
-			### Zero = 1, Weak = 2, Middle = 3 (Default)
-			### Strong = 4, Typhoon = 5
-		
-	### Progress Speed of Pre-Terror Events
-		@CmtT113_ConstSynthTerrorEventSpeed = 3
-			### No Terror Happens = 1, Slow = 2, Middle (Default) = 3
-			### Fast = 4, Zero-day Attack = 5
-		
-	### Frequency of Terror
-		@CmtT113_ConstFreqTerror = 2
-			### Low = 1, Middle = 2 (Default), High = 3
-			### Very High = 4, Ordinary Event = 5
-		
-	### Terror to Psi, Hive Empires
-		@CmtT113_ConstSynthTerrorAll = no
-			### yes: Allow to Happen
-			### no : Forbid to Happen (Default)
-		
-	### Resurfacing of Cybrex
-		@CmtT113_ConstCybrexResurfacing = 3
-			### Never Resurface = 1, Resurface with Delay = 2
-			### Resurface Standardly = 3 (Default), Resurface Early = 4, Power State S1 = 5
-		
-	
+### Advanced Configurations: Contingency Protocol
+	@CmtT113_ConstForbiddenContingency = no
+		### yes: Forbid to happen
+		### no:  Allow to happen (Default)
+
+### Strength of Ghost Signal
+	@CmtT113_ConstGhostStrength = 3
+		### Zero = 1, Weak = 2, Middle = 3 (Default)
+		### Strong = 4, Typhoon = 5
+
+### Progress Speed of Pre-Terror Events
+	@CmtT113_ConstSynthTerrorEventSpeed = 3
+		### No Terror Happens = 1, Slow = 2, Middle (Default) = 3
+		### Fast = 4, Zero-day Attack = 5
+
+### Frequency of Terror
+	@CmtT113_ConstFreqTerror = 2
+		### Low = 1, Middle = 2 (Default), High = 3
+		### Very High = 4, Ordinary Event = 5
+
+### Terror to Psi, Hive Empires
+	@CmtT113_ConstSynthTerrorAll = no
+		### yes: Allow to Happen
+		### no : Forbid to Happen (Default)
+
+### Resurfacing of Cybrex
+	@CmtT113_ConstCybrexResurfacing = 3
+		### Never Resurface = 1, Resurface with Delay = 2
+		### Resurface Standardly = 3 (Default), Resurface Early = 4, Power State S1 = 5
 
 ######################################################
 ###  Advanced Configurations: Forced End of Cycle  ###
@@ -262,37 +248,35 @@
 #	Required for activating: @CmtT113_ConstActivatedEventEndgame = yes
 #
 
-	### Allow Forced End of Cycle
-		@CmtT113_ConstAllowForcedEoc = no
-			### yes: Allow to happen
-			### no : Forbid to happen (Default)
-			### Caution: yes/no are inverse of another crisis
-			
-	### Target Control of FEoC 1 (PC/NPC)
-		@CmtT113_ConstForcedEocTargetPlayer = 1
-			### NPC Only = 1 (Default), Both of PC and NPC = 2, PC Only = 3
-		
-	### Target Control of FEoC 2 (Transcendence)
-		@CmtT113_ConstForcedEocTranscendence = 2
-			### Limited to Empire Having Transcendence = 1
-			### Prefer to Empire Having Transcendence = 2 (Default)
-			### Unlimited by Ascension Transcendence = 3
-		
-	### Target Control of FEoC 3 (Imperial Strength)
-		@CmtT113_ConstForcedEocCountryStrength = 3
-			### Victim §BSelected Indiscriminately = 1
-			### Prefer to Empire Owing Strong Fleets = 2
-			### Prefer to Empire Owing Larger Territory = 3 (Default)
- 			### Prefer to Empire with Many POPs = 4
-		
-	### Term of Convenant End of Cycle
-		@CmtT113_ConstForcedEocCrisisTerm = no
-			### yes: Term of the convenant conforms to ''Progress Speed of Opening Event Chain''
-			### no:  Term of the convenant is 50 years (Default)
-		
-	### * Don't forget ''Guardians of Galaxy'' and/or ''Crisis Power''
-		
-	
+### Allow Forced End of Cycle
+	@CmtT113_ConstAllowForcedEoc = no
+		### yes: Allow to happen
+		### no : Forbid to happen (Default)
+		### Caution: yes/no are inverse of another crisis
+
+### Target Control of FEoC 1 (PC/NPC)
+	@CmtT113_ConstForcedEocTargetPlayer = 1
+		### NPC Only = 1 (Default), Both of PC and NPC = 2, PC Only = 3
+
+### Target Control of FEoC 2 (Transcendence)
+	@CmtT113_ConstForcedEocTranscendence = 2
+		### Limited to Empire Having Transcendence = 1
+		### Prefer to Empire Having Transcendence = 2 (Default)
+		### Unlimited by Ascension Transcendence = 3
+
+### Target Control of FEoC 3 (Imperial Strength)
+	@CmtT113_ConstForcedEocCountryStrength = 3
+		### Victim §BSelected Indiscriminately = 1
+		### Prefer to Empire Owing Strong Fleets = 2
+		### Prefer to Empire Owing Larger Territory = 3 (Default)
+		### Prefer to Empire with Many POPs = 4
+
+### Term of Covenant End of Cycle
+	@CmtT113_ConstForcedEocCrisisTerm = no
+		### yes: Term of the covenant conforms to ''Progress Speed of Opening Event Chain''
+		### no:  Term of the covenant is 50 years (Default)
+
+### * Don't forget ''Guardians of Galaxy'' and/or ''Crisis Power''
 
 ########################################################
 ###  Advanced Configurations: Awakening of Sleepers  ###
@@ -302,57 +286,55 @@
 #	Required for activating: @CmtT113_ConstActivatedEventSleeper = yes
 #
 
-	### Multiple Awakening of Sleepers
-		@CmtT113_ConstSleeperMultiple = 2
-			### Never Awakening = 1, Only One = 2, Independently from Guardians = 3
-			### Multiple Awakening = 4, Simultaneous Awakening = 5
-		
-	### Interval of Sleepers Awakening
-		@CmtT113_ConstSleeperInterval = 10
-			### Set in years
-			### It must be 10, 25, 50, 75, 100 or 999 (Default = 10).
-			### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
-			### Zero(0) cannot be set.
-		
-	### Sleepers to Awake at Earliest
-		@CmtT113_ConstSleeperEarliestEgsy = 0
-			### Set x of ''End-Game Start Year + x years''.
-			### x must be -999, -100, -75, -50, -25, 0, 25, 50, 75, 100 or 999. (Default = 0)
-			### Exception: -999 means ''Half Awakening''
-			### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
-		
-	### MTTH for Sleeper Awakening
-		@CmtT113_ConstSleeperProbability = 2
-			### Very Long = 1, Long = 2 (Default), Middle = 3
-			### Short = 4, As Soon as Condition Satisfied = 5
-		
-	### Fleet Power of Young for Awakening
-		@CmtT113_ConstSleeperFleetPowerYoung = 70
-			### Set Fleet Power in ** k. For example, ''10'' means 10 k
-			### It must be -1, 15, 25, 35, 50, 70, 90, 140, 210, 350 or 999 (Default = 70).
-			### Exception: -1 means ''Unlimited''
-			### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
-		
-	### Minimum Own Fleet Power for Awakening
-		@CmtT113_ConstSleeperFleetPowerOwn = 60
-			### Set Fleet Power in ** k. For example, ''10'' means 10 k
-			### It must be -1, 15, 20, 30, 45, 60, 75, 120, 180, 300 or 999 (Default = 60).
-			### Exception: -1 means ''Unlimited''
-			### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
-		
-	### Awakenable Sleepers
-		@CmtT113_ConstSleeperForbidMaterialist  = no		## Keepers of Knowledge
-		@CmtT113_ConstSleeperForbidSpirituarist = no		## Holy Guardians
-		@CmtT113_ConstSleeperForbidXenophile    = no		## Enigmatic Observers
-		@CmtT113_ConstSleeperForbidXenophobe    = no		## Militant Isolationists
-			### yes: Forbid to Standardly Awaken
-			### no:  Allow to Standardly Awaken (Default)
-		
-	### Punishment for Holy-Cracker
-		@CmtT113_ConstSleeperHolyClacker = 3
-			### No Punishment = 1, Punished Later = 2, Punished Urgently = 3 (Default)
-		
-	
+### Multiple Awakening of Sleepers
+	@CmtT113_ConstSleeperMultiple = 2
+		### Never Awakening = 1, Only One = 2, Independently from Guardians = 3
+		### Multiple Awakening = 4, Simultaneous Awakening = 5
+
+### Interval of Sleepers Awakening
+	@CmtT113_ConstSleeperInterval = 10
+		### Set in years
+		### It must be 10, 25, 50, 75, 100 or 999 (Default = 10).
+		### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
+		### Zero(0) cannot be set.
+
+### Sleepers to Awake at Earliest
+	@CmtT113_ConstSleeperEarliestEgsy = 0
+		### Set x of ''End-Game Start Year + x years''.
+		### x must be -999, -100, -75, -50, -25, 0, 25, 50, 75, 100 or 999. (Default = 0)
+		### Exception: -999 means ''Half Awakening''
+		### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
+
+### MTTH for Sleeper Awakening
+	@CmtT113_ConstSleeperProbability = 2
+		### Very Long = 1, Long = 2 (Default), Middle = 3
+		### Short = 4, As Soon as Condition Satisfied = 5
+
+### Fleet Power of Young for Awakening
+	@CmtT113_ConstSleeperFleetPowerYoung = 70
+		### Set Fleet Power in ** k. For example, ''10'' means 10 k
+		### It must be -1, 15, 25, 35, 50, 70, 90, 140, 210, 350 or 999 (Default = 70).
+		### Exception: -1 means ''Unlimited''
+		### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
+
+### Minimum Own Fleet Power for Awakening
+	@CmtT113_ConstSleeperFleetPowerOwn = 60
+		### Set Fleet Power in ** k. For example, ''10'' means 10 k
+		### It must be -1, 15, 20, 30, 45, 60, 75, 120, 180, 300 or 999 (Default = 60).
+		### Exception: -1 means ''Unlimited''
+		### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
+
+### Awakenable Sleepers
+	@CmtT113_ConstSleeperForbidMaterialist  = no		## Keepers of Knowledge
+	@CmtT113_ConstSleeperForbidSpiritualist = no		## Holy Guardians
+	@CmtT113_ConstSleeperForbidXenophile    = no		## Enigmatic Observers
+	@CmtT113_ConstSleeperForbidXenophobe    = no		## Militant Isolationists
+		### yes: Forbid to Standardly Awaken
+		### no:  Allow to Standardly Awaken (Default)
+
+### Punishment for Holy-Cracker
+	@CmtT113_ConstSleeperHolyClacker = 3
+		### No Punishment = 1, Punished Later = 2, Punished Urgently = 3 (Default)
 
 ################################################
 ###  Advanced Configurations: War in Heaven  ###
@@ -362,51 +344,49 @@
 #	Required for activating: @CmtT113_ConstActivatedEventSleeper = yes
 #
 
-	### Probability of War in Heaven
-		@CmtT113_ConstHeavenProbability = 3
-			### Happen = 1, Low = 2, Middle = 3 (Default)
-			### High = 4, Animosities Never Subside = 5
-		
-	### Ancient Rival for War in Heaven
-		@CmtT113_ConstHeavenAncientRival = 4
-			### Completely Random = 1. Opposite Ethics Prefered = 2, Opposite Ethics Has Priority = 3
-			### Opposite Ethics Highly Prefered = 4 (Default), Limited to Opposite Etics = 5
-		
-	### Awakenable Ancient Rival
-		@CmtT113_ConstHeavenForbidIndependently = no
-			### yes: Set Independently from Standard Awakening (Activate Following 4 Options)
-			### no:  Confilm to Standard Awakening (Ignore Following 4 Options, Default)
-		
-		@CmtT113_ConstHeavenForbidMaterialist   = no		### Keepers of Knowledge
-		@CmtT113_ConstHeavenForbidSpirituarist  = no		### Holy Guardians
-		@CmtT113_ConstHeavenForbidXenophile     = no		### Enigmatic Observers
-		@CmtT113_ConstHeavenForbidXenophobe     = no		### Militant Isolationists
-			### yes: Forbid to Awaken as Ancient Rival
-			### no:  Allow to Awaken as Ancient Rival (Default)
-		
-	### Indomitable Rival
-		@CmtT113_ConstHeavenIndomitableRival = 1
-			### Disallow = 1 (Default), Allow Indomitable = 2, Recovered = 3
-		
-	### Progress Speed of Prelude to War in Heaven
-		@CmtT113_ConstHeavenPreludeSpeed = 2
-			### Slow = 1, Middle = 2 (Default), Fast = 3, Super-Expless = 4
-		
-	### Subjecting to Precursor (NPCs)
-		@CmtT113_ConstHeavenNpcSubject = 3
-			### Hardly = 1, Possibly = 2, Maybe = 3 (Default)
-			### Probably = 4, Surly = 5
-		
-	### League of Non-Aligned Powers
-		@CmtT113_ConstHeavenNpcLeague = 4
-			### Never Formed = 1, Get Handful of Members = 2
-			### Get Middle Amount of Members = 3, Get Many Members = 4 (Default)
-		
-	### Exhaustion from War in Heaven
-		@CmtT113_ConstHeavenExhaustion = 2
-			### Spineless = 1, Fickle = 2 (Default), Tough = 3, Vindictive = 4, All-Out War = 5
-		
-	
+### Probability of War in Heaven
+	@CmtT113_ConstHeavenProbability = 3
+		### Happen = 1, Low = 2, Middle = 3 (Default)
+		### High = 4, Animosities Never Subside = 5
+
+### Ancient Rival for War in Heaven
+	@CmtT113_ConstHeavenAncientRival = 4
+		### Completely Random = 1. Opposite Ethics Preferred = 2, Opposite Ethics Has Priority = 3
+		### Opposite Ethics Highly Preferred = 4 (Default), Limited to Opposite Etics = 5
+
+### Awakenable Ancient Rival
+	@CmtT113_ConstHeavenForbidIndependently = no
+		### yes: Set Independently from Standard Awakening (Activate Following 4 Options)
+		### no:  Confilm to Standard Awakening (Ignore Following 4 Options, Default)
+
+	@CmtT113_ConstHeavenForbidMaterialist   = no		### Keepers of Knowledge
+	@CmtT113_ConstHeavenForbidSpiritualist  = no		### Holy Guardians
+	@CmtT113_ConstHeavenForbidXenophile     = no		### Enigmatic Observers
+	@CmtT113_ConstHeavenForbidXenophobe     = no		### Militant Isolationists
+		### yes: Forbid to Awaken as Ancient Rival
+		### no:  Allow to Awaken as Ancient Rival (Default)
+
+### Indomitable Rival
+	@CmtT113_ConstHeavenIndomitableRival = 1
+		### Disallow = 1 (Default), Allow Indomitable = 2, Recovered = 3
+
+### Progress Speed of Prelude to War in Heaven
+	@CmtT113_ConstHeavenPreludeSpeed = 2
+		### Slow = 1, Middle = 2 (Default), Fast = 3, Super-Expless = 4
+
+### Subjecting to Precursor (NPCs)
+	@CmtT113_ConstHeavenNpcSubject = 3
+		### Hardly = 1, Possibly = 2, Maybe = 3 (Default)
+		### Probably = 4, Surly = 5
+
+### League of Non-Aligned Powers
+	@CmtT113_ConstHeavenNpcLeague = 4
+		### Never Formed = 1, Get Handful of Members = 2
+		### Get Middle Amount of Members = 3, Get Many Members = 4 (Default)
+
+### Exhaustion from War in Heaven
+	@CmtT113_ConstHeavenExhaustion = 2
+		### Spineless = 1, Fickle = 2 (Default), Tough = 3, Vindictive = 4, All-Out War = 5
 
 ######################################################
 ###  Advanced Configurations: Guardians of Galaxy  ###
@@ -418,31 +398,29 @@
 #	* NOT Sleeper Edition / @...EventSleeper
 #
 
-	### Probability of Guardians Awakening
-		@CmtT113_ConstGuardiansProbability = 3
-			### Never Awake = 1, Low Probability = 2
-			### High Probability = 3 (Default), Surely Awake = 4
-		
-	### Delay of Guardians Awakening
-		@CmtT113_ConstTimingAwakingGuardians = 2
-			### Oversleep = 1, Standard Timing = 2 (Default), Awake Quickly = 3, Powerful Alarm Clock = 4
-			
-	### Dual Guardians
-		@CmtT113_ConstDoubleGurdian = 1
-			### Forbidden = 1 (Default), Low Probability = 2, High Probability = 3, Forced = 4
-			### Only Materialist Can Awaken = 1.1, Only Xenophile Can Awaken = 1.1
-			### * Fallen Machine Empire Igore This Configuration
-			
-	### Worn-Out Guardians
-		@CmtT113_ConstGuardianWornOut = 1
-			### Disallow = 1 (Default), Allow Worn-Out = 2, Rallied = 3
-			
-	### Ancient Caretakers (Fallen Machine Empire)
-		@CmtT113_ConstMechFeAwaking = 3
-			### Never Awake = 1, Awakening Surely as Guardians = 2
-			### Awakening Randomly = 3 (Default), Awakening Surely as Berserkers = 4
-		
-	
+### Probability of Guardians Awakening
+	@CmtT113_ConstGuardiansProbability = 3
+		### Never Awake = 1, Low Probability = 2
+		### High Probability = 3 (Default), Surely Awake = 4
+
+### Delay of Guardians Awakening
+	@CmtT113_ConstTimingAwakingGuardians = 2
+		### Oversleep = 1, Standard Timing = 2 (Default), Awake Quickly = 3, Powerful Alarm Clock = 4
+
+### Dual Guardians
+	@CmtT113_ConstDoubleGurdian = 1
+		### Forbidden = 1 (Default), Low Probability = 2, High Probability = 3, Forced = 4
+		### Only Materialist Can Awaken = 1.1, Only Xenophile Can Awaken = 1.1
+		### * Fallen Machine Empire Igore This Configuration
+
+### Worn-Out Guardians
+	@CmtT113_ConstGuardianWornOut = 1
+		### Disallow = 1 (Default), Allow Worn-Out = 2, Rallied = 3
+
+### Ancient Caretakers (Fallen Machine Empire)
+	@CmtT113_ConstMechFeAwaking = 3
+		### Never Awake = 1, Awakening Surely as Guardians = 2
+		### Awakening Randomly = 3 (Default), Awakening Surely as Berserkers = 4
 
 #######################################
 ###  Advanced Configurations: Khan  ###
@@ -452,65 +430,63 @@
 #	Required for activating: @CmtT113_ConstActivatedEventMidgame = yes
 #
 
-	### Multiple Great Khans
-		@CmtT113_ConstKhanMultiple = 2
-			### No Khan = 1, Single Khan = 2 (Default), Multiple Khans = 3
-			### N/A = 4, Great Great Khan = 5 (Beta)
-		
-	### Interval of Khan Reigning
-		@CmtT113_ConstKhanInterval = 0
-			### Set in years
-			### It must be 0, 10, 25, 50, 75, 100 or 999 (Default = 0).
-			### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
-		
-	### Khan to Reign at Earliest
-		@CmtT113_ConstKhanEarliestMgpy = 10
-			### Set x of ''Mid-Game Start Year + x years''.
-			### x must be -999, -100, -75, -50, -25, 0, 10, 25, 50, 75 or 999. (Default = 10)
-			### Exception: -999 means 'at anytime'
-			### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
-		
-	### Last Chance of Khan Reigning
-		@CmtT113_ConstKhanLatestEgpy = 0
-			### Set x of ''End-Game Start Year + x years''.
-			### x must be -999, -100, -75, -50, -25, 0, 25, 50, 75, 100 or 999. (Default = 0)
-			### Exception: 999 means ''Chance Never Terminate''
-			### -999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
-			### Caution: 999 and -999 are inverse of other similar configurations.
-		
-	### MTTH for Khan Reigning
-		@CmtT113_ConstKhanTriggerProbability = 2
-			### Very Long = 1, Long = 2 (Default), Middle = 3
-			### Short = 4, Impatient Khan = 5
-		
-	### Probability of Khan to Rise Up for Vengeance
-		@CmtT113_ConstKhanVengeance = 2
-			### Never = 1, Low = 2 (Default), Middle = 3
-			### High = 4, Do Vengeance at Any Cost = 5
-		
-	### Resurgence of Khan
-		@CmtT113_ConstKhanResurgence = 1
-			### Set the one of followings (Default = 1)
-			### -1: Never
-			### 1 ~ 509: Once, Twice, Thrice, ...
-			### 512: ''Phoenix''.
-			### (0, 510, 511: Not Applicable)
-		
-	### Lifespan of Khan
-		@CmtT113_ConstKhanLifespan = 3
-			### Critical = 1, Fleeting = 2, Standard Lifespan = 3 (Default)
-			### Enduring = 4, Venerable = 5, Immortality = 6
-		
-	### Latent Strength of Horde in Adversity
-		@CmtT113_ConstReinforceCycle_Khan = 1
-			### Disable = 1 (Default), Weak = 2, Middle = 3, Strong = 4
-		
-	### Future of Horde
-		@CmtT113_ConstKhanPostDeathSummary = 1
-			### Random = 1 (Default), Democracy = 2, Democracy or New Khanate = 3
-			### New Khanate = 4, New Khanate or Splinter Diadochi = 5, Splinter Diadochi = 6
-		
-	
+### Multiple Great Khans
+	@CmtT113_ConstKhanMultiple = 2
+		### No Khan = 1, Single Khan = 2 (Default), Multiple Khans = 3
+		### N/A = 4, Great Great Khan = 5 (Beta)
+
+### Interval of Khan Reigning
+	@CmtT113_ConstKhanInterval = 0
+		### Set in years
+		### It must be 0, 10, 25, 50, 75, 100 or 999 (Default = 0).
+		### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
+
+### Khan to Reign at Earliest
+	@CmtT113_ConstKhanEarliestMgpy = 10
+		### Set x of ''Mid-Game Start Year + x years''.
+		### x must be -999, -100, -75, -50, -25, 0, 10, 25, 50, 75 or 999. (Default = 10)
+		### Exception: -999 means 'at anytime'
+		### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
+
+### Last Chance of Khan Reigning
+	@CmtT113_ConstKhanLatestEgpy = 0
+		### Set x of ''End-Game Start Year + x years''.
+		### x must be -999, -100, -75, -50, -25, 0, 25, 50, 75, 100 or 999. (Default = 0)
+		### Exception: 999 means ''Chance Never Terminate''
+		### -999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
+		### Caution: 999 and -999 are inverse of other similar configurations.
+
+### MTTH for Khan Reigning
+	@CmtT113_ConstKhanTriggerProbability = 2
+		### Very Long = 1, Long = 2 (Default), Middle = 3
+		### Short = 4, Impatient Khan = 5
+
+### Probability of Khan to Rise Up for Vengeance
+	@CmtT113_ConstKhanVengeance = 2
+		### Never = 1, Low = 2 (Default), Middle = 3
+		### High = 4, Do Vengeance at Any Cost = 5
+
+### Resurgence of Khan
+	@CmtT113_ConstKhanResurgence = 1
+		### Set the one of followings (Default = 1)
+		### -1: Never
+		### 1 ~ 509: Once, Twice, Thrice, ...
+		### 512: ''Phoenix''.
+		### (0, 510, 511: Not Applicable)
+
+### Lifespan of Khan
+	@CmtT113_ConstKhanLifespan = 3
+		### Critical = 1, Fleeting = 2, Standard Lifespan = 3 (Default)
+		### Enduring = 4, Venerable = 5, Immortality = 6
+
+### Latent Strength of Horde in Adversity
+	@CmtT113_ConstReinforceCycle_Khan = 1
+		### Disable = 1 (Default), Weak = 2, Middle = 3, Strong = 4
+
+### Future of Horde
+	@CmtT113_ConstKhanPostDeathSummary = 1
+		### Random = 1 (Default), Democracy = 2, Democracy or New Khanate = 3
+		### New Khanate = 4, New Khanate or Splinter Diadochi = 5, Splinter Diadochi = 6
 
 #########################################
 ###  Advanced Configurations: L-Gate  ###
@@ -520,64 +496,67 @@
 #	Required for activating: @CmtT113_ConstActivatedEventMidgame = yes
 #
 
-	### Insights for Opening L-Gates
-		@CmtT113_ConstLgateReqClues = 7
-			### Set the number of insights for opening L-Gate. (Default = 7)
-			### It must be -1 or positive integer. Zero(0) cannot be set.
-			### -1 means insights is not required.
-		
-	### Technology for Opening L-Gates
-		@CmtT113_ConstLgateSkipTech = no
-			### yes: No Technology Required
-			### no : ''L-Gate Activation'' Technology Required (Default)
-		
-	### What Lurks Beyond L-Gates
-		@CmtT113_ConstLgateForbidSilence = no		## Eerie Silence
-		@CmtT113_ConstLgateForbidLdrake  = no		## L-Drake
-		@CmtT113_ConstLgateForbidDessanu = no		## Dessanu
-		@CmtT113_ConstLgateForbidGraygoo = no		## Gray Tempest
-			### yes: Forbid to happen
-			### no:  Allow to happen (Default)
-		
-	### Algorithm to Activate L-Gate (Common Setting)
-		@CmtT113_ConstLgateCycleCommon = 3
-		### Only One = 1, Open Slowly = 2, Vanilla = 3 (Default)
-		### Immediately All = 4, Set Individually = -1 (NOT 5)
-		
-	### Algorithm to Activate L-Gate (Individually Settings)
-		@CmtT113_ConstLgateCycleSilence = 4		## Eerie Silence
-		@CmtT113_ConstLgateCycleLdrake  = 5		## L-Drake
-		@CmtT113_ConstLgateCycleDessanu = 5		## Dessanu
-		@CmtT113_ConstLgateCycleGraygoo = 5		## Gray Tempest
-			### Only One = 1, After Crisis = 2 (For Only Gray Tempest)
-			### One by One Slowly = 3, One by One Quickly = 4, Immediately All = 5
-			### Caution
-			###     These configurations are activated only if ''@CmtT113_ConstLgateCycleCommon = -1'' is set.
-			###     Other cases, they are ignored.
-		
-	### Quiet Stroller
-		@CmtT113_ConstLgateAloneGrayCondition = 2
-			### Never Found = 1, In Silent L-Cluster = 2 (Default)
-			### In Silent/L-Drake L-Cluster = 3, In Any L-Cluster = 4
-		
-	### Dessanu Gift
-		@CmtT113_ConstLgateDessanuGift = 3
-			### No Gift = 1, Cheap Guift = 2, Standard Gift = 3 (Default)
-			### Righ Gifts = 4, Lavish Gifts = 5, Enigmatic Gifts = 6
-		
-	### Reinforcement Cycle of Gray Tempest's Fleets
-		@CmtT113_ConstReinforceCycle_Graygoo = 3
-			### Non = 1, Long = 2, Middle = 3 (Default)
-			### Short = 4, Nanite Storm = 5
-		
-	### Terraforming for Nanite World
-		@CmtT113_ConstLgateTerraformNanite = 4
-			### Unable to Terraformed = 1
-			### Can Terraformed after Tempest = 2, Auto-Terraformed after Tempest = 3
-			### Can Terraformed after War = 4 (Default), Auto-Terraformed after War = 5
-			### Can Terraformed for Any L-Cluster = 6
-		
-	
+### Insights for Opening L-Gates
+	@CmtT113_ConstLgateReqClues = 7
+		### Set the number of insights for opening L-Gate. (Default = 7)
+		### It must be -1 or positive integer. Zero(0) cannot be set.
+		### -1 means insights is not required.
+
+### Technology for Opening L-Gates
+	@CmtT113_ConstLgateSkipTech = no
+		### yes: No Technology Required
+		### no : ''L-Gate Activation'' Technology Required (Default)
+
+### Requirement for Opening L-Gates
+	@CmtT113_ConstLgateReqPlayer = no
+		### yes: Only human player can access
+		### no : All playable empires can access (Default)
+
+### What Lurks Beyond L-Gates
+	@CmtT113_ConstLgateForbidSilence = no		## Eerie Silence
+	@CmtT113_ConstLgateForbidLdrake  = no		## L-Drake
+	@CmtT113_ConstLgateForbidDessanu = no		## Dessanu
+	@CmtT113_ConstLgateForbidGraygoo = no		## Gray Tempest
+		### yes: Forbid to happen
+		### no:  Allow to happen (Default)
+
+### Algorithm to Activate L-Gate (Common Setting)
+	@CmtT113_ConstLgateCycleCommon = 3
+	### Only One = 1, Open Slowly = 2, Vanilla = 3 (Default)
+	### Immediately All = 4, Set Individually = -1 (NOT 5)
+
+### Algorithm to Activate L-Gate (Individually Settings)
+	@CmtT113_ConstLgateCycleSilence = 4		## Eerie Silence
+	@CmtT113_ConstLgateCycleLdrake  = 5		## L-Drake
+	@CmtT113_ConstLgateCycleDessanu = 5		## Dessanu
+	@CmtT113_ConstLgateCycleGraygoo = 5		## Gray Tempest
+		### Only One = 1, After Crisis = 2 (For Only Gray Tempest)
+		### One by One Slowly = 3, One by One Quickly = 4, Immediately All = 5
+		### Caution
+		###     These configurations are activated only if ''@CmtT113_ConstLgateCycleCommon = -1'' is set.
+		###     Other cases, they are ignored.
+
+### Quiet Stroller
+	@CmtT113_ConstLgateAloneGrayCondition = 2
+		### Never Found = 1, In Silent L-Cluster = 2 (Default)
+		### In Silent/L-Drake L-Cluster = 3, In Any L-Cluster = 4
+
+### Dessanu Gift
+	@CmtT113_ConstLgateDessanuGift = 3
+		### No Gift = 1, Cheap Guift = 2, Standard Gift = 3 (Default)
+		### Righ Gifts = 4, Lavish Gifts = 5, Enigmatic Gifts = 6
+
+### Reinforcement Cycle of Gray Tempest's Fleets
+	@CmtT113_ConstReinforceCycle_Graygoo = 3
+		### Non = 1, Long = 2, Middle = 3 (Default)
+		### Short = 4, Nanite Storm = 5
+
+### Terraforming for Nanite World
+	@CmtT113_ConstLgateTerraformNanite = 4
+		### Unable to Terraformed = 1
+		### Can Terraformed after Tempest = 2, Auto-Terraformed after Tempest = 3
+		### Can Terraformed after War = 4 (Default), Auto-Terraformed after War = 5
+		### Can Terraformed for Any L-Cluster = 6
 
 ######################
 ###  Crisis Power  ###
@@ -587,77 +566,75 @@
 #	Required for activating: @CmtT113_ConstActivatedFleetPower = yes
 #
 
-
 ### Template of Crisis Power
-	### Template of Crisis Power
-		@CmtT113_ConstCrisisStrengthEnd = 2		## for End-Game Crisis
-		@CmtT113_ConstCrisisStrengthMid = 2		## for Mid-Game Crisis (Khan & Gray Tempest)
-			### Set configurations individually = 0
-			### Easy = 1, Normal = 2 (Default), Hard = 3, Doomsday = 4
-		
-	### Common information for ''Individual Configurations''
-		### - '@CmtT113_ConstCrisisStrength' must be set zero(0) for using following configurations.
-		###     > If it is NOT zero(0), all of following configurations are ignored.
-		### - To set same parameter for all crisis
-		###     > Input scale factor to '@CmtT113_Const****_Common'.
-		###     > In this case, '@CmtT113_Const****_<name of faction>' are ignored.
-		###     > 0(Zero) or negative number can NOT be inputted.
-		### - To set parameter individually for each crisis
-		###     > Input 0(Zero) to '@CmtT113_Const****_Common'.
-		###     > Input scale factor to '@CmtT113_Const****_<name of crisis faction>'
-		### - All factors must be positive number that is multiple of 0.25.
-		### - Caution
-		###     > Immoderate factor makes heavy load on CPU and GPU
-		###       because these configurations modify the number of ships.
-		###     > Also factors grater than 3 can be inputted if you endure processing load excessive.
-		###
-		
+### Template of Crisis Power
+	@CmtT113_ConstCrisisStrengthEnd = 2		## for End-Game Crisis
+	@CmtT113_ConstCrisisStrengthMid = 2		## for Mid-Game Crisis (Khan & Gray Tempest)
+		### Set configurations individually = 0
+		### Easy = 1, Normal = 2 (Default), Hard = 3, Doomsday = 4
+
+### Common information for ''Individual Configurations''
+	### - '@CmtT113_ConstCrisisStrength' must be set zero(0) for using following configurations.
+	###     > If it is NOT zero(0), all of following configurations are ignored.
+	### - To set same parameter for all crisis
+	###     > Input scale factor to '@CmtT113_Const****_Common'.
+	###     > In this case, '@CmtT113_Const****_<name of faction>' are ignored.
+	###     > 0(Zero) or negative number can NOT be inputted.
+	### - To set parameter individually for each crisis
+	###     > Input 0(Zero) to '@CmtT113_Const****_Common'.
+	###     > Input scale factor to '@CmtT113_Const****_<name of crisis faction>'
+	### - All factors must be positive number that is multiple of 0.25.
+	### - Caution
+	###     > Immoderate factor makes heavy load on CPU and GPU
+	###       because these configurations modify the number of ships.
+	###     > Also factors grater than 3 can be inputted if you endure processing load excessive.
+	###
+
 ### Individual Configurations of Crisis Power
-	### Fleet Power
-		@CmtT113_ConstFleetPower_Common             = 1.00		## This value must be set to zero(0) if you set the value individually for each crisis.
-		@CmtT113_ConstFleetPower_Prethoryn          = 1.00
-		@CmtT113_ConstFleetPower_Sentinel           = 1.00
-		@CmtT113_ConstFleetPower_Unbidden           = 1.00
-		@CmtT113_ConstFleetPower_Aberrant           = 1.00
-		@CmtT113_ConstFleetPower_Vehement           = 1.00
-		@CmtT113_ConstFleetPower_Contingency        = 1.00
-		@CmtT113_ConstFleetPower_Cybrex             = 1.00
-		@CmtT113_ConstFleetPower_ForcedEoc          = 1.00		## Forced End of Cycle
-		@CmtT113_ConstFleetPower_Khan               = 1.00
-		@CmtT113_ConstFleetPower_Graygoo            = 1.00		## Gray Tempest
-		@CmtT113_ConstFleetPower_Dessanu            = 1.00
-		
-	### Army Power
-		@CmtT113_ConstArmyPower_Common              = 1.00		## This value must be set to zero(0) if you set the value individually for each crisis.
-		@CmtT113_ConstArmyPower_Prethoryn           = 1.00
-		@CmtT113_ConstArmyPower_Contingency         = 1.00
-		@CmtT113_ConstArmyPower_Khan                = 1.00
-	
-	### Number of Combat Fleets
-		@CmtT113_ConstCombatFleetNumber_Common      = 1.00		## This value must be set to zero(0) if you set the value individually for each crisis.
-		@CmtT113_ConstCombatFleetNumber_Prethoryn   = 1.00
-		@CmtT113_ConstCombatFleetNumber_Sentinel    = 1.00
-		@CmtT113_ConstCombatFleetNumber_Unbidden    = 1.00
-		@CmtT113_ConstCombatFleetNumber_Aberrant    = 1.00
-		@CmtT113_ConstCombatFleetNumber_Vehement    = 1.00
-		@CmtT113_ConstCombatFleetNumber_Contingency = 1.00
-		@CmtT113_ConstCombatFleetNumber_Cybrex      = 1.00
-		@CmtT113_ConstCombatFleetNumber_Khan        = 1.00
-		@CmtT113_ConstCombatFleetNumber_Graygoo     = 1.00		## Gray Tempest
-		@CmtT113_ConstCombatFleetNumber_Dessanu     = 1.00
-	
-	### Number of Army Fleets
-		@CmtT113_ConstArmyNumber_Common             = 1.00		## This value must be set to zero(0) if you set the value individually for each crisis.
-		@CmtT113_ConstArmyNumber_Prethoryn          = 1.00
-		@CmtT113_ConstArmyNumber_Contingency        = 1.00
-		@CmtT113_ConstArmyNumber_Khan               = 1.00
-	
-	### Number of Auxiliary Ships/Fleets (Constructor, Colonizer)
-		@CmtT113_ConstConstructorNumber_Common      = 1.00		## This value must be set to zero(0) if you set the value individually for each crisis.
-		@CmtT113_ConstConstructorNumber_Prethoryn   = 1.00
-		@CmtT113_ConstConstructorNumber_Unbidden    = 1.00
-		@CmtT113_ConstConstructorNumber_Aberrant    = 1.00
-		@CmtT113_ConstConstructorNumber_Vehement    = 1.00
-		@CmtT113_ConstConstructorNumber_Contingency = 1.00
-		@CmtT113_ConstConstructorNumber_Khan        = 1.00
-		
+### Fleet Power
+	@CmtT113_ConstFleetPower_Common             = 1.00		## This value must be set to zero(0) if you set the value individually for each crisis.
+	@CmtT113_ConstFleetPower_Prethoryn          = 1.00
+	@CmtT113_ConstFleetPower_Sentinel           = 1.00
+	@CmtT113_ConstFleetPower_Unbidden           = 1.00
+	@CmtT113_ConstFleetPower_Aberrant           = 1.00
+	@CmtT113_ConstFleetPower_Vehement           = 1.00
+	@CmtT113_ConstFleetPower_Contingency        = 1.00
+	@CmtT113_ConstFleetPower_Cybrex             = 1.00
+	@CmtT113_ConstFleetPower_ForcedEoc          = 1.00		## Forced End of Cycle
+	@CmtT113_ConstFleetPower_Khan               = 1.00
+	@CmtT113_ConstFleetPower_Graygoo            = 1.00		## Gray Tempest
+	@CmtT113_ConstFleetPower_Dessanu            = 1.00
+
+### Army Power
+	@CmtT113_ConstArmyPower_Common              = 1.00		## This value must be set to zero(0) if you set the value individually for each crisis.
+	@CmtT113_ConstArmyPower_Prethoryn           = 1.00
+	@CmtT113_ConstArmyPower_Contingency         = 1.00
+	@CmtT113_ConstArmyPower_Khan                = 1.00
+
+### Number of Combat Fleets
+	@CmtT113_ConstCombatFleetNumber_Common      = 1.00		## This value must be set to zero(0) if you set the value individually for each crisis.
+	@CmtT113_ConstCombatFleetNumber_Prethoryn   = 1.00
+	@CmtT113_ConstCombatFleetNumber_Sentinel    = 1.00
+	@CmtT113_ConstCombatFleetNumber_Unbidden    = 1.00
+	@CmtT113_ConstCombatFleetNumber_Aberrant    = 1.00
+	@CmtT113_ConstCombatFleetNumber_Vehement    = 1.00
+	@CmtT113_ConstCombatFleetNumber_Contingency = 1.00
+	@CmtT113_ConstCombatFleetNumber_Cybrex      = 1.00
+	@CmtT113_ConstCombatFleetNumber_Khan        = 1.00
+	@CmtT113_ConstCombatFleetNumber_Graygoo     = 1.00		## Gray Tempest
+	@CmtT113_ConstCombatFleetNumber_Dessanu     = 1.00
+
+### Number of Army Fleets
+	@CmtT113_ConstArmyNumber_Common             = 1.00		## This value must be set to zero(0) if you set the value individually for each crisis.
+	@CmtT113_ConstArmyNumber_Prethoryn          = 1.00
+	@CmtT113_ConstArmyNumber_Contingency        = 1.00
+	@CmtT113_ConstArmyNumber_Khan               = 1.00
+
+### Number of Auxiliary Ships/Fleets (Constructor, Colonizer)
+	@CmtT113_ConstConstructorNumber_Common      = 1.00		## This value must be set to zero(0) if you set the value individually for each crisis.
+	@CmtT113_ConstConstructorNumber_Prethoryn   = 1.00
+	@CmtT113_ConstConstructorNumber_Unbidden    = 1.00
+	@CmtT113_ConstConstructorNumber_Aberrant    = 1.00
+	@CmtT113_ConstConstructorNumber_Vehement    = 1.00
+	@CmtT113_ConstConstructorNumber_Contingency = 1.00
+	@CmtT113_ConstConstructorNumber_Khan        = 1.00

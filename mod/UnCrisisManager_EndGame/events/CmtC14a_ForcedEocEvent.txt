@@ -20,17 +20,16 @@ namespace = CrisisManagerControl
 # Days: Event Delay
 # Rand: Random part of days for event delay
 # Mtth: Mean time to happen in months
-# 
-
+#
 
 ### Very Slow
-@CmtConstForcedCovenantEocDays11 =  360		## Convenant
+@CmtConstForcedCovenantEocDays11 =  360		## Covenant
 @CmtConstForcedCovenantEocRand11 =  720
 @CmtConstForcedCovenantEocYear1a =   23		## Reckoning in years
 @CmtConstForcedCovenantEocDays1a = 8280		## Reckoning
 
 ### Random & Slow
-@CmtConstForcedCovenantEocDays21 = 1260		## Convenant
+@CmtConstForcedCovenantEocDays21 = 1260		## Covenant
 @CmtConstForcedCovenantEocRand21 =  900
 @CmtConstForcedCovenantEocYear2a =    4		## Reckoning in years
 @CmtConstForcedCovenantEocDays2a = 1440		## Reckoning
@@ -44,19 +43,19 @@ namespace = CrisisManagerControl
 @CmtConstForcedCovenantEocDays2e =  666		## Reckoning
 
 ### Vanilla
-@CmtConstForcedCovenantEocDays31 =  200		## Convenant
+@CmtConstForcedCovenantEocDays31 =  200		## Covenant
 @CmtConstForcedCovenantEocRand31 =  800
 @CmtConstForcedCovenantEocYear3a =   50		## Reckoning in years
 @CmtConstForcedCovenantEocDays3a = 7200		## Reckoning
 
 ### Fast
-@CmtConstForcedCovenantEocDays41 =    1		## Convenant
+@CmtConstForcedCovenantEocDays41 =    1		## Covenant
 @CmtConstForcedCovenantEocRand41 =  360
 @CmtConstForcedCovenantEocYear4a =    4		## Reckoning in years
 @CmtConstForcedCovenantEocDays4a = 1440		## Reckoning
 
 ### Random & Fast
-@CmtConstForcedCovenantEocDays51 =  540		## Convenant
+@CmtConstForcedCovenantEocDays51 =  540		## Covenant
 @CmtConstForcedCovenantEocRand51 =  900
 @CmtConstForcedCovenantEocYear5a =    4		## Reckoning in years
 @CmtConstForcedCovenantEocDays5a = 1440		## Reckoning
@@ -64,14 +63,12 @@ namespace = CrisisManagerControl
 @CmtConstForcedCovenantEocDays5b =  666		## Reckoning
 
 ### Foxhound
-@CmtConstForcedCovenantEocDays61 =    1		## Convenant 
+@CmtConstForcedCovenantEocDays61 =    1		## Covenant
 @CmtConstForcedCovenantEocRand61 =    3
 #CmtConstForcedCovenantEocYear6a =  N/A		## Reckoning in years
 @CmtConstForcedCovenantEocDays6a =   13		## Reckoning
 #CmtConstForcedCovenantEocYear6b =  N/A		## Reckoning in years
 @CmtConstForcedCovenantEocDays6b =   88		## Reckoning
-
-
 
 ################
 ###  Common  ###
@@ -86,15 +83,15 @@ country_event = {
 	trigger = {
 		NOT = { has_global_flag = forced_end_of_cycle_happened }
 	}
-	
+
 	immediate = {
 		endgame_telemetry = forced_end_of_cycle
 		set_global_flag = galactic_crisis_happened
 		set_global_flag = CmtFlagForcedEocTriggered
 		set_global_flag = forced_end_of_cycle_happened
-		
+
 		CmtEffectTargetingForcedEoc = yes
-		
+
 		event_target:CmtGlobalVar = {
 			if = {
 				limit = { check_variable = { which = CmtVarOpeningEventSpeed value = 1 } }
@@ -116,8 +113,6 @@ country_event = {
 	}
 }
 
-
-
 ###################
 ###  Very Slow  ###
 ###################
@@ -127,18 +122,18 @@ country_event = {
 	id = CrisisManagerControl.4010
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.4011 days = @CmtConstForcedCovenantEocDays11 random = @CmtConstForcedCovenantEocRand11 }
 	}
 }
 
-### Forced Convenant
+### Forced Covenant
 country_event = {
 	id = CrisisManagerControl.4011
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -165,7 +160,7 @@ country_event = {
 	id = CrisisManagerControl.4012
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -177,7 +172,6 @@ country_event = {
 	}
 }
 
-
 #######################
 ###  Randomly Slow  ###
 #######################
@@ -187,25 +181,25 @@ country_event = {
 	id = CrisisManagerControl.4020
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.4021 days = @CmtConstForcedCovenantEocDays21 random = @CmtConstForcedCovenantEocRand21 }
 	}
 }
 
-### Forced Convenant
+### Forced Covenant
 country_event = {
 	id = CrisisManagerControl.4021
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = CrisisManagerControl.4021 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			
+
 			remove_global_flag = CmtFlagForcedEocTermInDays		## for initialization
 			if = {
 				limit = { has_global_flag = CmtFlagForcedEocCrisisTerm }
@@ -246,7 +240,7 @@ country_event = {
 	id = CrisisManagerControl.4022
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -258,8 +252,6 @@ country_event = {
 	}
 }
 
-
-
 #################
 ###  Vanilla  ###
 #################
@@ -269,18 +261,18 @@ country_event = {
 	id = CrisisManagerControl.4030
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.4031 days = @CmtConstForcedCovenantEocDays31 random = @CmtConstForcedCovenantEocRand31 }
 	}
 }
 
-### Forced Convenant
+### Forced Covenant
 country_event = {
 	id = CrisisManagerControl.4031
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -300,7 +292,7 @@ country_event = {
 	id = CrisisManagerControl.4032
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -321,18 +313,18 @@ country_event = {
 	id = CrisisManagerControl.4040
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.4041 days = @CmtConstForcedCovenantEocDays41 random = @CmtConstForcedCovenantEocRand41 }
 	}
 }
 
-### Forced Convenant
+### Forced Covenant
 country_event = {
 	id = CrisisManagerControl.4041
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -359,7 +351,7 @@ country_event = {
 	id = CrisisManagerControl.4042
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -371,8 +363,6 @@ country_event = {
 	}
 }
 
-
-
 #######################
 ###  Randomly Fast  ###
 #######################
@@ -382,18 +372,18 @@ country_event = {
 	id = CrisisManagerControl.4050
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.4051 days = @CmtConstForcedCovenantEocDays51 random = @CmtConstForcedCovenantEocRand51 }
 	}
 }
 
-### Forced Convenant
+### Forced Covenant
 country_event = {
 	id = CrisisManagerControl.4051
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -428,7 +418,7 @@ country_event = {
 	id = CrisisManagerControl.4052
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -440,8 +430,6 @@ country_event = {
 	}
 }
 
-
-
 ##################
 ###  Foxhound  ###
 ##################
@@ -451,18 +439,18 @@ country_event = {
 	id = CrisisManagerControl.4060
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.4061 days = @CmtConstForcedCovenantEocDays61 random = @CmtConstForcedCovenantEocRand61 }
 	}
 }
 
-### Forced Convenant
+### Forced Covenant
 country_event = {
 	id = CrisisManagerControl.4061
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -498,7 +486,7 @@ country_event = {
 	id = CrisisManagerControl.4062
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -509,7 +497,3 @@ country_event = {
 		}
 	}
 }
-
-
-
-

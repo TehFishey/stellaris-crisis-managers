@@ -23,7 +23,6 @@ namespace = CrisisManagerControl
 # Mtth: Mean time to happen in months
 # 
 
-
 ### Very Slow: Double Centrally Controled by The Ghost Signal & 1st Machine Worlds
 @CmtConstGhostSignalDays11 =  360	## The Ghost Signal
 @CmtConstGhostSignalRand11 =  180
@@ -68,7 +67,6 @@ namespace = CrisisManagerControl
 @CmtConstGhostSignalDays2c =  175	## 4th Machine Worlds
 @CmtConstGhostSignalRand2c =   10
 
-
 ### Vanilla: Centrally Controled by the Ghost Signal
 @CmtConstGhostSignalDays31 =  200	## The Ghost Signal
 @CmtConstGhostSignalRand31 =  800
@@ -90,7 +88,6 @@ namespace = CrisisManagerControl
 @CmtConstGhostSignalRand3b =   10
 @CmtConstGhostSignalDays3c = 1600	## 4th Machine Worlds
 @CmtConstGhostSignalRand3c =   10
-
 
 ### Fast
 @CmtConstGhostSignalDays41 =  180	## The Ghost Signal
@@ -158,8 +155,6 @@ namespace = CrisisManagerControl
 @CmtConstGhostSignalDays6c =    1	## 4th Machine Worlds
 @CmtConstGhostSignalRand6c =    2
 
-
-
 ################
 ###  Common  ###
 ################
@@ -202,8 +197,6 @@ country_event = {
 		}
 	}
 }
-
-
 
 
 
@@ -413,8 +406,6 @@ country_event = {
 	}
 }
 
-
-
 #######################
 ###  Randomly Slow  ###
 #######################
@@ -620,8 +611,6 @@ country_event = {
 		}
 	}
 }
-
-
 
 #################
 ###  Vanilla  ###
@@ -829,8 +818,6 @@ country_event = {
 	}
 }
 
-
-
 ##############
 ###  Fast  ###
 ##############
@@ -1037,8 +1024,6 @@ country_event = {
 	}
 }
 
-
-
 #######################
 ###  Randomly Fast  ###
 #######################
@@ -1244,8 +1229,6 @@ country_event = {
 		}
 	}
 }
-
-
 
 ##################
 ###  Foxhound  ###

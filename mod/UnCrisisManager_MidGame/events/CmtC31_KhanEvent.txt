@@ -14,12 +14,12 @@ namespace = CrisisManagerControl
 ###  Standard Awakening of Khan (Not Vengeance)  ###
 ####################################################
 
-### Check Trgger Condision
+### Check Trigger Condition
 event = {
 	id = CrisisManagerControl.6101
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		event_target:CmtGlobalVar = {
 			### Check Earliest Year
@@ -75,7 +75,7 @@ event = {
 					mid_game_years_passed >= @CmtConstTUnq_ConstKhanEarliestMgpy
 				}
 			}
-			
+
 			### Check Latest Year
 			OR = {
 				AND = {
@@ -129,11 +129,11 @@ event = {
 				}
 				NOT = { check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_TA } }
 			}
-			
+
 			CmtTriggerKhanAwakingMultipleCheck = yes
 		}
 	}
-	
+
 	immediate = {
 		event_target:CmtGlobalVar = {
 			if = {
@@ -142,13 +142,13 @@ event = {
 				country_event = { id = CrisisManagerControl.6111 days = 17990 }	## 50 yr - 10 d
 			}
 		}
-		
+
 		remove_global_flag = CmtFlagKillDoubleBookingKhan
 		every_country = {
 			limit = { CmtTriggerHasPotentialKhanAwaking = yes }
-			
+
 			random_list = {
-				10 = {		## MTTH = 100 yr
+				2 = {		## MTTH = 100 yr
 					modifier = {		## >= Earliest Year + 50 yr
 						factor = 1.5
 						has_global_flag = CmtFlagKhanProbabilityIncrease
@@ -171,11 +171,12 @@ event = {
 						factor = 0
 						has_global_flag = CmtFlagKillDoubleBookingKhan
 					}
-					set_global_flag = CmtFlagKhanTriggered
-					set_timed_global_flag = { flag = CmtFlagKillDoubleBookingKhan days = 3 }
-					country_event = { id = marauder.500 days = 1 random = 358 }
+					# set_global_flag = CmtFlagKhanTriggered
+					set_global_flag = marauder_crisis_started
+					set_timed_global_flag = { flag = CmtFlagKillDoubleBookingKhan days = 5 }
+					country_event = { id = marauder.500 days = 2 random = 358 }
 				}
-				990 = {
+				99 = {
 					modifier = {
 						factor = 3
 						event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanTriggerProbability value = 1 } }
@@ -199,10 +200,6 @@ event = {
 	}
 }
 
-
-
-
-
 ##############################################
 ###  Control Flag for Probability of Khan  ###
 ##############################################
@@ -211,7 +208,7 @@ country_event = {
 	id = CrisisManagerControl.6111
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		set_global_flag = CmtFlagKhanProbabilityIncrease
 	}
