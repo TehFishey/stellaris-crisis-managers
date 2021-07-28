@@ -56,7 +56,7 @@ CmtEffectDestroyContingency = {
 			planet_event = { id = crisis.2043 days = 10 } ## Backup
 		}
 	}
-	every_country = {
+	every_playable_country = {
 		limit = { has_event_chain = ai_crisis_chain }
 		end_event_chain = ai_crisis_chain
 	}

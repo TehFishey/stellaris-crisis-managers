@@ -901,11 +901,11 @@ country_event = {
 
 	trigger = {
 		has_global_flag = prethoryn_main_invasion
-		NOT = { has_global_flag = sentinels_founded }
-		NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 1 } } }
-
+		NOR = {
+			has_global_flag = sentinels_founded
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 1 } }
+		}
 		CmtTriggerIsPrethoryn = yes
-
 		OR = {
 			galaxy_percentage > 0.45
 			AND = {
@@ -1403,62 +1403,6 @@ country_event = {
 	}
 }
 
-############################
-###  Defeated Prethoryn  ###
-############################
-
-# Destroy Prethoryn
-event = {
-	id = crisis.208
-	hide_window = yes
-
-	is_triggered_only = yes
-
-	trigger = {
-		exists = event_target:prethoryn
-		event_target:prethoryn = {
-			num_ships < 6
-			NOT = { any_planet_within_border = { is_planet_class = pc_infested } }
-		}
-	}
-
-	immediate = {
-		event_target:prethoryn = { destroy_country = yes }
-	}
-}
-
-### Prethoryn After Defeated Process
-country_event = {
-	id = crisis.210
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = {
-		is_country_type = swarm
-		has_global_flag = prethoryn_main_invasion
-	}
-
-	immediate = {
-		stop_crisis_sound = yes
-		end_crisis = yes
-		remove_global_flag = ongoing_prethoryn_invasion
-		set_global_flag = prethoryn_invasion_defeated
-		event_target:CmtGlobalVar = { country_event = { id = crisis.119 days = 360 } }		## Feral Prethoryn
-		every_country = {
-			limit = {
-				CmtTriggerIsEmpire = yes
-				NOT = { has_global_flag = galactic_community_formed } # Crisis reward is handled through Galactic Focus if the community exists
-			}
-			country_event = { id = crisis.211 }
-		}
-		observer_event = { id = observer.33 }
-		if = {
-			limit = { exists = event_target:sentinels }
-			event_target:sentinels = { country_event = { id = crisis.75 days = 15 random = 10 } }
-		}
-	}
-}
-
 #########################
 ###  Feral Prethoryn  ###
 #########################
@@ -1883,11 +1827,94 @@ country_event = {
 ###  Others  ###
 ################
 
-### Purge Begins -> CrisisManagerControl.0041
-# country_event = {
-# 	id = crisis.201
-# 	hide_window = yes
-# 	is_triggered_only = yes
+### HIDDEN SWARM FUNCTIONALITY
 
-# 	trigger = { always = no }
-# }
+# Infested to Barren after Orbital Bombardment
+planet_event = {
+	id = crisis.200
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			planet_devastation > 99
+			NOT = { exists = owner }
+		}
+		is_planet_class = pc_infested
+	}
+
+	immediate = {
+		set_planet_flag = previously_infested
+		destroy_colony = yes
+		random_list = {
+			50 = { change_pc = pc_barren }
+			50 = { change_pc = pc_barren_cold }
+		}
+		reset_planet = yes
+		add_modifier = { modifier = "terraforming_candidate" days = -1 }
+		planet_event = { id = crisis.216 }
+	}
+}
+
+### Purge Begins -> CrisisManagerControl.0041
+country_event = {
+	id = crisis.201
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { always = no }
+}
+
+############################
+###  Defeated Prethoryn  ###
+############################
+
+# Destroy Prethoryn
+event = {
+	id = crisis.208
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		exists = event_target:prethoryn
+		event_target:prethoryn = {
+			num_ships < 6
+			NOT = { any_planet_within_border = { is_planet_class = pc_infested } }
+		}
+	}
+
+	immediate = {
+		event_target:prethoryn = { destroy_country = yes }
+	}
+}
+
+### Prethoryn After Defeated Process
+country_event = {
+	id = crisis.210
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_country_type = swarm
+		has_global_flag = prethoryn_main_invasion
+	}
+
+	immediate = {
+		stop_crisis_sound = yes
+		end_crisis = yes
+		remove_global_flag = ongoing_prethoryn_invasion
+		set_global_flag = prethoryn_invasion_defeated
+		event_target:CmtGlobalVar = { country_event = { id = crisis.119 days = 360 } }		## Feral Prethoryn
+		every_country = {
+			limit = {
+				CmtTriggerIsEmpire = yes
+				NOT = { has_global_flag = galactic_community_formed } # Crisis reward is handled through Galactic Focus if the community exists
+			}
+			country_event = { id = crisis.211 }
+		}
+		observer_event = { id = observer.33 }
+		if = {
+			limit = { exists = event_target:sentinels }
+			event_target:sentinels = { country_event = { id = crisis.75 days = 15 random = 10 } }
+		}
+	}
+}

@@ -712,7 +712,7 @@ country_event = {
 		### Increase Counter
 		if = {
 			limit = { is_country_type = extradimensional }
-			every_country = {
+			every_playable_country = {
 				limit = { has_event_chain = "extradimensional_invasion_chain" }
 				add_event_chain_counter = {
 					event_chain = "extradimensional_invasion_chain"
@@ -722,7 +722,7 @@ country_event = {
 			}
 		} else_if = {
 			limit = { is_country_type = extradimensional_2 }
-			every_country = {
+			every_playable_country = {
 				limit = { has_event_chain = "extradimensional_invasion_chain_2" }
 				add_event_chain_counter = {
 					event_chain = "extradimensional_invasion_chain_2"
@@ -732,7 +732,7 @@ country_event = {
 			}
 		} else_if = {
 			limit = { is_country_type = extradimensional_3 }
-			every_country = {
+			every_playable_country = {
 				limit = { has_event_chain = "extradimensional_invasion_chain_3" }
 				add_event_chain_counter = {
 					event_chain = "extradimensional_invasion_chain_3"
@@ -788,7 +788,7 @@ country_event = {
 		### Decrease Counter
 		if = {
 			limit = { is_country_type = extradimensional }
-			every_country = {
+			every_playable_country = {
 				limit = { has_event_chain = "extradimensional_invasion_chain" }
 				add_event_chain_counter = {
 					event_chain = "extradimensional_invasion_chain"
@@ -798,7 +798,7 @@ country_event = {
 			}
 		} else_if = {
 			limit = { is_country_type = extradimensional_2 }
-			every_country = {
+			every_playable_country = {
 				limit = { has_event_chain = "extradimensional_invasion_chain_2" }
 				add_event_chain_counter = {
 					event_chain = "extradimensional_invasion_chain_2"
@@ -808,7 +808,7 @@ country_event = {
 			}
 		} else_if = {
 			limit = { is_country_type = extradimensional_3 }
-			every_country = {
+			every_playable_country = {
 				limit = { has_event_chain = "extradimensional_invasion_chain_3" }
 				add_event_chain_counter = {
 					event_chain = "extradimensional_invasion_chain_3"
@@ -872,7 +872,7 @@ planet_event = {
 	trigger = {
 		FROM = { CmtTriggerIsExds = yes }
 		OR = {
-			planet_devastation >= 100
+			planet_devastation > 99
 			AND = {
 				planet_devastation >= 25
 				event_target:CmtGlobalVar = { check_variable = { which = CmtVarPlanetOccupy value = 6 } }

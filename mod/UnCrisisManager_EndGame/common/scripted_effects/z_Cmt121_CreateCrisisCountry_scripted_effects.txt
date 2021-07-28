@@ -463,7 +463,7 @@ CmtEffectCreateCountryVehement = {	## Scope = Stellar System
 ################
 ###  Cybrex  ###
 ################
-
+# crisis.2400
 CmtEffectCallCybrex = {
 	set_global_flag = cybrex_resurface
 	random_rim_system = {
@@ -479,7 +479,6 @@ CmtEffectCallCybrex = {
 		country_event = { id = crisis.2401 days = 2 }
 	}
 	observer_event = { id = observer.52 }
-
 	random_country = {
 		limit = { is_country_type = cybrex_empire }
 		country_event = { id = crisis.2421 days = 4 }

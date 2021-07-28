@@ -95,13 +95,14 @@ country_event = {
 			CmtTriggerIsPrethoryn = yes
 			CmtTriggerIsContingency = yes
 		}
+		# is_hostile = from
 	}
 
 	immediate = {
 		FROMFROM = {
 			add_threat = { who = root amount = 2 }
 			set_controller = root
-
+			# ^ maxes out purge job weight
 			# Create and kill a pop to force job assignment updates
 			create_pop = {}
 			last_created_pop = { kill_pop = yes }
@@ -120,6 +121,40 @@ country_event = {
 						planet_event = { id = crisis.2044 }		## Contingency
 					}
 					kill_pop = yes		## Kill Last One After Above 2 Events
+				}
+			}
+		}
+		# Fix crisis country taking over planet controlled by another crisis country.
+		if = {
+			limit = {
+				NOT = { FROM = { is_same_empire = root } }
+				FROM = {
+					OR = {
+						CmtTriggerIsPrethoryn = yes
+						CmtTriggerIsContingency = yes
+					}
+				}
+			}
+			FROMFROM = {
+				conquer = root
+			}
+		}
+		if = {
+			limit = {
+				CmtTriggerIsPrethoryn = yes
+				FROMFROM = { num_pops = 0 }
+			}
+			if = {
+				limit = {
+					NOT = { exists =  event_target:prethoryn_species }
+					exists = owner_species
+				}
+				owner_species = { save_event_target_as = prethoryn_species }
+			}
+			FROMFROM = {
+				start_colony = {
+					owner = root
+					species = event_target:prethoryn_species
 				}
 			}
 		}
@@ -142,7 +177,7 @@ planet_event = {
 		}
 		OR = {
 			AND = {
-				planet_devastation >= 100
+				planet_devastation > 99
 				OR = {
 					AND = {
 						event_target:CmtGlobalVar = { check_variable = { which = CmtVarPlanetOccupy value = 3 } }
@@ -172,7 +207,7 @@ planet_event = {
 		set_controller = from
 
 		# Create and kill a pop to force job assignment updates
-		create_pop = { }
+		create_pop = {}
 		last_created_pop = { kill_pop = yes }
 
 		if = {
@@ -231,7 +266,7 @@ planet_event = {
 		### Change Counter (Do this before reset_planet)
 		if = {
 			limit = { controller = { is_country_type = extradimensional } }
-			every_country = {
+			every_playable_country = {
 				limit = { has_event_chain = extradimensional_invasion_chain }
 				add_event_chain_counter = {
 					event_chain = extradimensional_invasion_chain
@@ -241,7 +276,7 @@ planet_event = {
 			}
 		} else_if = {
 			limit = { controller = { is_country_type = extradimensional_2 } }
-			every_country = {
+			every_playable_country = {
 				limit = { has_event_chain = extradimensional_invasion_chain_2 }
 				add_event_chain_counter = {
 					event_chain = extradimensional_invasion_chain_2
@@ -251,7 +286,7 @@ planet_event = {
 			}
 		} else_if = {
 			limit = { controller = { is_country_type = extradimensional_3 } }
-			every_country = {
+			every_playable_country = {
 				limit = { has_event_chain = extradimensional_invasion_chain_3 }
 				add_event_chain_counter = {
 					event_chain = extradimensional_invasion_chain_3

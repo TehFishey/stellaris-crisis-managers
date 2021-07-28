@@ -185,7 +185,7 @@ planet_event = {
 			limit = { CmtTriggerIsEmpire = yes }
 			establish_communications_no_message = event_target:AI_crisis
 		}
-		every_country = {
+		every_playable_country = {
 			limit = { has_event_chain = "ai_crisis_chain" }
 			add_event_chain_counter = {
 				event_chain = "ai_crisis_chain"
@@ -247,7 +247,7 @@ planet_event = {
 			limit = { is_ai = no }
 			country_event = { id = crisis.2031 }
 		}
-		every_country = {
+		every_playable_country = {
 			limit = { has_event_chain = "ai_crisis_chain" }
 			add_event_chain_counter = {
 				event_chain = "ai_crisis_chain"
@@ -303,7 +303,7 @@ planet_event = {
 			limit = { is_ai = no }
 			country_event = { id = crisis.2032 }
 		}
-		every_country = {
+		every_playable_country = {
 			limit = { has_event_chain = "ai_crisis_chain" }
 			add_event_chain_counter = {
 				event_chain = "ai_crisis_chain"
@@ -380,7 +380,7 @@ planet_event = {
 			limit = { is_ai = no }
 			country_event = { id = crisis.2033 }
 		}
-		every_country = {
+		every_playable_country = {
 			limit = { has_event_chain = "ai_crisis_chain" }
 			add_event_chain_counter = {
 				event_chain = "ai_crisis_chain"
@@ -1387,11 +1387,11 @@ country_event = {
 
 	trigger = {
 		has_global_flag = ai_invasion_ongoing
-		NOT = { has_global_flag = cybrex_resurface }
-		NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCybrexResurfacing value = 1 } } }
-
+		NOR = {
+			has_global_flag = cybrex_resurface
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarCybrexResurfacing value = 1 } }
+		}
 		CmtTriggerIsContingency = yes
-
 		OR = {
 			galaxy_percentage > 0.45
 			AND = {
@@ -1544,6 +1544,12 @@ country_event = {
 	id = crisis.2041
 	hide_window = yes
 	is_triggered_only = yes
-
+	trigger = { always = no }
+}
+# superfluous now
+country_event = {
+	id = crisis.2045
+	hide_window = yes
+	is_triggered_only = yes
 	trigger = { always = no }
 }
