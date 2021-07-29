@@ -298,7 +298,7 @@ country_event = {
 				set_owner = event_target:graygoo_country
 				while = {
 					count = 30
-					create_pop = { species = owner_main_species }
+					create_pop = { species = owner_species }
 				}
 
 				##Add buildings + Districts (ToDo: Move to scripted effect)

@@ -52,7 +52,7 @@ country_event = {
 		set_country_flag = CmtFlagAwakingAsGuardians
 		country_event = { id = fallen_empires_awakening.3 }
 		
-		every_country = {
+		every_playable_country = {
 			limit = { CmtTriggerIsPlayableEmpire = yes }
 			random_list = {
 				33 = { add_opinion_modifier = { who = root modifier = opinion_crisis_fighter } }
@@ -127,7 +127,7 @@ country_event = {
 		}
 		if = {
 			limit = {
-				any_country = {
+				any_playable_country = {
 					CmtTriggerIsPlayableEmpire = yes
 					fleet_power > 50000
 				}

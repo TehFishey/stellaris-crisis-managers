@@ -51,7 +51,7 @@ CmtTriggerForbiddenExds = {
 
 CmtTriggerNoJumpDrive0 = {
 	NOT = {
-		any_country = {
+		any_playable_country = {
 			CmtTriggerIsPlayableEmpire = yes
 			OR = {
 				has_technology = "tech_psi_jump_drive_1"
@@ -64,7 +64,7 @@ CmtTriggerNoJumpDrive0 = {
 CmtTriggerNoJumpDriveA = {
 	NOT = { has_global_flag = CmtFlagNoJumpButExds }
 	NOT = {
-		any_country = {
+		any_playable_country = {
 			CmtTriggerIsPlayableEmpire = yes
 			OR = {
 				has_technology = "tech_psi_jump_drive_1"
@@ -77,7 +77,7 @@ CmtTriggerNoJumpDriveA = {
 CmtTriggerNoJumpDriveB = {
 	has_global_flag = CmtFlagNoJumpButExds
 	NOT = {
-		any_country = {
+		any_playable_country = {
 			CmtTriggerIsPlayableEmpire = yes
 			OR = {
 				has_technology = "tech_psi_jump_drive_1"
@@ -88,14 +88,14 @@ CmtTriggerNoJumpDriveB = {
 }
 
 CmtTriggerPsiJumpDrive = {
-	any_country = {
+	any_playable_country = {
 		CmtTriggerIsPlayableEmpire = yes
 		has_technology = "tech_psi_jump_drive_1"
 	}
 }
 
 CmtTriggerRougeScientist = {
-	any_country = {
+	any_playable_country = {
 		CmtTriggerIsPlayableEmpire = yes
 		has_country_flag = completed_rogue_scientist
 	}
@@ -115,7 +115,7 @@ CmtTriggerForbiddenContingency = {
 
 CmtTriggerSynthetic_0000 = {
 	NOT = {
-		any_country = {
+		any_playable_country = {
 			CmtTriggerIsPlayableEmpire = yes
 			has_technology = tech_synthetic_workers
 			any_owned_pop = { has_trait = trait_mechanical }
@@ -124,7 +124,7 @@ CmtTriggerSynthetic_0000 = {
 }
 
 CmtTriggerSynthetic_0250 = {
-	any_country = {
+	any_playable_country = {
 		CmtTriggerIsPlayableEmpire = yes
 		has_technology = tech_synthetic_workers
 		pop_percentage = {
@@ -135,7 +135,7 @@ CmtTriggerSynthetic_0250 = {
 }
 
 CmtTriggerSynthetic_0500 = {
-	any_country = {
+	any_playable_country = {
 		CmtTriggerIsPlayableEmpire = yes
 		has_technology = tech_synthetic_workers
 		pop_percentage = {
@@ -160,7 +160,7 @@ CmtTriggerExistMechFe = {
 
 CmtTriggerNoTelepathy = {
 	NOT = {
-		any_country = {
+		any_playable_country = {
 			CmtTriggerIsPlayableEmpire = yes
 			has_technology = tech_telepathy
 		}
@@ -168,14 +168,14 @@ CmtTriggerNoTelepathy = {
 }
 
 CmtTriggerTranscendence = {
-	any_country = {
+	any_playable_country = {
 		CmtTriggerIsPlayableEmpire = yes
 		has_ascension_perk = ap_transcendence
 	}
 }
 
 CmtTriggerShroudPatron = {
-	any_country = {
+	any_playable_country = {
 		CmtTriggerIsPlayableEmpire = yes
 		has_country_flag = has_shroud_patron
 	}

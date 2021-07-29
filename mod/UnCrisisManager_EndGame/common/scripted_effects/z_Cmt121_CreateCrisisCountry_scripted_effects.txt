@@ -110,12 +110,12 @@ CmtEffectCallSentinel = {
 			limit = { CmtTriggerIsFallenEmpire = yes }
 			save_global_event_target_as = sentinel_fallen_empire
 		}
-		every_country = {
+		every_playable_country = {
 			limit = { CmtTriggerIsPlayableEmpire = yes }
 			establish_communications = event_target:sentinel_fallen_empire
 		}
 	}
-	every_country = {
+	every_playable_country = {
 		limit = { CmtTriggerIsPlayableEmpire = yes }
 		country_event = { id = crisis.51 days = 1 }
 	}
@@ -466,16 +466,25 @@ CmtEffectCreateCountryVehement = {	## Scope = Stellar System
 # crisis.2400
 CmtEffectCallCybrex = {
 	set_global_flag = cybrex_resurface
+	remove_global_flag = cybrex_departed
+	remove_global_flag = cybrex_destroyed
 	random_rim_system = {
 		limit = { NOT = { has_star_flag = sealed_system } }
 		spawn_system = {
-			max_distance <= 35
 			min_distance >= 15
+			max_distance <= 35
 			initializer = "cybrex_beta"
 		}
 	}
+	if = { limit = { NOT = { exists = event_target:cybrex } }
+		random_country = {
+			limit = { is_country_type = cybrex_empire }
+			save_global_event_target_as = cybrex
+		}
+	}
+	# Cybrex communication
 	every_country = {
-		limit = { CmtTriggerIsPlayableEmpire = yes }
+		limit = { is_country_type_with_subjects = yes }
 		country_event = { id = crisis.2401 days = 2 }
 	}
 	observer_event = { id = observer.52 }

@@ -133,7 +133,7 @@ CmtEffectTriggerTripleCrisis = {
 ### Prethoryn
 
 CmtEffectSubspaceEchoes = { 	### Alt. crisis.10
-	every_country = {
+	every_playable_country = {
 		limit = { CmtTriggerIsPlayableEmpire = yes }
 		country_event = { id = crisis.11 }
 	}
@@ -144,7 +144,7 @@ CmtEffectApproachingOuterRim = {
 }
 
 CmtEffectSubspaceSignal = { 	### Alt. crisis.14
-	every_country = {
+	every_playable_country = {
 		limit = { CmtTriggerIsPlayableEmpire = yes }
 		country_event = { id = crisis.15 }
 	}
@@ -177,7 +177,7 @@ CmtEffectVehementAppear = {
 CmtEffectStartGhostSignal = {
 	if = {
 		limit = { NOT = { has_global_flag = CmtFlagSubmarineCrisis } }
-		every_country = {
+		every_playable_country = {
 			limit = { CmtTriggerIsPlayableEmpire = yes }
 			country_event = { id = crisis.2010 }
 		}
@@ -187,7 +187,7 @@ CmtEffectStartGhostSignal = {
 CmtEffectSynthsActStrange = {
 	if = {
 		limit = { NOT = { has_global_flag = CmtFlagSubmarineCrisis } }
-		every_country = {
+		every_playable_country = {
 			limit = { CmtTriggerIsPlayableEmpire = yes }
 			country_event = { id = crisis.2006 }
 		}
@@ -201,7 +201,7 @@ CmtEffectSynthsActStrange = {
 CmtEffectSynthsDisappear = {
 	if = {
 		limit = { NOT = { has_global_flag = CmtFlagSubmarineCrisis } }
-		every_country = {
+		every_playable_country = {
 			limit = { CmtTriggerIsPlayableEmpire = yes }
 			country_event = { id = crisis.2007 }
 		}
@@ -211,7 +211,7 @@ CmtEffectSynthsDisappear = {
 CmtEffectSyntheticDisappearances = {
 	if = {
 		limit = { NOT = { has_global_flag = CmtFlagSubmarineCrisis } }
-		every_country = {
+		every_playable_country = {
 			limit = { CmtTriggerIsPlayableEmpire = yes }
 			country_event = { id = crisis.2020 }
 		}
@@ -221,7 +221,7 @@ CmtEffectSyntheticDisappearances = {
 CmtEffectContingencySummons = {
 	if = {
 		limit = { NOT = { has_global_flag = CmtFlagSubmarineCrisis } }
-		every_country = {
+		every_playable_country = {
 			limit = { CmtTriggerIsPlayableEmpire = yes }
 			country_event = { id = crisis.2021 }
 		}
@@ -229,7 +229,7 @@ CmtEffectContingencySummons = {
 }
 
 CmtEffectContingencyArrival = {
-	every_country = {
+	every_playable_country = {
 		limit = { CmtTriggerIsPlayableEmpire = yes }
 		country_event = { id = crisis.2022 }
 	}

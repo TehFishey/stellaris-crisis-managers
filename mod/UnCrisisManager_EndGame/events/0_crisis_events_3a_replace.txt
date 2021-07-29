@@ -1430,14 +1430,47 @@ country_event = {
 	}
 }
 
+# Final Machine World Destroyed
+# id = crisis.2046
+# Incoming Transmission
+country_event = {
+	id = crisis.2408
+	title = "TRANSMISSION"
+	desc = "crisis.2408.desc"
+
+	diplomatic = yes
+
+	picture_event_data = {
+		portrait = ai_crisis_2
+		room = ship_room
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = crisis.2408.a
+	}
+	after = {
+		hidden_effect = {
+			clear_global_event_target = cybrex
+			remove_global_flag = cybrex_resurface
+			remove_global_flag = cybrex_destroyed
+			remove_country_flag = cybrex_donation
+		}
+	}
+}
+
 ### Cybrex Reinforcements
 country_event = {
 	id = crisis.2420
 	hide_window = yes
 
 	trigger = {
-		has_global_flag = ai_invasion_ongoing
 		is_country_type = cybrex_empire
+		OR = {
+			has_global_flag = ai_invasion_ongoing
+			has_global_flag = gray_goo_crisis_active
+		}
 	}
 
 	mean_time_to_happen = {
@@ -1457,12 +1490,14 @@ country_event = {
 		every_owned_ship = { event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } } }
 		if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value > 0 } } }
-			random_country = {
-				limit = { CmtTriggerIsContingency = yes }
-				save_event_target_as = contingency
+			if = { limit = { NOT = { exists = event_target:contingency } }
+				random_country = {
+					limit = { CmtTriggerIsContingency = yes }
+					save_event_target_as = contingency
+				}
 			}
 			capital_scope = {
-				save_event_target_as = cybrex_home
+				# save_event_target_as = cybrex_home # TODO vanilla: not used anywhere, not finished?
 				CmtEffectCreateAdmiralty_CybrexSmall = yes
 			}
 		}
@@ -1476,16 +1511,21 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_global_flag = ai_invasion_ongoing
+		OR = {
+			has_global_flag = ai_invasion_ongoing
+			has_global_flag = gray_goo_crisis_active
+		}
 	}
 
 	immediate = {
-		random_country = {
-			limit = { CmtTriggerIsContingency = yes }
-			save_event_target_as = contingency
+		if = { limit = { NOT = { exists = event_target:contingency } }
+			random_country = {
+				limit = { CmtTriggerIsContingency = yes }
+				save_event_target_as = contingency
+			}
 		}
 		capital_scope = {
-			save_event_target_as = cybrex_home
+			# save_event_target_as = cybrex_home # TODO vanilla: not used anywhere, not finished?
 			CmtEffectCreateAdmiralty_CybrexSmall = yes
 		}
 	}

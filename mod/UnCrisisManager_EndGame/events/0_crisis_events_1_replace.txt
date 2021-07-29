@@ -55,7 +55,7 @@ country_event = {
 			}
 		}
 
-		every_country = {
+		every_playable_country = {
 			limit = { CmtTriggerIsPlayableEmpire = yes }
 			begin_event_chain = {
 				event_chain = "coming_storm_chain"
@@ -132,7 +132,7 @@ country_event = {
 				set_star_flag = swarm_invasion_target_1
 			}
 		}
-		every_country = {
+		every_playable_country = {
 			limit = { CmtTriggerIsPlayableEmpire = yes }
 			country_event = { id = crisis.13 }
 		}
@@ -280,7 +280,7 @@ country_event = {
 
 		remove_global_flag = prethoryn_approaching_rim
 		set_global_flag = prethoryn_arrival
-		every_country = {
+		every_playable_country = {
 			limit = { CmtTriggerIsPlayableEmpire = yes }
 			country_event = { id = crisis.18 }
 		}
@@ -565,7 +565,7 @@ country_event = {
 		set_global_flag = prethoryn_arrival
 		set_global_flag = ongoing_prethoryn_invasion
 
-		every_country = {
+		every_playable_country = {
 			limit = { CmtTriggerIsPlayableEmpire = yes }
 			country_event = { id = crisis.20 }
 		}
@@ -1224,7 +1224,7 @@ country_event = {
 				set_ambient_object_flag = dead_prethoryn
 			}
 		}
-		every_country = {
+		every_playable_country = {
 			limit = { CmtTriggerIsPlayableEmpire = yes }
 			country_event = { id = crisis.101 }
 		}
@@ -1251,7 +1251,7 @@ ship_event = {
 			limit = { is_country_type = swarm }
 			owner_species = { save_event_target_as = swarm_species }
 		}
-		every_country = {
+		every_playable_country = {
 			limit = {
 				CmtTriggerIsPlayableEmpire = yes
 				has_special_project = CAPTURE_QUEEN
