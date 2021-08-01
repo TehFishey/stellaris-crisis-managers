@@ -25,17 +25,17 @@ CmtTriggerForbiddenPrethoryn = {
 	}
 }
 
-CmtTriggerCrisisAllowed_10yr = {
-	has_global_flag = CmtFlagCrisisAllowed_10yr
-}
+# CmtTriggerCrisisAllowed_10yr = {
+# 	has_global_flag = CmtFlagCrisisAllowed_10yr
+# }
 
-CmtTriggerCrisisAllowed_30yr = {
-	has_global_flag = CmtFlagCrisisAllowed_30yr
-}
+# CmtTriggerCrisisAllowed_30yr = {
+# 	has_global_flag = CmtFlagCrisisAllowed_30yr
+# }
 
-CmtTriggerCrisisAllowed_50yr = {
-	has_global_flag = CmtFlagCrisisAllowed_50yr
-}
+# CmtTriggerCrisisAllowed_50yr = {
+# 	has_global_flag = CmtFlagCrisisAllowed_50yr
+# }
 
 ### Extradimensionals
 
@@ -54,52 +54,38 @@ CmtTriggerNoJumpDrive0 = {
 		any_playable_country = {
 			CmtTriggerIsPlayableEmpire = yes
 			OR = {
-				has_technology = "tech_psi_jump_drive_1"
-				has_technology = "tech_jump_drive_1"
+				has_technology = tech_psi_jump_drive_1
+				has_technology = tech_jump_drive_1
 			}
 		}
 	}
 }
 
-CmtTriggerNoJumpDriveA = {
-	NOT = { has_global_flag = CmtFlagNoJumpButExds }
-	NOT = {
-		any_playable_country = {
-			CmtTriggerIsPlayableEmpire = yes
-			OR = {
-				has_technology = "tech_psi_jump_drive_1"
-				has_technology = "tech_jump_drive_1"
-			}
-		}
-	}
-}
+## Legacy with 3.0.0
 
-CmtTriggerNoJumpDriveB = {
-	has_global_flag = CmtFlagNoJumpButExds
-	NOT = {
-		any_playable_country = {
-			CmtTriggerIsPlayableEmpire = yes
-			OR = {
-				has_technology = "tech_psi_jump_drive_1"
-				has_technology = "tech_jump_drive_1"
-			}
-		}
-	}
-}
+# CmtTriggerNoJumpDriveA = {
+# 	NOT = { has_global_flag = CmtFlagNoJumpButExds }
+# 	CmtTriggerNoJumpDrive0 = yes
+# }
 
-CmtTriggerPsiJumpDrive = {
-	any_playable_country = {
-		CmtTriggerIsPlayableEmpire = yes
-		has_technology = "tech_psi_jump_drive_1"
-	}
-}
+# CmtTriggerNoJumpDriveB = {
+# 	has_global_flag = CmtFlagNoJumpButExds
+# 	CmtTriggerNoJumpDrive0 = yes
+# }
 
-CmtTriggerRougeScientist = {
-	any_playable_country = {
-		CmtTriggerIsPlayableEmpire = yes
-		has_country_flag = completed_rogue_scientist
-	}
-}
+# CmtTriggerPsiJumpDrive = {
+# 	any_playable_country = {
+# 		CmtTriggerIsPlayableEmpire = yes
+# 		has_technology = tech_psi_jump_drive_1
+# 	}
+# }
+
+# CmtTriggerRougeScientist = {
+# 	any_playable_country = {
+# 		CmtTriggerIsPlayableEmpire = yes
+# 		has_country_flag = completed_rogue_scientist
+# 	}
+# }
 
 ### Contingency
 
@@ -113,44 +99,46 @@ CmtTriggerForbiddenContingency = {
 	}
 }
 
-CmtTriggerSynthetic_0000 = {
-	NOT = {
-		any_playable_country = {
-			CmtTriggerIsPlayableEmpire = yes
-			has_technology = tech_synthetic_workers
-			any_owned_pop = { has_trait = trait_mechanical }
-		}
-	}
-}
+## Legacy since 3.0
 
-CmtTriggerSynthetic_0250 = {
-	any_playable_country = {
-		CmtTriggerIsPlayableEmpire = yes
-		has_technology = tech_synthetic_workers
-		pop_percentage = {
-			percentage >= 0.25
-			limit = { has_trait = trait_mechanical }
-		}
-	}
-}
+# CmtTriggerSynthetic_0000 = {
+# 	NOT = {
+# 		any_playable_country = {
+# 			CmtTriggerIsPlayableEmpire = yes
+# 			has_technology = tech_synthetic_workers
+# 			any_owned_pop = { has_trait = trait_mechanical }
+# 		}
+# 	}
+# }
 
-CmtTriggerSynthetic_0500 = {
-	any_playable_country = {
-		CmtTriggerIsPlayableEmpire = yes
-		has_technology = tech_synthetic_workers
-		pop_percentage = {
-			percentage >= 0.50
-			limit = { has_trait = trait_mechanical }
-		}
-	}
-}
+# CmtTriggerSynthetic_0250 = {
+# 	any_playable_country = {
+# 		CmtTriggerIsPlayableEmpire = yes
+# 		has_technology = tech_synthetic_workers
+# 		pop_percentage = {
+# 			percentage >= 0.25
+# 			limit = { has_trait = trait_mechanical }
+# 		}
+# 	}
+# }
 
-CmtTriggerExistMechFe = {
-	any_country = {
-		is_country_type = fallen_empire
-		has_authority = auth_machine_intelligence
-	}
-}
+# CmtTriggerSynthetic_0500 = {
+# 	any_playable_country = {
+# 		CmtTriggerIsPlayableEmpire = yes
+# 		has_technology = tech_synthetic_workers
+# 		pop_percentage = {
+# 			percentage >= 0.50
+# 			limit = { has_trait = trait_mechanical }
+# 		}
+# 	}
+# }
+
+# CmtTriggerExistMechFe = {
+# 	any_country = {
+# 		is_country_type = fallen_empire
+# 		has_authority = auth_machine_intelligence
+# 	}
+# }
 
 ### Forced End of Cycle
 #
@@ -181,39 +169,42 @@ CmtTriggerShroudPatron = {
 	}
 }
 
-CmtTriggerExdsTriggered = {
-	has_global_flag = CmtFlagExdsTriggered
-}
+# CmtTriggerExdsTriggered = {
+# 	has_global_flag = CmtFlagExdsTriggered
+# }
 
 ### Probability Control by This Mod
 
-CmtTriggerTotalProbability_1 = {
-	check_variable = { which = CmtVarTriggerProbability value = 1 }
-}
+# CmtTriggerTotalProbability_1 = {
+# 	check_variable = { which = CmtVarTriggerProbability value = 1 }
+# }
 
-CmtTriggerTotalProbability_2 = {
-	NOR = {
-		check_variable = { which = CmtVarTriggerProbability value < 0 }
-		check_variable = { which = CmtVarTriggerProbability value = 1 }
-		check_variable = { which = CmtVarTriggerProbability value = 3 }
-		check_variable = { which = CmtVarTriggerProbability value = 4 }
-		check_variable = { which = CmtVarTriggerProbability value = 5 }
-	}
-}
+# CmtTriggerTotalProbability_2 = {
+# 	OR = {
+# 		check_variable = { which = CmtVarTriggerProbability value = 0 }
+# 		check_variable = { which = CmtVarTriggerProbability value = 2 }
+# 	}
+# 	# NOR = {
+# 	# 	check_variable = { which = CmtVarTriggerProbability value < 0 }
+# 	# 	check_variable = { which = CmtVarTriggerProbability value = 1 }
+# 	# 	check_variable = { which = CmtVarTriggerProbability value = 3 }
+# 	# 	check_variable = { which = CmtVarTriggerProbability value = 4 }
+# 	# 	check_variable = { which = CmtVarTriggerProbability value = 5 }
+# 	# }
+# }
 
-CmtTriggerTotalProbability_3 = {
-	check_variable = { which = CmtVarTriggerProbability value = 3 }
-}
+# CmtTriggerTotalProbability_3 = {
+# 	check_variable = { which = CmtVarTriggerProbability value = 3 }
+# }
 
-CmtTriggerTotalProbability_4 = {
-	check_variable = { which = CmtVarTriggerProbability value = 4 }
-}
+# CmtTriggerTotalProbability_4 = {
+# 	check_variable = { which = CmtVarTriggerProbability value = 4 }
+# }
 
-CmtTriggerTotalProbability_5 = {
-	check_variable = { which = CmtVarTriggerProbability value = 5 }
-}
+# CmtTriggerTotalProbability_5 = {
+# 	check_variable = { which = CmtVarTriggerProbability value = 5 }
+# }
 
-CmtTriggerTotalProbabilityUnq = {
-	check_variable = { which = CmtVarTriggerProbability value < 0 }
-}
-
+# CmtTriggerTotalProbabilityUnq = {
+# 	check_variable = { which = CmtVarTriggerProbability value < 0 }
+# }

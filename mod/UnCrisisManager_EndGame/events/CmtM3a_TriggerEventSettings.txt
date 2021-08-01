@@ -48,12 +48,9 @@ country_event = {
 		text = CrisisManagerMenu.3110.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarMultiple value = 1 }
-					check_variable = { which = CmtVarMultiple value = 2 }
-					check_variable = { which = CmtVarMultiple value = 3 }
-					check_variable = { which = CmtVarMultiple value = 4 }
-					check_variable = { which = CmtVarMultiple value = 5 }
+				OR = {
+					check_variable = { which = CmtVarMultiple value < 1 }
+					check_variable = { which = CmtVarMultiple value > 5 }
 				}
 			}
 		}
@@ -356,13 +353,9 @@ country_event = {
 		text = CrisisManagerMenu.3140.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarTriggerProbability value < 0 }
-					check_variable = { which = CmtVarTriggerProbability value = 1 }
-					check_variable = { which = CmtVarTriggerProbability value = 2 }
-					check_variable = { which = CmtVarTriggerProbability value = 3 }
-					check_variable = { which = CmtVarTriggerProbability value = 4 }
-					check_variable = { which = CmtVarTriggerProbability value = 5 }
+				OR = {
+					check_variable = { which = CmtVarTriggerProbability value = 0 }
+					check_variable = { which = CmtVarTriggerProbability value > 5 }
 				}
 			}
 		}
@@ -445,11 +438,9 @@ country_event = {
 		text = CrisisManagerMenu.3150.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarEqualizingProbability value = 1 }
-					check_variable = { which = CmtVarEqualizingProbability value = 2 }
-					check_variable = { which = CmtVarEqualizingProbability value = 3 }
-					check_variable = { which = CmtVarEqualizingProbability value = 4 }
+				OR = {
+					check_variable = { which = CmtVarEqualizingProbability value < 1 }
+					check_variable = { which = CmtVarEqualizingProbability value > 4 }
 				}
 			}
 		}
@@ -554,13 +545,9 @@ country_event = {
 		text = CrisisManagerMenu.3160.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarOpeningEventSpeed value = 1 }
-					check_variable = { which = CmtVarOpeningEventSpeed value = 2 }
-					check_variable = { which = CmtVarOpeningEventSpeed value = 3 }
-					check_variable = { which = CmtVarOpeningEventSpeed value = 4 }
-					check_variable = { which = CmtVarOpeningEventSpeed value = 5 }
-					check_variable = { which = CmtVarOpeningEventSpeed value = 6 }
+				OR = {
+					check_variable = { which = CmtVarOpeningEventSpeed value < 1 }
+					check_variable = { which = CmtVarOpeningEventSpeed value > 6 }
 				}
 			}
 		}
@@ -696,4 +683,3 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-

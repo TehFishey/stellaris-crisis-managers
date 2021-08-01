@@ -26,7 +26,7 @@
 #		17/Aug/2018: Some of text is fixed.
 #		25/Aug/2018: Footnote is deleted: a transition period of this mod is expired. Now all items in the templates are implemented.
 #		22/Dec/2018: Items "1" and "5.1" are updated. Information of this mod being beta version is added.
-#	
+#
 #	The templates
 #		 2/Jun/2018	Ver.1.0
 #			Initial upload.
@@ -101,18 +101,18 @@
 #				(1) Delete "Occupy & Purge Planets" from old template.
 #				(2) Copy above new 2 items from new template and paste it to old one.
 #				(3) Change "1.08" or "1.09" in "@CmtT***_ConstVersionInfo = 1.0*" to "1.10".
-#			
-#		
-#	
+#
+#
+#
 ######################
 ####  Way to Make  ###
 ######################
-#	
+#
 #	1. Create empty mod.
 #		- It can be created from 'Create Mod' in 'Mod tools' of Stellaris Launcher.
 #		- Memorize the directory inputted here.
 #		- Recommended to name your mod to be shown at close to Crisis Manager in the Stellaris Launcher.
-#	
+#
 #	2. Copy all folders and files in "CrisisManagerEndGame\For_User_Template"
 #		- <folder of Your mod>
 #			- common
@@ -127,7 +127,7 @@
 #					- CrisisManagerTemplate_l_<language>.yml
 #		* Never change names of files nor folders.
 #		* Copy all files even if you do not edit all of 17 templates.
-#	
+#
 #	3. Edit template files in "common\scripted effect"
 #		3.1. Select files to edit.
 #			- Cmt-001_PrimacyTemplate_scripted_variables.txt
@@ -144,10 +144,10 @@
 #			  You can modify only right side of equals ("xxx").
 #			- See also tail of this file. Important footnote is written there.
 #		3.4. Edit next files if you want.
-#	
+#
 #	4. Edit localisation files.
 #		3.1. Edit "CrisisManagerTemplate_l_<language>.yml"
-#	
+#
 #	5. Edit "<File Name>.mod" file
 #		- <File Name> is the directory inputted at '1. Create empty mod.'
 #		5.1. Add dependency list.
@@ -160,16 +160,16 @@
 #			------------------------------------------------
 #		5.2 Edit any other you want.
 #			- Recommended tags: "Balance", "Events", "Overhaul", "Crisis"
-#	
+#
 #	6. Testing: highly recommended to launch Stellaris and check followings.
 #		6.1. Check "Other Configuration Templates" in the menu of Crisis Manager.
 #			-> Are there all created templates?
 #		6.2. Apply each template and check settings from "Configuration Viewer"
 #			-> Are no errors shown?
 #			-> Are each configurations set as your desires?
-#		
+#
 #	7. Upload to Steam if you want.
 #	8. That's all. Enjoy the crisis and/or a breakdown of the galaxy.
-#	
-#	
+#
+#
 #

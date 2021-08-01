@@ -46,14 +46,14 @@
 
 CmtEffectTargetingForcedEoc = {
 	event_target:CmtGlobalVar = {
-		
+
 		### Initialization
 		every_country = {
 			limit = { has_country_flag = CmtFlagForcedEocTargetList }
 			remove_country_flag = CmtFlagForcedEocTargetList
 		}
-		
-		
+
+
 		### Target Control 1: PC/NPC, Transcendence
 		if = {
 			limit = {
@@ -77,8 +77,8 @@ CmtEffectTargetingForcedEoc = {
 				}
 			}
 		}
-		
-		
+
+
 		### Target Control 2a: Territory Area
 		if = {
 			limit = {
@@ -209,8 +209,8 @@ CmtEffectTargetingForcedEoc = {
 				}
 			}
 		}
-		
-		
+
+
 		### Target Control 2b: Fleet Power
 		if = {
 			limit = { check_variable = { which = CmtVarForcedEocCountryStrength value = 3 } }
@@ -335,8 +335,8 @@ CmtEffectTargetingForcedEoc = {
 				}
 			}
 		}
-		
-		
+
+
 		### Target Control 2c: POPs
 		if = {
 			limit = { check_variable = { which = CmtVarForcedEocCountryStrength value = 4 } }
@@ -461,13 +461,13 @@ CmtEffectTargetingForcedEoc = {
 				}
 			}
 		}
-		
+
 		### Trigger End of Cycle
 		random_country = {
 			limit = { has_country_flag = CmtFlagForcedEocTargetList }
 			save_global_event_target_as = CmtTargetVictimForcedEoc
 		}
-		
+
 		### Clean up
 		every_country = {
 			limit = { has_country_flag = CmtFlagForcedEocTargetList }

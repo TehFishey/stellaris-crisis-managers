@@ -21,7 +21,7 @@ CmtPurge = {
 	purge = purge_normal
 	is_capped_by_modifier = no
 	clothes_texture_index = 2
-		
+
 	possible = {
 		exists = planet
 		planet = { exists = controller }
@@ -32,7 +32,7 @@ CmtPurge = {
 			planet.controller = { CmtTriggerIsContingency = yes }
 		}
 	}
-	
+
 	triggered_pop_modifier = {
 		potential = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPurgeSpeed value = 2 } } }
 		modifier = { pop_decline_speed = -5.3 }

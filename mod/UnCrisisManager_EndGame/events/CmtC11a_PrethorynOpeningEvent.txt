@@ -17,7 +17,7 @@ namespace = CrisisManagerControl
 #	prethoryn_subspace_echoes
 #	prethoryn_approaching_rim
 #	prethoryn_transmission
-# 
+#
 
 ###################
 ###  Constants  ###
@@ -26,7 +26,7 @@ namespace = CrisisManagerControl
 # Days: Event Delay
 # Rand: Random part of days for event delay
 # Mtth: Mean time to happen in months
-# 
+#
 
 ### Very Slow
 @CmtConstCommingStormDays11 =  360	## Subspace Echoes
@@ -113,14 +113,14 @@ country_event = {
 	trigger = {
 		NOT = { has_global_flag = prethoryn_invasion_happened }
 	}
-	
+
 	immediate = {
 		endgame_telemetry = prethoryn
 		set_global_flag = galactic_crisis_happened
 		set_global_flag = prethoryn_invasion_happened
 		set_global_flag = CmtFlagPrethorynTriggered
 		observer_event = { id = observer.27 }
-		
+
 		event_target:CmtGlobalVar = {
 			if = {
 				limit = { check_variable = { which = CmtVarOpeningEventSpeed value = 1 } }
@@ -143,7 +143,6 @@ country_event = {
 }
 
 
-
 ###################
 ###  Very Slow  ###
 ###################
@@ -153,7 +152,7 @@ country_event = {
 	id = CrisisManagerControl.1010
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.1011 days = @CmtConstCommingStormDays11 random = @CmtConstCommingStormRand11 }
 	}
@@ -164,7 +163,7 @@ country_event = {
 	id = CrisisManagerControl.1011
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -182,14 +181,14 @@ country_event = {
 	id = CrisisManagerControl.1012
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = CrisisManagerControl.1012 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectApproachingOuterRim = yes
+			country_event = { id = crisis.12 } # CmtEffectApproachingOuterRim
 			country_event = { id = CrisisManagerControl.1013 days = @CmtConstCommingStormDays13 random = @CmtConstCommingStormRand13 }
 		}
 	}
@@ -200,7 +199,7 @@ country_event = {
 	id = CrisisManagerControl.1013
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -218,14 +217,14 @@ country_event = {
 	id = CrisisManagerControl.1014
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = CrisisManagerControl.1014 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectVanguardArrives = yes
+			country_event = { id = crisis.17 } # CmtEffectVanguardArrives
 			country_event = { id = CrisisManagerControl.1015 days = @CmtConstCommingStormDays15 random = @CmtConstCommingStormRand15 }
 		}
 	}
@@ -236,14 +235,14 @@ country_event = {
 	id = CrisisManagerControl.1015
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = CrisisManagerControl.1015 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectPrethorynMainInvasionArrives = yes
+			country_event = { id = crisis.19 } # CmtEffectPrethorynMainInvasionArrives
 		}
 	}
 }
@@ -257,7 +256,7 @@ country_event = {
 	id = CrisisManagerControl.1020
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.1021 days = @CmtConstCommingStormDays21 random = @CmtConstCommingStormRand21 }
 	}
@@ -268,7 +267,7 @@ country_event = {
 	id = CrisisManagerControl.1021
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -286,14 +285,14 @@ country_event = {
 	id = CrisisManagerControl.1022
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = CrisisManagerControl.1022 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectApproachingOuterRim = yes
+			country_event = { id = crisis.12 } # CmtEffectApproachingOuterRim
 			set_global_flag = CmtFlagAllow1023
 		}
 	}
@@ -303,13 +302,13 @@ country_event = {
 country_event = {
 	id = CrisisManagerControl.1023
 	hide_window = yes
-	
+
 	trigger = {
 		has_global_flag = CmtFlagAllow1023
 		is_country_type = global_event
 	}
 	mean_time_to_happen = { days = @CmtConstCommingStormMtth23 }
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -328,14 +327,14 @@ country_event = {
 	id = CrisisManagerControl.1024
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = CrisisManagerControl.1024 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectVanguardArrives = yes
+			country_event = { id = crisis.17 } # CmtEffectVanguardArrives
 			country_event = { id = CrisisManagerControl.1025 days = @CmtConstCommingStormDays25 random = @CmtConstCommingStormRand25 }
 		}
 	}
@@ -346,14 +345,14 @@ country_event = {
 	id = CrisisManagerControl.1025
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = CrisisManagerControl.1025 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectPrethorynMainInvasionArrives = yes
+			country_event = { id = crisis.19 } # CmtEffectPrethorynMainInvasionArrives
 		}
 	}
 }
@@ -367,7 +366,7 @@ country_event = {
 	id = CrisisManagerControl.1030
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.1031 days = @CmtConstCommingStormDays31 random = @CmtConstCommingStormRand31 }
 	}
@@ -378,7 +377,7 @@ country_event = {
 	id = CrisisManagerControl.1031
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -395,20 +394,20 @@ country_event = {
 country_event = {
 	id = CrisisManagerControl.1032
 	hide_window = yes
-	
+
 	trigger = {
 		CmtTriggerIsPlayableEmpire = yes
 		has_global_flag = CmtFlagAllow1032
 	}
 	mean_time_to_happen = { days = @CmtConstCommingStormMtth32 }
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = CrisisManagerControl.1032 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectApproachingOuterRim = yes
+			country_event = { id = crisis.12 } # CmtEffectApproachingOuterRim
 			remove_global_flag = CmtFlagAllow1032
 			set_global_flag = CmtFlagAllow1033
 		}
@@ -419,12 +418,12 @@ country_event = {
 country_event = {
 	id = CrisisManagerControl.1033
 	hide_window = yes
-	
+
 	trigger = {
 		has_global_flag = CmtFlagAllow1033
 	}
 	mean_time_to_happen = { days = @CmtConstCommingStormMtth33 }
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -442,20 +441,19 @@ country_event = {
 country_event = {
 	id = CrisisManagerControl.1034
 	hide_window = yes
-	
+
 	trigger = {
 		has_global_flag = CmtFlagAllow1034
 	}
 	mean_time_to_happen = { days = @CmtConstCommingStormMtth34 }
-	
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = CrisisManagerControl.1034 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectVanguardArrives = yes
+			country_event = { id = crisis.17 } # CmtEffectVanguardArrives
 			remove_global_flag = CmtFlagAllow1034
 			country_event = { id = CrisisManagerControl.1035 days = @CmtConstCommingStormDays35 random = @CmtConstCommingStormRand35 }
 		}
@@ -467,14 +465,14 @@ country_event = {
 	id = CrisisManagerControl.1035
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = CrisisManagerControl.1035 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectPrethorynMainInvasionArrives = yes
+			country_event = { id = crisis.19 } # CmtEffectPrethorynMainInvasionArrives
 		}
 	}
 }
@@ -488,7 +486,7 @@ country_event = {
 	id = CrisisManagerControl.1040
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.1041 days = @CmtConstCommingStormDays41 random = @CmtConstCommingStormRand41 }
 	}
@@ -499,7 +497,7 @@ country_event = {
 	id = CrisisManagerControl.1041
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -519,14 +517,14 @@ country_event = {
 	id = CrisisManagerControl.1042
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = CrisisManagerControl.1042 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectApproachingOuterRim = yes
+			country_event = { id = crisis.12 } # CmtEffectApproachingOuterRim
 		}
 	}
 }
@@ -536,7 +534,7 @@ country_event = {
 	id = CrisisManagerControl.1043
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -553,14 +551,14 @@ country_event = {
 	id = CrisisManagerControl.1044
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = CrisisManagerControl.1044 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectVanguardArrives = yes
+			country_event = { id = crisis.17 } # CmtEffectVanguardArrives
 			country_event = { id = CrisisManagerControl.1045 days = @CmtConstCommingStormDays45 random = @CmtConstCommingStormRand45 }
 		}
 	}
@@ -571,14 +569,14 @@ country_event = {
 	id = CrisisManagerControl.1045
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = CrisisManagerControl.1045 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectPrethorynMainInvasionArrives = yes
+			country_event = { id = crisis.19 } # CmtEffectPrethorynMainInvasionArrives
 		}
 	}
 }
@@ -592,7 +590,7 @@ country_event = {
 	id = CrisisManagerControl.1050
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.1051 days = @CmtConstCommingStormDays51 random = @CmtConstCommingStormRand51 }
 	}
@@ -603,7 +601,7 @@ country_event = {
 	id = CrisisManagerControl.1051
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -620,20 +618,20 @@ country_event = {
 country_event = {
 	id = CrisisManagerControl.1052
 	hide_window = yes
-	
+
 	trigger = {
 		has_global_flag = CmtFlagAllow1052
 		is_country_type = global_event
 	}
 	mean_time_to_happen = { days = @CmtConstCommingStormMtth52 }
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = CrisisManagerControl.1052 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectApproachingOuterRim = yes
+			country_event = { id = crisis.12 } # CmtEffectApproachingOuterRim
 			remove_global_flag = CmtFlagAllow1052
 			set_global_flag = CmtFlagAllow1053
 		}
@@ -644,13 +642,13 @@ country_event = {
 country_event = {
 	id = CrisisManagerControl.1053
 	hide_window = yes
-	
+
 	trigger = {
 		has_global_flag = CmtFlagAllow1053
 		is_country_type = global_event
 	}
 	mean_time_to_happen = { days = @CmtConstCommingStormMtth53 }
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -669,14 +667,14 @@ country_event = {
 	id = CrisisManagerControl.1054
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = CrisisManagerControl.1054 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectVanguardArrives = yes
+			country_event = { id = crisis.17 } # CmtEffectVanguardArrives
 			country_event = { id = CrisisManagerControl.1055 days = @CmtConstCommingStormDays55 random = @CmtConstCommingStormRand55 }
 		}
 	}
@@ -687,14 +685,14 @@ country_event = {
 	id = CrisisManagerControl.1055
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = CrisisManagerControl.1055 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectPrethorynMainInvasionArrives = yes
+			country_event = { id = crisis.19 } # CmtEffectPrethorynMainInvasionArrives
 		}
 	}
 }
@@ -708,7 +706,7 @@ country_event = {
 	id = CrisisManagerControl.1060
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.1061 days = @CmtConstCommingStormDays61 random = @CmtConstCommingStormRand61 }
 	}
@@ -719,7 +717,7 @@ country_event = {
 	id = CrisisManagerControl.1061
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -737,14 +735,14 @@ country_event = {
 	id = CrisisManagerControl.1062
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = CrisisManagerControl.1062 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectApproachingOuterRim = yes
+			country_event = { id = crisis.12 } # CmtEffectApproachingOuterRim
 			country_event = { id = CrisisManagerControl.1063 days = @CmtConstCommingStormDays63 random = @CmtConstCommingStormRand63 }
 		}
 	}
@@ -755,7 +753,7 @@ country_event = {
 	id = CrisisManagerControl.1063
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -773,14 +771,14 @@ country_event = {
 	id = CrisisManagerControl.1064
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = CrisisManagerControl.1064 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectVanguardArrives = yes
+			country_event = { id = crisis.17 } # CmtEffectVanguardArrives
 			country_event = { id = CrisisManagerControl.1065 days = @CmtConstCommingStormDays65 random = @CmtConstCommingStormRand65 }
 		}
 	}
@@ -791,14 +789,14 @@ country_event = {
 	id = CrisisManagerControl.1065
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = CrisisManagerControl.1065 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectPrethorynMainInvasionArrives = yes
+			country_event = { id = crisis.19 } # CmtEffectPrethorynMainInvasionArrives
 		}
 	}
 }

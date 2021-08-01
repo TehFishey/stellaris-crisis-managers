@@ -150,7 +150,9 @@ country_event = {
 					country_event = { id = CrisisManagerControl.4012 days = @CmtConstForcedCovenantEocDays3a }
 				}
 			}
-			CmtEffectForcedCovenantEoc = yes
+			event_target:CmtTargetVictimForcedEoc = {
+				country_event = { id = CrisisManagerControl.4101 }
+			}
 		}
 	}
 }
@@ -167,7 +169,9 @@ country_event = {
 			country_event = { id = CrisisManagerControl.4012 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectReckoningForcedEoc = yes
+			event_target:CmtTargetVictimForcedEoc = {
+				country_event = { id = CrisisManagerControl.4102 }
+			}
 		}
 	}
 }
@@ -230,7 +234,9 @@ country_event = {
 				set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocYear3a }
 				country_event = { id = CrisisManagerControl.4022 days = @CmtConstForcedCovenantEocDays3a }
 			}
-			CmtEffectForcedCovenantEoc = yes
+			event_target:CmtTargetVictimForcedEoc = {
+				country_event = { id = CrisisManagerControl.4101 }
+			}
 		}
 	}
 }
@@ -247,7 +253,9 @@ country_event = {
 			country_event = { id = CrisisManagerControl.4022 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectReckoningForcedEoc = yes
+			event_target:CmtTargetVictimForcedEoc = {
+				country_event = { id = CrisisManagerControl.4102 }
+			}
 		}
 	}
 }
@@ -282,7 +290,9 @@ country_event = {
 			remove_global_flag = CmtFlagForcedEocTermInDays		## for initialization
 			set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocYear3a }
 			country_event = { id = CrisisManagerControl.4032 days = @CmtConstForcedCovenantEocDays3a }
-			CmtEffectForcedCovenantEoc = yes
+			event_target:CmtTargetVictimForcedEoc = {
+				country_event = { id = CrisisManagerControl.4101 }
+			}
 		}
 	}
 }
@@ -299,7 +309,9 @@ country_event = {
 			country_event = { id = CrisisManagerControl.4032 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectReckoningForcedEoc = yes
+			event_target:CmtTargetVictimForcedEoc = {
+				country_event = { id = CrisisManagerControl.4102 }
+			}
 		}
 	}
 }
@@ -341,7 +353,9 @@ country_event = {
 					country_event = { id = CrisisManagerControl.4042 days = @CmtConstForcedCovenantEocDays3a }
 				}
 			}
-			CmtEffectForcedCovenantEoc = yes
+			event_target:CmtTargetVictimForcedEoc = {
+				country_event = { id = CrisisManagerControl.4101 }
+			}
 		}
 	}
 }
@@ -358,7 +372,9 @@ country_event = {
 			country_event = { id = CrisisManagerControl.4042 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectReckoningForcedEoc = yes
+			event_target:CmtTargetVictimForcedEoc = {
+				country_event = { id = CrisisManagerControl.4102 }
+			}
 		}
 	}
 }
@@ -408,7 +424,9 @@ country_event = {
 				set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocYear3a }
 				country_event = { id = CrisisManagerControl.4052 days = @CmtConstForcedCovenantEocDays3a }
 			}
-			CmtEffectForcedCovenantEoc = yes
+			event_target:CmtTargetVictimForcedEoc = {
+				country_event = { id = CrisisManagerControl.4101 }
+			}
 		}
 	}
 }
@@ -425,7 +443,9 @@ country_event = {
 			country_event = { id = CrisisManagerControl.4052 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectReckoningForcedEoc = yes
+			event_target:CmtTargetVictimForcedEoc = {
+				country_event = { id = CrisisManagerControl.4102 }
+			}
 		}
 	}
 }
@@ -476,7 +496,9 @@ country_event = {
 				set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocYear3a }
 				country_event = { id = CrisisManagerControl.4062 days = @CmtConstForcedCovenantEocDays3a }
 			}
-			CmtEffectForcedCovenantEoc = yes
+			event_target:CmtTargetVictimForcedEoc = {
+				country_event = { id = CrisisManagerControl.4101 }
+			}
 		}
 	}
 }
@@ -493,7 +515,9 @@ country_event = {
 			country_event = { id = CrisisManagerControl.4062 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectReckoningForcedEoc = yes
+			event_target:CmtTargetVictimForcedEoc = {
+				country_event = { id = CrisisManagerControl.4102 }
+			}
 		}
 	}
 }

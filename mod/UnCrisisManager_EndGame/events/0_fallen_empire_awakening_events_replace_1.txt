@@ -51,7 +51,7 @@ country_event = {
 		set_global_flag = guardians_of_the_galaxy_happened
 		set_country_flag = CmtFlagAwakingAsGuardians
 		country_event = { id = fallen_empires_awakening.3 }
-		
+
 		every_playable_country = {
 			limit = { CmtTriggerIsPlayableEmpire = yes }
 			random_list = {
@@ -104,7 +104,7 @@ country_event = {
 			set_country_flag = sleepers_awake_first_sleeper
 			save_global_event_target_as = CmtTargetFirstSleeper
 		}
-		
+
 		### Change Government
 		set_country_type = awakened_fallen_empire
 		CmtEffectChangeAwakenerCivic = yes
@@ -114,8 +114,8 @@ country_event = {
 			food = 5000
 			influence = 1000
 		}
-		
-		
+
+
 		### Initial Reinforcements
 		if = {
 			limit = {
@@ -135,7 +135,7 @@ country_event = {
 			country_event = { id = fallen_empires.13 }
 		}
 		country_event = { id = fallen_empires.13 }	## Reinforcement of Fleet
-		
+
 		### Communications
 		every_country = {
 			limit = {

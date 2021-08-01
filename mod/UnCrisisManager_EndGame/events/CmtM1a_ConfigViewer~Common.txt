@@ -25,7 +25,7 @@ country_event = {
 		text = CrisisManagerMenu.1000.desc2
 		trigger = { has_global_flag = galactic_crisis_happened }
 	}
-	picture = GFX_evt_CmtMenuA
+	picture = GFX_evt_spymaster
 	is_triggered_only = yes
 
 	immediate = {
@@ -267,4 +267,3 @@ country_event = {
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
 }
-

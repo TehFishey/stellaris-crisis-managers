@@ -43,7 +43,7 @@ CmtEffectDestroyExds = {
 CmtEffectDestroyContingency = {
 	every_country = {
 		limit = { CmtTriggerIsContingency = yes }
-		
+
 		### Destroy Four Machine Worlds
 		every_planet_within_border = {
 			limit = { is_planet_class = pc_ai }

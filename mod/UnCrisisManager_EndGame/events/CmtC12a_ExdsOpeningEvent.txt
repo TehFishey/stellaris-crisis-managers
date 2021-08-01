@@ -21,7 +21,7 @@ namespace = CrisisManagerControl
 # Days: Event Delay
 # Rand: Random part of days for event delay
 # Mtth: Mean time to happen in months
-# 
+#
 
 ### Very Slow
 @CmtConstTriggerExdsDays11 = 8640	## Unbidden Appears
@@ -60,13 +60,13 @@ country_event = {
 	trigger = {
 		NOT = { has_global_flag = extradimensional_invasion_happened }
 	}
-	
+
 	immediate = {
 		endgame_telemetry = extradimensional
 		set_global_flag = galactic_crisis_happened
 		set_global_flag = extradimensional_invasion_happened
 		set_global_flag = CmtFlagExdsTriggered
-		
+
 		event_target:CmtGlobalVar = {
 			if = {
 				limit = { check_variable = { which = CmtVarOpeningEventSpeed value = 1 } }
@@ -89,7 +89,6 @@ country_event = {
 }
 
 
-
 ###################
 ###  Very Slow  ###
 ###################
@@ -99,7 +98,7 @@ country_event = {
 	id = CrisisManagerControl.2010
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.2011 days = @CmtConstTriggerExdsDays11 random = @CmtConstTriggerExdsRand11 }
 	}
@@ -110,14 +109,14 @@ country_event = {
 	id = CrisisManagerControl.2011
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = CrisisManagerControl.2011 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectUnbiddenAppear = yes
+			country_event = { id = crisis.1000 } # CmtEffectUnbiddenAppear
 		}
 	}
 }
@@ -131,7 +130,7 @@ country_event = {
 	id = CrisisManagerControl.2020
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.2021 days = @CmtConstTriggerExdsDays21 random = @CmtConstTriggerExdsRand21 }
 	}
@@ -142,14 +141,14 @@ country_event = {
 	id = CrisisManagerControl.2021
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = CrisisManagerControl.2021 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectUnbiddenAppear = yes
+			country_event = { id = crisis.1000 } # CmtEffectUnbiddenAppear
 		}
 	}
 }
@@ -163,7 +162,7 @@ country_event = {
 	id = CrisisManagerControl.2030
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.2031 days = @CmtConstTriggerExdsDays31 random = @CmtConstTriggerExdsRand31 }
 	}
@@ -174,14 +173,14 @@ country_event = {
 	id = CrisisManagerControl.2031
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = CrisisManagerControl.2031 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectUnbiddenAppear = yes
+			country_event = { id = crisis.1000 } # CmtEffectUnbiddenAppear
 		}
 	}
 }
@@ -195,7 +194,7 @@ country_event = {
 	id = CrisisManagerControl.2040
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.2041 days = @CmtConstTriggerExdsDays41 random = @CmtConstTriggerExdsRand41 }
 	}
@@ -206,14 +205,14 @@ country_event = {
 	id = CrisisManagerControl.2041
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = CrisisManagerControl.2041 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectUnbiddenAppear = yes
+			country_event = { id = crisis.1000 } # CmtEffectUnbiddenAppear
 		}
 	}
 }
@@ -227,7 +226,7 @@ country_event = {
 	id = CrisisManagerControl.2050
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.2051 days = @CmtConstTriggerExdsDays51 random = @CmtConstTriggerExdsRand51 }
 	}
@@ -238,14 +237,14 @@ country_event = {
 	id = CrisisManagerControl.2051
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = CrisisManagerControl.2051 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectUnbiddenAppear = yes
+			country_event = { id = crisis.1000 } # CmtEffectUnbiddenAppear
 		}
 	}
 }
@@ -259,7 +258,7 @@ country_event = {
 	id = CrisisManagerControl.2060
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.2061 days = @CmtConstTriggerExdsDays61 random = @CmtConstTriggerExdsRand61 }
 	}
@@ -270,18 +269,17 @@ country_event = {
 	id = CrisisManagerControl.2061
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = CrisisManagerControl.2061 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectUnbiddenAppear = yes
+			country_event = { id = crisis.1000 } # CmtEffectUnbiddenAppear
 		}
 	}
 }
-
 
 
 ###############################
@@ -293,14 +291,14 @@ country_event = {
 	id = CrisisManagerControl.2002
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = CrisisManagerControl.2002 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectAberrantAppear = yes
+			country_event = { id = crisis.1100 } # CmtEffectAberrantAppear
 		}
 	}
 }
@@ -310,14 +308,14 @@ country_event = {
 	id = CrisisManagerControl.2003
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = CrisisManagerControl.2003 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			CmtEffectVehementAppear = yes
+			country_event = { id = crisis.1200 } # CmtEffectVehementAppear
 		}
 	}
 }
