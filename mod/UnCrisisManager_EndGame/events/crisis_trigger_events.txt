@@ -10,7 +10,7 @@ event = {
 	is_triggered_only = yes
 	trigger = {
 		is_crises_allowed = yes
-		# end_game_years_passed >= 0
+		# end_game_years_passed > 0
 		# OR = {
 		# 	end_game_years_passed >= 50
 		# 	default_endgame_early_start_triggers = yes

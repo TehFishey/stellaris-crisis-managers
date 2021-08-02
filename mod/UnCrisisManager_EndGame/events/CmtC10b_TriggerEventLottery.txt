@@ -220,10 +220,7 @@ country_event = {
 						has_global_flag = no_war_in_heaven
 						NOT = {
 							any_country = {
-								OR = {
-									is_country_type = fallen_empire
-									is_country_type = awakened_fallen_empire
-								}
+								is_fallen_empire = yes
 							}
 						}
 					}
@@ -324,10 +321,10 @@ country_event = {
 				# 	factor = 0.5
 				# 	end_game_years_passed >= 35
 				# }
-				modifier = {
-					factor = 0.5
-					end_game_years_passed >= 50
-				}
+				# modifier = {
+				# 	factor = 0.5
+				# 	end_game_years_passed >= 50
+				# }
 				modifier = {
 					factor = @CmtConstTriggerProbability_V3
 					end_game_years_passed >= 70
@@ -468,10 +465,7 @@ country_event = {
 						has_global_flag = no_war_in_heaven
 						NOT = {
 							any_country = {
-								OR = {
-									is_country_type = fallen_empire
-									is_country_type = awakened_fallen_empire
-								}
+								is_fallen_empire = yes
 							}
 						}
 					}
@@ -572,10 +566,10 @@ country_event = {
 				# 	factor = 0.5
 				# 	end_game_years_passed >= 35
 				# }
-				modifier = {
-					factor = 0.5
-					end_game_years_passed >= 50
-				}
+				# modifier = {
+				# 	factor = 0.5
+				# 	end_game_years_passed >= 50
+				# }
 				modifier = {
 					factor = @CmtConstTriggerProbability_V3
 					end_game_years_passed >= 70
@@ -716,10 +710,7 @@ country_event = {
 						has_global_flag = no_war_in_heaven
 						NOT = {
 							any_country = {
-								OR = {
-									is_country_type = fallen_empire
-									is_country_type = awakened_fallen_empire
-								}
+								is_fallen_empire = yes
 							}
 						}
 					}
@@ -824,10 +815,10 @@ country_event = {
 				# 	factor = 0.5
 				# 	end_game_years_passed >= 35
 				# }
-				modifier = {
-					factor = 0.5
-					end_game_years_passed >= 50
-				}
+				# modifier = {
+				# 	factor = 0.5
+				# 	end_game_years_passed >= 50
+				# }
 				modifier = {
 					factor = @CmtConstTriggerProbability_V3
 					end_game_years_passed >= 70
@@ -968,10 +959,7 @@ country_event = {
 						has_global_flag = no_war_in_heaven
 						NOT = {
 							any_country = {
-								OR = {
-									is_country_type = fallen_empire
-									is_country_type = awakened_fallen_empire
-								}
+								is_fallen_empire = yes
 							}
 						}
 					}
@@ -1072,10 +1060,10 @@ country_event = {
 				# 	factor = 0.5
 				# 	end_game_years_passed >= 35
 				# }
-				modifier = {
-					factor = 0.5
-					end_game_years_passed >= 50
-				}
+				# modifier = {
+				# 	factor = 0.5
+				# 	end_game_years_passed >= 50
+				# }
 				modifier = {
 					factor = @CmtConstTriggerProbability_V3
 					end_game_years_passed >= 70
