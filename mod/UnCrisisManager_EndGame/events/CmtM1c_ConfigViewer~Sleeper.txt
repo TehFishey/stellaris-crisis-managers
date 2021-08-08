@@ -186,7 +186,7 @@ country_event = {
 		hidden_effect = { CmtEffect1024TryCall4520 = yes }
 	}
 	option = {
-		name = CrisisManagerMenu.4520.Vt.name
+		name = CmtTextTemplateUnique.name
 		custom_tooltip = CrisisManagerMenu.4520.tooltip
 		trigger = {
 			has_global_flag = CmtFlagSleeperEdition
@@ -226,7 +226,7 @@ country_event = {
 	}
 	option = {
 		name = CrisisManagerMenu.4530.VC.name
-		custom_tooltip = CrisisManagerMenu.4530.tooltip
+		custom_tooltip = CrisisManagerMenu.4530.V5.tooltip
 		trigger = {
 			has_global_flag = CmtFlagSleeperEdition
 			event_target:CmtGlobalVar = {
@@ -244,7 +244,7 @@ country_event = {
 	}
 	option = {
 		name = CrisisManagerMenu.4530.V5.name
-		custom_tooltip = CrisisManagerMenu.4530.tooltip
+		custom_tooltip = CrisisManagerMenu.4530.V5.tooltip
 		trigger = {
 			has_global_flag = CmtFlagSleeperEdition
 			event_target:CmtGlobalVar = {
@@ -315,12 +315,9 @@ country_event = {
 		trigger = {
 			has_global_flag = CmtFlagSleeperEdition
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarSleeperProbability value = 1 }
-					check_variable = { which = CmtVarSleeperProbability value = 2 }
-					check_variable = { which = CmtVarSleeperProbability value = 3 }
-					check_variable = { which = CmtVarSleeperProbability value = 4 }
-					check_variable = { which = CmtVarSleeperProbability value = 5 }
+				OR = {
+					check_variable = { which = CmtVarSleeperProbability value < 1 }
+					check_variable = { which = CmtVarSleeperProbability value > 5 }
 				}
 			}
 		}
@@ -338,7 +335,7 @@ country_event = {
 	}
 	option = {
 		name = CrisisManagerMenu.4550.VC.name
-		custom_tooltip = CrisisManagerMenu.4550.VC.tooltip
+		custom_tooltip = ""
 		trigger = {
 			has_global_flag = CmtFlagSleeperEdition
 			event_target:CmtGlobalVar = {
@@ -356,7 +353,7 @@ country_event = {
 	}
 	option = {
 		name = CrisisManagerMenu.4550.V5.name
-		custom_tooltip = CrisisManagerMenu.4550.VC.tooltip
+		custom_tooltip = CrisisManagerMenu.4550.V5.tooltip
 		trigger = {
 			has_global_flag = CmtFlagSleeperEdition
 			event_target:CmtGlobalVar = {
@@ -367,7 +364,7 @@ country_event = {
 		hidden_effect = { CmtEffect1024TryCall4550 = yes }
 	}
 	option = {
-		name = CrisisManagerMenu.4550.Vt.name
+		name = CmtTextTemplateUnique.name
 		custom_tooltip = CrisisManagerMenu.4550.Vt.tooltip
 		trigger = {
 			has_global_flag = CmtFlagSleeperEdition
@@ -416,7 +413,7 @@ country_event = {
 		hidden_effect = { CmtEffect1024TryCall4560 = yes }
 	}
 	option = {
-		name = CrisisManagerMenu.4560.Vx.name
+		name = CmtTextTemplateUnique.name
 		custom_tooltip = CrisisManagerMenu.4560.tooltip
 		trigger = {
 			has_global_flag = CmtFlagSleeperEdition
@@ -536,12 +533,9 @@ country_event = {
 		trigger = {
 			has_global_flag = CmtFlagSleeperEdition
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarHeavenProbability value = 1 }
-					check_variable = { which = CmtVarHeavenProbability value = 2 }
-					check_variable = { which = CmtVarHeavenProbability value = 3 }
-					check_variable = { which = CmtVarHeavenProbability value = 4 }
-					check_variable = { which = CmtVarHeavenProbability value = 5 }
+				OR = {
+					check_variable = { which = CmtVarHeavenProbability value < 1 }
+					check_variable = { which = CmtVarHeavenProbability value > 5 }
 				}
 			}
 		}
@@ -599,12 +593,9 @@ country_event = {
 		trigger = {
 			has_global_flag = CmtFlagSleeperEdition
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarHeavenAncientRival value = 1 }
-					check_variable = { which = CmtVarHeavenAncientRival value = 2 }
-					check_variable = { which = CmtVarHeavenAncientRival value = 3 }
-					check_variable = { which = CmtVarHeavenAncientRival value = 4 }
-					check_variable = { which = CmtVarHeavenAncientRival value = 5 }
+				OR = {
+					check_variable = { which = CmtVarHeavenAncientRival value < 1 }
+					check_variable = { which = CmtVarHeavenAncientRival value > 5 }
 				}
 			}
 		}
@@ -613,7 +604,7 @@ country_event = {
 
 	option = {
 		name = CrisisManagerMenu.4630x.name
-		custom_tooltip = CrisisManagerMenu.4630x.desc
+		custom_tooltip = ""
 		trigger = {
 			has_global_flag = CmtFlagSleeperEdition
 			has_global_flag = CmtFlagHeavenForbidIndependently
@@ -715,11 +706,9 @@ country_event = {
 		trigger = {
 			has_global_flag = CmtFlagSleeperEdition
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarHeavenPreludeSpeed value = 1 }
-					check_variable = { which = CmtVarHeavenPreludeSpeed value = 2 }
-					check_variable = { which = CmtVarHeavenPreludeSpeed value = 3 }
-					check_variable = { which = CmtVarHeavenPreludeSpeed value = 4 }
+				OR = {
+					check_variable = { which = CmtVarHeavenPreludeSpeed value < 1 }
+					check_variable = { which = CmtVarHeavenPreludeSpeed value > 4 }
 				}
 			}
 		}
@@ -777,12 +766,9 @@ country_event = {
 		trigger = {
 			has_global_flag = CmtFlagSleeperEdition
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarHeavenNpcSubject value = 1 }
-					check_variable = { which = CmtVarHeavenNpcSubject value = 2 }
-					check_variable = { which = CmtVarHeavenNpcSubject value = 3 }
-					check_variable = { which = CmtVarHeavenNpcSubject value = 4 }
-					check_variable = { which = CmtVarHeavenNpcSubject value = 5 }
+				OR = {
+					check_variable = { which = CmtVarHeavenNpcSubject value < 1 }
+					check_variable = { which = CmtVarHeavenNpcSubject value > 5 }
 				}
 			}
 		}
@@ -841,12 +827,9 @@ country_event = {
 		trigger = {
 			has_global_flag = CmtFlagSleeperEdition
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarHeavenNpcLeague value = 1 }
-					check_variable = { which = CmtVarHeavenNpcLeague value = 2 }
-					check_variable = { which = CmtVarHeavenNpcLeague value = 3 }
-					check_variable = { which = CmtVarHeavenNpcLeague value = 4 }
-					check_variable = { which = CmtVarHeavenNpcLeague value = 5 }
+				OR = {
+					check_variable = { which = CmtVarHeavenNpcLeague value < 1 }
+					check_variable = { which = CmtVarHeavenNpcLeague value > 5 }
 				}
 			}
 		}
@@ -904,12 +887,9 @@ country_event = {
 		trigger = {
 			has_global_flag = CmtFlagSleeperEdition
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarHeavenExhaustion value = 1 }
-					check_variable = { which = CmtVarHeavenExhaustion value = 2 }
-					check_variable = { which = CmtVarHeavenExhaustion value = 3 }
-					check_variable = { which = CmtVarHeavenExhaustion value = 4 }
-					check_variable = { which = CmtVarHeavenExhaustion value = 5 }
+				OR = {
+					check_variable = { which = CmtVarHeavenExhaustion value < 1 }
+					check_variable = { which = CmtVarHeavenExhaustion value > 5 }
 				}
 			}
 		}
@@ -968,11 +948,9 @@ country_event = {
 		trigger = {
 			has_global_flag = CmtFlagEndGameEdition
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarGuardiansProbability value = 1 }
-					check_variable = { which = CmtVarGuardiansProbability value = 2 }
-					check_variable = { which = CmtVarGuardiansProbability value = 3 }
-					check_variable = { which = CmtVarGuardiansProbability value = 4 }
+				OR = {
+					check_variable = { which = CmtVarGuardiansProbability value < 1 }
+					check_variable = { which = CmtVarGuardiansProbability value > 4 }
 				}
 			}
 		}
@@ -1021,11 +999,9 @@ country_event = {
 		trigger = {
 			has_global_flag = CmtFlagEndGameEdition
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarTimingAwakingGuardians value = 1 }
-					check_variable = { which = CmtVarTimingAwakingGuardians value = 2 }
-					check_variable = { which = CmtVarTimingAwakingGuardians value = 3 }
-					check_variable = { which = CmtVarTimingAwakingGuardians value = 4 }
+				OR = {
+					check_variable = { which = CmtVarTimingAwakingGuardians value < 1 }
+					check_variable = { which = CmtVarTimingAwakingGuardians value > 4 }
 				}
 			}
 		}
@@ -1190,11 +1166,9 @@ country_event = {
 		trigger = {
 			has_global_flag = CmtFlagEndGameEdition
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarMechFeAwaking value = 1 }
-					check_variable = { which = CmtVarMechFeAwaking value = 2 }
-					check_variable = { which = CmtVarMechFeAwaking value = 3 }
-					check_variable = { which = CmtVarMechFeAwaking value = 4 }
+				OR = {
+					check_variable = { which = CmtVarMechFeAwaking value < 1 }
+					check_variable = { which = CmtVarMechFeAwaking value > 4 }
 				}
 			}
 		}

@@ -14,70 +14,6 @@ namespace = fallen_empires_awakening
 # Some events are re-overwrittten by Sleeper Edition
 #
 
-### Guardians of the Galaxy
-country_event = {
-	id = fallen_empires_awakening.4
-	hide_window = yes
-
-	trigger = {
-		has_global_flag = galactic_crisis_happened
-		has_country_flag = guardians_of_the_galaxy
-		NOT = { has_global_flag = sleepers_awake_rival_waking } # Not if WiH happened
-		NOT = { has_country_flag = CmtFlagAwakingAsGuardians }
-		NOT = { has_country_flag = timed_guardians_of_the_galaxy }
-	}
-
-	mean_time_to_happen = {
-		months = 60
-		modifier = {
-			factor = 0.01
-			NOT = { has_country_flag = timed_guardians_of_the_galaxy_2 }
-		}
-		modifier = {
-			factor = 0.02
-			has_global_flag = CmtFlagDebugMode
-		}
-		modifier = {
-			factor = 3
-			event_target:CmtGlobalVar = { check_variable = { which = CmtVarTimingAwakingGuardians value = 1 } }
-		}
-		modifier = {
-			factor = 0.2
-			event_target:CmtGlobalVar = { check_variable = { which = CmtVarTimingAwakingGuardians value = 3 } }
-		}
-	}
-
-	immediate = {
-		set_global_flag = guardians_of_the_galaxy_happened
-		set_country_flag = CmtFlagAwakingAsGuardians
-		country_event = { id = fallen_empires_awakening.3 }
-
-		every_playable_country = {
-			limit = { CmtTriggerIsPlayableEmpire = yes }
-			random_list = {
-				33 = { add_opinion_modifier = { who = root modifier = opinion_crisis_fighter } }
-				33 = { add_opinion_modifier = { who = root modifier = opinion_crisis_fighter_small } }
-				33 = { }
-			}
-		}
-
-		# Notify
-		every_playable_country = {
-			limit = { is_ai = no }
-			country_event = { id = fallen_empires_awakening.5 }
-		}
-		observer_event = { id = observer.74 }
-	}
-}
-
-# In scpipted effect
-#	CmtEffectAwakingAsGuardians = {
-#		set_country_flag = guardians_of_the_galaxy
-#		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy days = 1825 }
-#		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy_2 days = 3650 }
-#	}
-#
-
 ### Awakening of Sleeper: Re-Overwritten by Sleeper Edition
 country_event = {
 	id = fallen_empires_awakening.3
@@ -108,13 +44,13 @@ country_event = {
 		### Change Government
 		set_country_type = awakened_fallen_empire
 		CmtEffectChangeAwakenerCivic = yes
-		add_resource = {
-			minerals = 50000
-			energy = 50000
-			food = 5000
-			influence = 1000
-		}
-
+		add_awakened_fallen_empire_resources = yes
+		# add_resource = {
+		# 	minerals = 50000
+		# 	energy = 50000
+		# 	food = 5000
+		# 	influence = 1000
+		# }
 
 		### Initial Reinforcements
 		if = {
@@ -149,3 +85,68 @@ country_event = {
 	}
 }
 
+### Guardians of the Galaxy
+country_event = {
+	id = fallen_empires_awakening.4
+	hide_window = yes
+
+	trigger = {
+		has_global_flag = galactic_crisis_happened
+		has_country_flag = guardians_of_the_galaxy
+		NOR = {
+			has_global_flag = sleepers_awake_rival_waking # Not if WiH happened
+			has_country_flag = CmtFlagAwakingAsGuardians
+			has_country_flag = timed_guardians_of_the_galaxy
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 60
+		modifier = {
+			factor = 0.01
+			NOT = { has_country_flag = timed_guardians_of_the_galaxy_2 }
+		}
+		modifier = {
+			factor = 0.02
+			has_global_flag = CmtFlagDebugMode
+		}
+		modifier = {
+			factor = 3
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarTimingAwakingGuardians value = 1 } }
+		}
+		modifier = {
+			factor = 0.2
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarTimingAwakingGuardians value = 3 } }
+		}
+	}
+
+	immediate = {
+		set_global_flag = guardians_of_the_galaxy_happened
+		set_country_flag = CmtFlagAwakingAsGuardians
+		country_event = { id = fallen_empires_awakening.3 }
+
+		every_playable_country = {
+			limit = { CmtTriggerIsPlayableEmpire = yes }
+			random_list = {
+				3 = { add_opinion_modifier = { who = root modifier = opinion_crisis_fighter } }
+				3 = { add_opinion_modifier = { who = root modifier = opinion_crisis_fighter_small } }
+				3 = { }
+			}
+		}
+
+		# Notify
+		every_playable_country = {
+			limit = { is_ai = no }
+			country_event = { id = fallen_empires_awakening.5 }
+		}
+		observer_event = { id = observer.74 }
+	}
+}
+
+# In scpipted effect
+#	CmtEffectAwakingAsGuardians = {
+#		set_country_flag = guardians_of_the_galaxy
+#		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy days = 1825 }
+#		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy_2 days = 3650 }
+#	}
+#

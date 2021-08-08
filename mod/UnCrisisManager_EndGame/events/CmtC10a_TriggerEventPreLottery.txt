@@ -41,9 +41,11 @@ country_event = {
 			check_variable = { which = CmtVarMultiple value = 4 }
 		}
 		OR = {
+			end_game_years_passed > 50
 			is_active_resolution = resolution_galacticstudies_extradimensional_experimentation
 			default_endgame_early_start_triggers = yes
 			has_global_flag = CmtFlagNoJumpButExds
+			CmtTriggerForbiddenExds = yes
 			CmtTriggerNoJumpDrive0 = no
 		}
 		### Check end_game_years_passed
@@ -129,6 +131,7 @@ country_event = {
 		event_target:CmtGlobalVar = {
 			if = {
 				limit = { # Got to be someone doing jump drives in this case
+					CmtTriggerForbiddenExds = no
 					end_game_years_passed > 0
 					OR = {
 						has_global_flag = CmtFlagNoJumpButExds

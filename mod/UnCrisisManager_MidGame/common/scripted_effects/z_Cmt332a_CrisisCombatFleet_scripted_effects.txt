@@ -15,10 +15,6 @@
 #	PREV: Location for creating fleets (e.g. planet)
 #
 
-###################
-### Constants ###
-###################
-
 ##############
 ### Khan ###
 ##############
@@ -536,7 +532,7 @@ CmtEffectCreateFleet_KhanSubReinforcement2 = {
 		}
 		settings = {
 			can_upgrade = no
-					# can_disband = no
+			# can_disband = no
 			can_change_composition = no
 			can_change_leader = no
 			uses_naval_capacity = no

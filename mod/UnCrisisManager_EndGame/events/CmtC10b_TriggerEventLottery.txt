@@ -218,11 +218,8 @@ country_event = {
 					factor = 0.5
 					OR = {
 						has_global_flag = no_war_in_heaven
-						NOT = {
-							any_country = {
-								is_fallen_empire = yes
-							}
-						}
+						NOT = { any_country = { is_fallen_empire = yes } }
+
 					}
 				}
 				### Modified by Trigger Probability
@@ -319,23 +316,23 @@ country_event = {
 				# }
 				# modifier = {
 				# 	factor = 0.5
-				# 	end_game_years_passed >= 35
+				# 	end_game_years_passed > 35
 				# }
 				# modifier = {
 				# 	factor = 0.5
-				# 	end_game_years_passed >= 50
+				# 	end_game_years_passed > 50
 				# }
 				modifier = {
 					factor = @CmtConstTriggerProbability_V3
-					end_game_years_passed >= 70
+					end_game_years_passed > 70
 				}
 				modifier = {
 					factor = @CmtConstTriggerProbability_V3
-					end_game_years_passed >= 85
+					end_game_years_passed > 85
 				}
 				modifier = {
 					factor = 0.5
-					end_game_years_passed >= 100
+					end_game_years_passed > 100
 				}
 				### For only debugging
 				event_target:CmtGlobalVar = { change_variable = { which = GmtVarDebugCountTriggerNon value = 1 } }
@@ -386,16 +383,16 @@ country_event = {
 					factor = 2
 					has_country_flag = only_unbidden_this_time
 				}
-				# modifier = {
-				# 	factor = @CmtConstModPt2_N00
-				# 	NOT = { has_global_flag = CmtFlagNoJumpButExds }
-				# 	CmtTriggerNoJumpDrive0 = yes
-				# }
-				# modifier = {
-				# 	factor = @CmtConstModPt2_N05
-				# 	has_global_flag = CmtFlagNoJumpButExds
-				# 	CmtTriggerNoJumpDrive0 = yes
-				# }
+				modifier = {
+					factor = @CmtConstModPt2_N00
+					NOT = { has_global_flag = CmtFlagNoJumpButExds }
+					CmtTriggerNoJumpDrive0 = yes
+				}
+				modifier = {
+					factor = @CmtConstModPt2_N05
+					has_global_flag = CmtFlagNoJumpButExds
+					CmtTriggerNoJumpDrive0 = yes
+				}
 				# modifier = {
 				# 	factor = @CmtConstModPt2_N40
 				# 	CmtTriggerPsiJumpDrive = yes
@@ -463,11 +460,8 @@ country_event = {
 					factor = 0.5
 					OR = {
 						has_global_flag = no_war_in_heaven
-						NOT = {
-							any_country = {
-								is_fallen_empire = yes
-							}
-						}
+						NOT = { any_country = { is_fallen_empire = yes } }
+
 					}
 				}
 				### Modified by Trigger Probability
@@ -512,10 +506,10 @@ country_event = {
 					has_global_flag = CmtFlagCrisisAllowed_50yr
 				}
 				### Factor of Extradimensionals
-				modifier = {
-					factor = @CmtConstModPt2_R05
-					CmtTriggerNoJumpDrive0 = yes
-				}
+				# modifier = {
+				# 	factor = @CmtConstModPt2_R05
+				# 	CmtTriggerNoJumpDrive0 = yes
+				# }
 				# modifier = {
 				# 	factor = @CmtConstModPt2_R40
 				# 	CmtTriggerPsiJumpDrive = yes
@@ -564,23 +558,23 @@ country_event = {
 				}
 				# modifier = {
 				# 	factor = 0.5
-				# 	end_game_years_passed >= 35
+				# 	end_game_years_passed > 35
 				# }
 				# modifier = {
 				# 	factor = 0.5
-				# 	end_game_years_passed >= 50
+				# 	end_game_years_passed > 50
 				# }
 				modifier = {
 					factor = @CmtConstTriggerProbability_V3
-					end_game_years_passed >= 70
+					end_game_years_passed > 70
 				}
 				modifier = {
 					factor = @CmtConstTriggerProbability_V3
-					end_game_years_passed >= 85
+					end_game_years_passed > 85
 				}
 				modifier = {
 					factor = 0.5
-					end_game_years_passed >= 100
+					end_game_years_passed > 100
 				}
 				### For only debugging
 				event_target:CmtGlobalVar = { change_variable = { which = GmtVarDebugCountTriggerNon value = 1 } }
@@ -708,11 +702,7 @@ country_event = {
 					factor = 0.5
 					OR = {
 						has_global_flag = no_war_in_heaven
-						NOT = {
-							any_country = {
-								is_fallen_empire = yes
-							}
-						}
+						NOT = { any_country = { is_fallen_empire = yes } }
 					}
 				}
 				### Modified by Trigger Probability
@@ -757,10 +747,10 @@ country_event = {
 					has_global_flag = CmtFlagCrisisAllowed_50yr
 				}
 				### Factor of Extradimensionals
-				modifier = {
-					factor = @CmtConstModPt3_R05
-					CmtTriggerNoJumpDrive0 = yes
-				}
+				# modifier = {
+				# 	factor = @CmtConstModPt3_R05
+				# 	CmtTriggerNoJumpDrive0 = yes
+				# }
 				# modifier = {
 				# 	factor = @CmtConstModPt3_R40
 				# 	CmtTriggerPsiJumpDrive = yes
@@ -813,23 +803,23 @@ country_event = {
 				}
 				# modifier = {
 				# 	factor = 0.5
-				# 	end_game_years_passed >= 35
+				# 	end_game_years_passed > 35
 				# }
 				# modifier = {
 				# 	factor = 0.5
-				# 	end_game_years_passed >= 50
+				# 	end_game_years_passed > 50
 				# }
 				modifier = {
 					factor = @CmtConstTriggerProbability_V3
-					end_game_years_passed >= 70
+					end_game_years_passed > 70
 				}
 				modifier = {
 					factor = @CmtConstTriggerProbability_V3
-					end_game_years_passed >= 85
+					end_game_years_passed > 85
 				}
 				modifier = {
 					factor = 0.5
-					end_game_years_passed >= 100
+					end_game_years_passed > 100
 				}
 				### For only debugging
 				event_target:CmtGlobalVar = { change_variable = { which = GmtVarDebugCountTriggerNon value = 1 } }
@@ -877,7 +867,7 @@ country_event = {
 					CmtTriggerForbiddenExds = yes
 				}
 				modifier = {
-					factor = 2
+					factor = @CmtConstModPt4_R05
 					has_country_flag = only_unbidden_this_time
 				}
 				# modifier = {
@@ -957,11 +947,8 @@ country_event = {
 					factor = 0.5
 					OR = {
 						has_global_flag = no_war_in_heaven
-						NOT = {
-							any_country = {
-								is_fallen_empire = yes
-							}
-						}
+						NOT = { any_country = { is_fallen_empire = yes } }
+
 					}
 				}
 				### Modified by Trigger Probability
@@ -1006,10 +993,10 @@ country_event = {
 					has_global_flag = CmtFlagCrisisAllowed_50yr
 				}
 				### Factor of Extradimensionals
-				modifier = {
-					factor = @CmtConstModPt4_R05
-					CmtTriggerNoJumpDrive0 = yes
-				}
+				# modifier = {
+				# 	factor = @CmtConstModPt4_R05
+				# 	CmtTriggerNoJumpDrive0 = yes
+				# }
 				# modifier = {
 				# 	factor = @CmtConstModPt4_R40
 				# 	CmtTriggerPsiJumpDrive = yes
@@ -1058,23 +1045,23 @@ country_event = {
 				}
 				# modifier = {
 				# 	factor = 0.5
-				# 	end_game_years_passed >= 35
+				# 	end_game_years_passed > 35
 				# }
 				# modifier = {
 				# 	factor = 0.5
-				# 	end_game_years_passed >= 50
+				# 	end_game_years_passed > 50
 				# }
 				modifier = {
 					factor = @CmtConstTriggerProbability_V3
-					end_game_years_passed >= 70
+					end_game_years_passed > 70
 				}
 				modifier = {
 					factor = @CmtConstTriggerProbability_V3
-					end_game_years_passed >= 85
+					end_game_years_passed > 85
 				}
 				modifier = {
 					factor = 0.5
-					end_game_years_passed >= 100
+					end_game_years_passed > 100
 				}
 				### For only debugging
 				event_target:CmtGlobalVar = { change_variable = { which = GmtVarDebugCountTriggerNon value = 1 } }
