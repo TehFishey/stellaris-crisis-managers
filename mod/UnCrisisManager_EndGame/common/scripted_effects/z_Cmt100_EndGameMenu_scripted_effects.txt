@@ -43,7 +43,7 @@ CmtEffectDestroyExds = {
 CmtEffectDestroyContingency = {
 	every_country = {
 		limit = { CmtTriggerIsContingency = yes }
-		
+
 		### Destroy Four Machine Worlds
 		every_planet_within_border = {
 			limit = { is_planet_class = pc_ai }
@@ -56,7 +56,7 @@ CmtEffectDestroyContingency = {
 			planet_event = { id = crisis.2043 days = 10 } ## Backup
 		}
 	}
-	every_country = {
+	every_playable_country = {
 		limit = { has_event_chain = ai_crisis_chain }
 		end_event_chain = ai_crisis_chain
 	}

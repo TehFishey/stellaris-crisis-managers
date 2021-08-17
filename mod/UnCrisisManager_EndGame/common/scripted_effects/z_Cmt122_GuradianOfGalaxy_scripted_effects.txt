@@ -11,10 +11,6 @@
 ##########################################
 ##########################################
 
-###################
-###  Constants  ###
-###################
-
 ###############
 ###  Event  ###
 ###############
@@ -25,9 +21,9 @@ awaken_fallen_machine_empire = {
 			is_country_type = fallen_empire
 			has_authority = auth_machine_intelligence
 		}
-		
+
 		set_global_flag = CmtFlagMachineFeTryToAwake
-		
+
 		if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMechFeAwaking value = 2 } } }
 			set_country_flag = fallen_machine_empire_awaken_1		## Custodian
@@ -55,7 +51,7 @@ awaken_guardians_of_the_galaxy = {
 			NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGuardiansProbability value = 1 } } }
 		}
 		set_global_flag = CmtFlagGuardiansTryToAwake
-		
+
 		random_list = {
 			75 = {
 				random_list = {
@@ -146,4 +142,3 @@ CmtEffectAwakingAsGuardians = {
 # guardians_of_the_galaxy        :	Awake as the gurdian
 # timed_guardians_of_the_galaxy  :	Don't awake yet,
 # timed_guardians_of_the_galaxy_2:	Awake immediately if this flag is expired.
-

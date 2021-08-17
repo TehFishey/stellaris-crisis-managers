@@ -11,6 +11,50 @@ namespace = fallen_empires_awakening
 ###################################################
 ###################################################
 
+# Sleepers Awake (MTTH removed)
+country_event = {
+	id = fallen_empires_awakening.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		CmtTriggerIsOrganicSleeper = yes
+	}
+
+	immediate = {
+		set_global_flag = sleepers_awake_happened
+		country_event = { id = fallen_empires_awakening.3 }		### Do this process at FIRST
+		every_playable_country = {
+			limit = { is_ai = no }
+			country_event = { id = fallen_empires_awakening.2 }
+		}
+		observer_event = { id = observer.73 }
+
+		### Declare War because of fragged Holy World
+		if = {
+			limit = {
+				has_country_flag = holy_world_killed
+				NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSleeperHolyClacker value = 1 } } }
+			}
+			country_event = { id = planet_destruction.611 days = 5 }
+		}
+
+		### War in Heaven
+		if = {
+			limit = {
+				has_leviathans = yes
+				NOR = {
+					has_global_flag = CmtFlagWarInHeavenTriggered
+					AND = { ## Triggered manually
+						exists = event_target:CmtTargetManualSleeperA
+						exists = event_target:CmtTargetManualSleeperB
+					}
+				}
+			}
+			CmtEffectSelectAncientRival = yes
+		} else = { set_global_flag = no_war_in_heaven }
+	}
+}
 
 ### Awakening of Sleeper
 country_event = {
@@ -38,19 +82,17 @@ country_event = {
 			set_country_flag = sleepers_awake_first_sleeper
 			save_global_event_target_as = CmtTargetFirstSleeper
 		}
-		
+
 		### Change Government
 		set_country_type = awakened_fallen_empire
 		CmtEffectChangeAwakenerCivic = yes
-		
 		add_awakened_fallen_empire_resources = yes
-		
-		
+
 		### Initial Reinforcements
 		if = {
 			limit = {
 				event_target:CmtGlobalVar = { check_variable = { which = CmtVarGuardianWornOut value = 3 } }
-				NOT = { CmtTriggerCheckSleeperFleetPower = yes }
+				CmtTriggerCheckSleeperFleetPower = no
 			}
 			country_event = { id = fallen_empires.13 }
 		}
@@ -59,8 +101,8 @@ country_event = {
 			country_event = { id = fallen_empires.13 }
 		}
 		country_event = { id = fallen_empires.13 }
-		
-		### Communications
+
+		### Establish Communications
 		every_country = {
 			limit = {
 				CmtTriggerIsEmpire = yes

@@ -10,9 +10,9 @@ namespace = CrisisManagerControl
 #####                                       #####
 #################################################
 #################################################
-# 
+#
 # All events in this file are country_event for global_event.
-# 
+#
 
 ###################
 ###  Constants  ###
@@ -21,7 +21,7 @@ namespace = CrisisManagerControl
 # Days: Event Delay
 # Rand: Random part of days for event delay
 # Mtth: Mean time to happen in months
-# 
+#
 
 ### Very Slow: Double Centrally Controled by The Ghost Signal & 1st Machine Worlds
 @CmtConstGhostSignalDays11 =  360	## The Ghost Signal
@@ -134,7 +134,7 @@ namespace = CrisisManagerControl
 @CmtConstGhostSignalRand5c =   15
 
 ### Foxhound: Sequential Control
-@CmtConstGhostSignalDays61 =    1	## The Ghost Signal 
+@CmtConstGhostSignalDays61 =    1	## The Ghost Signal
 @CmtConstGhostSignalRand61 =    3
 @CmtConstGhostSignalDays62 =    1	## Synths Act Strange
 @CmtConstGhostSignalRand62 =    3
@@ -168,7 +168,7 @@ country_event = {
 	trigger = {
 		NOT = { has_global_flag = ai_invasion_happened }
 	}
-	
+
 	immediate = {
 		endgame_telemetry = ai_revolt
 		set_global_flag = galactic_crisis_happened
@@ -176,7 +176,7 @@ country_event = {
 		set_global_flag = ai_ghost_signal
 		set_global_flag = CmtFlagContingencyTriggerd
 		observer_event = { id = observer.41 }
-		
+
 		event_target:CmtGlobalVar = {
 			if = {
 				limit = { check_variable = { which = CmtVarOpeningEventSpeed value = 1 } }
@@ -198,8 +198,6 @@ country_event = {
 	}
 }
 
-
-
 ###################
 ###  Very Slow  ###
 ###################
@@ -209,7 +207,7 @@ country_event = {
 	id = CrisisManagerControl.3010
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.3011 days = @CmtConstGhostSignalDays11 random = @CmtConstGhostSignalRand11 }
 	}
@@ -220,7 +218,7 @@ country_event = {
 	id = CrisisManagerControl.3011
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -243,7 +241,7 @@ country_event = {
 	id = CrisisManagerControl.3012
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -260,7 +258,7 @@ country_event = {
 	id = CrisisManagerControl.3013
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -277,7 +275,7 @@ country_event = {
 	id = CrisisManagerControl.3014
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -294,7 +292,7 @@ country_event = {
 	id = CrisisManagerControl.3015
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -311,7 +309,7 @@ country_event = {
 	id = CrisisManagerControl.3016
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -328,7 +326,7 @@ country_event = {
 	id = CrisisManagerControl.3017
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.3111 }
 		country_event = { id = CrisisManagerControl.3300 }
@@ -340,7 +338,7 @@ country_event = {
 	id = CrisisManagerControl.3111
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -360,7 +358,7 @@ country_event = {
 	id = CrisisManagerControl.3112
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -377,7 +375,7 @@ country_event = {
 	id = CrisisManagerControl.3113
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -394,7 +392,7 @@ country_event = {
 	id = CrisisManagerControl.3114
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -415,7 +413,7 @@ country_event = {
 	id = CrisisManagerControl.3020
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.3021 days = @CmtConstGhostSignalDays21 random = @CmtConstGhostSignalRand21 }
 	}
@@ -426,7 +424,7 @@ country_event = {
 	id = CrisisManagerControl.3021
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -444,7 +442,7 @@ country_event = {
 	id = CrisisManagerControl.3022
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -462,7 +460,7 @@ country_event = {
 	id = CrisisManagerControl.3023
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -480,7 +478,7 @@ country_event = {
 	id = CrisisManagerControl.3024
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -498,7 +496,7 @@ country_event = {
 	id = CrisisManagerControl.3025
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -516,7 +514,7 @@ country_event = {
 	id = CrisisManagerControl.3026
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -534,7 +532,7 @@ country_event = {
 	id = CrisisManagerControl.3027
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.3121 }
 		country_event = { id = CrisisManagerControl.3300 }
@@ -546,7 +544,7 @@ country_event = {
 	id = CrisisManagerControl.3121
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -564,7 +562,7 @@ country_event = {
 	id = CrisisManagerControl.3122
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -582,7 +580,7 @@ country_event = {
 	id = CrisisManagerControl.3123
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -600,7 +598,7 @@ country_event = {
 	id = CrisisManagerControl.3124
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -621,7 +619,7 @@ country_event = {
 	id = CrisisManagerControl.3030
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.3031 days = @CmtConstGhostSignalDays31 random = @CmtConstGhostSignalRand31 }
 	}
@@ -632,7 +630,7 @@ country_event = {
 	id = CrisisManagerControl.3031
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -658,7 +656,7 @@ country_event = {
 	id = CrisisManagerControl.3032
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -675,7 +673,7 @@ country_event = {
 	id = CrisisManagerControl.3033
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -692,7 +690,7 @@ country_event = {
 	id = CrisisManagerControl.3034
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -709,7 +707,7 @@ country_event = {
 	id = CrisisManagerControl.3035
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -726,7 +724,7 @@ country_event = {
 	id = CrisisManagerControl.3036
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -743,7 +741,7 @@ country_event = {
 	id = CrisisManagerControl.3037
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.3131 }
 		country_event = { id = CrisisManagerControl.3300 }
@@ -755,7 +753,7 @@ country_event = {
 	id = CrisisManagerControl.3131
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -772,7 +770,7 @@ country_event = {
 	id = CrisisManagerControl.3132
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -789,7 +787,7 @@ country_event = {
 	id = CrisisManagerControl.3133
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -806,7 +804,7 @@ country_event = {
 	id = CrisisManagerControl.3134
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -827,7 +825,7 @@ country_event = {
 	id = CrisisManagerControl.3040
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.3041 days = @CmtConstGhostSignalDays41 random = @CmtConstGhostSignalRand41 }
 	}
@@ -838,7 +836,7 @@ country_event = {
 	id = CrisisManagerControl.3041
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -864,7 +862,7 @@ country_event = {
 	id = CrisisManagerControl.3042
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -881,7 +879,7 @@ country_event = {
 	id = CrisisManagerControl.3043
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -898,7 +896,7 @@ country_event = {
 	id = CrisisManagerControl.3044
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -915,7 +913,7 @@ country_event = {
 	id = CrisisManagerControl.3045
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -932,7 +930,7 @@ country_event = {
 	id = CrisisManagerControl.3046
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -949,7 +947,7 @@ country_event = {
 	id = CrisisManagerControl.3047
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.3141 }
 		country_event = { id = CrisisManagerControl.3300 }
@@ -961,7 +959,7 @@ country_event = {
 	id = CrisisManagerControl.3141
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -978,7 +976,7 @@ country_event = {
 	id = CrisisManagerControl.3142
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -995,7 +993,7 @@ country_event = {
 	id = CrisisManagerControl.3143
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -1012,7 +1010,7 @@ country_event = {
 	id = CrisisManagerControl.3144
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -1033,7 +1031,7 @@ country_event = {
 	id = CrisisManagerControl.3050
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.3051 days = @CmtConstGhostSignalDays51 random = @CmtConstGhostSignalRand51 }
 	}
@@ -1044,7 +1042,7 @@ country_event = {
 	id = CrisisManagerControl.3051
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -1062,7 +1060,7 @@ country_event = {
 	id = CrisisManagerControl.3052
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -1080,7 +1078,7 @@ country_event = {
 	id = CrisisManagerControl.3053
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -1098,7 +1096,7 @@ country_event = {
 	id = CrisisManagerControl.3054
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -1116,7 +1114,7 @@ country_event = {
 	id = CrisisManagerControl.3055
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -1134,7 +1132,7 @@ country_event = {
 	id = CrisisManagerControl.3056
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -1152,7 +1150,7 @@ country_event = {
 	id = CrisisManagerControl.3057
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.3151 }
 		country_event = { id = CrisisManagerControl.3300 }
@@ -1164,7 +1162,7 @@ country_event = {
 	id = CrisisManagerControl.3151
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -1182,7 +1180,7 @@ country_event = {
 	id = CrisisManagerControl.3152
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -1200,7 +1198,7 @@ country_event = {
 	id = CrisisManagerControl.3153
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -1218,7 +1216,7 @@ country_event = {
 	id = CrisisManagerControl.3154
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -1239,7 +1237,7 @@ country_event = {
 	id = CrisisManagerControl.3060
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.3061 days = @CmtConstGhostSignalDays61 random = @CmtConstGhostSignalRand61 }
 	}
@@ -1250,7 +1248,7 @@ country_event = {
 	id = CrisisManagerControl.3061
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -1268,7 +1266,7 @@ country_event = {
 	id = CrisisManagerControl.3062
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -1286,7 +1284,7 @@ country_event = {
 	id = CrisisManagerControl.3063
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -1304,7 +1302,7 @@ country_event = {
 	id = CrisisManagerControl.3064
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -1322,7 +1320,7 @@ country_event = {
 	id = CrisisManagerControl.3065
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -1340,7 +1338,7 @@ country_event = {
 	id = CrisisManagerControl.3066
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -1358,7 +1356,7 @@ country_event = {
 	id = CrisisManagerControl.3067
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		country_event = { id = CrisisManagerControl.3161 }
 		country_event = { id = CrisisManagerControl.3300 }
@@ -1370,7 +1368,7 @@ country_event = {
 	id = CrisisManagerControl.3161
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -1388,7 +1386,7 @@ country_event = {
 	id = CrisisManagerControl.3162
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -1406,7 +1404,7 @@ country_event = {
 	id = CrisisManagerControl.3163
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
@@ -1424,7 +1422,7 @@ country_event = {
 	id = CrisisManagerControl.3164
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }

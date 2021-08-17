@@ -374,7 +374,7 @@ country_event = {
 		### Ruler Khan
 		create_leader = {
 			class = ruler
-			species = owner_main_species
+			species = owner_species
 			name = random
 			skill = 10
 			leader_age_min = 22
@@ -462,14 +462,14 @@ country_event = {
 		### Notifications
 		if = {
 			limit = { has_country_flag = CmtFlagKhanVengeanceCountry }
-			every_country = {
+			every_playable_country = {
 				limit = { CmtTriggerIsPlayableEmpire = yes }
 				establish_communications_no_message = root
 				country_event = { id = marauder.526 }
 				observer_event = { id = observer.18 }
 			}
 		} else = {
-			every_country = {
+			every_playable_country = {
 				limit = { CmtTriggerIsPlayableEmpire = yes  }
 				establish_communications_no_message = root
 				country_event = { id = marauder.501 }
@@ -1473,7 +1473,7 @@ country_event = {
 				set_friendly = yes
 			}
 		}
-		every_country = {
+		every_playable_country = {
 			limit = {
 				is_ai = no
 				has_communications = event_target:new_satrapy

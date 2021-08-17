@@ -39,9 +39,17 @@ country_event = {
 				CmtTriggerInCrisisNow = no
 			}
 			check_variable = { which = CmtVarMultiple value = 4 }
+		}
+		OR = {
+			end_game_years_passed > 50
 			is_active_resolution = resolution_galacticstudies_extradimensional_experimentation
+			default_endgame_early_start_triggers = yes
+			has_global_flag = CmtFlagNoJumpButExds
+			CmtTriggerForbiddenExds = yes
+			CmtTriggerNoJumpDrive0 = no
 		}
 		### Check end_game_years_passed
+		# end_game_years_passed > 0
 		OR = {
 			check_variable = { which = CmtVarEarliestEgpy value < @CmtConstTriggerEgpy_T1 }
 			AND = {
@@ -121,6 +129,18 @@ country_event = {
 
 	immediate = {
 		event_target:CmtGlobalVar = {
+			if = {
+				limit = { # Got to be someone doing jump drives in this case
+					CmtTriggerForbiddenExds = no
+					end_game_years_passed > 0
+					OR = {
+						has_global_flag = CmtFlagNoJumpButExds
+						end_game_years_passed < 50
+					}
+					default_endgame_early_start_triggers = no
+				}
+				set_timed_country_flag = { flag = only_unbidden_this_time days = 5 }
+			}
 			###  Call Trigger Event for Each Equalization Strength
 			if = {
 				limit = { check_variable = { which = CmtVarEqualizingProbability value = 2 } }

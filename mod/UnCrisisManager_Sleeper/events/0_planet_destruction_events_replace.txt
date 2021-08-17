@@ -18,15 +18,21 @@ planet_event = {
 	id = planet_destruction.600
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_modifier = holy_planet
-		any_country = { has_ai_personality_behaviour = holy_planets }
+		any_country = {
+			has_ai_personality_behaviour = holy_planets # not awakened
+			NOT = { is_at_war_with = from.owner }
+		}
 	}
-	
+
 	immediate = {
 		random_country = {
-			limit = { has_ai_personality_behaviour = holy_planets }
+			limit = {
+				has_ai_personality_behaviour = holy_planets # not awakened
+				NOT = { is_at_war_with = from.owner }
+			}
 			save_event_target_as = outraged_FE
 		}
 		from.owner = {
@@ -76,9 +82,9 @@ country_event = {
 		city_level = event_target:outraged_FE
 		room = event_target:outraged_FE.ruler
 	}
-	
+
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -104,7 +110,7 @@ country_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = planet_destruction.610.spiri
 		trigger = {
@@ -195,12 +201,12 @@ country_event = {
 	}
 }
 
-### Declar War
+### Declare War
 country_event = {
 	id = planet_destruction.611
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { NOT = { exists = event_target:outraged_FE } }

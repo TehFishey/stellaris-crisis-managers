@@ -12,7 +12,7 @@
 ###############################################
 #
 # Information
-#	
+#
 #
 
 ###################
@@ -72,7 +72,7 @@ CmtEffectCreateShroudManifestation = {
 		}
 		effect = {
 			set_owner = event_target:shroud_country
-			
+
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_ForcedEoc } }
 			while = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.875 } } }
@@ -95,7 +95,7 @@ CmtEffectCreateShroudManifestation = {
 					300 = { }
 				}
 			}
-			
+
 			set_location = prev
 			set_fleet_stance = aggressive
 			set_aggro_range_measure_from = return_point
@@ -124,7 +124,7 @@ CmtEffectCreateShroudTheEnd = {
 			set_fleet_stance = aggressive
 			set_aggro_range_measure_from = return_point
 			set_aggro_range = 3000
-			
+
 			if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEndPower value <   4 } } }
 				add_modifier = { modifier = absorbed_consciousness_1 days = -1 }

@@ -19,7 +19,7 @@ CmtEffectClearGhostSignalGalaxy = {
 	remove_global_flag = ghost_signal_3_flag
 	remove_global_flag = ghost_signal_2_flag
 	remove_global_flag = ghost_signal_1_flag
-	every_country = {
+	every_playable_country = {
 		limit = { CmtTriggerIsPlayableEmpire = yes }
 		switch = {
 			trigger = has_notification_modifier

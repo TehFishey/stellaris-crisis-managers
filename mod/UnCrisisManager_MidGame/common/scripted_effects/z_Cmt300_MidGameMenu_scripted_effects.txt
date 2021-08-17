@@ -40,6 +40,7 @@ CmtEffectTriggerMarauderManually = {
 		set_country_flag = CmtFlagKhanVengeanceCountry
 		prev = { save_event_target_as = awakened_horde }
 	}
+	set_global_flag = horde_triggered
 	country_event = { id = marauder.500 }
 }
 

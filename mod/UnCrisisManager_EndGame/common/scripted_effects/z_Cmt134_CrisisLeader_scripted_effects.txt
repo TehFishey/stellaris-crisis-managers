@@ -189,7 +189,7 @@ CmtEffectCreateAdmiral_SentinelCapitalDefense = {
 	event_target:sentinels = {
 		create_leader = {
 			class = admiral
-			species = owner_main_species
+			species = owner_species
 			name = random
 			skill = 5
 			traits = {
@@ -319,7 +319,7 @@ CmtEffectCreateAdmiral_Vehement = {
 CmtEffectCreateAdmiral_Contingency = {
 	create_leader = {
 		class = admiral
-		species = owner_main_species		## 2.2.4: event_target:contingency_bot
+		species = owner_species		## 2.2.4: event_target:contingency_bot
 		name = random
 		skill = 3
 		effect = {
@@ -336,10 +336,11 @@ CmtEffectCreateAdmiral_Contingency = {
 CmtEffectCreateAdmiral_Cybrex = {
 	create_leader = {
 		class = admiral
-		species = owner_main_species
+		species = owner_species
 		name = random
 		skill = 5
+		set_age = 0
 		traits = { trait = leader_trait_cybrex }
 	}
-	last_created_leader = { set_age = 0 }
+	# last_created_leader = { set_age = 0 }
 }

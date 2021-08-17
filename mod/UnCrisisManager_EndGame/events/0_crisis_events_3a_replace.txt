@@ -185,7 +185,7 @@ planet_event = {
 			limit = { CmtTriggerIsEmpire = yes }
 			establish_communications_no_message = event_target:AI_crisis
 		}
-		every_country = {
+		every_playable_country = {
 			limit = { has_event_chain = "ai_crisis_chain" }
 			add_event_chain_counter = {
 				event_chain = "ai_crisis_chain"
@@ -247,7 +247,7 @@ planet_event = {
 			limit = { is_ai = no }
 			country_event = { id = crisis.2031 }
 		}
-		every_country = {
+		every_playable_country = {
 			limit = { has_event_chain = "ai_crisis_chain" }
 			add_event_chain_counter = {
 				event_chain = "ai_crisis_chain"
@@ -303,7 +303,7 @@ planet_event = {
 			limit = { is_ai = no }
 			country_event = { id = crisis.2032 }
 		}
-		every_country = {
+		every_playable_country = {
 			limit = { has_event_chain = "ai_crisis_chain" }
 			add_event_chain_counter = {
 				event_chain = "ai_crisis_chain"
@@ -380,7 +380,7 @@ planet_event = {
 			limit = { is_ai = no }
 			country_event = { id = crisis.2033 }
 		}
-		every_country = {
+		every_playable_country = {
 			limit = { has_event_chain = "ai_crisis_chain" }
 			add_event_chain_counter = {
 				event_chain = "ai_crisis_chain"
@@ -548,7 +548,6 @@ planet_event = {
 		planet_event = { id = crisis.2052 }
 	}
 }
-
 
 ###########################################
 ###  Terror Event for Ornganic Empires  ###
@@ -1387,11 +1386,11 @@ country_event = {
 
 	trigger = {
 		has_global_flag = ai_invasion_ongoing
-		NOT = { has_global_flag = cybrex_resurface }
-		NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCybrexResurfacing value = 1 } } }
-
+		NOR = {
+			has_global_flag = cybrex_resurface
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarCybrexResurfacing value = 1 } }
+		}
 		CmtTriggerIsContingency = yes
-
 		OR = {
 			galaxy_percentage > 0.45
 			AND = {
@@ -1430,14 +1429,47 @@ country_event = {
 	}
 }
 
+# Final Machine World Destroyed
+# id = crisis.2046
+# Incoming Transmission
+country_event = {
+	id = crisis.2408
+	title = "TRANSMISSION"
+	desc = "crisis.2408.desc"
+
+	diplomatic = yes
+
+	picture_event_data = {
+		portrait = ai_crisis_2
+		room = ship_room
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = crisis.2408.a
+	}
+	after = {
+		hidden_effect = {
+			clear_global_event_target = cybrex
+			remove_global_flag = cybrex_resurface
+			remove_global_flag = cybrex_destroyed
+			remove_country_flag = cybrex_donation
+		}
+	}
+}
+
 ### Cybrex Reinforcements
 country_event = {
 	id = crisis.2420
 	hide_window = yes
 
 	trigger = {
-		has_global_flag = ai_invasion_ongoing
 		is_country_type = cybrex_empire
+		OR = {
+			has_global_flag = ai_invasion_ongoing
+			has_global_flag = gray_goo_crisis_active
+		}
 	}
 
 	mean_time_to_happen = {
@@ -1457,12 +1489,14 @@ country_event = {
 		every_owned_ship = { event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } } }
 		if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value > 0 } } }
-			random_country = {
-				limit = { CmtTriggerIsContingency = yes }
-				save_event_target_as = contingency
+			if = { limit = { NOT = { exists = event_target:contingency } }
+				random_country = {
+					limit = { CmtTriggerIsContingency = yes }
+					save_event_target_as = contingency
+				}
 			}
 			capital_scope = {
-				save_event_target_as = cybrex_home
+				# save_event_target_as = cybrex_home # TODO vanilla: not used anywhere, not finished?
 				CmtEffectCreateAdmiralty_CybrexSmall = yes
 			}
 		}
@@ -1476,16 +1510,21 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_global_flag = ai_invasion_ongoing
+		OR = {
+			has_global_flag = ai_invasion_ongoing
+			has_global_flag = gray_goo_crisis_active
+		}
 	}
 
 	immediate = {
-		random_country = {
-			limit = { CmtTriggerIsContingency = yes }
-			save_event_target_as = contingency
+		if = { limit = { NOT = { exists = event_target:contingency } }
+			random_country = {
+				limit = { CmtTriggerIsContingency = yes }
+				save_event_target_as = contingency
+			}
 		}
 		capital_scope = {
-			save_event_target_as = cybrex_home
+			# save_event_target_as = cybrex_home # TODO vanilla: not used anywhere, not finished?
 			CmtEffectCreateAdmiralty_CybrexSmall = yes
 		}
 	}
@@ -1507,8 +1546,10 @@ country_event = {
 	trigger = {
 		CmtTriggerIsPlayableEmpire = yes
 		has_global_flag = cybrex_resurface
-		NOT = { has_global_flag = cybrex_destroyed }
-		NOT = { has_country_flag = cybrex_donation }
+		NOR = {
+			has_global_flag = cybrex_destroyed
+			has_country_flag = cybrex_donation
+		}
 		check_variable = { which = contingency_fleet_kills value > 100 }
 		exists = event_target:cybrex
 		event_target:cybrex = {
@@ -1544,6 +1585,12 @@ country_event = {
 	id = crisis.2041
 	hide_window = yes
 	is_triggered_only = yes
-
+	trigger = { always = no }
+}
+# superfluous now
+country_event = {
+	id = crisis.2045
+	hide_window = yes
+	is_triggered_only = yes
 	trigger = { always = no }
 }

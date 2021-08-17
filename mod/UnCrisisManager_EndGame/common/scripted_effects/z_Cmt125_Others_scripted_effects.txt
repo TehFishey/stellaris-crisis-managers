@@ -169,6 +169,7 @@ CmtEffectHostileCrisis = {
 ###  Extradimensionals  ###
 ###########################
 
+## Vanilla fix
 ## Scope: This = Owner Country (Exds)
 CmtEffectSaveTargetExdPortal = {
 	if = {
@@ -217,7 +218,7 @@ CmtEffectSaveTargetExdPortal = {
 			}
 		}
 	}
-	# Fallback
+	# superfluous fallback
 	if = { limit = { NOT = { exists = event_target:dimensional_portal } }
 		random_country = {
 			limit = { is_country_type = portal_holder }

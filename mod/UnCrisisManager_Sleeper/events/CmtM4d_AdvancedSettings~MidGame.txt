@@ -43,19 +43,16 @@ country_event = {
 		text = CrisisManagerMenu.4810.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarKhanMultiple value = 1 }
-					check_variable = { which = CmtVarKhanMultiple value = 2 }
-					check_variable = { which = CmtVarKhanMultiple value = 3 }
-					check_variable = { which = CmtVarKhanMultiple value = 4 }
-					check_variable = { which = CmtVarKhanMultiple value = 5 }
+				OR = {
+					check_variable = { which = CmtVarKhanMultiple value < 1 }
+					check_variable = { which = CmtVarKhanMultiple value > 5 }
 				}
 			}
 		}
 	}
 	picture = GFX_evt_khan_throne_room
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -81,7 +78,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4822 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -120,8 +117,6 @@ country_event = {
 	}
 }
 
-
-
 ### Khan Interval
 country_event = {
 	id = CrisisManagerMenu.4821
@@ -147,7 +142,7 @@ country_event = {
 	}
 	picture = GFX_evt_khan_throne_room
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -160,7 +155,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4822 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -203,8 +198,6 @@ country_event = {
 	}
 }
 
-
-
 ### Khan to Reign at Earliest
 country_event = {
 	id = CrisisManagerMenu.4822
@@ -230,7 +223,7 @@ country_event = {
 	}
 	picture = GFX_evt_khan_throne_room
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -253,7 +246,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4823 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -316,8 +309,6 @@ country_event = {
 	}
 }
 
-
-
 ### Last Chance of Khan Reigning
 country_event = {
 	id = CrisisManagerMenu.4823
@@ -343,7 +334,7 @@ country_event = {
 	}
 	picture = GFX_evt_khan_throne_room
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -356,7 +347,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4831 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -419,8 +410,6 @@ country_event = {
 	}
 }
 
-
-
 ### MTTH Khan Awake
 country_event = {
 	id = CrisisManagerMenu.4831
@@ -449,19 +438,16 @@ country_event = {
 		text = CrisisManagerMenu.4831.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarKhanTriggerProbability value = 1 }
-					check_variable = { which = CmtVarKhanTriggerProbability value = 2 }
-					check_variable = { which = CmtVarKhanTriggerProbability value = 3 }
-					check_variable = { which = CmtVarKhanTriggerProbability value = 4 }
-					check_variable = { which = CmtVarKhanTriggerProbability value = 5 }
+				OR = {
+					check_variable = { which = CmtVarKhanTriggerProbability value < 1 }
+					check_variable = { which = CmtVarKhanTriggerProbability value > 5 }
 				}
 			}
 		}
 	}
 	picture = GFX_evt_khan_throne_room
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -474,7 +460,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4832 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -512,8 +498,6 @@ country_event = {
 	}
 }
 
-
-
 ### Khan Awakening for Vengeance
 country_event = {
 	id = CrisisManagerMenu.4832
@@ -542,19 +526,16 @@ country_event = {
 		text = CrisisManagerMenu.4832.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarKhanVengeance value = 1 }
-					check_variable = { which = CmtVarKhanVengeance value = 2 }
-					check_variable = { which = CmtVarKhanVengeance value = 3 }
-					check_variable = { which = CmtVarKhanVengeance value = 4 }
-					check_variable = { which = CmtVarKhanVengeance value = 5 }
+				OR = {
+					check_variable = { which = CmtVarKhanVengeance value < 1 }
+					check_variable = { which = CmtVarKhanVengeance value > 5 }
 				}
 			}
 		}
 	}
 	picture = GFX_evt_khan_throne_room
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -567,7 +548,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4841 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -604,8 +585,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### Resurgence of Khan
 country_event = {
@@ -666,7 +645,7 @@ country_event = {
 	}
 	picture = GFX_evt_khan_throne_room
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -679,7 +658,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4842 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -717,8 +696,6 @@ country_event = {
 	}
 }
 
-
-
 ### Lifespan of Khan
 country_event = {
 	id = CrisisManagerMenu.4842
@@ -751,20 +728,16 @@ country_event = {
 		text = CrisisManagerMenu.4842.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarKhanLifespan value = 1 }
-					check_variable = { which = CmtVarKhanLifespan value = 2 }
-					check_variable = { which = CmtVarKhanLifespan value = 3 }
-					check_variable = { which = CmtVarKhanLifespan value = 4 }
-					check_variable = { which = CmtVarKhanLifespan value = 5 }
-					check_variable = { which = CmtVarKhanLifespan value = 6 }
+				OR = {
+					check_variable = { which = CmtVarKhanLifespan value < 1 }
+					check_variable = { which = CmtVarKhanLifespan value > 6 }
 				}
 			}
 		}
 	}
 	picture = GFX_evt_khan_throne_room
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -777,7 +750,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4850 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -820,8 +793,6 @@ country_event = {
 	}
 }
 
-
-
 ### Latent Strength of Horde in Adversity
 country_event = {
 	id = CrisisManagerMenu.4850
@@ -846,18 +817,16 @@ country_event = {
 		text = CrisisManagerMenu.4850.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarReinforceCycle_Khan value = 1 }
-					check_variable = { which = CmtVarReinforceCycle_Khan value = 2 }
-					check_variable = { which = CmtVarReinforceCycle_Khan value = 3 }
-					check_variable = { which = CmtVarReinforceCycle_Khan value = 4 }
+				OR = {
+					check_variable = { which = CmtVarReinforceCycle_Khan value < 1 }
+					check_variable = { which = CmtVarReinforceCycle_Khan value > 4 }
 				}
 			}
 		}
 	}
 	picture = GFX_evt_khan_throne_room
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -870,7 +839,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4860 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -902,8 +871,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### After Death of Khan (See Also: CmtEffectTransferKhanPostDeath in ''z_Cmt003_Transcribe_Variable_scripted_effects.txt'')
 country_event = {
@@ -937,20 +904,16 @@ country_event = {
 		text = CrisisManagerMenu.4860.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarKhanPostDeathSummary value = 1 }
-					check_variable = { which = CmtVarKhanPostDeathSummary value = 2 }
-					check_variable = { which = CmtVarKhanPostDeathSummary value = 3 }
-					check_variable = { which = CmtVarKhanPostDeathSummary value = 4 }
-					check_variable = { which = CmtVarKhanPostDeathSummary value = 5 }
-					check_variable = { which = CmtVarKhanPostDeathSummary value = 6 }
+				OR = {
+					check_variable = { which = CmtVarKhanPostDeathSummary value < 1 }
+					check_variable = { which = CmtVarKhanPostDeathSummary value > 6 }
 				}
 			}
 		}
 	}
 	picture = GFX_evt_khan_throne_room
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			CmtEffectTransferKhanPostDeath = yes
@@ -964,7 +927,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4000 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1007,8 +970,6 @@ country_event = {
 	}
 }
 
-
-
 ################
 ###  L-gate  ###
 ################
@@ -1038,7 +999,7 @@ country_event = {
 	}
 	picture = GFX_evt_l-gateway
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1051,7 +1012,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4912 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1104,8 +1065,6 @@ country_event = {
 	}
 }
 
-
-
 ### Technology for Opening L-Gates
 country_event = {
 	id = CrisisManagerMenu.4912
@@ -1120,7 +1079,7 @@ country_event = {
 	}
 	picture = GFX_evt_l-gateway
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1130,10 +1089,10 @@ country_event = {
 			} else_if = {
 				limit = { has_country_flag = CmtFlagIndividual }
 				country_event = { id = CrisisManagerMenu.1027 }
-			} else = { country_event = { id = CrisisManagerMenu.4920 } }
+			} else = { country_event = { id = CrisisManagerMenu.4913 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1156,7 +1115,53 @@ country_event = {
 	}
 }
 
-
+### Player only Open L-Gates
+country_event = {
+	id = CrisisManagerMenu.4913
+	title = CrisisManagerMenu.4913.name
+	desc = {
+		text = CrisisManagerMenu.4913.desc1
+		trigger = { NOT = { has_global_flag = CmtFlagLgateReqPlayer } }
+	}
+	desc = {
+		text = CrisisManagerMenu.4913.desc2
+		trigger = { has_global_flag = CmtFlagLgateReqPlayer }
+	}
+	picture = GFX_evt_l-gateway
+	is_triggered_only = yes
+	after = {
+		hidden_effect = {
+			if = {
+				limit = { has_country_flag = CmtFlagGoBack }
+				remove_country_flag = CmtFlagGoBack
+				country_event = { id = CrisisManagerMenu.4912 }
+			} else_if = {
+				limit = { has_country_flag = CmtFlagIndividual }
+				country_event = { id = CrisisManagerMenu.1027 }
+			} else = { country_event = { id = CrisisManagerMenu.4920 } }
+		}
+	}
+	option = {
+		name = CmtTextKeepCurrent.name
+		custom_tooltip = CmtTextKeepCurrent.tooltip
+	}
+	option = {
+		name = CrisisManagerMenu.4913a.name
+		custom_tooltip = CrisisManagerMenu.4913a.tooltip
+		hidden_effect = { remove_global_flag = CmtFlagLgateReqPlayer }
+	}
+	option = {
+		name = CrisisManagerMenu.4913b.name
+		custom_tooltip = CrisisManagerMenu.4913b.tooltip
+		hidden_effect = { set_global_flag = CmtFlagLgateReqPlayer }
+	}
+	option = {
+		name = CmtTextGoBack.name
+		custom_tooltip = CmtTextGoBack.tooltip
+		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
+		hidden_effect = { set_country_flag = CmtFlagGoBack }
+	}
+}
 
 ### What Lurks Beyond L-Gates
 country_event = {
@@ -1165,36 +1170,39 @@ country_event = {
 	desc = CrisisManagerMenu.4920.desc
 	picture = {
 		trigger = {
+			# `~(A + B) + ~(AD) + ~(A + C) + ~(B + C) + ~(B + D) + ~(D + C) + ABCD`
+			# is the same as: `(A + ~B + ~C + ~D) (~A + B + ~C + ~D) (~A + ~B + C + ~D) (~A + ~B + ~C + D)`
 			OR = {
 				NOR = {
-					has_global_flag = CmtFlagLgateForbidSilence
-					has_global_flag = CmtFlagLgateForbidLdrake
+					has_global_flag = CmtFlagLgateForbidSilence	# A
+					has_global_flag = CmtFlagLgateForbidLdrake	# B
 				}
 				NOR = {
-					has_global_flag = CmtFlagLgateForbidSilence
-					has_global_flag = CmtFlagLgateForbidDessanu
+					has_global_flag = CmtFlagLgateForbidSilence	# A
+					has_global_flag = CmtFlagLgateForbidDessanu	# D
 				}
 				NOR = {
-					has_global_flag = CmtFlagLgateForbidSilence
-					has_global_flag = CmtFlagLgateForbidGraygoo
+					has_global_flag = CmtFlagLgateForbidSilence	# A
+					has_global_flag = CmtFlagLgateForbidGraygoo	# C
 				}
 				NOR = {
-					has_global_flag = CmtFlagLgateForbidLdrake
-					has_global_flag = CmtFlagLgateForbidDessanu
+					has_global_flag = CmtFlagLgateForbidLdrake	# B
+					has_global_flag = CmtFlagLgateForbidDessanu	# D
 				}
 				NOR = {
-					has_global_flag = CmtFlagLgateForbidLdrake
-					has_global_flag = CmtFlagLgateForbidGraygoo
+					has_global_flag = CmtFlagLgateForbidLdrake	# B
+					has_global_flag = CmtFlagLgateForbidGraygoo	# C
 				}
 				NOR = {
-					has_global_flag = CmtFlagLgateForbidDessanu
-					has_global_flag = CmtFlagLgateForbidGraygoo
+ 					has_global_flag = CmtFlagLgateForbidDessanu	# D
+					has_global_flag = CmtFlagLgateForbidGraygoo	# C
 				}
 				AND = {
-					has_global_flag = CmtFlagLgateForbidSilence
-					has_global_flag = CmtFlagLgateForbidLdrake
-					has_global_flag = CmtFlagLgateForbidDessanu
-					has_global_flag = CmtFlagLgateForbidGraygoo
+					has_global_flag = CmtFlagLgateForbidSilence	# A
+					has_global_flag = CmtFlagLgateForbidLdrake	# B
+					has_global_flag = CmtFlagLgateForbidGraygoo	# C
+					has_global_flag = CmtFlagLgateForbidDessanu	# D
+
 				}
 			}
 		}
@@ -1202,42 +1210,42 @@ country_event = {
 	}
 	picture = {
 		trigger = {
-			NOT = { has_global_flag = CmtFlagLgateForbidSilence }
-			has_global_flag = CmtFlagLgateForbidLdrake
-			has_global_flag = CmtFlagLgateForbidDessanu
-			has_global_flag = CmtFlagLgateForbidGraygoo
+			NOT = { has_global_flag = CmtFlagLgateForbidSilence } # Ā
+			has_global_flag = CmtFlagLgateForbidLdrake	# B
+			has_global_flag = CmtFlagLgateForbidDessanu	# D
+			has_global_flag = CmtFlagLgateForbidGraygoo	# C
 		}
 		picture = GFX_evt_ruined_system
 	}
 	picture = {
 		trigger = {
-			has_global_flag = CmtFlagLgateForbidSilence
-			NOT = { has_global_flag = CmtFlagLgateForbidLdrake }
-			has_global_flag = CmtFlagLgateForbidDessanu
-			has_global_flag = CmtFlagLgateForbidGraygoo
+			has_global_flag = CmtFlagLgateForbidSilence	# A
+			NOT = { has_global_flag = CmtFlagLgateForbidLdrake } # B̄
+			has_global_flag = CmtFlagLgateForbidDessanu	# D
+			has_global_flag = CmtFlagLgateForbidGraygoo	# C
 		}
 		picture = GFX_evt_space_dragon
 	}
 	picture = {
 		trigger = {
-			has_global_flag = CmtFlagLgateForbidSilence
-			has_global_flag = CmtFlagLgateForbidLdrake
-			NOT = { has_global_flag = CmtFlagLgateForbidDessanu }
-			has_global_flag = CmtFlagLgateForbidGraygoo
+			has_global_flag = CmtFlagLgateForbidSilence	# A
+			has_global_flag = CmtFlagLgateForbidLdrake	# B
+			NOT = { has_global_flag = CmtFlagLgateForbidDessanu } # D̄
+			has_global_flag = CmtFlagLgateForbidGraygoo	# C
 		}
 		picture = GFX_evt_gray_goo_ships
 	}
 	picture = {
 		trigger = {
-			has_global_flag = CmtFlagLgateForbidSilence
-			has_global_flag = CmtFlagLgateForbidLdrake
-			has_global_flag = CmtFlagLgateForbidDessanu
-			NOT = { has_global_flag = CmtFlagLgateForbidGraygoo }
+			has_global_flag = CmtFlagLgateForbidSilence	# A
+			has_global_flag = CmtFlagLgateForbidLdrake	# B
+			has_global_flag = CmtFlagLgateForbidDessanu	# D
+			NOT = { has_global_flag = CmtFlagLgateForbidGraygoo } # C̄
 		}
 		picture = GFX_evt_gray_goo
 	}
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1247,24 +1255,24 @@ country_event = {
 			} else_if = {
 				limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.4912 }
+				country_event = { id = CrisisManagerMenu.4913 }
 			} else_if = {
 				limit = { has_country_flag = CmtFlagIndividual }
 				country_event = { id = CrisisManagerMenu.1027 }
 			} else = { country_event = { id = CrisisManagerMenu.4930 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextGoNextConfig.name		## Go Next Configration
 		custom_tooltip = CmtTextGoNextConfig.tooltip
 		trigger = {
 			NOT = { has_country_flag = CmtFlagIndividual }
 			NAND = {
-				has_global_flag = CmtFlagLgateForbidSilence
-				has_global_flag = CmtFlagLgateForbidLdrake
-				has_global_flag = CmtFlagLgateForbidDessanu
-				has_global_flag = CmtFlagLgateForbidGraygoo
+				has_global_flag = CmtFlagLgateForbidSilence	# A
+				has_global_flag = CmtFlagLgateForbidLdrake	# B
+				has_global_flag = CmtFlagLgateForbidDessanu	# D
+				has_global_flag = CmtFlagLgateForbidGraygoo	# C
 			}
 		}
 	}
@@ -1274,20 +1282,20 @@ country_event = {
 		trigger = {
 			has_country_flag = CmtFlagIndividual
 			NAND = {
-				has_global_flag = CmtFlagLgateForbidSilence
-				has_global_flag = CmtFlagLgateForbidLdrake
-				has_global_flag = CmtFlagLgateForbidDessanu
-				has_global_flag = CmtFlagLgateForbidGraygoo
+				has_global_flag = CmtFlagLgateForbidSilence	# A
+				has_global_flag = CmtFlagLgateForbidLdrake	# B
+				has_global_flag = CmtFlagLgateForbidDessanu	# D
+				has_global_flag = CmtFlagLgateForbidGraygoo	# C
 			}
 		}
 	}
-	
+
 	option = {
 		name = CrisisManagerMenu.4920a1.name
 		custom_tooltip = CrisisManagerMenu.4920a.tooltip
 		trigger = { NOT = { has_global_flag = CmtFlagLgateForbidSilence } }
 		hidden_effect = {
-			set_global_flag = CmtFlagLgateForbidSilence
+			set_global_flag = CmtFlagLgateForbidSilence	# A
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
@@ -1296,7 +1304,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4920a.tooltip
 		trigger = { has_global_flag = CmtFlagLgateForbidSilence }
 		hidden_effect = {
-			remove_global_flag = CmtFlagLgateForbidSilence
+			remove_global_flag = CmtFlagLgateForbidSilence	# A
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
@@ -1305,7 +1313,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4920b.tooltip
 		trigger = { NOT = { has_global_flag = CmtFlagLgateForbidLdrake } }
 		hidden_effect = {
-			set_global_flag = CmtFlagLgateForbidLdrake
+			set_global_flag = CmtFlagLgateForbidLdrake	# B
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
@@ -1314,7 +1322,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4920b.tooltip
 		trigger = { has_global_flag = CmtFlagLgateForbidLdrake }
 		hidden_effect = {
-			remove_global_flag = CmtFlagLgateForbidLdrake
+			remove_global_flag = CmtFlagLgateForbidLdrake	# B
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
@@ -1323,7 +1331,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4920c.tooltip
 		trigger = { NOT = { has_global_flag = CmtFlagLgateForbidDessanu } }
 		hidden_effect = {
-			set_global_flag = CmtFlagLgateForbidDessanu
+			set_global_flag = CmtFlagLgateForbidDessanu	# D
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
@@ -1332,7 +1340,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4920c.tooltip
 		trigger = { has_global_flag = CmtFlagLgateForbidDessanu }
 		hidden_effect = {
-			remove_global_flag = CmtFlagLgateForbidDessanu
+			remove_global_flag = CmtFlagLgateForbidDessanu	# D
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
@@ -1341,7 +1349,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4920d.tooltip
 		trigger = { NOT = { has_global_flag = CmtFlagLgateForbidGraygoo } }
 		hidden_effect = {
-			set_global_flag = CmtFlagLgateForbidGraygoo
+			set_global_flag = CmtFlagLgateForbidGraygoo	# C
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
@@ -1350,28 +1358,26 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4920d.tooltip
 		trigger = { has_global_flag = CmtFlagLgateForbidGraygoo }
 		hidden_effect = {
-			remove_global_flag = CmtFlagLgateForbidGraygoo
+			remove_global_flag = CmtFlagLgateForbidGraygoo	# C
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
 		trigger = {
 			NOT = { has_country_flag = CmtFlagIndividual }
 			NAND = {
-				has_global_flag = CmtFlagLgateForbidSilence
-				has_global_flag = CmtFlagLgateForbidLdrake
-				has_global_flag = CmtFlagLgateForbidDessanu
-				has_global_flag = CmtFlagLgateForbidGraygoo
+				has_global_flag = CmtFlagLgateForbidSilence	# A
+				has_global_flag = CmtFlagLgateForbidLdrake	# B
+				has_global_flag = CmtFlagLgateForbidDessanu	# D
+				has_global_flag = CmtFlagLgateForbidGraygoo	# C
 			}
 		}
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### Algorithm to Activate L-Gate (Common)
 country_event = {
@@ -1413,11 +1419,11 @@ country_event = {
 	}
 	picture = GFX_evt_l-gateway
 	is_triggered_only = yes
-	
+
 	immediate = {
 		remove_country_flag = CmtFlagSpMenu
 	}
-	
+
 	after = {
 		hidden_effect = {
 			CmtEffectTransferLgateCycle = yes
@@ -1434,7 +1440,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4940 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1472,8 +1478,6 @@ country_event = {
 	}
 }
 
-
-
 ### Algorithm to Activate L-Gate (Silence)
 country_event = {
 	id = CrisisManagerMenu.4931
@@ -1509,7 +1513,7 @@ country_event = {
 	}
 	picture = GFX_evt_ruined_system
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1525,7 +1529,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4932 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1583,8 +1587,6 @@ country_event = {
 	}
 }
 
-
-
 ### Algorithm to Activate L-Gate (L-Drake)
 country_event = {
 	id = CrisisManagerMenu.4932
@@ -1620,7 +1622,7 @@ country_event = {
 	}
 	picture = GFX_evt_space_dragon
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1636,7 +1638,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4933 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1694,8 +1696,6 @@ country_event = {
 	}
 }
 
-
-
 ### Algorithm to Activate L-Gate (Dessanu)
 country_event = {
 	id = CrisisManagerMenu.4933
@@ -1731,7 +1731,7 @@ country_event = {
 	}
 	picture = GFX_evt_gray_goo_ships
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1747,7 +1747,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4934 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1805,8 +1805,6 @@ country_event = {
 	}
 }
 
-
-
 ### Algorithm to Activate L-Gate (Gray Tempest)
 country_event = {
 	id = CrisisManagerMenu.4934
@@ -1835,19 +1833,16 @@ country_event = {
 		text = CrisisManagerMenu.4934.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarLgateCycleGraygoo value = 1 }
-					check_variable = { which = CmtVarLgateCycleGraygoo value = 2 }
-					check_variable = { which = CmtVarLgateCycleGraygoo value = 3 }
-					check_variable = { which = CmtVarLgateCycleGraygoo value = 4 }
-					check_variable = { which = CmtVarLgateCycleGraygoo value = 5 }
+				OR = {
+					check_variable = { which = CmtVarLgateCycleGraygoo value < 1 }
+					check_variable = { which = CmtVarLgateCycleGraygoo value > 5 }
 				}
 			}
 		}
 	}
 	picture = GFX_evt_gray_goo
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1864,7 +1859,7 @@ country_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -1932,8 +1927,6 @@ country_event = {
 	}
 }
 
-
-
 ### Quiet Stroller
 country_event = {
 	id = CrisisManagerMenu.4940
@@ -1958,18 +1951,16 @@ country_event = {
 		text = CrisisManagerMenu.4940.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarLgateAloneGrayCondition value = 1 }
-					check_variable = { which = CmtVarLgateAloneGrayCondition value = 2 }
-					check_variable = { which = CmtVarLgateAloneGrayCondition value = 3 }
-					check_variable = { which = CmtVarLgateAloneGrayCondition value = 4 }
+				OR = {
+					check_variable = { which = CmtVarLgateAloneGrayCondition value < 1 }
+					check_variable = { which = CmtVarLgateAloneGrayCondition value > 4 }
 				}
 			}
 		}
 	}
 	picture = GFX_evt_ruined_system
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -1982,7 +1973,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4950 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2014,8 +2005,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### Dessanu Gift
 country_event = {
@@ -2049,20 +2038,16 @@ country_event = {
 		text = CrisisManagerMenu.4950.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarLgateDessanuGift value = 1 }
-					check_variable = { which = CmtVarLgateDessanuGift value = 2 }
-					check_variable = { which = CmtVarLgateDessanuGift value = 3 }
-					check_variable = { which = CmtVarLgateDessanuGift value = 4 }
-					check_variable = { which = CmtVarLgateDessanuGift value = 5 }
-					check_variable = { which = CmtVarLgateDessanuGift value = 6 }
+				OR = {
+					check_variable = { which = CmtVarLgateDessanuGift value < 1 }
+					check_variable = { which = CmtVarLgateDessanuGift value > 6 }
 				}
 			}
 		}
 	}
 	picture = GFX_evt_l-gateway
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -2075,7 +2060,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4960 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2118,8 +2103,6 @@ country_event = {
 	}
 }
 
-
-
 ### Reinforcement Cycle of Gray Tempest's Fleets
 country_event = {
 	id = CrisisManagerMenu.4960
@@ -2152,20 +2135,16 @@ country_event = {
 		text = CrisisManagerMenu.4960.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarReinforceCycle_Graygoo value = 1 }
-					check_variable = { which = CmtVarReinforceCycle_Graygoo value = 2 }
-					check_variable = { which = CmtVarReinforceCycle_Graygoo value = 3 }
-					check_variable = { which = CmtVarReinforceCycle_Graygoo value = 4 }
-					check_variable = { which = CmtVarReinforceCycle_Graygoo value = 5 }
-					check_variable = { which = CmtVarReinforceCycle_Graygoo value = 6 }
+				OR = {
+					check_variable = { which = CmtVarReinforceCycle_Graygoo value < 1 }
+					check_variable = { which = CmtVarReinforceCycle_Graygoo value > 6 }
 				}
 			}
 		}
 	}
 	picture = GFX_evt_gray_goo
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -2178,7 +2157,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4970 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2216,8 +2195,6 @@ country_event = {
 	}
 }
 
-
-
 ### Terraforming for Nanite World
 country_event = {
 	id = CrisisManagerMenu.4970
@@ -2250,20 +2227,16 @@ country_event = {
 		text = CrisisManagerMenu.4970.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarLgateTerraformNanite value = 1 }
-					check_variable = { which = CmtVarLgateTerraformNanite value = 2 }
-					check_variable = { which = CmtVarLgateTerraformNanite value = 3 }
-					check_variable = { which = CmtVarLgateTerraformNanite value = 4 }
-					check_variable = { which = CmtVarLgateTerraformNanite value = 5 }
-					check_variable = { which = CmtVarLgateTerraformNanite value = 6 }
+				OR = {
+					check_variable = { which = CmtVarLgateTerraformNanite value < 1 }
+					check_variable = { which = CmtVarLgateTerraformNanite value > 6 }
 				}
 			}
 		}
 	}
 	picture = GFX_evt_gray_gooed_planet
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -2276,7 +2249,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4000 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2319,10 +2292,6 @@ country_event = {
 	}
 }
 
-
-
-
-
 ##################
 ###  Uprising  ###
 ##################
@@ -2355,19 +2324,16 @@ country_event = {
 		text = CrisisManagerMenu.5111.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarUprisingMultiple value = 1 }
-					check_variable = { which = CmtVarUprisingMultiple value = 2 }
-					check_variable = { which = CmtVarUprisingMultiple value = 3 }
-					check_variable = { which = CmtVarUprisingMultiple value = 4 }
-					check_variable = { which = CmtVarUprisingMultiple value = 5 }
+				OR = {
+					check_variable = { which = CmtVarUprisingMultiple value < 1 }
+					check_variable = { which = CmtVarUprisingMultiple value > 5 }
 				}
 			}
 		}
 	}
 	picture = GFX_evt_organic_oppression
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -2383,7 +2349,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.5120 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2421,8 +2387,6 @@ country_event = {
 	}
 }
 
-
-
 ### Machines to Uprise at Earliest
 country_event = {
 	id = CrisisManagerMenu.5120
@@ -2448,7 +2412,7 @@ country_event = {
 	}
 	picture = GFX_evt_organic_oppression
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -2461,7 +2425,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.5131 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2524,8 +2488,6 @@ country_event = {
 	}
 }
 
-
-
 ### MTTH for Machine Uprising
 country_event = {
 	id = CrisisManagerMenu.5131
@@ -2550,18 +2512,16 @@ country_event = {
 		text = CrisisManagerMenu.5131.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarUprisingMtth value = 1 }
-					check_variable = { which = CmtVarUprisingMtth value = 2 }
-					check_variable = { which = CmtVarUprisingMtth value = 3 }
-					check_variable = { which = CmtVarUprisingMtth value = 4 }
+				OR = {
+					check_variable = { which = CmtVarUprisingMtth value < 1 }
+					check_variable = { which = CmtVarUprisingMtth value > 4 }
 				}
 			}
 		}
 	}
 	picture = GFX_evt_organic_oppression
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -2574,7 +2534,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.5133 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2627,8 +2587,6 @@ country_event = {
 	}
 }
 
-
-
 ### Suddenly Uprising
 country_event = {
 	id = CrisisManagerMenu.5133
@@ -2659,7 +2617,7 @@ country_event = {
 	}
 	picture = GFX_evt_organic_oppression
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -2675,7 +2633,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.5134 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2709,8 +2667,6 @@ country_event = {
 	}
 }
 
-
-
 ### Hotfix or Uprising, Controlled by Also 5133
 country_event = {
 	id = CrisisManagerMenu.5134
@@ -2739,19 +2695,16 @@ country_event = {
 		text = CrisisManagerMenu.5134.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarUprisingWarProbability value = 1 }
-					check_variable = { which = CmtVarUprisingWarProbability value = 2 }
-					check_variable = { which = CmtVarUprisingWarProbability value = 3 }
-					check_variable = { which = CmtVarUprisingWarProbability value = 4 }
-					check_variable = { which = CmtVarUprisingWarProbability value = 5 }
+				OR = {
+					check_variable = { which = CmtVarUprisingWarProbability value < 1 }
+					check_variable = { which = CmtVarUprisingWarProbability value > 5 }
 				}
 			}
 		}
 	}
 	picture = GFX_evt_organic_oppression
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -2768,7 +2721,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.5112 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -2854,9 +2807,6 @@ country_event = {
 	}
 }
 
-
-
-
 ### Uprisable Exploitee
 country_event = {
 	id = CrisisManagerMenu.5112
@@ -2864,7 +2814,7 @@ country_event = {
 	desc = CrisisManagerMenu.5112.desc
 	picture = GFX_evt_organic_oppression
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -2884,7 +2834,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.5141 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextGoNextConfig.name		## Go Next Configration
 		custom_tooltip = CmtTextGoNextConfig.tooltip
@@ -2911,7 +2861,7 @@ country_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = CrisisManagerMenu.5112a1.name
 		custom_tooltip = CrisisManagerMenu.5112a.tooltip
@@ -2996,7 +2946,7 @@ country_event = {
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
@@ -3012,8 +2962,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-
 
 ### Type of Uprising Machines
 country_event = {
@@ -3043,19 +2991,16 @@ country_event = {
 		text = CrisisManagerMenu.5141.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarUprisingCivics value = 1 }
-					check_variable = { which = CmtVarUprisingCivics value = 2 }
-					check_variable = { which = CmtVarUprisingCivics value = 3 }
-					check_variable = { which = CmtVarUprisingCivics value = 4 }
-					check_variable = { which = CmtVarUprisingCivics value = 5 }
+				OR = {
+					check_variable = { which = CmtVarUprisingCivics value < 1 }
+					check_variable = { which = CmtVarUprisingCivics value > 5 }
 				}
 			}
 		}
 	}
 	picture = GFX_evt_organic_oppression
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -3068,7 +3013,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.5152 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -3106,8 +3051,6 @@ country_event = {
 	}
 }
 
-
-
 ### Exhaustion from War of Uprising
 country_event = {
 	id = CrisisManagerMenu.5152
@@ -3136,19 +3079,16 @@ country_event = {
 		text = CrisisManagerMenu.5152.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarUprisingExhaustion value = 1 }
-					check_variable = { which = CmtVarUprisingExhaustion value = 2 }
-					check_variable = { which = CmtVarUprisingExhaustion value = 3 }
-					check_variable = { which = CmtVarUprisingExhaustion value = 4 }
-					check_variable = { which = CmtVarUprisingExhaustion value = 5 }
+				OR = {
+					check_variable = { which = CmtVarUprisingExhaustion value < 1 }
+					check_variable = { which = CmtVarUprisingExhaustion value > 5 }
 				}
 			}
 		}
 	}
 	picture = GFX_evt_organic_oppression
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -3161,7 +3101,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.5151 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -3199,8 +3139,6 @@ country_event = {
 	}
 }
 
-
-
 ### Military Intervention of Aliens
 country_event = {
 	id = CrisisManagerMenu.5151
@@ -3225,18 +3163,16 @@ country_event = {
 		text = CrisisManagerMenu.5151.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarUprisingJoinWar value = 1 }
-					check_variable = { which = CmtVarUprisingJoinWar value = 2 }
-					check_variable = { which = CmtVarUprisingJoinWar value = 3 }
-					check_variable = { which = CmtVarUprisingJoinWar value = 4 }
+				OR = {
+					check_variable = { which = CmtVarUprisingJoinWar value < 1 }
+					check_variable = { which = CmtVarUprisingJoinWar value > 4 }
 				}
 			}
 		}
 	}
 	picture = GFX_evt_organic_oppression
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -3249,7 +3185,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.5143 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -3282,8 +3218,6 @@ country_event = {
 	}
 }
 
-
-
 ### Buffer for Uprising Machine
 country_event = {
 	id = CrisisManagerMenu.5143
@@ -3312,19 +3246,16 @@ country_event = {
 		text = CrisisManagerMenu.5143.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarUprisingModifier value = 1 }
-					check_variable = { which = CmtVarUprisingModifier value = 2 }
-					check_variable = { which = CmtVarUprisingModifier value = 3 }
-					check_variable = { which = CmtVarUprisingModifier value = 4 }
-					check_variable = { which = CmtVarUprisingModifier value = 5 }
+				OR = {
+					check_variable = { which = CmtVarUprisingModifier value < 1 }
+					check_variable = { which = CmtVarUprisingModifier value > 5 }
 				}
 			}
 		}
 	}
 	picture = GFX_evt_organic_oppression
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -3337,7 +3268,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.4000 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -3374,5 +3305,3 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-

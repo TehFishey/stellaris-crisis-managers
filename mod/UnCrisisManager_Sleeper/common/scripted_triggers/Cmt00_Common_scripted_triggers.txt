@@ -9,13 +9,13 @@
 ############################################
 ############################################
 
-
 #######################
 ###  Basic Trigger  ###
 #######################
 
 ### For Spawning Each Countries, Scope: this = Stellar System
 CmtTriggerSpawnableSystem = {
+	is_capital_system = no
 	NOR = {
 		has_star_flag = swarm_invasion_target_1
 		has_star_flag = swarm_invasion_target_2
@@ -34,7 +34,7 @@ CmtTriggerSpawnableSystem = {
 		has_star_flag = lgate
 		has_star_flag = lcluster
 		has_star_flag = sealed_system		## the system with no hyperlanes
-		any_system_planet = { is_capital = yes }
+		# any_system_planet = { is_capital = yes }
 	}
 }
 
@@ -56,15 +56,22 @@ CmtTriggerIsStarbase = {		## Scope: this = ship
 ###  Check Country Type  ###
 ############################
 
-
 ### Standard
-CmtTriggerIsPlayableEmpire = {		## Written in also Cmt40 and Cmt50
-	is_country_type = default
+CmtTriggerIsPlayableEmpire = {
+	OR = {		## Written in also Cmt40 and Cmt50
+		is_country_type = default
+		is_zofe_country = yes # is_zofe_compatible
+		is_ai = no
+	}
 }
 
 CmtTriggerIsEmpire = {		## Written in also Cmt50
 	OR = {
-		CmtTriggerIsPlayableEmpire = yes
+		# CmtTriggerIsPlayableEmpire = yes
+		# CmtTriggerIsFallenEmpire = yes
+		is_country_type = default
+		is_ai = no
+		is_zofe_country = yes # is_zofe_compatible
 		is_country_type = fallen_empire
 		is_country_type = awakened_fallen_empire
 	}
@@ -72,27 +79,41 @@ CmtTriggerIsEmpire = {		## Written in also Cmt50
 
 CmtTriggerIsFallenEmpire = {
 	OR = {
-		is_country_type = fallen_empire
-		is_country_type = awakened_fallen_empire
+		is_zofe_fe = yes # is_country_type = fallen_empire
+		is_zofe_ae = yes # is_country_type = awakened_fallen_empire
 	}
 }
 
-
-### Standard For ZoFE
-CmtTriggerIsLostEmpire = {
-	always = no
+### Standard For ZoFE - Legacy (replaced by own trigger)
+# CmtTriggerIsLostEmpire = { always = no }
+# CmtTrigggerIsAscendedEmpire = { always = no }
+# CmtTriggerIsZofeEmpireA = { always = no }
+is_zofe_fe = {
+	is_country_type = fallen_empire
+	# always = no
+	# OR = {
+	# 	is_country_type = fallen_empire
+	# 	is_country_type = lost_empire
+	# }
+}
+is_zofe_ae = {
+	is_country_type = awakened_fallen_empire
+	# always = no
+	# OR = {
+	# 	is_country_type = awakened_fallen_empire
+	# 	is_country_type = ascended_empire
+	# }
 }
 
-CmtTrigggerIsAscendedEmpire = {
+is_zofe_country = {
 	always = no
+	# OR = {
+	# 	is_country_type = ascended_empire
+	# 	is_country_type = lost_empire
+	# }
 }
 
-CmtTriggerIsZofeEmpireA = { 
-	always = no
-}
-
-
-### End-Game Crisis
+### End-Game Crises ###
 CmtTriggerIsPrethoryn = {
 	is_country_type = swarm
 }
@@ -178,8 +199,7 @@ CmtTriggerIsOrganicSleeper = {		## change to CmtTriggerSleeperPotentialAwakening
 	}
 }
 
-
-### Mid-Game Crisis
+### Mid-Game Crises ###
 CmtTriggerIsMarauder = {
 	OR = {
 		is_country_type = dormant_marauders
@@ -195,13 +215,13 @@ CmtTriggerIsSleepingMarauder = {		## Scope = country
 
 CmtTriggerIsKhanCountry = {
 	is_country_type = awakened_marauders
-	NOT = { has_country_flag = CmtFlagKhanDeadCountry }
+	# CmtFlagKhanDeadCountry replaced with vanilla
+	NOT = { has_country_flag = khan_dead_event_fine }
 }
 
 CmtTriggerIsGraygoo = {
 	is_country_type = gray_goo
 }
-
 
 ##############################
 ###  Exist Crisis Country  ###
@@ -241,7 +261,6 @@ CmtTriggerExistGraygoo = {
 	any_country = { CmtTriggerIsGraygoo = yes }
 }
 
-
 #######################
 ###  Now in Crisis  ###
 #######################
@@ -279,8 +298,6 @@ CmtTriggerNowInKhanCrisis = {
 	any_country = { is_country_type = awakened_marauders }
 }
 
-
-
 #################################
 ###  Trigger Check of Events  ###
 #################################
@@ -295,7 +312,6 @@ CmtTriggerAnyCrisisTriggered = {
 	}
 }
 
-
 CmtTriggerSleepersAwakingTriggered = {
 	OR = {
 		CmtTriggerAnyCrisisTriggered = yes
@@ -306,13 +322,12 @@ CmtTriggerSleepersAwakingTriggered = {
 	}
 }
 
-CmtTriggerKhanTriggered = {
-	OR = {
-		has_global_flag = marauder_crisis_started
-		has_global_flag = CmtFlagKhanTriggered
-	}
-}
-
+# CmtTriggerKhanTriggered = {
+# 	OR = {
+# 		has_global_flag = marauder_crisis_started
+# 		has_global_flag = CmtFlagKhanTriggered
+# 	}
+# }
 
 CmtTriggerLgateEventTriggered = {
 	OR = {
@@ -354,14 +369,14 @@ CmtTriggerAnyManagedEventTriggered = {
 		}
 		AND = {
 			has_global_flag = CmtFlagMidGameEdition
-			OR = {
-				CmtTriggerLgateEventTriggered = yes
-				CmtTriggerKhanTriggered = yes
-			}
+			# OR = {
+			CmtTriggerLgateEventTriggered = yes
+			has_global_flag = marauder_crisis_started
+			# CmtTriggerKhanTriggered = yes
+			# }
 		}
 	}
 }
-
 
 ######################
 ###  Control Menu  ###
@@ -384,10 +399,9 @@ CmtTriggerAllViewerClosed = {
 	}
 }
 
-
 CmtTriggerCrisisConfig = {
 	OR = {
-		NOT = { CmtTriggerAnyCrisisTriggered = yes }
+		CmtTriggerAnyCrisisTriggered = no
 		has_global_flag = CmtFlagDebugMode
 	}
 	has_global_flag = CmtFlagEndGameEdition
@@ -453,7 +467,8 @@ CmtTriggerGuardianFeConfig = {
 
 CmtTriggerKhanConfig = {
 	OR = {
-		NOT = { CmtTriggerKhanTriggered = yes }
+		# CmtTriggerKhanTriggered = no
+		NOT = { has_global_flag = marauder_crisis_started }
 		has_global_flag = CmtFlagDebugMode
 	}
 	has_global_flag = CmtFlagMidGameEdition
@@ -461,7 +476,7 @@ CmtTriggerKhanConfig = {
 
 CmtTriggerLgateConfig = {
 	OR = {
-		NOT = { CmtTriggerLgateEventTriggered = yes }
+		CmtTriggerLgateEventTriggered = no
 		has_global_flag = CmtFlagDebugMode
 	}
 	has_global_flag = CmtFlagMidGameEdition
@@ -469,12 +484,11 @@ CmtTriggerLgateConfig = {
 
 CmtTriggerUprisingConfig = {
 	OR = {
-		NOT = { CmtTriggerUprisingTriggered = yes }
+		CmtTriggerUprisingTriggered = no
 		has_global_flag = CmtFlagDebugMode
 	}
 	has_global_flag = CmtFlagUprisingEdition
 }
-
 
 ###################################
 ###  Check Template Activation  ###
@@ -549,7 +563,6 @@ CmtTriggerTemplateActivated_T105 = {
 		always = @CmtT105_ConstActivatedPowerMidgame
 	}
 }
-
 
 CmtTriggerTemplateActivated_T106 = {
 	OR = {
@@ -660,6 +673,3 @@ CmtTriggerTemplateActivated_T116 = {
 		always = @CmtT116_ConstActivatedPowerMidgame
 	}
 }
-
-
-

@@ -10,7 +10,6 @@ namespace = CrisisManagerControl
 ##################################################
 ##################################################
 
-
 ###################################################################
 ###  To Do for Making Compatibile with Fallen empires Expanded  ###
 ###################################################################
@@ -30,7 +29,7 @@ event = {
 	id = CrisisManagerControl.5011
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		event_target:CmtGlobalVar = {
 			### Check Multiple
@@ -42,7 +41,7 @@ event = {
 				check_variable = { which = CmtVarSleeperMultiple value = 5 }
 				AND = {
 					check_variable = { which = CmtVarSleeperMultiple value = 4 }
-					NOT = { CmtTriggerNowSleeperStayup = yes }
+					CmtTriggerNowSleeperStayup = no
 				}
 				AND = {
 					check_variable = { which = CmtVarSleeperMultiple value = 3 }
@@ -53,10 +52,10 @@ event = {
 					has_global_flag = guardians_of_the_galaxy_happened
 				}
 			}
-			
+
 			### Exist Awakenable Sleeper?
 			any_country = { CmtTriggerIsOrganicSleeper = yes }
-			
+
 			### Check Years: Has the minimum awakening year been reached?
 			OR = {
 				check_variable = { which = CmtVarSleeperEarliestEgsy value < @CmtConstSleeperEarliestEgsy_T1 }
@@ -110,10 +109,10 @@ event = {
 					end_game_years_passed >= @CmtConstTUnq_ConstSleeperEarliestEgsy
 				}
 			}
-			
+
 			### Check Conditions of Youngs: Does anyone have more than min fleet power OR taken a FE planet?
 			OR = {
-				any_country = {
+				any_playable_country = {
 					CmtTriggerIsPlayableEmpire = yes
 					any_owned_planet = { has_planet_flag = fallen_empire_world }
 				}
@@ -121,7 +120,7 @@ event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		### Check Condition of Youngs: Fleets above weighted value will trigger higher awakening chance...
 		if = {
@@ -132,58 +131,58 @@ event = {
 						AND = {
 							NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T1 } }
 							check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T2 }
-							any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_W1 }
+							any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_W1 }
 						}
 						AND = {
 							NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T2 } }
 							check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T3 }
-							any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_W2 }
+							any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_W2 }
 						}
 						AND = {
 							NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T3 } }
 							check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T4 }
-							any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_W3 }
+							any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_W3 }
 						}
 						AND = {
 							NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T4 } }
 							check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T5 }
-							any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_W4 }
+							any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_W4 }
 						}
 						AND = {
 							NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T5 } }
 							check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T6 }
-							any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_W5 }
+							any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_W5 }
 						}
 						AND = {
 							NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T6 } }
 							check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T7 }
-							any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_W6 }
+							any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_W6 }
 						}
 						AND = {
 							NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T7 } }
 							check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T8 }
-							any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_W7 }
+							any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_W7 }
 						}
 						AND = {
 							NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T8 } }
 							check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T9 }
-							any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_W8 }
+							any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_W8 }
 						}
 						AND = {
 							NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T9 } }
 							check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_TA }
-							any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_W9 }
+							any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_W9 }
 						}
 						AND = {
 							NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_TA } }
-							any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstTUnq_ConstSleeperFleetPowerYoung2 }
+							any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstTUnq_ConstSleeperFleetPowerYoung2 }
 						}
 					}
 				}
 			}
 			set_timed_global_flag = { flag = CmtFlagYoungsVeryStrong days = 10 }
 		} else = { remove_global_flag = CmtFlagYoungsVeryStrong }
-		
+
 		### Main Effect
 		remove_global_flag = CmtFlagKillDoubleBookingSleeperGlobal
 		every_country = {
@@ -196,13 +195,12 @@ event = {
 	}
 }
 
-
 ### Awakening since Holy World Killed (on_yearly_pulse)
 event = {
 	id = CrisisManagerControl.5012
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSleeperHolyClacker value = 1 } } }
 		any_country = {
@@ -210,7 +208,7 @@ event = {
 			CmtTriggerIsOrganicSleeper = yes
 		}
 	}
-	
+
 	immediate = {
 		if = {
 			limit = {
@@ -241,13 +239,12 @@ event = {
 	}
 }
 
-
 ### Lottery to Awakening
 country_event = {
 	id = CrisisManagerControl.5021
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		CmtTriggerIsOrganicSleeper = yes
 		OR = {
@@ -255,7 +252,7 @@ country_event = {
 			has_global_flag = CmtFlagDebugMode
 		}
 	}
-	
+
 	immediate = {
 		set_timed_country_flag = { flag = CmtFlagKillDoubleBookingSleeperHoly days = 3 }
 		random_list = {
@@ -278,7 +275,7 @@ country_event = {
 				}
 				modifier = {
 					factor = 12
-					any_country = {
+					any_playable_country = {
 						CmtTriggerIsPlayableEmpire = yes
 						any_owned_planet = {
 							has_planet_flag = fallen_empire_world
@@ -296,7 +293,7 @@ country_event = {
 					has_global_flag = CmtFlagKillDoubleBookingSleeperGlobal
 					NOT = { has_global_flag = CmtFlagDebugMode }
 				}
-				
+
 				set_global_flag = sleepers_awake_happened
 				set_timed_global_flag = { flag = CmtFlagKillDoubleBookingSleeperGlobal days = 3 }
 				country_event = { id = fallen_empires_awakening.1 days = 4 random = 352 }
@@ -335,8 +332,6 @@ country_event = {
 	}
 }
 
-
-
 ################################
 ###  Post-Destroyed Process  ###
 ################################
@@ -346,13 +341,13 @@ country_event = {
 	id = CrisisManagerControl.5030
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		event_target:CmtGlobalVar = { check_variable = { which = CmtVarMultiple value = 3 } }
 		CmtTriggerIsCrisisCountry = yes
-		NOT = { CmtTriggerInCrisisNow = yes }
+		CmtTriggerInCrisisNow = no
 	}
-	
+
 	immediate = {
 		event_target:CmtGlobalVar = {
 			country_event = { id = CrisisManagerControl.5031 }
@@ -365,12 +360,12 @@ country_event = {
 	id = CrisisManagerControl.5031
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		event_target:CmtGlobalVar = { check_variable = { which = CmtVarSleeperMultiple value = 4 } }
 		NOT = { any_country = { is_country_type = awakened_fallen_empire } }
 	}
-	
+
 	immediate = {
 		CmtEffectSetSleeperInterval = yes
 	}

@@ -10,11 +10,11 @@ event = {
 	is_triggered_only = yes
 	trigger = {
 		is_crises_allowed = yes
-		# end_game_years_passed >= 0
+		# end_game_years_passed > 0
 		# OR = {
 		# 	end_game_years_passed >= 50
 		# 	default_endgame_early_start_triggers = yes
-		# 	any_country = {
+		# 	any_playable_country = {
 		# 		is_country_type = default
 		# 		OR = {
 		# 			has_technology = tech_jump_drive_1

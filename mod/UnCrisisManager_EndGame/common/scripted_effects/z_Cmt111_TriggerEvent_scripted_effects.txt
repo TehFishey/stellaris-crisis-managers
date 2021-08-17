@@ -94,14 +94,13 @@ CmtEffectTriggerForcedEoc = {
 	}
 }
 
-CmtEffectTriggerNoCrisis = {
-	### For only debugging
-	event_target:CmtGlobalVar = { change_variable = { which = GmtVarDebugCountTriggerNon value = 1 } }
-}
+# CmtEffectTriggerNoCrisis = {
+# 	### For only debugging
+# 	event_target:CmtGlobalVar = { change_variable = { which = GmtVarDebugCountTriggerNon value = 1 } }
+# }
 
 CmtEffectTriggerTripleCrisis = {
 	set_global_flag = galactic_crisis_happened
-
 	event_target:CmtGlobalVar = {
 		if = {
 			limit = { CmtTriggerForbiddenPrethoryn = no }
@@ -133,51 +132,51 @@ CmtEffectTriggerTripleCrisis = {
 ### Prethoryn
 
 CmtEffectSubspaceEchoes = { 	### Alt. crisis.10
-	every_country = {
+	every_playable_country = {
 		limit = { CmtTriggerIsPlayableEmpire = yes }
 		country_event = { id = crisis.11 }
 	}
 }
 
-CmtEffectApproachingOuterRim = {
-	country_event = { id = crisis.12 }
-}
+# CmtEffectApproachingOuterRim = {
+# 	country_event = { id = crisis.12 }
+# }
 
 CmtEffectSubspaceSignal = { 	### Alt. crisis.14
-	every_country = {
+	every_playable_country = {
 		limit = { CmtTriggerIsPlayableEmpire = yes }
 		country_event = { id = crisis.15 }
 	}
 }
 
-CmtEffectVanguardArrives = {
-	country_event = { id = crisis.17 }
-}
+# CmtEffectVanguardArrives = {
+# 	country_event = { id = crisis.17 }
+# }
 
-CmtEffectPrethorynMainInvasionArrives = {
-	country_event = { id = crisis.19 }
-}
+# CmtEffectPrethorynMainInvasionArrives = {
+# 	country_event = { id = crisis.19 }
+# }
 
 ### Extradimensionals
 
-CmtEffectUnbiddenAppear = {
-	country_event = { id = crisis.1000 }
-}
+# CmtEffectUnbiddenAppear = {
+# 	country_event = { id = crisis.1000 }
+# }
 
-CmtEffectAberrantAppear = {
-	country_event = { id = crisis.1100 }
-}
+# CmtEffectAberrantAppear = {
+# 	country_event = { id = crisis.1100 }
+# }
 
-CmtEffectVehementAppear = {
-	country_event = { id = crisis.1200 }
-}
+# CmtEffectVehementAppear = {
+# 	country_event = { id = crisis.1200 }
+# }
 
 ### Contingency
 
 CmtEffectStartGhostSignal = {
 	if = {
 		limit = { NOT = { has_global_flag = CmtFlagSubmarineCrisis } }
-		every_country = {
+		every_playable_country = {
 			limit = { CmtTriggerIsPlayableEmpire = yes }
 			country_event = { id = crisis.2010 }
 		}
@@ -187,7 +186,7 @@ CmtEffectStartGhostSignal = {
 CmtEffectSynthsActStrange = {
 	if = {
 		limit = { NOT = { has_global_flag = CmtFlagSubmarineCrisis } }
-		every_country = {
+		every_playable_country = {
 			limit = { CmtTriggerIsPlayableEmpire = yes }
 			country_event = { id = crisis.2006 }
 		}
@@ -201,7 +200,7 @@ CmtEffectSynthsActStrange = {
 CmtEffectSynthsDisappear = {
 	if = {
 		limit = { NOT = { has_global_flag = CmtFlagSubmarineCrisis } }
-		every_country = {
+		every_playable_country = {
 			limit = { CmtTriggerIsPlayableEmpire = yes }
 			country_event = { id = crisis.2007 }
 		}
@@ -211,7 +210,7 @@ CmtEffectSynthsDisappear = {
 CmtEffectSyntheticDisappearances = {
 	if = {
 		limit = { NOT = { has_global_flag = CmtFlagSubmarineCrisis } }
-		every_country = {
+		every_playable_country = {
 			limit = { CmtTriggerIsPlayableEmpire = yes }
 			country_event = { id = crisis.2020 }
 		}
@@ -221,7 +220,7 @@ CmtEffectSyntheticDisappearances = {
 CmtEffectContingencySummons = {
 	if = {
 		limit = { NOT = { has_global_flag = CmtFlagSubmarineCrisis } }
-		every_country = {
+		every_playable_country = {
 			limit = { CmtTriggerIsPlayableEmpire = yes }
 			country_event = { id = crisis.2021 }
 		}
@@ -229,7 +228,7 @@ CmtEffectContingencySummons = {
 }
 
 CmtEffectContingencyArrival = {
-	every_country = {
+	every_playable_country = {
 		limit = { CmtTriggerIsPlayableEmpire = yes }
 		country_event = { id = crisis.2022 }
 	}
@@ -265,14 +264,14 @@ CmtEffect4thMachineWorld = {
 
 ### Forced End of Cycle
 
-CmtEffectForcedCovenantEoc = {
-	event_target:CmtTargetVictimForcedEoc = {
-		country_event = { id = CrisisManagerControl.4101 }
-	}
-}
+# CmtEffectForcedCovenantEoc = {
+# 	event_target:CmtTargetVictimForcedEoc = {
+# 		country_event = { id = CrisisManagerControl.4101 }
+# 	}
+# }
 
-CmtEffectReckoningForcedEoc = {
-	event_target:CmtTargetVictimForcedEoc = {
-		country_event = { id = CrisisManagerControl.4102 }
-	}
-}
+# CmtEffectReckoningForcedEoc = {
+# 	event_target:CmtTargetVictimForcedEoc = {
+# 		country_event = { id = CrisisManagerControl.4102 }
+# 	}
+# }

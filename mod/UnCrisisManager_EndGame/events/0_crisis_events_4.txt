@@ -308,7 +308,7 @@ country_event = {
 		event_target:former_capital = { CmtEffectCreateShroudTheEnd = yes }
 
 		### Notification
-		every_country = {
+		every_playable_country = {
 			limit = {
 				CmtTriggerIsPlayableEmpire = yes
 				NOT = { is_same_value = root }

@@ -35,25 +35,16 @@ CmtEffectSaveOriginalCountry = {
 ###########################
 
 CmtEffectManualTargetSleepers = {
-	random_country = {
-		limit = { has_country_flag = fallen_empire_1 }		## Materialist
-		save_global_event_target_as = CmtTargetManualSleeper1
-	}
-	random_country = {
-		limit = { has_country_flag = fallen_empire_2 }		## Spiritualist
-		save_global_event_target_as = CmtTargetManualSleeper2
-	}
-	random_country = {
-		limit = { has_country_flag = fallen_empire_3 }		## Xenophile
-		save_global_event_target_as = CmtTargetManualSleeper3
-	}
-	random_country = {
-		limit = { has_country_flag = fallen_empire_4 }		## Xenophobe
-		save_global_event_target_as = CmtTargetManualSleeper4
-	}
-	random_country = {
-		limit = { has_country_flag = fallen_empire_machine }		## Machine
-		save_global_event_target_as = CmtTargetManualSleeper5
+	every_country = {
+		limit = { is_fallen_empire = yes }
+		switch = {
+			trigger = has_country_flag
+			fallen_empire_1 = { save_global_event_target_as = CmtTargetManualSleeper1 }		# Materialist
+			fallen_empire_2 = { save_global_event_target_as = CmtTargetManualSleeper2 }		# Spiritualist
+			fallen_empire_3 = { save_global_event_target_as = CmtTargetManualSleeper3 }		# Xenophile
+			fallen_empire_4 = { save_global_event_target_as = CmtTargetManualSleeper4 }		# Xenophobe
+			fallen_empire_machine = { save_global_event_target_as = CmtTargetManualSleeper5 }	# Machine
+		}
 	}
 }
 
@@ -1088,4 +1079,3 @@ CmtEffect1028TryCall5143 = {
 		country_event = { id = CrisisManagerMenu.5143 }
 	} else = { country_event = { id = CrisisManagerMenu.1028 } }
 }
-
