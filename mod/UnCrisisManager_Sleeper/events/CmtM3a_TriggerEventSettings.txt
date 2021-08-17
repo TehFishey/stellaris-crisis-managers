@@ -10,8 +10,6 @@ namespace = CrisisManagerMenu
 ###############################################################
 ###############################################################
 
-
-
 ### Multiple Crises
 country_event = {
 	id = CrisisManagerMenu.3110
@@ -50,19 +48,16 @@ country_event = {
 		text = CrisisManagerMenu.3110.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarMultiple value = 1 }
-					check_variable = { which = CmtVarMultiple value = 2 }
-					check_variable = { which = CmtVarMultiple value = 3 }
-					check_variable = { which = CmtVarMultiple value = 4 }
-					check_variable = { which = CmtVarMultiple value = 5 }
+				OR = {
+					check_variable = { which = CmtVarMultiple value < 1 }
+					check_variable = { which = CmtVarMultiple value > 5 }
 				}
 			}
 		}
 	}
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -88,7 +83,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.3130 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -133,8 +128,6 @@ country_event = {
 	}
 }
 
-
-
 ### Crisis Interval
 country_event = {
 	id = CrisisManagerMenu.3120
@@ -160,7 +153,7 @@ country_event = {
 	}
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -173,7 +166,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.3130 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -216,8 +209,6 @@ country_event = {
 	}
 }
 
-
-
 ### Crises to Happen at Earliest
 country_event = {
 	id = CrisisManagerMenu.3130
@@ -243,7 +234,7 @@ country_event = {
 	}
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -267,7 +258,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.3140 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -330,8 +321,6 @@ country_event = {
 	}
 }
 
-
-
 ### Probability of Crisis
 country_event = {
 	id = CrisisManagerMenu.3140
@@ -364,20 +353,16 @@ country_event = {
 		text = CrisisManagerMenu.3140.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarTriggerProbability value < 0 }
-					check_variable = { which = CmtVarTriggerProbability value = 1 }
-					check_variable = { which = CmtVarTriggerProbability value = 2 }
-					check_variable = { which = CmtVarTriggerProbability value = 3 }
-					check_variable = { which = CmtVarTriggerProbability value = 4 }
-					check_variable = { which = CmtVarTriggerProbability value = 5 }
+				OR = {
+					check_variable = { which = CmtVarTriggerProbability value = 0 }
+					check_variable = { which = CmtVarTriggerProbability value > 5 }
 				}
 			}
 		}
 	}
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -390,12 +375,12 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.3150 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
 	}
-	
+
 	option = {
 		name = CrisisManagerMenu.3140a.name
 		custom_tooltip = CrisisManagerMenu.3140a.tooltip
@@ -429,8 +414,6 @@ country_event = {
 	}
 }
 
-
-
 ### Equalization of Probability
 country_event = {
 	id = CrisisManagerMenu.3150
@@ -455,18 +438,16 @@ country_event = {
 		text = CrisisManagerMenu.3150.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarEqualizingProbability value = 1 }
-					check_variable = { which = CmtVarEqualizingProbability value = 2 }
-					check_variable = { which = CmtVarEqualizingProbability value = 3 }
-					check_variable = { which = CmtVarEqualizingProbability value = 4 }
+				OR = {
+					check_variable = { which = CmtVarEqualizingProbability value < 1 }
+					check_variable = { which = CmtVarEqualizingProbability value > 4 }
 				}
 			}
 		}
 	}
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -479,7 +460,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.3160 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -517,8 +498,6 @@ country_event = {
 	}
 }
 
-
-
 ### About Equalization of Probability
 #country_event = {
 #	id = CrisisManagerMenu.3141
@@ -526,15 +505,13 @@ country_event = {
 #	desc = CrisisManagerMenu.3141.desc
 #	picture = GFX_evt_CmtMenuA
 #	is_triggered_only = yes
-#	
+#
 #	option = {
 #		name = CmtTextOK.name
 #		custom_tooltip = CmtTextOK.tooltip
 #		hidden_effect = { country_event = { id = CrisisManagerMenu.3150 } }
 #	}
 #}
-
-
 
 ### Progress Speed of Crisis Trigger Event
 country_event = {
@@ -568,20 +545,16 @@ country_event = {
 		text = CrisisManagerMenu.3160.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarOpeningEventSpeed value = 1 }
-					check_variable = { which = CmtVarOpeningEventSpeed value = 2 }
-					check_variable = { which = CmtVarOpeningEventSpeed value = 3 }
-					check_variable = { which = CmtVarOpeningEventSpeed value = 4 }
-					check_variable = { which = CmtVarOpeningEventSpeed value = 5 }
-					check_variable = { which = CmtVarOpeningEventSpeed value = 6 }
+				OR = {
+					check_variable = { which = CmtVarOpeningEventSpeed value < 1 }
+					check_variable = { which = CmtVarOpeningEventSpeed value > 6 }
 				}
 			}
 		}
 	}
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -598,7 +571,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.3170 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -646,7 +619,6 @@ country_event = {
 	}
 }
 
-
 ### About Progress Speed of Crisis Event Chain
 country_event = {
 	id = CrisisManagerMenu.3161
@@ -654,14 +626,13 @@ country_event = {
 	desc = CrisisManagerMenu.3161.desc
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-	
+
 	option = {
 		name = CmtTextOK.name
 		custom_tooltip = CmtTextOK.tooltip
 		hidden_effect = { country_event = { id = CrisisManagerMenu.3160 } }
 	}
 }
-
 
 ### Submarine Crisis
 country_event = {
@@ -677,7 +648,7 @@ country_event = {
 	}
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -690,7 +661,7 @@ country_event = {
 			} else = { country_event = { id = CrisisManagerMenu.0100 } }
 		}
 	}
-	
+
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
@@ -712,5 +683,3 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-
-

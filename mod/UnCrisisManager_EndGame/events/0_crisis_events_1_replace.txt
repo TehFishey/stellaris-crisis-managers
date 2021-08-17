@@ -986,8 +986,10 @@ country_event = {
 	trigger = {
 		has_global_flag = ongoing_prethoryn_invasion
 		is_country_type = sentinels
-		NOT = { has_global_flag = CmtFlagForbiddenAnatomy }
-		NOT = { has_country_flag = sentinel_anatomy_files }
+		NOR = {
+			has_global_flag = CmtFlagForbiddenAnatomy
+			has_country_flag = sentinel_anatomy_files
+		}
 		exists = event_target:sentinel_alpha
 		exists = event_target:prethoryn
 

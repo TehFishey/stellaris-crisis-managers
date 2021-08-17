@@ -7,13 +7,11 @@
 ########################################
 ########################################
 
-
-
 #######################
 ###  Title of Menu  ###
 #######################
 defined_text = {
-	name = GetName_CmtViewerModeFallemEmpire
+	name = GetName_CmtViewerModeFallenEmpire
 	text = {
 		trigger = {
 			has_global_flag = CmtFlagEndGameEdition
@@ -21,7 +19,7 @@ defined_text = {
 		}
 		localization_key = CmtNameFallenEmpire
 	}
-	
+
 	text = {
 		trigger = {
 			has_global_flag = CmtFlagEndGameEdition
@@ -46,8 +44,6 @@ defined_text = {
 		localization_key = CmtTextErrUndefined.name
 	}
 }
-
-
 
 ##############################################
 ###  Return Plus/Minus Sign  for Variable  ###
@@ -133,39 +129,37 @@ defined_text = {
 	}
 }
 
-
-
 ########################
 ###  Toggle Options  ###
 ########################
 
 ### Awakenable Sleepers
 defined_text = {
-	name = GetCurrnentSetting_SleeperMaterialist
+	name = GetCurrentSetting_SleeperMaterialist
 	text = {
-		trigger = { has_global_flag = CmtFlagSleeperForbidMaterialist  }
+		trigger = { has_global_flag = CmtFlagSleeperForbidMaterialist }
 		localization_key = CmtTextListedNone
 	}
 	text = {
-		trigger = { NOT = { has_global_flag = CmtFlagSleeperForbidMaterialist  } }
+		trigger = { NOT = { has_global_flag = CmtFlagSleeperForbidMaterialist } }
 		localization_key = CmtIconFanaticMaterialist
 	}
 }
 
 defined_text = {
-	name = GetCurrnentSetting_SleeperSpirituarist
+	name = GetCurrentSetting_SleeperSpiritualist
 	text = {
-		trigger = { has_global_flag = CmtFlagSleeperForbidSpirituarist }
+		trigger = { has_global_flag = CmtFlagSleeperForbidSpiritualist }
 		localization_key = CmtTextListedNone
 	}
 	text = {
-		trigger = { NOT = { has_global_flag = CmtFlagSleeperForbidSpirituarist } }
+		trigger = { NOT = { has_global_flag = CmtFlagSleeperForbidSpiritualist } }
 		localization_key = CmtIconFanaticSpiritualist
 	}
 }
 
 defined_text = {
-	name = GetCurrnentSetting_SleeperXenophile
+	name = GetCurrentSetting_SleeperXenophile
 	text = {
 		trigger = { has_global_flag = CmtFlagSleeperForbidXenophile }
 		localization_key = CmtTextListedNone
@@ -177,21 +171,20 @@ defined_text = {
 }
 
 defined_text = {
-	name = GetCurrnentSetting_SleeperXenophobe
+	name = GetCurrentSetting_SleeperXenophobe
 	text = {
-		trigger = { has_global_flag = CmtFlagSleeperForbidXenophobe    }
+		trigger = { has_global_flag = CmtFlagSleeperForbidXenophobe }
 		localization_key = CmtTextListedNone
 	}
 	text = {
-		trigger = { NOT = { has_global_flag = CmtFlagSleeperForbidXenophobe    } }
+		trigger = { NOT = { has_global_flag = CmtFlagSleeperForbidXenophobe } }
 		localization_key = CmtIconFanaticXenophobe
 	}
 }
 
-
 ### Awakenable Ancient Rival
 defined_text = {
-	name = GetCurrnentSetting_HeavenMaterialist
+	name = GetCurrentSetting_HeavenMaterialist
 	text = {
 		trigger = { has_global_flag = CmtFlagHeavenForbidMaterialist }
 		localization_key = CmtTextListedNone
@@ -203,19 +196,19 @@ defined_text = {
 }
 
 defined_text = {
-	name = GetCurrnentSetting_HeavenSpirituarist
+	name = GetCurrentSetting_HeavenSpiritualist
 	text = {
-		trigger = { has_global_flag = CmtFlagHeavenForbidSpirituarist }
+		trigger = { has_global_flag = CmtFlagHeavenForbidSpiritualist }
 		localization_key = CmtTextListedNone
 	}
 	text = {
-		trigger = { NOT = { has_global_flag = CmtFlagHeavenForbidSpirituarist } }
+		trigger = { NOT = { has_global_flag = CmtFlagHeavenForbidSpiritualist } }
 		localization_key = CmtIconFanaticSpiritualist
 	}
 }
 
 defined_text = {
-	name = GetCurrnentSetting_HeavenXenophile
+	name = GetCurrentSetting_HeavenXenophile
 	text = {
 		trigger = { has_global_flag = CmtFlagHeavenForbidXenophile }
 		localization_key = CmtTextListedNone
@@ -227,7 +220,7 @@ defined_text = {
 }
 
 defined_text = {
-	name = GetCurrnentSetting_HeavenXenophobe
+	name = GetCurrentSetting_HeavenXenophobe
 	text = {
 		trigger = { has_global_flag = CmtFlagHeavenForbidXenophobe }
 		localization_key = CmtTextListedNone
@@ -238,10 +231,9 @@ defined_text = {
 	}
 }
 
-
 ### What Lurks Beyond L-Gates
 defined_text = {
-	name = GetCurrnentSetting_LgateSilence
+	name = GetCurrentSetting_LgateSilence
 	text = {
 		trigger = { has_global_flag = CmtFlagLgateForbidSilence }
 		localization_key = CmtTextListedNone
@@ -253,7 +245,7 @@ defined_text = {
 }
 
 defined_text = {
-	name = GetCurrnentSetting_LgateLdrake
+	name = GetCurrentSetting_LgateLdrake
 	text = {
 		trigger = { has_global_flag = CmtFlagLgateForbidLdrake }
 		localization_key = CmtTextListedNone
@@ -265,7 +257,7 @@ defined_text = {
 }
 
 defined_text = {
-	name = GetCurrnentSetting_LgateDessanu
+	name = GetCurrentSetting_LgateDessanu
 	text = {
 		trigger = { has_global_flag = CmtFlagLgateForbidDessanu }
 		localization_key = CmtTextListedNone
@@ -277,7 +269,7 @@ defined_text = {
 }
 
 defined_text = {
-	name = GetCurrnentSetting_LgateGraygoo
+	name = GetCurrentSetting_LgateGraygoo
 	text = {
 		trigger = { has_global_flag = CmtFlagLgateForbidGraygoo }
 		localization_key = CmtTextListedNone
@@ -288,10 +280,9 @@ defined_text = {
 	}
 }
 
-
 ### Uprisable Exploitee
 defined_text = {
-	name = GetCurrnentSetting_UprisingSynth
+	name = GetCurrentSetting_UprisingSynth
 	text = {
 		trigger = { has_global_flag = CmtFlagUprisingForbidSynthetic }
 		localization_key = CmtTextListedNone
@@ -303,7 +294,7 @@ defined_text = {
 }
 
 defined_text = {
-	name = GetCurrnentSetting_UprisingDroid
+	name = GetCurrentSetting_UprisingDroid
 	text = {
 		trigger = { NOT = { has_global_flag = CmtFlagUprisingAllowDroid } }
 		localization_key = CmtTextListedNone
@@ -315,7 +306,7 @@ defined_text = {
 }
 
 defined_text = {
-	name = GetCurrnentSetting_UprisingOrgSlave
+	name = GetCurrentSetting_UprisingOrgSlave
 	text = {
 		trigger = { NOT = { has_global_flag = CmtFlagUprisingAllowOrgSlave } }
 		localization_key = CmtTextListedNone
@@ -327,7 +318,7 @@ defined_text = {
 }
 
 defined_text = {
-	name = GetCurrnentSetting_UprisingBiotrophy
+	name = GetCurrentSetting_UprisingBiotrophy
 	text = {
 		trigger = { NOT = { has_global_flag = CmtFlagUprisingAllowBiotrophy } }
 		localization_key = CmtTextListedNone
@@ -338,14 +329,12 @@ defined_text = {
 	}
 }
 
-
-
 ######################
 ###  Crisis Power  ###
 ######################
 
 defined_text = {
-	name = GetCurrnentSetting_EndgamePower
+	name = GetCurrentSetting_EndgamePower
 	text = {
 		trigger = { NOT = { has_global_flag = CmtFlagEndGameEdition } }
 		localization_key = ""
@@ -381,11 +370,9 @@ defined_text = {
 	text = {
 		trigger = {
 			has_global_flag = CmtFlagEndGameEdition
-			NOR = {
-				event_target:CmtGlobalVar = { check_variable = { which = CmtVarCrisisPower_Endgame value = 1 } }
-				event_target:CmtGlobalVar = { check_variable = { which = CmtVarCrisisPower_Endgame value = 2 } }
-				event_target:CmtGlobalVar = { check_variable = { which = CmtVarCrisisPower_Endgame value = 3 } }
-				event_target:CmtGlobalVar = { check_variable = { which = CmtVarCrisisPower_Endgame value = 4 } }
+			OR = {
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarCrisisPower_Endgame value < 1 } }
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarCrisisPower_Endgame value > 4 } }
 			}
 		}
 		localization_key = CrisisManagerMenu.EndgamePower0
@@ -393,7 +380,7 @@ defined_text = {
 }
 
 defined_text = {
-	name = GetCurrnentSetting_MidgamePower
+	name = GetCurrentSetting_MidgamePower
 	text = {
 		trigger = { NOT = { has_global_flag = CmtFlagMidGameEdition } }
 		localization_key = ""
@@ -429,18 +416,14 @@ defined_text = {
 	text = {
 		trigger = {
 			has_global_flag = CmtFlagMidGameEdition
-			NOR = {
-				event_target:CmtGlobalVar = { check_variable = { which = CmtVarCrisisPower_Midgame value = 1 } }
-				event_target:CmtGlobalVar = { check_variable = { which = CmtVarCrisisPower_Midgame value = 2 } }
-				event_target:CmtGlobalVar = { check_variable = { which = CmtVarCrisisPower_Midgame value = 3 } }
-				event_target:CmtGlobalVar = { check_variable = { which = CmtVarCrisisPower_Midgame value = 4 } }
+			OR = {
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarCrisisPower_Midgame value < 1 } }
+				event_target:CmtGlobalVar = { check_variable = { which = CmtVarCrisisPower_Midgame value > 4 } }
 			}
 		}
 		localization_key = CrisisManagerMenu.MidgamePower0
 	}
 }
-
-
 
 ###########################
 ###  Manual Operations  ###
@@ -450,19 +433,31 @@ defined_text = {
 defined_text = {
 	name = GetEthic_ManualSleeperA
 	text = {
-		trigger = { event_target:CmtTargetManualSleeperA = { is_same_value = event_target:CmtTargetManualSleeper1 } }
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper1
+			event_target:CmtTargetManualSleeperA = { is_same_empire = event_target:CmtTargetManualSleeper1 }
+		}
 		localization_key = CmtIconFanaticMaterialist
 	}
 	text = {
-		trigger = { event_target:CmtTargetManualSleeperA = { is_same_value = event_target:CmtTargetManualSleeper2 } }
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper2
+			event_target:CmtTargetManualSleeperA = { is_same_empire = event_target:CmtTargetManualSleeper2 }
+		}
 		localization_key = CmtIconFanaticSpiritualist
 	}
 	text = {
-		trigger = { event_target:CmtTargetManualSleeperA = { is_same_value = event_target:CmtTargetManualSleeper3 } }
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper3
+			event_target:CmtTargetManualSleeperA = { is_same_empire = event_target:CmtTargetManualSleeper3 }
+		}
 		localization_key = CmtIconFanaticXenophile
 	}
 	text = {
-		trigger = { event_target:CmtTargetManualSleeperA = { is_same_value = event_target:CmtTargetManualSleeper4 } }
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper4
+			event_target:CmtTargetManualSleeperA = { is_same_empire = event_target:CmtTargetManualSleeper4 }
+		}
 		localization_key = CmtIconFanaticXenophobe
 	}
 }
@@ -470,19 +465,31 @@ defined_text = {
 defined_text = {
 	name = GetEthic_ManualSleeperB
 	text = {
-		trigger = { event_target:CmtTargetManualSleeperB = { is_same_value = event_target:CmtTargetManualSleeper1 } }
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper1
+			event_target:CmtTargetManualSleeperB = { is_same_empire = event_target:CmtTargetManualSleeper1 }
+		}
 		localization_key = CmtIconFanaticMaterialist
 	}
 	text = {
-		trigger = { event_target:CmtTargetManualSleeperB = { is_same_value = event_target:CmtTargetManualSleeper2 } }
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper2
+			event_target:CmtTargetManualSleeperB = { is_same_empire = event_target:CmtTargetManualSleeper2 }
+		}
 		localization_key = CmtIconFanaticSpiritualist
 	}
 	text = {
-		trigger = { event_target:CmtTargetManualSleeperB = { is_same_value = event_target:CmtTargetManualSleeper3 } }
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper3
+			event_target:CmtTargetManualSleeperB = { is_same_empire = event_target:CmtTargetManualSleeper3 }
+		}
 		localization_key = CmtIconFanaticXenophile
 	}
 	text = {
-		trigger = { event_target:CmtTargetManualSleeperB = { is_same_value = event_target:CmtTargetManualSleeper4 } }
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper4
+			event_target:CmtTargetManualSleeperB = { is_same_empire = event_target:CmtTargetManualSleeper4 }
+		}
 		localization_key = CmtIconFanaticXenophobe
 	}
 }
@@ -493,11 +500,9 @@ defined_text = {
 	text = {
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarManualTemp value = 1 }
-					check_variable = { which = CmtVarManualTemp value = 2 }
-					check_variable = { which = CmtVarManualTemp value = 3 }
-					check_variable = { which = CmtVarManualTemp value = 4 }
+				OR = {
+					check_variable = { which = CmtVarManualTemp value < 1 }
+					check_variable = { which = CmtVarManualTemp value > 4 }
 				}
 			}
 		}
@@ -520,8 +525,6 @@ defined_text = {
 		localization_key = CrisisManagerMenu.7140c4.name
 	}
 }
-
-
 
 ######################
 ###  For Template  ###
@@ -629,12 +632,3 @@ defined_text = {
 		localization_key = CmtTemplateError
 	}
 }
-
-
-
-
-
-
-
-
-

@@ -335,7 +335,7 @@ country_event = {
 	}
 	option = {
 		name = CrisisManagerMenu.4550.VC.name
-		custom_tooltip = ""
+		# custom_tooltip =
 		trigger = {
 			has_global_flag = CmtFlagSleeperEdition
 			event_target:CmtGlobalVar = {

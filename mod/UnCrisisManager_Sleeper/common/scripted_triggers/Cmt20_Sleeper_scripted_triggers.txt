@@ -9,16 +9,15 @@
 ##########################################################
 ##########################################################
 
-
 ###################
 ###  Awakening  ###
 ###################
-
 
 ### Scope: this = country (Sleeper)
 CmtTriggerIsAwakenableSleeper = {
 	CmtTriggerIsOrganicSleeper = yes
 	is_at_war = no
+	CmtTriggerCheckAncientRivalFleetPower = yes
 	OR = {
 		AND = {
 			has_ethic = ethic_fanatic_materialist
@@ -49,18 +48,31 @@ CmtTriggerIsAwakenableSleeper = {
 
 ### Scope: this = country (Sleeper)
 CmtTriggerCandidateAncientRival = {
-	CmtTriggerIsOrganicSleeper = yes
 	is_at_war = no
 	NAND = {
 		exists = event_target:CmtTargetFirstSleeper
-		is_same_value = event_target:CmtTargetFirstSleeper
+		is_same_empire = event_target:CmtTargetFirstSleeper
 	}
 	OR = {
 		AND = {
 			exists = event_target:CmtTargetManualSleeperB
-			is_same_value = event_target:CmtTargetManualSleeperB
+			is_same_empire = event_target:CmtTargetManualSleeperB
 		}
-		CmtTriggerCheckAncientRivalFleetPower = yes
+		CmtTriggerIsOrganicSleeper = yes
+		# AND = { # Custodian
+		# 	is_country_type = fallen_empire
+		# 	count_country = {
+		# 		count = 1
+		# 		limit = { is_country_type = fallen_empire }
+		# 	}
+		# }
+	}
+	OR = {
+		AND = {
+			exists = event_target:CmtTargetManualSleeperB
+			is_same_empire = event_target:CmtTargetManualSleeperB
+		}
+		CmtTriggerCheckAncientRivalFleetPower = yes # fleet_power > 60000
 	}
 	OR = {
 		AND = {
@@ -123,7 +135,6 @@ CmtTriggerCandidateAncientRival = {
 		}
 	}
 }
-
 
 ### Scope: this = country (Sleeper)
 CmtTriggerCheckSleeperFleetPower = {
@@ -223,7 +234,7 @@ CmtTriggerCheckYoungsFleetPower = {
 		OR = {
 			AND = {
 				check_variable = { which = CmtVarSleeperFleetPowerYoung value = 0 }
-				any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > 50000 }
+				any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > 50000 }
 			}
 			AND = {
 				check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T1 }
@@ -233,57 +244,55 @@ CmtTriggerCheckYoungsFleetPower = {
 				NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value = 0 } }
 				NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T1 } }
 				check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T2 }
-				any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V1 }
+				any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V1 }
 			}
 			AND = {
 				NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T2 } }
 				check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T3 }
-				any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V2 }
+				any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V2 }
 			}
 			AND = {
 				NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T3 } }
 				check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T4 }
-				any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V3 }
+				any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V3 }
 			}
 			AND = {
 				NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T4 } }
 				check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T5 }
-				any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V4 }
+				any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V4 }
 			}
 			AND = {
 				NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T5 } }
 				check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T6 }
-				any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V5 }
+				any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V5 }
 			}
 			AND = {
 				NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T6 } }
 				check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T7 }
-				any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V6 }
+				any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V6 }
 			}
 			AND = {
 				NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T7 } }
 				check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T8 }
-				any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V7 }
+				any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V7 }
 			}
 			AND = {
 				NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T8 } }
 				check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T9 }
-				any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V8 }
+				any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V8 }
 			}
 			AND = {
 				NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T9 } }
 				check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_TA }
-				any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V9 }
+				any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V9 }
 			}
 			AND = {
 				NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_TA } }
-				any_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstTUnq_ConstSleeperFleetPowerYoung1 }
+				any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstTUnq_ConstSleeperFleetPowerYoung1 }
 			}
 		}
 	}
 }
-
-
 
 #######################
 ###  War in Heaven  ###
@@ -315,7 +324,7 @@ CmtTriggerSleeperOpposingEchos = {
 			event_target:CmtTargetFirstSleeper = { has_ethic = ethic_fanatic_pacifist }
 		}
 		AND = {
-			has_ethic = ethic_fanatic_pacifist 
+			has_ethic = ethic_fanatic_pacifist
 			event_target:CmtTargetFirstSleeper = { has_ethic = ethic_fanatic_militarist }
 		}
 	}
@@ -328,8 +337,6 @@ CmtTriggerIsHeavenSleeper = {
 		has_country_flag = sleepers_awake_ancient_rival
 	}
 }
-
-
 
 ### Modifiers for NPC Joining to League
 CmtTriggerHeavenLeagueNpcWeight5 = {
@@ -350,7 +357,7 @@ CmtTriggerHeavenLeagueNpcWeight4 = {
 		has_ai_personality = migrating_flock
 		has_ethic = ethic_xenophile
 	}
-	NOT = { CmtTriggerHeavenLeagueNpcWeight5 = yes }
+	CmtTriggerHeavenLeagueNpcWeight5 = no
 }
 
 CmtTriggerHeavenLeagueNpcWeight2 = {
@@ -362,7 +369,7 @@ CmtTriggerHeavenLeagueNpcWeight2 = {
 		has_ai_personality = assimilators
 		has_ethic = ethic_xenophobe
 	}
-	NOT = { CmtTriggerHeavenLeagueNpcWeight1 = yes }
+	CmtTriggerHeavenLeagueNpcWeight1 = no
 }
 
 CmtTriggerHeavenLeagueNpcWeight1 = {
@@ -376,6 +383,3 @@ CmtTriggerHeavenLeagueNpcWeight1 = {
 		has_ethic = ethic_fanatic_xenophobe
 	}
 }
-
-
-

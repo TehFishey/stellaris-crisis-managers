@@ -630,7 +630,7 @@ country_event = {
 	}
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-
+	trigger = { has_global_flag = CmtFlagEndGameEdition }
 	after = {
 		hidden_effect = {
 			CmtEffectFriendlyCrisis = yes
@@ -676,4 +676,3 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 }
-

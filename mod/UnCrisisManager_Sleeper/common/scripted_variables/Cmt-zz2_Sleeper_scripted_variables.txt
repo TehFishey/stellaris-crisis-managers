@@ -9,7 +9,6 @@
 ########################################################
 ########################################################
 
-
 ###########################################
 ###  Interval for Awakening of Sleeper  ###
 ###########################################
@@ -38,8 +37,6 @@
 @CmtConstSleeperInterval_T3 =  67.5
 @CmtConstSleeperInterval_T4 =  87.5
 @CmtConstSleeperInterval_T5 = 500
-
-
 
 ###########################################
 ###  Sleeper to Awakiening at Earliest  ###
@@ -72,8 +69,6 @@
 @CmtConstSleeperEarliestEgsy_T9 =  87.5
 @CmtConstSleeperEarliestEgsy_TA = 500
 
-
-
 #####################################################
 ###  Required Fleet Power of Young for Awakening  ###
 #####################################################
@@ -81,7 +76,7 @@
 #	Change also localisation file and comment in template event file.
 #
 
-### Value	
+### Value
 # How much fleet power can younger races have before fallen empires may awaken?
 
 @CmtConstSleeperFleetPowerYoung_V0 =     -1		##Anytime
@@ -91,13 +86,13 @@
 @CmtConstSleeperFleetPowerYoung_V4 =  50000		##~*0.7
 @CmtConstSleeperFleetPowerYoung_V5 =  70000 	##(vanilla)
 @CmtConstSleeperFleetPowerYoung_V6 =  90000		##~*1.3
-@CmtConstSleeperFleetPowerYoung_V7 = 140000		##*2		
+@CmtConstSleeperFleetPowerYoung_V7 = 140000		##*2
 @CmtConstSleeperFleetPowerYoung_V8 = 210000		##*3
-@CmtConstSleeperFleetPowerYoung_V9 = 350000		##*5	
+@CmtConstSleeperFleetPowerYoung_V9 = 350000		##*5
 
-### Weighted Values	
+### Weighted Values
 # How much fleet power can younger races have before awakening increases?
-	
+
 @CmtConstSleeperFleetPowerYoung_W0 =   -1000	## Weights are adjusted to prevent scaling issues
 @CmtConstSleeperFleetPowerYoung_W1 =   32000	## v*16/7
 @CmtConstSleeperFleetPowerYoung_W2 =   53000	## v*15/7
@@ -128,18 +123,17 @@
 ##########################################################
 ### NYI
 
-
-### Value	
+### Value
 # How much fleet power can younger races have before fallen empires may awaken?
 
-@CmtConstSleeperFleetPowerFed_V0 =     -1 
+@CmtConstSleeperFleetPowerFed_V0 =     -1
 @CmtConstSleeperFleetPowerFed_V1 =  11000
 @CmtConstSleeperFleetPowerFed_V2 =  25000
 @CmtConstSleeperFleetPowerFed_V3 =  35000
 @CmtConstSleeperFleetPowerFed_V4 =  50000
 @CmtConstSleeperFleetPowerFed_V5 =  70000
 @CmtConstSleeperFleetPowerFed_V6 =  90000  #Vanilla
-@CmtConstSleeperFleetPowerFed_V7 = 140000	
+@CmtConstSleeperFleetPowerFed_V7 = 140000
 @CmtConstSleeperFleetPowerFed_V8 = 210000
 @CmtConstSleeperFleetPowerFed_V9 = 350000
 
@@ -174,9 +168,9 @@
 @CmtConstSleeperFleetPowerOwn_V4 =  45000   ##~*0.75
 @CmtConstSleeperFleetPowerOwn_V5 =  60000   ##(vanilla)
 @CmtConstSleeperFleetPowerOwn_V6 =  75000   ##~*1.25
-@CmtConstSleeperFleetPowerOwn_V7 = 120000   ##*2		
+@CmtConstSleeperFleetPowerOwn_V7 = 120000   ##*2
 @CmtConstSleeperFleetPowerOwn_V8 = 180000   ##*3
-@CmtConstSleeperFleetPowerOwn_V9 = 300000   ##*5	
+@CmtConstSleeperFleetPowerOwn_V9 = 300000   ##*5
 
 ### Threshold
 # Checked internally against user-selected variables. Should be any number between declared Values.
@@ -192,8 +186,6 @@
 @CmtConstSleeperFleetPowerOwn_T9 =  200000  #Between _V8 and _V9
 @CmtConstSleeperFleetPowerOwn_TA = 5000000  #Above _V9
 
-
-
 ##################################
 ###  Prelude to War in Heaven  ###
 ##################################
@@ -208,7 +200,6 @@
 @CmtConstHeavenPreludeSpeed_1g =   540		## Time Limit of Joining to Non-aligned League. (war_in_heaven.13)
 @CmtConstHeavenPreludeSpeed_1h =  3.00		## Modifier of MTTH for Declaring War. (war_in_heaven.16)
 
-
 ### Middle (Default)
 @CmtConstHeavenPreludeSpeed_2a =  3650		## Max days from 1st awaking to 2nd one. (CmtEffectSetAnciantRival)
 #CmtConstHeavenPreludeSpeed_2b =   N/A		## Modifier of MTTH from 1st awaking to 2nd one. (war_in_heaven.1)
@@ -218,7 +209,6 @@
 #CmtConstHeavenPreludeSpeed_2f =   N/A		## Modifier of MTTH for Seeking Learder for Non-aligned League. (war_in_heaven.12)
 @CmtConstHeavenPreludeSpeed_2g =   180		## Time Limit of Joining to Non-aligned League. (war_in_heaven.13)
 #CmtConstHeavenPreludeSpeed_2h =   N/A		## Modifier of MTTH for Declaring War. (war_in_heaven.16)
-
 
 ### Fast (Default x 3)
 @CmtConstHeavenPreludeSpeed_3a =  1200		## Max days from 1st awaking to 2nd one. (CmtEffectSetAnciantRival)
@@ -230,8 +220,7 @@
 @CmtConstHeavenPreludeSpeed_3g =    60		## Time Limit of Joining to Non-aligned League. (war_in_heaven.13)
 @CmtConstHeavenPreludeSpeed_3h =  0.34		## Modifier of MTTH for Declaring War. (war_in_heaven.16)
 
-
-### Super-Expless, 1st Limit Over
+### Super-Express, 1st Limit Over
 @CmtConstHeavenPreludeSpeed_4a =   360		## Max days from 1st awaking to 2nd one. (CmtEffectSetAnciantRival)
 @CmtConstHeavenPreludeSpeed_4b =  0.01		## Modifier of MTTH from 1st awaking to 2nd one. (war_in_heaven.1)
 @CmtConstHeavenPreludeSpeed_4c =     1		## Min days from 2nd awaking to declare war. (war_in_heaven.1)
@@ -240,7 +229,6 @@
 @CmtConstHeavenPreludeSpeed_4f =  0.10		## Modifier of MTTH for Seeking Learder for Non-aligned League. (war_in_heaven.12)
 @CmtConstHeavenPreludeSpeed_4g =    30		## Time Limit of Joining to Non-aligned League. (war_in_heaven.13)
 @CmtConstHeavenPreludeSpeed_4h =  0.01		## Modifier of MTTH for Declaring War. (war_in_heaven.16)
-
 
 #######################################
 ###  Subjecting to Precursor (NPC)  ###
@@ -254,8 +242,6 @@
 #CmtConstHeavenNpcSubject_3a =   N/A		## Subjecting in Middle Probability (Default)
 @CmtConstHeavenNpcSubject_4a =  0.34		## Subjecting in High Probability
 #CmtConstHeavenNpcSubject_5a =   N/A		## Surly Subjecting
-
-
 
 ######################################
 ###  League of Non-Aligned Powers  ###

@@ -15,21 +15,19 @@ country_event = {
 	title = CrisisManagerMenu.2100.name
 	desc = CrisisManagerMenu.2100.desc
 	picture = GFX_evt_CmtMenuA
-	
+
 	is_triggered_only = yes
 	trigger = { is_ai = no }
-	
+
 	after = {
 		hidden_effect = { country_event = { id = CrisisManagerMenu.0100 } }
 	}
-	
+
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
 	}
-	
-	
-	
+
 	## Separator
 	option = {
 		name = CmtTextSeparator.name
@@ -45,16 +43,14 @@ country_event = {
 		}
 		allow = { hidden_trigger = { always = no } }
 	}
-	
-	
-	
+
 	option = {
 		name = CrisisManagerTemplate_T101.name
 		custom_tooltip = CrisisManagerTemplate_T101.tooltip
 		trigger = {
 			CmtTriggerTemplateActivated_T101 = yes
 			OR = {
-				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				CmtTriggerAnyManagedEventTriggered = no
 				has_global_flag = CmtFlagDebugMode
 			}
 		}
@@ -69,7 +65,7 @@ country_event = {
 		trigger = {
 			CmtTriggerTemplateActivated_T102 = yes
 			OR = {
-				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				CmtTriggerAnyManagedEventTriggered = no
 				has_global_flag = CmtFlagDebugMode
 			}
 		}
@@ -84,7 +80,7 @@ country_event = {
 		trigger = {
 			CmtTriggerTemplateActivated_T103 = yes
 			OR = {
-				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				CmtTriggerAnyManagedEventTriggered = no
 				has_global_flag = CmtFlagDebugMode
 			}
 		}
@@ -99,7 +95,7 @@ country_event = {
 		trigger = {
 			CmtTriggerTemplateActivated_T104 = yes
 			OR = {
-				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				CmtTriggerAnyManagedEventTriggered = no
 				has_global_flag = CmtFlagDebugMode
 			}
 		}
@@ -108,9 +104,7 @@ country_event = {
 			country_event = { id = CrisisManagerMenu.2104 }
 		}
 	}
-	
-	
-	
+
 	## Separator
 	option = {
 		name = CmtTextSeparator.name
@@ -126,16 +120,14 @@ country_event = {
 		}
 		allow = { hidden_trigger = { always = no } }
 	}
-	
-	
-	
+
 	option = {
 		name = CrisisManagerTemplate_T105.name
 		custom_tooltip = CrisisManagerTemplate_T105.tooltip
 		trigger = {
 			CmtTriggerTemplateActivated_T105 = yes
 			OR = {
-				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				CmtTriggerAnyManagedEventTriggered = no
 				has_global_flag = CmtFlagDebugMode
 			}
 		}
@@ -150,7 +142,7 @@ country_event = {
 		trigger = {
 			CmtTriggerTemplateActivated_T106 = yes
 			OR = {
-				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				CmtTriggerAnyManagedEventTriggered = no
 				has_global_flag = CmtFlagDebugMode
 			}
 		}
@@ -165,7 +157,7 @@ country_event = {
 		trigger = {
 			CmtTriggerTemplateActivated_T107 = yes
 			OR = {
-				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				CmtTriggerAnyManagedEventTriggered = no
 				has_global_flag = CmtFlagDebugMode
 			}
 		}
@@ -180,7 +172,7 @@ country_event = {
 		trigger = {
 			CmtTriggerTemplateActivated_T108 = yes
 			OR = {
-				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				CmtTriggerAnyManagedEventTriggered = no
 				has_global_flag = CmtFlagDebugMode
 			}
 		}
@@ -189,9 +181,7 @@ country_event = {
 			country_event = { id = CrisisManagerMenu.2108 }
 		}
 	}
-	
-	
-	
+
 	## Separator
 	option = {
 		name = CmtTextSeparator.name
@@ -207,16 +197,14 @@ country_event = {
 		}
 		allow = { hidden_trigger = { always = no } }
 	}
-	
-	
-	
+
 	option = {
 		name = CrisisManagerTemplate_T109.name
 		custom_tooltip = CrisisManagerTemplate_T109.tooltip
 		trigger = {
 			CmtTriggerTemplateActivated_T109 = yes
 			OR = {
-				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				CmtTriggerAnyManagedEventTriggered = no
 				has_global_flag = CmtFlagDebugMode
 			}
 		}
@@ -231,7 +219,7 @@ country_event = {
 		trigger = {
 			CmtTriggerTemplateActivated_T110 = yes
 			OR = {
-				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				CmtTriggerAnyManagedEventTriggered = no
 				has_global_flag = CmtFlagDebugMode
 			}
 		}
@@ -246,7 +234,7 @@ country_event = {
 		trigger = {
 			CmtTriggerTemplateActivated_T111 = yes
 			OR = {
-				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				CmtTriggerAnyManagedEventTriggered = no
 				has_global_flag = CmtFlagDebugMode
 			}
 		}
@@ -261,7 +249,7 @@ country_event = {
 		trigger = {
 			CmtTriggerTemplateActivated_T112 = yes
 			OR = {
-				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				CmtTriggerAnyManagedEventTriggered = no
 				has_global_flag = CmtFlagDebugMode
 			}
 		}
@@ -270,9 +258,7 @@ country_event = {
 			country_event = { id = CrisisManagerMenu.2112 }
 		}
 	}
-	
-	
-	
+
 	## Separator
 	option = {
 		name = CmtTextSeparator.name
@@ -288,16 +274,14 @@ country_event = {
 		}
 		allow = { hidden_trigger = { always = no } }
 	}
-	
-	
-	
+
 	option = {
 		name = CrisisManagerTemplate_T113.name
 		custom_tooltip = CrisisManagerTemplate_T113.tooltip
 		trigger = {
 			CmtTriggerTemplateActivated_T113 = yes
 			OR = {
-				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				CmtTriggerAnyManagedEventTriggered = no
 				has_global_flag = CmtFlagDebugMode
 			}
 		}
@@ -312,7 +296,7 @@ country_event = {
 		trigger = {
 			CmtTriggerTemplateActivated_T114 = yes
 			OR = {
-				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				CmtTriggerAnyManagedEventTriggered = no
 				has_global_flag = CmtFlagDebugMode
 			}
 		}
@@ -327,7 +311,7 @@ country_event = {
 		trigger = {
 			CmtTriggerTemplateActivated_T115 = yes
 			OR = {
-				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				CmtTriggerAnyManagedEventTriggered = no
 				has_global_flag = CmtFlagDebugMode
 			}
 		}
@@ -342,7 +326,7 @@ country_event = {
 		trigger = {
 			CmtTriggerTemplateActivated_T116 = yes
 			OR = {
-				NOT = { CmtTriggerAnyManagedEventTriggered = yes }
+				CmtTriggerAnyManagedEventTriggered = no
 				has_global_flag = CmtFlagDebugMode
 			}
 		}

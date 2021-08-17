@@ -1546,8 +1546,10 @@ country_event = {
 	trigger = {
 		CmtTriggerIsPlayableEmpire = yes
 		has_global_flag = cybrex_resurface
-		NOT = { has_global_flag = cybrex_destroyed }
-		NOT = { has_country_flag = cybrex_donation }
+		NOR = {
+			has_global_flag = cybrex_destroyed
+			has_country_flag = cybrex_donation
+		}
 		check_variable = { which = contingency_fleet_kills value > 100 }
 		exists = event_target:cybrex
 		event_target:cybrex = {

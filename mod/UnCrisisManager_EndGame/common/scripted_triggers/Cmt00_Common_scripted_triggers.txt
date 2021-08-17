@@ -61,12 +61,17 @@ CmtTriggerIsPlayableEmpire = {
 	OR = {		## Written in also Cmt40 and Cmt50
 		is_country_type = default
 		is_zofe_country = yes # is_zofe_compatible
+		is_ai = no
 	}
 }
 
 CmtTriggerIsEmpire = {		## Written in also Cmt50
 	OR = {
-		CmtTriggerIsPlayableEmpire = yes
+		# CmtTriggerIsPlayableEmpire = yes
+		# CmtTriggerIsFallenEmpire = yes
+		is_country_type = default
+		is_ai = no
+		is_zofe_country = yes # is_zofe_compatible
 		is_country_type = fallen_empire
 		is_country_type = awakened_fallen_empire
 	}

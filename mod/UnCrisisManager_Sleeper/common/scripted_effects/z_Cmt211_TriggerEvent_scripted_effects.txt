@@ -10,7 +10,6 @@
 ########################################################
 ########################################################
 
-
 ####################################
 ###  Sleeper Standard Awakening  ###
 ####################################
@@ -52,7 +51,7 @@ CmtEffectSetAnciantRival = {
 		set_timed_country_flag = { flag = timed_ancient_rival days = @CmtConstHeavenPreludeSpeed_1a }
 		set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_1a }
 		root = { set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_1a } }
-		every_country = {
+		every_playable_country = {
 			limit = { CmtTriggerIsPlayableEmpire = yes }
 			set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_1a }
 		}
@@ -61,7 +60,7 @@ CmtEffectSetAnciantRival = {
 		set_timed_country_flag = { flag = timed_ancient_rival days = @CmtConstHeavenPreludeSpeed_3a }
 		set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_3a }
 		root = { set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_3a } }
-		every_country = {
+		every_playable_country = {
 			limit = { CmtTriggerIsPlayableEmpire = yes }
 			set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_3a }
 		}
@@ -70,7 +69,7 @@ CmtEffectSetAnciantRival = {
 		set_timed_country_flag = { flag = timed_ancient_rival days = @CmtConstHeavenPreludeSpeed_4a }
 		set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_4a }
 		root = { set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_4a } }
-		every_country = {
+		every_playable_country = {
 			limit = { CmtTriggerIsPlayableEmpire = yes }
 			set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_4a }
 		}
@@ -78,14 +77,12 @@ CmtEffectSetAnciantRival = {
 		set_timed_country_flag = { flag = timed_ancient_rival days = @CmtConstHeavenPreludeSpeed_2a }
 		set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_2a }
 		root = { set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_2a } }
-		every_country = {
+		every_playable_country = {
 			limit = { CmtTriggerIsPlayableEmpire = yes }
 			set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_2a }
 		}
 	}
 }
-
-
 
 #######################
 ###  War in Heaven  ###
@@ -100,7 +97,7 @@ CmtEffectSelectAncientRival = {
 				event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenProbability value = 1 } }
 			}
 			random_list = {
-				40 = {
+				40 = { # War in Heaven with Fallen Empire of opposing ethos
 					modifier = {
 						factor = 0
 						OR = {
@@ -131,7 +128,7 @@ CmtEffectSelectAncientRival = {
 					### For Debugging Only
 					event_target:CmtGlobalVar = { change_variable = { which = GmtVarDebugCountAncientRivalOpposite value = 1 } }
 				}
-				20 = {
+				20 = { # War in Heaven with Fallen Empire of different ethos
 					modifier = {
 						factor = 0
 						OR = {
@@ -154,7 +151,7 @@ CmtEffectSelectAncientRival = {
 				}
 			}
 		}
-		40 = {
+		40 = { # No War in Heaven
 			modifier = {
 				factor = 3
 				event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenProbability value = 2 } }
@@ -167,6 +164,7 @@ CmtEffectSelectAncientRival = {
 				factor = 0
 				event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenProbability value = 5 } }
 			}
+			set_global_flag = no_war_in_heaven
 			### Do nothing, For Debugging Only
 			event_target:CmtGlobalVar = { change_variable = { which = GmtVarDebugCountAncientRivalNon value = 1 } }
 		}
@@ -174,14 +172,18 @@ CmtEffectSelectAncientRival = {
 }
 
 ### Scope: this = country
-CmtEffectOrderLeagueLeader = {
-	set_global_flag = war_in_heaven_seeking_league_leader
-	set_global_flag = stop_further_leader_seek
-	country_event = { id = war_in_heaven.13 }
-}
+# CmtEffectOrderLeagueLeader = {
+# 	set_global_flag = war_in_heaven_seeking_league_leader
+# 	set_global_flag = stop_further_leader_seek
+# 	country_event = { id = war_in_heaven.13 }
+# }
 
 ### Scope: this = attacker country, prev = defender country
 CmtEffectDeclareWarInHeaven = {
+	set_timed_global_flag = {
+		flag = war_in_heaven_recently_started
+		days = 5400
+	}
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenExhaustion value = 1 } } }
 		declare_war = {
@@ -218,5 +220,3 @@ CmtEffectDeclareWarInHeaven = {
 		}
 	}
 }
-
-

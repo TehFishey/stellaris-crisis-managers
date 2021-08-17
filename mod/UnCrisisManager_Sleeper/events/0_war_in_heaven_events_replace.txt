@@ -31,28 +31,25 @@ namespace = war_in_heaven
 @CmtConstHeavenLeagueLeaderFleetPower_TE =  500000
 @CmtConstHeavenLeagueLeaderFleetPower_TF = 1000000		## 1 M
 
-
-
 ########################
 ###  Trigger Events  ###
 ########################
 
-### Ancient Rival Awakes
+### Ancient Rival awakens
 country_event = {
 	id = war_in_heaven.1
 	hide_window = yes
-	
+
 	trigger = {
-		host_has_dlc = "Leviathans Story Pack"
+		has_leviathans = yes
 		has_country_flag = sleepers_awake_ancient_rival
 		NOT = { has_global_flag = sleepers_awake_rival_waking }		## This Event Happens
 		has_global_flag = sleepers_awake_happened
-		
 		CmtTriggerCandidateAncientRival = yes
 		exists = event_target:CmtTargetFirstSleeper
 		event_target:CmtTargetFirstSleeper = { is_country_type = awakened_fallen_empire }
 	}
-	
+
 	mean_time_to_happen = {
 		months = 60
 		modifier = {
@@ -72,7 +69,7 @@ country_event = {
 			event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 3 } }
 		}
 	}
-	
+
 	immediate = {
 		### Basic Flag Control
 		set_global_flag = sleepers_awake_rival_waking
@@ -82,7 +79,7 @@ country_event = {
 			set_timed_country_flag = { flag = war_in_heaven_timer_2 days = @CmtConstHeavenPreludeSpeed_1d }
 			set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_1d }
 			event_target:CmtTargetFirstSleeper = { set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_1d } }
-			every_country = {
+			every_playable_country = {
 				limit = { CmtTriggerIsPlayableEmpire = yes }
 				set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_1d }
 			}
@@ -92,7 +89,7 @@ country_event = {
 			set_timed_country_flag = { flag = war_in_heaven_timer_2 days = @CmtConstHeavenPreludeSpeed_3d }
 			set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_3d }
 			event_target:CmtTargetFirstSleeper = { set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_3d } }
-			every_country = {
+			every_playable_country = {
 				limit = { CmtTriggerIsPlayableEmpire = yes }
 				set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_3d }
 			}
@@ -102,7 +99,7 @@ country_event = {
 			set_timed_country_flag = { flag = war_in_heaven_timer_2 days = @CmtConstHeavenPreludeSpeed_4d }
 			set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_4d }
 			event_target:CmtTargetFirstSleeper = { set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_4d } }
-			every_country = {
+			every_playable_country = {
 				limit = { CmtTriggerIsPlayableEmpire = yes }
 				set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_4d }
 			}
@@ -111,16 +108,16 @@ country_event = {
 			set_timed_country_flag = { flag = war_in_heaven_timer_2 days = @CmtConstHeavenPreludeSpeed_2d }
 			set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_2d }
 			event_target:CmtTargetFirstSleeper = { set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_2d } }
-			every_country = {
+			every_playable_country = {
 				limit = { CmtTriggerIsPlayableEmpire = yes }
 				set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_2d }
 			}
 		}
 
 		# Save vanilla global event targets for compatibility
-		event_target:CmtTargetFirstSleeper = { save_global_event_target_as = FirstSleeper } 
+		event_target:CmtTargetFirstSleeper = { save_global_event_target_as = FirstSleeper }
 		save_global_event_target_as = SecondSleeper
-		
+
 		### Goverment Changes
 		set_country_type = awakened_fallen_empire
 		change_government = {
@@ -130,12 +127,12 @@ country_event = {
 			}
 		}
 		add_awakened_fallen_empire_resources = yes
-		
+
 		### Initial Reinforcement
 		if = {
 			limit = {
 				event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenIndomitableRival value = 3 } }
-				NOT = { CmtTriggerCheckSleeperFleetPower = yes }
+				CmtTriggerCheckSleeperFleetPower = no
 			}
 			country_event = { id = fallen_empires.13 }
 		}
@@ -144,7 +141,7 @@ country_event = {
 			limit = { CmtTriggerCheckYoungsFleetPower = yes }
 			country_event = { id = fallen_empires.13 }
 		}
-		
+
 		### Establish communications / Notification
 		every_country = {
 			limit = { CmtTriggerIsEmpire = yes }
@@ -160,26 +157,25 @@ country_event = {
 	}
 }
 
-### Delear War in Heaven
+### Declare The War in Heaven
 country_event = {
 	id = war_in_heaven.3
 	hide_window = yes
-	
+
 	trigger = {
-		host_has_dlc = "Leviathans Story Pack"
-		has_country_flag = sleepers_awake_ancient_rival		## We're Rival
-		has_global_flag = sleepers_awake_rival_waking		## Previous Event Happens
+		has_leviathans = yes
+		has_global_flag = sleepers_awake_rival_waking			## Previous Event Happens
 		NOT = { has_global_flag = war_in_heaven_started }		## This Event Happens
 		OR = {
-			NOT = { has_country_flag = war_in_heaven_timer }		## Moratorium Term
+			NOT = { has_country_flag = war_in_heaven_timer }	## Moratorium Term
 			has_global_flag = war_in_heaven_debug
 			event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 4 } }
 		}
-		
 		is_country_type = awakened_fallen_empire
+		has_country_flag = sleepers_awake_ancient_rival		## We're Rival
 		is_at_war = no
 		CmtTriggerCheckAncientRivalFleetPower = yes
-		
+
 		exists = event_target:CmtTargetFirstSleeper
 		event_target:CmtTargetFirstSleeper = {
 			has_country_flag = sleepers_awake_first_sleeper
@@ -188,7 +184,7 @@ country_event = {
 			CmtTriggerCheckAncientRivalFleetPower = yes
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 12
 		modifier = {
@@ -213,12 +209,12 @@ country_event = {
 		### Basic Flag Control
 		set_global_flag = war_in_heaven_started
 		set_global_flag = war_in_heaven_ongoing
-		
+
 		### Effect for 2nd Sleeper
 		if = {
 			limit = {
 				event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenIndomitableRival value = 3 } }
-				NOT = { CmtTriggerCheckSleeperFleetPower = yes }
+				CmtTriggerCheckSleeperFleetPower = no
 			}
 			country_event = { id = fallen_empires.13 }
 		}
@@ -228,15 +224,15 @@ country_event = {
 			country_event = { id = fallen_empires.13 }
 		}
 		remove_country_flag = ai_no_wars
-		
+
 		### Effect for 1st Sleeper
 		event_target:CmtTargetFirstSleeper = {
-			save_event_target_as = FirstSleeper
+			# save_event_target_as = FirstSleeper
 			save_global_event_target_as = FirstSleeper
 			if = {
 				limit = {
 					event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenIndomitableRival value = 3 } }
-					NOT = { CmtTriggerCheckSleeperFleetPower = yes }
+					CmtTriggerCheckSleeperFleetPower = no
 				}
 				country_event = { id = fallen_empires.13 }
 			}
@@ -247,14 +243,32 @@ country_event = {
 			}
 			remove_country_flag = ai_no_wars
 		}
-		
-		### Declare War, Require to Subjects
+
+		### Declare War, require to subjects
 		event_target:FirstSleeper = { root = { CmtEffectDeclareWarInHeaven = yes } }
-		every_country = {
-			limit = { CmtTriggerIsPlayableEmpire = yes }
-			country_event = { id = war_in_heaven.4 }
+		if = {
+			limit = { has_galactic_emperor = no }
+			every_playable_country = {
+				limit = { CmtTriggerIsPlayableEmpire = yes }
+				country_event = { id = war_in_heaven.4 }
+			}
 		}
-		
+		else = {
+			every_playable_country = {
+				limit = {
+					CmtTriggerIsPlayableEmpire = yes
+					is_galactic_community_member = yes
+				}
+				country_event = { id = war_in_heaven.7 }
+			}
+			every_playable_country = {
+				limit = {
+					CmtTriggerIsPlayableEmpire = yes
+					is_galactic_community_member = no
+				}
+				country_event = { id = war_in_heaven.4 }
+			}
+		}
 		observer_event = { id = observer.76 }
 	}
 }
@@ -267,15 +281,17 @@ country_event = {
 	picture = GFX_evt_fallen_empire_awakes
 	show_sound = event_alien_signal
 	location = from
-	
+
 	is_triggered_only = yes
 
 	option = {
 		name = war_in_heaven.4.a
 		trigger = {
 			CmtTriggerIsPlayableEmpire = yes
-			NOT = { CmtTriggerIsLostEmpire = yes }
+			has_been_declared_crisis = no
+			is_zofe_fe = no
 			is_subject = no
+			is_galactic_emperor = no
 			NOT = {
 				any_country = {
 					CmtTriggerIsHeavenSleeper = yes
@@ -374,24 +390,23 @@ country_event = {
 		}
 		join_war = event_target:FirstSleeper
 		if = {
-			limit = { CmtTrigggerIsAscendedEmpire = yes }		## For ZoFE
+			limit = { is_zofe_ae = yes }		## For ZoFE
 			every_subject = {
 				limit = { CmtTriggerIsPlayableEmpire = yes }
 				join_war = root
-		}
-		} else_if = {
-			limit = { event_target:FirstSleeper = { has_ethic = ethic_fanatic_xenophobe } }
-			set_subject_of = { who = event_target:FirstSleeper subject_type = thrall }
-		} else_if = {
-			limit = { event_target:FirstSleeper = { has_ethic = ethic_fanatic_xenophile } }
-			set_subject_of = { who = event_target:FirstSleeper subject_type = signatory }
-		} else_if = {
-			limit = { event_target:FirstSleeper = { has_ethic = ethic_fanatic_spiritualist } }
-			set_subject_of = { who = event_target:FirstSleeper subject_type = dominion }
-		} else_if = {
-			limit = { event_target:FirstSleeper = { has_ethic = ethic_fanatic_materialist } }
-			set_subject_of = { who = event_target:FirstSleeper subject_type = satellite }
 			}
+		} else = {
+			event_target:FirstSleeper = {
+				switch = {
+					trigger = has_ethic
+					ethic_fanatic_xenophobe = { prev = { set_subject_of = { who = prev subject_type = thrall } } }
+					ethic_fanatic_xenophile = { prev = { set_subject_of = { who = prev subject_type = signatory } } }
+					ethic_fanatic_spiritualist = { prev = { set_subject_of = { who = prev subject_type = dominion } } }
+					ethic_fanatic_materialist = { prev = { set_subject_of = { who = prev subject_type = satellite } } }
+				}
+			}
+		}
+
 		hidden_effect = {
 			set_country_flag = war_in_heaven_picked_side
 			add_opinion_modifier = { who = event_target:FirstSleeper modifier = opinion_war_in_heaven_ally }
@@ -404,8 +419,10 @@ country_event = {
 		name = war_in_heaven.4.b
 		trigger = {
 			CmtTriggerIsPlayableEmpire = yes
-			NOT = { CmtTriggerIsLostEmpire = yes }
+			has_been_declared_crisis = no
+			is_zofe_fe = no
 			is_subject = no
+			is_galactic_emperor = no
 			NOT = {
 				any_country = {
 					CmtTriggerIsHeavenSleeper = yes
@@ -504,24 +521,22 @@ country_event = {
 		}
 		join_war = from
 		if = {
-			limit = { CmtTrigggerIsAscendedEmpire = yes }		## For ZoFE
+			limit = { is_zofe_ae = yes }		## For ZoFE
 			every_subject = {
 				limit = { CmtTriggerIsPlayableEmpire = yes }
 				join_war = root
-		}
-		} else_if = {
-			limit = { from = { has_ethic = ethic_fanatic_xenophobe } }
-			set_subject_of = { who = from subject_type = thrall }
-		} else_if = {
-			limit = { from = { has_ethic = ethic_fanatic_xenophile } }
-			set_subject_of = { who = from subject_type = signatory }
-		} else_if = {
-			limit = { from = { has_ethic = ethic_fanatic_spiritualist } }
-			set_subject_of = { who = from subject_type = dominion }
-		} else_if = {
-			limit = { from = { has_ethic = ethic_fanatic_materialist } }
-			set_subject_of = { who = from subject_type = satellite }
 			}
+		} else = {
+			from = {
+				switch = {
+					trigger = has_ethic
+					ethic_fanatic_xenophobe = { prev = { set_subject_of = { who = prev subject_type = thrall } } }
+					ethic_fanatic_xenophile = { prev = { set_subject_of = { who = prev subject_type = signatory } } }
+					ethic_fanatic_spiritualist = { prev = { set_subject_of = { who = prev subject_type = dominion } } }
+					ethic_fanatic_materialist = { prev = { set_subject_of = { who = prev subject_type = satellite } } }
+				}
+			}
+		}
 		hidden_effect = {
 			set_country_flag = war_in_heaven_picked_side
 			add_opinion_modifier = { who = from modifier = opinion_war_in_heaven_ally }
@@ -532,7 +547,10 @@ country_event = {
 	}
 	option = {
 		name = war_in_heaven.4.c
-		trigger = { is_subject = no }
+		trigger = {
+			is_subject = no
+			has_been_declared_crisis = no
+		}
 		ai_chance = {
 			factor = 40
 			modifier = {
@@ -568,7 +586,7 @@ country_event = {
 			}
 			modifier = {
 				factor = 2
-				any_country = {
+				any_playable_country = {
 					is_ai = no
 					is_in_federation_with = root
 				}
@@ -587,32 +605,28 @@ country_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = war_in_heaven.4.c.2
 		trigger = { is_subject = no }
 		ai_chance = { factor = 0 }
 	}
-	
+
 	option = {
 		name = war_in_heaven.4.d
-		trigger = { is_subject = yes }
+		trigger = { is_subject = yes overlord = { is_country_type = awakened_fallen_empire } }
 		if = {
-			limit = { overlord = { is_country_type = awakened_fallen_empire } }
-			if = {
-				limit = { overlord = { is_same_value = event_target:FirstSleeper } }
-				join_war = event_target:FirstSleeper
-			}
-			if = {
-				limit = { overlord = { is_same_value = from } }
-				join_war = from
-			}
+			limit = { overlord = { is_same_empire = event_target:FirstSleeper } }
+			join_war = event_target:FirstSleeper
+		} else_if = {
+			limit = { overlord = { is_same_empire = from } }
+			join_war = from
 		}
 	}
-	
+
 	option = {		## For ZoFE
 		name = war_in_heaven.4.e
-		trigger = { CmtTrigggerIsAscendedEmpire = yes }
+		trigger = { is_zofe_ae = yes }
 		ai_chance = {
 			factor = 100
 			modifier = {
@@ -638,34 +652,32 @@ country_event = {
 		}
 		hidden_effect = {
 			add_opinion_modifier = { who = from modifier = opinion_war_in_heaven_enemy }
-			from = { add_opinion_modifier = { who = root modifier = opinion_war_in_heaven_enemy } }		
+			from = { add_opinion_modifier = { who = root modifier = opinion_war_in_heaven_enemy } }
 			add_opinion_modifier = { who = event_target:FirstSleeper modifier = opinion_war_in_heaven_enemy }
 			event_target:FirstSleeper = { add_opinion_modifier = { who = root modifier = opinion_war_in_heaven_enemy } }
 		}
 		declare_war = {
 			target = event_target:FirstSleeper
-			name = NAME_The_War_in_Heaven
-			attacker_war_goal = wg_war_in_heaven
+			name = "NAME_The_War_in_Heaven"
+			attacker_war_goal = "wg_war_in_heaven"
 		}
 		declare_war = {
 			target = from
-			name = NAME_The_War_in_Heaven
-			attacker_war_goal = wg_war_in_heaven
+			name = "NAME_The_War_in_Heaven"
+			attacker_war_goal = "wg_war_in_heaven"
 		}
 		every_subject = {
 			limit = { CmtTriggerIsPlayableEmpire = yes }
 			join_war = root
 		}
 	}
-	
+
 	option = {
 		name = war_in_heaven.4.f
-		trigger = { CmtTriggerIsLostEmpire = yes }
-		ai_chance = { factor = 1000 }
+		trigger = { is_zofe_fe = yes }
+		ai_chance = { factor = 500 }
 	}
 }
-
-
 
 ############################
 ###  Non-aligned League  ###
@@ -675,20 +687,19 @@ country_event = {
 country_event = {
 	id = war_in_heaven.12
 	hide_window = yes
-	
+
 	trigger = {
-		has_global_flag = war_in_heaven_ongoing		## Previous Event Happens
-		NOR = {
-			has_global_flag = war_in_heaven_nonaligned_league		## Leader Chosen
-			has_global_flag = CmtFlagHeavenGiveUpLeague
-			has_global_flag = war_in_heaven_seeking_league_leader		## Now Ordering
-		}
-		
-		has_country_flag = sleepers_awake_first_sleeper
 		is_country_type = awakened_fallen_empire
-		
+		has_country_flag = sleepers_awake_first_sleeper
+		has_global_flag = war_in_heaven_ongoing			## Previous Event Happens
+		NOR = {
+			# has_global_flag = CmtFlagHeavenGiveUpLeague
+			has_global_flag = war_in_heaven_nonaligned_league		## Leader Chosen
+			has_global_flag = war_in_heaven_seeking_league_leader	## Now Ordering
+		}
+		has_galactic_emperor = no # Galactic Empire serves this purpose
 	}
-	
+
 	mean_time_to_happen = {
 		days = 30
 		modifier = {
@@ -707,17 +718,50 @@ country_event = {
 			event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 3 } }
 		}
 	}
-	
+
 	immediate = {
-		### Search for federation leaders; offer leadership to strongest one that hasn't declined (if any)
+		## Custodian is asked first, if one exists
 		if = {
 			limit = {
+				has_galactic_custodian = yes
+				any_playable_country = {
+					is_galactic_custodian = yes
+					NOR = {
+						has_country_flag = war_in_heaven_league_leader_declined
+						any_country = {
+							is_country_type = awakened_fallen_empire
+							is_at_war_with = prev
+						}
+					}
+				}
+			}
+			random_playable_country = {
+				limit = {
+					is_galactic_custodian = yes
+					NOR = {
+						has_country_flag = war_in_heaven_league_leader_declined
+						any_country = {
+							is_country_type = awakened_fallen_empire
+							is_at_war_with = prev
+						}
+					}
+				}
+				set_global_flag = war_in_heaven_seeking_league_leader
+				country_event = { id = war_in_heaven.13 }
+			}
+		}
+		### Search for federation leaders; offer leadership to strongest one that hasn't declined (if any)
+		# Find strongest neutral power and offer them to become league leader
+		# First federation leaders are asked, then simply the strongest country
+		else_if = {
+			limit = {
+				# NOT = { has_global_flag = war_in_heaven_seeking_league_leader }
 				any_federation = {
-					NOT = { has_global_flag = war_in_heaven_seeking_league_leader }
 					any_member = {
 						is_federation_leader = yes
-						NOT = { has_country_flag = war_in_heaven_league_leader_declined }
-						NOT = {
+						is_homicidal = no
+						NOR = {
+							has_country_flag = war_in_heaven_league_leader_declined
 							any_country = {
 								is_country_type = awakened_fallen_empire
 								is_at_war_with = prev
@@ -734,8 +778,9 @@ country_event = {
 							}
 							any_member = {
 								is_federation_leader = yes
-								NOT = { has_country_flag = war_in_heaven_league_leader_declined }
-								NOT = {
+								is_homicidal = no
+								NOR = {
+									has_country_flag = war_in_heaven_league_leader_declined
 									any_country = {
 										is_country_type = awakened_fallen_empire
 										is_at_war_with = prev
@@ -748,11 +793,11 @@ country_event = {
 			}
 			random_federation = {
 				limit = {
-					NOT = { has_global_flag = war_in_heaven_seeking_league_leader }
 					any_member = {
 						is_federation_leader = yes
-						NOT = { has_country_flag = war_in_heaven_league_leader_declined }
-						NOT = {
+						is_homicidal = no
+						NOR = {
+							has_country_flag = war_in_heaven_league_leader_declined
 							any_country = {
 								is_country_type = awakened_fallen_empire
 								is_at_war_with = prev
@@ -769,8 +814,9 @@ country_event = {
 							}
 							any_member = {
 								is_federation_leader = yes
-								NOT = { has_country_flag = war_in_heaven_league_leader_declined }
-								NOT = {
+								is_homicidal = no
+								NOR = {
+									has_country_flag = war_in_heaven_league_leader_declined
 									any_country = {
 										is_country_type = awakened_fallen_empire
 										is_at_war_with = prev
@@ -783,8 +829,9 @@ country_event = {
 				random_member = {
 					limit = {
 						is_federation_leader = yes
-						NOT = { has_country_flag = war_in_heaven_league_leader_declined }
-						NOT = {
+						is_homicidal = no
+						NOR = {
+							has_country_flag = war_in_heaven_league_leader_declined
 							any_country = {
 								is_country_type = awakened_fallen_empire
 								is_at_war_with = prev
@@ -792,18 +839,17 @@ country_event = {
 						}
 					}
 					set_global_flag = war_in_heaven_seeking_league_leader
-					CmtEffectOrderLeagueLeader = yes
+					country_event = { id = war_in_heaven.13 }
 				}
 			}
 		}
-		
 		### Otherwise, make a list of neutral powers and search for strongest member to offer leadership
 		else = {
-
-			### Nominate Potential Leaders/Members (Pre-Process)
-			every_country = {
+			## Nominate Potential Leaders/Members (Pre-Process)
+			# set_variable = { which = CmtFlagNominatedLeader value = 0 }
+			every_playable_country = {
 				limit = {
-					CmtTriggerIsPlayableEmpire = yes
+					# CmtTriggerIsPlayableEmpire = yes
 					is_subject = no
 					NOR = {
 						has_country_flag = war_in_heaven_league_leader_declined
@@ -814,36 +860,28 @@ country_event = {
 						}
 					}
 				}
-				set_country_flag = CmtFlagNominatedLeader
+				prev = { change_variable = { which = CmtFlagNominatedLeader value = 1 } }
+				set_timed_country_flag = { flag = CmtFlagNominatedLeader days = 3 }
 			}
-			
-			### If there are fewer than 2 nominees, give up on forming league.
+
+			## If there are fewer than 2 nominees, give up on forming league.
 			if = {
 				limit = {
-					OR = {
+					NOR = {
 						event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcLeague value = 1 } }
-						count_country = {
-							limit = { has_country_flag = CmtFlagNominatedLeader }
-							count < 2
-						}
+						check_variable = { which = CmtFlagNominatedLeader value < 2 }
+						# count_country = {
+						# 	limit = { has_country_flag = CmtFlagNominatedLeader }
+						# 	count < 2
+						# }
 					}
 				}
-				set_global_flag = CmtFlagHeavenGiveUpLeague
-				every_country = {
-					limit = { has_country_flag = CmtFlagNominatedLeader }
-					remove_country_flag = CmtFlagNominatedLeader
-				}
-				break = yes
-			}
-			
-			### Pick most powerful nominee & offer leadership.
-			random_country = {
-				limit = {
-					any_country = {
-						CmtTriggerIsPlayableEmpire = yes
+				### Pick most powerful nominee & offer leadership.
+				random_playable_country = {
+					limit = {
 						has_country_flag = CmtFlagNominatedLeader
 						NOT = {
-							any_country = {
+							any_playable_country = {
 								has_country_flag = CmtFlagNominatedLeader
 								relative_power = {
 									who = prev
@@ -851,17 +889,14 @@ country_event = {
 								}
 							}
 						}
-					}	
+					}
+					set_global_flag = war_in_heaven_seeking_league_leader
+					country_event = { id = war_in_heaven.13 }
 				}
-				CmtEffectOrderLeagueLeader = yes #calls war_in_heaven.13
+			} else = {
+				event_target:CmtGlobalVar = { set_variable = { which = CmtVarHeavenPreludeSpeed value = 1 } }
 			}
-			
-			### Remove nomination flags for next run-through to re-apply
-			remove_global_flag = stop_further_leader_seek
-			every_country = {
-				limit = { has_country_flag = CmtFlagNominatedLeader }
-				remove_country_flag = CmtFlagNominatedLeader
-			}
+			clear_variable = CmtFlagNominatedLeader
 		}
 	}
 }
@@ -873,6 +908,7 @@ country_event = {
 	desc = {
 		text = war_in_heaven.13.desc
 		trigger = {
+			is_galactic_custodian = no
 			OR = {
 				has_federation = no
 				is_federation_leader = no
@@ -882,27 +918,28 @@ country_event = {
 	desc = {
 		text = war_in_heaven.13.desc2
 		trigger = {
+			is_galactic_custodian = no
 			has_federation = yes
 			is_federation_leader = yes
 		}
 	}
+	desc = {
+		text = war_in_heaven.13.desc3
+		trigger = { is_galactic_custodian = yes }
+	}
 	picture = GFX_evt_fallen_empire_awakes
 	show_sound = event_alien_signal
 	location = root
-	
+
 	is_triggered_only = yes
-	
+
 	trigger = {
 		NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcLeague value = 1 } } }
 	}
 	immediate = {
 		set_country_flag = war_in_heaven_nonaligned_league_check
 	}
-	
-	after = {
-		hidden_effect = { remove_global_flag = war_in_heaven_seeking_league_leader }
-	}
-	
+
 	# League leadership acceptance
 	option = {
 		name = war_in_heaven.13.a
@@ -985,9 +1022,10 @@ country_event = {
 			}
 		}
 		hidden_effect = {
-			set_global_flag = war_in_heaven_nonaligned_league
+			set_timed_country_flag = { flag = war_in_heaven_nonaligned_league_timer days = 180 }
 			set_country_flag = war_in_heaven_league_leader
-			
+			set_global_flag = war_in_heaven_nonaligned_league
+
 			# User-picked delays on fed membership evaluation
 			if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 1 } } }
@@ -1005,36 +1043,37 @@ country_event = {
 				set_timed_country_flag = { flag = war_in_heaven_nonaligned_league_timer days = @CmtConstHeavenPreludeSpeed_2g }
 				every_country = { country_event = { id = war_in_heaven.14 days = 1 random = @CmtConstHeavenPreludeSpeed_2g } }
 			}
-			
+
 			# Awakened empires don't like League leader
 			every_country = {
 				limit = { CmtTriggerIsHeavenSleeper = yes }
 				add_opinion_modifier = { who = from modifier = opinion_non_aligned_league_fe }
 				from = { add_opinion_modifier = { who = root modifier = opinion_non_aligned_league_fe } }
 			}
-			
+
 			# Give other countries ___
 			every_playable_country = {
 				limit = {
 					NOR = {
-						has_country_flag = war_in_heaven_nonaligned_league_check
 						is_ai = yes
-						is_same_value = root
+						has_country_flag = war_in_heaven_nonaligned_league_check
+						is_same_empire = root
 					}
 				}
 				if = {
-					limit = { 
+					limit = {
 						OR = {
 							is_subject = no
 							is_in_federation_with = root
 						}
+						is_homicidal = no
 					}
 					country_event = { id = war_in_heaven.19 }
 				} else = { country_event = { id = war_in_heaven.22 } }
 			}
 		}
 	}
-	
+
 	#League leadership declined
 	option = {
 		name = war_in_heaven.13.b
@@ -1054,6 +1093,10 @@ country_event = {
 		}
 		hidden_effect = { set_country_flag = war_in_heaven_league_leader_declined }
 	}
+
+	after = {
+		hidden_effect = { remove_global_flag = war_in_heaven_seeking_league_leader }
+	}
 }
 
 ### AI Evaluates Joining League
@@ -1061,7 +1104,7 @@ country_event = {
 	id = war_in_heaven.14
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		CmtTriggerIsPlayableEmpire = yes
 		is_ai = yes
@@ -1072,17 +1115,27 @@ country_event = {
 				is_country_type = awakened_fallen_empire
 				is_at_war_with = prev
 			}
+			# any_country = {
+			# 	has_federation = yes
+			# 	alliance = { has_federation_flag = non_aligned_league }
+			# 	is_at_war_with = prev
+			# }
 			event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcLeague value = 1 } }
 		}
-		
-		any_country = {
+		# is_homicidal = no
+		any_playable_country = {
 			has_country_flag = war_in_heaven_league_leader
-			CmtTriggerIsPlayableEmpire = yes
+			# has_country_flag = war_in_heaven_nonaligned_league_timer
+			# OR = {
+			# 	has_federation = yes
+			# 	NOT = { has_country_flag = formed_nonaligned_league }
+			# }
 			is_subject = no
+			# CmtTriggerIsPlayableEmpire = yes
 			NOT = { is_in_federation_with = root }
 		}
 	}
-	
+
 	immediate = {
 		set_country_flag = war_in_heaven_nonaligned_league_check
 		random_list = {
@@ -1132,12 +1185,12 @@ country_event = {
 					factor = 1.5
 					fleet_power < 60000
 				}
-				
-				random_country = {
+
+				random_playable_country = {
 					limit = {
 						has_country_flag = war_in_heaven_league_leader
-						CmtTriggerIsPlayableEmpire = yes
 						is_subject = no
+						# CmtTriggerIsPlayableEmpire = yes
 					}
 					country_event = { id = war_in_heaven.15 }
 				}
@@ -1146,12 +1199,13 @@ country_event = {
 				modifier = {
 					factor = 0
 					OR = {
+						ROOT = { has_rival = PREV }
 						event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcLeague value = 5 } }
 						NOR = {
 							event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcLeague value = 2 } }
 							event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcLeague value = 3 } }
-							is_homicidal = yes
 						}
+						is_homicidal = no
 					}
 				}
 				### Do Nothing
@@ -1168,9 +1222,9 @@ country_event = {
 	picture = GFX_evt_fallen_empire_awakes
 	show_sound = event_alien_signal
 	location = from
-	
+
 	is_triggered_only = yes
-	
+
 	trigger = {
 		OR = {
 			has_federation = yes
@@ -1198,7 +1252,7 @@ country_event = {
 					country_event = { id = war_in_heaven.20 }
 				}
 			}
-			
+
 			# If it's the first request and leader has no federation, then federate
 			if = {
 				limit = { has_federation = no }
@@ -1225,13 +1279,13 @@ country_event = {
 						}
 					}
 				}
-			} 
-			
+			}
+
 			# If a federation exists, do things based on the fed's rules
-			else = {	
+			else = {
 				from = {
 					set_timed_country_flag = { flag = ai_no_leave_fed days = 7200 }
-					
+
 					hidden_effect = { #end rivalries, wars
 						if = {
 							limit = {
@@ -1270,7 +1324,7 @@ country_event = {
 					}
 					hidden_effect = {
 						# counteract the -100 cohesion you'd normally get for new members
-						root.federation = { 
+						root.federation = {
 							if = {
 								limit = { has_federation_perk = cohesion_join_1 }
 								add_cohesion = 50
@@ -1304,11 +1358,25 @@ country_event = {
 			}
 		}
 	}
-	
+
 	# Leader rejects League-join request
 	option = {
 		name = war_in_heaven.15.b
-		ai_chance = { factor = 0 }
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 200
+				has_rival = from
+			}
+			modifier = {
+				factor = 0.5
+				is_xenophile = yes
+			}
+			modifier = {
+				factor = 0.5
+				is_militarist = yes
+			}
+		}
 		hidden_effect = {
 			from = {
 				add_opinion_modifier = { who = root modifier = opinion_non_aligned_league_declined }
@@ -1321,7 +1389,6 @@ country_event = {
 	}
 }
 
-
 ### Declear War (League vs. Ancient)
 country_event = {
 	id = war_in_heaven.16
@@ -1330,34 +1397,31 @@ country_event = {
 	picture = GFX_evt_fallen_empire_awakes
 	show_sound = event_alien_signal
 	location = root
-	
+
 	trigger = {
-		has_global_flag = war_in_heaven_nonaligned_league		## Previous Event
-		has_country_flag = war_in_heaven_league_leader
-		NOT = { has_global_flag = war_in_heaven_nonaligned_league_war }		## This Event
-		NOT = { has_country_flag = war_in_heaven_nonaligned_league_timer }		## Control Min. Term
-		
-		CmtTriggerIsPlayableEmpire = yes
+		has_global_flag = war_in_heaven_nonaligned_league	## Previous Event
 		has_federation = yes
 		federation = { has_federation_flag = non_aligned_league }
-		is_subject = no
-		NOT = {
+		OR = {
+			is_federation_leader = yes
+			has_country_flag = war_in_heaven_league_leader
+		}
+		# CmtTriggerIsPlayableEmpire = yes
+		# is_subject = no
+		NOR = {
+			has_global_flag = war_in_heaven_nonaligned_league_war		## This Event
+			has_country_flag = war_in_heaven_nonaligned_league_timer	## Control Min. Term
 			any_country = {
 				CmtTriggerIsHeavenSleeper = yes
 				is_at_war_with = prev
 			}
 		}
-		
 		any_country = {
-			is_country_type = awakened_fallen_empire
-			has_country_flag = sleepers_awake_first_sleeper
-		}
-		any_country = {
-			is_country_type = awakened_fallen_empire
-			has_country_flag = sleepers_awake_ancient_rival
+			count = 2
+			CmtTriggerIsHeavenSleeper = yes
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		days = 90
 		modifier = {
@@ -1376,17 +1440,17 @@ country_event = {
 			event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 3 } }
 		}
 	}
-	
+
 	immediate = {
 		set_global_flag = war_in_heaven_nonaligned_league_war
-		
+
 		random_country = {
 			limit = {
 				is_country_type = awakened_fallen_empire
 				has_country_flag = sleepers_awake_first_sleeper
 			}
 			# Save vanilla global event targets for compatibility
-			save_event_target_as = FirstSleeper
+			# save_event_target_as = FirstSleeper
 			save_global_event_target_as = FirstSleeper
 		}
 		random_country = {
@@ -1399,7 +1463,7 @@ country_event = {
 			save_global_event_target_as = SecondSleeper
 		}
 	}
-	
+
 	option = {
 		name = war_in_heaven.16.a
 		every_country = {
@@ -1410,8 +1474,6 @@ country_event = {
 	}
 }
 
-
-
 ##########################
 ###  Post War Process  ###
 ##########################
@@ -1421,20 +1483,20 @@ country_event = {
 	id = war_in_heaven.17
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		CmtTriggerIsHeavenSleeper = yes
 		has_global_flag = war_in_heaven_ongoing
-		NOT = { 
-			any_country = { 
-				CmtTriggerIsHeavenSleeper = yes 
+		NOT = {
+			any_country = {
+				CmtTriggerIsHeavenSleeper = yes
 				is_at_war_with = root
-			} 
+			}
 		}
 	}
 
 	immediate = {
-		
+
 		# Force-end War in Heaven if it's still running
 		if = {
 			limit = {
@@ -1445,7 +1507,7 @@ country_event = {
 								type = wg_war_in_heaven
 								owner = prev
 							}
-						}}
+						} }
 					}
 					any_war = {
 						any_war_participant = { prev = {
@@ -1453,7 +1515,7 @@ country_event = {
 								type = wg_CmtWarInHeaven3
 								owner = prev
 							}
-						}}
+						} }
 					}
 					any_war = {
 						any_war_participant = { prev = {
@@ -1461,7 +1523,7 @@ country_event = {
 								type = wg_CmtWarInHeaven4
 								owner = prev
 							}
-						}}
+						} }
 					}
 					any_war = {
 						any_war_participant = { prev = {
@@ -1469,7 +1531,7 @@ country_event = {
 								type = wg_CmtWarInHeaven5
 								owner = prev
 							}
-						}}
+						} }
 					}
 				}
 			}
@@ -1481,47 +1543,50 @@ country_event = {
 								type = wg_CmtWarInHeaven1
 								owner = prev
 							}
-						}}
+						} }
 						any_war_participant = { prev = {
 							using_war_goal = {
 								type = wg_war_in_heaven
 								owner = prev
 							}
-						}}
+						} }
 						any_war_participant = { prev = {
 							using_war_goal = {
 								type = wg_CmtWarInHeaven3
 								owner = prev
 							}
-						}}
+						} }
 						any_war_participant = { prev = {
 							using_war_goal = {
 								type = wg_CmtWarInHeaven4
 								owner = prev
 							}
-						}}
+						} }
 						any_war_participant = { prev = {
 							using_war_goal = {
 								type = wg_CmtWarInHeaven5
 								owner = prev
 							}
-						}}
+						} }
 					}
 				}
 				end_war_effect = yes
 			}
 		}
-		
+
 		# Conduct War in Heaven cleanup
 		if = {
 			limit = { NOT = { has_global_flag = war_in_heaven_ended } }
 			remove_global_flag = war_in_heaven_ongoing
 			set_global_flag = war_in_heaven_ended
-			random_country = {
-				limit = { has_country_flag = war_in_heaven_league_leader }
-				set_country_flag = last_best_hope
+			random_federation = {
+				limit = { has_federation_flag = non_aligned_league }
+				random_member = {
+					limit = { is_federation_leader = yes }
+					set_country_flag = last_best_hope
+				}
 			}
-			every_country = {
+			every_playable_country = {
 				limit = { is_ai = no }
 				country_event = { id = war_in_heaven.18 }
 			}

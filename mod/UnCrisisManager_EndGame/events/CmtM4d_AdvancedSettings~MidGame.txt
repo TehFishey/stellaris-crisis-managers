@@ -1170,36 +1170,39 @@ country_event = {
 	desc = CrisisManagerMenu.4920.desc
 	picture = {
 		trigger = {
+			# `~(A + B) + ~(AD) + ~(A + C) + ~(B + C) + ~(B + D) + ~(D + C) + ABCD`
+			# is the same as: `(A + ~B + ~C + ~D) (~A + B + ~C + ~D) (~A + ~B + C + ~D) (~A + ~B + ~C + D)`
 			OR = {
 				NOR = {
-					has_global_flag = CmtFlagLgateForbidSilence
-					has_global_flag = CmtFlagLgateForbidLdrake
+					has_global_flag = CmtFlagLgateForbidSilence	# A
+					has_global_flag = CmtFlagLgateForbidLdrake	# B
 				}
 				NOR = {
-					has_global_flag = CmtFlagLgateForbidSilence
-					has_global_flag = CmtFlagLgateForbidDessanu
+					has_global_flag = CmtFlagLgateForbidSilence	# A
+					has_global_flag = CmtFlagLgateForbidDessanu	# D
 				}
 				NOR = {
-					has_global_flag = CmtFlagLgateForbidSilence
-					has_global_flag = CmtFlagLgateForbidGraygoo
+					has_global_flag = CmtFlagLgateForbidSilence	# A
+					has_global_flag = CmtFlagLgateForbidGraygoo	# C
 				}
 				NOR = {
-					has_global_flag = CmtFlagLgateForbidLdrake
-					has_global_flag = CmtFlagLgateForbidDessanu
+					has_global_flag = CmtFlagLgateForbidLdrake	# B
+					has_global_flag = CmtFlagLgateForbidDessanu	# D
 				}
 				NOR = {
-					has_global_flag = CmtFlagLgateForbidLdrake
-					has_global_flag = CmtFlagLgateForbidGraygoo
+					has_global_flag = CmtFlagLgateForbidLdrake	# B
+					has_global_flag = CmtFlagLgateForbidGraygoo	# C
 				}
 				NOR = {
-					has_global_flag = CmtFlagLgateForbidDessanu
-					has_global_flag = CmtFlagLgateForbidGraygoo
+ 					has_global_flag = CmtFlagLgateForbidDessanu	# D
+					has_global_flag = CmtFlagLgateForbidGraygoo	# C
 				}
 				AND = {
-					has_global_flag = CmtFlagLgateForbidSilence
-					has_global_flag = CmtFlagLgateForbidLdrake
-					has_global_flag = CmtFlagLgateForbidDessanu
-					has_global_flag = CmtFlagLgateForbidGraygoo
+					has_global_flag = CmtFlagLgateForbidSilence	# A
+					has_global_flag = CmtFlagLgateForbidLdrake	# B
+					has_global_flag = CmtFlagLgateForbidGraygoo	# C
+					has_global_flag = CmtFlagLgateForbidDessanu	# D
+
 				}
 			}
 		}
@@ -1207,37 +1210,37 @@ country_event = {
 	}
 	picture = {
 		trigger = {
-			NOT = { has_global_flag = CmtFlagLgateForbidSilence }
-			has_global_flag = CmtFlagLgateForbidLdrake
-			has_global_flag = CmtFlagLgateForbidDessanu
-			has_global_flag = CmtFlagLgateForbidGraygoo
+			NOT = { has_global_flag = CmtFlagLgateForbidSilence } # Ā
+			has_global_flag = CmtFlagLgateForbidLdrake	# B
+			has_global_flag = CmtFlagLgateForbidDessanu	# D
+			has_global_flag = CmtFlagLgateForbidGraygoo	# C
 		}
 		picture = GFX_evt_ruined_system
 	}
 	picture = {
 		trigger = {
-			has_global_flag = CmtFlagLgateForbidSilence
-			NOT = { has_global_flag = CmtFlagLgateForbidLdrake }
-			has_global_flag = CmtFlagLgateForbidDessanu
-			has_global_flag = CmtFlagLgateForbidGraygoo
+			has_global_flag = CmtFlagLgateForbidSilence	# A
+			NOT = { has_global_flag = CmtFlagLgateForbidLdrake } # B̄
+			has_global_flag = CmtFlagLgateForbidDessanu	# D
+			has_global_flag = CmtFlagLgateForbidGraygoo	# C
 		}
 		picture = GFX_evt_space_dragon
 	}
 	picture = {
 		trigger = {
-			has_global_flag = CmtFlagLgateForbidSilence
-			has_global_flag = CmtFlagLgateForbidLdrake
-			NOT = { has_global_flag = CmtFlagLgateForbidDessanu }
-			has_global_flag = CmtFlagLgateForbidGraygoo
+			has_global_flag = CmtFlagLgateForbidSilence	# A
+			has_global_flag = CmtFlagLgateForbidLdrake	# B
+			NOT = { has_global_flag = CmtFlagLgateForbidDessanu } # D̄
+			has_global_flag = CmtFlagLgateForbidGraygoo	# C
 		}
 		picture = GFX_evt_gray_goo_ships
 	}
 	picture = {
 		trigger = {
-			has_global_flag = CmtFlagLgateForbidSilence
-			has_global_flag = CmtFlagLgateForbidLdrake
-			has_global_flag = CmtFlagLgateForbidDessanu
-			NOT = { has_global_flag = CmtFlagLgateForbidGraygoo }
+			has_global_flag = CmtFlagLgateForbidSilence	# A
+			has_global_flag = CmtFlagLgateForbidLdrake	# B
+			has_global_flag = CmtFlagLgateForbidDessanu	# D
+			NOT = { has_global_flag = CmtFlagLgateForbidGraygoo } # C̄
 		}
 		picture = GFX_evt_gray_goo
 	}
@@ -1266,10 +1269,10 @@ country_event = {
 		trigger = {
 			NOT = { has_country_flag = CmtFlagIndividual }
 			NAND = {
-				has_global_flag = CmtFlagLgateForbidSilence
-				has_global_flag = CmtFlagLgateForbidLdrake
-				has_global_flag = CmtFlagLgateForbidDessanu
-				has_global_flag = CmtFlagLgateForbidGraygoo
+				has_global_flag = CmtFlagLgateForbidSilence	# A
+				has_global_flag = CmtFlagLgateForbidLdrake	# B
+				has_global_flag = CmtFlagLgateForbidDessanu	# D
+				has_global_flag = CmtFlagLgateForbidGraygoo	# C
 			}
 		}
 	}
@@ -1279,10 +1282,10 @@ country_event = {
 		trigger = {
 			has_country_flag = CmtFlagIndividual
 			NAND = {
-				has_global_flag = CmtFlagLgateForbidSilence
-				has_global_flag = CmtFlagLgateForbidLdrake
-				has_global_flag = CmtFlagLgateForbidDessanu
-				has_global_flag = CmtFlagLgateForbidGraygoo
+				has_global_flag = CmtFlagLgateForbidSilence	# A
+				has_global_flag = CmtFlagLgateForbidLdrake	# B
+				has_global_flag = CmtFlagLgateForbidDessanu	# D
+				has_global_flag = CmtFlagLgateForbidGraygoo	# C
 			}
 		}
 	}
@@ -1292,7 +1295,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4920a.tooltip
 		trigger = { NOT = { has_global_flag = CmtFlagLgateForbidSilence } }
 		hidden_effect = {
-			set_global_flag = CmtFlagLgateForbidSilence
+			set_global_flag = CmtFlagLgateForbidSilence	# A
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
@@ -1301,7 +1304,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4920a.tooltip
 		trigger = { has_global_flag = CmtFlagLgateForbidSilence }
 		hidden_effect = {
-			remove_global_flag = CmtFlagLgateForbidSilence
+			remove_global_flag = CmtFlagLgateForbidSilence	# A
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
@@ -1310,7 +1313,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4920b.tooltip
 		trigger = { NOT = { has_global_flag = CmtFlagLgateForbidLdrake } }
 		hidden_effect = {
-			set_global_flag = CmtFlagLgateForbidLdrake
+			set_global_flag = CmtFlagLgateForbidLdrake	# B
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
@@ -1319,7 +1322,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4920b.tooltip
 		trigger = { has_global_flag = CmtFlagLgateForbidLdrake }
 		hidden_effect = {
-			remove_global_flag = CmtFlagLgateForbidLdrake
+			remove_global_flag = CmtFlagLgateForbidLdrake	# B
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
@@ -1328,7 +1331,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4920c.tooltip
 		trigger = { NOT = { has_global_flag = CmtFlagLgateForbidDessanu } }
 		hidden_effect = {
-			set_global_flag = CmtFlagLgateForbidDessanu
+			set_global_flag = CmtFlagLgateForbidDessanu	# D
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
@@ -1337,7 +1340,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4920c.tooltip
 		trigger = { has_global_flag = CmtFlagLgateForbidDessanu }
 		hidden_effect = {
-			remove_global_flag = CmtFlagLgateForbidDessanu
+			remove_global_flag = CmtFlagLgateForbidDessanu	# D
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
@@ -1346,7 +1349,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4920d.tooltip
 		trigger = { NOT = { has_global_flag = CmtFlagLgateForbidGraygoo } }
 		hidden_effect = {
-			set_global_flag = CmtFlagLgateForbidGraygoo
+			set_global_flag = CmtFlagLgateForbidGraygoo	# C
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
@@ -1355,7 +1358,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.4920d.tooltip
 		trigger = { has_global_flag = CmtFlagLgateForbidGraygoo }
 		hidden_effect = {
-			remove_global_flag = CmtFlagLgateForbidGraygoo
+			remove_global_flag = CmtFlagLgateForbidGraygoo	# C
 			set_country_flag = CmtFlagSpMenu
 		}
 	}
@@ -1366,10 +1369,10 @@ country_event = {
 		trigger = {
 			NOT = { has_country_flag = CmtFlagIndividual }
 			NAND = {
-				has_global_flag = CmtFlagLgateForbidSilence
-				has_global_flag = CmtFlagLgateForbidLdrake
-				has_global_flag = CmtFlagLgateForbidDessanu
-				has_global_flag = CmtFlagLgateForbidGraygoo
+				has_global_flag = CmtFlagLgateForbidSilence	# A
+				has_global_flag = CmtFlagLgateForbidLdrake	# B
+				has_global_flag = CmtFlagLgateForbidDessanu	# D
+				has_global_flag = CmtFlagLgateForbidGraygoo	# C
 			}
 		}
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
