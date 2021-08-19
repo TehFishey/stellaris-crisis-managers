@@ -1393,11 +1393,11 @@
  CrisisManagerMenu.4510d.title:0 "Allow §YMultiple Awakening§! of Sleepers"
  CrisisManagerMenu.4510e.title:0 "Allow §HSimultaneous Awakening§! of Sleepers"
  CrisisManagerMenu.4510x.title:1 "$CrisisManagerMenu.4510.title$: "
- CrisisManagerMenu.4510a.tooltip:0 "Fallen empires are so tired and sleeping like a log.\nSo they do not seem to go awakening."
+ CrisisManagerMenu.4510a.tooltip:0 "Fallen Empires are so tired and sleeping like a log.\nSo they do not seem to go awakening."
  CrisisManagerMenu.4510b.tooltip:0 "Only one Fallen Empire can awaken.\nHowever, no more Fallen Empire can awaken if another Fallen Empire has awakened as guardians of the galaxy."
  CrisisManagerMenu.4510c.tooltip:0 "Only one Fallen Empire can do standard type of awakening.\nThey can awaken even if another Fallen Empire has awakened as guardians of the galaxy."
  CrisisManagerMenu.4510d.tooltip:0 "A Fallen Empire can awaken if other awakened empire unexists: unawakened or annihilated."
- CrisisManagerMenu.4510e.tooltip:0 "Fallen empires can awaken even if other awakened empire exists.\n\n$CmtWarn0$: This does not mean the War in Heaven. Awakening chance for next Fallen Empire will start after the end of process for triggering the $mod_war_in_heaven$."
+ CrisisManagerMenu.4510e.tooltip:0 "Fallen Empires can awaken even if other awakened empire exists.\n\n$CmtWarn0$: This does not mean the War in Heaven. Awakening chance for next Fallen Empire will start after the end of process for triggering the $mod_war_in_heaven$."
 
  CrisisManagerMenu.4510.name:1 "$CrisisManagerMenu.4510.title$ $CrisisManagerTitleC$"
  CrisisManagerMenu.4510.desc1:1 "$CrisisManagerMenu.4510.desc$\n\n$CmtTextCurrent$§W$CrisisManagerMenu.4510a.title$§!"
@@ -1524,7 +1524,7 @@
 
  ### Fleet Power of Youngs for Awakening
  CrisisManagerMenu.4550.title:0 "Fleet Power of Youngs for Awakening"
- CrisisManagerMenu.4550.desc:0 "Fallen empires will not awaken until any young empires have enough strong navy.\nThis is a configuration of the threshold value of the fleet power.\n\n$CmtDescStdAwakingOnly$"
+ CrisisManagerMenu.4550.desc:0 "Fallen Empires will not awaken until any young empires have enough strong navy.\nThis is a configuration of the threshold value of the fleet power.\n\n$CmtDescStdAwakingOnly$"
  CrisisManagerMenu.4550x.title:1 "$CrisisManagerMenu.4550.title$: "
  CrisisManagerMenu.4550.V9.title:0 "§Y350 k§!"
  CrisisManagerMenu.4550.V8.title:0 "§Y210 k§!"
@@ -1568,7 +1568,7 @@
 
  ### Minimum Own Fleet Power for Awakening
  CrisisManagerMenu.4560.title:0 "Minimum Own Fleet Power for Awakening"
- CrisisManagerMenu.4560.desc:0 "Fallen empires will not awaken if their fleets are used up and the naval power become less than threshold value.\nThis is a configuration of this threshold.\n\n$CmtWarn2$\n$CrisisManagerMenu.4560.tooltip$\n\n$CmtWarn3$\nFallen empires never awaken if too large value is set. Highly recommended NOT to set the higher value than default without using another mod making Fallen Empires strong."
+ CrisisManagerMenu.4560.desc:0 "Fallen Empires will not awaken if their fleets are used up and the naval power become less than threshold value.\nThis is a configuration of this threshold.\n\n$CmtWarn2$\n$CrisisManagerMenu.4560.tooltip$\n\n$CmtWarn3$\nFallen Empires never awaken if too large value is set. Highly recommended NOT to set the higher value than default without using another mod making Fallen Empires strong."
  CrisisManagerMenu.4560x.title:1 "$CrisisManagerMenu.4560.title$: "
  CrisisManagerMenu.4560.V9.title:0 "§Y300 k§!"
  CrisisManagerMenu.4560.V8.title:0 "§Y180 k§!"
@@ -1704,7 +1704,7 @@
  CrisisManagerMenu.4620b.tooltip:0 "A middle option between ''$CrisisManagerMenu.4620a.title$'' and ''$CrisisManagerMenu.4620c.title$''.\n\nA probability of the outbreak of the War dose not be lessen even if no Fallen Empires has a opposing ethic."
  CrisisManagerMenu.4620c.tooltip:0 "The empire having a opposing ethic is surly chosen as the $war_in_heaven.2.name$ if it exists.\nIn other cases, random Fallen Empire are chosen.\n\nA probability of the outbreak of the War dose not be lessen even if no Fallen Empire has a opposing ethic."
  CrisisManagerMenu.4620d.tooltip:0 "A middle option between ''$CrisisManagerMenu.4620a.title$'' and ''$CrisisManagerMenu.4620e.title$''.\n\nA probability of the outbreak of the War becomes low if no Fallen Empire has a opposing ethic."
- CrisisManagerMenu.4620e.tooltip:0 "The Fallen Empire having a opposing ethic is surly chosen as the $war_in_heaven.2.name$.\n\nThe $mod_war_in_heaven$ will be cancelled if there is not such a empire."
+ CrisisManagerMenu.4620e.tooltip:0 "The Fallen Empire having a opposing ethic is surly chosen as the $war_in_heaven.2.name$.\n\n$war_in_heaven.4.name$ will be cancelled if there is not such a empire."
 
  CrisisManagerMenu.4620.name:1 "$CrisisManagerMenu.4620.title$ $CrisisManagerTitleC$"
  CrisisManagerMenu.4620.desc1:1 "$CrisisManagerMenu.4620.desc$\n\n$CmtTextCurrent$§W$CrisisManagerMenu.4620a.title$§!"
@@ -1757,7 +1757,7 @@
 
  ### Indomitable Rival
  CrisisManagerMenu.4640.title:0 "Indomitable Rival"
- CrisisManagerMenu.4640.desc:0 "Fallen empires cannot awakening as $war_in_heaven.2.name$ if their fleets are used up and the naval power become too small.\nThis configuration can remove this limitation."
+ CrisisManagerMenu.4640.desc:0 "Fallen Empires cannot awakening as $war_in_heaven.2.name$ if their fleets are used up and the naval power become too small.\nThis configuration can remove this limitation."
  CrisisManagerMenu.4640a.title:0 "§BDisallow Indomitable§! $war_in_heaven.2.name$"
  CrisisManagerMenu.4640b.title:0 "§YAllow Indomitable§! $war_in_heaven.2.name$"
  CrisisManagerMenu.4640c.title:0 "§HAllow Recovered§! $war_in_heaven.2.name$"
@@ -1977,7 +1977,7 @@
 
  ### Worn-Out Guardians
  CrisisManagerMenu.4740.title:0 "Worn-Out Guardians"
- CrisisManagerMenu.4740.desc:0 "Fallen empires cannot awaken as guarians of the galaxy if their fleets are used up and the naval power become too small.\nThis configuration can remove this limitation."
+ CrisisManagerMenu.4740.desc:0 "Fallen Empires cannot awaken as guarians of the galaxy if their fleets are used up and the naval power become too small.\nThis configuration can remove this limitation."
  CrisisManagerMenu.4740a.title:0 "§BDisallow§! Worn-Out Guardians"
  CrisisManagerMenu.4740b.title:0 "§YAllow§! Worn-Out Guardians"
  CrisisManagerMenu.4740c.title:0 "§HAllow Rallied§! Guardians"
@@ -4642,10 +4642,10 @@
  CrisisManagerMenu.7000.7110.A.tooltip:1 ""
  CrisisManagerMenu.7000.7110.B.tooltip:1 ""
  CrisisManagerMenu.7000.7135.A.tooltip:1 ""
- CrisisManagerMenu.7000.7135.B.tooltip:0 "Fallen empire cannot be awakening since no sleeping one exists"
+ CrisisManagerMenu.7000.7135.B.tooltip:0 "Fallen Empire cannot be awakening since no sleeping one exists"
  CrisisManagerMenu.7000.7136.A.tooltip:1 ""
  CrisisManagerMenu.7000.7136.B.tooltip:0 "There are not enough Fallen Empires for the $mod_war_in_heaven$."
- CrisisManagerMenu.7000.7136.C.tooltip:0 "The War in Heaven can be triggered only once.\nSo, no more the $mod_war_in_heaven$ can be triggered."
+ CrisisManagerMenu.7000.7136.C.tooltip:0 "$war_in_heaven.4.name$ can be triggered only once.\nSo, no more the $mod_war_in_heaven$ can be triggered."
  CrisisManagerMenu.7000.7138.A.tooltip:1 ""
  CrisisManagerMenu.7000.7138.B.tooltip:0 "No marauder exists or their drums are broken.\n$RT_GREAT_KHAN$ will not rise in this galaxy."
  CrisisManagerMenu.7000.7138.C.tooltip:0 "$leader_trait_great_khan$ already exists and leads the Horde.\nOnly one $RT_GREAT_KHAN$ can reign at a time."

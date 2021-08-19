@@ -1163,7 +1163,7 @@ country_event = {
 			}
 			event_target:CmtTargetManualSleeper1 = {
 				CmtTriggerIsOrganicSleeper = yes
-				NOR = {
+				NAND = {
 					exists = event_target:CmtTargetManualSleeperA
 					is_same_empire = event_target:CmtTargetManualSleeperA
 				}
@@ -1193,7 +1193,7 @@ country_event = {
 			}
 			event_target:CmtTargetManualSleeper2 = {
 				CmtTriggerIsOrganicSleeper = yes
-				NOR = {
+				NAND = {
 					exists = event_target:CmtTargetManualSleeperA
 					is_same_empire = event_target:CmtTargetManualSleeperA
 				}
@@ -1223,7 +1223,7 @@ country_event = {
 			}
 			event_target:CmtTargetManualSleeper3 = {
 				CmtTriggerIsOrganicSleeper = yes
-				NOR = {
+				NAND = {
 					exists = event_target:CmtTargetManualSleeperA
 					is_same_empire = event_target:CmtTargetManualSleeperA
 				}
@@ -1242,9 +1242,6 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7136c4.name
 		custom_tooltip = CrisisManagerMenu.7135c.tooltip
-		allow = {
-			event_target:CmtTargetManualSleeper4 = { CmtTriggerIsAwakenableSleeper = yes }
-		}
 		trigger = {
 			exists = event_target:CmtTargetManualSleeper4
 			NAND = {
@@ -1253,11 +1250,14 @@ country_event = {
 			}
 			event_target:CmtTargetManualSleeper4 = {
 				CmtTriggerIsOrganicSleeper = yes
-				NOR = {
+				NAND = {
 					exists = event_target:CmtTargetManualSleeperA
 					is_same_empire = event_target:CmtTargetManualSleeperA
 				}
 			}
+		}
+		allow = {
+			event_target:CmtTargetManualSleeper4 = { CmtTriggerIsAwakenableSleeper = yes }
 		}
 		hidden_effect = {
 			event_target:CmtTargetManualSleeper4 = {
@@ -1273,11 +1273,10 @@ country_event = {
 	option = { # final
 		name = CrisisManagerMenu.7136d.name
 		custom_tooltip = CrisisManagerMenu.7136d.tooltip
+		allow = { event_target:CmtTargetManualSleeperB = { CmtTriggerCandidateAncientRival = yes } }
 		trigger = {
 			exists = event_target:CmtTargetManualSleeperA
-			# event_target:CmtTargetManualSleeperA = { CmtTriggerIsAwakenableSleeper = yes }
 			exists = event_target:CmtTargetManualSleeperB
-			event_target:CmtTargetManualSleeperB = { CmtTriggerCandidateAncientRival = yes }
 		}
 		hidden_effect = {
 			event_target:CmtTargetManualSleeperA = { country_event = { id = fallen_empires_awakening.1 } }
@@ -1320,7 +1319,7 @@ country_event = {
 		}
 	}
 
-	# after = {
+	# after = { legacy
 	# 	if = {
 	# 		limit = { exists = event_target:CmtTargetManualMarauder1 }
 	# 		clear_global_event_target = CmtTargetManualMarauder1
@@ -2392,7 +2391,7 @@ country_event = {
 		}
 	}
 
-	# after = {
+	# after = { legacy
 	# 	if = {
 	# 		limit = { exists = event_target:CmtTargetManualMarauder1 }
 	# 		clear_global_event_target = CmtTargetManualMarauder1
