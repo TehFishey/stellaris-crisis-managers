@@ -433,19 +433,31 @@ defined_text = {
 defined_text = {
 	name = GetEthic_ManualSleeperA
 	text = {
-		trigger = { event_target:CmtTargetManualSleeperA = { is_same_value = event_target:CmtTargetManualSleeper1 } }
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper1
+			event_target:CmtTargetManualSleeperA = { is_same_empire = event_target:CmtTargetManualSleeper1 }
+		}
 		localization_key = CmtIconFanaticMaterialist
 	}
 	text = {
-		trigger = { event_target:CmtTargetManualSleeperA = { is_same_value = event_target:CmtTargetManualSleeper2 } }
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper2
+			event_target:CmtTargetManualSleeperA = { is_same_empire = event_target:CmtTargetManualSleeper2 }
+		}
 		localization_key = CmtIconFanaticSpiritualist
 	}
 	text = {
-		trigger = { event_target:CmtTargetManualSleeperA = { is_same_value = event_target:CmtTargetManualSleeper3 } }
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper3
+			event_target:CmtTargetManualSleeperA = { is_same_empire = event_target:CmtTargetManualSleeper3 }
+		}
 		localization_key = CmtIconFanaticXenophile
 	}
 	text = {
-		trigger = { event_target:CmtTargetManualSleeperA = { is_same_value = event_target:CmtTargetManualSleeper4 } }
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper4
+			event_target:CmtTargetManualSleeperA = { is_same_empire = event_target:CmtTargetManualSleeper4 }
+		}
 		localization_key = CmtIconFanaticXenophobe
 	}
 }
@@ -453,19 +465,31 @@ defined_text = {
 defined_text = {
 	name = GetEthic_ManualSleeperB
 	text = {
-		trigger = { event_target:CmtTargetManualSleeperB = { is_same_value = event_target:CmtTargetManualSleeper1 } }
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper1
+			event_target:CmtTargetManualSleeperB = { is_same_empire = event_target:CmtTargetManualSleeper1 }
+		}
 		localization_key = CmtIconFanaticMaterialist
 	}
 	text = {
-		trigger = { event_target:CmtTargetManualSleeperB = { is_same_value = event_target:CmtTargetManualSleeper2 } }
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper2
+			event_target:CmtTargetManualSleeperB = { is_same_empire = event_target:CmtTargetManualSleeper2 }
+		}
 		localization_key = CmtIconFanaticSpiritualist
 	}
 	text = {
-		trigger = { event_target:CmtTargetManualSleeperB = { is_same_value = event_target:CmtTargetManualSleeper3 } }
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper3
+			event_target:CmtTargetManualSleeperB = { is_same_empire = event_target:CmtTargetManualSleeper3 }
+		}
 		localization_key = CmtIconFanaticXenophile
 	}
 	text = {
-		trigger = { event_target:CmtTargetManualSleeperB = { is_same_value = event_target:CmtTargetManualSleeper4 } }
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper4
+			event_target:CmtTargetManualSleeperB = { is_same_empire = event_target:CmtTargetManualSleeper4 }
+		}
 		localization_key = CmtIconFanaticXenophobe
 	}
 }

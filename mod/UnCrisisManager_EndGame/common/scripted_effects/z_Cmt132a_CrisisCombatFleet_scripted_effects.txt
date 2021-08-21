@@ -54,7 +54,7 @@ CmtEffectCreateFleet_PrethorynBrood = {
 				while = { count =  2 CmtEffectCreateShip_SwarmCarrier = yes }		##  8 ->  8
 
 				PREV = {
-					CmtEffectProgressLoop2 = yes
+					CmtEffectProgressLoop4 = yes
 					switch = {
 						trigger = has_country_flag
 						CmtFlagLoopA = { PREV = { CmtEffectCreateShip_SwarmLarge = yes } }
@@ -247,7 +247,7 @@ CmtEffectCreateFleet_SentinelCapitalDefense = {
 					CmtEffectCreateShip_BugCrusherAvian = yes
 
 				PREV = {
-					CmtEffectProgressLoop2 = yes
+					CmtEffectProgressLoop4 = yes
 					switch = {
 						trigger = has_country_flag
 						CmtFlagLoopA = { PREV = {
@@ -356,7 +356,7 @@ CmtEffectCreateAdmiraltyDonation_SentinelTaskforce = {
 						CmtEffectCreateShip_SentinelGamma = yes
 
 					PREV = {
-						CmtEffectProgressLoop2 = yes
+						CmtEffectProgressLoop4 = yes
 						switch = {
 							trigger = has_country_flag
 							CmtFlagLoopA = { PREV = {
@@ -424,7 +424,7 @@ CmtEffectCreateFleet_UnbiddenCapitalDefense = {
 				while = { count =  5 CmtEffectCreateShip_Revenant = yes }		## 21 -> 21
 
 				PREV = {
-					CmtEffectProgressLoop2 = yes
+					CmtEffectProgressLoop4 = yes
 					switch = {
 						trigger = has_country_flag
 						CmtFlagLoopA = { PREV = { CmtEffectCreateShip_Wraith = yes } }
@@ -518,7 +518,7 @@ CmtEffectCreateFleet_AberrantCapitalDefense = {
 				while = { count =  5 CmtEffectCreateShip_Huntress = yes }		## 21 -> 21
 
 				PREV = {
-					CmtEffectProgressLoop2 = yes
+					CmtEffectProgressLoop4 = yes
 					switch = {
 						trigger = has_country_flag
 						CmtFlagLoopA = { PREV = { CmtEffectCreateShip_Predator = yes } }
@@ -612,7 +612,7 @@ CmtEffectCreateFleet_VehementCapitalDefense = {
 				while = { count =  5 CmtEffectCreateShip_Eradicator = yes } 		## 21 -> 21
 
 				PREV = {
-					CmtEffectProgressLoop2 = yes
+					CmtEffectProgressLoop4 = yes
 					switch = {
 						trigger = has_country_flag
 						CmtFlagLoopA = { PREV = { CmtEffectCreateShip_Obliterator = yes } }
@@ -705,7 +705,7 @@ CmtEffectCreateFleet_ContingencyCapitalDefense = {
 				while = { count =  6 CmtEffectCreateShip_Euthanizer = yes }		## 25 -> 25
 
 				PREV = {
-					CmtEffectProgressLoop2 = yes
+					CmtEffectProgressLoop4 = yes
 					switch = {
 						trigger = has_country_flag
 						CmtFlagLoopA = {}
@@ -737,7 +737,7 @@ CmtEffectCreateFleet_ContingencyAttacker = {
 				while = { count =  2 CmtEffectCreateShip_Euthanizer = yes }		## 10 ->  9
 
 				PREV = {
-					CmtEffectProgressLoop2 = yes
+					CmtEffectProgressLoop4 = yes
 					switch = {
 						trigger = has_country_flag
 						CmtFlagLoopA = {}
@@ -814,7 +814,7 @@ CmtEffectCreateFleet_CybrexSmall = {
 				while = { count =  2 CmtEffectCreateShip_Taciturn = yes }		## 10 ->  9
 
 				PREV = {
-					CmtEffectProgressLoop2 = yes
+					CmtEffectProgressLoop4 = yes
 					switch = {
 						trigger = has_country_flag
 						CmtFlagLoopA = {}
@@ -847,7 +847,7 @@ CmtEffectCreateAdmiraltyDonation_CybrexSmall = {
 					while = { count =  2 CmtEffectCreateShip_Taciturn = yes }		## 10 ->  9
 
 					PREV = {
-						CmtEffectProgressLoop2 = yes
+						CmtEffectProgressLoop4 = yes
 						switch = {
 							trigger = has_country_flag
 							CmtFlagLoopA = {}

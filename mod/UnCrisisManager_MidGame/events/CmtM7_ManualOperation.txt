@@ -95,7 +95,13 @@ country_event = {
 			has_global_flag = CmtFlagSleeperEdition
 			NOR = {
 				has_global_flag = CmtFlagWarInHeavenTriggered
-				count_country = { limit = { CmtTriggerIsOrganicSleeper = yes } count < 2 }
+				count_country = {
+					count < 2
+					limit = {
+						CmtTriggerIsOrganicSleeper = yes
+						CmtTriggerIsAwakenableSleeper = yes
+					}
+				}
 			}
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7136 } }
@@ -160,8 +166,8 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7000.7140.A.name
 		custom_tooltip = CrisisManagerMenu.7000.7140.A.tooltip
+		allow = { has_distar = yes }
 		trigger = {
-			has_distar = yes
 			has_global_flag = CmtFlagMidGameEdition
 			any_megastructure = { CmtTriggerIsClosedLgate = yes }
 			NOT = { has_global_flag = l_cluster_opened }
@@ -171,8 +177,8 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7000.7140.B.name
 		custom_tooltip = CrisisManagerMenu.7000.7140.B.tooltip
+		allow = { has_distar = yes }
 		trigger = {
-			has_distar = yes
 			has_global_flag = CmtFlagMidGameEdition
 			NOR = {
 				has_global_flag = l_cluster_opened
@@ -184,8 +190,8 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7000.7140.C.name
 		custom_tooltip = CrisisManagerMenu.7000.7140.C.tooltip
+		allow = { has_distar = yes }
 		trigger = {
-			has_distar = yes
 			has_global_flag = CmtFlagMidGameEdition
 			has_global_flag = l_cluster_opened
 			NOT = { any_megastructure = { CmtTriggerIsClosedLgate = yes } }
@@ -195,8 +201,8 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7000.7142.name
 		custom_tooltip = CrisisManagerMenu.7000.7142.tooltip
+		allow = { has_distar = yes }
 		trigger = {
-			has_distar = yes
 			has_global_flag = CmtFlagMidGameEdition
 			any_megastructure = { CmtTriggerIsClosedLgate = yes }
 			has_global_flag = l_cluster_opened
@@ -1106,14 +1112,37 @@ country_event = {
 				random_country = {
 					limit = {
 						CmtTriggerIsOrganicSleeper = yes CmtTriggerIsAwakenableSleeper = yes
-						NOT = { is_same_value = event_target:CmtTargetManualSleeperA }
+						NOT = { is_same_empire = event_target:CmtTargetManualSleeperA }
 					}
 					save_global_event_target_as = CmtTargetManualSleeperB
 				}
 			} else = {
 				random_country = {
-					limit = { CmtTriggerIsOrganicSleeper = yes CmtTriggerIsAwakenableSleeper = yes }
+					limit = { CmtTriggerIsOrganicSleeper = yes } # CmtTriggerIsAwakenableSleeper = yes
+					weights = {
+						base = 1
+						modifier = { add = 5 CmtTriggerCheckSleeperFleetPower = no }
+					}
 					save_global_event_target_as = CmtTargetManualSleeperA
+				}
+			}
+			if = { # automatically last possible option
+				limit = {
+					NOT = { exists = event_target:CmtTargetManualSleeperB }
+					count_country = {
+						count < 2
+						limit = {
+							CmtTriggerIsOrganicSleeper = yes CmtTriggerIsAwakenableSleeper = yes
+							NOT = { is_same_empire = event_target:CmtTargetManualSleeperA }
+						}
+					}
+				}
+				random_country = {
+					limit = {
+						CmtTriggerIsOrganicSleeper = yes CmtTriggerIsAwakenableSleeper = yes
+						NOT = { is_same_empire = event_target:CmtTargetManualSleeperA }
+					}
+					save_global_event_target_as = CmtTargetManualSleeperB
 				}
 			}
 			country_event = { id = CrisisManagerMenu.7136 }
@@ -1136,7 +1165,7 @@ country_event = {
 				CmtTriggerIsOrganicSleeper = yes
 				NAND = {
 					exists = event_target:CmtTargetManualSleeperA
-					is_same_value = event_target:CmtTargetManualSleeperA
+					is_same_empire = event_target:CmtTargetManualSleeperA
 				}
 			}
 		}
@@ -1166,7 +1195,7 @@ country_event = {
 				CmtTriggerIsOrganicSleeper = yes
 				NAND = {
 					exists = event_target:CmtTargetManualSleeperA
-					is_same_value = event_target:CmtTargetManualSleeperA
+					is_same_empire = event_target:CmtTargetManualSleeperA
 				}
 			}
 		}
@@ -1196,7 +1225,7 @@ country_event = {
 				CmtTriggerIsOrganicSleeper = yes
 				NAND = {
 					exists = event_target:CmtTargetManualSleeperA
-					is_same_value = event_target:CmtTargetManualSleeperA
+					is_same_empire = event_target:CmtTargetManualSleeperA
 				}
 			}
 		}
@@ -1213,9 +1242,6 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7136c4.name
 		custom_tooltip = CrisisManagerMenu.7135c.tooltip
-		allow = {
-			event_target:CmtTargetManualSleeper4 = { CmtTriggerIsAwakenableSleeper = yes }
-		}
 		trigger = {
 			exists = event_target:CmtTargetManualSleeper4
 			NAND = {
@@ -1226,9 +1252,12 @@ country_event = {
 				CmtTriggerIsOrganicSleeper = yes
 				NAND = {
 					exists = event_target:CmtTargetManualSleeperA
-					is_same_value = event_target:CmtTargetManualSleeperA
+					is_same_empire = event_target:CmtTargetManualSleeperA
 				}
 			}
+		}
+		allow = {
+			event_target:CmtTargetManualSleeper4 = { CmtTriggerIsAwakenableSleeper = yes }
 		}
 		hidden_effect = {
 			event_target:CmtTargetManualSleeper4 = {
@@ -1244,11 +1273,10 @@ country_event = {
 	option = { # final
 		name = CrisisManagerMenu.7136d.name
 		custom_tooltip = CrisisManagerMenu.7136d.tooltip
+		allow = { event_target:CmtTargetManualSleeperB = { CmtTriggerCandidateAncientRival = yes } }
 		trigger = {
 			exists = event_target:CmtTargetManualSleeperA
-			event_target:CmtTargetManualSleeperA = { CmtTriggerIsAwakenableSleeper = yes }
 			exists = event_target:CmtTargetManualSleeperB
-			event_target:CmtTargetManualSleeperB = { CmtTriggerCandidateAncientRival = yes }
 		}
 		hidden_effect = {
 			event_target:CmtTargetManualSleeperA = { country_event = { id = fallen_empires_awakening.1 } }
