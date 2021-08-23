@@ -1319,7 +1319,7 @@ country_event = {
 		}
 	}
 
-	# after = {
+	# after = { legacy
 	# 	if = {
 	# 		limit = { exists = event_target:CmtTargetManualMarauder1 }
 	# 		clear_global_event_target = CmtTargetManualMarauder1
@@ -2391,7 +2391,7 @@ country_event = {
 		}
 	}
 
-	# after = {
+	# after = { legacy
 	# 	if = {
 	# 		limit = { exists = event_target:CmtTargetManualMarauder1 }
 	# 		clear_global_event_target = CmtTargetManualMarauder1
