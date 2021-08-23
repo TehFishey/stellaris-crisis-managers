@@ -146,7 +146,6 @@ event = {
 		remove_global_flag = CmtFlagKillDoubleBookingKhan
 		every_country = {
 			limit = { CmtTriggerHasPotentialKhanAwaking = yes }
-
 			random_list = {
 				2 = {		## MTTH = 100 yr
 					modifier = {		## >= Earliest Year + 50 yr
@@ -156,14 +155,22 @@ event = {
 					modifier = {
 						factor = 0.67
 						count_country = {
-							limit = { CmtTriggerIsSleepingMarauder = yes }
+							# limit = { CmtTriggerIsSleepingMarauder = yes }
+							limit = {
+								is_country_type = dormant_marauders
+								NOT = { has_country_flag = restored_marauders_flag }
+							}
 							count = 2
 						}
 					}
 					modifier = {
 						factor = 0.50
 						count_country = {
-							limit = { CmtTriggerIsSleepingMarauder = yes }
+							# limit = { CmtTriggerIsSleepingMarauder = yes }
+							limit = {
+								is_country_type = dormant_marauders
+								NOT = { has_country_flag = restored_marauders_flag }
+							}
 							count > 2
 						}
 					}

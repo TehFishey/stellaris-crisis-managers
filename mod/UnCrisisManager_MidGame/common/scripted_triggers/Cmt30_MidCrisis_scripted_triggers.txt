@@ -21,7 +21,7 @@ CmtTriggerKhanAwakingMultipleCheck = {
 			has_global_flag = CmtFlagNowInKhanInterval
 		}
 		OR = {
-			# NOT = { has_global_flag = CmtFlagKhanTriggered }
+			#NOT = { has_global_flag = CmtFlagKhanTriggered
 			NOT = { has_global_flag = marauder_crisis_started }
 			AND = {
 				check_variable = { which = CmtVarKhanMultiple value = 3 }
@@ -33,16 +33,16 @@ CmtTriggerKhanAwakingMultipleCheck = {
 }
 
 ### Country Conditions
-
-CmtTriggerHasPotentialKhanAwaking = {		## Scope = country
-	OR = {
-		CmtTriggerIsSleepingMarauder = yes
-		AND = { # Fallback
-			is_country_type = dormant_marauders
-			has_country_flag = restored_marauders_flag
-			NOT = { any_country = { CmtTriggerIsSleepingMarauder = yes } }
-		}
-	}
+CmtTriggerHasPotentialKhanAwaking = { ## Scope = country
+	is_country_type = dormant_marauders
+	# OR = {
+	# 	CmtTriggerIsSleepingMarauder = yes
+	# 	AND = { # Fallback
+	# 		is_country_type = dormant_marauders
+	# 		has_country_flag = restored_marauders_flag
+	# 		NOT = { any_country = { CmtTriggerIsSleepingMarauder = yes } }
+	# 	}
+	# }
 	OR = {
 		AND = {
 			has_country_flag = marauder_1

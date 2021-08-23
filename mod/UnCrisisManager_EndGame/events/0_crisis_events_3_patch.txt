@@ -1,0 +1,100 @@
+namespace = crisis
+
+## Vanilla Fix (FirePrince)
+# Cybrex Bombard Marauder Planet (HIDDEN)
+planet_event = {
+	id = crisis.2477
+	hide_window = yes
+	is_triggered_only = yes
+	pre_triggers = {
+		has_owner = yes
+		has_ground_combat = no
+	}
+
+	trigger = {
+		exists = owner
+		owner = { is_country_type = awakened_marauders }
+		planet_devastation > 99
+		count_planet_army = { count < 1 }
+		NOR = { is_planet_class = pc_ai is_planet_class = pc_cybrex }
+		from = { is_country_type = cybrex_empire }
+	}
+
+	immediate = {
+		save_event_target_as = liberated_planet # for notify
+		if = {
+			limit = {
+				exists = space_owner
+				space_owner = {
+					NOT = { is_same_empire = from }
+					CmtTriggerIsEmpire = yes
+				}
+			}
+			every_fleet_in_orbit = {
+				limit = { is_owned_by = from }
+				clear_orders = yes
+				clear_fleet_actions = this
+				# queue_actions = {
+				# 	wait = 20
+				# 	move_to = solar_system.star
+				# }
+			}
+			set_owner = space_owner
+		} else = {
+			random_country = {
+				limit = { has_country_flag = former_owner@root }
+				save_event_target_as = planet_former_owner
+			}
+
+			if = { # Planet belonged to someone else (fallback)
+				limit = { NOT = { exists = event_target:planet_former_owner } }
+				closest_system = {
+					max_steps = 2
+					use_bypasses = no
+					limit = { has_owner = yes CmtTriggerIsEmpire = yes }
+					space_owner = { save_event_target_as = planet_former_owner }
+				}
+			}
+
+			if = { # Planet belonged to someone else
+				limit = { exists = event_target:planet_former_owner }
+				every_fleet_in_orbit = {
+					limit = { is_owned_by = from }
+					clear_orders = yes
+					clear_fleet_actions = this
+					# queue_actions = {
+					# 	wait = 20
+					# 	move_to = solar_system.star
+					# }
+				}
+				# Return to former owner
+				set_owner = event_target:planet_former_owner
+				event_target:planet_former_owner = {
+					add_opinion_modifier = { who = from modifier = opinion_returned_marauder_planet }
+				}
+				from = {
+					add_favors = { target = event_target:planet_former_owner value = 1 }
+					event_target:planet_former_owner = { country_event = { id = marauder.519 } }
+				}
+			}
+			# # Planet belonged to liberator
+			# else = {
+			# 	# if = { limit = { num_pops > 0  }
+			# 	# # set_owner = from
+			# 	# destroy_colony = yes
+			# }
+		}
+	}
+	after = {
+		if = {
+			limit = {
+				exists = owner
+				owner = { NOT = { is_country_type = awakened_marauders } }
+			}
+			every_fleet_in_orbit = {
+				limit = { is_owned_by = from }
+				auto_move_to_planet = { target = solar_system.star clear_auto_move_on_arrival = yes }
+			}
+		}
+	}
+}

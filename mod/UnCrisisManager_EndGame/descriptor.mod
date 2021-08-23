@@ -7,6 +7,6 @@ tags={
 	"Crisis"
 }
 picture="thumbnail.png"
-version="3.0.3.2"
+version="3.0.3.4"
 supported_version="3.0.*"
 remote_file_id="2558262194"

@@ -43,12 +43,9 @@ country_event = {
 		text = CrisisManagerMenu.4510.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarSleeperMultiple value = 1 }
-					check_variable = { which = CmtVarSleeperMultiple value = 2 }
-					check_variable = { which = CmtVarSleeperMultiple value = 3 }
-					check_variable = { which = CmtVarSleeperMultiple value = 4 }
-					check_variable = { which = CmtVarSleeperMultiple value = 5 }
+				OR = {
+					check_variable = { which = CmtVarSleeperMultiple value < 1 }
+					check_variable = { which = CmtVarSleeperMultiple value > 5 }
 				}
 			}
 		}
@@ -334,12 +331,9 @@ country_event = {
 		text = CrisisManagerMenu.4540.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarSleeperProbability value = 1 }
-					check_variable = { which = CmtVarSleeperProbability value = 2 }
-					check_variable = { which = CmtVarSleeperProbability value = 3 }
-					check_variable = { which = CmtVarSleeperProbability value = 4 }
-					check_variable = { which = CmtVarSleeperProbability value = 5 }
+				OR = {
+					check_variable = { which = CmtVarSleeperProbability value < 1 }
+					check_variable = { which = CmtVarSleeperProbability value > 5 }
 				}
 			}
 		}
@@ -859,12 +853,9 @@ country_event = {
 		text = CrisisManagerMenu.4610.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarHeavenProbability value = 1 }
-					check_variable = { which = CmtVarHeavenProbability value = 2 }
-					check_variable = { which = CmtVarHeavenProbability value = 3 }
-					check_variable = { which = CmtVarHeavenProbability value = 4 }
-					check_variable = { which = CmtVarHeavenProbability value = 5 }
+				OR = {
+					check_variable = { which = CmtVarHeavenProbability value < 1 }
+					check_variable = { which = CmtVarHeavenProbability value > 5 }
 				}
 			}
 		}
@@ -953,12 +944,9 @@ country_event = {
 		text = CrisisManagerMenu.4620.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarHeavenAncientRival value = 1 }
-					check_variable = { which = CmtVarHeavenAncientRival value = 2 }
-					check_variable = { which = CmtVarHeavenAncientRival value = 3 }
-					check_variable = { which = CmtVarHeavenAncientRival value = 4 }
-					check_variable = { which = CmtVarHeavenAncientRival value = 5 }
+				OR = {
+					check_variable = { which = CmtVarHeavenAncientRival value < 1 }
+					check_variable = { which = CmtVarHeavenAncientRival value > 5 }
 				}
 			}
 		}
@@ -1304,11 +1292,9 @@ country_event = {
 		text = CrisisManagerMenu.4650.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarHeavenPreludeSpeed value = 1 }
-					check_variable = { which = CmtVarHeavenPreludeSpeed value = 2 }
-					check_variable = { which = CmtVarHeavenPreludeSpeed value = 3 }
-					check_variable = { which = CmtVarHeavenPreludeSpeed value = 4 }
+				OR = {
+					check_variable = { which = CmtVarHeavenPreludeSpeed value < 1 }
+					check_variable = { which = CmtVarHeavenPreludeSpeed value > 4 }
 				}
 			}
 		}
@@ -1389,12 +1375,9 @@ country_event = {
 		text = CrisisManagerMenu.4660.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarHeavenNpcSubject value = 1 }
-					check_variable = { which = CmtVarHeavenNpcSubject value = 2 }
-					check_variable = { which = CmtVarHeavenNpcSubject value = 3 }
-					check_variable = { which = CmtVarHeavenNpcSubject value = 4 }
-					check_variable = { which = CmtVarHeavenNpcSubject value = 5 }
+				OR = {
+					check_variable = { which = CmtVarHeavenNpcSubject value < 1 }
+					check_variable = { which = CmtVarHeavenNpcSubject value > 5 }
 				}
 			}
 		}
@@ -1480,12 +1463,9 @@ country_event = {
 		text = CrisisManagerMenu.4670.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarHeavenNpcLeague value = 1 }
-					check_variable = { which = CmtVarHeavenNpcLeague value = 2 }
-					check_variable = { which = CmtVarHeavenNpcLeague value = 3 }
-					check_variable = { which = CmtVarHeavenNpcLeague value = 4 }
-					check_variable = { which = CmtVarHeavenNpcLeague value = 5 }
+				OR = {
+					check_variable = { which = CmtVarHeavenNpcLeague value < 1 }
+					check_variable = { which = CmtVarHeavenNpcLeague value > 5 }
 				}
 			}
 		}
@@ -1571,12 +1551,9 @@ country_event = {
 		text = CrisisManagerMenu.4680.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarHeavenExhaustion value = 1 }
-					check_variable = { which = CmtVarHeavenExhaustion value = 2 }
-					check_variable = { which = CmtVarHeavenExhaustion value = 3 }
-					check_variable = { which = CmtVarHeavenExhaustion value = 4 }
-					check_variable = { which = CmtVarHeavenExhaustion value = 5 }
+				OR = {
+					check_variable = { which = CmtVarHeavenExhaustion value < 1 }
+					check_variable = { which = CmtVarHeavenExhaustion value > 5 }
 				}
 			}
 		}

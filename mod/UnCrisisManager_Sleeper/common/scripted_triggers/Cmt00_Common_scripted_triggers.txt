@@ -208,7 +208,9 @@ CmtTriggerIsMarauder = {
 	}
 }
 
-CmtTriggerIsSleepingMarauder = {		## Scope = country
+# TODO REMOVE ME
+# DEPRECATED ## Scope = country
+CmtTriggerIsSleepingMarauder = {
 	is_country_type = dormant_marauders
 	NOT = { has_country_flag = restored_marauders_flag }
 }
@@ -450,9 +452,9 @@ CmtTriggerSleeperConfig = {
 	has_global_flag = CmtFlagSleeperEdition
 }
 
-CmtTriggerHeavenConfig = {
-	CmtTriggerSleeperConfig = yes
-}
+# CmtTriggerHeavenConfig = {
+# 	CmtTriggerSleeperConfig = yes
+# }
 
 CmtTriggerGuardianFeConfig = {
 	OR = {
