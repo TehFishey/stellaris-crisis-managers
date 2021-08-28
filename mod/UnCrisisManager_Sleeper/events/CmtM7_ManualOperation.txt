@@ -93,18 +93,30 @@ country_event = {
 		allow = { has_leviathans = yes }
 		trigger = {
 			has_global_flag = CmtFlagSleeperEdition
-			NOR = {
-				has_global_flag = CmtFlagWarInHeavenTriggered
+			NOT = {
 				count_country = {
 					count < 2
 					limit = {
-						CmtTriggerIsOrganicSleeper = yes
-						CmtTriggerIsAwakenableSleeper = yes
+						is_fallen_empire = yes
+						CmtTriggerIsHeavenAFE = no
+						is_at_war = no
 					}
 				}
 			}
+			# NOR = {
+			# 	has_global_flag = CmtFlagWarInHeavenTriggered
+			# 	count_country = { limit = { CmtTriggerIsAwakenableSleeper = yes } count < 2 }
+			# }
 		}
-		hidden_effect = { country_event = { id = CrisisManagerMenu.7136 } }
+		hidden_effect = {
+			if = { limit = { exists = event_target:CmtTargetManualSleeperA }
+				clear_global_event_target = CmtTargetManualSleeperA
+			}
+			if = { limit = { exists = event_target:CmtTargetManualSleeperB }
+				clear_global_event_target = CmtTargetManualSleeperB
+			}
+			country_event = { id = CrisisManagerMenu.7136 }
+		}
 	}
 	option = {
 		name = CrisisManagerMenu.7000.7136.B.name
@@ -116,17 +128,17 @@ country_event = {
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
 	}
-	option = {
-		name = CrisisManagerMenu.7000.7136.C.name
-		custom_tooltip = CrisisManagerMenu.7000.7136.C.tooltip
-		allow = { has_leviathans = yes }
-		trigger = {
-			has_global_flag = CmtFlagSleeperEdition
-			has_global_flag = CmtFlagWarInHeavenTriggered
-			NOT = { count_country = { limit = { CmtTriggerIsOrganicSleeper = yes } count < 2 } }
-		}
-		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
-	}
+	# option = {
+	# 	name = CrisisManagerMenu.7000.7136.C.name
+	# 	custom_tooltip = CrisisManagerMenu.7000.7136.C.tooltip
+	# 	allow = { has_leviathans = yes }
+	# 	trigger = {
+	# 		has_global_flag = CmtFlagSleeperEdition
+	# 		has_global_flag = CmtFlagWarInHeavenTriggered
+	# 		NOT = { count_country = { limit = { CmtTriggerIsOrganicSleeper = yes } count < 2 } }
+	# 	}
+	# 	hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+	# }
 
 	### Khan
 	option = {
@@ -978,7 +990,9 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7135b.name
 		custom_tooltip = CrisisManagerMenu.7135b.tooltip
-		trigger = { count_country = { limit = { CmtTriggerIsOrganicSleeper = yes } count > 1 } }		## 2 or more
+		trigger = { ## 1 or more
+			count_country = { limit = { CmtTriggerIsOrganicSleeper = yes } count > 0 }
+		}
 		hidden_effect = {
 			if = {
 				limit = {
@@ -1007,9 +1021,11 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7135c1.name
 		custom_tooltip = CrisisManagerMenu.7135c.tooltip
+		allow = {
+			event_target:CmtTargetManualSleeper1 = { CmtTriggerIsOrganicSleeper = yes }
+		}
 		trigger = {
 			exists = event_target:CmtTargetManualSleeper1
-			event_target:CmtTargetManualSleeper1 = { CmtTriggerIsOrganicSleeper = yes }
 		}
 		hidden_effect = {
 			event_target:CmtTargetManualSleeper1 = { country_event = { id = fallen_empires_awakening.1 } }
@@ -1019,9 +1035,11 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7135c2.name
 		custom_tooltip = CrisisManagerMenu.7135c.tooltip
+		allow = {
+			event_target:CmtTargetManualSleeper2 = { CmtTriggerIsOrganicSleeper = yes }
+		}
 		trigger = {
 			exists = event_target:CmtTargetManualSleeper2
-			event_target:CmtTargetManualSleeper2 = { CmtTriggerIsOrganicSleeper = yes }
 		}
 		hidden_effect = {
 			event_target:CmtTargetManualSleeper2 = { country_event = { id = fallen_empires_awakening.1 } }
@@ -1031,9 +1049,11 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7135c3.name
 		custom_tooltip = CrisisManagerMenu.7135c.tooltip
+		allow = {
+			event_target:CmtTargetManualSleeper3 = { CmtTriggerIsOrganicSleeper = yes }
+		}
 		trigger = {
 			exists = event_target:CmtTargetManualSleeper3
-			event_target:CmtTargetManualSleeper3 = { CmtTriggerIsOrganicSleeper = yes }
 		}
 		hidden_effect = {
 			event_target:CmtTargetManualSleeper3 = { country_event = { id = fallen_empires_awakening.1 } }
@@ -1043,12 +1063,26 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7135c4.name
 		custom_tooltip = CrisisManagerMenu.7135c.tooltip
+		allow = {
+			event_target:CmtTargetManualSleeper4 = { CmtTriggerIsOrganicSleeper = yes }
+		}
 		trigger = {
 			exists = event_target:CmtTargetManualSleeper4
-			event_target:CmtTargetManualSleeper4 = { CmtTriggerIsOrganicSleeper = yes }
 		}
 		hidden_effect = {
 			event_target:CmtTargetManualSleeper4 = { country_event = { id = fallen_empires_awakening.1 } }
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+	option = {
+		name = CrisisManagerMenu.7135c5.name
+		custom_tooltip = CrisisManagerMenu.7135c.tooltip
+		allow = {
+			event_target:CmtTargetManualSleeper5 = { CmtTriggerIsOrganicSleeper = yes }
+		}
+		trigger = {	exists = event_target:CmtTargetManualSleeper5 }
+		hidden_effect = {
+			event_target:CmtTargetManualSleeper5 = { country_event = { id = fallen_empires_awakening.1 } }
 			country_event = { id = CrisisManagerMenu.7000 }
 		}
 	}
@@ -1111,8 +1145,15 @@ country_event = {
 				limit = { exists = event_target:CmtTargetManualSleeperA }
 				random_country = {
 					limit = {
-						CmtTriggerIsOrganicSleeper = yes CmtTriggerIsAwakenableSleeper = yes
+						# CmtTriggerIsAwakenableSleeper = yes
+						is_fallen_empire = yes
+						is_at_war = no
 						NOT = { is_same_empire = event_target:CmtTargetManualSleeperA }
+					}
+					weights = {
+						base = 1
+						modifier = { add = 2 CmtTriggerIsOrganicSleeper = yes }
+						modifier = { add = 5 CmtTriggerIsAwakenableSleeper = yes }
 					}
 					save_global_event_target_as = CmtTargetManualSleeperB
 				}
@@ -1132,15 +1173,22 @@ country_event = {
 					count_country = {
 						count < 2
 						limit = {
-							CmtTriggerIsOrganicSleeper = yes CmtTriggerIsAwakenableSleeper = yes
+							CmtTriggerIsAwakenableSleeper = yes
 							NOT = { is_same_empire = event_target:CmtTargetManualSleeperA }
 						}
 					}
 				}
 				random_country = {
 					limit = {
-						CmtTriggerIsOrganicSleeper = yes CmtTriggerIsAwakenableSleeper = yes
+						# CmtTriggerIsAwakenableSleeper = yes
+						is_fallen_empire = yes
+						is_at_war = no
 						NOT = { is_same_empire = event_target:CmtTargetManualSleeperA }
+					}
+					weights = {
+						base = 1
+						modifier = { add = 2 CmtTriggerIsOrganicSleeper = yes }
+						modifier = { add = 5 CmtTriggerIsAwakenableSleeper = yes }
 					}
 					save_global_event_target_as = CmtTargetManualSleeperB
 				}
@@ -1149,7 +1197,7 @@ country_event = {
 		}
 	}
 
-	option = {
+	option = { # 1
 		name = CrisisManagerMenu.7136c1.name
 		custom_tooltip = CrisisManagerMenu.7135c.tooltip
 		allow = {
@@ -1162,7 +1210,7 @@ country_event = {
 				exists = event_target:CmtTargetManualSleeperB
 			}
 			event_target:CmtTargetManualSleeper1 = {
-				CmtTriggerIsOrganicSleeper = yes
+				# CmtTriggerIsOrganicSleeper = yes
 				NAND = {
 					exists = event_target:CmtTargetManualSleeperA
 					is_same_empire = event_target:CmtTargetManualSleeperA
@@ -1179,7 +1227,7 @@ country_event = {
 			country_event = { id = CrisisManagerMenu.7136 }
 		}
 	}
-	option = {
+	option = { # 2
 		name = CrisisManagerMenu.7136c2.name
 		custom_tooltip = CrisisManagerMenu.7135c.tooltip
 		allow = {
@@ -1192,7 +1240,7 @@ country_event = {
 				exists = event_target:CmtTargetManualSleeperB
 			}
 			event_target:CmtTargetManualSleeper2 = {
-				CmtTriggerIsOrganicSleeper = yes
+				# CmtTriggerIsOrganicSleeper = yes
 				NAND = {
 					exists = event_target:CmtTargetManualSleeperA
 					is_same_empire = event_target:CmtTargetManualSleeperA
@@ -1209,7 +1257,7 @@ country_event = {
 			country_event = { id = CrisisManagerMenu.7136 }
 		}
 	}
-	option = {
+	option = { # 3
 		name = CrisisManagerMenu.7136c3.name
 		custom_tooltip = CrisisManagerMenu.7135c.tooltip
 		allow = {
@@ -1222,7 +1270,7 @@ country_event = {
 				exists = event_target:CmtTargetManualSleeperB
 			}
 			event_target:CmtTargetManualSleeper3 = {
-				CmtTriggerIsOrganicSleeper = yes
+				# CmtTriggerIsOrganicSleeper = yes
 				NAND = {
 					exists = event_target:CmtTargetManualSleeperA
 					is_same_empire = event_target:CmtTargetManualSleeperA
@@ -1239,7 +1287,7 @@ country_event = {
 			country_event = { id = CrisisManagerMenu.7136 }
 		}
 	}
-	option = {
+	option = { # 4
 		name = CrisisManagerMenu.7136c4.name
 		custom_tooltip = CrisisManagerMenu.7135c.tooltip
 		trigger = {
@@ -1249,7 +1297,7 @@ country_event = {
 				exists = event_target:CmtTargetManualSleeperB
 			}
 			event_target:CmtTargetManualSleeper4 = {
-				CmtTriggerIsOrganicSleeper = yes
+				# CmtTriggerIsOrganicSleeper = yes
 				NAND = {
 					exists = event_target:CmtTargetManualSleeperA
 					is_same_empire = event_target:CmtTargetManualSleeperA
@@ -1270,6 +1318,37 @@ country_event = {
 		}
 	}
 
+	option = { # 5 Machine / Custodian
+		name = CrisisManagerMenu.7136c5.name
+		custom_tooltip = CrisisManagerMenu.7135c.tooltip
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper5
+			NAND = {
+				exists = event_target:CmtTargetManualSleeperA
+				exists = event_target:CmtTargetManualSleeperB
+			}
+			event_target:CmtTargetManualSleeper5 = {
+				# CmtTriggerIsOrganicSleeper = yes
+				NAND = {
+					exists = event_target:CmtTargetManualSleeperA
+					is_same_empire = event_target:CmtTargetManualSleeperA
+				}
+			}
+		}
+		allow = {
+			event_target:CmtTargetManualSleeper5 = { CmtTriggerIsAwakenableSleeper = yes }
+		}
+		hidden_effect = {
+			event_target:CmtTargetManualSleeper5 = {
+				if = {
+					limit = { exists = event_target:CmtTargetManualSleeperA }
+					save_global_event_target_as = CmtTargetManualSleeperB
+				} else = { save_global_event_target_as = CmtTargetManualSleeperA }
+			}
+			country_event = { id = CrisisManagerMenu.7136 }
+		}
+	}
+
 	option = { # final
 		name = CrisisManagerMenu.7136d.name
 		custom_tooltip = CrisisManagerMenu.7136d.tooltip
@@ -1279,10 +1358,17 @@ country_event = {
 			exists = event_target:CmtTargetManualSleeperB
 		}
 		hidden_effect = {
-			event_target:CmtTargetManualSleeperA = { country_event = { id = fallen_empires_awakening.1 } }
+			event_target:CmtTargetManualSleeperA = {
+				save_global_event_target_as = CmtTargetFirstSleeper
+				country_event = { id = fallen_empires_awakening.1 }
+
+			}
 			event_target:CmtTargetManualSleeperB = { CmtEffectSetAnciantRival = yes }
 			CmtEffectClearTargetSleepers = yes
 			country_event = { id = CrisisManagerMenu.7000 }
+			# Can't be cleared as this are needed for later MTTH check
+			# clear_global_event_target = CmtTargetManualSleeperA
+			# clear_global_event_target = CmtTargetManualSleeperB
 		}
 	}
 }

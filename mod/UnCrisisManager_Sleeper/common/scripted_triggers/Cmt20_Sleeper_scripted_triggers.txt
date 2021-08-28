@@ -54,7 +54,7 @@ CmtTriggerCandidateAncientRival = {
 		is_same_empire = event_target:CmtTargetFirstSleeper
 	}
 	OR = {
-		AND = {
+		AND = { # Manual
 			exists = event_target:CmtTargetManualSleeperB
 			is_same_empire = event_target:CmtTargetManualSleeperB
 		}
@@ -68,7 +68,7 @@ CmtTriggerCandidateAncientRival = {
 		# }
 	}
 	OR = {
-		AND = {
+		AND = { # Manual
 			exists = event_target:CmtTargetManualSleeperB
 			is_same_empire = event_target:CmtTargetManualSleeperB
 		}
@@ -330,7 +330,7 @@ CmtTriggerSleeperOpposingEchos = {
 	}
 }
 
-CmtTriggerIsHeavenSleeper = {
+CmtTriggerIsHeavenAFE = {
 	is_country_type = awakened_fallen_empire
 	OR = {
 		has_country_flag = sleepers_awake_first_sleeper
@@ -339,7 +339,7 @@ CmtTriggerIsHeavenSleeper = {
 }
 
 ### Modifiers for NPC Joining to League
-CmtTriggerHeavenLeagueNpcWeight5 = {
+CmtTriggerHeavenLeagueNPCweight5 = {
 	OR = {
 		has_ai_personality = harmonious_hierarchy
 		has_ai_personality = democratic_crusaders
@@ -350,17 +350,17 @@ CmtTriggerHeavenLeagueNpcWeight5 = {
 	}
 }
 
-CmtTriggerHeavenLeagueNpcWeight4 = {
+CmtTriggerHeavenLeagueNPCweight4 = {
 	OR = {
 		has_ai_personality = spiritual_seekers
 		has_ai_personality = peaceful_traders
 		has_ai_personality = migrating_flock
 		has_ethic = ethic_xenophile
 	}
-	CmtTriggerHeavenLeagueNpcWeight5 = no
+	CmtTriggerHeavenLeagueNPCweight5 = no
 }
 
-CmtTriggerHeavenLeagueNpcWeight2 = {
+CmtTriggerHeavenLeagueNPCweight2 = {
 	OR = {
 		has_ai_personality = honorbound_warriors
 		has_ai_personality = hegemonic_imperialists
@@ -369,10 +369,10 @@ CmtTriggerHeavenLeagueNpcWeight2 = {
 		has_ai_personality = assimilators
 		has_ethic = ethic_xenophobe
 	}
-	CmtTriggerHeavenLeagueNpcWeight1 = no
+	CmtTriggerHeavenLeagueNPCweight1 = no
 }
 
-CmtTriggerHeavenLeagueNpcWeight1 = {
+CmtTriggerHeavenLeagueNPCweight1 = {
 	OR = {
 		is_homicidal = yes
 		has_ai_personality = xenophobic_isolationists

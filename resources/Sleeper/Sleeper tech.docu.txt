@@ -1,0 +1,58 @@
+id = fallen_empires_awakening.1 # Sleepers Awake (MTTH removed - no real trigger)
+	id = fallen_empires_awakening.3 }		# Awakening of Sleeper (not trigger)
+		save CmtTargetFirstSleeper
+
+
+### 2nd Ancient Rival awakens
+id = war_in_heaven.1 MTTH
+	trigger = {
+		has_country_flag = sleepers_awake_ancient_rival
+		NOT = { has_global_flag = sleepers_awake_rival_waking }		## This Event Happens
+		has_global_flag = sleepers_awake_happened
+		CmtTriggerCandidateAncientRival = yes
+		exists = event_target:CmtTargetFirstSleeper
+		event_target:CmtTargetFirstSleeper = { is_country_type = awakened_fallen_empire }
+	}
+	# Vanilla
+	trigger = {
+		is_country_type = fallen_empire
+		is_at_war = no
+		fleet_power > 60000
+		has_global_flag = sleepers_awake_happened
+		NOT = { has_global_flag = sleepers_awake_rival_waking }
+		has_country_flag = sleepers_awake_ancient_rival
+		any_country = {
+			is_country_type = awakened_fallen_empire
+			has_country_flag = sleepers_awake_first_sleeper
+		}
+	}
+
+	set_global_flag = sleepers_awake_rival_waking
+	save_global_event_target_as = FirstSleeper
+	save_global_event_target_as = SecondSleeper
+
+
+## Scope: this = country (1st sleeper)
+CmtEffectSelectAncientRival = {
+	CmtEffectSetAnciantRival = yes
+
+	### Scope: country (fallen empire)
+	CmtEffectSetAnciantRival = {
+		set_country_flag = sleepers_awake_ancient_rival
+		set_global_flag = CmtFlagWarInHeavenTriggered
+
+
+### Declare The War in Heaven
+id = war_in_heaven.3 MTTH
+
+### Debug
+id = war_in_heaven.1000
+	id = fallen_empires_awakening.3
+event crisis.9999
+
+### AFE declare war to non_aligned_league (NAL)
+id = war_in_heaven.16 MTTH months = 3
+
+### War in Heaven Ends because of Both Ancients Gone (on_country_destroyed)
+id = war_in_heaven.17
+id = war_in_heaven.10 # first AFE dead by NAL

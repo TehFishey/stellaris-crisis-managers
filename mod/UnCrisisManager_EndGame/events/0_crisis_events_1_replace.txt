@@ -1723,10 +1723,7 @@ country_event = {
 	option = {
 		name = crisis.30.b
 		trigger = {
-			OR = {
-				has_ethic = "ethic_pacifist"
-				has_ethic = "ethic_fanatic_pacifist"
-			}
+			is_ethics_aligned = { ARG1 = pacifist }
 			CmtTriggerPrethorynUnconectableCountry = yes
 		}
 		response_text = crisis.30.b.response
@@ -1734,10 +1731,7 @@ country_event = {
 	option = {
 		name = crisis.30.c
 		trigger = {
-			OR = {
-				has_ethic = "ethic_militarist"
-				has_ethic = "ethic_fanatic_militarist"
-			}
+			is_ethics_aligned = { ARG1 = militarist }
 			CmtTriggerPrethorynUnconectableCountry = yes
 		}
 		response_text = crisis.30.c.response
@@ -1745,10 +1739,7 @@ country_event = {
 	option = {
 		name = crisis.30.d
 		trigger = {
-			OR = {
-				has_ethic = "ethic_xenophobe"
-				has_ethic = "ethic_fanatic_xenophobe"
-			}
+			is_ethics_aligned = { ARG1 = xenophobe }
 			CmtTriggerPrethorynUnconectableCountry = yes
 		}
 		response_text = crisis.30.d.response
@@ -1756,10 +1747,7 @@ country_event = {
 	option = {
 		name = crisis.30.e
 		trigger = {
-			OR = {
-				has_ethic = "ethic_xenophile"
-				has_ethic = "ethic_fanatic_xenophile"
-			}
+			is_ethics_aligned = { ARG1 = xenophile }
 			CmtTriggerPrethorynUnconectableCountry = yes
 		}
 		response_text = crisis.30.e.response
@@ -1767,10 +1755,7 @@ country_event = {
 	option = {
 		name = crisis.30.f
 		trigger = {
-			OR = {
-				has_ethic = "ethic_spiritualist"
-				has_ethic = "ethic_fanatic_spiritualist"
-			}
+			is_ethics_aligned = { ARG1 = spiritualist }
 			CmtTriggerPrethorynUnconectableCountry = yes
 		}
 		response_text = crisis.30.f.response

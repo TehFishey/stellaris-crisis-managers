@@ -18,3 +18,17 @@ CmtEffectDetectSleeperEdition = {
 	set_global_flag = CmtFlagSleeperEdition
 }
 
+# add_awakened_fallen_empire_fleet = {
+# 	if = {
+# 		limit = {
+# 			event_target:CmtGlobalVar = { check_variable = { which = CmtVarGuardianWornOut value = 3 } }
+# 			CmtTriggerCheckSleeperFleetPower = no
+# 		}
+# 		country_event = { id = fallen_empires.13 }
+# 	}
+# 	if = {
+# 		limit = { CmtTriggerCheckYoungsFleetPower = yes }
+# 		country_event = { id = fallen_empires.13 }
+# 	}
+# 	country_event = { id = fallen_empires.13 }
+# }

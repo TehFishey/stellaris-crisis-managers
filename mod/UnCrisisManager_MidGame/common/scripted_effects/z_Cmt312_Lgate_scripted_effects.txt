@@ -36,8 +36,14 @@ start_lcluster_chain = {
 					if = {
 						limit = { check_variable = { which = CmtVarLgateReqClues value < 0.5 } }
 						set_variable = { which = CmtVarTemp value = 7 }
-					} else = { set_variable = { which = CmtVarTemp value = CmtVarLgateReqClues } }
+						PREV = { set_variable = { which = CmtVarLgateReqClues value = 7 } }
+					} else = {
+						set_variable = { which = CmtVarTemp value = CmtVarLgateReqClues }
+						PREV = { set_variable = { which = CmtVarLgateReqClues value = PREV } }
+					}
 				}
+				set_variable = { which = CmtVarLgateReqClues value = { scope = event_target:CmtGlobalVar variable = CmtVarTemp } } # TODO needs test
+
 				while = {
 					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value < 6.5 } } }
 					add_event_chain_counter = { event_chain = l_cluster_chain counter = clues amount = 1 }
@@ -48,8 +54,10 @@ start_lcluster_chain = {
 					add_event_chain_counter = { event_chain = l_cluster_chain counter = clues amount = -1 }
 					event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } }
 				}
-
+				change_variable = { which = CmtVarLgateReqClues value = -2 }
 				set_variable = { which = num_lcluster_clues value = 0 }		## for Liquidation
+
+				log="TEST start needed clues: [CmtVarLgateReqClues]"
 			}
 		}
 	}
