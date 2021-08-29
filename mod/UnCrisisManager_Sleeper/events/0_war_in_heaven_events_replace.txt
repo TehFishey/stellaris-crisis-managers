@@ -41,10 +41,10 @@ country_event = {
 	hide_window = yes
 
 	trigger = {
-		has_leviathans = yes
 		has_country_flag = sleepers_awake_ancient_rival
 		NOT = { has_global_flag = sleepers_awake_rival_waking }		## This Event Happens
 		has_global_flag = sleepers_awake_happened
+		has_leviathans = yes
 		exists = event_target:CmtTargetFirstSleeper
 		event_target:CmtTargetFirstSleeper = { is_country_type = awakened_fallen_empire }
 		# any_country = {
@@ -118,25 +118,36 @@ country_event = {
 			}
 		}
 
-		# Save vanilla global event targets for compatibility
-		# event_target:CmtTargetFirstSleeper = { save_global_event_target_as = FirstSleeper }
+		# Save vanilla global event target for compatibility (and text)
+		if = {
+			limit = { NOT = { exists = event_target:FirstSleeper } }
+			event_target:CmtTargetFirstSleeper = { save_global_event_target_as = FirstSleeper }
+		}
+
 		save_global_event_target_as = SecondSleeper
-
-		### Goverment Changes
-		set_country_type = awakened_fallen_empire
-		CmtEffectChangeAwakenerCivic = yes
-
-		add_awakened_fallen_empire_resources = yes # Changing country type resets resources, so give them full stores
-
-		### Initial Reinforcement
 		if = {
 			limit = {
-				event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenIndomitableRival value = 3 } }
-				CmtTriggerCheckSleeperFleetPower = no
+				OR = {
+					is_country_type = fallen_empire
+					CmtTriggerCheckSleeperFleetPower = no
+				}
+			}
+			### Goverment Changes
+			set_country_type = awakened_fallen_empire
+			CmtEffectChangeAwakenerCivic = yes
+
+			add_awakened_fallen_empire_resources = yes # Changing country type resets resources, so give them full stores
+
+			### Initial Reinforcement
+			if = {
+				limit = {
+					event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenIndomitableRival value = 3 } }
+					CmtTriggerCheckSleeperFleetPower = no
+				}
+				country_event = { id = fallen_empires.13 }
 			}
 			country_event = { id = fallen_empires.13 }
 		}
-		country_event = { id = fallen_empires.13 }
 		if = {
 			limit = { CmtTriggerCheckYoungsFleetPower = yes }
 			country_event = { id = fallen_empires.13 }
@@ -225,6 +236,8 @@ country_event = {
 			country_event = { id = fallen_empires.13 }
 		}
 		remove_country_flag = ai_no_wars
+		remove_country_flag = war_in_heaven_timer
+		remove_country_flag = war_in_heaven_timer_2
 
 		### Effect for 1st Sleeper
 		event_target:CmtTargetFirstSleeper = {
@@ -243,7 +256,8 @@ country_event = {
 			remove_country_flag = ai_no_wars
 		}
 
-		if = { ## May old Sleeper
+		## May old Sleeper
+		if = {
 			limit = {
 				exists = event_target:FirstSleeper
 				NOR = {

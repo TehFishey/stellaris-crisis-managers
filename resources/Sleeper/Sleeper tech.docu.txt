@@ -44,6 +44,29 @@ CmtEffectSelectAncientRival = {
 
 ### Declare The War in Heaven
 id = war_in_heaven.3 MTTH
+trigger owner = {
+	has_global_flag = sleepers_awake_rival_waking			## Previous Event Happens
+	NOT = { has_global_flag = war_in_heaven_started }		## This Event Happens
+	has_leviathans = yes
+	OR = {
+		NOT = { has_country_flag = war_in_heaven_timer }	## Moratorium Term
+		has_global_flag = war_in_heaven_debug
+		event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 4 } }
+	}
+	is_country_type = awakened_fallen_empire
+	has_country_flag = sleepers_awake_ancient_rival			## We're Rival
+	is_at_war = no
+	CmtTriggerCheckAncientRivalFleetPower = yes
+
+	exists = event_target:CmtTargetFirstSleeper
+	event_target:CmtTargetFirstSleeper = {
+		has_country_flag = sleepers_awake_first_sleeper
+		is_country_type = awakened_fallen_empire
+		NOT = { is_same_empire = root }
+		CmtTriggerCheckAncientRivalFleetPower = yes
+	}
+}
+
 
 ### Debug
 id = war_in_heaven.1000

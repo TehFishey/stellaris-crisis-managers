@@ -68,7 +68,7 @@ country_event = {
 			limit = {
 				NOR = {
 					has_country_flag = guardians_of_the_galaxy
-					# has_global_flag = CmtFlagWarInHeavenTriggered
+					has_global_flag = CmtFlagWarInHeavenTriggered
 				}
 			}
 			if = {
@@ -81,6 +81,7 @@ country_event = {
 			}
 			save_global_event_target_as = CmtTargetFirstSleeper
 		} else = {
+			set_timed_global_flag = { flag = war_in_heaven_debug days = @CmtConstHeavenPreludeSpeed_2c }
 			set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_4a }
 		}
 		set_country_flag = sleepers_awake_first_sleeper
