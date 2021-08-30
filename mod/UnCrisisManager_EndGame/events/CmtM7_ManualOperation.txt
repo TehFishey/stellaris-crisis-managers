@@ -1164,9 +1164,9 @@ country_event = {
 		name = CrisisManagerMenu.7136b.name
 		custom_tooltip = CrisisManagerMenu.7136b.tooltip
 		trigger = {
-			OR = { # no NAND on tooltip
-				NOT = { exists = event_target:CmtTargetManualSleeperA }
-				NOT = { exists = event_target:CmtTargetManualSleeperB }
+			NAND = {
+				exists = event_target:CmtTargetManualSleeperA
+				exists = event_target:CmtTargetManualSleeperB
 			}
 		}
 		hidden_effect = {
@@ -1234,17 +1234,15 @@ country_event = {
 		}
 		trigger = {
 			exists = event_target:CmtTargetManualSleeper1
-			OR = { # no NAND on tooltip
-				NOT = { exists = event_target:CmtTargetManualSleeperA }
-				NOT = { exists = event_target:CmtTargetManualSleeperB }
+			NAND = {
+				exists = event_target:CmtTargetManualSleeperA
+				exists = event_target:CmtTargetManualSleeperB
 			}
 			event_target:CmtTargetManualSleeper1 = {
 				# CmtTriggerIsOrganicSleeper = yes
-				NOT = { # no NAND on tooltip
-					AND = {
-						exists = event_target:CmtTargetManualSleeperA
-						is_same_empire = event_target:CmtTargetManualSleeperA
-					}
+				OR = { # no NAND on tooltip
+					NOT = { exists = event_target:CmtTargetManualSleeperA }
+					NOT = { is_same_empire = event_target:CmtTargetManualSleeperA }
 				}
 			}
 		}
@@ -1266,17 +1264,15 @@ country_event = {
 		}
 		trigger = {
 			exists = event_target:CmtTargetManualSleeper2
-			OR = { # no NAND on tooltip
-				NOT = { exists = event_target:CmtTargetManualSleeperA }
-				NOT = { exists = event_target:CmtTargetManualSleeperB }
+			NAND = {
+				exists = event_target:CmtTargetManualSleeperA
+				exists = event_target:CmtTargetManualSleeperB
 			}
 			event_target:CmtTargetManualSleeper2 = {
 				# CmtTriggerIsOrganicSleeper = yes
-				NOT = { # no NAND on tooltip
-					AND = {
-						exists = event_target:CmtTargetManualSleeperA
-						is_same_empire = event_target:CmtTargetManualSleeperA
-					}
+				OR = { # no NAND on tooltip
+					NOT = { exists = event_target:CmtTargetManualSleeperA }
+					NOT = { is_same_empire = event_target:CmtTargetManualSleeperA }
 				}
 			}
 		}
@@ -1298,17 +1294,15 @@ country_event = {
 		}
 		trigger = {
 			exists = event_target:CmtTargetManualSleeper3
-			OR = { # no NAND on tooltip
-				NOT = { exists = event_target:CmtTargetManualSleeperA }
-				NOT = { exists = event_target:CmtTargetManualSleeperB }
+			NAND = {
+				exists = event_target:CmtTargetManualSleeperA
+				exists = event_target:CmtTargetManualSleeperB
 			}
 			event_target:CmtTargetManualSleeper3 = {
 				# CmtTriggerIsOrganicSleeper = yes
-				NOT = { # no NAND on tooltip
-					AND = {
-						exists = event_target:CmtTargetManualSleeperA
-						is_same_empire = event_target:CmtTargetManualSleeperA
-					}
+				OR = { # no NAND on tooltip
+					NOT = { exists = event_target:CmtTargetManualSleeperA }
+					NOT = { is_same_empire = event_target:CmtTargetManualSleeperA }
 				}
 			}
 		}
@@ -1327,9 +1321,9 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7135c.tooltip
 		trigger = {
 			exists = event_target:CmtTargetManualSleeper4
-			OR = { # no NAND on tooltip
-				NOT = { exists = event_target:CmtTargetManualSleeperA }
-				NOT = { exists = event_target:CmtTargetManualSleeperB }
+			NAND = {
+				exists = event_target:CmtTargetManualSleeperA
+				exists = event_target:CmtTargetManualSleeperB
 			}
 			event_target:CmtTargetManualSleeper4 = {
 				# CmtTriggerIsOrganicSleeper = yes
@@ -1361,11 +1355,9 @@ country_event = {
 			exists = event_target:CmtTargetManualSleeperA
 			NOT = { exists = event_target:CmtTargetManualSleeperB }
 			event_target:CmtTargetManualSleeper5 = {
-				NOT = { # no NAND on tooltip
-					AND = {
-						exists = event_target:CmtTargetManualSleeperA
-						is_same_empire = event_target:CmtTargetManualSleeperA
-					}
+				OR = { # no NAND on tooltip
+					NOT = { exists = event_target:CmtTargetManualSleeperA }
+					NOT = { is_same_empire = event_target:CmtTargetManualSleeperA }
 				}
 			}
 		}
@@ -1416,6 +1408,7 @@ country_event = {
 						exists = event_target:CmtTargetManualSleeper5
 						is_same_empire = event_target:CmtTargetManualSleeper5
 					}
+					set_country_flag = fallen_machine_empire_awaken_2	# Berserker
 					country_event = { id = fallen_machine_empire.1 }
 				}
 				CmtEffectSetAnciantRival = yes

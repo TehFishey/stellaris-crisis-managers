@@ -261,10 +261,10 @@ country_event = {
 			limit = {
 				exists = event_target:FirstSleeper
 				NOR = {
-					is_same_empire = root
+					event_target:FirstSleeper = { is_same_empire = root }
 					is_same_empire = event_target:CmtTargetFirstSleeper
+					is_at_war = event_target:FirstSleeper
 				}
-				NOT = { is_at_war = event_target:FirstSleeper }
 			}
 			declare_war = {
 				target = event_target:FirstSleeper
@@ -359,19 +359,15 @@ country_event = {
 					AND = {
 						event_target:FirstSleeper = { has_ethic = ethic_fanatic_xenophobe }
 						NOR = {
-							has_ethic = ethic_militarist
-							has_ethic = ethic_fanatic_militarist
-							has_ethic = ethic_xenophobe
-							has_ethic = ethic_fanatic_xenophobe
+							is_ethics_aligned = { ARG1 = militarist }
+							is_ethics_aligned = { ARG1 = xenophobe }
 						}
 					}
 					AND = {
 						event_target:FirstSleeper = { has_ethic = ethic_fanatic_xenophile }
 						NOR = {
-							has_ethic = ethic_pacifist
-							has_ethic = ethic_fanatic_pacifist
-							has_ethic = ethic_xenophile
-							has_ethic = ethic_fanatic_xenophile
+							is_pacifist = yes
+							is_xenophile = yes
 						}
 					}
 				}
@@ -382,19 +378,15 @@ country_event = {
 					AND = {
 						event_target:FirstSleeper = { has_ethic = ethic_fanatic_xenophobe }
 						OR = {
-							has_ethic = ethic_pacifist
-							has_ethic = ethic_fanatic_pacifist
-							has_ethic = ethic_xenophile
-							has_ethic = ethic_fanatic_xenophile
+							is_pacifist = yes
+							is_xenophile = yes
 						}
 					}
 					AND = {
 						event_target:FirstSleeper = { has_ethic = ethic_fanatic_xenophile }
 						OR = {
-							has_ethic = ethic_militarist
-							has_ethic = ethic_fanatic_militarist
-							has_ethic = ethic_xenophobe
-							has_ethic = ethic_fanatic_xenophobe
+							is_ethics_aligned = { ARG1 = militarist }
+							is_ethics_aligned = { ARG1 = xenophobe }
 						}
 					}
 					AND = {
@@ -478,19 +470,15 @@ country_event = {
 					AND = {
 						from = { has_ethic = ethic_fanatic_xenophobe }
 						NOR = {
-							has_ethic = ethic_militarist
-							has_ethic = ethic_fanatic_militarist
-							has_ethic = ethic_xenophobe
-							has_ethic = ethic_fanatic_xenophobe
+							is_ethics_aligned = { ARG1 = militarist }
+							is_ethics_aligned = { ARG1 = xenophobe }
 						}
 					}
 					AND = {
 						from = { has_ethic = ethic_fanatic_xenophile }
 						NOR = {
-							has_ethic = ethic_pacifist
-							has_ethic = ethic_fanatic_pacifist
-							has_ethic = ethic_xenophile
-							has_ethic = ethic_fanatic_xenophile
+							is_pacifist = yes
+							is_xenophile = yes
 						}
 					}
 				}
@@ -501,19 +489,15 @@ country_event = {
 					AND = {
 						from = { has_ethic = ethic_fanatic_xenophobe }
 						OR = {
-							has_ethic = ethic_pacifist
-							has_ethic = ethic_fanatic_pacifist
-							has_ethic = ethic_xenophile
-							has_ethic = ethic_fanatic_xenophile
+							is_pacifist = yes
+							is_xenophile = yes
 						}
 					}
 					AND = {
 						from = { has_ethic = ethic_fanatic_xenophile }
 						OR = {
-							has_ethic = ethic_militarist
-							has_ethic = ethic_fanatic_militarist
-							has_ethic = ethic_xenophobe
-							has_ethic = ethic_fanatic_xenophobe
+							is_ethics_aligned = { ARG1 = militarist }
+							is_ethics_aligned = { ARG1 = xenophobe }
 						}
 					}
 					AND = {
@@ -1020,6 +1004,10 @@ country_event = {
 			federation = {
 			 	set_name = NAME_League_of_Non-Aligned_Powers
 				set_federation_flag = non_aligned_league
+				if = {
+					limit = { NOT = { has_federation_type = military_federation } has_federations_dlc = yes }
+					set_federation_type = military_federation
+				}
 			}
 			hidden_effect = {
 				set_country_flag = formed_nonaligned_league
@@ -1289,6 +1277,9 @@ country_event = {
 						}
 						root.federation = {
 							set_federation_flag = non_aligned_league
+							if = { limit = { has_federations_dlc = yes }
+								set_federation_type = military_federation
+							}
 							if = {
 								limit = { has_federation_perk = cohesion_join_1 }
 								add_cohesion = 50
@@ -1303,7 +1294,6 @@ country_event = {
 			else = {
 				from = {
 					set_timed_country_flag = { flag = ai_no_leave_fed days = 7200 }
-
 					hidden_effect = { #end rivalries, wars
 						if = {
 							limit = {
@@ -1343,12 +1333,11 @@ country_event = {
 					hidden_effect = {
 						# counteract the -100 cohesion you'd normally get for new members
 						root.federation = {
-							if = {
-								limit = { has_federation_perk = cohesion_join_1 }
+							if = { limit = { has_federation_perk = cohesion_join_1 }
 								add_cohesion = 50
 							}
-						else = { add_cohesion = 100 }
-						add_federation_experience = 150
+							else = { add_cohesion = 100 }
+							add_federation_experience = 150
 						}
 					}
 					if = {

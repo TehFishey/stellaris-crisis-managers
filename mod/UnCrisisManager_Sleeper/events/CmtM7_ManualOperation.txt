@@ -1240,9 +1240,9 @@ country_event = {
 			}
 			event_target:CmtTargetManualSleeper1 = {
 				# CmtTriggerIsOrganicSleeper = yes
-				OR = { # no NAND on tooltip
-					NOT = { exists = event_target:CmtTargetManualSleeperA }
-					NOT = { is_same_empire = event_target:CmtTargetManualSleeperA }
+				NAND = {
+					exists = event_target:CmtTargetManualSleeperA
+					is_same_empire = event_target:CmtTargetManualSleeperA
 				}
 			}
 		}
@@ -1270,9 +1270,9 @@ country_event = {
 			}
 			event_target:CmtTargetManualSleeper2 = {
 				# CmtTriggerIsOrganicSleeper = yes
-				OR = { # no NAND on tooltip
-					NOT = { exists = event_target:CmtTargetManualSleeperA }
-					NOT = { is_same_empire = event_target:CmtTargetManualSleeperA }
+				NAND = {
+					exists = event_target:CmtTargetManualSleeperA
+					is_same_empire = event_target:CmtTargetManualSleeperA
 				}
 			}
 		}
@@ -1300,9 +1300,9 @@ country_event = {
 			}
 			event_target:CmtTargetManualSleeper3 = {
 				# CmtTriggerIsOrganicSleeper = yes
-				OR = { # no NAND on tooltip
-					NOT = { exists = event_target:CmtTargetManualSleeperA }
-					NOT = { is_same_empire = event_target:CmtTargetManualSleeperA }
+				NAND = {
+					exists = event_target:CmtTargetManualSleeperA
+					is_same_empire = event_target:CmtTargetManualSleeperA
 				}
 			}
 		}
@@ -1327,9 +1327,9 @@ country_event = {
 			}
 			event_target:CmtTargetManualSleeper4 = {
 				# CmtTriggerIsOrganicSleeper = yes
-				OR = {
-					NOT = { exists = event_target:CmtTargetManualSleeperA }
-					NOT = { is_same_empire = event_target:CmtTargetManualSleeperA }
+				NAND = {
+					exists = event_target:CmtTargetManualSleeperA
+					is_same_empire = event_target:CmtTargetManualSleeperA
 				}
 			}
 		}
@@ -1355,9 +1355,9 @@ country_event = {
 			exists = event_target:CmtTargetManualSleeperA
 			NOT = { exists = event_target:CmtTargetManualSleeperB }
 			event_target:CmtTargetManualSleeper5 = {
-				OR = { # no NAND on tooltip
-					NOT = { exists = event_target:CmtTargetManualSleeperA }
-					NOT = { is_same_empire = event_target:CmtTargetManualSleeperA }
+				NAND = {
+					exists = event_target:CmtTargetManualSleeperA
+					is_same_empire = event_target:CmtTargetManualSleeperA
 				}
 			}
 		}
