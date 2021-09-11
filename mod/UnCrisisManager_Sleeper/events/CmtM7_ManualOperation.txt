@@ -1084,10 +1084,12 @@ country_event = {
 	option = { # Custodian
 		name = CrisisManagerMenu.7135c5.name
 		custom_tooltip = CrisisManagerMenu.7135c.tooltip
-		allow = {
-			event_target:CmtTargetManualSleeper5 = { CmtTriggerIsOrganicSleeper = no is_country_type = fallen_empire }
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper5
+			hidden_trigger = {
+				event_target:CmtTargetManualSleeper5 = { CmtTriggerIsOrganicSleeper = no is_country_type = fallen_empire }
+			}
 		}
-		trigger = { hidden_trigger = { exists = event_target:CmtTargetManualSleeper5 } }
 		hidden_effect = {
 			event_target:CmtTargetManualSleeper5 = {
 				# random_list = {
@@ -1103,10 +1105,12 @@ country_event = {
 	option = { # Berserker
 		name = CrisisManagerMenu.7135c6.name
 		custom_tooltip = CrisisManagerMenu.7135c.tooltip
-		allow = {
-			event_target:CmtTargetManualSleeper5 = { CmtTriggerIsOrganicSleeper = no is_country_type = fallen_empire }
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper5
+			hidden_trigger = {
+				event_target:CmtTargetManualSleeper5 = { CmtTriggerIsOrganicSleeper = no is_country_type = fallen_empire }
+			}
 		}
-		trigger = { hidden_trigger = { exists = event_target:CmtTargetManualSleeper5 } }
 		hidden_effect = {
 			event_target:CmtTargetManualSleeper5 = {
 				set_country_flag = fallen_machine_empire_awaken_2
@@ -1360,8 +1364,6 @@ country_event = {
 					is_same_empire = event_target:CmtTargetManualSleeperA
 				}
 			}
-		}
-		allow = {
 			hidden_trigger = {
 				event_target:CmtTargetManualSleeper5 = { is_at_war = no CmtTriggerIsOrganicSleeper = no }
 			}
@@ -1450,27 +1452,56 @@ country_event = {
 				save_global_event_target_as = marauder_country_3
 			}
 		}
+
+		if = { # Very strong fallback
+			limit = {
+				NOR = {
+					exists = event_target:marauder_country_1
+					exists = event_target:marauder_country_2
+					exists = event_target:marauder_country_3
+					any_country = { is_country_type = dormant_marauders }
+				}
+			}
+			random_country = {
+				limit = {
+					has_country_flag = new_khanate_flag
+					has_origin = "origin_khan_successor"
+					any_system_within_border = {
+						has_star_flag = marauder_system
+						OR = {
+							CmtTriggerMarauderCapitalSystem = yes
+							any_neighbor_system = {
+								has_owner = no
+								CmtTriggerMarauderCapitalSystem = yes
+							}
+						}
+					}
+				}
+				set_country_flag = marauder_1
+			}
+		}
 	}
 
-	# after = { legacy
-	# 	if = {
-	# 		limit = { exists = event_target:CmtTargetManualMarauder1 }
-	# 		clear_global_event_target = CmtTargetManualMarauder1
-	# 	}
-	# 	if = {
-	# 		limit = { exists = event_target:CmtTargetManualMarauder2 }
-	# 		clear_global_event_target = CmtTargetManualMarauder2
-	# 	}
-	# 	if = {
-	# 		limit = { exists = event_target:CmtTargetManualMarauder3 }
-	# 		clear_global_event_target = CmtTargetManualMarauder3
-	# 	}
-	# }
+	after = {
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+		# legacy
+		# if = {
+		# 	limit = { exists = event_target:CmtTargetManualMarauder1 }
+		# 	clear_global_event_target = CmtTargetManualMarauder1
+		# }
+		# if = {
+		# 	limit = { exists = event_target:CmtTargetManualMarauder2 }
+		# 	clear_global_event_target = CmtTargetManualMarauder2
+		# }
+		# if = {
+		# 	limit = { exists = event_target:CmtTargetManualMarauder3 }
+		# 	clear_global_event_target = CmtTargetManualMarauder3
+		# }
+	}
 
 	option = {
 		name = CrisisManagerMenu.71xxa.name
 		custom_tooltip = CrisisManagerMenu.71xxa.tooltip
-		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
 	}
 	option = {
 		name = CrisisManagerMenu.7138b.name
@@ -1480,7 +1511,6 @@ country_event = {
 				limit = { CmtTriggerHasPotentialKhanAwaking = yes }
 				CmtEffectTriggerMarauderManually = yes
 			}
-			country_event = { id = CrisisManagerMenu.7000 }
 		}
 	}
 	option = {
@@ -1492,7 +1522,6 @@ country_event = {
 		}
 		hidden_effect = {
 			event_target:marauder_country_1 = { CmtEffectTriggerMarauderManually = yes }
-			country_event = { id = CrisisManagerMenu.7000 }
 		}
 	}
 	option = {
@@ -1504,7 +1533,6 @@ country_event = {
 		}
 		hidden_effect = {
 			event_target:marauder_country_2 = { CmtEffectTriggerMarauderManually = yes }
-			country_event = { id = CrisisManagerMenu.7000 }
 		}
 	}
 	option = {
@@ -1516,9 +1544,9 @@ country_event = {
 		}
 		hidden_effect = {
 			event_target:marauder_country_3 = { CmtEffectTriggerMarauderManually = yes }
-			country_event = { id = CrisisManagerMenu.7000 }
 		}
 	}
+
 }
 
 ### Open L-Gate and Trigger L-Cluster Event

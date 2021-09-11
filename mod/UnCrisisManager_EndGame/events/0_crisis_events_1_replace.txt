@@ -1891,13 +1891,15 @@ country_event = {
 		remove_global_flag = ongoing_prethoryn_invasion
 		set_global_flag = prethoryn_invasion_defeated
 		event_target:CmtGlobalVar = { country_event = { id = crisis.119 days = 360 } }		## Feral Prethoryn
-		every_country = {
-			limit = {
-				CmtTriggerIsEmpire = yes
-				NOT = { has_global_flag = galactic_community_formed } # Crisis reward is handled through Galactic Focus if the community exists
+
+		# Crisis reward is handled through Galactic Focus if the community exists
+		if = { limit = { NOT = { has_global_flag = galactic_community_formed } }
+			every_country = {
+				limit = { CmtTriggerIsEmpire = yes }
+				country_event = { id = crisis.211 }
 			}
-			country_event = { id = crisis.211 }
 		}
+
 		observer_event = { id = observer.33 }
 		if = {
 			limit = { exists = event_target:sentinels }

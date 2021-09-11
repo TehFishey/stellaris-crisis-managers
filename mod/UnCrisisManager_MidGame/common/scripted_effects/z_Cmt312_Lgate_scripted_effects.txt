@@ -42,7 +42,7 @@ start_lcluster_chain = {
 						PREV = { set_variable = { which = CmtVarLgateReqClues value = PREV } }
 					}
 				}
-				set_variable = { which = CmtVarLgateReqClues value = { scope = event_target:CmtGlobalVar variable = CmtVarTemp } } # TODO needs test
+				# set_variable = { which = CmtVarLgateReqClues value = event_target:CmtGlobalVar.CmtVarTemp } # 3.1 makes above absolete
 
 				while = {
 					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value < 6.5 } } }
@@ -57,7 +57,7 @@ start_lcluster_chain = {
 				change_variable = { which = CmtVarLgateReqClues value = -2 }
 				set_variable = { which = num_lcluster_clues value = 0 }		## for Liquidation
 
-				log="TEST start needed clues: [CmtVarLgateReqClues]"
+				log="TEST start needed clues: [This.CmtVarLgateReqClues]"
 			}
 		}
 	}

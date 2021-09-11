@@ -77,7 +77,7 @@ CmtEffectKhanReinforceOnCapital = {
 	}
 }
 
-CmtEffectKhanIncreasementReinforcementCycle = {		## Scope: this = Strage of Variable, prev = Country (Khan)
+CmtEffectKhanIncreasementReinforcementCycle = {		## Scope: this = Strage of Variable, prev = (Khan) Country
 	### Get Current Navy Size
 	event_target:CmtGlobalVar = {
 		set_variable = { which = CmtVarTemp value = 0 }

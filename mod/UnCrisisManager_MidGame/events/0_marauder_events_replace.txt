@@ -178,106 +178,202 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		CmtTriggerHasPotentialKhanAwaking = yes
 		CmtTriggerNowInKhanCrisis = no
+		CmtTriggerHasPotentialKhanAwaking = yes
 	}
 
 	immediate = {
+		if = {
+			limit = {
+				OR = {
+					exists = event_target:raider_khanate
+					has_global_flag = marauder_crisis_started
+				}
+			}
+			clear_global_event_target = raider_khanate
+			every_playable_country = {
+				limit = { has_country_flag = rebelling_satrapy }
+				remove_country_flag = rebelling_satrapy
+			}
+		}
+		if = { limit = { exists = event_target:marauder_rally_point }
+			clear_global_event_target = marauder_rally_point
+		}
+
 		# set_global_flag = CmtFlagKhanTriggered
 		set_global_flag = marauder_crisis_started
 		set_global_flag = marauder_crisis_ongoing
-		if = {
-			limit = { exists = event_target:raider_khanate }
-			clear_global_event_target = raider_khanate
-		}
 		save_global_event_target_as = raider_khanate
 
+		if = { limit = { NOT = { exists = event_target:marauder_country_1 } }
+			random_country = { limit = { has_country_flag = marauder_1 }
+				save_global_event_target_as = marauder_country_1
+			}
+		}
+		if = { limit = { NOT = { exists = event_target:marauder_country_2 } }
+			random_country = { limit = { has_country_flag = marauder_2 }
+				save_global_event_target_as = marauder_country_2
+			}
+		}
+		if = { limit = { NOT = { exists = event_target:marauder_country_3 } }
+			random_country = { limit = { has_country_flag = marauder_3 }
+				save_global_event_target_as = marauder_country_3
+			}
+		}
+
 		### Rally Point of Fleets 1/3: Set Event Targets; Set Owner Species to Target
-		random_country = {
-			limit = { has_country_flag = marauder_1 }
-			owner_species = { save_global_event_target_as = CmtTargetSpecies_Marauder1 }
-			if = {
-				limit = { any_system_within_border = { has_star_flag = marauder_capital_1 } }
-				random_system_within_border = {
-					limit = { has_star_flag = marauder_capital_1 }
+		if = { limit = { exists = event_target:marauder_country_1 }
+			event_target:marauder_country_1 = {
+				owner_species = { save_global_event_target_as = CmtTargetSpecies_Marauder1 }
+				if = {
+					limit = { any_system_within_border = { has_star_flag = marauder_capital_1 } }
+					random_system_within_border = {
+						limit = { has_star_flag = marauder_capital_1 }
+						if = {
+							limit = { any_system_planet = { has_planet_flag = raid_source } }
+							random_system_planet = {
+								limit = { has_planet_flag = raid_source }
+								save_global_event_target_as = CmtTargetMarauderRallyPoint1
+							}
+						} else = {	## Backup Code: raid_source NOT Found in Capital System
+							random_system_planet = {
+								limit = { is_star = no }
+								save_global_event_target_as = CmtTargetMarauderRallyPoint1
+							}
+							log = "Backup Code for CmtTargetMarauderRallyPoint1 - 1 Processed"
+						}
+					}
+				} else = {	## Backup Code: Capital System NOT Found
+					random_planet_within_border = {
+						limit = { is_star = no }
+						save_global_event_target_as = CmtTargetMarauderRallyPoint1
+					}
+					log = "Backup Code for CmtTargetMarauderRallyPoint1 - 2 Processed"
+					# Recover former capital
 					if = {
-						limit = { any_system_planet = { has_planet_flag = raid_source } }
-						random_system_planet = {
-							limit = { has_planet_flag = raid_source }
-							save_global_event_target_as = CmtTargetMarauderRallyPoint1
+						limit = {
+							any_system_within_border = {
+								any_neighbor_system = {
+									has_owner = no
+									has_star_flag = marauder_capital_1
+								}
+							}
 						}
-					} else = {		## Backup Code: raid_source NOT Found in Capital System
-						random_system_planet = {
-							limit = { is_star = no }
-							save_global_event_target_as = CmtTargetMarauderRallyPoint1
+						random_system_within_border = {
+							random_neighbor_system = {
+								limit = {
+									has_owner = no
+									has_star_flag = marauder_capital_1
+								}
+								event_target:marauder_country_1 = { save_event_target_as = marauder_starbase_owner }
+								create_marauder_starbase = yes
+							}
 						}
-						log = "Backup Code for CmtTargetMarauderRallyPoint1 - 1 Processed"
 					}
 				}
-			} else = {		## Backup Code: Capital System NOT Found
-				random_planet_within_border = {
-					limit = { is_star = no }
-					save_global_event_target_as = CmtTargetMarauderRallyPoint1
-				}
-				log = "Backup Code for CmtTargetMarauderRallyPoint1 - 2 Processed"
 			}
 		}
-		random_country = {
-			limit = { has_country_flag = marauder_2 }
-			owner_species = { save_global_event_target_as = CmtTargetSpecies_Marauder2 }
-			if = {
-				limit = { any_system_within_border = { has_star_flag = marauder_capital_2 } }
-				random_system_within_border = {
-					limit = { has_star_flag = marauder_capital_2 }
+		if = { limit = { exists = event_target:marauder_country_2 }
+			event_target:marauder_country_2 = {
+				owner_species = { save_global_event_target_as = CmtTargetSpecies_Marauder2 }
+				if = {
+					limit = { any_system_within_border = { has_star_flag = marauder_capital_2 } }
+					random_system_within_border = {
+						limit = { has_star_flag = marauder_capital_2 }
+						if = {
+							limit = { any_system_planet = { has_planet_flag = raid_source } }
+							random_system_planet = {
+								limit = { has_planet_flag = raid_source }
+								save_global_event_target_as = CmtTargetMarauderRallyPoint2
+							}
+						} else = {	## Backup Code: raid_source NOT found in Capital System
+							random_system_planet = {
+								limit = { is_star = no is_colony = yes }
+								save_global_event_target_as = CmtTargetMarauderRallyPoint2
+							}
+							log = "Backup Code for CmtTargetMarauderRallyPoint2 - 1 Processed"
+						}
+					}
+				} else = {
+					## Backup Code: Capital System NOT Found
+					random_planet_within_border = {
+						limit = { is_star = no is_colony = yes }
+						save_global_event_target_as = CmtTargetMarauderRallyPoint2
+					}
+					log = "Backup Code for CmtTargetMarauderRallyPoint2 - 2 Processed"
+					# Recover former capital
 					if = {
-						limit = { any_system_planet = { has_planet_flag = raid_source } }
-						random_system_planet = {
-							limit = { has_planet_flag = raid_source }
-							save_global_event_target_as = CmtTargetMarauderRallyPoint2
+						limit = {
+							any_system_within_border = {
+								any_neighbor_system = {
+									has_owner = no
+									has_star_flag = marauder_capital_2
+								}
+							}
 						}
-					} else = {		## Backup Code: raid_source NOT Found in Capital System
-						random_system_planet = {
-							limit = { is_star = no }
-							save_global_event_target_as = CmtTargetMarauderRallyPoint2
+						random_system_within_border = {
+							random_neighbor_system = {
+								limit = {
+									has_owner = no
+									has_star_flag = marauder_capital_2
+								}
+								event_target:marauder_country_2 = { save_event_target_as = marauder_starbase_owner }
+								create_marauder_starbase = yes
+							}
 						}
-						log = "Backup Code for CmtTargetMarauderRallyPoint2 - 1 Processed"
 					}
 				}
-			} else = {		## Backup Code: Capital System NOT Found
-				random_planet_within_border = {
-					limit = { is_star = no }
-					save_global_event_target_as = CmtTargetMarauderRallyPoint2
-				}
-				log = "Backup Code for CmtTargetMarauderRallyPoint2 - 2 Processed"
 			}
 		}
-		random_country = {
-			limit = { has_country_flag = marauder_3 }
-			owner_species = { save_global_event_target_as = CmtTargetSpecies_Marauder3 }
-			if = {
-				limit = { any_system_within_border = { has_star_flag = marauder_capital_3 } }
-				random_system_within_border = {
-					limit = { has_star_flag = marauder_capital_3 }
+		if = { limit = { exists = event_target:marauder_country_3 }
+			event_target:marauder_country_3 = {
+				owner_species = { save_global_event_target_as = CmtTargetSpecies_Marauder3 }
+				if = {
+					limit = { any_system_within_border = { has_star_flag = marauder_capital_3 } }
+					random_system_within_border = {
+						limit = { has_star_flag = marauder_capital_3 }
+						if = {
+							limit = { any_system_planet = { has_planet_flag = raid_source } }
+							random_system_planet = {
+								limit = { has_planet_flag = raid_source }
+								save_global_event_target_as = CmtTargetMarauderRallyPoint3
+							}
+						} else = {	## Backup Code: raid_source NOT Found in Capital System
+							random_system_planet = {
+								limit = { is_star = no is_colony = yes }
+								save_global_event_target_as = CmtTargetMarauderRallyPoint3
+							}
+							log = "Backup Code for CmtTargetMarauderRallyPoint3 - 1 Processed"
+						}
+					}
+				} else = {	## Backup Code: Capital System NOT Found
+					random_planet_within_border = {
+						limit = { is_star = no is_colony = yes }
+						save_global_event_target_as = CmtTargetMarauderRallyPoint3
+					}
+					log = "Backup Code for CmtTargetMarauderRallyPoint3 - 2 Processed"
+					# Recover former capital
 					if = {
-						limit = { any_system_planet = { has_planet_flag = raid_source } }
-						random_system_planet = {
-							limit = { has_planet_flag = raid_source }
-							save_global_event_target_as = CmtTargetMarauderRallyPoint3
+						limit = {
+							any_system_within_border = {
+								any_neighbor_system = {
+									has_owner = no
+									has_star_flag = marauder_capital_3
+								}
+							}
 						}
-					} else = {		## Backup Code: raid_source NOT Found in Capital System
-						random_system_planet = {
-							limit = { is_star = no }
-							save_global_event_target_as = CmtTargetMarauderRallyPoint3
+						random_system_within_border = {
+							random_neighbor_system = {
+								limit = {
+									has_owner = no
+									has_star_flag = marauder_capital_3
+								}
+								event_target:marauder_country_3 = { save_event_target_as = marauder_starbase_owner }
+								create_marauder_starbase = yes
+							}
 						}
-						log = "Backup Code for CmtTargetMarauderRallyPoint3 - 1 Processed"
 					}
 				}
-			} else = {		## Backup Code: Capital System NOT Found
-				random_planet_within_border = {
-					limit = { is_star = no }
-					save_global_event_target_as = CmtTargetMarauderRallyPoint3
-				}
-				log = "Backup Code for CmtTargetMarauderRallyPoint3 - 2 Processed"
 			}
 		}
 
@@ -353,22 +449,18 @@ country_event = {
 		set_country_type = awakened_marauders
 		set_name = random
 		change_country_flag = {
-			icon = {
-				category = "pirate"
-				file = "flag_pirate_11.dds"
-			}
-			background = {
-				category = "backgrounds"
-				file = "00_solid.dds"
-			}
+			icon = { category = "pirate" file = "flag_pirate_11.dds" }
+			background = { category = "backgrounds" file = "00_solid.dds" }
 			colors={ "red" "red" "null" "null" }
 		}
 		change_government = {
-			civics = { civic = civic_great_khans_vision }
+			civics = { civic = civic_great_khans_vision civic = civic_slaver_guilds }
 		}
 		create_ship_design = { design = "NAME_Pirate_Transport" }
 		add_ship_design = last_created_design
 		create_ship_design = { design = "NAME_Clan_Builder" }
+		add_ship_design = last_created_design
+		create_ship_design = { design = "NAME_Marauder_Starbase" }
 		add_ship_design = last_created_design
 
 		### Ruler Khan
@@ -426,6 +518,7 @@ country_event = {
 			target = event_target:great_khan_ruler
 			class = admiral
 			skill = 10
+			event_leader = yes
 			traits = { trait = leader_trait_great_khan }
 			effect = {
 				set_leader_flag = great_khan
@@ -446,15 +539,40 @@ country_event = {
 		country_event = { id = marauder.520 days = 180 }	## Reinforcement Cycle
 		event_target:CmtGlobalVar = { set_variable = { which = CmtVarKhanReinforcementCounter value = 10 } }
 
-		### Should not attack Enclaves
+		### Should not attack: the Khan is not that bad!
 		every_country = {
-			limit = { is_country_type = enclave }
+			limit = {
+				CmtTriggerIsPlayableEmpire = no
+				OR = {
+					is_country_type = fallen_empire # is_fallen_empire = yes
+					is_country_type = enclave
+					is_country_type = caravaneer_home
+					is_country_type = caravaneer_fleet
+					is_country_type = guardian_sphere
+					is_country_type = marauder_raiders
+					is_country_type = ratlings
+					is_country_type = ldragon_country
+					is_tiyanki_country_type = yes
+					is_amoeba_country_type = yes
+					is_crystal_country_type = yes
+					is_drone_country_type = yes
+					is_country_type = vluur
+					is_primitive = yes
+				}
+				OR = {
+					is_hostile = prev
+					prev = { is_hostile = prev }
+					# prev = { NOT = { is_neutral_to = prev } }
+				}
+				# prev = { NOR = { is_friendly_to = prev is_neutral_to = prev } }
+			}
+			establish_communications_no_message = ROOT
 			prev = {
 				set_faction_hostility = {
 					target = prev
-					set_hostile = no
-					set_neutral = no
-					set_friendly = yes
+					# set_hostile = no
+					set_neutral = yes
+					# set_friendly = yes
 				}
 			}
 		}
@@ -484,11 +602,11 @@ country_event = {
 					has_country_flag = marauder_1
 					AND = {
 						exists = event_target:CmtTargetMarauderRallyPoint1.solar_system.owner
-						event_target:CmtTargetMarauderRallyPoint1.solar_system.owner = { is_same_empire = root }
+						event_target:CmtTargetMarauderRallyPoint1.solar_system = { is_owned_by = ROOT }
 					}
 				}
 			}
-			every_country = {
+			every_playable_country = {
 				limit = { CmtTriggerCountryHiringMarauder1 = yes }
 				set_country_flag = CmtFlagHiringMarauder1
 			}
@@ -499,11 +617,11 @@ country_event = {
 					has_country_flag = marauder_2
 					AND = {
 						exists = event_target:CmtTargetMarauderRallyPoint2.solar_system.owner
-						event_target:CmtTargetMarauderRallyPoint2.solar_system.owner = { is_same_empire = root }
+						event_target:CmtTargetMarauderRallyPoint2.solar_system = { is_owned_by = ROOT }
 					}
 				}
 			}
-			every_country = {
+			every_playable_country = {
 				limit = { CmtTriggerCountryHiringMarauder2 = yes }
 				set_country_flag = CmtFlagHiringMarauder2
 			}
@@ -514,16 +632,16 @@ country_event = {
 					has_country_flag = marauder_3
 					AND = {
 						exists = event_target:CmtTargetMarauderRallyPoint3.solar_system.owner
-						event_target:CmtTargetMarauderRallyPoint3.solar_system.owner = { is_same_empire = root }
+						event_target:CmtTargetMarauderRallyPoint3.solar_system = { is_owned_by = ROOT }
 					}
 				}
 			}
-			every_country = {
+			every_playable_country = {
 				limit = { CmtTriggerCountryHiringMarauder3 = yes }
 				set_country_flag = CmtFlagHiringMarauder3
 			}
 		}
-		every_country = {
+		every_playable_country = {
 			limit = {
 				OR = {
 					has_country_flag = CmtFlagHiringMarauder1
@@ -695,17 +813,20 @@ country_event = {
 		}
 		check_variable = { which = CmtVarKhanRemainingLive value > -0.5 }		## Not CmtGlobalVar
 		OR = {
-			NOT = { has_country_flag = CmtFlagKhanDefeatCountry }
+			NOT = { has_country_flag = great_khan_defeated_once } # CmtFlagKhanDefeatCountry
 			check_variable = { which = CmtVarKhanRemainingLive value > 0.5 }		## Not CmtGlobalVar
 		}
 	}
 
 	immediate = {
-		set_global_flag = great_khan_defeated_once
-		set_country_flag = CmtFlagKhanDefeatCountry
-		change_variable = { which = CmtVarKhanRemainingLive value = -1 }		## Not CmtGlobalVar
+		# set_global_flag not needed
+		set_country_flag = great_khan_defeated_once # CmtFlagKhanDefeatCountry
+		change_variable = { which = CmtVarKhanRemainingLive value = -1 } ## Not CmtGlobalVar
 
-		from = { save_event_target_as = khan_destroyer }
+		from = {
+			save_event_target_as = khan_destroyer
+			change_variable = { which = "planets_lost_to_marauder" value = -4 }
+		}
 		fromfrom = {
 			solar_system = { save_event_target_as = khan_death_system }
 			leader = {
@@ -715,18 +836,15 @@ country_event = {
 		}
 		every_playable_country = {
 			limit = { is_ai = no }
-			country_event = { id = marauder.506 }
+			country_event = { id = marauder.506 } # Notify
 		}
 		observer_event = { id = observer.14 }
 
-		if = {
-			limit = { has_global_flag = CmtFlagDebugMode }
+		if = { limit = { has_global_flag = CmtFlagDebugMode }
 			country_event = { id = marauder.523 days = 5 }
 		} else = {
-			# country_event = { id = marauder.507 days = 180 random = 180 }
-			random_country = {
-				limit = { is_country_type = global_event }
-				country_event = { id = marauder.523 days = 180 random = 180 }
+			event_target:global_event_country = {
+				country_event = { id = marauder.523 days = 180 random = 160 }
 			}
 		}
 	}
@@ -765,7 +883,7 @@ country_event = {
 		OR = {
 			check_variable = { which = CmtVarKhanRemainingLive value < -0.5 }		## Not CmtGlobalVar
 			AND = {
-				has_country_flag = CmtFlagKhanDefeatCountry
+				has_country_flag = great_khan_defeated_once # CmtFlagKhanDefeatCountry
 				check_variable = { which = CmtVarKhanRemainingLive value < 0.5 }		## Not CmtGlobalVar
 			}
 		}
@@ -788,9 +906,8 @@ country_event = {
 		from = {
 			save_event_target_as = khan_destroyer
 			set_country_flag = no_khan_do
-			if = {
-				limit = { is_ai = no }
-				country_event = { id = marauder.710 days = 10 random = 10 }
+			if = { limit = { CmtTriggerIsPlayableEmpire = yes } # is_ai = no
+				country_event = { id = marauder.710 days = 10 random = 8 }
 			}
 		}
 		fromfrom = { solar_system = { save_event_target_as = khan_death_system } }
@@ -826,6 +943,7 @@ event = {
 	is_triggered_only = yes
 
 	trigger = {
+		has_global_flag = marauder_crisis_started
 		any_country = {
 			CmtTriggerIsKhanCountry = yes
 			NOT = { has_country_flag = CmtFlagKhanNoDieCountry }
@@ -1038,7 +1156,7 @@ country_event = {
 					change_variable = { which = CmtVarKhanReinforcementCounter value = -10 }
 				}
 				CmtEffectKhanIncreasementReinforcementCycle = yes		## required: prev = root
-				root = { country_event = { id = marauder.520 days = 34 } }
+				root = { country_event = { id = marauder.520 days = 68 } } # days = 34 ??
 			}
 		}
 	}
@@ -1054,6 +1172,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		NOT = { has_global_flag = marauder_crisis_ongoing }
 		is_country_type = dormant_marauders
 		fromfrom = { is_ship_size = marauder_void_dwelling }
 		from = { CmtTriggerIsPlayableEmpire = yes }
@@ -1062,13 +1181,13 @@ country_event = {
 		OR = {
 			count_owned_ship = {
 				limit = { is_ship_size = marauder_void_dwelling }
-				count >= 3
+				count > 1
 			}
 			AND = {
 				event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanVengeance value = 5 } }
 				count_owned_ship = {
 					limit = { is_ship_size = marauder_void_dwelling }
-					count >= 1
+					count > 0
 				}
 			}
 		}
@@ -1370,7 +1489,7 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		save_global_event_target_as = satrapy_empire
+		save_event_target_as = satrapy_empire
 		capital_scope = {
 			save_event_target_as = capital_planet
 			solar_system = { save_event_target_as = capital_system }
@@ -1410,29 +1529,58 @@ country_event = {
 
 	mean_time_to_happen = {
 		years = 5
+
 		modifier = {
 			factor = 0.5
-			check_variable = { which = "planets_lost_to_marauder" value > 10 }
+			OR = {
+				check_variable = { which = "planets_lost_to_marauder" value > 10 }
+				num_owned_planets < 3
+			}
 		}
 		modifier = {
 			factor = 0.1
-			check_variable = { which = "planets_lost_to_marauder" value > 20 }
+			OR = {
+				check_variable = { which = "planets_lost_to_marauder" value > 20 }
+				num_owned_planets < 3
+			}
 		}
 		modifier = {
 			factor = 3
-			has_ai_personality = honorbound_warriors
+			OR = {
+				has_ai_personality = honorbound_warriors
+				is_galactic_emperor = yes
+				# has_ai_personality = technological_warriors ? from mod
+			}
 		}
 		modifier = {
 			factor = 2
-			has_ai_personality = xenophobic_isolationists
+			OR = {
+				has_ai_personality = xenophobic_isolationists
+				has_country_flag = rebelling_satrapy
+				has_federation = yes
+			}
 		}
 		modifier = {
 			factor = 0.5
-			has_ai_personality = peaceful_traders
+			OR = {
+				has_ai_personality = peaceful_traders
+				has_origin = "origin_khan_successor"
+			}
 		}
 		modifier = {
 			factor = 0.1
-			has_ai_personality = fanatic_befrienders
+			OR = {
+				has_ai_personality = fanatic_befrienders
+				relative_power = {
+					who = event_target:raider_khanate
+					category = fleet
+					value < inferior
+				}
+				AND = {
+					is_at_war = yes
+					def_war_exhaustion_sum > 0.95
+				}
+			}
 		}
 	}
 
@@ -1484,40 +1632,85 @@ country_event = {
 	}
 }
 
-### Regular Reinforcements at Capital of Satrap
+## Regular Reinforcements at Capital of Satrap (Marauder Auxiliary Cycle)
+# This = Garrison_Base
 fleet_event = {
 	id = marauder.560
 	hide_window = yes
 	is_triggered_only = yes
 
 	trigger = {
+		is_scope_valid = yes
 		CmtTriggerExistKhanCountry = yes
-		owner = { is_same_empire = event_target:raider_khanate }
+		is_owned_by = event_target:raider_khanate
 	}
 
 	immediate = {
 		if = {
 			limit = {
-				event_target:CmtGlobalVar = {
-					NOR = {
-						check_variable = { which = CmtVarReinforceCycle_Khan value = 2 }
-						check_variable = { which = CmtVarReinforceCycle_Khan value = 3 }
-						check_variable = { which = CmtVarReinforceCycle_Khan value = 4 }
-					}
+				NOT = { exists = event_target:satrapy_empire }
+				exists = space_owner
+				space_owner = {
+					is_subject = yes
+					NOT = { has_country_flag = rebelling_satrapy }
+					exists = overlord # is_overlord_to not working
+					prev.owner = { is_same_empire = prev.overlord }
 				}
 			}
-			fleet_event = { id = marauder.560 days = 400 random = 400 }
+			space_owner = { save_event_target_as = satrapy_empire }
+		}
+		if = {
+			limit = { exists = event_target:satrapy_empire }
 			event_target:satrapy_empire = { owner_species = { save_event_target_as = satrapy_species } }
-			CmtEffectCreateAdmiralty_KhanSubReinforcement = yes
-		} else = {
-			fleet_event = { id = marauder.560 days = 40 random = 40 }
+
 			if = {
-				limit = { check_variable = { which = CmtVarKhanReinforcementCounter value > 9.5 } }
-				event_target:satrapy_empire = { owner_species = { save_event_target_as = satrapy_species } }
-				CmtEffectCreateAdmiralty_KhanSubReinforcement = yes
-				change_variable = { which = CmtVarKhanReinforcementCounter value = -10 }
+				limit = {
+					event_target:CmtGlobalVar = {
+						OR = {
+							check_variable = { which = CmtVarReinforceCycle_Khan value < 2 }
+							check_variable = { which = CmtVarReinforceCycle_Khan value > 4 }
+						}
+					}
+				}
+				fleet_event = { id = marauder.560 days = 400 random = 400 }
+				if = {
+					limit = {
+						solar_system = {
+							count_fleet_in_system = {
+								count < 4
+								limit = {
+									is_owned_by = event_target:raider_khanate
+									has_fleet_flag = horde_auxuliaries
+								}
+							}
+						}
+					}
+					CmtEffectCreateAdmiralty_KhanSubReinforcement = yes
+				}
+			} else = {
+				# TODO needs FIX: CM somehow not working as fleet power gets unlimited (over 5M)
+				# So static limit is of 4 fleets is set
+				fleet_event = { id = marauder.560 days = 160 random = 80 }
+				if = {
+					limit = { check_variable = { which = CmtVarKhanReinforcementCounter value > 9.5 } }
+					change_variable = { which = CmtVarKhanReinforcementCounter value = -10 }
+					if = {
+						limit = {
+							solar_system = {
+								count_fleet_in_system = {
+									count < 5
+									limit = {
+										is_owned_by = event_target:raider_khanate
+										has_fleet_flag = horde_auxuliaries
+									}
+								}
+							}
+						}
+						CmtEffectCreateAdmiralty_KhanSubReinforcement = yes
+					}
+				}
+				ROOT.owner = { ROOT = { CmtEffectKhanIncreasementReinforcementCycle = yes } }
 			}
-			root.owner = { root = { CmtEffectKhanIncreasementReinforcementCycle = yes } }
 		}
 	}
 }
@@ -1534,6 +1727,8 @@ country_event = {
 	}
 
 	immediate = {
+		remove_global_flag = marauder_crisis_ongoing
+		remove_global_flag = khan_no_die
 		if = {
 			limit = { num_owned_planets < 1 }
 			country_event = { id = marauder.604 } # Reverts to old ways
@@ -1645,15 +1840,12 @@ country_event = {
 				}
 			}
 		}
-		remove_global_flag = marauder_crisis_ongoing
+		clear_global_event_target = marauder_rally_point
 		event_target:CmtGlobalVar = {
 			if = {
 				limit = { check_variable = { which = CmtVarKhanMultiple value = 3 } }
 				remove_global_flag = CmtFlagNowInKhanInterval
 				if = {
-					limit = { check_variable = { which = CmtVarKhanInterval value < @CmtConstKhanInterval_T0 } }
-					### Do nothing
-				} else_if = {
 					limit = { check_variable = { which = CmtVarKhanInterval value < @CmtConstKhanInterval_T1 } }
 					set_timed_global_flag = { flag = CmtFlagNowInKhanInterval days = @CmtConstKhanInterval_D1 }
 				} else_if = {
@@ -1668,7 +1860,10 @@ country_event = {
 				} else_if = {
 					limit = { check_variable = { which = CmtVarKhanInterval value < @CmtConstKhanInterval_T5 } }
 					set_timed_global_flag = { flag = CmtFlagNowInKhanInterval days = @CmtConstKhanInterval_D5 }
-				} else = { set_timed_global_flag = { flag = CmtFlagNowInKhanInterval days = @CmtConstTUnq_ConstKhanInterval } }
+				} else_if = {
+					limit = { check_variable = { which = CmtVarKhanInterval value >= @CmtConstKhanInterval_T0 } }
+					set_timed_global_flag = { flag = CmtFlagNowInKhanInterval days = @CmtConstTUnq_ConstKhanInterval }
+				} ### Do nothing on < @CmtConstKhanInterval_T0
 			}
 		}
 	}
