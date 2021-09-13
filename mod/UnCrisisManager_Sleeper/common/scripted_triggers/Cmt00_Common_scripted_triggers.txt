@@ -168,24 +168,16 @@ CmtTriggerIsBasicCrisisCountry = {
 
 CmtTriggerIsCrisisCountry = {
 	OR = {
-		is_country_type = swarm
-		is_country_type = extradimensional
-		is_country_type = extradimensional_2
-		is_country_type = extradimensional_3
-		is_country_type = ai_empire
+		CmtTriggerIsBasicCrisisCountry = yes
 		CmtTriggerIsShroudSpirit = yes
 	}
 }
 
 CmtTriggerIsExpCrisisCountry = {
 	OR = {
-		is_country_type = swarm
-		is_country_type = feral_prethoryn
-		is_country_type = extradimensional
-		is_country_type = extradimensional_2
-		is_country_type = extradimensional_3
-		is_country_type = portal_holder
-		is_country_type = ai_empire
+		CmtTriggerIsExpPrethoryn = yes
+		CmtTriggerIsContingency = yes
+		CmtTriggerIsExpExds = yes
 		CmtTriggerIsShroudSpirit = yes
 	}
 }
@@ -442,27 +434,31 @@ CmtTriggerForcedEocConfig = {
 }
 
 CmtTriggerSleeperConfig = {
-	OR = {
-		NOR = {
-			CmtTriggerAnyCrisisTriggered = yes
-			CmtTriggerSleepersAwakingTriggered = yes
-		}
+	OR = { # NOR = {	CmtTriggerAnyCrisisTriggered = yes
 		has_global_flag = CmtFlagDebugMode
+		CmtTriggerSleepersAwakingTriggered = no
 	}
 	has_global_flag = CmtFlagSleeperEdition
 }
 
-# CmtTriggerHeavenConfig = {
-# 	CmtTriggerSleeperConfig = yes
-# }
+CmtTriggerHeavenConfig = {
+	NOR = {
+		CmtTriggerAnyCrisisTriggered = yes
+		has_global_flag = CmtFlagWarInHeavenTriggered # war_in_heaven_started
+		has_global_flag = sleepers_awake_rival_waking
+		has_global_flag = guardians_of_the_galaxy_happened
+		has_global_flag = CmtFlagGuardiansTryToAwake
+		has_global_flag = CmtFlagMachineFeTryToAwake
+		NOT = { has_global_flag = CmtFlagDebugMode }
+	}
+	has_global_flag = CmtFlagSleeperEdition
+}
 
 CmtTriggerGuardianFeConfig = {
 	OR = {
-		NOR = {
-			CmtTriggerAnyCrisisTriggered = yes
-			CmtTriggerSleepersAwakingTriggered = yes
-		}
 		has_global_flag = CmtFlagDebugMode
+		# NOR = { CmtTriggerAnyCrisisTriggered = yes
+		CmtTriggerSleepersAwakingTriggered = no
 	}
 	has_global_flag = CmtFlagEndGameEdition
 }

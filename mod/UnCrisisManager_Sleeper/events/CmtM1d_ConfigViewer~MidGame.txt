@@ -608,17 +608,6 @@ country_event = {
 
 	immediate = {
 		set_country_flag = CmtFlagConfigViewerShowing1027
-		if = { # TODO temporary fix for new var
-			limit = { NOT = { has_global_flag = l_cluster_opened } }
-			every_playable_country = {
-				limit = {
-					has_event_chain = l_cluster_chain
-					NOR = { has_country_flag = lgate_warned is_variable_set = CmtVarLgateReqClues }
-				}
-				set_variable = { which = CmtVarLgateReqClues value = event_target:CmtGlobalVar }
-				change_variable = { which = CmtVarLgateReqClues value = -2 }
-			}
-		}
 	}
 
 	option = {

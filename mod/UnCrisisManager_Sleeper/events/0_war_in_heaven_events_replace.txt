@@ -169,6 +169,23 @@ country_event = {
 	}
 }
 
+country_event = {
+	id = war_in_heaven.2
+	title = war_in_heaven.2.name
+	desc = war_in_heaven.2.desc
+	picture = GFX_evt_fallen_empire
+	show_sound = event_alien_signal
+	location = from
+	is_triggered_only = yes
+	trigger = { is_ai = no }
+	immediate = {
+		set_timed_country_flag = { flag = war_in_heaven_timer days = @CmtConstHeavenPreludeSpeed_3c }
+	}
+	option = {
+		name = war_in_heaven.2.a
+	}
+}
+
 ### Declare The War in Heaven
 country_event = {
 	id = war_in_heaven.3
@@ -1205,7 +1222,7 @@ country_event = {
 				modifier = {
 					factor = 0
 					OR = {
-						ROOT = { has_rival = PREV }
+						root = { has_rival = prev }
 						event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcLeague value = 5 } }
 						NOR = {
 							event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcLeague value = 2 } }

@@ -47,7 +47,7 @@ CmtEffectFriendlyCrisis = {
 				every_country = {
 					limit = {
 						CmtTriggerIsExpExds = yes
-						NOT = { is_same_value = prev }
+						NOT = { is_same_empire = prev }
 					}
 					set_faction_hostility = {
 						target = prev
@@ -69,7 +69,7 @@ CmtEffectFriendlyCrisis = {
 				every_country = {
 					limit = {
 						CmtTriggerIsExpCrisisCountry = yes
-						NOT = { is_same_value = prev }
+						NOT = { is_same_empire = prev }
 					}
 					set_faction_hostility = {
 						target = prev
@@ -86,7 +86,7 @@ CmtEffectFriendlyCrisis = {
 					every_country = {
 						limit = {
 							CmtTriggerIsExpExds = yes
-							NOT = { is_same_value = prev }
+							NOT = { is_same_empire = prev }
 						}
 						set_faction_hostility = {
 							target = prev
@@ -103,7 +103,7 @@ CmtEffectFriendlyCrisis = {
 				every_country = {
 					limit = {
 						CmtTriggerIsExpCrisisCountry = yes
-						NOT = { is_same_value = prev }
+						NOT = { is_same_empire = prev }
 					}
 					set_faction_hostility = {
 						target = prev
@@ -123,7 +123,7 @@ CmtEffectHostileCrisis = {
 		every_country = {
 			limit = {
 				CmtTriggerIsExpCrisisCountry = yes
-				NOT = { is_same_value = prev }
+				NOT = { is_same_empire = prev }
 			}
 			set_faction_hostility = {
 				target = prev
@@ -138,7 +138,7 @@ CmtEffectHostileCrisis = {
 		every_country = {
 			limit = {
 				CmtTriggerIsExds = yes
-				NOT = { is_same_value = prev }
+				NOT = { is_same_empire = prev }
 			}
 			set_faction_hostility = {
 				target = prev
@@ -153,7 +153,7 @@ CmtEffectHostileCrisis = {
 		every_country = {
 			limit = {
 				is_country_type = portal_holder
-				NOT = { is_same_value = prev }
+				NOT = { is_same_empire = prev }
 			}
 			set_faction_hostility = {
 				target = prev
