@@ -55,11 +55,9 @@ country_event = {
 				}
 			} else_if = {
 				limit = {
-					NOR = {
-						check_variable = { which = CmtVarTemp value = 1 }
-						check_variable = { which = CmtVarTemp value = 2 }
-						check_variable = { which = CmtVarTemp value = 3 }
-						check_variable = { which = CmtVarTemp value = 4 }
+					OR = {
+						check_variable = { which = CmtVarTemp value < 1 }
+						check_variable = { which = CmtVarTemp value > 4 }
 					}
 				}
 				every_megastructure = {

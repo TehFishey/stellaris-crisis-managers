@@ -79,9 +79,12 @@ country_event = {
 				limit = { has_country_flag = sleepers_awake_first_sleeper }
 				remove_country_flag = sleepers_awake_first_sleeper
 			}
-			set_country_flag = sleepers_awake_first_sleeper
 			save_global_event_target_as = CmtTargetFirstSleeper
+		} else = {
+			set_timed_global_flag = { flag = war_in_heaven_debug days = @CmtConstHeavenPreludeSpeed_2c }
+			set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_4a }
 		}
+		set_country_flag = sleepers_awake_first_sleeper
 
 		### Change Government
 		set_country_type = awakened_fallen_empire
@@ -101,6 +104,7 @@ country_event = {
 			country_event = { id = fallen_empires.13 }
 		}
 		country_event = { id = fallen_empires.13 }
+		# legacy: add_awakened_fallen_empire_fleet = yes # also some more fleet
 
 		### Establish Communications
 		every_country = {

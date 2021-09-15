@@ -460,6 +460,13 @@ defined_text = {
 		}
 		localization_key = CmtIconFanaticXenophobe
 	}
+	text = {
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper5
+			event_target:CmtTargetManualSleeperA = { is_same_empire = event_target:CmtTargetManualSleeper5 }
+		}
+		localization_key = CmtIconGestalt
+	}
 }
 
 defined_text = {
@@ -491,6 +498,13 @@ defined_text = {
 			event_target:CmtTargetManualSleeperB = { is_same_empire = event_target:CmtTargetManualSleeper4 }
 		}
 		localization_key = CmtIconFanaticXenophobe
+	}
+	text = {
+		trigger = {
+			exists = event_target:CmtTargetManualSleeper5
+			event_target:CmtTargetManualSleeperB = { is_same_empire = event_target:CmtTargetManualSleeper5 }
+		}
+		localization_key = CmtIconGestalt
 	}
 }
 

@@ -29,17 +29,17 @@
  CmtTextOK.tooltip:1 ""
  CmtTextExit.name:0 "§GExit Menu§!"
  CmtTextExit.tooltip:1 ""
- CmtTextGoBack.name:0 "< Go Back"
+ CmtTextGoBack.name:0 "£horizontal_left_button£ Go Back"
  CmtTextGoBack.tooltip:1 ""
- CmtTextGoNextPage.name:0 "Go Next >"
+ CmtTextGoNextPage.name:0 "Go Next £horizontal_right_button£"
  CmtTextGoNextPage.tooltip:1 ""
- CmtTextGoNextConfig.name:0 "Go Next Configuration >"
+ CmtTextGoNextConfig.name:0 "Go Next Configuration £horizontal_right_button£"
  CmtTextGoNextConfig.tooltip:1 ""
  CmtTextGoBackMain.name:0 "Go Back to Main Menu"
  CmtTextGoBackMain.tooltip:1 ""
  CmtTextGoBackViewerMenu.name:0 "Go Back to Viewer Menu"
  CmtTextGoBackViewerMenu.tooltip:1 ""
- CmtTextKeepCurrent.name:0 "Keep Current Configuration >"
+ CmtTextKeepCurrent.name:0 "Keep Current Configuration £horizontal_right_button£"
  CmtTextKeepCurrent.tooltip:1 ""
  CmtTextSetIndividually.name:0 "Set Individually for Each Crises"        ## The active voice. This is used as title of options.
  CmtTextSetIndividually.tooltip:1 ""
@@ -94,7 +94,7 @@
  CmtDescTemplateInfoFull:0 "$CmtIconTemplateEvent$: template for events of the crises (Basic Config & Adv. Config.).\n$CmtIconTemplatePower$: template for ''Crisis Power''[CmtGlobalVar.GetName_CmtTemplateDescEndGame][CmtGlobalVar.GetName_CmtTemplateDescMidGame][CmtGlobalVar.GetName_CmtTemplateDescSleeper]"
  CmtDescTemplateInfoEndGame:0 "\n(E): template for End-Game Crisis"
  CmtDescTemplateInfoMidGame:0 "\n(M): template for Mid-Game Crisis"
- CmtDescTemplateInfoSleeper:0 "\n(S): template for Sleepers (Fallen Empire)"
+ CmtDescTemplateInfoSleeper:0 "\n(S): template for Sleepers ($COUNTRY_FALLEN_EMPIRE$)"
  CmtDescTemplateInfoNull:1 ""
 
  ### For Initial Words
@@ -114,13 +114,13 @@
  CmtDescNotImplemented:0 "§RNot implemented yet.§!\nThese configurations are ignored."
 
  ### Common to All Editions
- CmtDescTooltipInfo:0 "$CmtTooltipInfo2$ means important information is written in mouseover tooltip.\n$CmtTooltipInfo1$ means other additional information is written in the tooltip."
+ CmtDescTooltipInfo:0 "$CmtTooltipInfo2$ means that important information is contained in the mouseover tooltip.\n$CmtTooltipInfo1$ means that additional information is contained in the tooltip."
  CmtDescHomicidal:0 "''Homicidal empires'' means Fanatic Purifiers, Devouring Swarm and Determined Exterminators."
  CmtDescNoCancelHead:0 "This operation §Hcannot be cancelled§!. Are you sure?"
  CmtDescNoCancelTail:0 "$CmtWarn2$: This operation cannot be canceled."
  CmtDescUnadjustedText:0 "$CmtWarn1$\nTexts in corresponding events are not adjust to this configurations but kept Vanilla ones."
  CmtDescYourOwnRisk:0 "Set huge value at your own risk: see also ''$CrisisManagerMenu.6000.6001.title$''."
- CmtDescToggleConfig:0 "$CmtWarn1$\nOptions of this configuration are toggle.\nSelect ''$CmtTextGoNextConfig.name$'' or ''$CmtTextGoBack.name$'' when you have finished the setting."
+ CmtDescToggleConfig:0 "$CmtWarn1$\nOptions of this configuration are §Ytoggle§!.\nSelect ''$CmtTextGoNextConfig.name$'' or ''$CmtTextGoBack.name$'' when you have finished the setting."
 
  ### End-Game Edition, Total War Pack
  CmtDescUnlimitedExds:0 "$CmtWarn1$: Extradimensional invasion can happen even if jump drive has not been developed yet."
@@ -129,7 +129,7 @@
  CmtDescTotalWarTarget:0 "$CmtWarn2$\nThis configuration is applied to not only end-game crises, but also Horde crisis ($RT_GREAT_KHAN$).\nHowever, it is NOT applied to Gray Tempest since they does not have starbases or territory."
 
  ### Sleeper Edition, Guardians of Galaxy
- CmtDescStdAwakingOnly:0 "$CmtWarn1$\nThis configuration controls only standard awakening, but not the guardians of the galaxy or the $mod_war_in_heaven$."
+ CmtDescStdAwakingOnly:0 "$CmtWarn1$\nThis configuration controls only standard awakening, but not the $fallen_empires_awakening.5.name$ or the $mod_war_in_heaven$."
  CmtDescExceptMechFe:0 "$CmtWarn1$\n$personality_fallen_empire_machine$ ($fallen_machine_empire$) does not comply this configuration."
  CmtDescApocalypseColossus:0 "DLC ''Apocalypse'' is required to create Colossus."
 
@@ -161,10 +161,10 @@
  CmtNameForcedEoc:0 "§MForced End of Cycle§!"
  CmtNameFeoc:0 "FEoC"
 
- CmtNameFallenEmpire:0 "Fallen Empires"
+ CmtNameFallenEmpire:0 "$OUTLINER_FALLEN_EMPIRES$"
  CmtNameAwakenedEmpire:0 "Awakened Empires"
  CmtNameSleeperAwaking:0 "Sleepers Awakening"
- CmtNameGuardiansFe:0 "Guardians of the Galaxy"
+ CmtNameGuardiansFe:0 "$fallen_empires_awakening.5.name$"
  CmtNameWarInHeaven:0 "$mod_war_in_heaven$"
  CmtNameFallenMaterialist:0 "$CmtIconFanaticMaterialist$ §YKeepers of Knowledge§!"
  CmtNameFallenSpiritualist:0 "$CmtIconFanaticSpiritualist$ §YHoly Guardians§!"
@@ -530,7 +530,7 @@
  CrisisManagerMenu.3160a.tooltip:0 "$CrisisManagerMenu.3160x.tooltip$§YAbout 23 - 26 years§!"
  CrisisManagerMenu.3160b.tooltip:0 "$CrisisManagerMenu.3160x.tooltip$§YAbout 5 - 30 years§!"
  CrisisManagerMenu.3160c.tooltip:1 ""
- CrisisManagerMenu.3160d.tooltip:0 "$CrisisManagerMenu.3160x.tooltip$§Y4 - 5 years§!\nSimilar to the Ghost Signal"
+ CrisisManagerMenu.3160d.tooltip:0 "$CrisisManagerMenu.3160x.tooltip$§Y4 - 5 years§!\nSimilar to $crisis.2010.name$"
  CrisisManagerMenu.3160e.tooltip:0 "$CrisisManagerMenu.3160x.tooltip$§Y About 3 - 8 years§!"
  CrisisManagerMenu.3160f.tooltip:0 "$CrisisManagerMenu.3160x.tooltip$§ROnly tens days§!"
  CrisisManagerMenu.3160y.tooltip:1 ""
@@ -555,7 +555,7 @@
 
  ### Submarine Crisis
  CrisisManagerMenu.3170.title:0 "Submarine Crisis"
- CrisisManagerMenu.3170.desc:0 "A configuration to hide crises opening events.\nIf this configuration is activated, ''Subspace Echo'' and ''the Ghost Signal'' will be hidden and any empires cannot know the invasion in advance.\n\n$CmtWarn0$\n$CmtNameCrisisExds$ and $CmtNameForcedEoc$ have not opening event originally."
+ CrisisManagerMenu.3170.desc:0 "A configuration to hide crises opening events.\nIf this configuration is activated, ''Subspace Echo'' and ''$crisis.2010.name$'' will be hidden and any empires cannot know the invasion in advance.\n\n$CmtWarn0$\n$CmtNameCrisisExds$ and $CmtNameForcedEoc$ have not opening event originally."
  CrisisManagerMenu.3170a.title:0 "§GDisable§! Submarine Crisis"
  CrisisManagerMenu.3170b.title:0 "§HActivate§! Submarine Crisis"
  CrisisManagerMenu.3170a.tooltip:1 ""
@@ -699,7 +699,7 @@
  CrisisManagerMenu.3240a.tooltip:1 ""
  CrisisManagerMenu.3240b.tooltip:0 "A little faster primitive FTL empires."
  CrisisManagerMenu.3240c.tooltip:0 "Similar speed to mature FTL empires."
- CrisisManagerMenu.3240d.tooltip:0 "Faster than Fallen Empires."
+ CrisisManagerMenu.3240d.tooltip:0 "Faster than $OUTLINER_FALLEN_EMPIRES$."
  CrisisManagerMenu.3240e.tooltip:0 "They must use mini-warp drive for moving inside gravity well."
 
  CrisisManagerMenu.3240.name:1 "$CrisisManagerMenu.3240.title$ $CrisisManagerTitleC$"
@@ -1023,7 +1023,7 @@
 
  ### Less Reinforcements on Anchors Built
  CrisisManagerMenu.4240.title:0 "Less Reinforcements on Anchors Built"
- CrisisManagerMenu.4240.desc:0 "Reinforcement fleet of extradimensionals will come from their portal when their dimensional anchors (starbases) are built. This is a configuration of its frequency.\n\n$CmtWarn2$\nThis configuration has effect upon only reinforcement on starbases built, but not upon reinforcement at stated periods.\n\n$CmtWarn0$\nThe anchors are built frequency and the amount of the reinforcement will increase greatly, ''$CrisisManagerTotalWar$'' is enabled.\nIn this case, a option that makes lower frequency are recommended for avoiding extradimensionals being made so stronger than Prethoryn and the Contingency."
+ CrisisManagerMenu.4240.desc:0 "Reinforcement fleet of extradimensionals will come from their portal when their dimensional anchors (starbases) are built. This is a configuration of its frequency.\n\n$CmtWarn2$\nThis configuration has effect upon only reinforcement on starbases built, but not upon reinforcement at stated periods.\n\n$CmtWarn0$\nThe anchors are built frequency and the amount of the reinforcement will increase greatly, ''$CrisisManagerTotalWar$'' is enabled.\nIn this case, a option that makes lower frequency are recommended for avoiding extradimensionals being made so stronger than Prethoryn and $ai_crisis_chain_title$."
  CrisisManagerMenu.4240a.title:0 "§BNo Reinforcement§! on Anchors Built"
  CrisisManagerMenu.4240b.title:0 "Reinforced on §YEvery 10 Anchors§! Built"
  CrisisManagerMenu.4240c.title:0 "Reinforced on §YEvery 5 Anchors§! Built"
@@ -1111,7 +1111,7 @@
 
  ### Forbid Contingency Protocol
  CrisisManagerMenu.4310.title:1 "Forbid $CmtNameCrisisContingency$"
- CrisisManagerMenu.4310.desc:0 "A configuration to prohibit the start of the Contingency Protocol."
+ CrisisManagerMenu.4310.desc:0 "A configuration to prohibit the start of $ai_crisis_chain_title$ Protocol."
  CrisisManagerMenu.4310a.title:0 "§BForbid§! Contingency Protocol"
  CrisisManagerMenu.4310b.title:0 "§GAllow§! Contingency Protocol"
  CrisisManagerMenu.4310a.tooltip:0 "This system will not launch. \nIt has used standby power too much, and there're not enough power to reboot."
@@ -1124,8 +1124,8 @@
  CrisisManagerMenu.4310b.name:1 "$CrisisManagerMenu.4310b.title$ $CmtTextDefault$"
 
  ### Not Implemented Yet: Number of AI Worlds of Contingency
- CrisisManagerMenu.4320.title:0 "Number of AI Worlds of Contingency"
- CrisisManagerMenu.4320.desc:0 "Here you can reduce the number of AI Worlds of the Contingency.\nStrength of the Ghost Signal is also reduced."
+ CrisisManagerMenu.4320.title:0 "Number of AI Worlds of $ai_crisis_chain_title$"
+ CrisisManagerMenu.4320.desc:0 "Here you can reduce the number of AI Worlds of $ai_crisis_chain_title$.\nStrength of $crisis.2010.name$ is also reduced."
  CrisisManagerMenu.4320a.title:0 "§Y1 AI Worlds§!"
  CrisisManagerMenu.4320b.title:0 "§Y2 AI Worlds§!"
  CrisisManagerMenu.4320c.title:0 "§Y3 AI Worlds§!"
@@ -1149,8 +1149,8 @@
  CrisisManagerMenu.4320z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
 
  ### Strength of Ghost Signal
- CrisisManagerMenu.4330.title:0 "Strength of Ghost Signal"
- CrisisManagerMenu.4330.desc:0 "A configuration for strength of the Ghost Signal.\n\n$CmtWarn2$\nMouseover tooltip of Ghost Signal in Empire Modifiers will show wrong value if non-''$CrisisManagerMenu.4330c.title$'' is selected.\nOnes of each pops and ships will show correct values."
+ CrisisManagerMenu.4330.title:0 "Strength of $pop_ghost_signal_5$"
+ CrisisManagerMenu.4330.desc:0 "A configuration for strength of $crisis.2010.name$.\n\n$CmtWarn2$\nMouseover tooltip of $pop_ghost_signal_5$ in Empire Modifiers will show wrong value if non-''$CrisisManagerMenu.4330c.title$'' is selected.\nOnes of each pops and ships will show correct values."
  CrisisManagerMenu.4330a.title:0 "§MZero§!"
  CrisisManagerMenu.4330b.title:0 "§BWeak§!"
  CrisisManagerMenu.4330c.title:0 "§GMiddle§!"
@@ -1161,7 +1161,7 @@
  CrisisManagerMenu.4330b.tooltip:0 "About a half of vanilla."
  CrisisManagerMenu.4330c.tooltip:1 ""
  CrisisManagerMenu.4330d.tooltip:0 "About 2 times of vanilla."
- CrisisManagerMenu.4330e.tooltip:0 "Synths interfered by the Ghost Signal will not produce anything, even if only Final AI World remains.\nPops of machine empires produce a very little."
+ CrisisManagerMenu.4330e.tooltip:0 "Synths interfered by $crisis.2010.name$ will not produce anything, even if only Final AI World remains.\nPops of machine empires produce a very little."
 
  CrisisManagerMenu.4330.name:1 "$CrisisManagerMenu.4330.title$ $CrisisManagerTitleC$"
  CrisisManagerMenu.4330.desc1:1 "$CrisisManagerMenu.4330.desc$\n\n$CmtTextCurrent$§W$CrisisManagerMenu.4330a.title$§!"
@@ -1241,7 +1241,7 @@
  CrisisManagerMenu.4360a.title:0 "§BForbid§! Terror to Psi, Hive"
  CrisisManagerMenu.4360b.title:0 "§HAllow§! Terror to Psi, Hive"
  CrisisManagerMenu.4360a.tooltip:1 ""
- CrisisManagerMenu.4360b.tooltip:0 "The Contingency gets more so fine technology to camouflage.\n\n''$CrisisManagerMenu.4340a.title$'' in ''$CrisisManagerMenu.4340.title$'' is superior to this configuration."
+ CrisisManagerMenu.4360b.tooltip:0 "$ai_crisis_chain_title$ gets more so fine technology to camouflage.\n\n''$CrisisManagerMenu.4340a.title$'' in ''$CrisisManagerMenu.4340.title$'' is superior to this configuration."
 
  CrisisManagerMenu.4360.name:1 "$CrisisManagerMenu.4360.title$ $CrisisManagerTitleC$"
  CrisisManagerMenu.4360.desc1:1 "$CrisisManagerMenu.4360.desc$\n\n$CmtTextCurrent$§W$CrisisManagerMenu.4360a.title$§!"
@@ -1259,10 +1259,10 @@
  CrisisManagerMenu.4370e.title:0 "Cybrex to §RPower State S1§!"
  CrisisManagerMenu.4370x.title:1 "$CrisisManagerMenu.4370.title$: "
  CrisisManagerMenu.4370a.tooltip:0 "The system of Cybrex has gone down. It never launch."
- CrisisManagerMenu.4370b.tooltip:0 "Congestive collapse happens in Cybrex CPUs. Cybrex will resurface after the Contingency occupies 45% or more of the galaxy."
- CrisisManagerMenu.4370c.tooltip:0 "Same as vanilla: after the Contingency occupies 20% of the galaxy."
- CrisisManagerMenu.4370d.tooltip:0 "It will resurface at relatively early stage of the crisis: when about 5% of the galaxy is occupied by the Contingency."
- CrisisManagerMenu.4370e.tooltip:0 "It will resurface within a months from appearance of the Contingency."
+ CrisisManagerMenu.4370b.tooltip:0 "Congestive collapse happens in Cybrex CPUs. Cybrex will resurface after $ai_crisis_chain_title$ occupies 45% or more of the galaxy."
+ CrisisManagerMenu.4370c.tooltip:0 "Same as vanilla: after $ai_crisis_chain_title$ occupies 20% of the galaxy."
+ CrisisManagerMenu.4370d.tooltip:0 "It will resurface at relatively early stage of the crisis: when about 5% of the galaxy is occupied by $ai_crisis_chain_title$."
+ CrisisManagerMenu.4370e.tooltip:0 "It will resurface within a months from appearance of $ai_crisis_chain_title$."
 
  CrisisManagerMenu.4370.name:1 "$CrisisManagerMenu.4370.title$ $CrisisManagerTitleC$"
  CrisisManagerMenu.4370.desc1:1 "$CrisisManagerMenu.4370.desc$\n\n$CmtTextCurrent$§W$CrisisManagerMenu.4370a.title$§!"
@@ -1386,18 +1386,18 @@
 
  ### Multiple Awakening of Sleepers
  CrisisManagerMenu.4510.title:0 "Multiple Awakening of Sleepers"
- CrisisManagerMenu.4510.desc:0 "A configuration for Fallen Empire awakening.\n\n$CmtDescStdAwakingOnly$"
+ CrisisManagerMenu.4510.desc:0 "A configuration for $COUNTRY_FALLEN_EMPIRE$ awakening.\n\n$CmtDescStdAwakingOnly$"
  CrisisManagerMenu.4510a.title:0 "§MForbid Awakening§! of Sleepers"
  CrisisManagerMenu.4510b.title:0 "Allow §BAwakening Only One§! of Sleepers"
  CrisisManagerMenu.4510c.title:0 "Allow Sleeper Awakening §GIndependently form Guardians§!"
  CrisisManagerMenu.4510d.title:0 "Allow §YMultiple Awakening§! of Sleepers"
  CrisisManagerMenu.4510e.title:0 "Allow §HSimultaneous Awakening§! of Sleepers"
  CrisisManagerMenu.4510x.title:1 "$CrisisManagerMenu.4510.title$: "
- CrisisManagerMenu.4510a.tooltip:0 "Fallen Empires are so tired and sleeping like a log.\nSo they do not seem to go awakening."
- CrisisManagerMenu.4510b.tooltip:0 "Only one Fallen Empire can awaken.\nHowever, no more Fallen Empire can awaken if another Fallen Empire has awakened as guardians of the galaxy."
- CrisisManagerMenu.4510c.tooltip:0 "Only one Fallen Empire can do standard type of awakening.\nThey can awaken even if another Fallen Empire has awakened as guardians of the galaxy."
- CrisisManagerMenu.4510d.tooltip:0 "A Fallen Empire can awaken if other awakened empire unexists: unawakened or annihilated."
- CrisisManagerMenu.4510e.tooltip:0 "Fallen Empires can awaken even if other awakened empire exists.\n\n$CmtWarn0$: This does not mean the War in Heaven. Awakening chance for next Fallen Empire will start after the end of process for triggering the $mod_war_in_heaven$."
+ CrisisManagerMenu.4510a.tooltip:0 "$OUTLINER_FALLEN_EMPIRES$ are so tired and sleeping like a log.\nSo they do not seem to go awakening."
+ CrisisManagerMenu.4510b.tooltip:0 "Only one $COUNTRY_FALLEN_EMPIRE$ can awaken.\nHowever, no more $COUNTRY_FALLEN_EMPIRE$ can awaken if another $COUNTRY_FALLEN_EMPIRE$ has awakened as $fallen_empires_awakening.5.name$."
+ CrisisManagerMenu.4510c.tooltip:0 "Only one $COUNTRY_FALLEN_EMPIRE$ can do standard type of awakening.\nThey can awaken even if another $COUNTRY_FALLEN_EMPIRE$ has awakened as $fallen_empires_awakening.5.name$."
+ CrisisManagerMenu.4510d.tooltip:0 "A $COUNTRY_FALLEN_EMPIRE$ can awaken if other awakened empire unexists: unawakened or annihilated."
+ CrisisManagerMenu.4510e.tooltip:0 "$OUTLINER_FALLEN_EMPIRES$ can awaken even if other awakened empire exists.\n\n$CmtWarn0$: This does not mean the War in Heaven. Awakening chance for next $COUNTRY_FALLEN_EMPIRE$ will start after the end of process for triggering the $mod_war_in_heaven$."
 
  CrisisManagerMenu.4510.name:1 "$CrisisManagerMenu.4510.title$ $CrisisManagerTitleC$"
  CrisisManagerMenu.4510.desc1:1 "$CrisisManagerMenu.4510.desc$\n\n$CmtTextCurrent$§W$CrisisManagerMenu.4510a.title$§!"
@@ -1415,7 +1415,7 @@
 
  ### Interval of Sleepers Awakening
  CrisisManagerMenu.4520.title:0 "Interval of Sleepers Awakening"
- CrisisManagerMenu.4520.desc:0 "A configuration of interval of Fallen Empires awakening.\nThis configuration works followings.\n\nIf ''$CrisisManagerMenu.4510d.title$'' is set, this configuration is minimum time from previous awakened empire destroyed to next empire awakening.\n\nIf ''$CrisisManagerMenu.4510e.title$'' is set, this configuration is minimum time from previous Fallen Empire awakening to next one awakening.\n\n$CmtWarn1$: Next Fallen Empire does not awaken always immediately when the interval is over."
+ CrisisManagerMenu.4520.desc:0 "A configuration of interval of $OUTLINER_FALLEN_EMPIRES$ awakening.\nThis configuration works followings.\n\nIf ''$CrisisManagerMenu.4510d.title$'' is set, this configuration is minimum time from previous awakened empire destroyed to next empire awakening.\n\nIf ''$CrisisManagerMenu.4510e.title$'' is set, this configuration is minimum time from previous $COUNTRY_FALLEN_EMPIRE$ awakening to next one awakening.\n\n$CmtWarn1$: Next $COUNTRY_FALLEN_EMPIRE$ does not awaken always immediately when the interval is over."
  CrisisManagerMenu.4520x.title:1 "$CrisisManagerMenu.4520.title$: "
  CrisisManagerMenu.4520.V5.title:0 "§Y100 Years§!"
  CrisisManagerMenu.4520.V4.title:0 "§Y75 Years§!"
@@ -1449,7 +1449,7 @@
 
  ### Sleepers to Awaken at Earliest
  CrisisManagerMenu.4530.title:0 "Sleepers to Awaken at Earliest"
- CrisisManagerMenu.4530.desc:0 "A configuration of the year a Fallen Empire awakening at the earliest.\n\n$CmtDescEgsy$"
+ CrisisManagerMenu.4530.desc:0 "A configuration of the year a $COUNTRY_FALLEN_EMPIRE$ awakening at the earliest.\n\n$CmtDescEgsy$"
  CrisisManagerMenu.4530x.title:1 "$CrisisManagerMenu.4530.title$: "
  CrisisManagerMenu.4530.V9.title:0 "Sleepers to Awaken at Earliest §YEGSY +100 Years§!"
  CrisisManagerMenu.4530.V8.title:0 "Sleepers to Awaken at Earliest §YEGSY +75 Years§!"
@@ -1495,18 +1495,18 @@
 
  ### MTTH for Sleeper Awakening
  CrisisManagerMenu.4540.title:0 "MTTH for Sleeper Awakening"
- CrisisManagerMenu.4540.desc:0 "A configuration of MTTH for a Fallen Empire awakening.\n\n$CmtDescMtth$\n\n$CmtDescStdAwakingOnly$"
+ CrisisManagerMenu.4540.desc:0 "A configuration of MTTH for a $COUNTRY_FALLEN_EMPIRE$ awakening.\n\n$CmtDescMtth$\n\n$CmtDescStdAwakingOnly$"
  CrisisManagerMenu.4540a.title:0 "§BVery Long§!"
  CrisisManagerMenu.4540b.title:0 "§GLong§!"
  CrisisManagerMenu.4540c.title:0 "§YMiddle§!"
  CrisisManagerMenu.4540d.title:0 "§HShort§!"
- CrisisManagerMenu.4540e.title:0 "Fallen Empire to Awaken §Ras Soon§! as Condition Satisfied"
+ CrisisManagerMenu.4540e.title:0 "$COUNTRY_FALLEN_EMPIRE$ to Awaken §Ras Soon§! as Condition Satisfied"
  CrisisManagerMenu.4540x.title:1 "$CrisisManagerMenu.4540.title$: "
  CrisisManagerMenu.4540a.tooltip:1 "$CmtDescMtth$"
  CrisisManagerMenu.4540b.tooltip:1 "$CmtDescMtth$"
  CrisisManagerMenu.4540c.tooltip:1 "$CmtDescMtth$"
  CrisisManagerMenu.4540d.tooltip:1 "$CmtDescMtth$"
- CrisisManagerMenu.4540e.tooltip:0 "Any Fallen Empire will awaken as soon as all conditions are satisfied."
+ CrisisManagerMenu.4540e.tooltip:0 "Any $COUNTRY_FALLEN_EMPIRE$ will awaken as soon as all conditions are satisfied."
 
  CrisisManagerMenu.4540.name:1 "$CrisisManagerMenu.4540.title$ $CrisisManagerTitleC$"
  CrisisManagerMenu.4540.desc1:1 "$CrisisManagerMenu.4540.desc$\n\n$CmtTextCurrent$§W$CrisisManagerMenu.4540a.title$§!"
@@ -1524,7 +1524,7 @@
 
  ### Fleet Power of Youngs for Awakening
  CrisisManagerMenu.4550.title:0 "Fleet Power of Youngs for Awakening"
- CrisisManagerMenu.4550.desc:0 "Fallen Empires will not awaken until any young empires have enough strong navy.\nThis is a configuration of the threshold value of the fleet power.\n\n$CmtDescStdAwakingOnly$"
+ CrisisManagerMenu.4550.desc:0 "$OUTLINER_FALLEN_EMPIRES$ will not awaken until any young empires have enough strong navy.\nThis is a configuration of the threshold value of the fleet power.\n\n$CmtDescStdAwakingOnly$"
  CrisisManagerMenu.4550x.title:1 "$CrisisManagerMenu.4550.title$: "
  CrisisManagerMenu.4550.V9.title:0 "§Y350 k§!"
  CrisisManagerMenu.4550.V8.title:0 "§Y210 k§!"
@@ -1568,7 +1568,7 @@
 
  ### Minimum Own Fleet Power for Awakening
  CrisisManagerMenu.4560.title:0 "Minimum Own Fleet Power for Awakening"
- CrisisManagerMenu.4560.desc:0 "Fallen Empires will not awaken if their fleets are used up and the naval power become less than threshold value.\nThis is a configuration of this threshold.\n\n$CmtWarn2$\n$CrisisManagerMenu.4560.tooltip$\n\n$CmtWarn3$\nFallen Empires never awaken if too large value is set. Highly recommended NOT to set the higher value than default without using another mod making Fallen Empires strong."
+ CrisisManagerMenu.4560.desc:0 "$OUTLINER_FALLEN_EMPIRES$ will not awaken if their fleets are used up and the naval power become less than threshold value.\nThis is a configuration of this threshold.\n\n$CmtWarn2$\n$CrisisManagerMenu.4560.tooltip$\n\n$CmtWarn3$\nFallen Empires never awaken if too large value is set. Highly recommended NOT to set the higher value than default without using another mod making $OUTLINER_FALLEN_EMPIRES$ strong."
  CrisisManagerMenu.4560x.title:1 "$CrisisManagerMenu.4560.title$: "
  CrisisManagerMenu.4560.V9.title:0 "§Y300 k§!"
  CrisisManagerMenu.4560.V8.title:0 "§Y180 k§!"
@@ -1612,7 +1612,7 @@
 
  ### Awakenable Sleepers
  CrisisManagerMenu.4570.title:0 "Awakenable Sleepers"
- CrisisManagerMenu.4570.desc:0 "A configuration which Fallen Empires can awaken.\n\n$CmtDescStdAwakingOnly$\n\n$CmtDescToggleConfig$\n\n$CmtTextCurrent$§W$CrisisManagerMenu.4570x.title$§!$CrisisManagerMenu.4570.current$"
+ CrisisManagerMenu.4570.desc:0 "A configuration which $OUTLINER_FALLEN_EMPIRES$ can awaken.\n\n$CmtDescStdAwakingOnly$\n\n$CmtDescToggleConfig$\n\n$CmtTextCurrent$§W$CrisisManagerMenu.4570x.title$§!$CrisisManagerMenu.4570.current$"
  CrisisManagerMenu.4570a.title:1 "$CmtNameFallenMaterialist$"
  CrisisManagerMenu.4570b.title:1 "$CmtNameFallenSpiritualist$"
  CrisisManagerMenu.4570c.title:1 "$CmtNameFallenXenophile$"
@@ -1664,7 +1664,7 @@
 
  ### Probability of War in Heaven
  CrisisManagerMenu.4610.title:0 "Probability of $mod_war_in_heaven$"
- CrisisManagerMenu.4610.desc:0 "A configuration for a probability of the $mod_war_in_heaven$.\nA Fallen Empire that can become a $war_in_heaven.2.name$ is required for the War actual happening."
+ CrisisManagerMenu.4610.desc:0 "A configuration for a probability of the $mod_war_in_heaven$.\nA $COUNTRY_FALLEN_EMPIRE$ that can become a $war_in_heaven.2.name$ is required for the War actual happening."
  CrisisManagerMenu.4610a.title:0 "War in Heaven §MNever§! Happen"
  CrisisManagerMenu.4610b.title:0 "§BLow§!"
  CrisisManagerMenu.4610c.title:0 "§GMiddle§!"
@@ -1693,7 +1693,7 @@
 
  ### $war_in_heaven.2.name$ for War in Heaven 1
  CrisisManagerMenu.4620.title:0 "$war_in_heaven.2.name$ for $mod_war_in_heaven$ 1"
- CrisisManagerMenu.4620.desc:0 "A configuration which Fallen Empire is selected as $war_in_heaven.2.name$ for the War in Heaven.\n\n$CmtWarn0$\nA probability of the War in Heaven is decreased if $CrisisManagerMenu.4620d.title$ or $CrisisManagerMenu.4620e.title$ is selected.\nSo, these 2 options should not be selected if you want to absolutely trigger the $mod_war_in_heaven$."
+ CrisisManagerMenu.4620.desc:0 "A configuration which $COUNTRY_FALLEN_EMPIRE$ is selected as $war_in_heaven.2.name$ for the War in Heaven.\n\n$CmtWarn0$\nA probability of the War in Heaven is decreased if $CrisisManagerMenu.4620d.title$ or $CrisisManagerMenu.4620e.title$ is selected.\nSo, these 2 options should not be selected if you want to absolutely trigger the $mod_war_in_heaven$."
  CrisisManagerMenu.4620a.title:0 "§BCompletely Random§!"
  CrisisManagerMenu.4620b.title:0 "Opposite Ethics §GPreferred§!"
  CrisisManagerMenu.4620c.title:0 "Opposite Ethics §YHas Priority§!"
@@ -1701,10 +1701,10 @@
  CrisisManagerMenu.4620e.title:0 "§RLimited§! to Opposite Ethics"
  CrisisManagerMenu.4620x.title:0 "$war_in_heaven.2.name$"
  CrisisManagerMenu.4620a.tooltip:0 "A $war_in_heaven.2.name$ is chosen without considering their government ethics."
- CrisisManagerMenu.4620b.tooltip:0 "A middle option between ''$CrisisManagerMenu.4620a.title$'' and ''$CrisisManagerMenu.4620c.title$''.\n\nA probability of the outbreak of the War dose not be lessen even if no Fallen Empires has a opposing ethic."
- CrisisManagerMenu.4620c.tooltip:0 "The empire having a opposing ethic is surly chosen as the $war_in_heaven.2.name$ if it exists.\nIn other cases, random Fallen Empire are chosen.\n\nA probability of the outbreak of the War dose not be lessen even if no Fallen Empire has a opposing ethic."
- CrisisManagerMenu.4620d.tooltip:0 "A middle option between ''$CrisisManagerMenu.4620a.title$'' and ''$CrisisManagerMenu.4620e.title$''.\n\nA probability of the outbreak of the War becomes low if no Fallen Empire has a opposing ethic."
- CrisisManagerMenu.4620e.tooltip:0 "The Fallen Empire having a opposing ethic is surly chosen as the $war_in_heaven.2.name$.\n\n$war_in_heaven.4.name$ will be cancelled if there is not such a empire."
+ CrisisManagerMenu.4620b.tooltip:0 "A middle option between ''$CrisisManagerMenu.4620a.title$'' and ''$CrisisManagerMenu.4620c.title$''.\n\nA probability of the outbreak of the War dose not be lessen even if no $OUTLINER_FALLEN_EMPIRES$ has a opposing ethic."
+ CrisisManagerMenu.4620c.tooltip:0 "The empire having a opposing ethic is surly chosen as the $war_in_heaven.2.name$ if it exists.\nIn other cases, random $COUNTRY_FALLEN_EMPIRE$ are chosen.\n\nA probability of the outbreak of the War dose not be lessen even if no $COUNTRY_FALLEN_EMPIRE$ has a opposing ethic."
+ CrisisManagerMenu.4620d.tooltip:0 "A middle option between ''$CrisisManagerMenu.4620a.title$'' and ''$CrisisManagerMenu.4620e.title$''.\n\nA probability of the outbreak of the War becomes low if no $COUNTRY_FALLEN_EMPIRE$ has a opposing ethic."
+ CrisisManagerMenu.4620e.tooltip:0 "The $COUNTRY_FALLEN_EMPIRE$ having a opposing ethic is surly chosen as the $war_in_heaven.2.name$.\n\n$war_in_heaven.4.name$ will be cancelled if there is not such a empire."
 
  CrisisManagerMenu.4620.name:1 "$CrisisManagerMenu.4620.title$ $CrisisManagerTitleC$"
  CrisisManagerMenu.4620.desc1:1 "$CrisisManagerMenu.4620.desc$\n\n$CmtTextCurrent$§W$CrisisManagerMenu.4620a.title$§!"
@@ -1720,16 +1720,16 @@
  CrisisManagerMenu.4620z.name:1 "$CrisisManagerMenu.4620x.title$ $CmtTextErrUndefined.name$"
  CrisisManagerMenu.4620z.tooltip:1 "$CmtTextErrUndefined.tooltip$"
 
- ### $war_in_heaven.2.name$ for War in Heaven 2
+ ### Ancient Rivals for War in Heaven 2
  CrisisManagerMenu.4630.title:0 "$war_in_heaven.2.name$ for $mod_war_in_heaven$ 2"
- CrisisManagerMenu.4630.desc:0 "A configuration which Fallen Empires can awaken as $war_in_heaven.2.name$ for the $mod_war_in_heaven$.\n\n$CmtDescToggleConfig$"
- CrisisManagerMenu.4630n1.title:0 "§HSet Independently§! from Standard Awakening"
- CrisisManagerMenu.4630n2.title:0 "§GConfirm to Standard Awakening§!"
+ CrisisManagerMenu.4630.desc:0 "A configuration which $OUTLINER_FALLEN_EMPIRES$ can awaken as $war_in_heaven.2.name$ for the $mod_war_in_heaven$.\n\n$CmtDescToggleConfig$"
+ CrisisManagerMenu.4630n1.title:0 "§HSet Independently§!" # from Standard Awakening
+ CrisisManagerMenu.4630n2.title:0 "§GSet Standard Awakening§!" # Confirm to
  CrisisManagerMenu.4630a.title:1 "$CmtNameFallenMaterialist$"
  CrisisManagerMenu.4630b.title:1 "$CmtNameFallenSpiritualist$"
  CrisisManagerMenu.4630c.title:1 "$CmtNameFallenXenophile$"
  CrisisManagerMenu.4630d.title:1 "$CmtNameFallenXenophobe$"
- CrisisManagerMenu.4630x1.title:1 "$CrisisManagerMenu.4630.title$: "
+ CrisisManagerMenu.4630x1.title:1 "$war_in_heaven.2.name$ for WiH 2: " # $CrisisManagerMenu.4630.title$
  CrisisManagerMenu.4630x2.title:1 "Allowed to Awakening as Rival: "
  CrisisManagerMenu.4630n1.tooltip:1 ""
  CrisisManagerMenu.4630n2.tooltip:0 "The configuration set in ''$CrisisManagerMenu.4570.title$'' is applied to this configuration: $CrisisManagerMenu.4570.current$."
@@ -1757,7 +1757,7 @@
 
  ### Indomitable Rival
  CrisisManagerMenu.4640.title:0 "Indomitable Rival"
- CrisisManagerMenu.4640.desc:0 "Fallen Empires cannot awakening as $war_in_heaven.2.name$ if their fleets are used up and the naval power become too small.\nThis configuration can remove this limitation."
+ CrisisManagerMenu.4640.desc:0 "$OUTLINER_FALLEN_EMPIRES$ cannot awakening as $war_in_heaven.2.name$ if their fleets are used up and the naval power become too small.\nThis configuration can remove this limitation."
  CrisisManagerMenu.4640a.title:0 "§BDisallow Indomitable§! $war_in_heaven.2.name$"
  CrisisManagerMenu.4640b.title:0 "§YAllow Indomitable§! $war_in_heaven.2.name$"
  CrisisManagerMenu.4640c.title:0 "§HAllow Recovered§! $war_in_heaven.2.name$"
@@ -1894,7 +1894,7 @@
 
  ### Probability of Guardians Awakening
  CrisisManagerMenu.4710.title:0 "Probability of Guardians Awakening"
- CrisisManagerMenu.4710.desc:0 "A configuration of a probability that Fallen Empires awaken as guardians of the galaxy.\n\n$CmtDescExceptMechFe$"
+ CrisisManagerMenu.4710.desc:0 "A configuration of the probability that $OUTLINER_FALLEN_EMPIRES$ awaken as $fallen_empires_awakening.5.name$.\n\n$CmtDescExceptMechFe$"
  CrisisManagerMenu.4710a.title:0 "§MNever Awaken§!"
  CrisisManagerMenu.4710b.title:0 "§BLow§!"
  CrisisManagerMenu.4710c.title:0 "§GHigh§!"
@@ -1919,7 +1919,7 @@
 
  ### Delay of Guardians Awakening
  CrisisManagerMenu.4720.title:0 "Delay of Guardians Awakening"
- CrisisManagerMenu.4720.desc:0 "A configuration when Fallen Empires awaken as guardians of the galaxy.\n\n$CmtDescExceptMechFe$"
+ CrisisManagerMenu.4720.desc:0 "A configuration when $OUTLINER_FALLEN_EMPIRES$ awaken as $fallen_empires_awakening.5.name$.\n\n$CmtDescExceptMechFe$"
  CrisisManagerMenu.4720a.title:0 "Guardians to §BOversleep§!"
  CrisisManagerMenu.4720b.title:0 "Guardians to §GAwaken at Standard Timing§!"
  CrisisManagerMenu.4720c.title:0 "Guardians to §HAwaken Quickly§!"
@@ -1944,7 +1944,7 @@
 
  ### Dual Guardians
  CrisisManagerMenu.4730.title:0 "Dual Guardians"
- CrisisManagerMenu.4730.desc:0 "A configuration for allowing that both of 2 Fallen Empires awaken as the guardians at the same game.\n2 Fallen Empires: Keepers of Knowledge, Enigmatic Observers\n\n$CmtWarn0$\nIn spite of this configurations, the Fallen Empire that does not exist does not awaken.\n\n$CmtDescExceptMechFe$"
+ CrisisManagerMenu.4730.desc:0 "A configuration for allowing that both of 2 $NUM_FALLEN_EMPIRES$  awaken as the guardians at the same game.\n2 $OUTLINER_FALLEN_EMPIRES$: Keepers of Knowledge, Enigmatic Observers\n\n$CmtWarn0$\nIn spite of this configurations, the $COUNTRY_FALLEN_EMPIRE$ that does not exist does not awaken.\n\n$CmtDescExceptMechFe$"
  CrisisManagerMenu.4730a.title:0 "§BForbid§! Dual Guardians"
  CrisisManagerMenu.4730a1.title:0 "$CrisisManagerMenu.4730a.title$, Only $CmtIconFanaticMaterialist$ Can Awaken"
  CrisisManagerMenu.4730a2.title:0 "$CrisisManagerMenu.4730a.title$, Only $CmtIconFanaticXenophile$ Can Awaken"
@@ -1957,7 +1957,7 @@
  CrisisManagerMenu.4730a2.tooltip:0 "Only §YEnigmatic Observers§! can awaken as the Guardians.\n§YKeepers of Knowledge§! never awaken."
  CrisisManagerMenu.4730b.tooltip:0 "A relative probability is following:\nSingle / Dual = 3 / 1"
  CrisisManagerMenu.4730c.tooltip:1 "A relative probability is following:\nSingle / Dual = 1 / 2"
- CrisisManagerMenu.4730d.tooltip:0 "Both of them will surely awaken if they exist.\nHighly recomended to use together with $CrisisManagerMenu.4710d.title$."
+ CrisisManagerMenu.4730d.tooltip:0 "Both of them will surely awaken if they exist.\nHighly recommended to use together with $CrisisManagerMenu.4710d.title$."
 
  CrisisManagerMenu.4730.name:1 "$CrisisManagerMenu.4730.title$ $CrisisManagerTitleC$"
  CrisisManagerMenu.4730.desc1:1 "$CrisisManagerMenu.4730.desc$\n\n$CmtTextCurrent$§W$CrisisManagerMenu.4730a.title$§!"
@@ -1977,14 +1977,14 @@
 
  ### Worn-Out Guardians
  CrisisManagerMenu.4740.title:0 "Worn-Out Guardians"
- CrisisManagerMenu.4740.desc:0 "Fallen Empires cannot awaken as guarians of the galaxy if their fleets are used up and the naval power become too small.\nThis configuration can remove this limitation."
+ CrisisManagerMenu.4740.desc:0 "$OUTLINER_FALLEN_EMPIRES$ cannot awaken as $fallen_empires_awakening.5.name$ if their fleets are used up and the naval power become too small.\nThis configuration can remove this limitation."
  CrisisManagerMenu.4740a.title:0 "§BDisallow§! Worn-Out Guardians"
  CrisisManagerMenu.4740b.title:0 "§YAllow§! Worn-Out Guardians"
  CrisisManagerMenu.4740c.title:0 "§HAllow Rallied§! Guardians"
  CrisisManagerMenu.4740x.title:1 "$CrisisManagerMenu.4740.title$: "
  CrisisManagerMenu.4740a.tooltip:1 ""
  CrisisManagerMenu.4740b.tooltip:0 "They will awaken and rise for defending the galaxy even if they are so weakening.\nThey are desperate to protect the galaxy, ... you know, though their attitude is arrogant."
- CrisisManagerMenu.4740c.tooltip:0 "The Fallen Empires will scramble up additional reinforcement of fleet at their awakening if their fleets are used up.\nSo, they can fight like the empire in good condition, at least, ostensibly."
+ CrisisManagerMenu.4740c.tooltip:0 "The $OUTLINER_FALLEN_EMPIRES$ will scramble up additional reinforcement of fleet at their awakening if their fleets are used up.\nSo, they can fight like the empire in good condition, at least, ostensibly."
 
  CrisisManagerMenu.4740.name:1 "$CrisisManagerMenu.4740.title$ $CrisisManagerTitleC$"
  CrisisManagerMenu.4740.desc1:1 "$CrisisManagerMenu.4740.desc$\n\n$CmtTextCurrent$§W$CrisisManagerMenu.4740a.title$§!"
@@ -4642,9 +4642,9 @@
  CrisisManagerMenu.7000.7110.A.tooltip:1 ""
  CrisisManagerMenu.7000.7110.B.tooltip:1 ""
  CrisisManagerMenu.7000.7135.A.tooltip:1 ""
- CrisisManagerMenu.7000.7135.B.tooltip:0 "Fallen Empire cannot be awakening since no sleeping one exists"
+ CrisisManagerMenu.7000.7135.B.tooltip:0 "$COUNTRY_FALLEN_EMPIRE$ cannot be awakening since no sleeping one exists"
  CrisisManagerMenu.7000.7136.A.tooltip:1 ""
- CrisisManagerMenu.7000.7136.B.tooltip:0 "There are not enough Fallen Empires for the $mod_war_in_heaven$."
+ CrisisManagerMenu.7000.7136.B.tooltip:0 "There are not enough $OUTLINER_FALLEN_EMPIRES$ for the $mod_war_in_heaven$."
  CrisisManagerMenu.7000.7136.C.tooltip:0 "$war_in_heaven.4.name$ can be triggered only once.\nSo, no more the $mod_war_in_heaven$ can be triggered."
  CrisisManagerMenu.7000.7138.A.tooltip:1 ""
  CrisisManagerMenu.7000.7138.B.tooltip:0 "No marauder exists or their drums are broken.\n$RT_GREAT_KHAN$ will not rise in this galaxy."
@@ -4665,7 +4665,7 @@
  CmtProperNameSleeper2:1 "$CmtIconFanaticSpiritualist$ §Y[CmtTargetManualSleeper2.GetName]§!"
  CmtProperNameSleeper3:1 "$CmtIconFanaticXenophile$ §Y[CmtTargetManualSleeper3.GetName]§!"
  CmtProperNameSleeper4:1 "$CmtIconFanaticXenophobe$ §Y[CmtTargetManualSleeper4.GetName]§!"
- CmtProperNameSleeper5:1 "$CmtIconGestalt$ §Y[CmtTargetManualSleeper5.GetName]§!"
+ CmtProperNameSleeper5:1 "$CmtIconGestalt$ §E[CmtTargetManualSleeper5.GetName]§!"
  CmtProperNameMarauder1:1 "§Y[marauder_country_1.GetName]§!"
  CmtProperNameMarauder2:1 "§Y[marauder_country_2.GetName]§!"
  CmtProperNameMarauder3:1 "§Y[marauder_country_3.GetName]§!"
@@ -4721,7 +4721,7 @@
  CrisisManagerMenu.712x.desc:0 "§HThe crisis is triggered.§!\n\nTriggered crisis: "
  CrisisManagerMenu.7121.descA:0 "Random Crisis"
  CrisisManagerMenu.7121.descB:0 "All Crises (except forbidden ones)"
- CrisisManagerMenu.71xxa.name:0 "No. I reconsider."
+ CrisisManagerMenu.71xxa.name:0 "< No. I reconsider."
  CrisisManagerMenu.711xb1.name:0 "Yes, call them. $CmtTooltipInfo1$"
  CrisisManagerMenu.711xb2.name:0 "Yes, call them."
  CrisisManagerMenu.711xc.name:0 "Yes, hurry up! $CmtTooltipInfo2$"
@@ -4733,24 +4733,27 @@
  ### Trigger Mid-Game Crisis and Awakening of Sleepers
  CrisisManagerMenu.7135.title:1 "$CrisisManagerMenu.7000.7135.A.name$"
  CrisisManagerMenu.7135.tail:0 "$CmtWarn1$: It is random whether the $mod_war_in_heaven$ happens or not; a probability depends on configurations of ''$CrisisManagerMenu.4610.title$'' and others."
- CrisisManagerMenu.7135b.name:0 "Yes, forcibly awaken random Fallen Empire up."
- CrisisManagerMenu.7135c1.name:0 "Yes, forcibly awaken $CmtProperNameSleeper1$ up."
- CrisisManagerMenu.7135c2.name:0 "Yes, forcibly awaken $CmtProperNameSleeper2$ up."
- CrisisManagerMenu.7135c3.name:0 "Yes, forcibly awaken $CmtProperNameSleeper3$ up."
- CrisisManagerMenu.7135c4.name:0 "Yes, forcibly awaken $CmtProperNameSleeper4$ up."
+ CrisisManagerMenu.7135b.name:0 "Yes, forcibly awaken random $COUNTRY_FALLEN_EMPIRE$."
+ CrisisManagerMenu.7135c1.name:0 "Yes, forcibly awaken $CmtProperNameSleeper1$."
+ CrisisManagerMenu.7135c2.name:0 "Yes, forcibly awaken $CmtProperNameSleeper2$."
+ CrisisManagerMenu.7135c3.name:0 "Yes, forcibly awaken $CmtProperNameSleeper3$."
+ CrisisManagerMenu.7135c4.name:0 "Yes, forcibly awaken $CmtProperNameSleeper4$."
+ CrisisManagerMenu.7135c5.name:0 "Yes, awaken $CmtProperNameSleeper5$."
+ CrisisManagerMenu.7135c6.name:0 "Awaken $CmtProperNameSleeper5$ §R$civic_malfunctioning_custodian$§!."
  CrisisManagerMenu.7135b.tooltip:1 ""
  CrisisManagerMenu.7135c.tooltip:1 ""
 
  CrisisManagerMenu.7136.title:1 "$CrisisManagerMenu.7000.7136.A.name$"
- CrisisManagerMenu.7136.desc1:0 "Select 1st Fallen Empire to awaken for the $mod_war_in_heaven$.\nThe empire awakened already cannot be selected."
- CrisisManagerMenu.7136.desc2:0 "Select 2nd Fallen Empire to awaken for the $mod_war_in_heaven$.\nThe empire awakened already cannot be selected.\n\n§W1st Sleeper:§! [CmtGlobalVar.GetEthic_ManualSleeperA]§! §Y[CmtTargetManualSleeperA.GetName]§!"
+ CrisisManagerMenu.7136.desc1:0 "Select 1st $COUNTRY_FALLEN_EMPIRE$ to awaken for the $mod_war_in_heaven$.\nThe empire awakened already cannot be selected."
+ CrisisManagerMenu.7136.desc2:0 "Select 2nd $COUNTRY_FALLEN_EMPIRE$ to awaken for the $mod_war_in_heaven$.\nThe empire awakened already cannot be selected.\n\n§W1st Sleeper:§! [CmtGlobalVar.GetEthic_ManualSleeperA]§! §Y[CmtTargetManualSleeperA.GetName]§!"
  CrisisManagerMenu.7136.desc3:0 "$CmtDescNoCancelHead$\n§WSelected Operation: the $mod_war_in_heaven$§!\n\n§W1st Sleeper:§! [CmtGlobalVar.GetEthic_ManualSleeperA] §Y[CmtTargetManualSleeperA.GetName]§!\n\n§W2st Sleeper:§! [CmtGlobalVar.GetEthic_ManualSleeperB] §Y[CmtTargetManualSleeperB.GetName]§!"
  CrisisManagerMenu.7136a.name:0 "< I changed my mind."
- CrisisManagerMenu.7136b.name:0 "Random Fallen Empire."
+ CrisisManagerMenu.7136b.name:0 "Random $COUNTRY_FALLEN_EMPIRE$."
  CrisisManagerMenu.7136c1.name:1 "$CmtProperNameSleeper1$"
  CrisisManagerMenu.7136c2.name:1 "$CmtProperNameSleeper2$"
  CrisisManagerMenu.7136c3.name:1 "$CmtProperNameSleeper3$"
  CrisisManagerMenu.7136c4.name:1 "$CmtProperNameSleeper4$"
+ CrisisManagerMenu.7136c5.name:0 "$CmtProperNameSleeper5$"
  CrisisManagerMenu.7136d.name:0 "Yes, trigger the $mod_war_in_heaven$."
  CrisisManagerMenu.7136a.tooltip:1 ""
  CrisisManagerMenu.7136b.tooltip:1 ""
@@ -4956,16 +4959,16 @@
  CrisisManagerMenu.7209.desc:1 "$CrisisManagerMenu.720x.desc$§W$CrisisManagerMenu.7200i.name$§!"
 
  ### Control Fleets of Sleepers
- CrisisManagerMenu.7400.title:0 "Control Fleets of Fallen Empires"
- CrisisManagerMenu.7400.desc:0 "Here you can create fleet(s)/ship(s) for Fallen Empires.\nDLC ''Apocalypse'' are required for creating Colossus.\n\n$CmtWarn0$:  For only Fallen Empires, but §HNOT for awakened empires§!.\n\n$CmtWarn1$: Highly recommended to do these operation before any Fallen Empires wage a war."
+ CrisisManagerMenu.7400.title:0 "Control Fleets of $OUTLINER_FALLEN_EMPIRES$"
+ CrisisManagerMenu.7400.desc:0 "Here you can create fleet(s)/ship(s) for $OUTLINER_FALLEN_EMPIRES$.\nDLC ''Apocalypse'' are required for creating Colossus.\n\n$CmtWarn0$:  For only $OUTLINER_FALLEN_EMPIRES$, but §HNOT for awakened empires§!.\n\n$CmtWarn1$: Highly recommended to do these operation before any $OUTLINER_FALLEN_EMPIRES$ wage a war."
  CrisisManagerMenu.7411.title:1 "$CrisisManagerMenu.7400.title$"
  CrisisManagerMenu.7412.title:1 "$CrisisManagerMenu.7400.title$"
  CrisisManagerMenu.7413.title:1 "$CrisisManagerMenu.7400.title$"
  CrisisManagerMenu.7419.title:1 "$CrisisManagerMenu.7400.title$"
- CrisisManagerMenu.7411.desc:0 "Here you can create and/or delete combat fleet(s) for Fallen Empires.\n\n$CmtWarn0$: In vanilla, they have 2 or 3 combat fleets on game start.\n\n$CmtDescNoCancelTail$"
- CrisisManagerMenu.7412.desc:0 "Here you can create and/or delete Titan for Fallen Empires.\n\n$CmtWarn0$: In vanilla, they have a Titan with a probability of 25% on game start.\n\n$CmtDescNoCancelTail$"
- CrisisManagerMenu.7413.desc:0 "Here you can create and/or delete Colossus for Fallen Empires.\n\n$CmtWarn0$: In vanilla, they have a Colossus with a probability of 10% on game start.\n\n$CmtDescNoCancelTail$"
- CrisisManagerMenu.7419.desc:0 "Here you can apply the template for the fleets of Fallen Empires.\nAll military fleets except armies of every Fallen Empires are deleted and the fleets in template are created around their capital planet when any template is applied.\n\n$CmtWarn3$: Do NOT apply the template when any Fallen Empire is at war. Recommended to apply as soon as game start."
+ CrisisManagerMenu.7411.desc:0 "Here you can create and/or delete combat fleet(s) for $OUTLINER_FALLEN_EMPIRES$.\n\n$CmtWarn0$: In vanilla, they have 2 or 3 combat fleets on game start.\n\n$CmtDescNoCancelTail$"
+ CrisisManagerMenu.7412.desc:0 "Here you can create and/or delete Titan for $OUTLINER_FALLEN_EMPIRES$.\n\n$CmtWarn0$: In vanilla, they have a Titan with a probability of 25% on game start.\n\n$CmtDescNoCancelTail$"
+ CrisisManagerMenu.7413.desc:0 "Here you can create and/or delete Colossus for $OUTLINER_FALLEN_EMPIRES$.\n\n$CmtWarn0$: In vanilla, they have a Colossus with a probability of 10% on game start.\n\n$CmtDescNoCancelTail$"
+ CrisisManagerMenu.7419.desc:0 "Here you can apply the template for the fleets of $OUTLINER_FALLEN_EMPIRES$.\nAll military fleets except armies of every $OUTLINER_FALLEN_EMPIRES$ are deleted and the fleets in template are created around their capital planet when any template is applied.\n\n$CmtWarn3$: Do NOT apply the template when any $COUNTRY_FALLEN_EMPIRE$ is at war. Recommended to apply as soon as game start."
  CrisisManagerMenu.7400.name:1 "$CrisisManagerMenu.7400.title$ $CrisisManagerTitleC$"
  CrisisManagerMenu.7411.name:1 "$CrisisManagerMenu.7411.title$ $CrisisManagerTitleC$"
  CrisisManagerMenu.7412.name:1 "$CrisisManagerMenu.7412.title$ $CrisisManagerTitleC$"
@@ -5038,7 +5041,7 @@
  CrisisManagerMenu.7411c3.tooltip:1 ""
  CrisisManagerMenu.7411c4.tooltip:1 ""
  CrisisManagerMenu.7411c5.tooltip:1 ""
- CrisisManagerMenu.7411d0.tooltip:0 "Also Titan is deleted. But Colossus and construction ships are not deleted.\n\n§HThis mod does not prevent reinforcement of fleet of Fallen Empires.§!"
+ CrisisManagerMenu.7411d0.tooltip:0 "Also Titan is deleted. But Colossus and construction ships are not deleted.\n\n§HThis mod does not prevent reinforcement of fleet of $OUTLINER_FALLEN_EMPIRES$.§!"
  CrisisManagerMenu.7411e1.tooltip:1 ""
  CrisisManagerMenu.7411e2.tooltip:1 ""
  CrisisManagerMenu.7411e3.tooltip:1 ""
@@ -5051,12 +5054,12 @@
  CrisisManagerMenu.7412c2.tooltip:1 ""
  CrisisManagerMenu.7412c3.tooltip:1 ""
  CrisisManagerMenu.7412d0.tooltip:1 ""
- CrisisManagerMenu.7412d1.tooltip:0 "Titans are created or deleted for the number of Titans of each Fallen Empires becoming selected value."
+ CrisisManagerMenu.7412d1.tooltip:0 "Titans are created or deleted for the number of Titans of each $OUTLINER_FALLEN_EMPIRES$ becoming selected value."
  CrisisManagerMenu.7412d2.tooltip:1 "$CrisisManagerMenu.7412d1.tooltip$"
  CrisisManagerMenu.7412d3.tooltip:1 "$CrisisManagerMenu.7412d1.tooltip$"
  CrisisManagerMenu.7412d4.tooltip:1 "$CrisisManagerMenu.7412d1.tooltip$"
  CrisisManagerMenu.7412d5.tooltip:1 "$CrisisManagerMenu.7412d1.tooltip$"
- CrisisManagerMenu.7412d9.tooltip:0 "All Titans of Fallen Empires are deleted, and then a Titan is created for every combat fleets."
+ CrisisManagerMenu.7412d9.tooltip:0 "All Titans of $OUTLINER_FALLEN_EMPIRES$ are deleted, and then a Titan is created for every combat fleets."
  CrisisManagerMenu.7412e1.tooltip:1 ""
  CrisisManagerMenu.7412e2.tooltip:1 ""
  CrisisManagerMenu.7412e3.tooltip:1 ""
@@ -5067,7 +5070,7 @@
  CrisisManagerMenu.7413b3.tooltip:1 "$CrisisManagerMenu.7411b1.tooltip$"
  CrisisManagerMenu.7413c1.tooltip:1 ""
  CrisisManagerMenu.7413d0.tooltip:1 ""
- CrisisManagerMenu.7413d1.tooltip:0 "Colossuses are created or deleted for the number of Colossuses of each Fallen Empires becoming selected value."
+ CrisisManagerMenu.7413d1.tooltip:0 "Colossuses are created or deleted for the number of Colossuses of each $OUTLINER_FALLEN_EMPIRES$ becoming selected value."
  CrisisManagerMenu.7413d2.tooltip:1 "$CrisisManagerMenu.7413d1.tooltip$"
  CrisisManagerMenu.7413d3.tooltip:1 "$CrisisManagerMenu.7413d1.tooltip$"
  CrisisManagerMenu.7413e1.tooltip:1 ""

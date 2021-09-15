@@ -54,7 +54,7 @@ CmtTriggerCandidateAncientRival = {
 		is_same_empire = event_target:CmtTargetFirstSleeper
 	}
 	OR = {
-		AND = {
+		AND = { # Manual
 			exists = event_target:CmtTargetManualSleeperB
 			is_same_empire = event_target:CmtTargetManualSleeperB
 		}
@@ -68,70 +68,44 @@ CmtTriggerCandidateAncientRival = {
 		# }
 	}
 	OR = {
-		AND = {
+		AND = { # Manual
 			exists = event_target:CmtTargetManualSleeperB
 			is_same_empire = event_target:CmtTargetManualSleeperB
 		}
 		CmtTriggerCheckAncientRivalFleetPower = yes # fleet_power > 60000
 	}
 	OR = {
+		# OR = {
+		# 	NOT = { has_global_flag = CmtFlagHeavenForbidIndependently }
+		# }
 		AND = {
-			has_global_flag = CmtFlagHeavenForbidIndependently
-			OR = {
-				AND = {
-					has_ethic = ethic_fanatic_materialist
-					NOT = { has_global_flag = CmtFlagHeavenForbidMaterialist }
-				}
-				AND = {
-					has_ethic = ethic_fanatic_spiritualist
-					NOT = { has_global_flag = CmtFlagHeavenForbidSpirituarist }
-				}
-				AND = {
-					has_ethic = ethic_fanatic_xenophile
-					NOT = { has_global_flag = CmtFlagHeavenForbidXenophile }
-				}
-				AND = {
-					has_ethic = ethic_fanatic_xenophobe
-					NOT = { has_global_flag = CmtFlagHeavenForbidXenophobe }
-				}
-				AND = {
-					has_ethic = ethic_fanatic_militarist
-					NOT = { has_global_flag = CmtFlagHeavenForbidMilitarist }
-				}
-				AND = {
-					has_ethic = ethic_fanatic_pacifist
-					NOT = { has_global_flag = CmtFlagHeavenForbidPacifist }
-				}
-			}
+			has_ethic = ethic_fanatic_materialist
+			NOT = { has_global_flag = CmtFlagHeavenForbidMaterialist }
 		}
 		AND = {
-			NOT = { has_global_flag = CmtFlagHeavenForbidIndependently }
-			OR = {
-				AND = {
-					has_ethic = ethic_fanatic_materialist
-					NOT = { has_global_flag = CmtFlagSleeperForbidMaterialist  }
-				}
-				AND = {
-					has_ethic = ethic_fanatic_spiritualist
-					NOT = { has_global_flag = CmtFlagSleeperForbidSpirituarist }
-				}
-				AND = {
-					has_ethic = ethic_fanatic_xenophile
-					NOT = { has_global_flag = CmtFlagSleeperForbidXenophile    }
-				}
-				AND = {
-					has_ethic = ethic_fanatic_xenophobe
-					NOT = { has_global_flag = CmtFlagSleeperForbidXenophobe    }
-				}
-				AND = {
-					has_ethic = ethic_fanatic_militarist
-					NOT = { has_global_flag = CmtFlagSleeperForbidMilitarist }
-				}
-				AND = {
-					has_ethic = ethic_fanatic_pacifist
-					NOT = { has_global_flag = CmtFlagSleeperForbidPacifist }
-				}
-			}
+			has_ethic = ethic_fanatic_spiritualist
+			NOT = { has_global_flag = CmtFlagHeavenForbidSpirituarist }
+		}
+		AND = {
+			has_ethic = ethic_fanatic_xenophile
+			NOT = { has_global_flag = CmtFlagHeavenForbidXenophile }
+		}
+		AND = {
+			has_ethic = ethic_fanatic_xenophobe
+			NOT = { has_global_flag = CmtFlagHeavenForbidXenophobe }
+		}
+		AND = {
+			has_ethic = ethic_fanatic_militarist
+			NOT = { has_global_flag = CmtFlagHeavenForbidMilitarist }
+		}
+		AND = {
+			has_ethic = ethic_fanatic_pacifist
+			NOT = { has_global_flag = CmtFlagHeavenForbidPacifist }
+		}
+		AND = { # Exception for manual
+			has_ethic = ethic_gestalt_consciousness
+			exists = event_target:CmtTargetManualSleeperA
+			NOT = { has_global_flag = CmtFlagHeavenForbidGestalt }
 		}
 	}
 }
@@ -330,16 +304,17 @@ CmtTriggerSleeperOpposingEchos = {
 	}
 }
 
-CmtTriggerIsHeavenSleeper = {
+CmtTriggerIsHeavenAFE = {
 	is_country_type = awakened_fallen_empire
 	OR = {
 		has_country_flag = sleepers_awake_first_sleeper
 		has_country_flag = sleepers_awake_ancient_rival
+		has_country_flag = war_in_heaven_timer
 	}
 }
 
 ### Modifiers for NPC Joining to League
-CmtTriggerHeavenLeagueNpcWeight5 = {
+CmtTriggerHeavenLeagueNPCweight5 = {
 	OR = {
 		has_ai_personality = harmonious_hierarchy
 		has_ai_personality = democratic_crusaders
@@ -350,17 +325,17 @@ CmtTriggerHeavenLeagueNpcWeight5 = {
 	}
 }
 
-CmtTriggerHeavenLeagueNpcWeight4 = {
+CmtTriggerHeavenLeagueNPCweight4 = {
 	OR = {
 		has_ai_personality = spiritual_seekers
 		has_ai_personality = peaceful_traders
 		has_ai_personality = migrating_flock
 		has_ethic = ethic_xenophile
 	}
-	CmtTriggerHeavenLeagueNpcWeight5 = no
+	CmtTriggerHeavenLeagueNPCweight5 = no
 }
 
-CmtTriggerHeavenLeagueNpcWeight2 = {
+CmtTriggerHeavenLeagueNPCweight2 = {
 	OR = {
 		has_ai_personality = honorbound_warriors
 		has_ai_personality = hegemonic_imperialists
@@ -369,10 +344,10 @@ CmtTriggerHeavenLeagueNpcWeight2 = {
 		has_ai_personality = assimilators
 		has_ethic = ethic_xenophobe
 	}
-	CmtTriggerHeavenLeagueNpcWeight1 = no
+	CmtTriggerHeavenLeagueNPCweight1 = no
 }
 
-CmtTriggerHeavenLeagueNpcWeight1 = {
+CmtTriggerHeavenLeagueNPCweight1 = {
 	OR = {
 		is_homicidal = yes
 		has_ai_personality = xenophobic_isolationists

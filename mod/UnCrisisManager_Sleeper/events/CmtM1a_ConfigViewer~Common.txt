@@ -67,7 +67,7 @@ country_event = {
 			if = {
 				limit = { has_global_flag = CmtFlagEndGameEdition }
 				country_event = { id = CrisisManagerMenu.1010 }
-			}else_if = {
+			} else_if = {
 				limit = { has_global_flag = CmtFlagSleeperEdition }
 				country_event = { id = CrisisManagerMenu.1024 }
 			} else_if = {

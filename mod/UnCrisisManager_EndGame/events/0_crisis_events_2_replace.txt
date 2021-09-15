@@ -751,7 +751,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		FROMFROM = { is_ship_size = starbase_exd }
+		fromfrom = { is_ship_size = starbase_exd }
 	}
 
 	immediate = {
@@ -870,7 +870,7 @@ planet_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		FROM = { CmtTriggerIsExds = yes }
+		from = { CmtTriggerIsExds = yes }
 		OR = {
 			planet_devastation > 99
 			AND = {

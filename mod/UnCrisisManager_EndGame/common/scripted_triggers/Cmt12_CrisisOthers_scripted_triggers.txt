@@ -48,7 +48,7 @@ CmtTriggerFeralPrethorynSpawnableSystem = {
 		has_star_flag = extradimensional_third_portal_system
 		has_star_flag = AI_hub		## Machiene World 1-4, cf. planet_flag = machine_world_1
 		has_star_flag = AI_lair		## Final MAchiene World, cf. planet flag = machine_lair
-		# any_system_planet = { is_capital = yes }
+		# is_capital_system = yes
 	}
 	any_system_planet = { has_planet_flag = previously_infested }
 }

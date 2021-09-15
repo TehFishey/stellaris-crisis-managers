@@ -1,4 +1,4 @@
-version="3.0.3.3"
+version="3.0.3.4"
 tags={
 	"Balance"
 	"Events"

@@ -46,6 +46,10 @@ CmtEffectSetSleeperInterval = {
 CmtEffectSetAnciantRival = {
 	set_country_flag = sleepers_awake_ancient_rival
 	set_global_flag = CmtFlagWarInHeavenTriggered
+	if = { limit = { has_global_flag = no_war_in_heaven } remove_global_flag = no_war_in_heaven }
+	if = { limit = { has_global_flag = war_in_heaven_started } remove_global_flag = war_in_heaven_started }
+	if = { limit = { has_global_flag = war_in_heaven_ended } remove_global_flag = war_in_heaven_ended }
+	if = { limit = { has_global_flag = sleepers_awake_rival_waking } remove_global_flag = sleepers_awake_rival_waking } # for WiH MTTH
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenPreludeSpeed value = 1 } } }
 		set_timed_country_flag = { flag = timed_ancient_rival days = @CmtConstHeavenPreludeSpeed_1a }

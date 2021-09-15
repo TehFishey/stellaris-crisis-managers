@@ -63,7 +63,7 @@ CmtEffectCreatePrethorynCountry = {
 		}
 		event_target:prethoryn = {
 			add_opinion_modifier = {
-				who = PREV
+				who = prev
 				modifier = opinion_prey
 			}
 		}

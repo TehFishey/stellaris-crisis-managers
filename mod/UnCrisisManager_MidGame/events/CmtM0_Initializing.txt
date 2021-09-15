@@ -15,17 +15,25 @@ event = {
 	is_triggered_only = yes
 	immediate = {
 		CmtEffectSetDetectedEdition = yes
-		random_country = { limit = { is_country_type = global_event }
-			country_event = { id = CrisisManagerMenu.0021 }			## Initializing Variables
+		## Initializing Variables
+		if = { limit = { exists = event_target:global_event_country }
+			event_target:global_event_country = { country_event = { id = CrisisManagerMenu.0021 } }
+		} else = {
+			random_country = { limit = { is_country_type = global_event }
+				country_event = { id = CrisisManagerMenu.0021 }
+			}
 		}
-		if = {
-			limit = {
-				NOT = { has_global_flag = CmtFlagNoCall }
+		## Main Menu
+		if = { limit = { NOT = { has_global_flag = CmtFlagNoCall } }
+			if = { limit = { is_scope_type = country is_ai = no }
+				country_event = { id = CrisisManagerMenu.0100 }
+			} else = {
+				random_playable_country = {
+					limit = { is_ai = no }
+					country_event = { id = CrisisManagerMenu.0100 }
+				}
 			}
-			random_playable_country = {
-				limit = { is_ai = no }
-				country_event = { id = CrisisManagerMenu.0100 }		## Main Menu
-			}
+			log="Game started 1 without CmtFlagNoCall"
 		}
 		# log="Game started 1"
 	}
