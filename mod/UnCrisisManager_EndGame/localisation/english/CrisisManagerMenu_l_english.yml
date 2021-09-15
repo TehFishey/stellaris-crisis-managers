@@ -29,17 +29,17 @@
  CmtTextOK.tooltip:1 ""
  CmtTextExit.name:0 "§GExit Menu§!"
  CmtTextExit.tooltip:1 ""
- CmtTextGoBack.name:0 "< Go Back"
+ CmtTextGoBack.name:0 "£horizontal_left_button£ Go Back"
  CmtTextGoBack.tooltip:1 ""
- CmtTextGoNextPage.name:0 "Go Next >"
+ CmtTextGoNextPage.name:0 "Go Next £horizontal_right_button£"
  CmtTextGoNextPage.tooltip:1 ""
- CmtTextGoNextConfig.name:0 "Go Next Configuration >"
+ CmtTextGoNextConfig.name:0 "Go Next Configuration £horizontal_right_button£"
  CmtTextGoNextConfig.tooltip:1 ""
  CmtTextGoBackMain.name:0 "Go Back to Main Menu"
  CmtTextGoBackMain.tooltip:1 ""
  CmtTextGoBackViewerMenu.name:0 "Go Back to Viewer Menu"
  CmtTextGoBackViewerMenu.tooltip:1 ""
- CmtTextKeepCurrent.name:0 "Keep Current Configuration >"
+ CmtTextKeepCurrent.name:0 "Keep Current Configuration £horizontal_right_button£"
  CmtTextKeepCurrent.tooltip:1 ""
  CmtTextSetIndividually.name:0 "Set Individually for Each Crises"        ## The active voice. This is used as title of options.
  CmtTextSetIndividually.tooltip:1 ""
@@ -120,7 +120,7 @@
  CmtDescNoCancelTail:0 "$CmtWarn2$: This operation cannot be canceled."
  CmtDescUnadjustedText:0 "$CmtWarn1$\nTexts in corresponding events are not adjust to this configurations but kept Vanilla ones."
  CmtDescYourOwnRisk:0 "Set huge value at your own risk: see also ''$CrisisManagerMenu.6000.6001.title$''."
- CmtDescToggleConfig:0 "$CmtWarn1$\nOptions of this configuration are toggle.\nSelect ''$CmtTextGoNextConfig.name$'' or ''$CmtTextGoBack.name$'' when you have finished the setting."
+ CmtDescToggleConfig:0 "$CmtWarn1$\nOptions of this configuration are §Ytoggle§!.\nSelect ''$CmtTextGoNextConfig.name$'' or ''$CmtTextGoBack.name$'' when you have finished the setting."
 
  ### End-Game Edition, Total War Pack
  CmtDescUnlimitedExds:0 "$CmtWarn1$: Extradimensional invasion can happen even if jump drive has not been developed yet."
@@ -1723,13 +1723,13 @@
  ### Ancient Rivals for War in Heaven 2
  CrisisManagerMenu.4630.title:0 "$war_in_heaven.2.name$ for $mod_war_in_heaven$ 2"
  CrisisManagerMenu.4630.desc:0 "A configuration which $OUTLINER_FALLEN_EMPIRES$ can awaken as $war_in_heaven.2.name$ for the $mod_war_in_heaven$.\n\n$CmtDescToggleConfig$"
- CrisisManagerMenu.4630n1.title:0 "§HSet Independently§! from Standard Awakening"
- CrisisManagerMenu.4630n2.title:0 "§GConfirm to Standard Awakening§!"
+ CrisisManagerMenu.4630n1.title:0 "§HSet Independently§!" # from Standard Awakening
+ CrisisManagerMenu.4630n2.title:0 "§GSet Standard Awakening§!" # Confirm to
  CrisisManagerMenu.4630a.title:1 "$CmtNameFallenMaterialist$"
  CrisisManagerMenu.4630b.title:1 "$CmtNameFallenSpiritualist$"
  CrisisManagerMenu.4630c.title:1 "$CmtNameFallenXenophile$"
  CrisisManagerMenu.4630d.title:1 "$CmtNameFallenXenophobe$"
- CrisisManagerMenu.4630x1.title:1 "$CrisisManagerMenu.4630.title$: "
+ CrisisManagerMenu.4630x1.title:1 "$war_in_heaven.2.name$ for WiH 2: " # $CrisisManagerMenu.4630.title$
  CrisisManagerMenu.4630x2.title:1 "Allowed to Awakening as Rival: "
  CrisisManagerMenu.4630n1.tooltip:1 ""
  CrisisManagerMenu.4630n2.tooltip:0 "The configuration set in ''$CrisisManagerMenu.4570.title$'' is applied to this configuration: $CrisisManagerMenu.4570.current$."

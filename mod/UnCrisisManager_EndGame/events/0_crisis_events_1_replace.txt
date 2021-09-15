@@ -108,7 +108,7 @@ country_event = {
 		name = crisis.11.a
 		begin_event_chain = {
 			event_chain = "coming_storm_chain"
-			target = ROOT
+			target = root
 		}
 	}
 }
@@ -318,7 +318,7 @@ country_event = {
 			random_system = {
 				limit = {
 					distance = {
-						source = PREV
+						source = prev
 						max_distance <= 60
 						min_distance >= 5
 					}
@@ -340,7 +340,7 @@ country_event = {
 			random_system = {
 				limit = {
 					distance = {
-						source = PREV
+						source = prev
 						max_distance <= 60
 						min_distance >= 5
 					}
@@ -373,7 +373,7 @@ country_event = {
 			random_system = {
 				limit = {
 					distance = {
-						source = PREV
+						source = prev
 						max_distance <= 60
 						min_distance >= 5
 					}
@@ -546,7 +546,7 @@ country_event = {
 		end_event_chain = "coming_storm_chain"
 		begin_event_chain = {
 			event_chain = "prethoryn_scourge_chain"
-			target = ROOT
+			target = root
 		}
 	}
 }

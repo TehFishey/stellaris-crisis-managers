@@ -1746,8 +1746,8 @@ country_event = {
 							prev = { set_country_flag = marauder_3 save_global_event_target_as = marauder_country_3 }
 						}
 					}
+					create_marauder_starbase = yes
 				}
-				create_marauder_starbase = yes
 				CmtEffectCreateFleet_KhanSubReinforcement3 = yes
 				random_neighbor_system = {
 					limit = { has_owner = no }

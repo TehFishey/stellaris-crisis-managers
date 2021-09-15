@@ -107,7 +107,7 @@ CmtFleetSetAuxParam_DessanuRoamer = {
 							has_star_flag = lcluster
 						}
 						found_system = {
-							move_to = THIS
+							move_to = this
 							find_random_planet = {
 								trigger = {
 									id = dessanu_roamers_$NUM$.trigger.3
@@ -115,8 +115,8 @@ CmtFleetSetAuxParam_DessanuRoamer = {
 									exists = starbase
 								}
 								found_planet = {
-									orbit_planet = THIS
-									move_to = THIS.starbase
+									orbit_planet = this
+									move_to = this.starbase
 									wait = {
 										duration = 60
 										random = 30
@@ -129,7 +129,7 @@ CmtFleetSetAuxParam_DessanuRoamer = {
 											is_star = yes
 										}
 										found_planet = {
-											orbit_planet = THIS
+											orbit_planet = this
 											wait = {
 												duration = 30
 												random = 15
@@ -149,7 +149,7 @@ CmtFleetSetAuxParam_DessanuRoamer = {
 							}
 						}
 						found_planet = {
-							orbit_planet = THIS
+							orbit_planet = this
 							wait = {
 								duration = 60
 								random = 30
@@ -204,14 +204,14 @@ CmtFleetSetAuxParam_GraygooRoamer = {
 							has_star_flag = lcluster
 						}
 						found_system = {
-							move_to = THIS
+							move_to = this
 							find_random_planet = {
 								trigger = {
 									id = graygoo_roamers_$NUM$.trigger.3
 									is_star = yes
 								}
 								found_planet = {
-									orbit_planet = THIS
+									orbit_planet = this
 									wait = {
 										duration = 30
 										random = 15
@@ -226,7 +226,7 @@ CmtFleetSetAuxParam_GraygooRoamer = {
 							is_planet_class = "pc_gray_goo"
 						}
 						found_planet = {
-							orbit_planet = THIS
+							orbit_planet = this
 							effect = {
 								id = graygoo_roamers_$NUM$.trigger.4
 								root.fromfrom = { random_owned_ship = { repair_ship = yes } }
@@ -253,14 +253,14 @@ CmtFleetSetAuxParam_Roamer = {
 					has_star_flag = lcluster
 				}
 				found_system = {
-					move_to = THIS
+					move_to = this
 					find_random_planet = {
 						trigger = {
 							id = graygoo_roamers_$NUM$.trigger.3
 							is_star = yes
 						}
 						found_planet = {
-							orbit_planet = THIS
+							orbit_planet = this
 							wait = {
 								duration = 30
 								random = 15
@@ -278,7 +278,7 @@ CmtFleetSetAuxParam_Roamer = {
 					}
 				}
 				found_planet = {
-					orbit_planet = THIS
+					orbit_planet = this
 					effect = {
 						id = graygoo_roamers_$NUM$.trigger.4
 						root.fromfrom = { random_owned_ship = { repair_ship = yes } }

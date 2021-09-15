@@ -602,7 +602,7 @@ country_event = {
 
 	option = {
 		name = CrisisManagerMenu.4630x.name
-		custom_tooltip = ""
+		# custom_tooltip = CrisisManagerMenu.4630x.tooltip
 		trigger = {
 			has_global_flag = CmtFlagSleeperEdition
 			has_global_flag = CmtFlagHeavenForbidIndependently

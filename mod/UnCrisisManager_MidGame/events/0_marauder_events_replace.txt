@@ -566,7 +566,7 @@ country_event = {
 				}
 				# prev = { NOR = { is_friendly_to = prev is_neutral_to = prev } }
 			}
-			establish_communications_no_message = ROOT
+			establish_communications_no_message = root
 			prev = {
 				set_faction_hostility = {
 					target = prev
@@ -602,7 +602,7 @@ country_event = {
 					has_country_flag = marauder_1
 					AND = {
 						exists = event_target:CmtTargetMarauderRallyPoint1.solar_system.owner
-						event_target:CmtTargetMarauderRallyPoint1.solar_system = { is_owned_by = ROOT }
+						event_target:CmtTargetMarauderRallyPoint1.solar_system = { is_owned_by = root }
 					}
 				}
 			}
@@ -617,7 +617,7 @@ country_event = {
 					has_country_flag = marauder_2
 					AND = {
 						exists = event_target:CmtTargetMarauderRallyPoint2.solar_system.owner
-						event_target:CmtTargetMarauderRallyPoint2.solar_system = { is_owned_by = ROOT }
+						event_target:CmtTargetMarauderRallyPoint2.solar_system = { is_owned_by = root }
 					}
 				}
 			}
@@ -632,7 +632,7 @@ country_event = {
 					has_country_flag = marauder_3
 					AND = {
 						exists = event_target:CmtTargetMarauderRallyPoint3.solar_system.owner
-						event_target:CmtTargetMarauderRallyPoint3.solar_system = { is_owned_by = ROOT }
+						event_target:CmtTargetMarauderRallyPoint3.solar_system = { is_owned_by = root }
 					}
 				}
 			}
@@ -1709,7 +1709,7 @@ fleet_event = {
 						CmtEffectCreateAdmiralty_KhanSubReinforcement = yes
 					}
 				}
-				ROOT.owner = { ROOT = { CmtEffectKhanIncreasementReinforcementCycle = yes } }
+				root.owner = { root = { CmtEffectKhanIncreasementReinforcementCycle = yes } }
 			}
 		}
 	}

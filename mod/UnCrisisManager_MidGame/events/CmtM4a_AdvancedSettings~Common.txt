@@ -130,14 +130,14 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.4000.4600.name
 		custom_tooltip = CrisisManagerMenu.4000.4600.tooltip
-		trigger = { CmtTriggerSleeperConfig = yes }
+		trigger = { CmtTriggerHeavenConfig = yes }
 		hidden_effect = { country_event = { id = CrisisManagerMenu.4610 } }
 	}
 	option = {
 		name = CrisisManagerMenu.4000.4600.fail.name
 		custom_tooltip = CrisisManagerMenu.0100.desc2 #CrisisManagerMenu.4000.4600.fail.tooltip
 		trigger = {
-			CmtTriggerSleeperConfig = no
+			CmtTriggerHeavenConfig = no
 			has_global_flag = CmtFlagSleeperEdition
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.4000 } }

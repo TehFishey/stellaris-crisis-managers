@@ -71,7 +71,7 @@ sentinel_system = {
 						design = "NAME_Vigil"
 					}
 					set_location = {
-						target = PREV
+						target = prev
 						distance = 40
 						angle = 210
 					}
@@ -89,7 +89,7 @@ sentinel_system = {
 						design = "NAME_Sentry"
 					}
 					set_location = {
-						target = PREV
+						target = prev
 						distance = 120
 						angle = 0
 					}
@@ -103,7 +103,7 @@ sentinel_system = {
 						design = "NAME_Sentry"
 					}
 					set_location = {
-						target = PREV
+						target = prev
 						distance = 120
 						angle = 70
 					}
@@ -117,7 +117,7 @@ sentinel_system = {
 						design = "NAME_Sentry"
 					}
 					set_location = {
-						target = PREV
+						target = prev
 						distance = 120
 						angle = 140
 					}
@@ -131,7 +131,7 @@ sentinel_system = {
 						design = "NAME_Sentry"
 					}
 					set_location = {
-						target = PREV
+						target = prev
 						distance = 120
 						angle = 210
 					}
@@ -145,7 +145,7 @@ sentinel_system = {
 						design = "NAME_Sentry"
 					}
 					set_location = {
-						target = PREV
+						target = prev
 						distance = 120
 						angle = 280
 					}
@@ -172,7 +172,7 @@ sentinel_system = {
 						graphical_culture = "pirate_01"
 					}
 					set_location = {
-						target = PREV
+						target = prev
 						distance = 5
 						angle = random
 					}
@@ -205,7 +205,7 @@ sentinel_system = {
 					}
 					set_formation_scale = 2
 					set_location = {
-						target = PREV
+						target = prev
 						distance = 10
 						angle = random
 					}
@@ -235,7 +235,7 @@ sentinel_system = {
 						graphical_culture = "pirate_01"
 					}
 					set_location = {
-						target = PREV
+						target = prev
 						distance = 5
 						angle = random
 					}
@@ -272,7 +272,7 @@ sentinel_system = {
 					}
 					set_formation_scale = 2
 					set_location = {
-						target = PREV
+						target = prev
 						distance = 10
 						angle = random
 					}

@@ -37,7 +37,7 @@ country_event = {
 
 		observer_event = { id = observer.44 }
 		end_event_chain = ghost_signal_chain
-		begin_event_chain = { event_chain = ai_crisis_chain target = ROOT }
+		begin_event_chain = { event_chain = ai_crisis_chain target = root }
 
 		### Ghost Signal for POPs
 		if = {

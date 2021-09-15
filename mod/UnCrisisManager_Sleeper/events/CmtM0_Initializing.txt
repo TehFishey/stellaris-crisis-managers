@@ -16,12 +16,12 @@ event = {
 	immediate = {
 		CmtEffectSetDetectedEdition = yes
 		## Initializing Variables
-		if = { limit = { NOT = { exists = event_target:global_event_country } }
+		if = { limit = { exists = event_target:global_event_country }
+			event_target:global_event_country = { country_event = { id = CrisisManagerMenu.0021 } }
+		} else = {
 			random_country = { limit = { is_country_type = global_event }
 				country_event = { id = CrisisManagerMenu.0021 }
 			}
-		} else = {
-			event_target:global_event_country = { country_event = { id = CrisisManagerMenu.0021 } }
 		}
 		## Main Menu
 		if = { limit = { NOT = { has_global_flag = CmtFlagNoCall } }

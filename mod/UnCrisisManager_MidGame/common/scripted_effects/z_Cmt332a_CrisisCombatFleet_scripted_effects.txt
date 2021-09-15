@@ -12,7 +12,7 @@
 # Information
 #	All script in this file require following scopes
 #	this: Owner country
-#	PREV: Location for creating fleets (e.g. planet)
+#	prev: Location for creating fleets (e.g. planet)
 #
 
 ##############
@@ -26,28 +26,28 @@ CmtEffectCreateAdmiralty_Khan1stFleet = {		### Exception: Leader = event_target:
 		create_fleet = {
 			name = "NAME_Chosen_of_the_Great_Khan"
 			effect = {
-				set_owner = PREV
+				set_owner = prev
 				event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
-				PREV = { CmtEffectResetLoop = yes }
+				prev = { CmtEffectResetLoop = yes }
 				while = {
 					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
 					event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
 					while = { count = 4 CmtEffectCreateShip_Outrider = yes }		## 18
 					while = { count = 3 CmtEffectCreateShip_Lancer = yes }			## 12
 					CmtEffectCreateShip_VoidChampion = yes							## 6
-					PREV = {
+					prev = {
 						CmtEffectProgressLoop4 = yes
 						switch = {
 							trigger = has_country_flag
 							CmtFlagLoopA = {
-								PREV = {
+								prev = {
 									CmtEffectCreateShip_Outrider = yes
 									CmtEffectCreateShip_VoidChampion = yes
 								}
 							}
-							CmtFlagLoopB = { PREV = { CmtEffectCreateShip_Outrider = yes } }
-							CmtFlagLoopC = { PREV = { CmtEffectCreateShip_AncestralGlory = yes } }		## 1
-							CmtFlagLoopZ = { PREV = { CmtEffectCreateShip_VoidChampion = yes } }
+							CmtFlagLoopB = { prev = { CmtEffectCreateShip_Outrider = yes } }
+							CmtFlagLoopC = { prev = { CmtEffectCreateShip_AncestralGlory = yes } }		## 1
+							CmtFlagLoopZ = { prev = { CmtEffectCreateShip_VoidChampion = yes } }
 						}
 					}
 				}
@@ -69,28 +69,28 @@ CmtEffectCreateFleet_Khan2ndFleet = {	### Exception: Leader = exiled_khan
 	create_fleet = {
 		name = "NAME_Chosen_of_the_Great_Khan"
 		effect = {
-			set_owner = PREV
+			set_owner = prev
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
-			PREV = { CmtEffectResetLoop = yes }
+			prev = { CmtEffectResetLoop = yes }
 			while = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
 				while = { count = 4 CmtEffectCreateShip_Outrider = yes }		## 18
 				while = { count = 3 CmtEffectCreateShip_Lancer = yes }			## 12
 				CmtEffectCreateShip_VoidChampion = yes							## 6
-				PREV = {
+				prev = {
 					CmtEffectProgressLoop4 = yes
 					switch = {
 						trigger = has_country_flag
 						CmtFlagLoopA = {
-							PREV = {
+							prev = {
 								CmtEffectCreateShip_Outrider = yes
 								CmtEffectCreateShip_VoidChampion = yes
 							}
 						}
-						CmtFlagLoopB = { PREV = { CmtEffectCreateShip_Outrider = yes } }
-						CmtFlagLoopC = { PREV = { CmtEffectCreateShip_AncestralGlory = yes } }		## 1
-						CmtFlagLoopZ = { PREV = { CmtEffectCreateShip_VoidChampion = yes } }
+						CmtFlagLoopB = { prev = { CmtEffectCreateShip_Outrider = yes } }
+						CmtFlagLoopC = { prev = { CmtEffectCreateShip_AncestralGlory = yes } }		## 1
+						CmtFlagLoopZ = { prev = { CmtEffectCreateShip_VoidChampion = yes } }
 					}
 				}
 			}
@@ -112,9 +112,9 @@ CmtEffectCreateFleet_KhanStandard = {
 	CmtEffectCreateAdmiral_MarauderStandard = yes
 	create_fleet = {
 		effect = {
-			set_owner = PREV
+			set_owner = prev
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
-			PREV = { CmtEffectResetLoop = yes }
+			prev = { CmtEffectResetLoop = yes }
 			while = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
@@ -123,14 +123,14 @@ CmtEffectCreateFleet_KhanStandard = {
 				while = { count = 2 CmtEffectCreateShip_Lancer = yes }			## 8
 				CmtEffectCreateShip_VoidChampion = yes							## 6
 
-				PREV = {
+				prev = {
 					CmtEffectProgressLoop4 = yes
 					switch = {
 						trigger = has_country_flag
-						CmtFlagLoopA = { PREV = { CmtEffectCreateShip_VoidChampion = yes } }
+						CmtFlagLoopA = { prev = { CmtEffectCreateShip_VoidChampion = yes } }
 						CmtFlagLoopB = {}
-						CmtFlagLoopC = { PREV = { CmtEffectCreateShip_AncestralGlory = yes } }		## 1
-						CmtFlagLoopZ = { PREV = { CmtEffectCreateShip_VoidChampion = yes } }
+						CmtFlagLoopC = { prev = { CmtEffectCreateShip_AncestralGlory = yes } }		## 1
+						CmtFlagLoopZ = { prev = { CmtEffectCreateShip_VoidChampion = yes } }
 					}
 				}
 			}
@@ -152,9 +152,9 @@ CmtEffectCreateFleet_KhanArmadaVoidborn = {
 	create_fleet = {
 		name = "NAME_Armada_of_the_Voidborn"
 		effect = {
-			set_owner = PREV
+			set_owner = prev
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
-			PREV = { CmtEffectResetLoop = yes }
+			prev = { CmtEffectResetLoop = yes }
 			while = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
@@ -163,11 +163,11 @@ CmtEffectCreateFleet_KhanArmadaVoidborn = {
 				while = { count = 2 CmtEffectCreateShip_Lancer = yes }			## 8
 				CmtEffectCreateShip_VoidChampion = yes							## 6
 
-				PREV = {
+				prev = {
 					CmtEffectProgressLoop2 = yes
 					switch = {
 						trigger = has_country_flag
-						CmtFlagLoopA = { PREV = { CmtEffectCreateShip_VoidChampion = yes } }
+						CmtFlagLoopA = { prev = { CmtEffectCreateShip_VoidChampion = yes } }
 						CmtFlagLoopZ = { }
 					}
 				}
@@ -188,9 +188,9 @@ CmtEffectCreateFleet_KhanStarRiderFlotilla = {
 	create_fleet = {
 		name = "NAME_Star_Rider_Flotilla"
 		effect = {
-			set_owner = PREV
+			set_owner = prev
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
-			PREV = { CmtEffectResetLoop = yes }
+			prev = { CmtEffectResetLoop = yes }
 			while = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
@@ -198,11 +198,11 @@ CmtEffectCreateFleet_KhanStarRiderFlotilla = {
 				while = { count = 3 CmtEffectCreateShip_Outrider = yes }		## 12
 				CmtEffectCreateShip_Lancer = yes								## 6
 				CmtEffectCreateShip_VoidChampion = yes							## 4
-				PREV = {
+				prev = {
 					CmtEffectProgressLoop2 = yes
 					switch = {
 						trigger = has_country_flag
-						CmtFlagLoopA = { PREV = { CmtEffectCreateShip_Lancer = yes } }
+						CmtFlagLoopA = { prev = { CmtEffectCreateShip_Lancer = yes } }
 						CmtFlagLoopZ = { }
 					}
 				}
@@ -223,20 +223,20 @@ CmtEffectCreateFleet_KhanFirstStormWing = {
 	create_fleet = {
 		name = "NAME_First_Storm_Wing"
 		effect = {
-			set_owner = PREV
+			set_owner = prev
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
-			PREV = { CmtEffectResetLoop = yes }
+			prev = { CmtEffectResetLoop = yes }
 			while = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
 
 				while = { count = 2 CmtEffectCreateShip_Outrider = yes }			## 8
 				while = { count = 1 CmtEffectCreateShip_Lancer = yes }			## 4
-				PREV = {
+				prev = {
 					CmtEffectProgressLoop2 = yes
 					switch = {
 						trigger = has_country_flag
-						CmtFlagLoopA = { PREV = { CmtEffectCreateShip_VoidChampion = yes } }	## 2
+						CmtFlagLoopA = { prev = { CmtEffectCreateShip_VoidChampion = yes } }	## 2
 						CmtFlagLoopZ = { }
 					}
 				}
@@ -257,9 +257,9 @@ CmtEffectCreateFleet_KhanDwamakBashers = {
 	create_fleet = {
 		name = "NAME_234th_Dwamak_Bashers"
 		effect = {
-			set_owner = PREV
+			set_owner = prev
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
-			PREV = { CmtEffectResetLoop = yes }
+			prev = { CmtEffectResetLoop = yes }
 			while = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
@@ -267,11 +267,11 @@ CmtEffectCreateFleet_KhanDwamakBashers = {
 				while = { count = 4 CmtEffectCreateShip_Outrider = yes }			## 16
 				while = { count = 2 CmtEffectCreateShip_Lancer = yes }			## 8
 				CmtEffectCreateShip_VoidChampion = yes							## 6
-				PREV = {
+				prev = {
 					CmtEffectProgressLoop2 = yes
 					switch = {
 						trigger = has_country_flag
-						CmtFlagLoopA = { PREV = { CmtEffectCreateShip_VoidChampion = yes } }
+						CmtFlagLoopA = { prev = { CmtEffectCreateShip_VoidChampion = yes } }
 						CmtFlagLoopZ = { }
 					}
 				}
@@ -292,9 +292,9 @@ CmtEffectCreateFleet_KhanUnhingedScreamerFlotilla = {
 	create_fleet = {
 		name = "NAME_Unhinged_Screamer_Flotilla"
 		effect = {
-			set_owner = PREV
+			set_owner = prev
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
-			PREV = { CmtEffectResetLoop = yes }
+			prev = { CmtEffectResetLoop = yes }
 			while = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
@@ -302,11 +302,11 @@ CmtEffectCreateFleet_KhanUnhingedScreamerFlotilla = {
 				while = { count = 3 CmtEffectCreateShip_Outrider = yes }			## 12
 				CmtEffectCreateShip_Lancer = yes									## 6
 				CmtEffectCreateShip_VoidChampion = yes							## 4
-				PREV = {
+				prev = {
 					CmtEffectProgressLoop2 = yes
 					switch = {
 						trigger = has_country_flag
-						CmtFlagLoopA = { PREV = { CmtEffectCreateShip_Lancer = yes } }
+						CmtFlagLoopA = { prev = { CmtEffectCreateShip_Lancer = yes } }
 						CmtFlagLoopZ = { }
 					}
 				}
@@ -327,20 +327,20 @@ CmtEffectCreateFleet_KhanFrenziedVolunteerSquadron = {
 	create_fleet = {
 		name = "NAME_Frenzied_Volunteer_Squadron"
 		effect = {
-			set_owner = PREV
+			set_owner = prev
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
-			PREV = { CmtEffectResetLoop = yes }
+			prev = { CmtEffectResetLoop = yes }
 			while = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
 
 				while = { count = 2 CmtEffectCreateShip_Outrider = yes }		## 8
 				while = { count = 1 CmtEffectCreateShip_Lancer = yes }			## 4
-				PREV = {
+				prev = {
 				CmtEffectProgressLoop2 = yes
 					switch = {
 						trigger = has_country_flag
-						CmtFlagLoopA = { PREV = { CmtEffectCreateShip_VoidChampion = yes } }		## 2
+						CmtFlagLoopA = { prev = { CmtEffectCreateShip_VoidChampion = yes } }		## 2
 						CmtFlagLoopZ = { }
 					}
 				}
@@ -361,9 +361,9 @@ CmtEffectCreateFleet_KhanHerChosenChampions = {
 	create_fleet = {
 		name = "NAME_Her_Chosen_Champions"
 		effect = {
-			set_owner = PREV
+			set_owner = prev
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
-			PREV = { CmtEffectResetLoop = yes }
+			prev = { CmtEffectResetLoop = yes }
 			while = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
@@ -371,11 +371,11 @@ CmtEffectCreateFleet_KhanHerChosenChampions = {
 				while = { count = 4 CmtEffectCreateShip_Outrider = yes }		## 16
 				while = { count = 2 CmtEffectCreateShip_Lancer = yes }			## 8
 				CmtEffectCreateShip_VoidChampion = yes							## 6
-				PREV = {
+				prev = {
 					CmtEffectProgressLoop2 = yes
 					switch = {
 						trigger = has_country_flag
-						CmtFlagLoopA = { PREV = { CmtEffectCreateShip_VoidChampion = yes } }
+						CmtFlagLoopA = { prev = { CmtEffectCreateShip_VoidChampion = yes } }
 						CmtFlagLoopZ = { }
 					}
 				}
@@ -396,9 +396,9 @@ CmtEffectCreateFleet_KhanOrderEternalNight = {
 	create_fleet = {
 		name = "NAME_Order_of_Eternal_Night"
 		effect = {
-			set_owner = PREV
+			set_owner = prev
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
-			PREV = { CmtEffectResetLoop = yes }
+			prev = { CmtEffectResetLoop = yes }
 			while = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
@@ -406,11 +406,11 @@ CmtEffectCreateFleet_KhanOrderEternalNight = {
 				while = { count = 3 CmtEffectCreateShip_Outrider = yes }			## 12
 				CmtEffectCreateShip_Lancer = yes									## 6
 				CmtEffectCreateShip_VoidChampion = yes							## 4
-				PREV = {
+				prev = {
 					CmtEffectProgressLoop2 = yes
 					switch = {
 						trigger = has_country_flag
-						CmtFlagLoopA = { PREV = { CmtEffectCreateShip_Lancer = yes } }
+						CmtFlagLoopA = { prev = { CmtEffectCreateShip_Lancer = yes } }
 						CmtFlagLoopZ = { }
 					}
 				}
@@ -431,20 +431,20 @@ CmtEffectCreateFleet_KhanTwilightCongregation = {
 	create_fleet = {
 		name = "NAME_Twilight_Congregation"
 		effect = {
-			set_owner = PREV
+			set_owner = prev
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
-			PREV = { CmtEffectResetLoop = yes }
+			prev = { CmtEffectResetLoop = yes }
 			while = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
 
 				while = { count = 2 CmtEffectCreateShip_Outrider = yes }			## 8
 				CmtEffectCreateShip_Lancer = yes									## 4
-				PREV = {
+				prev = {
 					CmtEffectProgressLoop2 = yes
 					switch = {
 						trigger = has_country_flag
-						CmtFlagLoopA = { PREV = { CmtEffectCreateShip_VoidChampion = yes } }		## 2
+						CmtFlagLoopA = { prev = { CmtEffectCreateShip_VoidChampion = yes } }		## 2
 						CmtFlagLoopZ = { }
 					}
 				}
@@ -466,22 +466,22 @@ CmtEffectCreateFleet_KhanSubReinforcement1 = {
 	create_fleet = {
 		name = "NAME_Horde_Auxiliary_Fleet"
 		effect = {
-			set_owner = PREV
+			set_owner = prev
 			set_fleet_flag = horde_auxuliaries
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
-			PREV = { CmtEffectResetLoop = yes }
+			prev = { CmtEffectResetLoop = yes }
 			while = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
 
 				while = { count = 2 CmtEffectCreateShip_Outrider = yes }			## 10
 				CmtEffectCreateShip_Lancer = yes									## 4
-				PREV = {
+				prev = {
 					CmtEffectProgressLoop2 = yes
 					switch = {
 						trigger = has_country_flag
-						CmtFlagLoopA = { PREV = { CmtEffectCreateShip_VoidChampion = yes } }		## 2
-						CmtFlagLoopZ = { PREV = { CmtEffectCreateShip_Outrider = yes } }
+						CmtFlagLoopA = { prev = { CmtEffectCreateShip_VoidChampion = yes } }		## 2
+						CmtFlagLoopZ = { prev = { CmtEffectCreateShip_Outrider = yes } }
 					}
 				}
 			}
@@ -504,10 +504,10 @@ CmtEffectCreateFleet_KhanSubReinforcement2 = {
 	create_fleet = {
 		name = "NAME_Horde_Auxiliary_Fleet"
 		effect = {
-			set_owner = PREV
+			set_owner = prev
 			set_fleet_flag = horde_auxuliaries
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
-			PREV = { CmtEffectResetLoop = yes }
+			prev = { CmtEffectResetLoop = yes }
 			while = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
@@ -515,14 +515,14 @@ CmtEffectCreateFleet_KhanSubReinforcement2 = {
 				while = { count = 4 CmtEffectCreateShip_Outrider = yes }		## 16
 				while = { count = 2 CmtEffectCreateShip_Lancer = yes }			## 8
 				CmtEffectCreateShip_VoidChampion = yes							## 6
-				PREV = {
+				prev = {
 					CmtEffectProgressLoop4 = yes
 					switch = {
 						trigger = has_country_flag
-						CmtFlagLoopA = { PREV = { CmtEffectCreateShip_VoidChampion = yes } }
+						CmtFlagLoopA = { prev = { CmtEffectCreateShip_VoidChampion = yes } }
 						CmtFlagLoopB = { }
-						CmtFlagLoopC = { PREV = { CmtEffectCreateShip_VoidChampion = yes } }
-						CmtFlagLoopZ = { PREV = { CmtEffectCreateShip_AncestralGlory = yes } }		## 1
+						CmtFlagLoopC = { prev = { CmtEffectCreateShip_VoidChampion = yes } }
+						CmtFlagLoopZ = { prev = { CmtEffectCreateShip_AncestralGlory = yes } }		## 1
 					}
 				}
 			}
@@ -545,10 +545,10 @@ CmtEffectCreateFleet_KhanSubReinforcement3 = {
 	create_fleet = {
 		name = "NAME_Horde_Auxiliary_Fleet"
 		effect = {
-			set_owner = PREV
+			set_owner = prev
 			set_fleet_flag = horde_auxuliaries
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
-			PREV = { CmtEffectResetLoop = yes }
+			prev = { CmtEffectResetLoop = yes }
 			while = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
@@ -556,14 +556,14 @@ CmtEffectCreateFleet_KhanSubReinforcement3 = {
 				while = { count = 5 CmtEffectCreateShip_Outrider = yes }			## 22
 				while = { count = 4 CmtEffectCreateShip_Lancer = yes }				## 12
 				while = { count = 2 CmtEffectCreateShip_VoidChampion = yes }		## 8
-				PREV = {
+				prev = {
 					CmtEffectProgressLoop4 = yes
 					switch = {
 						trigger = has_country_flag
-						CmtFlagLoopA = { PREV = { CmtEffectCreateShip_Outrider = yes } }
-						CmtFlagLoopB = { PREV = { CmtEffectCreateShip_AncestralGlory = yes } }		## 1
+						CmtFlagLoopA = { prev = { CmtEffectCreateShip_Outrider = yes } }
+						CmtFlagLoopB = { prev = { CmtEffectCreateShip_AncestralGlory = yes } }		## 1
 						CmtFlagLoopC = { }
-						CmtFlagLoopZ = { PREV = { CmtEffectCreateShip_Outrider = yes } }
+						CmtFlagLoopZ = { prev = { CmtEffectCreateShip_Outrider = yes } }
 					}
 				}
 			}
@@ -586,10 +586,10 @@ CmtEffectCreateFleet_KhanSubReinforcement4 = {
 	create_fleet = {
 		name = "NAME_Horde_Auxiliary_Fleet"
 		effect = {
-			set_owner = PREV
+			set_owner = prev
 			set_fleet_flag = horde_auxuliaries
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
-			PREV = { CmtEffectResetLoop = yes }
+			prev = { CmtEffectResetLoop = yes }
 			while = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
@@ -597,14 +597,14 @@ CmtEffectCreateFleet_KhanSubReinforcement4 = {
 				while = { count = 7 CmtEffectCreateShip_Outrider = yes }			## 26 -> 28
 				while = { count = 4 CmtEffectCreateShip_Lancer = yes }				## 18
 				while = { count = 3 CmtEffectCreateShip_VoidChampion = yes }		## 12
-				PREV = {
+				prev = {
 					CmtEffectProgressLoop4 = yes
 					switch = {
 						trigger = has_country_flag
-						CmtFlagLoopA = { PREV = { CmtEffectCreateShip_AncestralGlory = yes } }	## 1
-						CmtFlagLoopB = { PREV = { CmtEffectCreateShip_Lancer = yes } }
+						CmtFlagLoopA = { prev = { CmtEffectCreateShip_AncestralGlory = yes } }	## 1
+						CmtFlagLoopB = { prev = { CmtEffectCreateShip_Lancer = yes } }
 						CmtFlagLoopC = { }
-						CmtFlagLoopZ = { PREV = { CmtEffectCreateShip_Lancer = yes } }
+						CmtFlagLoopZ = { prev = { CmtEffectCreateShip_Lancer = yes } }
 					}
 				}
 			}
@@ -627,10 +627,10 @@ CmtEffectCreateFleet_KhanSubReinforcement5 = {
 	create_fleet = {
 		name = "NAME_Horde_Auxiliary_Fleet"
 		effect = {
-			set_owner = PREV
+			set_owner = prev
 			set_fleet_flag = horde_auxuliaries
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
-			PREV = { CmtEffectResetLoop = yes }
+			prev = { CmtEffectResetLoop = yes }
 			while = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
@@ -638,12 +638,12 @@ CmtEffectCreateFleet_KhanSubReinforcement5 = {
 				while = { count = 9 CmtEffectCreateShip_Outrider = yes }			## 36
 				while = { count = 7 CmtEffectCreateShip_Lancer = yes }				## 28
 				while = { count = 4 CmtEffectCreateShip_VoidChampion = yes }		## 18
-				PREV = {
+				prev = {
 					CmtEffectProgressLoop2 = yes
 					switch = {
 						trigger = has_country_flag
-						CmtFlagLoopA = { PREV = { CmtEffectCreateShip_AncestralGlory = yes } }		## 2
-						CmtFlagLoopZ = { PREV = { CmtEffectCreateShip_VoidChampion = yes } }
+						CmtFlagLoopA = { prev = { CmtEffectCreateShip_AncestralGlory = yes } }		## 2
+						CmtFlagLoopZ = { prev = { CmtEffectCreateShip_VoidChampion = yes } }
 					}
 				}
 			}
@@ -667,10 +667,10 @@ CmtEffectCreateAdmiralty_KhanEncourager = {
 		create_fleet = {
 			name = "NAME_Garrison_Fleet"
 			effect = {
-				set_owner = PREV
+				set_owner = prev
 				set_fleet_flag = satrapy_garrison_fleet
 				event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
-				PREV = { CmtEffectResetLoop = yes }
+				prev = { CmtEffectResetLoop = yes }
 				while = {
 					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
 					event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
@@ -678,12 +678,12 @@ CmtEffectCreateAdmiralty_KhanEncourager = {
 					while = { count = 5 CmtEffectCreateShip_Outrider = yes }			## 22
 					while = { count = 3 CmtEffectCreateShip_Lancer = yes }				## 14
 					while = { count = 2 CmtEffectCreateShip_VoidChampion = yes }		## 8
-					PREV = {
+					prev = {
 						CmtEffectProgressLoop2 = yes
 						switch = {
 							trigger = has_country_flag
-							CmtFlagLoopA = { PREV = { CmtEffectCreateShip_Lancer = yes } }
-							CmtFlagLoopZ = { PREV = { CmtEffectCreateShip_Outrider = yes } }
+							CmtFlagLoopA = { prev = { CmtEffectCreateShip_Lancer = yes } }
+							CmtFlagLoopZ = { prev = { CmtEffectCreateShip_Outrider = yes } }
 						}
 					}
 				}
@@ -702,19 +702,19 @@ CmtEffectCreateAdmiralty_KhanEncourager = {
 ### Element
 CmtEffectCreateElement_DessanuStandard = {
 	event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Dessanu } }
-	PREV = { CmtEffectResetLoop = yes }
+	prev = { CmtEffectResetLoop = yes }
 	while = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
 		event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
 
 		CmtEffectCreateShip_DessanuInterdictor = yes
-		PREV = {
+		prev = {
 			CmtEffectProgressLoop4 = yes
 			switch = {
 				trigger = has_country_flag
-				CmtFlagLoopA = { PREV = { CmtEffectCreateShip_DessanuInterdictor = yes } }
+				CmtFlagLoopA = { prev = { CmtEffectCreateShip_DessanuInterdictor = yes } }
 				CmtFlagLoopB = { }
-				CmtFlagLoopC = { PREV = { CmtEffectCreateShip_DessanuMother = yes } }
+				CmtFlagLoopC = { prev = { CmtEffectCreateShip_DessanuMother = yes } }
 				CmtFlagLoopZ = { }
 			}
 		}
@@ -727,7 +727,7 @@ CmtEffectCreateFleet_DessanuGarryson = {
 	create_fleet = {
 		name = "NAME_Dessanu_Fleet"
 		effect = {
-			set_owner = PREV
+			set_owner = prev
 			CmtEffectCreateElement_DessanuStandard = yes
 			CmtFleetSetAuxParam_DessanuGarryson = yes
 			assign_leader = last_created_leader
@@ -745,7 +745,7 @@ CmtEffectCreateFleet_DessanuRoamer = {
 	create_fleet = {
 		name = "NAME_Dessanu_Fleet_2"
 		effect = {
-			set_owner = PREV
+			set_owner = prev
 			CmtEffectCreateElement_DessanuStandard = yes
 			CmtFleetSetAuxParam_DessanuRoamerCommon = yes
 		}
@@ -760,7 +760,7 @@ CmtEffectCreateFleet_DessanuRoamer = {
 ### Element
 CmtEffectCreateElement_GraygooStandard = {
 	event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Graygoo } }
-	PREV = { CmtEffectResetLoop = yes }
+	prev = { CmtEffectResetLoop = yes }
 	while = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
 		event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
@@ -768,13 +768,13 @@ CmtEffectCreateElement_GraygooStandard = {
 			count = $AMOUNT$
 			CmtEffectCreateShip_GraygooInterdictor = yes
 		}
-		PREV = {
+		prev = {
 			CmtEffectProgressLoop4 = yes
 			switch = {
 				trigger = has_country_flag
-				CmtFlagLoopA = { PREV = { CmtEffectCreateShip_GraygooInterdictor = yes } }
+				CmtFlagLoopA = { prev = { CmtEffectCreateShip_GraygooInterdictor = yes } }
 				CmtFlagLoopB = { }
-				CmtFlagLoopC = { PREV = { CmtEffectCreateShip_GraygooMother = yes } }
+				CmtFlagLoopC = { prev = { CmtEffectCreateShip_GraygooMother = yes } }
 				CmtFlagLoopZ = { }
 			}
 		}
@@ -786,7 +786,7 @@ CmtEffectCreateFleet_GraygooGarryson = {
 	create_fleet = {
 		name = "NAME_Tempest_Fleet"
 		effect = {
-			set_owner = PREV # event_target:graygoo_country
+			set_owner = prev # event_target:graygoo_country
 			CmtEffectCreateElement_GraygooStandard = { AMOUNT = 1 }
 			CmtFleetSetAuxParam_GraygooGarryson = yes
 			# [[DIR] set_location = { target = prevprev distance = 80 angle = $DIR|90$ } ] # $DIS|80$ $DIR$
@@ -799,7 +799,7 @@ CmtEffectCreateFleet_GraygooAttacker = {
 	create_fleet = {
 		name = "NAME_Tempest_Fleet"
 		effect = {
-			set_owner = PREV # event_target:graygoo_country
+			set_owner = prev # event_target:graygoo_country
 			CmtEffectCreateElement_GraygooStandard = { AMOUNT = $AMOUNT|1$ }
 			CmtFleetSetAuxParam_GraygooAttacker = yes
 		}

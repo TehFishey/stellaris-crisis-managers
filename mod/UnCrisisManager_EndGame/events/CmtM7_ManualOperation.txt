@@ -21,6 +21,19 @@ country_event = {
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
 
+	immediate = {
+		# possible flag fix (to be sure) - sometimes not removed
+		if = {
+			limit = {
+				host_has_dlc = "Apocalypse"
+				has_global_flag = CmtFlagMidGameEdition
+				has_global_flag = marauder_crisis_ongoing
+				CmtTriggerNowInKhanCrisis = no
+			}
+			remove_global_flag = marauder_crisis_ongoing
+		}
+	}
+
 	option = {
 		name = CmtTextSeparator.name
 		custom_tooltip = CmtTextSeparator.tooltip
@@ -128,10 +141,19 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7000.7136.B.name
 		custom_tooltip = CrisisManagerMenu.7000.7136.B.tooltip
-		allow = { has_leviathans = yes }
+		allow = { has_country_flag = war_in_heaven_timer }
 		trigger = {
+			has_leviathans = yes
 			has_global_flag = CmtFlagSleeperEdition
-			count_country = { limit = { CmtTriggerIsOrganicSleeper = yes } count < 2 }
+			count_country = {
+				count < 2
+				limit = {
+					is_fallen_empire = yes
+					CmtTriggerIsHeavenAFE = no
+					is_at_war = no
+				}
+			}
+			# count_country = { limit = { CmtTriggerIsOrganicSleeper = yes } count < 2 }
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
 	}
@@ -148,35 +170,44 @@ country_event = {
 	# }
 
 	### Khan
-	option = {
+	option = { # valid
 		name = CrisisManagerMenu.7000.7138.A.name
 		custom_tooltip = CrisisManagerMenu.7000.7138.A.tooltip
 		allow = { host_has_dlc = "Apocalypse" }
 		trigger = {
 			has_global_flag = CmtFlagMidGameEdition
-			CmtTriggerNowInKhanCrisis = no
-			any_country = { CmtTriggerHasPotentialKhanAwaking = yes }
+			NOT = { has_global_flag = marauder_crisis_ongoing }
+			# CmtTriggerNowInKhanCrisis = no
+			OR = {
+				has_global_flag = marauder_crisis_started # possible fallback
+				any_country = { CmtTriggerHasPotentialKhanAwaking = yes }
+			}
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7138 } }
 	}
-	option = {
+	option = { # not possible (not ongoing)
 		name = CrisisManagerMenu.7000.7138.B.name
 		custom_tooltip = CrisisManagerMenu.7000.7138.B.tooltip
 		allow = { host_has_dlc = "Apocalypse" }
 		trigger = {
 			has_global_flag = CmtFlagMidGameEdition
-			NOT = { any_country = { CmtTriggerHasPotentialKhanAwaking = yes } }
+			NOR = {
+				has_global_flag = marauder_crisis_ongoing
+				has_global_flag = marauder_crisis_started # possible fallback
+				any_country = { CmtTriggerHasPotentialKhanAwaking = yes }
+			}
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
 	}
-	option = {
+	option = { # possible (but ongoing)
 		name = CrisisManagerMenu.7000.7138.C.name
 		custom_tooltip = CrisisManagerMenu.7000.7138.C.tooltip
 		allow = { host_has_dlc = "Apocalypse" }
 		trigger = {
 			has_global_flag = CmtFlagMidGameEdition
-			any_country = { CmtTriggerHasPotentialKhanAwaking = yes }
-			CmtTriggerNowInKhanCrisis = yes
+			has_global_flag = marauder_crisis_ongoing
+			# CmtTriggerNowInKhanCrisis = yes
+			# any_country = { CmtTriggerHasPotentialKhanAwaking = yes }
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
 	}
@@ -1434,21 +1465,21 @@ country_event = {
 		if = {
 			limit = { NOT = { exists = event_target:marauder_country_1 } }
 			random_country = {
-				limit = { has_country_flag = marauder_1 }
+				limit = { has_country_flag = marauder_1 CmtTriggerHasPotentialKhanAwaking = yes }
 				save_global_event_target_as = marauder_country_1
 			}
 		}
 		if = {
 			limit = { NOT = { exists = event_target:marauder_country_2 } }
 			random_country = {
-				limit = { has_country_flag = marauder_2 }
+				limit = { has_country_flag = marauder_2 CmtTriggerHasPotentialKhanAwaking = yes }
 				save_global_event_target_as = marauder_country_2
 			}
 		}
 		if = {
 			limit = { NOT = { exists = event_target:marauder_country_3 } }
 			random_country = {
-				limit = { has_country_flag = marauder_3 }
+				limit = { has_country_flag = marauder_3 CmtTriggerHasPotentialKhanAwaking = yes }
 				save_global_event_target_as = marauder_country_3
 			}
 		}
@@ -1459,13 +1490,17 @@ country_event = {
 					exists = event_target:marauder_country_1
 					exists = event_target:marauder_country_2
 					exists = event_target:marauder_country_3
-					any_country = { is_country_type = dormant_marauders }
+					# any_country = { is_country_type = dormant_marauders }
 				}
 			}
 			random_country = {
 				limit = {
-					has_country_flag = new_khanate_flag
 					has_origin = "origin_khan_successor"
+					NOT = { has_country_flag = democratic_khanate_flag }
+					OR = {
+						has_country_flag = new_khanate_flag
+						has_country_flag = diadochi
+					}
 					any_system_within_border = {
 						has_star_flag = marauder_system
 						OR = {
@@ -1477,13 +1512,106 @@ country_event = {
 						}
 					}
 				}
-				set_country_flag = marauder_1
+				random_system_within_border = {
+					limit = {
+						has_star_flag = marauder_system
+						OR = {
+							CmtTriggerMarauderCapitalSystem = yes
+							any_neighbor_system = { has_owner = no CmtTriggerMarauderCapitalSystem = yes }
+						}
+					}
+					if = {
+						limit = { CmtTriggerMarauderCapitalSystem = no }
+						random_neighbor_system = {
+							limit = { has_owner = no CmtTriggerMarauderCapitalSystem = yes }
+							save_event_target_as = former_marauder_capital
+						}
+					} else = { save_event_target_as = former_marauder_capital }
+				}
+				if = { limit = { NOT = { exists = event_target:former_marauder_capital } }
+					capital_scope.solar_system = {
+						save_event_target_as = former_marauder_capital
+					}
+				}
+				event_target:former_marauder_capital = {
+					switch = {
+						trigger = has_star_flag
+						marauder_capital_1 = {
+							prev = { set_country_flag = marauder_1 save_global_event_target_as = marauder_country_1 }
+						}
+						marauder_capital_2 = {
+							prev = { set_country_flag = marauder_2 save_global_event_target_as = marauder_country_2 }
+						}
+						default = { # marauder_capital_3
+							prev = { set_country_flag = marauder_3 save_global_event_target_as = marauder_country_3 }
+						}
+					}
+				}
+				# log="Manual marauder fallback 1 \\[former_marauder_capital.GetName]"
 			}
+			# Create very strong fallback (look for dead marauders)
+			if = {
+				limit = {
+					NOT = { exists = event_target:former_marauder_capital }
+					any_system = { has_owner = no has_star_flag = marauder_system }
+				}
+				# log="Manual marauder fallback 2"
+				random_system = {
+					limit = { has_owner = no has_star_flag = marauder_system }
+					weights = {
+						base = 1
+						modifier = {
+							add = 3
+							CmtTriggerMarauderCapitalSystem = yes
+						}
+						modifier = {
+							add = 2
+							any_neighbor_system = {
+								has_owner = no
+								has_star_flag = marauder_system
+							}
+						}
+						modifier = {
+							add = 1
+							any_neighbor_system = { has_owner = no }
+						}
+						modifier = {
+							add = 3
+							any_system_planet = { has_owner = no has_planet_flag = marauder_rally_point }
+						}
+					}
+					random_system_planet = {
+						limit = { is_a_planet = yes }
+						weights = {
+							base = 1
+							modifier = {
+								add = 3
+								has_planet_flag = marauder_rally_point
+							}
+						}
+						save_event_target_as = former_marauder_capital
+						# log="Manual marauder strong fallback \\[This.GetName]"
+					}
+				}
+			} else = { no_scope = { save_event_target_as = former_marauder_capital } } # clear
 		}
 	}
 
 	after = {
-		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+
+		if = {
+			limit = { exists = event_target:marauder_country_1 NOT = { event_target:marauder_country_1 = { CmtTriggerHasPotentialKhanAwaking = yes } } }
+			clear_global_event_target = marauder_country_1
+		}
+		if = {
+			limit = { exists = event_target:marauder_country_2 NOT = { event_target:marauder_country_2 = { CmtTriggerHasPotentialKhanAwaking = yes } } }
+			clear_global_event_target = marauder_country_2
+		}
+		if = {
+			limit = { exists = event_target:marauder_country_3 NOT = { event_target:marauder_country_3 = { CmtTriggerHasPotentialKhanAwaking = yes } } }
+			clear_global_event_target = marauder_country_3
+		}
+
 		# legacy
 		# if = {
 		# 	limit = { exists = event_target:CmtTargetManualMarauder1 }
@@ -1497,6 +1625,8 @@ country_event = {
 		# 	limit = { exists = event_target:CmtTargetManualMarauder3 }
 		# 	clear_global_event_target = CmtTargetManualMarauder3
 		# }
+
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
 	}
 
 	option = {
@@ -1506,6 +1636,12 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7138b.name
 		custom_tooltip = CrisisManagerMenu.7138b.tooltip
+		trigger = {
+			NAND = {
+				exists = event_target:former_marauder_capital
+				event_target:former_marauder_capital = { is_scope_type = planet }
+			}
+		}
 		hidden_effect = {
 			random_country = {
 				limit = { CmtTriggerHasPotentialKhanAwaking = yes }
@@ -1516,9 +1652,9 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7138c1.name
 		custom_tooltip = CrisisManagerMenu.7135c.tooltip
+		allow = { event_target:marauder_country_1 = { CmtTriggerHasPotentialKhanAwaking = yes }	}
 		trigger = {
 			exists = event_target:marauder_country_1
-			event_target:marauder_country_1 = { CmtTriggerHasPotentialKhanAwaking = yes }
 		}
 		hidden_effect = {
 			event_target:marauder_country_1 = { CmtEffectTriggerMarauderManually = yes }
@@ -1527,9 +1663,9 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7138c2.name
 		custom_tooltip = CrisisManagerMenu.7135c.tooltip
+		allow = { event_target:marauder_country_2 = { CmtTriggerHasPotentialKhanAwaking = yes }	}
 		trigger = {
 			exists = event_target:marauder_country_2
-			event_target:marauder_country_2 = { CmtTriggerHasPotentialKhanAwaking = yes }
 		}
 		hidden_effect = {
 			event_target:marauder_country_2 = { CmtEffectTriggerMarauderManually = yes }
@@ -1538,15 +1674,94 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7138c3.name
 		custom_tooltip = CrisisManagerMenu.7135c.tooltip
+		allow = { event_target:marauder_country_3 = { CmtTriggerHasPotentialKhanAwaking = yes }	}
 		trigger = {
 			exists = event_target:marauder_country_3
-			event_target:marauder_country_3 = { CmtTriggerHasPotentialKhanAwaking = yes }
 		}
 		hidden_effect = {
 			event_target:marauder_country_3 = { CmtEffectTriggerMarauderManually = yes }
 		}
 	}
-
+	option = { # Restore
+		name = CrisisManagerMenu.7138b.name
+		custom_tooltip = CrisisManagerMenu.7135c.tooltip
+		trigger = {
+			exists = event_target:former_marauder_capital
+			event_target:former_marauder_capital = { is_scope_type = planet }
+		}
+		hidden_effect = {
+			event_target:former_marauder_capital = {
+				create_species = {
+					name = random
+					class = random
+					blocked_archetypes = { MACHINE ROBOT LITHOID }
+					portrait = random
+					traits = {
+						trait = "trait_pc_habitat_preference"
+						trait = "trait_extremely_adaptive"
+						trait = "trait_rapid_breeders"
+						trait = "trait_nomadic"
+						trait = "trait_quarrelsome"
+						trait = "trait_deviants"
+					}
+				}
+				create_country = {
+					name_list = random
+					species = last_created_species
+					type = dormant_marauders
+					civics = { civic = civic_anarcho_tribalism civic = civic_warrior_culture civic = civic_barbaric_despoilers }
+					origin = "origin_khan_successor"
+					flag = {
+						icon = { category = "pirate" file = "flag_pirate_13.dds" }
+						background= { category = "backgrounds" file = "00_solid.dds" }
+						colors={ "black" "black" "null" "null" }
+					}
+					ethos = {
+						ethic = ethic_fanatic_spiritualist
+						ethic = ethic_xenophobe
+					}
+					ignore_initial_colony_error = yes
+					effect = {
+						set_graphical_culture = pirate_01
+						set_country_flag = restored_marauders_flag
+						set_name = random
+						create_ship_design = { design = "NAME_Marauder_Starbase" }
+						add_ship_design = last_created_design
+						save_event_target_as = marauder_starbase_owner
+						set_custom_capital_location = prev
+					}
+				}
+			}
+			last_created_country = {
+				prev.solar_system = {
+					switch = {
+						trigger = has_star_flag
+						marauder_capital_1 = {
+							prev = { set_country_flag = marauder_1 save_global_event_target_as = marauder_country_1 }
+						}
+						marauder_capital_2 = {
+							prev = { set_country_flag = marauder_2 save_global_event_target_as = marauder_country_2 }
+						}
+						default = { # marauder_capital_3
+							prev = { set_country_flag = marauder_3 save_global_event_target_as = marauder_country_3 }
+						}
+					}
+					create_marauder_starbase = yes
+				}
+				CmtEffectCreateFleet_KhanSubReinforcement3 = yes
+				random_neighbor_system = {
+					limit = { has_owner = no }
+					weights = {
+						base = 1
+						modifier = { add = 2 has_star_flag = marauder_system }
+					}
+					create_marauder_starbase = yes
+					prev = { CmtEffectCreateFleet_KhanSubReinforcement3 = yes }
+				}
+				CmtEffectTriggerMarauderManually = yes
+			}
+		}
+	}
 }
 
 ### Open L-Gate and Trigger L-Cluster Event

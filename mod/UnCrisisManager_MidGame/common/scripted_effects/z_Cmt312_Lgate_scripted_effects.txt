@@ -36,10 +36,10 @@ start_lcluster_chain = {
 					if = {
 						limit = { check_variable = { which = CmtVarLgateReqClues value < 0.5 } }
 						set_variable = { which = CmtVarTemp value = 7 }
-						PREV = { set_variable = { which = CmtVarLgateReqClues value = 7 } }
+						prev = { set_variable = { which = CmtVarLgateReqClues value = 7 } }
 					} else = {
 						set_variable = { which = CmtVarTemp value = CmtVarLgateReqClues }
-						PREV = { set_variable = { which = CmtVarLgateReqClues value = PREV } }
+						prev = { set_variable = { which = CmtVarLgateReqClues value = prev.CmtVarLgateReqClues } }
 					}
 				}
 				# set_variable = { which = CmtVarLgateReqClues value = event_target:CmtGlobalVar.CmtVarTemp } # 3.1 makes above absolete

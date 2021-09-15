@@ -97,7 +97,7 @@ country_event = {
 	}
 
 	immediate = {
-		FROMFROM = {
+		fromfrom = {
 			add_threat = { who = root amount = 2 }
 			set_controller = root
 			# ^ maxes out purge job weight
@@ -108,7 +108,7 @@ country_event = {
 
 		if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPurgeSpeed value = 7 } } }
-			FROMFROM = {
+			fromfrom = {
 				random_owned_pop = {
 					prev = {
 						every_owned_pop = {
@@ -125,22 +125,22 @@ country_event = {
 		# Fix crisis country taking over planet controlled by another crisis country.
 		if = {
 			limit = {
-				NOT = { FROM = { is_same_empire = root } }
-				FROM = {
+				NOT = { from = { is_same_empire = root } }
+				from = {
 					OR = {
 						CmtTriggerIsPrethoryn = yes
 						CmtTriggerIsContingency = yes
 					}
 				}
 			}
-			FROMFROM = {
+			fromfrom = {
 				conquer = root
 			}
 		}
 		if = {
 			limit = {
 				CmtTriggerIsPrethoryn = yes
-				FROMFROM = { num_pops = 0 }
+				fromfrom = { num_pops = 0 }
 			}
 			if = {
 				limit = {
@@ -149,7 +149,7 @@ country_event = {
 				}
 				owner_species = { save_event_target_as = prethoryn_species }
 			}
-			FROMFROM = {
+			fromfrom = {
 				start_colony = {
 					owner = root
 					species = event_target:prethoryn_species

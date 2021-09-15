@@ -141,10 +141,19 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7000.7136.B.name
 		custom_tooltip = CrisisManagerMenu.7000.7136.B.tooltip
-		allow = { has_leviathans = yes }
+		allow = { has_country_flag = war_in_heaven_timer }
 		trigger = {
+			has_leviathans = yes
 			has_global_flag = CmtFlagSleeperEdition
-			count_country = { limit = { CmtTriggerIsOrganicSleeper = yes } count < 2 }
+			count_country = {
+				count < 2
+				limit = {
+					is_fallen_empire = yes
+					CmtTriggerIsHeavenAFE = no
+					is_at_war = no
+				}
+			}
+			# count_country = { limit = { CmtTriggerIsOrganicSleeper = yes } count < 2 }
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
 	}
@@ -1538,7 +1547,7 @@ country_event = {
 						}
 					}
 				}
-				log="Manual marauder fallback 1 \\[former_marauder_capital.GetName]"
+				# log="Manual marauder fallback 1 \\[former_marauder_capital.GetName]"
 			}
 			# Create very strong fallback (look for dead marauders)
 			if = {
@@ -1546,7 +1555,7 @@ country_event = {
 					NOT = { exists = event_target:former_marauder_capital }
 					any_system = { has_owner = no has_star_flag = marauder_system }
 				}
-				log="Manual marauder fallback 2"
+				# log="Manual marauder fallback 2"
 				random_system = {
 					limit = { has_owner = no has_star_flag = marauder_system }
 					weights = {
@@ -1581,7 +1590,7 @@ country_event = {
 							}
 						}
 						save_event_target_as = former_marauder_capital
-						log="Manual marauder strong fallback \\[This.GetName]"
+						# log="Manual marauder strong fallback \\[This.GetName]"
 					}
 				}
 			} else = { no_scope = { save_event_target_as = former_marauder_capital } } # clear
@@ -1589,7 +1598,6 @@ country_event = {
 	}
 
 	after = {
-		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
 
 		if = {
 			limit = { exists = event_target:marauder_country_1 NOT = { event_target:marauder_country_1 = { CmtTriggerHasPotentialKhanAwaking = yes } } }
@@ -1617,6 +1625,8 @@ country_event = {
 		# 	limit = { exists = event_target:CmtTargetManualMarauder3 }
 		# 	clear_global_event_target = CmtTargetManualMarauder3
 		# }
+
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
 	}
 
 	option = {
@@ -1736,8 +1746,8 @@ country_event = {
 							prev = { set_country_flag = marauder_3 save_global_event_target_as = marauder_country_3 }
 						}
 					}
+					create_marauder_starbase = yes
 				}
-				create_marauder_starbase = yes
 				CmtEffectCreateFleet_KhanSubReinforcement3 = yes
 				random_neighbor_system = {
 					limit = { has_owner = no }
