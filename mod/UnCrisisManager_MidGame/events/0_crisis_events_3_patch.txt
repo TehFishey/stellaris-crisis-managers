@@ -51,7 +51,7 @@ planet_event = {
 				closest_system = {
 					max_steps = 2
 					use_bypasses = no
-					limit = { has_owner = yes CmtTriggerIsEmpire = yes }
+					limit = { has_owner = yes space_owner = { CmtTriggerIsEmpire = yes } }
 					space_owner = { save_event_target_as = planet_former_owner }
 				}
 			}

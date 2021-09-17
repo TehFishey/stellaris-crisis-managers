@@ -141,16 +141,18 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7000.7136.B.name
 		custom_tooltip = CrisisManagerMenu.7000.7136.B.tooltip
-		allow = { has_country_flag = war_in_heaven_timer }
+		allow = { has_leviathans = yes }
 		trigger = {
-			has_leviathans = yes
 			has_global_flag = CmtFlagSleeperEdition
-			count_country = {
-				count < 2
-				limit = {
-					is_fallen_empire = yes
-					CmtTriggerIsHeavenAFE = no
-					is_at_war = no
+			OR = {
+				has_country_flag = war_in_heaven_timer
+				count_country = {
+					count < 2
+					limit = {
+						is_fallen_empire = yes
+						CmtTriggerIsHeavenAFE = no
+						is_at_war = no
+					}
 				}
 			}
 			# count_country = { limit = { CmtTriggerIsOrganicSleeper = yes } count < 2 }

@@ -36,13 +36,13 @@ start_lcluster_chain = {
 					if = {
 						limit = { check_variable = { which = CmtVarLgateReqClues value < 0.5 } }
 						set_variable = { which = CmtVarTemp value = 7 }
-						prev = { set_variable = { which = CmtVarLgateReqClues value = 7 } }
+						# prev = { set_variable = { which = CmtVarLgateReqClues value = 7 } }
 					} else = {
 						set_variable = { which = CmtVarTemp value = CmtVarLgateReqClues }
-						prev = { set_variable = { which = CmtVarLgateReqClues value = prev.CmtVarLgateReqClues } }
+						# prev = { set_variable = { which = CmtVarLgateReqClues value = prev } } # pre Lem 3.1
 					}
 				}
-				# set_variable = { which = CmtVarLgateReqClues value = event_target:CmtGlobalVar.CmtVarTemp } # 3.1 makes above absolete
+				set_variable = { which = CmtVarLgateReqClues value = event_target:CmtGlobalVar.CmtVarTemp }
 
 				while = {
 					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value < 6.5 } } }
@@ -57,7 +57,7 @@ start_lcluster_chain = {
 				change_variable = { which = CmtVarLgateReqClues value = -2 }
 				set_variable = { which = num_lcluster_clues value = 0 }		## for Liquidation
 
-				log="TEST start needed clues: [This.CmtVarLgateReqClues]"
+				# log="TEST start needed clues: \\[This.CmtVarLgateReqClues]"
 			}
 		}
 	}
