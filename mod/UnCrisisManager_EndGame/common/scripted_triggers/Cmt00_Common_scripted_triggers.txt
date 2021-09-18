@@ -442,16 +442,18 @@ CmtTriggerSleeperConfig = {
 }
 
 CmtTriggerHeavenConfig = {
-	NOR = {
-		CmtTriggerAnyCrisisTriggered = yes
-		has_global_flag = CmtFlagWarInHeavenTriggered # war_in_heaven_started
-		has_global_flag = sleepers_awake_rival_waking
-		has_global_flag = guardians_of_the_galaxy_happened
-		has_global_flag = CmtFlagGuardiansTryToAwake
-		has_global_flag = CmtFlagMachineFeTryToAwake
-		NOT = { has_global_flag = CmtFlagDebugMode }
-	}
 	has_global_flag = CmtFlagSleeperEdition
+	OR = {
+		has_global_flag = CmtFlagDebugMode
+		NOR = {
+			CmtTriggerAnyCrisisTriggered = yes
+			has_global_flag = CmtFlagWarInHeavenTriggered # war_in_heaven_started
+			has_global_flag = sleepers_awake_rival_waking
+			has_global_flag = guardians_of_the_galaxy_happened
+			has_global_flag = CmtFlagGuardiansTryToAwake
+			has_global_flag = CmtFlagMachineFeTryToAwake
+		}
+	}
 }
 
 CmtTriggerGuardianFeConfig = {

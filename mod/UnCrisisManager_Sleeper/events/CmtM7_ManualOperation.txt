@@ -580,7 +580,7 @@ country_event = {
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7110 } }
 	}
 
-	### End of Cycle
+	### End of the Cycle
 	option = {
 		name = CrisisManagerMenu.7110i1.name
 		custom_tooltip = CrisisManagerMenu.7110i1.tooltip
@@ -957,7 +957,7 @@ country_event = {
 	}
 }
 
-### Force Covenant of End of Cycle
+### Force Covenant of End of the Cycle
 country_event = {
 	id = CrisisManagerMenu.7119
 	title = CrisisManagerMenu.7119.name
@@ -2477,7 +2477,7 @@ country_event = {
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7203 } }
 	}
 
-	### Forced End of Cycle
+	### Forced End of the Cycle
 	option = {
 		name = CrisisManagerMenu.7200d.name
 		custom_tooltip = CrisisManagerMenu.7200d.tooltip
@@ -2513,7 +2513,7 @@ country_event = {
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7205 } }
 	}
 
-	### War in Heaven: Not Implemented
+	### War in Heaven: TODO Not Implemented
 	option = {
 		name = CrisisManagerMenu.7200f.name
 		custom_tooltip = CrisisManagerMenu.7200f.tooltip
@@ -2634,7 +2634,7 @@ country_event = {
 	}
 }
 
-### Termination of Shroud Spirits (Forced End of Cycle)
+### Termination of Shroud Spirits (Forced End of the Cycle)
 country_event = {
 	id = CrisisManagerMenu.7204
 	title = CrisisManagerMenu.7204.name
@@ -2721,6 +2721,7 @@ country_event = {
 	}
 }
 
+# TODO
 ### Termination of War in Heaven
 country_event = {
 	id = CrisisManagerMenu.7206

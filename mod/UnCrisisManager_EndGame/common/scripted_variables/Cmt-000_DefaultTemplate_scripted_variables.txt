@@ -244,14 +244,14 @@
 		### Resurface Standardly = 3 (Default), Resurface Early = 4, Power State S1 = 5
 
 ######################################################
-###  Advanced Configurations: Forced End of Cycle  ###
+###  Advanced Configurations: Forced End of the Cycle  ###
 ######################################################
 #
 #	Required for activating: Crisis Manager - End-Game Edition
 #	Required for activating: @CmtT000_ConstActivatedEventEndgame = yes
 #
 
-### Allow Forced End of Cycle
+### Allow Forced End of the Cycle
 	@CmtT000_ConstAllowForcedEoc = no
 		### yes: Allow to happen
 		### no : Forbid to happen (Default)
@@ -274,7 +274,7 @@
 		### Prefer to Empire Owing Larger Territory = 3 (Default)
 		### Prefer to Empire with Many POPs = 4
 
-### Term of Covenant End of Cycle
+### Term of Covenant End of the Cycle
 	@CmtT000_ConstForcedEocCrisisTerm = no
 		### yes: Term of the covenant conforms to ''Progress Speed of Opening Event Chain''
 		### no:  Term of the covenant is 50 years (Default)
@@ -603,7 +603,7 @@
 	@CmtT000_ConstFleetPower_Vehement           = 1.00
 	@CmtT000_ConstFleetPower_Contingency        = 1.00
 	@CmtT000_ConstFleetPower_Cybrex             = 1.00
-	@CmtT000_ConstFleetPower_ForcedEoc          = 1.00		## Forced End of Cycle
+	@CmtT000_ConstFleetPower_ForcedEoc          = 1.00		## Forced End of the Cycle
 	@CmtT000_ConstFleetPower_Khan               = 1.00
 	@CmtT000_ConstFleetPower_Graygoo            = 1.00		## Gray Tempest
 	@CmtT000_ConstFleetPower_Dessanu            = 1.00

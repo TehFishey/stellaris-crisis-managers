@@ -820,7 +820,7 @@ CmtEffect1024TryCall4790 = {
 	} else = { country_event = { id = CrisisManagerMenu.1024 } }
 }
 
-### Forced End of Cycle
+### Forced End of the Cycle
 CmtEffect1022TryCall4410 = {
 	if = {
 		limit = { CmtTriggerForcedEocConfig = yes }

@@ -3,7 +3,7 @@ namespace = CrisisManagerControl
 ######################################################
 ######################################################
 #####                                            #####
-#####    Crisis Events 4: Forced End of Cycle    #####
+#####    Crisis Events 4: Forced End of the Cycle    #####
 #####                                            #####
 #####    Replaced by Crisis Manager              #####
 #####                                            #####
@@ -53,7 +53,7 @@ country_event = {
 			}
 		}
 
-		### Select Term of Forced End of Cycle
+		### Select Term of Forced End of the Cycle
 		if = {
 			limit = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTermForcedEoc value = -1 } } } }
 			if = {

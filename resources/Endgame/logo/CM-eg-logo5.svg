@@ -17,7 +17,7 @@
    viewBox="0 0 508 508"
    height="1920"
    width="1920"
-   inkscape:export-filename="C:\Users\Max\Pictures\CMeg\Crisis-EG-3.2.png"
+   inkscape:export-filename="C:\Users\Max\Pictures\CMeg\Crisis-EG-3.3.png"
    inkscape:export-xdpi="25.6"
    inkscape:export-ydpi="25.6"
    enable-background="new">
@@ -1379,6 +1379,54 @@
          stdDeviation="2.4209375"
          id="feGaussianBlur11167" />
     </filter>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Brilliance"
+       id="filter1989-8">
+      <feColorMatrix
+         values="2 -0.5 -0.5 0 -7.19 -0.5 2 -0.5 0 -7.19 -0.5 -0.5 2 0 -7.19 0 0 0 1 0 "
+         id="feColorMatrix1987-1" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Brilliance"
+       id="filter2521">
+      <feColorMatrix
+         values="2 -0.5 -0.5 0 -7.19 -0.5 2 -0.5 0 -7.19 -0.5 -0.5 2 0 -7.19 0 0 0 1 0 "
+         id="feColorMatrix2519" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Brilliance"
+       id="filter1989-4">
+      <feColorMatrix
+         values="2 -0.5 -0.5 0 -7.19 -0.5 2 -0.5 0 -7.19 -0.5 -0.5 2 0 -7.19 0 0 0 1 0 "
+         id="feColorMatrix1987-2" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Brilliance"
+       id="filter4028">
+      <feColorMatrix
+         values="2 -0.5 -0.5 0 -7.19 -0.5 2 -0.5 0 -7.19 -0.5 -0.5 2 0 -7.19 0 0 0 1 0 "
+         id="feColorMatrix4026" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Brilliance"
+       id="filter4032">
+      <feColorMatrix
+         values="2 -0.5 -0.5 0 -7.19 -0.5 2 -0.5 0 -7.19 -0.5 -0.5 2 0 -7.19 0 0 0 1 0 "
+         id="feColorMatrix4030" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Brilliance"
+       id="filter4036">
+      <feColorMatrix
+         values="2 -0.5 -0.5 0 -7.19 -0.5 2 -0.5 0 -7.19 -0.5 -0.5 2 0 -7.19 0 0 0 1 0 "
+         id="feColorMatrix4034" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -1387,11 +1435,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.20507813"
-     inkscape:cx="892.25495"
-     inkscape:cy="-87.264135"
+     inkscape:zoom="0.41015627"
+     inkscape:cx="1119.3944"
+     inkscape:cy="636.68276"
      inkscape:document-units="px"
-     inkscape:current-layer="layer5"
+     inkscape:current-layer="layer3"
      showgrid="false"
      units="px"
      fit-margin-top="0"
@@ -1427,7 +1475,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1449,7 +1497,7 @@
        x="0"
        id="image1391"
        xlink:href="file:///C:/Users\Max/Pictures/CMeg/stellaris-synthetic-dawn.jpg"
-       style="opacity:0.5;image-rendering:optimizeSpeed"
+       style="opacity:0.75;image-rendering:optimizeSpeed"
        preserveAspectRatio="none"
        height="245.80646"
        width="508"
@@ -1521,23 +1569,23 @@
     <image
        sodipodi:absref="D:\GOG Games\Settings\stellaris-crisis-managers\resources\Endgame\logo\Evt_fallen_empire_awakens.png"
        xlink:href="Evt_fallen_empire_awakens.png"
-       y="394.05096"
+       y="392.30371"
        x="229.92291"
        id="image1051"
-       style="opacity:0.93999999;image-rendering:optimizeSpeed"
+       style="opacity:0.95999995;image-rendering:optimizeSpeed"
        preserveAspectRatio="none"
-       height="100.13571"
-       width="265.328" />
+       height="103.17408"
+       width="273.37872" />
     <image
        sodipodi:absref="D:\GOG Games\Settings\stellaris-crisis-managers\resources\Endgame\logo\The_Contingency.png"
        xlink:href="The_Contingency.png"
-       y="254.15421"
-       x="295.80417"
+       y="248.76318"
+       x="294.43964"
        id="image1062"
        style="image-rendering:optimizeSpeed"
        preserveAspectRatio="none"
-       height="131.60829"
-       width="196.85001" />
+       height="144.21489"
+       width="215.70604" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -2123,8 +2171,7 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(446.76785,57.541672)"
-     style="display:inline;opacity:1"
-     sodipodi:insensitive="true">
+     style="display:inline;opacity:1">
     <g
        id="g1511"
        transform="matrix(0.88043828,0,0,0.88043828,-16.800379,2.26026)">
@@ -2308,6 +2355,26 @@
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:120px;font-family:'Fixedsys Excelsior 3.01';-inkscape-font-specification:'Fixedsys Excelsior 3.01, ';text-align:center;letter-spacing:18.83434677px;word-spacing:4.54421043px;text-anchor:middle;fill:#990000;fill-opacity:0.46129037;stroke:#da1212;stroke-width:3.58631968;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
    id="tspan1221">adopted</tspan>]</tspan></text>
     </g>
+    <image
+       sodipodi:absref="D:\GOG Games\Settings\stellaris-crisis-managers\resources\Endgame\logo\../../tradition_hex_bg_turqoise.png"
+       xlink:href="../../tradition_hex_bg_turqoise.png"
+       transform="matrix(1.1327964,0,0,1.3010142,-491.5368,-86.754783)"
+       width="360.96307"
+       height="72.192619"
+       preserveAspectRatio="none"
+       style="display:inline;opacity:1;stroke-width:0.82372653;filter:url(#filter1989-4);image-rendering:optimizeSpeed"
+       id="image1961"
+       x="180.24879"
+       y="66.155136" />
+    <use
+       style="display:inline"
+       x="0"
+       y="0"
+       xlink:href="#image1961"
+       id="use1119"
+       width="100%"
+       height="100%"
+       transform="translate(1.4570836e-6)" />
   </g>
   <g
      inkscape:groupmode="layer"

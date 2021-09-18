@@ -110,7 +110,7 @@ country_event = {
 				} else = { remove_global_flag = CmtFlagSynthTerrorAll }
 				set_variable = { which = CmtVarCybrexResurfacing value = @CmtT000_ConstCybrexResurfacing }
 
-				### Forced End of Cycle
+				### Forced End of the Cycle
 				if = {
 					limit = { always = @CmtT000_ConstAllowForcedEoc }
 					set_global_flag = CmtFlagAllowForcedEoc

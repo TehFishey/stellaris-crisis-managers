@@ -31,6 +31,13 @@ CmtEffectClearGhostSignalGalaxy = {
 			ghost_signal_5_machine = { remove_notification_modifier = ghost_signal_5_machine }
 			ghost_signal_4_machine = { remove_notification_modifier = ghost_signal_4_machine }
 		}
+		every_owned_fleet = {
+			limit = { is_civilian = no }
+			every_owned_ship = {
+				limit = { has_sapient_combat_computer = yes }
+				CmtEffectClearGhostSignalShip = yes
+			}
+		}
 	}
 	every_galaxy_pop = {
 		limit = { has_trait = trait_mechanical }
@@ -79,10 +86,6 @@ CmtEffectClearGhostSignalGalaxy = {
 			CmtModifierMachinePopGhostSignal_4e = { remove_modifier = CmtModifierMachinePopGhostSignal_4e }
 		}
 	}
-	every_galaxy_fleet = {
-		limit = { has_sapient_combat_computer = yes }
-		CmtEffectClearGhostSignalShip = yes
-	}
 }
 
 CmtEffectClearGhostSignalShip = {
@@ -115,4 +118,3 @@ CmtEffectClearGhostSignalShip = {
 		CmtModifierCombatShipGhostSignal_1e = { remove_modifier = CmtModifierCombatShipGhostSignal_1e }
 	}
 }
-
