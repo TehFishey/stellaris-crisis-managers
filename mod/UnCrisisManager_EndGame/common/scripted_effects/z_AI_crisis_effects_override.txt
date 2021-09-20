@@ -1,6 +1,7 @@
 # used in crisis.2040 & destroy_star_system effect
 destroy_machine_world = {
 	log = "machine handling fired"
+	stop_crisis_sound = yes
 	if = {
 		limit = { has_planet_flag = machine_world_1 }
 		every_playable_country = {
@@ -418,7 +419,7 @@ destroy_machine_world = {
 					}
 				}
 			}
-			every_country = {
+			every_playable_country = {
 				limit = { has_special_project = AI_CRISIS_PROJECT }
 				abort_special_project = { type = AI_CRISIS_PROJECT }
 			}
@@ -619,7 +620,9 @@ destroy_machine_world = {
 					}
 				}
 			}
-			country_event = { id = crisis.2035 }
+			if = { limit = { NOT = { has_global_flag = ai_invasion_defeated } }
+				country_event = { id = crisis.2035 }
+			}
 			observer_event = { id = observer.50 }
 		}
 	}

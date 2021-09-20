@@ -241,4 +241,5 @@ country_event = {
 		custom_tooltip = CmtTextExit.tooltip
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }

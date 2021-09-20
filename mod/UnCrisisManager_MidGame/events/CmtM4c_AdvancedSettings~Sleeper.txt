@@ -114,6 +114,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Interval for Awakening of Sleeper
@@ -147,11 +148,17 @@ country_event = {
 			if = {
 				limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.4510 }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.4510 } } }
+					country_event = { id = CrisisManagerMenu.4510 }
+				}
 			} else_if = {
 				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1024 }
-			} else = { country_event = { id = CrisisManagerMenu.4530 } }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1024 } } }
+					country_event = { id = CrisisManagerMenu.1024 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.4530 } } }
+				country_event = { id = CrisisManagerMenu.4530 }
+			}
 		}
 	}
 
@@ -190,6 +197,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Sleeper to Awake at Earliest
@@ -233,7 +241,9 @@ country_event = {
 						}
 					}
 					country_event = { id = CrisisManagerMenu.4520 }
-				} else = { country_event = { id = CrisisManagerMenu.4510 } }
+				} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.4510 } } }
+					country_event = { id = CrisisManagerMenu.4510 }
+				}
 			} else_if = {
 				limit = { has_country_flag = CmtFlagIndividual }
 				country_event = { id = CrisisManagerMenu.1024 }
@@ -301,6 +311,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### MTTH for Sleeper Awakening
@@ -389,6 +400,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Required Fleet Power of Young for Awakening
@@ -494,6 +506,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Required Fleet Power of Own for Awakening
@@ -599,6 +612,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Awakenable Sleepers
@@ -614,15 +628,23 @@ country_event = {
 			if = {
 				limit = { has_country_flag = CmtFlagSpMenu }
 				remove_country_flag = CmtFlagSpMenu
-				country_event = { id = CrisisManagerMenu.4570 }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.4570 } } }
+					country_event = { id = CrisisManagerMenu.4570 }
+				}
 			} else_if = {
 				limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.4560 }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.4560 } } }
+					country_event = { id = CrisisManagerMenu.4560 }
+				}
 			} else_if = {
 				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1024 }
-			} else = { country_event = { id = CrisisManagerMenu.4580 } }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1024 } } }
+					country_event = { id = CrisisManagerMenu.1024 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.4580 } } }
+				country_event = { id = CrisisManagerMenu.4580 }
+			}
 		}
 	}
 
@@ -740,6 +762,7 @@ country_event = {
 		}
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Punishment for Holy-Cracker
@@ -778,11 +801,17 @@ country_event = {
 			if = {
 				limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.4570 }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.4570 } } }
+					country_event = { id = CrisisManagerMenu.4570 }
+				}
 			} else_if = {
 				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1024 }
-			} else = { country_event = { id = CrisisManagerMenu.4000 } }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1024 } } }
+					country_event = { id = CrisisManagerMenu.1024 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.4000 } } }
+				country_event = { id = CrisisManagerMenu.4000 }
+			}
 		}
 	}
 
@@ -811,6 +840,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Dummy
@@ -819,6 +849,7 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { always = no }
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 #######################
@@ -914,6 +945,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Ancient Rival
@@ -1002,6 +1034,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Awakenable Ancient Rival
@@ -1195,6 +1228,7 @@ country_event = {
 		}
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Indomitable Rival
@@ -1266,6 +1300,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Progress Speed of Prelude Event to War in Heaven
@@ -1345,6 +1380,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### League of Non-Aligned Powers
@@ -1433,6 +1469,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### League of Non-Aligned Powers
@@ -1521,6 +1558,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Exhaustion from War in Heaven
@@ -1609,6 +1647,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Dummy
@@ -1617,4 +1656,5 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { always = no }
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }

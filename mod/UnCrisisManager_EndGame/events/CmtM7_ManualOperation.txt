@@ -87,6 +87,7 @@ country_event = {
 			has_global_flag = CmtFlagSleeperEdition
 			any_country = { CmtTriggerIsOrganicSleeper = yes }
 		}
+		allow = { mid_game_years_passed >= 40 }
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7135 } }
 	}
 	option = {
@@ -96,7 +97,12 @@ country_event = {
 			has_global_flag = CmtFlagSleeperEdition
 			NOT = { any_country = { CmtTriggerIsOrganicSleeper = yes } }
 		}
-		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+		allow = { mid_game_years_passed >= 40 }
+		hidden_effect = {
+			if = { limit = { mid_game_years_passed >= 40 }
+				country_event = { id = CrisisManagerMenu.7135 }
+			} else = { country_event = { id = CrisisManagerMenu.7000 } }
+		}
 	}
 
 	### War in Heaven
@@ -390,6 +396,7 @@ country_event = {
 		custom_tooltip = CmtTextExit.tooltip
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ###########################################
@@ -622,6 +629,7 @@ country_event = {
 		custom_tooltip = CmtTextExit.tooltip
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Trigger Random Crisis or All Crises
@@ -655,7 +663,9 @@ country_event = {
 			country_event = { id = CrisisManagerMenu.7121 }
 		}
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
+
 country_event = {
 	id = CrisisManagerMenu.7121
 	title = CrisisManagerMenu.7121.name
@@ -680,6 +690,7 @@ country_event = {
 		custom_tooltip = CmtTextExit.tooltip
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Call Prethoryn
@@ -711,7 +722,9 @@ country_event = {
 			country_event = { id = CrisisManagerMenu.7000 }
 		}
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
+
 country_event = {
 	id = CrisisManagerMenu.7122
 	title = CrisisManagerMenu.7122.name
@@ -729,6 +742,7 @@ country_event = {
 		custom_tooltip = CmtTextExit.tooltip
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Call Sentinels
@@ -752,6 +766,7 @@ country_event = {
 			country_event = { id = CrisisManagerMenu.7000 }
 		}
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Call Unbidden
@@ -783,7 +798,9 @@ country_event = {
 			country_event = { id = CrisisManagerMenu.7000 }
 		}
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
+
 country_event = {
 	id = CrisisManagerMenu.7124
 	title = CrisisManagerMenu.7124.name
@@ -801,6 +818,7 @@ country_event = {
 		custom_tooltip = CmtTextExit.tooltip
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Call Aberrant
@@ -824,7 +842,9 @@ country_event = {
 			country_event = { id = CrisisManagerMenu.7125 }
 		}
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
+
 country_event = {
 	id = CrisisManagerMenu.7125
 	title = CrisisManagerMenu.7125.name
@@ -842,6 +862,7 @@ country_event = {
 		custom_tooltip = CmtTextExit.tooltip
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Call Vehement
@@ -865,7 +886,9 @@ country_event = {
 			country_event = { id = CrisisManagerMenu.7125 }
 		}
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
+
 country_event = {
 	id = CrisisManagerMenu.7126
 	title = CrisisManagerMenu.7126.name
@@ -883,6 +906,7 @@ country_event = {
 		custom_tooltip = CmtTextExit.tooltip
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Call Contingency
@@ -914,7 +938,9 @@ country_event = {
 			country_event = { id = CrisisManagerMenu.7000 }
 		}
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
+
 country_event = {
 	id = CrisisManagerMenu.7127
 	title = CrisisManagerMenu.7127.name
@@ -932,6 +958,7 @@ country_event = {
 		custom_tooltip = CmtTextExit.tooltip
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Call Cybrex
@@ -955,6 +982,7 @@ country_event = {
 			country_event = { id = CrisisManagerMenu.7000 }
 		}
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Force Covenant of End of the Cycle
@@ -991,7 +1019,9 @@ country_event = {
 			country_event = { id = CrisisManagerMenu.7000 }
 		}
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
+
 country_event = {
 	id = CrisisManagerMenu.7129
 	title = CrisisManagerMenu.7129.name
@@ -1009,6 +1039,7 @@ country_event = {
 		custom_tooltip = CmtTextExit.tooltip
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Sleeper Awakening
@@ -1020,12 +1051,16 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = { CmtEffectManualTargetSleepers = yes }
-	after = { hidden_effect = { CmtEffectClearTargetSleepers = yes } }
+	after = {
+		hidden_effect = {
+			CmtEffectClearTargetSleepers = yes
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
 
 	option = {
 		name = CrisisManagerMenu.71xxa.name
 		custom_tooltip = CrisisManagerMenu.71xxa.tooltip
-		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
 	}
 	option = {
 		name = CrisisManagerMenu.7135b.name
@@ -1054,7 +1089,6 @@ country_event = {
 					country_event = { id = fallen_empires_awakening.1 }
 				}
 			}
-			country_event = { id = CrisisManagerMenu.7000 }
 		}
 	}
 
@@ -1069,7 +1103,6 @@ country_event = {
 		}
 		hidden_effect = {
 			event_target:CmtTargetManualSleeper1 = { country_event = { id = fallen_empires_awakening.1 } }
-			country_event = { id = CrisisManagerMenu.7000 }
 		}
 	}
 	option = {
@@ -1083,7 +1116,6 @@ country_event = {
 		}
 		hidden_effect = {
 			event_target:CmtTargetManualSleeper2 = { country_event = { id = fallen_empires_awakening.1 } }
-			country_event = { id = CrisisManagerMenu.7000 }
 		}
 	}
 	option = {
@@ -1097,7 +1129,6 @@ country_event = {
 		}
 		hidden_effect = {
 			event_target:CmtTargetManualSleeper3 = { country_event = { id = fallen_empires_awakening.1 } }
-			country_event = { id = CrisisManagerMenu.7000 }
 		}
 	}
 	option = {
@@ -1111,7 +1142,6 @@ country_event = {
 		}
 		hidden_effect = {
 			event_target:CmtTargetManualSleeper4 = { country_event = { id = fallen_empires_awakening.1 } }
-			country_event = { id = CrisisManagerMenu.7000 }
 		}
 	}
 	option = { # Custodian
@@ -1132,7 +1162,6 @@ country_event = {
 				set_country_flag = fallen_machine_empire_awaken_1
 				country_event = { id = fallen_machine_empire.1 }
 			}
-			country_event = { id = CrisisManagerMenu.7000 }
 		}
 	}
 	option = { # Berserker
@@ -1149,9 +1178,28 @@ country_event = {
 				set_country_flag = fallen_machine_empire_awaken_2
 				country_event = { id = fallen_machine_empire.1 }
 			}
-			country_event = { id = CrisisManagerMenu.7000 }
 		}
 	}
+	option = { # Create New FE
+		name = CrisisManagerMenu.7135c7.name # CREATE_NEW_EMPIRE
+		custom_tooltip = CrisisManagerMenu.7135c.tooltip
+		trigger = {
+			OR = {
+				NOR = {
+					exists = event_target:CmtTargetManualSleeper1
+					exists = event_target:CmtTargetManualSleeper2
+					exists = event_target:CmtTargetManualSleeper3
+					exists = event_target:CmtTargetManualSleeper4
+					exists = event_target:CmtTargetManualSleeper5
+				}
+				has_global_flag = war_in_heaven_debug
+			}
+		}
+		hidden_effect = {
+			country_event = { id = extra_sleeper_deus.1 }
+		}
+	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### War in Heaven
@@ -1453,6 +1501,7 @@ country_event = {
 			# CmtTargetManualSleeperA CmtTargetManualSleeperB are needed later for MTTH check (so don't clear here)
 		}
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Khan
@@ -1764,6 +1813,7 @@ country_event = {
 			}
 		}
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Open L-Gate and Trigger L-Cluster Event
@@ -1840,6 +1890,7 @@ country_event = {
 		custom_tooltip = CmtTextExit.tooltip
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Open L-Gate and Trigger L-Cluster Event: Select Target L-Gate
@@ -1986,6 +2037,7 @@ country_event = {
 		trigger = { exists = event_target:CmtTargetManualLgateSystem8 }
 		hidden_effect = { event_target:CmtTargetManualLgateSystem8 = { save_global_event_target_as = CmtTargetLgateOriginatingSystem } }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Open L-Gate after L-Cluster Event Triggered
@@ -2012,6 +2064,7 @@ country_event = {
 			country_event = { id = CrisisManagerMenu.7143 }
 		}
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### All L-Gate Opened
@@ -2027,6 +2080,7 @@ country_event = {
 		custom_tooltip = CmtTextOK.tooltip
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 #### Uprising
@@ -2419,6 +2473,7 @@ country_event = {
 			CmtEffectClearTargetPlayerCrisis = yes
 		}
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ##############################################
@@ -2513,13 +2568,14 @@ country_event = {
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7205 } }
 	}
 
-	### War in Heaven: TODO Not Implemented
+	### War in Heaven
 	option = {
 		name = CrisisManagerMenu.7200f.name
 		custom_tooltip = CrisisManagerMenu.7200f.tooltip
 		trigger = {
 			has_global_flag = CmtFlagSleeperEdition
-			CmtTriggerExistShroudSpirit = yes
+			has_global_flag = war_in_heaven_started
+			has_global_flag = war_in_heaven_ongoing
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7206 } }
 	}
@@ -2530,7 +2586,8 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7200h.tooltip
 		trigger = {
 			has_global_flag = CmtFlagMidGameEdition
-			any_country = { CmtTriggerIsMarauder = yes }
+			has_global_flag = marauder_crisis_ongoing
+			any_country = { CmtTriggerIsKhanCountry = yes }
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7208 } }
 	}
@@ -2563,6 +2620,7 @@ country_event = {
 		custom_tooltip = CmtTextExit.tooltip
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Termination of Prethoryn
@@ -2586,6 +2644,7 @@ country_event = {
 			country_event = { id = CrisisManagerMenu.7000 }
 		}
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Termination of Extradimensionals
@@ -2609,6 +2668,7 @@ country_event = {
 			country_event = { id = CrisisManagerMenu.7000 }
 		}
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Termination of Contingency
@@ -2629,9 +2689,10 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.720xb.tooltip
 		hidden_effect = {
 			CmtEffectDestroyContingency = yes
-			country_event = { id = CrisisManagerMenu.7000 }
+			# country_event = { id = CrisisManagerMenu.7000 }
 		}
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Termination of Shroud Spirits (Forced End of the Cycle)
@@ -2655,6 +2716,7 @@ country_event = {
 			country_event = { id = CrisisManagerMenu.7000 }
 		}
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Termination of Fallen/Awakened Empire
@@ -2666,12 +2728,14 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = { CmtEffectManualTargetSleepers = yes }
-	after = { hidden_effect = { CmtEffectClearTargetSleepers = yes } }
+	after = {
+		hidden_effect = { CmtEffectClearTargetSleepers = yes }
+		country_event = { id = CrisisManagerMenu.7200 }
+	}
 
 	option = {
 		name = CrisisManagerMenu.720xa.name
 		custom_tooltip = CrisisManagerMenu.720xa.tooltip
-		hidden_effect = { country_event = { id = CrisisManagerMenu.7200 } }
 	}
 
 	option = {
@@ -2680,7 +2744,6 @@ country_event = {
 		trigger = { hidden_trigger = { exists = event_target:CmtTargetManualSleeper1 } }
 		hidden_effect = {
 			event_target:CmtTargetManualSleeper1 = { destroy_country = yes }
-			country_event = { id = CrisisManagerMenu.7200 }
 		}
 	}
 	option = {
@@ -2689,7 +2752,6 @@ country_event = {
 		trigger = { hidden_trigger = { exists = event_target:CmtTargetManualSleeper2 } }
 		hidden_effect = {
 			event_target:CmtTargetManualSleeper2 = { destroy_country = yes }
-			country_event = { id = CrisisManagerMenu.7200 }
 		}
 	}
 	option = {
@@ -2698,7 +2760,6 @@ country_event = {
 		trigger = { hidden_trigger = { exists = event_target:CmtTargetManualSleeper3 } }
 		hidden_effect = {
 			event_target:CmtTargetManualSleeper3 = { destroy_country = yes }
-			country_event = { id = CrisisManagerMenu.7200 }
 		}
 	}
 	option = {
@@ -2707,7 +2768,6 @@ country_event = {
 		trigger = { hidden_trigger = { exists = event_target:CmtTargetManualSleeper4 } }
 		hidden_effect = {
 			event_target:CmtTargetManualSleeper4 = { destroy_country = yes }
-			country_event = { id = CrisisManagerMenu.7200 }
 		}
 	}
 	option = {
@@ -2716,12 +2776,11 @@ country_event = {
 		trigger = { hidden_trigger = { exists = event_target:CmtTargetManualSleeper5 } }
 		hidden_effect = {
 			event_target:CmtTargetManualSleeper5 = { destroy_country = yes }
-			country_event = { id = CrisisManagerMenu.7200 }
 		}
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
-# TODO
 ### Termination of War in Heaven
 country_event = {
 	id = CrisisManagerMenu.7206
@@ -2730,12 +2789,47 @@ country_event = {
 	picture = GFX_evt_fallen_empire_awakes
 	is_triggered_only = yes
 
+	after = {
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7200 } }
+	}
 	option = {
 		name = CrisisManagerMenu.720xa.name
 		custom_tooltip = CrisisManagerMenu.720xa.tooltip
-		trigger = { always = no }
-		hidden_effect = { country_event = { id = CrisisManagerMenu.7200 } }
 	}
+	option = {
+		name = CrisisManagerMenu.720xb.name
+		custom_tooltip = CrisisManagerMenu.720xb.tooltip
+		hidden_effect = {
+			# country_event = { id = CrisisManagerControl.7206 }
+			random_country = {
+				limit = {
+					CmtTriggerIsHeavenAFE = yes
+					is_at_war = yes
+					any_country = {
+						CmtTriggerIsHeavenAFE = yes
+						is_at_war_with = prev
+					}
+					any_war = {
+						is_total_war = yes
+						any_war_participant = {
+							prev = {
+								OR = {
+									using_war_goal = { type = wg_war_in_heaven owner = prev }
+									using_war_goal = { type = wg_CmtWarInHeaven1 owner = prev }
+									using_war_goal = { type = wg_CmtWarInHeaven3 owner = prev }
+									using_war_goal = { type = wg_CmtWarInHeaven4 owner = prev }
+									using_war_goal = { type = wg_CmtWarInHeaven5 owner = prev }
+								}
+							}
+						}
+					}
+				}
+				country_event = { id = war_in_heaven.10 }
+				country_event = { id = war_in_heaven.17 days = 3 }
+			}
+		}
+	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Termination of Khan/Marauder
@@ -2770,25 +2864,26 @@ country_event = {
 		}
 	}
 
-	# after = { legacy
-	# 	if = {
-	# 		limit = { exists = event_target:CmtTargetManualMarauder1 }
-	# 		clear_global_event_target = CmtTargetManualMarauder1
-	# 	}
-	# 	if = {
-	# 		limit = { exists = event_target:CmtTargetManualMarauder2 }
-	# 		clear_global_event_target = CmtTargetManualMarauder2
-	# 	}
-	# 	if = {
-	# 		limit = { exists = event_target:CmtTargetManualMarauder3 }
-	# 		clear_global_event_target = CmtTargetManualMarauder3
-	# 	}
-	# }
+	after = {
+		hidden_effect = { country_event = { id = CrisisManagerMenu.7200 } }
+		# legacy
+		# if = {
+		# 	limit = { exists = event_target:CmtTargetManualMarauder1 }
+		# 	clear_global_event_target = CmtTargetManualMarauder1
+		# }
+		# if = {
+		# 	limit = { exists = event_target:CmtTargetManualMarauder2 }
+		# 	clear_global_event_target = CmtTargetManualMarauder2
+		# }
+		# if = {
+		# 	limit = { exists = event_target:CmtTargetManualMarauder3 }
+		# 	clear_global_event_target = CmtTargetManualMarauder3
+		# }
+	}
 
 	option = {
 		name = CrisisManagerMenu.720xa.name
 		custom_tooltip = CrisisManagerMenu.720xa.tooltip
-		hidden_effect = { country_event = { id = CrisisManagerMenu.7200 } }
 	}
 	option = {
 		name = CrisisManagerMenu.7208b.name
@@ -2803,7 +2898,6 @@ country_event = {
 				remove_country_flag = khan_dead_disease
 				remove_country_flag = khan_dead_concubine
 			}
-			country_event = { id = CrisisManagerMenu.7200 }
 		}
 	}
 
@@ -2814,7 +2908,6 @@ country_event = {
 		hidden_effect = {
 			event_target:marauder_country_1 = { destroy_country = yes }
 			clear_global_event_target = marauder_country_1
-			country_event = { id = CrisisManagerMenu.7200 }
 		}
 	}
 	option = {
@@ -2824,7 +2917,6 @@ country_event = {
 		hidden_effect = {
 			event_target:marauder_country_2 = { destroy_country = yes }
 			clear_global_event_target = marauder_country_2
-			country_event = { id = CrisisManagerMenu.7200 }
 		}
 	}
 	option = {
@@ -2834,9 +2926,9 @@ country_event = {
 		hidden_effect = {
 			event_target:marauder_country_3 = { destroy_country = yes }
 			clear_global_event_target = marauder_country_3
-			country_event = { id = CrisisManagerMenu.7200 }
 		}
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Termination of Graygoo
@@ -2861,6 +2953,7 @@ country_event = {
 			country_event = { id = CrisisManagerMenu.7000 }
 		}
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ##################################
@@ -2926,6 +3019,7 @@ country_event = {
 		custom_tooltip = CmtTextExit.tooltip
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Create Standard Fleet for Sleeper
@@ -3098,6 +3192,7 @@ country_event = {
 		trigger = { hidden_trigger = { exists = event_target:CmtTargetManualSleeper5 } }
 		hidden_effect = { event_target:CmtTargetManualSleeper5 = { capital_scope = { CmtEffectCreateSleeperStandard = yes } } }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Create Titan for Sleeper
@@ -3383,6 +3478,7 @@ country_event = {
 		trigger = { hidden_trigger = { exists = event_target:CmtTargetManualSleeper5 } }
 		hidden_effect = { event_target:CmtTargetManualSleeper5 = { capital_scope = { CmtEffectCreateSleeperTitan = yes } } }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Create Colossus for Sleeper
@@ -3580,6 +3676,7 @@ country_event = {
 		trigger = { hidden_trigger = { exists = event_target:CmtTargetManualSleeper5 } }
 		hidden_effect = { event_target:CmtTargetManualSleeper5 = { capital_scope = { CmtEffectCreateSleeperColossus = yes } } }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Create Titan for Sleeper
@@ -3781,6 +3878,7 @@ country_event = {
 		trigger = { always = @CmtT201_ConstSleeperFleet_Activate }
 		hidden_effect = { CmtEffectApplyTemplate201 = yes }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ##############################
@@ -3914,6 +4012,7 @@ country_event = {
 			CmtEffectExitMenu = yes
 		}
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Create L-Gate
@@ -3950,6 +4049,7 @@ country_event = {
 			}
 		}
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Create L-Gate Near Capital
@@ -3979,6 +4079,7 @@ country_event = {
 			}
 		}
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Delete All L-Gates
@@ -4005,6 +4106,7 @@ country_event = {
 			}
 		}
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Delete Random L-Gates
@@ -4031,6 +4133,7 @@ country_event = {
 			}
 		}
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Delete Selected L-Gates
@@ -4133,4 +4236,5 @@ country_event = {
 		trigger = { exists = event_target:CmtTargetManualLgateSystem8 }
 		hidden_effect = { event_target:CmtTargetManualLgateSystem8 = { CmtEffectDeleteLgateInSystem = yes } }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }

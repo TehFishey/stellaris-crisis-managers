@@ -92,6 +92,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Wounded Queen
@@ -171,6 +172,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Sentinels
@@ -266,6 +268,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Anatomy Files: Controled by Also CrisisManagerMenu.4130 (Previous Event)
@@ -316,6 +319,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Feral Prethoryn
@@ -398,6 +402,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Unlimited Flaver Text of Prethoryn
@@ -448,6 +453,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Dummy
@@ -456,18 +462,21 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { always = no }
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 country_event = {
 	id = CrisisManagerMenu.4180
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { always = no }
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 country_event = {
 	id = CrisisManagerMenu.4190
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { always = no }
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ###########################
@@ -551,6 +560,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Condition of opeing 2nd/3rd portal
@@ -661,6 +671,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Location of opeing 2nd/3rd portal: Controled by Also CrisisManagerMenu.4220 (Previous Event)
@@ -722,6 +733,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Less Reinforcement on Starbases Built
@@ -820,6 +832,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Unstable Portals
@@ -911,6 +924,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Dummy
@@ -919,24 +933,28 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { always = no }
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 country_event = {
 	id = CrisisManagerMenu.4270
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { always = no }
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 country_event = {
 	id = CrisisManagerMenu.4280
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { always = no }
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 country_event = {
 	id = CrisisManagerMenu.4290
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { always = no }
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 #####################
@@ -994,6 +1012,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Not Implemented Yet: Number of Machine World
@@ -1084,6 +1103,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Synth Infiltration Event Speed
@@ -1175,6 +1195,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Frequency of Terrors
@@ -1263,6 +1284,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Terrors to Psi, Hive
@@ -1313,6 +1335,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Cybrex Resurfacing
@@ -1404,6 +1427,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Dummy
@@ -1412,12 +1436,14 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { always = no }
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 country_event = {
 	id = CrisisManagerMenu.4390
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { always = no }
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 #############################
@@ -1475,6 +1501,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Target Control of FEoC 1
@@ -1546,6 +1573,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Target Control of FEoC 2
@@ -1617,6 +1645,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Target Control of FEoC 3
@@ -1696,6 +1725,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Term of Covenant
@@ -1746,6 +1776,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Dummy
@@ -1754,24 +1785,28 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { always = no }
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 country_event = {
 	id = CrisisManagerMenu.4470
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { always = no }
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 country_event = {
 	id = CrisisManagerMenu.4480
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { always = no }
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 country_event = {
 	id = CrisisManagerMenu.4490
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { always = no }
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 #############################
@@ -1858,6 +1893,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Delay of Guardians Awakening
@@ -1937,6 +1973,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Dual Guardians
@@ -2034,6 +2071,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Worn-Out Guardians
@@ -2105,6 +2143,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Awakening of Fallen Machine Empire
@@ -2187,6 +2226,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Dummy

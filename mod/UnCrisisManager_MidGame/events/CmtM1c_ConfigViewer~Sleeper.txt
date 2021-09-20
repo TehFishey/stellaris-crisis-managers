@@ -1194,4 +1194,5 @@ country_event = {
 			country_event = { id = CrisisManagerMenu.1000 }
 		}
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }

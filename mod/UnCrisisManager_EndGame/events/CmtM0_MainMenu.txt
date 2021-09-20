@@ -30,7 +30,10 @@ country_event = {
 	}
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-	trigger = { is_ai = no }
+	trigger = {
+		is_ai = no
+		exists = event_target:CmtGlobalVar
+	}
 
 	immediate = {
 		remove_country_flag = CmtFlagIndividual
@@ -49,7 +52,9 @@ country_event = {
 		name = CrisisManagerMenu.0100.1000.name
 		custom_tooltip = CrisisManagerMenu.0100.1000.tooltip
 		hidden_effect = {
-			country_event = { id = CrisisManagerMenu.1000 }
+			if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1000 } } }
+				country_event = { id = CrisisManagerMenu.1000 }
+			}
 			remove_global_flag = CmtFlagTemplateAppliedNow
 		}
 	}
@@ -66,12 +71,14 @@ country_event = {
 			}
 		}
 		hidden_effect = {
-			country_event = { id = CrisisManagerMenu.3110 }
+			if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.3110 } } }
+				country_event = { id = CrisisManagerMenu.3110 }
+			}
 			remove_global_flag = CmtFlagTemplateAppliedNow
 		}
 	}
 
-	### Expantion Configurations
+	### Expansion Configurations
 	option = {
 		name = CrisisManagerMenu.0100.3200.name
 		custom_tooltip = CrisisManagerMenu.0100.3200.tooltip
@@ -79,7 +86,9 @@ country_event = {
 		hidden_effect = {
 			if = {
 				limit = { has_global_flag = CmtFlagTotalWarPatch }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.3210 } } }
 				country_event = { id = CrisisManagerMenu.3210 }
+			}
 			} else = { country_event = { id = CrisisManagerMenu.3231 } }
 			remove_global_flag = CmtFlagTemplateAppliedNow
 		}
@@ -90,7 +99,9 @@ country_event = {
 		name = CrisisManagerMenu.0100.4000.name
 		custom_tooltip = CrisisManagerMenu.0100.4000.tooltip
 		hidden_effect = {
-			country_event = { id = CrisisManagerMenu.4000 }
+			if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.4000 } } }
+				country_event = { id = CrisisManagerMenu.4000 }
+			}
 			remove_global_flag = CmtFlagTemplateAppliedNow
 		}
 	}
@@ -106,7 +117,9 @@ country_event = {
 			}
 		}
 		hidden_effect = {
-			country_event = { id = CrisisManagerMenu.6000 }
+			if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6000 } } }
+				country_event = { id = CrisisManagerMenu.6000 }
+			}
 			remove_global_flag = CmtFlagTemplateAppliedNow
 		}
 	}
@@ -124,7 +137,9 @@ country_event = {
 		name = CrisisManagerMenu.0100.7000.name
 		custom_tooltip = CrisisManagerMenu.0100.7000.tooltip
 		hidden_effect = {
-			country_event = { id = CrisisManagerMenu.7000 }
+			if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.7000 } } }
+				country_event = { id = CrisisManagerMenu.7000 }
+			}
 			remove_global_flag = CmtFlagTemplateAppliedNow
 		}
 	}
@@ -156,8 +171,12 @@ country_event = {
 		}
 		hidden_effect = {
 			set_global_flag = CmtFlagTemplateAppliedNow
-			country_event = { id = CrisisManagerMenu.2000 }
-			country_event = { id = CrisisManagerMenu.0100 }
+			if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.2000 } } }
+				country_event = { id = CrisisManagerMenu.2000 }
+			}
+			if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.0100 } } }
+				country_event = { id = CrisisManagerMenu.0100 }
+			}
 		}
 	}
 
@@ -174,8 +193,12 @@ country_event = {
 		}
 		hidden_effect = {
 			set_global_flag = CmtFlagTemplateAppliedNow
-			country_event = { id = CrisisManagerMenu.2001 }
-			country_event = { id = CrisisManagerMenu.0100 }
+			if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.2001 } } }
+				country_event = { id = CrisisManagerMenu.2001 }
+			}
+			if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.0100 } } }
+				country_event = { id = CrisisManagerMenu.0100 }
+			}
 		}
 	}
 
@@ -208,7 +231,9 @@ country_event = {
 			}
 		}
 		hidden_effect = {
-			country_event = { id = CrisisManagerMenu.2100 }
+			if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.2100 } } }
+				country_event = { id = CrisisManagerMenu.2100 }
+			}
 			remove_global_flag = CmtFlagTemplateAppliedNow
 		}
 	}
@@ -227,8 +252,12 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.0100.9000.tooltip
 		trigger = { has_global_flag = CmtFlagDebugMode }
 		hidden_effect = {
-			country_event = { id = CrisisManagerMenu.1000 }
-			country_event = { id = CrisisManagerMenu.9000 }
+			if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1000 } } }
+				country_event = { id = CrisisManagerMenu.1000 }
+			}
+			if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.9000 } } }
+				country_event = { id = CrisisManagerMenu.9000 }
+			}
 			remove_global_flag = CmtFlagTemplateAppliedNow
 		}
 	}
@@ -239,4 +268,5 @@ country_event = {
 		custom_tooltip = CmtTextExit.tooltip
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }

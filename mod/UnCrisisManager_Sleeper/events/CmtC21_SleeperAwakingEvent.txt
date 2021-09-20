@@ -371,3 +371,951 @@ country_event = {
 	}
 }
 
+# ### Ends War in Heaven
+# country_event = {
+# 	id = CrisisManagerControl.7206
+# 	hide_window = yes
+# 	is_triggered_only = yes
+
+# 	trigger = {
+# 		has_global_flag = war_in_heaven_ongoing
+# 		any_country = {
+# 			CmtTriggerIsHeavenAFE = yes
+# 			is_at_war = yes
+# 		}
+# 	}
+
+# 	immediate = {
+# 	}
+# }
+
+#############################################
+# Deus Ex Machina FE
+#############################################
+namespace = extra_sleeper_deus
+
+### Create Fallen Empire
+country_event = {
+	id = extra_sleeper_deus.1
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		random_list = {
+		# Materialist
+		# fallen_empire_1 = {
+			# create_country_effect = {
+			10 = {
+				create_species = {
+					name = random
+					class = random_non_machine
+					portrait = random
+					traits = random
+					extra_trait_points = 3
+					allow_negative_traits = no
+				}
+				create_country = {
+					name = random
+					type = fallen_empire
+					# initializer = "fallen_1"
+					ignore_initial_colony_error = yes
+					authority = auth_imperial
+					civics = {
+						civic = civic_lethargic_leadership
+						civic = civic_empire_in_decline
+					}
+					species = last_created_species
+					ethos = { ethic = ethic_fanatic_materialist }
+					flag = random
+					origin = "origin_fallen_empire"
+					effect = {
+						set_country_flag = fallen_empire_1
+						set_graphical_culture = "fallen_empire_02"
+						# must initialize global designs here
+						add_global_ship_design = "NAME_Enforcer"
+						add_global_ship_design = "NAME_Savant"
+						add_global_ship_design = "NAME_Scholar"
+						add_global_ship_design = "NAME_Sage"
+						add_global_ship_design = "NAME_Cloaker"
+						add_global_ship_design = "NAME_Librarian"
+						add_global_ship_design = "NAME_Seeker"
+						add_global_ship_design = "NAME_FE_Starbase"
+					}
+				}
+			}
+		# }
+		# Spiritualist
+		# fallen_empire_2 = {
+			# create_country_effect = {
+			10 = {
+				create_species = {
+					name = random
+					class = random_non_machine
+					portrait = random
+					traits = random
+					extra_trait_points = 3
+					allow_negative_traits = no
+				}
+				create_country = {
+					name = random
+					type = fallen_empire
+					# initializer = "fallen_2"
+					ignore_initial_colony_error = yes
+					authority = auth_imperial
+					civics = {
+						civic = civic_lethargic_leadership
+						civic = civic_empire_in_decline
+					}
+					species = last_created_species
+					ethos = { ethic = ethic_fanatic_spiritualist }
+					flag = random
+					origin = "origin_fallen_empire"
+					effect = {
+						set_country_flag = fallen_empire_2
+						set_graphical_culture = "fallen_empire_01"
+						# must initialize global designs here
+						add_global_ship_design = "NAME_Cleanser"
+						add_global_ship_design = "NAME_Eternal"
+						add_global_ship_design = "NAME_Avatar"
+						add_global_ship_design = "NAME_Zealot"
+						add_global_ship_design = "NAME_Penitent"
+						add_global_ship_design = "NAME_Faith"
+						add_global_ship_design = "NAME_Pilgrim"
+						add_global_ship_design = "NAME_FE_Starbase"
+					}
+				}
+			}
+		# }
+		# Xenophile
+		# fallen_empire_3 = {
+			# create_country_effect = {
+			10 = {
+				create_species = {
+					name = random
+					class = random_non_machine
+					portrait = random
+					traits = random
+					extra_trait_points = 5
+					allow_negative_traits = no
+				}
+				create_country = {
+					name = random
+					type = fallen_empire
+					# initializer = "fallen_3"
+					ignore_initial_colony_error = yes
+					authority = auth_imperial
+					civics = {
+						civic = civic_lethargic_leadership
+						civic = civic_empire_in_decline
+					}
+					species = last_created_species
+					ethos = { ethic = ethic_fanatic_xenophile }
+					flag = random
+					origin = "origin_fallen_empire"
+					effect = {
+						set_country_flag = fallen_empire_3
+						set_graphical_culture = "fallen_empire_03"
+						# must initialize global designs here
+						add_global_ship_design = "NAME_Adjuster"
+						add_global_ship_design = "NAME_Keeper"
+						add_global_ship_design = "NAME_Custodian"
+						add_global_ship_design = "NAME_Warden"
+						add_global_ship_design = "NAME_Watcher"
+						add_global_ship_design = "NAME_Seeder"
+						add_global_ship_design = "NAME_Builder"
+						add_global_ship_design = "NAME_FE_Starbase"
+					}
+				}
+			}
+		# }
+		# Xenophobe
+		# fallen_empire_4 = {
+			# create_country_effect = {
+			10 = {
+				create_species = {
+					name = random
+					class = random_non_machine
+					portrait = random
+					traits = random
+					extra_trait_points = 5
+					allow_negative_traits = no
+					effect = { save_global_event_target_as = fallen_4_species }
+				}
+				create_country = {
+					name = random
+					type = fallen_empire
+					# initializer = "fallen_4"
+					ignore_initial_colony_error = yes
+					authority = auth_imperial
+					civics = {
+						civic = civic_lethargic_leadership
+						civic = civic_empire_in_decline
+					}
+					species = last_created_species
+					ethos = { ethic = ethic_fanatic_xenophobe }
+					flag = random
+					origin = "origin_fallen_empire"
+					effect = {
+						set_country_flag = fallen_empire_4
+						set_graphical_culture = "fallen_empire_04"
+						# must initialize global designs here
+						add_global_ship_design = "NAME_Reaper"
+						add_global_ship_design = "NAME_Imperium"
+						add_global_ship_design = "NAME_Supremacy"
+						add_global_ship_design = "NAME_Glory"
+						add_global_ship_design = "NAME_Devastator"
+						add_global_ship_design = "NAME_Servitor"
+						add_global_ship_design = "NAME_Destiny"
+						add_global_ship_design = "NAME_FE_Starbase"
+					}
+				}
+			}
+		# }
+		# Machine
+		# fallen_machine_empire = {
+			# possible = { host_has_dlc = "Synthetic Dawn Story Pack"
+			# }
+			# 2 = {
+			# 	create_species = {
+			# 		name = random
+			# 		class = MACHINE
+			# 		namelist = MACHINE3
+			# 		portrait = random
+			# 		traits = {
+			# 			trait = trait_machine_unit
+			# 			trait = random_traits
+			# 		}
+			# 		extra_trait_points = 3
+			# 		allow_negative_traits = no
+			# 	}
+			# 	create_country = {
+			# 		name = random
+			# 		type = fallen_empire
+			# 		# initializer = "fallen_machine"
+			# 		ignore_initial_colony_error = yes
+			# 		authority = auth_machine_intelligence
+			# 		civics = {
+			# 			civic = civic_machine_remnants
+			# 			civic = civic_custodian_directives
+			# 		}
+			# 		species = last_created_species
+			# 		ethos = { ethic = ethic_gestalt_consciousness }
+			# 		flag = random
+			# 		origin = "origin_fallen_empire"
+			# 		effect = {
+			# 			set_country_flag = fallen_empire_machine
+			# 			set_graphical_culture = "fallen_machine_empire_01"
+			# 			if = {
+			# 				limit = { host_has_dlc = "Apocalypse" }
+			# 				give_technology = { tech = tech_colossus message = no }
+			# 			}
+			# 			# must initialize global designs here
+			# 			add_global_ship_design = "NAME_Omega"
+			# 			add_global_ship_design = "NAME_Alpha"
+			# 			add_global_ship_design = "NAME_Beta"
+			# 			add_global_ship_design = "NAME_Gamma"
+			# 			add_global_ship_design = "NAME_Theta"
+			# 			add_global_ship_design = "NAME_Tau"
+			# 			add_global_ship_design = "NAME_Sigma"
+			# 			add_global_ship_design = "NAME_FE_Starbase"
+			# 		}
+			# 	}
+			# }
+		}
+		last_created_country = { country_event = { id = extra_sleeper_deus.2 } }
+	}
+}
+
+country_event = {
+	id = extra_sleeper_deus.2
+	hide_window = yes
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		# event_target:CmtGlobalVar = { not working
+		# 	set_variable = { which = galaxy_r value = 400 }
+		# 	set_variable = { which = galaxy_r_max value = 16 }
+		# 	switch = {
+		# 		trigger = galaxy_size
+		# 		huge = { change_variable = { which = galaxy_r value = 60 } }
+		# 		large = { change_variable = { which = galaxy_r value = 50 } }
+		# 		# medium = { set_variable = { which = galaxy_r value = 400 } }
+		# 		small = { change_variable = { which = galaxy_r value = -90 } }
+		# 		# tiny = { change_variable = { which = galaxy_r value = -200 } }
+		# 	}
+		# 	change_variable = { which = galaxy_r value = this.galaxy_r_max }
+		# 	change_variable = { which = galaxy_r_max value = this.galaxy_r }
+		# }
+		# min_distance = event_target:CmtGlobalVar.galaxy_r not working
+		# max_distance = event_target:CmtGlobalVar.galaxy_r_max
+		set_spawn_system_batch = begin
+		no_scope = {
+			create_fe_servant_robots = yes
+			last_created_species = { save_event_target_as = fe_servants }
+
+			if = {
+				limit = {
+					OR = {
+						galaxy_size = huge
+						galaxy_size = large
+					}
+				}
+				spawn_system = {
+					min_distance = 465
+					max_distance = 495
+					min_orientation_angle = 40
+					max_orientation_angle = 320
+					hyperlane = no
+					initializer = sleeper_deus_init_01
+				}
+			} else_if = {
+				limit = {
+					OR = {
+						galaxy_size = tiny
+						galaxy_size = small
+					}
+				}
+				spawn_system = {
+					min_distance = 365
+					max_distance = 354
+					min_orientation_angle = 40
+					max_orientation_angle = 320
+					hyperlane = no
+					initializer = sleeper_deus_init_01
+				}
+			} else = {
+				spawn_system = {
+					min_distance = 425
+					max_distance = 445
+					min_orientation_angle = 40
+					max_orientation_angle = 320
+					hyperlane = no
+					initializer = sleeper_deus_init_01
+				}
+			}
+		}
+
+		add_resource = {
+			minerals = 10000
+			energy = 10000
+			food = 1000
+			influence = 500
+		}
+
+		event_target:sleeper_deus_home = {
+			create_cluster = {
+				id = fe1_cluster
+				radius = 120
+				center = this.solar_system
+			}
+
+			set_planet_flag = fallen_empire_world
+			prevent_anomaly = yes
+			set_owner = prev
+			set_controller = prev
+			set_capital = yes
+
+			add_building = building_ancient_palace
+			add_building = building_fe_stronghold
+			add_building = building_fe_stronghold
+			add_building = building_affluence_center
+			add_building = building_affluence_center
+			add_building = building_nourishment_center
+			add_building = building_nourishment_center
+			add_building = building_class_4_singularity
+			add_building = building_dimensional_fabricator
+			add_building = building_dimensional_fabricator
+			add_building = building_nano_forge
+			add_building = building_nano_forge
+			while = {
+				count = 20
+				add_district = district_arcology_housing
+			}
+			while = {
+				count = 94
+				create_pop = {
+					species = owner_main_species
+				}
+			}
+			prev = {
+				set_policy = {
+					policy = artificial_intelligence_policy
+					option = ai_servitude
+					cooldown = no
+				}
+				set_policy = {
+					policy = robot_pop_policy
+					option = robot_pops_allowed
+					cooldown = no
+				}
+			}
+			create_fallen_empire_starting_navy = yes
+			while = {
+				count = 50
+				create_pop = {
+					species = event_target:fe_servants
+				}
+			}
+			create_fallen_empire_starting_navy = yes
+			while = {
+				count = 20
+				create_army = {
+					name = random
+					owner = root
+					species = root
+					type = "robotic_army"
+				}
+			}
+		}
+
+		event_target:sleeper_deus_system = {
+			# limit = { has_star_flag = sleeper_deus_system_1 }
+			while = {
+				count = 3
+				spawn_system = {
+					min_distance >= 10
+					max_distance <= 20
+					hyperlane = no
+					initializer = sleeper_deus_init_02
+				}
+			}
+			spawn_system = {
+				min_distance >= 10
+				max_distance <= 20
+				min_orientation_angle = -124
+				max_orientation_angle = -132
+				hyperlane = no
+				initializer = sleeper_deus_init_03
+				effect = { save_event_target_as = sleeper_deus_system_3 }
+			}
+			event_target:sleeper_deus_system_3 = {
+				# limit = { has_star_flag = sleeper_deus_system_3 }
+				while = {
+					count = 3
+					spawn_system = {
+						min_distance >= 10
+						max_distance <= 20
+						min_orientation_angle = -124
+						max_orientation_angle = -132
+						hyperlane = no
+						initializer = sleeper_deus_init_04
+					}
+				}
+			}
+			every_system = {
+				limit = { has_star_flag = sleeper_deus_system_2 }
+				add_hyperlane = {
+					from = event_target:sleeper_deus_system
+					to = this
+				}
+				random_system_planet = {
+					limit = { is_colonizable = yes }
+					if = {
+						limit = {
+							event_target:sleeper_deus_home = {
+								OR = {
+									is_planet_class = pc_desert
+									is_planet_class = pc_arid
+									is_planet_class = pc_savannah
+								}
+							}
+						}
+						random_list = {
+							1 = { change_pc = pc_desert }
+							1 = { change_pc = pc_arid }
+							1 = { change_pc = pc_savannah }
+						}
+					}
+					if = {
+						limit = {
+							event_target:sleeper_deus_home = {
+								OR = {
+									is_planet_class = pc_tropical
+									is_planet_class = pc_continental
+									is_planet_class = pc_ocean
+								}
+							}
+						}
+						random_list = {
+							1 = { change_pc = pc_tropical }
+							1 = { change_pc = pc_continental }
+							1 = { change_pc = pc_ocean }
+						}
+					}
+					if = {
+						limit = {
+							event_target:sleeper_deus_home = {
+								OR = {
+									is_planet_class = pc_tundra
+									is_planet_class = pc_arctic
+									is_planet_class = pc_alpine
+								}
+							}
+						}
+						random_list = {
+							1 = { change_pc = pc_tundra }
+							1 = { change_pc = pc_arctic }
+							1 = { change_pc = pc_alpine }
+						}
+					}
+				}
+			}
+			add_hyperlane = {
+				from = event_target:sleeper_deus_system
+				to = event_target:sleeper_deus_system_3
+			}
+			every_system = {
+				limit = { has_star_flag = sleeper_deus_system_4 }
+				add_hyperlane = {
+					from = event_target:sleeper_deus_system_3
+					to = this
+				}
+			}
+
+			spawn_megastructure = {
+				type = "gateway_ruined"
+				random_pos = yes
+				owner = root
+				orbit_angle = 360				# range of the randomization
+			}
+			system_event = { id = extra_sleeper_deus.4 } # primitives
+			system_event = { id = extra_sleeper_deus.3 }
+		}
+		# solar_system = {
+		# if = {
+		# limit = { has_natural_wormhole = no }
+		# spawn_natural_wormhole = {
+		# bypass_type = wormhole
+		# random_pos = yes
+		# }
+		# }
+		# else = {
+		# closest_system = {
+		# min_steps = 1
+		# limit = {
+		# has_natural_wormhole = no
+		# is_fe_cluster = no
+		# NOT = { has_star_flag = sealed_system }
+		# NOT = { has_star_flag = hostile_system }
+		# NOT = { has_star_flag = guardian }
+		# }
+		# spawn_natural_wormhole = {
+		# bypass_type = wormhole
+		# random_pos = yes
+		# }
+		# save_global_event_target_as = sleeper_deus_system_alternative
+		# }
+		# set_global_flag = sleeper_deus_system_alternative
+		# }
+		# }
+		# event_target:sleeper_deus_system = {
+		# spawn_natural_wormhole = {
+		# bypass_type = wormhole
+		# random_pos = yes
+		# }
+		# if = {
+		# limit = { has_global_flag = sleeper_deus_system_alternative }
+		# link_wormholes = event_target:sleeper_deus_system_alternative
+		# }
+		# else = {
+		# link_wormholes = root.solar_system
+		# }
+		# }
+		# solar_system = {
+		# 	spawn_megastructure = {
+		# 		type = "gateway_ruined"
+		# 		random_pos = yes
+		# 		orbit_angle = 360				# range of the randomization
+		# 	}
+		# }
+
+		if = { limit = { has_authority = auth_machine_intelligence }
+			country_event = { id = fallen_machine_empire.1 days = 30 random = 15 }
+		} else = { country_event = { id = fallen_empires_awakening.1 days = 30 random = 15 } }
+
+		set_spawn_system_batch = end
+
+	}
+}
+
+system_event = {
+	id = extra_sleeper_deus.3
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_global_flag = sleeper_deus_spawn
+		random_system_planet = {
+			limit = { is_colonizable = yes }
+			# create_species = {
+			# 	name = random
+			# 	class = HUM
+			# 	portrait = random
+			# 	traits = {
+			# 		trait = trait_sleeper_servent_of_machina
+			# 		trait = trait_charismatic
+			# 		trait = random_traits
+			# 	}
+			# 	homeworld = this
+			# }
+			# create_country = {
+			# 	name = random # TODO NAME_sleeper_Country_of_Machina
+			# 	type = sleeper_machina
+			# 	auto_delete = yes
+			# 	species = last_created_species
+			# 	authority = auth_dictatorial
+			# 	ethos = {
+			# 		ethic = ethic_fanatic_spiritualist
+			# 		ethic = ethic_authoritarian
+			# 	}
+			# 	civics = {
+			# 		civic = civic_philosopher_king
+			# 		civic = civic_byzantine_bureaucracy
+			# 	}
+			# 	origin = origin_sleeper_deus_ex_machina
+			# 	flag = random
+			# }
+			last_created_country = {
+				save_global_event_target_as = sleeper_deus_country
+				create_species = {
+					name = random
+					class = ROBOT
+					portrait = random
+					namelist = "AI"
+					traits = {
+						trait = trait_mechanical
+						trait = "trait_robot_luxurious"
+						trait = "trait_robot_domestic_protocols"
+						trait = random_traits
+					}
+				}
+				# last_created_species = { save_event_target_as = sleeper_machina_species }
+				create_leader = {
+					class = ruler
+					species = last_created_species
+					name = random # TODO NAME_sleeper_machina"
+					skill = 10
+					event_leader = yes
+					immortal = yes
+				}
+				set_leader = last_created_leader
+				# last_created_leader = {
+				# add_ruler_trait = leader_trait_sleeper_machina
+				# }
+			}
+			create_colony = {
+				owner = event_target:sleeper_deus_country
+				species = event_target:sleeper_deus_country
+			}
+			set_capital = yes
+		}
+
+		# every_system_in_cluster = { TODO
+		# every_system = { limit = { has_star_flag = sleeper_deus_system }
+		event_target:sleeper_deus_system = {
+			# create_starbase = {
+			# 	owner = event_target:sleeper_deus_country
+			# 	size = starbase_citadel
+			# 	module = shipyard
+			# 	module = shipyard
+			# }
+			starbase = { save_event_target_as = sleeper_deus_system_starbase }
+			create_fleet = {
+				name = "NAME_Enigmatic_Fortress"
+				settings = {
+					spawn_debris = no
+					is_boss = yes
+					uses_naval_capacity = no
+					garrison = yes
+				}
+				effect = {
+					set_owner = event_target:sleeper_deus_country
+					while = {
+						count = 1						#just to show-case that formation will tile
+						create_ship = {
+							name = ""
+							design = "NAME_Ancient_Vault"
+							graphical_culture = "ancient"
+						}
+						create_ship = {
+							name = ""
+							design = "NAME_Ancient_Guardian"
+							graphical_culture = "ancient"
+						}
+						create_ship = {
+							name = ""
+							design = "NAME_Ancient_Guardian"
+							graphical_culture = "ancient"
+						}
+						create_ship = {
+							name = ""
+							design = "NAME_Ancient_Warden"
+							graphical_culture = "ancient"
+						}
+						create_ship = {
+							name = ""
+							design = "NAME_Ancient_Warden"
+							graphical_culture = "ancient"
+						}
+						create_ship = {
+							name = ""
+							design = "NAME_Ancient_Defender"
+							graphical_culture = "ancient"
+						}
+						create_ship = {
+							name = ""
+							design = "NAME_Ancient_Defender"
+							graphical_culture = "ancient"
+						}
+						create_ship = {
+							name = ""
+							design = "NAME_Ancient_Defender"
+							graphical_culture = "ancient"
+						}
+						create_ship = {
+							name = ""
+							design = "NAME_Ancient_Defender"
+							graphical_culture = "ancient"
+						}
+						create_ship = {
+							name = ""
+							design = "NAME_Ancient_Sentinel"
+							graphical_culture = "ancient"
+						}
+						create_ship = {
+							name = ""
+							design = "NAME_Ancient_Sentinel"
+							graphical_culture = "ancient"
+						}
+						create_ship = {
+							name = ""
+							design = "NAME_Ancient_Sentinel"
+							graphical_culture = "ancient"
+						}
+						create_ship = {
+							name = ""
+							design = "NAME_Ancient_Sentinel"
+							graphical_culture = "ancient"
+						}
+						create_ship = {
+							name = ""
+							design = "NAME_Ancient_Sentinel"
+							graphical_culture = "ancient"
+						}
+						create_ship = {
+							name = ""
+							design = "NAME_Ancient_Sentinel"
+							graphical_culture = "ancient"
+						}
+						create_ship = {
+							name = ""
+							design = "NAME_Ancient_Sentinel"
+							graphical_culture = "ancient"
+						}
+						create_ship = {
+							name = ""
+							design = "NAME_Ancient_Sentinel"
+							graphical_culture = "ancient"
+						}
+					}
+					set_fleet_formation = {
+						position = { x = 13 y = -7 }		# 17
+						position = { x = 11.5 y = -13 }		# 16
+						position = { x = 0 y = -15.5 }		# 15
+						position = { x = 13 y = 7 }			# 14
+						position = { x = -11.8 y = -4 }		# 13
+						position = { x = -15.8 y = 6.5 }	# 12
+						position = { x = -10 y = 8.5 }		# 11
+						position = { x = -1.6 y = 15 }		# 10
+						position = { x = 14 y = -3 }		# 9
+						position = { x = 1.3 y = -11 }		# 8
+						position = { x = -10.5 y = 1 }		# 7
+						position = { x = 3 y = 8 }			# 6
+						position = { x = -4.3 y = -7 }		# 5
+						position = { x = 8 y = 9 }			# 4
+						position = { x = -4 y = 7.3 }		# 3
+						position = { x = 7.5 y = -10.5 }	# 2
+						position = { x = 0 y = 0 }			# 1
+					}
+					set_formation_scale = 0.5
+					set_location = {
+						target = event_target:sleeper_deus_system_starbase
+						distance = 45
+						angle = 1
+					}
+				}
+			}
+		}
+		every_system = {
+			limit = {
+				OR = {
+					# has_star_flag = sleeper_deus_system_2
+					has_star_flag = sleeper_deus_system_3
+					has_star_flag = sleeper_deus_system_4
+				}
+			}
+			# create_starbase = {
+			# 	owner = event_target:sleeper_deus_country
+			# 	size = starbase_citadel
+			# 	module = shipyard
+			# }
+			# if = { limit = { has_star_flag = sleeper_deus_system_2 }
+			every_system_planet = {
+				limit = { is_colonizable = yes is_colony = no }
+				create_colony = {
+					owner = event_target:sleeper_deus_country
+					species = event_target:sleeper_deus_country
+				}
+			}
+		}
+
+		event_target:sleeper_deus_country = {
+			random_playable_country = {
+				limit = { is_ai = no }
+				prev = { copy_techs_from = { target = prev } }
+			}
+			every_owned_planet = {
+				while = {
+					count = 5
+					create_pop = { species = event_target:sleeper_deus_country }
+				}
+				add_district = district_city
+				add_district = district_farming
+				random_list = {
+					1 = { add_district = district_mining }
+					1 = { add_district = district_generator }
+				}
+				if = { limit = { prev = { is_fallen_empire_spiritualist = no } }
+					create_fe_fringe_colony = yes
+				} else = { create_fe_spiritualist_fringe_colony = yes }
+			}
+			give_fe_tech = yes
+			give_technology = { tech = tech_gateway_activation }
+			give_technology = { tech = tech_gateway_construction }
+			set_country_flag = encountered_first_gateway
+			add_seen_bypass_type = gateway
+
+			capital_scope = {
+				while = {
+					count = 5
+					create_pop = { species = event_target:sleeper_deus_country }
+				}
+				add_building = building_ancient_palace
+				add_building = building_fe_stronghold
+				add_district = district_city
+				add_district = district_city
+				add_district = district_farming
+				add_district = district_mining
+				add_district = district_generator
+				add_building = building_affluence_center
+				add_building = building_nourishment_center
+				add_building = building_class_4_singularity
+				add_building = building_dimensional_fabricator
+				add_building = building_nano_forge
+			}
+			add_resource = {
+				food = 2000
+				minerals = 4000
+				alloys = 2000
+				energy = 2000
+				consumer_goods = 2000
+				influence = 300
+			}
+		}
+	}
+}
+
+system_event = {
+	id = extra_sleeper_deus.4
+	hide_window = yes
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		random_system = {
+			limit = { has_star_flag = sleeper_deus_system_2 }
+			random_system_planet = {
+				limit = { is_colonizable = yes }
+				create_fe_servant_species = yes
+				# last_created_species = { save_event_target_as = sleeper_deus_species }
+				if = { limit = { NOT = { exists = event_target:sleeper_deus_country } }
+					create_country = {
+						name = random # TODO NAME_sleeper_Country_of_Machina
+						type = sleeper_primitive_machina
+						auto_delete = no
+						species = last_created_species
+						origin = origin_sleeper_deus_ex_machina
+						ethos = {
+							ethic = ethic_fanatic_spiritualist
+							ethic = ethic_authoritarian
+						}
+					}
+					last_created_country = {
+						set_primitive_age = late_medieval_age
+						save_global_event_target_as = sleeper_deus_country
+						set_country_flag = sleeper_deus_country_scion
+						set_country_flag = late_medieval_age
+						set_country_flag = recently_advanced
+					}
+				}
+				setup_primitive_planet = yes
+				add_modifier = { modifier = "planet_population_control" days = -1 }
+				add_building = building_primitive_farm
+				add_deposit = d_junk_wastes
+				add_deposit = d_junk_canals
+				add_deposit = d_junk_hollows
+				while = {
+					count = 5
+					create_pop = { species = event_target:sleeper_deus_country }
+					last_created_pop = { clear_pop_category = yes }
+				}
+				last_created_country = {
+					create_species = {
+						name = random
+						class = ROBOT
+						portrait = random
+						namelist = "AI"
+						traits = {
+							trait = trait_mechanical
+							trait = "trait_robot_luxurious"
+							trait = "trait_robot_domestic_protocols"
+							trait = random_traits
+						}
+					}
+					create_leader = {
+						class = ruler
+						species = last_created_species
+						name = random # TODO NAME_sleeper_machina"
+						skill = 10
+						event_leader = yes
+						immortal = yes
+					}
+					set_leader = last_created_leader
+				}
+			}
+			create_country = {
+				name = random
+				type = sleeper_global_for_protrait
+				auto_delete = no
+			}
+			last_created_country = {
+				save_global_event_target_as = sleeper_global_deus
+				create_leader = {
+					name = random
+					class = governor
+					species = last_created_species # event_target:sleeper_deus_species
+					gender = male
+					skill = random
+					set_age = 14
+				}
+				last_created_leader = { save_global_event_target_as = sleeper_deus_male }
+				# create_leader = {
+				# 	name = random
+				# 	class = governor
+				# 	species = last_created_species # event_target:sleeper_deus_species
+				# 	gender = female
+				# 	skill = random
+				# 	set_age = 14
+				# }
+				# last_created_leader = { save_global_event_target_as = sleeper_deus_female }
+			}
+		}
+	}
+}

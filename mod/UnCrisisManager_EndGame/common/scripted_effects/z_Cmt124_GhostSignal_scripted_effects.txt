@@ -39,6 +39,24 @@ CmtEffectClearGhostSignalGalaxy = {
 			}
 		}
 	}
+	### Dummy
+	every_playable_country = {
+		limit = {
+			# always = no
+			OR = {
+				has_point_of_interest = { poi = ai_crisis_poi.1 }
+				has_point_of_interest = { poi = ai_crisis_poi.2 }
+				has_point_of_interest = { poi = ai_crisis_poi.3 }
+				has_point_of_interest = { poi = ai_crisis_poi.4 }
+				has_point_of_interest = { poi = ai_crisis_poi.5 }
+			}
+		}
+		remove_point_of_interest = ai_crisis_poi.1
+		remove_point_of_interest = ai_crisis_poi.2
+		remove_point_of_interest = ai_crisis_poi.3
+		remove_point_of_interest = ai_crisis_poi.4
+		remove_point_of_interest = ai_crisis_poi.5
+	}
 	every_galaxy_pop = {
 		limit = { has_trait = trait_mechanical }
 		switch = {

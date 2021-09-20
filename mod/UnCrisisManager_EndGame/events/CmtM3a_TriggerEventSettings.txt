@@ -63,13 +63,19 @@ country_event = {
 			if = {
 				limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.0100 }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.0100 } } }
+					country_event = { id = CrisisManagerMenu.0100 }
+				}
 			} else_if = {
 				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1010 }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1010 } } }
+					country_event = { id = CrisisManagerMenu.1010 }
+				}
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMultiple value = 1 } } }
-				country_event = { id = CrisisManagerMenu.0100 }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.0100 } } }
+					country_event = { id = CrisisManagerMenu.0100 }
+				}
 			} else_if = {
 				limit = {
 					event_target:CmtGlobalVar = {
@@ -79,8 +85,12 @@ country_event = {
 						}
 					}
 				}
-				country_event = { id = CrisisManagerMenu.3120 }
-			} else = { country_event = { id = CrisisManagerMenu.3130 } }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.3120 } } }
+					country_event = { id = CrisisManagerMenu.3120 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.3130 } } }
+				country_event = { id = CrisisManagerMenu.3130 }
+			}
 		}
 	}
 
@@ -126,6 +136,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Crisis Interval
@@ -159,11 +170,17 @@ country_event = {
 			if = {
 				limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.3110 }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.3110 } } }
+					country_event = { id = CrisisManagerMenu.3110 }
+				}
 			} else_if = {
 				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1010 }
-			} else = { country_event = { id = CrisisManagerMenu.3130 } }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1010 } } }
+					country_event = { id = CrisisManagerMenu.1010 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.3130 } } }
+				country_event = { id = CrisisManagerMenu.3130 }
+			}
 		}
 	}
 
@@ -207,6 +224,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Crises to Happen at Earliest
@@ -249,13 +267,19 @@ country_event = {
 							}
 						}
 					}
-					country_event = { id = CrisisManagerMenu.3120 }
+					if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.3120 } } }
+						country_event = { id = CrisisManagerMenu.3120 }
+					}
 					else = { country_event = { id = CrisisManagerMenu.3110 } }
 				}
 			} else_if = {
 				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1010 }
-			} else = { country_event = { id = CrisisManagerMenu.3140 } }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1010 } } }
+					country_event = { id = CrisisManagerMenu.1010 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.3140 } } }
+				country_event = { id = CrisisManagerMenu.3140 }
+			}
 		}
 	}
 
@@ -319,6 +343,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Probability of Crisis
@@ -368,11 +393,17 @@ country_event = {
 			if = {
 				limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.3130 }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.3130 } } }
+					country_event = { id = CrisisManagerMenu.3130 }
+				}
 			} else_if = {
 				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1010 }
-			} else = { country_event = { id = CrisisManagerMenu.3150 } }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1010 } } }
+					country_event = { id = CrisisManagerMenu.1010 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.3150 } } }
+				country_event = { id = CrisisManagerMenu.3150 }
+			}
 		}
 	}
 
@@ -412,6 +443,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Equalization of Probability
@@ -453,11 +485,17 @@ country_event = {
 			if = {
 				limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.3140 }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.3140 } } }
+					country_event = { id = CrisisManagerMenu.3140 }
+				}
 			} else_if = {
 				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1010 }
-			} else = { country_event = { id = CrisisManagerMenu.3160 } }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1010 } } }
+					country_event = { id = CrisisManagerMenu.1010 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.3160 } } }
+				country_event = { id = CrisisManagerMenu.3160 }
+			}
 		}
 	}
 
@@ -496,6 +534,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### About Equalization of Probability
@@ -560,15 +599,23 @@ country_event = {
 			if = {
 				limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.3150 }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.3150 } } }
+					country_event = { id = CrisisManagerMenu.3150 }
+				}
 			} else_if = {
 				limit = { has_country_flag = CmtFlagSpMenu }
 				remove_country_flag = CmtFlagSpMenu
-				country_event = { id = CrisisManagerMenu.3161 }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.3161 } } }
+					country_event = { id = CrisisManagerMenu.3161 }
+				}
 			} else_if = {
 				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1010 }
-			} else = { country_event = { id = CrisisManagerMenu.3170 } }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1010 } } }
+					country_event = { id = CrisisManagerMenu.1010 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.3170 } } }
+				country_event = { id = CrisisManagerMenu.3170 }
+			}
 		}
 	}
 
@@ -617,6 +664,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### About Progress Speed of Crisis Event Chain
@@ -632,6 +680,7 @@ country_event = {
 		custom_tooltip = CmtTextOK.tooltip
 		hidden_effect = { country_event = { id = CrisisManagerMenu.3160 } }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 ### Submarine Crisis
@@ -654,11 +703,17 @@ country_event = {
 			if = {
 				limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.3160 }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.3160 } } }
+					country_event = { id = CrisisManagerMenu.3160 }
+				}
 			} else_if = {
 				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1010 }
-			} else = { country_event = { id = CrisisManagerMenu.0100 } }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1010 } } }
+					country_event = { id = CrisisManagerMenu.1010 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.0100 } } }
+				country_event = { id = CrisisManagerMenu.0100 }
+			}
 		}
 	}
 
@@ -682,4 +737,5 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
+	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }

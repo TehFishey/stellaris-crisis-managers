@@ -367,6 +367,7 @@ planet_event = {
 	is_triggered_only = yes
 
 	immediate = {
+		set_global_flag = ai_invasion_defeated
 		remove_global_flag = synth_terror
 		remove_global_flag = ai_ghost_signal
 		remove_global_flag = ai_invasion_ongoing
@@ -387,29 +388,29 @@ planet_event = {
 			change_pc = pc_broken
 			reset_planet = yes
 		}
-		event_target:final_machine_world_destroyer = {
-			set_country_flag = does_not_compute
-			set_country_flag = final_machine_world_destroyed
-		}
 		if = {
-			limit = {
-				event_target:final_machine_world_destroyer = { is_ai = no }
+			limit = { exists = event_target:final_machine_world_destroyer }
+			event_target:final_machine_world_destroyer = {
+				set_country_flag = does_not_compute
+				set_country_flag = final_machine_world_destroyed
 			}
-			event_target:final_machine_world_destroyer = { save_event_target_as = final_machine_world_player_destroyer }
-		}
-		else_if = {
-			limit = {
-				any_playable_country = {
-					is_ai = no
-					has_country_flag = does_not_compute
-				}
-			}
-			random_playable_country = {
+			if = {
+				limit = { event_target:final_machine_world_destroyer = { is_ai = no } }
+				event_target:final_machine_world_destroyer = { save_event_target_as = final_machine_world_player_destroyer }
+			} else_if = {
 				limit = {
-					is_ai = no
-					has_country_flag = does_not_compute
+					any_playable_country = {
+						is_ai = no
+						has_country_flag = does_not_compute
+					}
 				}
-				save_event_target_as = final_machine_world_player_destroyer
+				random_playable_country = {
+					limit = {
+						is_ai = no
+						has_country_flag = does_not_compute
+					}
+					save_event_target_as = final_machine_world_player_destroyer
+				}
 			}
 		}
 		if = {
@@ -437,7 +438,7 @@ planet_event = {
 			limit = { has_event_chain = "ai_crisis_chain" }
 			end_event_chain = "ai_crisis_chain"
 		}
-		every_country = {
+		every_playable_country = {
 			limit = { has_special_project = SYNTH_INFILTRATION_PROJECT }
 			abort_special_project = { type = SYNTH_INFILTRATION_PROJECT }
 		}
@@ -464,7 +465,7 @@ planet_event = {
 
 		### Fallen Machine Empire & Cybrex
 		every_country = {
-			limit = { is_fallen_machine_empire = yes }
+			limit = { is_fallen_machine_empire = yes exists = event_target:final_machine_world_player_destroyer }
 			country_event = { id = fallen_machine_empire.3 days = 1 }
 		}
 		# Cybrex

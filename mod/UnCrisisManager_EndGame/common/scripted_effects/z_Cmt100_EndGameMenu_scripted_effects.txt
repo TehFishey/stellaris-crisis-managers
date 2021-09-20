@@ -43,40 +43,42 @@ CmtEffectDestroyExds = {
 CmtEffectDestroyContingency = {
 	every_country = {
 		limit = { CmtTriggerIsContingency = yes }
-
+		set_global_flag = ai_invasion_defeated
 		### Destroy Four Machine Worlds
 		every_planet_within_border = {
-			limit = { is_planet_class = pc_ai }
-			planet_event = { id = crisis.2040 }
+			limit = { is_planet_class = pc_ai } # has_planet_flag = crisis_vital_planet
+			destroy_machine_world = yes # planet_event = { id = crisis.2040 }
 		}
 		### Destroy Final Machine World
-		every_planet_within_border = {
-			limit = { is_planet_class = pc_ai }
-			planet_event = { id = crisis.2043 }
-			planet_event = { id = crisis.2043 days = 10 } ## Backup
-		}
-	}
-	every_playable_country = {
-		limit = { has_event_chain = ai_crisis_chain }
-		end_event_chain = ai_crisis_chain
-	}
-	### Dummy
-	every_country = {
-		limit = {
-			always = no
-			OR = {
-				has_point_of_interest = { poi = ai_crisis_poi.1 }
-				has_point_of_interest = { poi = ai_crisis_poi.2 }
-				has_point_of_interest = { poi = ai_crisis_poi.3 }
-				has_point_of_interest = { poi = ai_crisis_poi.4 }
-				has_point_of_interest = { poi = ai_crisis_poi.5 }
+		if = {
+			limit = { NOT = { exists = event_target:AI_lair } }
+			random_system = {
+				limit = { has_star_flag = AI_lair }
+				save_event_target_as = AI_lair
 			}
 		}
-		remove_point_of_interest = ai_crisis_poi.1
-		remove_point_of_interest = ai_crisis_poi.2
-		remove_point_of_interest = ai_crisis_poi.3
-		remove_point_of_interest = ai_crisis_poi.4
-		remove_point_of_interest = ai_crisis_poi.5
+		if = {
+			limit = { exists = event_target:AI_lair }
+			event_target:AI_lair = {
+				random_system_planet = {
+					limit = { is_planet_class = pc_ai has_planet_flag = machine_lair }
+					add_planet_devastation = 100
+					planet_event = { id = crisis.2043 days = 5 }
+					planet_event = { id = crisis.2043 days = 15 } ## Backup
+				}
+			}
+		} else_if = {
+			limit = { any_galaxy_planet = { is_planet_class = pc_ai } }
+			random_galaxy_planet = {
+				limit = { is_planet_class = pc_ai } # has_planet_flag = machine_lair
+				planet_event = { id = crisis.2046 days = 3 }
+			}
+		} else = {
+			random_galaxy_planet = {
+				limit = { has_planet_flag = crisis_vital_planet }
+				planet_event = { id = crisis.2046 }
+			}
+		 }
 	}
 }
 
@@ -94,4 +96,3 @@ CmtEffectDestroyShroudSpirits = {
 		}
 	}
 }
-
