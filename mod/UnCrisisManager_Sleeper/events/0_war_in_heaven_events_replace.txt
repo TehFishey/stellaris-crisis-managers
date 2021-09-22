@@ -1606,6 +1606,10 @@ country_event = {
 			}
 			remove_global_flag = war_in_heaven_ongoing
 			set_global_flag = war_in_heaven_ended
+			# for manual reuse
+			remove_country_flag = sleepers_awake_first_sleeper
+			remove_country_flag = sleepers_awake_ancient_rival
+			remove_country_flag = war_in_heaven_timer
 		}
 		every_playable_country = {
 			limit = { is_ai = no }
@@ -1697,6 +1701,10 @@ country_event = {
 			limit = { NOT = { has_global_flag = war_in_heaven_ended } }
 			remove_global_flag = war_in_heaven_ongoing
 			set_global_flag = war_in_heaven_ended
+			# for manual reuse
+			remove_country_flag = sleepers_awake_first_sleeper
+			remove_country_flag = sleepers_awake_ancient_rival
+			remove_country_flag = war_in_heaven_timer
 			random_federation = {
 				limit = { has_federation_flag = non_aligned_league }
 				random_member = {

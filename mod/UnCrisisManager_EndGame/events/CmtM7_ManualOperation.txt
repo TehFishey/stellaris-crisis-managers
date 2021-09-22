@@ -119,14 +119,12 @@ country_event = {
 		}
 		trigger = {
 			has_global_flag = CmtFlagSleeperEdition
-			NOT = {
-				count_country = {
-					count < 2
-					limit = {
-						is_fallen_empire = yes
-						CmtTriggerIsHeavenAFE = no
-						is_at_war = no
-					}
+			count_country = {
+				count > 1
+				limit = {
+					is_fallen_empire = yes
+					CmtTriggerIsHeavenAFE = no
+					is_at_war = no
 				}
 			}
 			# NOR = {
@@ -163,7 +161,23 @@ country_event = {
 			}
 			# count_country = { limit = { CmtTriggerIsOrganicSleeper = yes } count < 2 }
 		}
-		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+		hidden_effect = {
+			if = {
+				limit = { # hidden fallback
+					OR = {
+						has_global_flag = war_in_heaven_debug
+						count_country = {
+							count > 1
+							limit = {
+								is_fallen_empire = yes
+								is_at_war = no
+							}
+						}
+					}
+				}
+				country_event = { id = CrisisManagerMenu.7136 }
+			} else = { country_event = { id = CrisisManagerMenu.7000 } }
+		}
 	}
 	# option = {
 	# 	name = CrisisManagerMenu.7000.7136.C.name
@@ -397,6 +411,7 @@ country_event = {
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
+	abort_effect = { CmtEffectExitMenu = yes }
 }
 
 ###########################################
@@ -630,6 +645,7 @@ country_event = {
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
+	abort_effect = { CmtEffectExitMenu = yes }
 }
 
 ### Trigger Random Crisis or All Crises
@@ -691,6 +707,7 @@ country_event = {
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
+	abort_effect = { CmtEffectExitMenu = yes }
 }
 
 ### Call Prethoryn
@@ -743,6 +760,7 @@ country_event = {
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
+	abort_effect = { CmtEffectExitMenu = yes }
 }
 
 ### Call Sentinels
@@ -819,6 +837,7 @@ country_event = {
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
+	abort_effect = { CmtEffectExitMenu = yes }
 }
 
 ### Call Aberrant
@@ -863,6 +882,7 @@ country_event = {
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
+	abort_effect = { CmtEffectExitMenu = yes }
 }
 
 ### Call Vehement
@@ -907,6 +927,7 @@ country_event = {
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
+	abort_effect = { CmtEffectExitMenu = yes }
 }
 
 ### Call Contingency
@@ -959,6 +980,7 @@ country_event = {
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
+	abort_effect = { CmtEffectExitMenu = yes }
 }
 
 ### Call Cybrex
@@ -1040,6 +1062,7 @@ country_event = {
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
+	abort_effect = { CmtEffectExitMenu = yes }
 }
 
 ### Sleeper Awakening
@@ -1190,7 +1213,7 @@ country_event = {
 					exists = event_target:CmtTargetManualSleeper2
 					exists = event_target:CmtTargetManualSleeper3
 					exists = event_target:CmtTargetManualSleeper4
-					exists = event_target:CmtTargetManualSleeper5
+					# exists = event_target:CmtTargetManualSleeper5
 				}
 				has_global_flag = war_in_heaven_debug
 			}
@@ -1891,6 +1914,7 @@ country_event = {
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
+	abort_effect = { CmtEffectExitMenu = yes }
 }
 
 ### Open L-Gate and Trigger L-Cluster Event: Select Target L-Gate
@@ -2621,6 +2645,7 @@ country_event = {
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
+	abort_effect = { CmtEffectExitMenu = yes }
 }
 
 ### Termination of Prethoryn
@@ -3020,6 +3045,7 @@ country_event = {
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
+	abort_effect = { CmtEffectExitMenu = yes }
 }
 
 ### Create Standard Fleet for Sleeper
@@ -4013,6 +4039,7 @@ country_event = {
 		}
 	}
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
+	abort_effect = { CmtEffectExitMenu = yes }
 }
 
 ### Create L-Gate

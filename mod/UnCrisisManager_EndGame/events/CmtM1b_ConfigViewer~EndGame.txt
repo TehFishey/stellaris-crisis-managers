@@ -43,8 +43,8 @@ country_event = {
 		}
 	}
 	option = {
-		name = CmtTextGoBack.name
-		custom_tooltip = CmtTextGoBack.tooltip
+		name = CmtTextOK.name
+		custom_tooltip = CmtTextOK.tooltip
 		hidden_effect = {
 			remove_country_flag = CmtFlagConfigViewerShowing1010
 			if = {
@@ -767,13 +767,23 @@ country_event = {
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
+		trigger = { has_country_flag = CmtFlagConfigViewerSeq }
+		hidden_effect = {
+			remove_country_flag = CmtFlagConfigViewerShowing1021
+			country_event = { id = CrisisManagerMenu.1010 }
+		}
+	}
+	option = {
+		name = CmtTextOK.name
+		custom_tooltip = CmtTextOK.tooltip
+		trigger = { NOT = { has_country_flag = CmtFlagConfigViewerSeq } }
 		hidden_effect = {
 			remove_country_flag = CmtFlagConfigViewerShowing1021
 			if = {
-				limit = { has_country_flag = CmtFlagConfigViewerSeq }
-				country_event = { id = CrisisManagerMenu.1010 }
-			} else_if = {
-				limit = { CmtTriggerAllViewerClosed = yes }
+				limit = {
+					CmtTriggerAllViewerClosed = yes
+					NOT = { has_active_event = { CrisisManagerMenu.1000 } }
+				}
 				country_event = { id = CrisisManagerMenu.1000 }
 			}
 		}
@@ -1024,13 +1034,23 @@ country_event = {
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
+		trigger = { has_country_flag = CmtFlagConfigViewerSeq }
+		hidden_effect = {
+			remove_country_flag = CmtFlagConfigViewerShowing1022
+			country_event = { id = CrisisManagerMenu.1021 }
+		}
+	}
+	option = {
+		name = CmtTextOK.name
+		custom_tooltip = CmtTextOK.tooltip
+		trigger = { NOT = { has_country_flag = CmtFlagConfigViewerSeq } }
 		hidden_effect = {
 			remove_country_flag = CmtFlagConfigViewerShowing1022
 			if = {
-				limit = { has_country_flag = CmtFlagConfigViewerSeq }
-				country_event = { id = CrisisManagerMenu.1021 }
-			} else_if = {
-				limit = { CmtTriggerAllViewerClosed = yes }
+				limit = {
+					CmtTriggerAllViewerClosed = yes
+					NOT = { has_active_event = { CrisisManagerMenu.1000 } }
+				}
 				country_event = { id = CrisisManagerMenu.1000 }
 			}
 		}
@@ -1398,13 +1418,23 @@ country_event = {
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
+		trigger = { has_country_flag = CmtFlagConfigViewerSeq }
+		hidden_effect = {
+			remove_country_flag = CmtFlagConfigViewerShowing1023
+			country_event = { id = CrisisManagerMenu.1022 }
+		}
+	}
+	option = {
+		name = CmtTextOK.name
+		custom_tooltip = CmtTextOK.tooltip
+		trigger = { NOT = { has_country_flag = CmtFlagConfigViewerSeq } }
 		hidden_effect = {
 			remove_country_flag = CmtFlagConfigViewerShowing1023
 			if = {
-				limit = { has_country_flag = CmtFlagConfigViewerSeq }
-				country_event = { id = CrisisManagerMenu.1022 }
-			} else_if = {
-				limit = { CmtTriggerAllViewerClosed = yes }
+				limit = {
+					CmtTriggerAllViewerClosed = yes
+					NOT = { has_active_event = { CrisisManagerMenu.1000 } }
+				}
 				country_event = { id = CrisisManagerMenu.1000 }
 			}
 		}

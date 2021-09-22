@@ -140,7 +140,18 @@ country_event = {
 			has_global_flag = CmtFlagSleeperEdition
 			CmtTriggerHeavenConfig = no
 		}
-		hidden_effect = { country_event = { id = CrisisManagerMenu.4000 } }
+		hidden_effect = {
+			if = {
+				limit = { ## hidden fallback
+					OR = {
+						has_global_flag = war_in_heaven_started
+						has_global_flag = guardians_of_the_galaxy_happened
+						CmtTriggerAnyCrisisTriggered = yes
+					}
+				}
+				country_event = { id = CrisisManagerMenu.4610 }
+			} else = { country_event = { id = CrisisManagerMenu.4000 } }
+		}
 	}
 
 	### Guardians of Galaxy
@@ -242,4 +253,5 @@ country_event = {
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
+	abort_effect = { CmtEffectExitMenu = yes }
 }

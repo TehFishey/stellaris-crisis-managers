@@ -45,15 +45,7 @@ country_event = {
 		}
 	}
 	immediate = {
-		if = {
-			limit = {
-				any_playable_country = { is_ai = no has_country_flag = CmtFlagNowInMenu }
-			}
-			country_event = { id = CrisisManagerMenu.0013 }
-		}
-		else = {
-			country_event = { id = CrisisManagerMenu.0100 }
-		}
+		country_event = { id = CrisisManagerMenu.0003 }
 	}
 	after = {
 		if = { limit = { has_global_flag = dmm_mod_10_opened }

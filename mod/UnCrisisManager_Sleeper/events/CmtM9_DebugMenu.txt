@@ -597,14 +597,10 @@ country_event = {
 	id = crisis.9999
 	hide_window = yes
 	is_triggered_only = yes
-
 	trigger = { always = no }
-
 	immediate = {
-		if = {
-			limit = { has_global_flag = CmtFlagDebugMode }
+		if = { limit = { has_global_flag = CmtFlagDebugMode }
 			remove_global_flag = CmtFlagDebugMode
 		} else = { set_global_flag = CmtFlagDebugMode }
 	}
 }
-

@@ -58,10 +58,12 @@ spriteTypes = {
 	}
 	spriteType = {
 		name = "GFX_text_horizontal_left_button"
-		texturefile = "gfx/interface/sliders/horizontal_left_button.dds"
+		# texturefile = "gfx/interface/sliders/horizontal_left_button.dds"
+		texturefile = "gfx/interface/buttons/scrollbar_leftbutton.dds"
 	}
 	spriteType = {
 		name = "GFX_text_horizontal_right_button"
-		texturefile = "gfx/interface/sliders/horizontal_right_button.dds"
+		# texturefile = "gfx/interface/sliders/horizontal_right_button.dds"
+		texturefile = "gfx/interface/buttons/scrollbar_rightbutton.dds"
 	}
 }

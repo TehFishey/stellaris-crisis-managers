@@ -151,6 +151,7 @@ country_event = {
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
+	abort_effect = { CmtEffectExitMenu = yes }
 }
 
 ### Caution: Someone Opening Menu (for Manual Callup)

@@ -212,6 +212,7 @@ country_event = {
 		}
 	}
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
+	abort_effect = { CmtEffectExitMenu = yes }
 }
 
 ### Additional Descriptoption 1

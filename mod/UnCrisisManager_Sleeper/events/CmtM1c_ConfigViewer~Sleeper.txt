@@ -62,16 +62,23 @@ country_event = {
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
+		trigger = { has_country_flag = CmtFlagConfigViewerSeq }
+		hidden_effect = {
+			remove_country_flag = CmtFlagConfigViewerShowing1024
+			country_event = { id = CrisisManagerMenu.1023 }
+		}
+	}
+	option = {
+		name = CmtTextOK.name
+		custom_tooltip = CmtTextOK.tooltip
+		trigger = { NOT = { has_country_flag = CmtFlagConfigViewerSeq } }
 		hidden_effect = {
 			remove_country_flag = CmtFlagConfigViewerShowing1024
 			if = {
-				limit = { has_country_flag = CmtFlagConfigViewerSeq }
-				if = {
-					limit = { has_global_flag = CmtFlagEndGameEdition }
-					country_event = { id = CrisisManagerMenu.1023 }
-				} else = { country_event = { id = CrisisManagerMenu.1000 } }
-			} else_if = {
-				limit = { CmtTriggerAllViewerClosed = yes }
+				limit = {
+					CmtTriggerAllViewerClosed = yes
+					NOT = { has_active_event = { CrisisManagerMenu.1000 } }
+				}
 				country_event = { id = CrisisManagerMenu.1000 }
 			}
 		}
