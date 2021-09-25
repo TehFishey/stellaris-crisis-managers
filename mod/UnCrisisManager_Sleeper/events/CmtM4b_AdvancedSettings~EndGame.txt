@@ -1376,11 +1376,16 @@ country_event = {
 	picture = GFX_evt_ringworld
 	is_triggered_only = yes
 
+	immediate = {
+		set_country_flag = CmtFlagConfigShowing4370
+	}
+
 	after = {
 		hidden_effect = {
 			if = {
 				limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
+				remove_country_flag = CmtFlagConfigShowing4370
 				if = {
 					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 1 } } }
 					country_event = { id = CrisisManagerMenu.4340 }
@@ -1395,6 +1400,7 @@ country_event = {
 	option = {
 		name = CmtTextKeepCurrent.name
 		custom_tooltip = CmtTextKeepCurrent.tooltip
+		hidden_effect = { remove_country_flag = CmtFlagConfigShowing4370 }
 	}
 	option = {
 		name = CrisisManagerMenu.4370a.name
@@ -1524,10 +1530,9 @@ country_event = {
 		text = CrisisManagerMenu.4420.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarForcedEocTargetPlayer value = 1 }
-					check_variable = { which = CmtVarForcedEocTargetPlayer value = 2 }
-					check_variable = { which = CmtVarForcedEocTargetPlayer value = 3 }
+				OR = {
+					check_variable = { which = CmtVarForcedEocTargetPlayer value < 1 }
+					check_variable = { which = CmtVarForcedEocTargetPlayer value > 3 }
 				}
 			}
 		}
@@ -1596,10 +1601,9 @@ country_event = {
 		text = CrisisManagerMenu.4430.desc
 		trigger = {
 			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarForcedEocTranscendence value = 1 }
-					check_variable = { which = CmtVarForcedEocTranscendence value = 2 }
-					check_variable = { which = CmtVarForcedEocTranscendence value = 3 }
+				OR = {
+					check_variable = { which = CmtVarForcedEocTranscendence value < 1 }
+					check_variable = { which = CmtVarForcedEocTranscendence value > 3 }
 				}
 			}
 		}

@@ -89,7 +89,7 @@ event = {
 	}
 }
 
-### Manual Call Up (Called from ''!Mod Menu'')
+### Manual Call Up (Called from 'Mod Menu')
 country_event = {
 	id = CrisisManagerMenu.0003	# same as CrisisManagerMenu.3
 	hide_window = yes
@@ -233,13 +233,26 @@ country_event = {
 			}
 			CmtEffectApplyTemplate201 = yes						## Apply Template for Initialization for Fleets of Sleepers
 		}
-		# Dynamic L-Gate clue req counter
+		# TODO outsource?
+		# Dyn. L-Gate clue req counter
 		switch = {
 			trigger = galaxy_size
 			tiny = { change_variable = { which = CmtVarLgateReqClues value = -2 } }
 			small = { change_variable = { which = CmtVarLgateReqClues value = -1 } }
 			large = { change_variable = { which = CmtVarLgateReqClues value = 1 } }
 			huge = { change_variable = { which = CmtVarLgateReqClues value = 2 } }
+		}
+		# Dyn. CybrexLimit for fleet comp.
+		if = { limit = { is_variable_set = CmtVarCybrexResurfacing }
+			if = { limit = { check_variable = { which = CmtVarCybrexResurfacing value = 5 } }
+				set_variable = { which = CmtVarGrayGooCybrexLimit value = 30 }
+			} else_if = { limit = { check_variable = { which = CmtVarCybrexResurfacing value = 4 } }
+				set_variable = { which = CmtVarGrayGooCybrexLimit value = 38 }
+			} else_if = { limit = { check_variable = { which = CmtVarCybrexResurfacing value = 3 } }
+				set_variable = { which = CmtVarGrayGooCybrexLimit value = 66 }
+			} else_if = { limit = { check_variable = { which = CmtVarCybrexResurfacing value = 2 } }
+				set_variable = { which = CmtVarGrayGooCybrexLimit value = 110 }
+			}
 		}
 	}
 }

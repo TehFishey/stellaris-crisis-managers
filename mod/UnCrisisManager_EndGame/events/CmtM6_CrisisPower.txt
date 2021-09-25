@@ -4901,7 +4901,6 @@ country_event = {
 		hidden_effect = { set_country_flag = CmtFlagGoBack }
 	}
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
-	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
 country_event = {

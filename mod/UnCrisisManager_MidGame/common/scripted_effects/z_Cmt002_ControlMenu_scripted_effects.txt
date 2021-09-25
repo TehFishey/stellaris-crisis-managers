@@ -36,7 +36,7 @@ CmtEffectSaveOriginalCountry = {
 
 CmtEffectManualTargetSleepers = {
 	every_country = {
-		limit = { is_fallen_empire = yes }
+		limit = { is_fallen_empire = yes is_ai = yes }
 		switch = {
 			trigger = has_country_flag
 			fallen_empire_1 = { save_global_event_target_as = CmtTargetManualSleeper1 }		# Materialist

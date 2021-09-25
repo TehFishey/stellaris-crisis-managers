@@ -3,6 +3,7 @@
 @resolution_flag_timer = 360
 ## Vanilla Workaround Fix (still only static and more expensively)! Needs to be tested! (dynamic would be in relation to galaxy_size)
 ## Using event_target for better performance and usability
+# TODO adding check_variable = { which = CmtVarGrayGooCybrexLimit value = trigger:num_fleets }
 resolution_galactic_focus_crisis_nanites = {
 	icon = "GFX_resolution_emergency_measure"
 	resources = {

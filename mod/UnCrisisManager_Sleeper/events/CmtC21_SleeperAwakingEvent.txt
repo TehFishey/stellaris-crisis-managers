@@ -371,6 +371,83 @@ country_event = {
 	}
 }
 
+# Put AFE to sleep
+country_event = {
+	id = CrisisManagerControl.7205
+	hide_window = yes
+	is_triggered_only = yes
+
+	# trigger = {  }
+
+	immediate = {
+		# if = { limit = { is_country_type = fallen_empire }
+		# 	destroy_country = yes
+		# }
+		remove_country_flag = sleepers_awake_first_sleeper
+		remove_country_flag = sleepers_awake_ancient_rival
+		remove_country_flag = war_in_heaven_timer
+		remove_country_flag = fe_task_stop_atrocity_origin
+		remove_country_flag = fe_task_stop_robots_origin
+
+		every_war = {
+			every_war_participant = { # end_war_effect = yes
+				limit = { NOT = { is_same_empire = root } } # don't break the loop
+				prev = { remove_war_participant = prev }
+			}
+		}
+		# TODO notify!?
+		every_subject = { set_subject_of = { who = none } }
+
+		### Change Government
+		set_country_type = fallen_empire
+
+		every_owned_fleet = {
+			limit = {
+				exists = solar_system
+				# is_civilian = no
+				is_mobile = yes
+				any_owned_ship = {
+					OR = {
+						is_ship_class = shipclass_military
+						is_ship_class = shipclass_transport
+					}
+				}
+				NOT = { is_within_borders_of = root }
+			}
+			solar_system = {
+				if = {
+					limit = {
+						NAND = {
+							has_owner = yes # exists = space_owner
+							exists = starbase
+							is_owned_by = root # space_owner = { is_same_empire = root.owner }
+						}
+					}
+					prev = {
+						remove_auto_move_target = yes
+						clear_fleet_actions = this
+						if = {
+							limit = {
+								OR = {
+									is_in_combat = yes
+									has_fleet_order = merge_fleet_order
+									has_fleet_order = land_armies_order
+								}
+							}
+							order_forced_return = yes
+						} else = { set_mia = yes }
+					}
+				}
+			}
+
+		}
+		every_owned_fleet = {
+			limit = { NOT = { is_within_borders_of = root } is_civilian = yes }
+			delete_fleet = this
+		}
+	}
+}
+
 # ### Ends War in Heaven
 # country_event = {
 # 	id = CrisisManagerControl.7206
@@ -648,10 +725,9 @@ country_event = {
 		# min_distance = event_target:CmtGlobalVar.galaxy_r not working
 		# max_distance = event_target:CmtGlobalVar.galaxy_r_max
 		set_spawn_system_batch = begin
+		create_fe_servant_robots = yes
 		no_scope = {
-			create_fe_servant_robots = yes
 			last_created_species = { save_event_target_as = fe_servants }
-
 			if = {
 				limit = {
 					OR = {

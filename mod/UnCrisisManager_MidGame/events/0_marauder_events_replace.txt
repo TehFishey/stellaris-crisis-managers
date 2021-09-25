@@ -237,7 +237,12 @@ country_event = {
 							}
 						} else = {	## Backup Code: raid_source NOT Found in Capital System
 							random_system_planet = {
-								limit = { is_star = no }
+								limit = { is_planet = this }
+								weights = {
+									base = 1
+									modifier = { add = 2 is_colony = yes }
+									modifier = { add = 1 is_colonizable = yes }
+								}
 								save_global_event_target_as = CmtTargetMarauderRallyPoint1
 							}
 							log = "Backup Code for CmtTargetMarauderRallyPoint1 - 1 Processed"
@@ -245,7 +250,12 @@ country_event = {
 					}
 				} else = {	## Backup Code: Capital System NOT Found
 					random_planet_within_border = {
-						limit = { is_star = no }
+						limit = { is_planet = this }
+						weights = {
+							base = 1
+							modifier = { add = 2 is_colony = yes }
+							modifier = { add = 1 is_colonizable = yes }
+						}
 						save_global_event_target_as = CmtTargetMarauderRallyPoint1
 					}
 					log = "Backup Code for CmtTargetMarauderRallyPoint1 - 2 Processed"
@@ -288,7 +298,12 @@ country_event = {
 							}
 						} else = {	## Backup Code: raid_source NOT found in Capital System
 							random_system_planet = {
-								limit = { is_star = no is_colony = yes }
+								limit = { is_planet = this }
+								weights = {
+									base = 1
+									modifier = { add = 2 is_colony = yes }
+									modifier = { add = 1 is_colonizable = yes }
+								}
 								save_global_event_target_as = CmtTargetMarauderRallyPoint2
 							}
 							log = "Backup Code for CmtTargetMarauderRallyPoint2 - 1 Processed"
@@ -297,7 +312,12 @@ country_event = {
 				} else = {
 					## Backup Code: Capital System NOT Found
 					random_planet_within_border = {
-						limit = { is_star = no is_colony = yes }
+						limit = { is_planet = this }
+						weights = {
+							base = 1
+							modifier = { add = 2 is_colony = yes }
+							modifier = { add = 1 is_colonizable = yes }
+						}
 						save_global_event_target_as = CmtTargetMarauderRallyPoint2
 					}
 					log = "Backup Code for CmtTargetMarauderRallyPoint2 - 2 Processed"
@@ -340,7 +360,12 @@ country_event = {
 							}
 						} else = {	## Backup Code: raid_source NOT Found in Capital System
 							random_system_planet = {
-								limit = { is_star = no is_colony = yes }
+								limit = { is_planet = this }
+								weights = {
+									base = 1
+									modifier = { add = 2 is_colony = yes }
+									modifier = { add = 1 is_colonizable = yes }
+								}
 								save_global_event_target_as = CmtTargetMarauderRallyPoint3
 							}
 							log = "Backup Code for CmtTargetMarauderRallyPoint3 - 1 Processed"
@@ -348,7 +373,12 @@ country_event = {
 					}
 				} else = {	## Backup Code: Capital System NOT Found
 					random_planet_within_border = {
-						limit = { is_star = no is_colony = yes }
+						limit = { is_planet = this }
+						weights = {
+							base = 1
+							modifier = { add = 2 is_colony = yes }
+							modifier = { add = 1 is_colonizable = yes }
+						}
 						save_global_event_target_as = CmtTargetMarauderRallyPoint3
 					}
 					log = "Backup Code for CmtTargetMarauderRallyPoint3 - 2 Processed"
@@ -438,7 +468,12 @@ country_event = {
 		if = {
 			limit = { NOT = { exists = event_target:marauder_rally_point } }
 			random_planet_within_border = {
-				limit = { is_star = no }
+				limit = { is_planet = this }
+				weights = {
+					base = 1
+					modifier = { add = 2 is_colony = yes }
+					modifier = { add = 1 is_colonizable = yes }
+				}
 				save_global_event_target_as = marauder_rally_point
 				set_planet_flag = marauder_rally_point
 				log = "Backup Code for marauder_rally_point Processed"

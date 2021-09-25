@@ -21,6 +21,35 @@ country_event = {
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
 
+	immediate = {
+		if = { limit = { has_country_flag = CmtFlagConfigShowing4370 }
+			remove_country_flag = CmtFlagConfigShowing4370
+		}
+	}
+
+	after = {
+		hidden_effect = { # since 3.1
+			event_target:CmtGlobalVar = {
+				if = {
+					limit = {
+						root = { has_country_flag = CmtFlagConfigShowing4370 }
+						is_variable_set = CmtVarCybrexResurfacing
+					}
+					root = { remove_country_flag = CmtFlagConfigShowing4370 }
+					if = { limit = { check_variable = { which = CmtVarCybrexResurfacing value = 5 } }
+						set_variable = { which = CmtVarGrayGooCybrexLimit value = 30 }
+					} else_if = { limit = { check_variable = { which = CmtVarCybrexResurfacing value = 4 } }
+						set_variable = { which = CmtVarGrayGooCybrexLimit value = 38 }
+					} else_if = { limit = { check_variable = { which = CmtVarCybrexResurfacing value = 3 } }
+						set_variable = { which = CmtVarGrayGooCybrexLimit value = 66 }
+					} else_if = { limit = { check_variable = { which = CmtVarCybrexResurfacing value = 2 } }
+						set_variable = { which = CmtVarGrayGooCybrexLimit value = 110 }
+					}
+				}
+			}
+		}
+	}
+
 	option = {
 		name = CmtTextSeparator.name
 		custom_tooltip = CmtTextSeparator.tooltip

@@ -783,6 +783,7 @@ country_event = {
 					any_member = {
 						is_federation_leader = yes
 						is_homicidal = no
+						has_been_declared_crisis = no
 						NOR = {
 							has_country_flag = war_in_heaven_league_leader_declined
 							any_country = {
@@ -802,6 +803,7 @@ country_event = {
 							any_member = {
 								is_federation_leader = yes
 								is_homicidal = no
+								has_been_declared_crisis = no
 								NOR = {
 									has_country_flag = war_in_heaven_league_leader_declined
 									any_country = {
@@ -819,6 +821,7 @@ country_event = {
 					any_member = {
 						is_federation_leader = yes
 						is_homicidal = no
+						has_been_declared_crisis = no
 						NOR = {
 							has_country_flag = war_in_heaven_league_leader_declined
 							any_country = {
@@ -838,6 +841,7 @@ country_event = {
 							any_member = {
 								is_federation_leader = yes
 								is_homicidal = no
+								has_been_declared_crisis = no
 								NOR = {
 									has_country_flag = war_in_heaven_league_leader_declined
 									any_country = {
@@ -853,6 +857,7 @@ country_event = {
 					limit = {
 						is_federation_leader = yes
 						is_homicidal = no
+						has_been_declared_crisis = no
 						NOR = {
 							has_country_flag = war_in_heaven_league_leader_declined
 							any_country = {
@@ -957,6 +962,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		has_been_declared_crisis = no
 		NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenNpcLeague value = 1 } } }
 	}
 	immediate = { set_country_flag = war_in_heaven_nonaligned_league_check }
@@ -1431,6 +1437,7 @@ country_event = {
 			is_federation_leader = yes
 			has_country_flag = war_in_heaven_league_leader
 		}
+		has_been_declared_crisis = no
 		# CmtTriggerIsPlayableEmpire = yes
 		# is_subject = no
 		NOR = {
@@ -1585,7 +1592,11 @@ country_event = {
 					}
 				}
 			}
-			end_war_effect = yes
+			# end_war_effect = yes
+			every_war_participant = {
+				limit = { NOT = { is_same_empire = root } } # don't break the loop
+				prev = { remove_war_participant = prev }
+			}
 		}
 		# Conduct War in Heaven cleanup
 		if = {
@@ -1606,7 +1617,7 @@ country_event = {
 			}
 			remove_global_flag = war_in_heaven_ongoing
 			set_global_flag = war_in_heaven_ended
-			# for manual reuse
+			# for reuse
 			remove_country_flag = sleepers_awake_first_sleeper
 			remove_country_flag = sleepers_awake_ancient_rival
 			remove_country_flag = war_in_heaven_timer
@@ -1693,7 +1704,11 @@ country_event = {
 						}
 					}
 				}
-				end_war_effect = yes
+				# end_war_effect = yes
+				every_war_participant = {
+					limit = { NOT = { is_same_empire = root } } # don't break the loop
+					prev = { remove_war_participant = prev }
+				}
 			}
 		}
 		# Conduct War in Heaven cleanup
@@ -1701,7 +1716,7 @@ country_event = {
 			limit = { NOT = { has_global_flag = war_in_heaven_ended } }
 			remove_global_flag = war_in_heaven_ongoing
 			set_global_flag = war_in_heaven_ended
-			# for manual reuse
+			# for reuse
 			remove_country_flag = sleepers_awake_first_sleeper
 			remove_country_flag = sleepers_awake_ancient_rival
 			remove_country_flag = war_in_heaven_timer

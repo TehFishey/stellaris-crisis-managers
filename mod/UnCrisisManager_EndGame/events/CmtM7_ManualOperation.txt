@@ -1088,8 +1088,12 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7135b.name
 		custom_tooltip = CrisisManagerMenu.7135b.tooltip
+		allow = {
+			any_country = { CmtTriggerIsOrganicSleeper = yes }
+		}
 		trigger = { ## 1 or more
-			count_country = { limit = { is_country_type = fallen_empire } count > 0 } # CmtTriggerIsOrganicSleeper = yes
+			any_country = { is_country_type = fallen_empire }
+			#count_country = { limit = { is_country_type = fallen_empire } count > 0 } # CmtTriggerIsOrganicSleeper = yes
 		}
 		hidden_effect = {
 			if = {
@@ -2753,6 +2757,7 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = { CmtEffectManualTargetSleepers = yes }
+
 	after = {
 		hidden_effect = { CmtEffectClearTargetSleepers = yes }
 		country_event = { id = CrisisManagerMenu.7200 }
@@ -2768,7 +2773,13 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7205c.tooltip
 		trigger = { hidden_trigger = { exists = event_target:CmtTargetManualSleeper1 } }
 		hidden_effect = {
-			event_target:CmtTargetManualSleeper1 = { destroy_country = yes }
+			event_target:CmtTargetManualSleeper1 = {
+				if = { limit = { is_country_type = fallen_empire }
+					destroy_country = yes
+				} else = {
+					country_event = { id = CrisisManagerControl.7205 }
+				}
+			}
 		}
 	}
 	option = {
@@ -2776,7 +2787,13 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7205c.tooltip
 		trigger = { hidden_trigger = { exists = event_target:CmtTargetManualSleeper2 } }
 		hidden_effect = {
-			event_target:CmtTargetManualSleeper2 = { destroy_country = yes }
+			event_target:CmtTargetManualSleeper2 = {
+				if = { limit = { is_country_type = fallen_empire }
+					destroy_country = yes
+				} else = {
+					country_event = { id = CrisisManagerControl.7205 }
+				}
+			}
 		}
 	}
 	option = {
@@ -2784,7 +2801,13 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7205c.tooltip
 		trigger = { hidden_trigger = { exists = event_target:CmtTargetManualSleeper3 } }
 		hidden_effect = {
-			event_target:CmtTargetManualSleeper3 = { destroy_country = yes }
+			event_target:CmtTargetManualSleeper3 = {
+				if = { limit = { is_country_type = fallen_empire }
+					destroy_country = yes
+				} else = {
+					country_event = { id = CrisisManagerControl.7205 }
+				}
+			}
 		}
 	}
 	option = {
@@ -2792,7 +2815,13 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7205c.tooltip
 		trigger = { hidden_trigger = { exists = event_target:CmtTargetManualSleeper4 } }
 		hidden_effect = {
-			event_target:CmtTargetManualSleeper4 = { destroy_country = yes }
+			event_target:CmtTargetManualSleeper4 = {
+				if = { limit = { is_country_type = fallen_empire }
+					destroy_country = yes
+				} else = {
+					country_event = { id = CrisisManagerControl.7205 }
+				}
+			}
 		}
 	}
 	option = {
@@ -2800,7 +2829,13 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7205c.tooltip
 		trigger = { hidden_trigger = { exists = event_target:CmtTargetManualSleeper5 } }
 		hidden_effect = {
-			event_target:CmtTargetManualSleeper5 = { destroy_country = yes }
+			event_target:CmtTargetManualSleeper5 = {
+				if = { limit = { is_country_type = fallen_empire }
+					destroy_country = yes
+				} else = {
+					country_event = { id = CrisisManagerControl.7205 }
+				}
+			}
 		}
 	}
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
@@ -4079,7 +4114,7 @@ country_event = {
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
-### Create L-Gate Near Capital
+### Create L-Gate near Capital
 country_event = {
 	id = CrisisManagerMenu.7512
 	title = CrisisManagerMenu.7512.name
