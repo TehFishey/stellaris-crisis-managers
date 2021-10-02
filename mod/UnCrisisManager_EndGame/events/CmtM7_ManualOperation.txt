@@ -268,7 +268,15 @@ country_event = {
 			has_global_flag = l_cluster_opened
 			NOT = { any_megastructure = { CmtTriggerIsClosedLgate = yes } }
 		}
-		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
+		hidden_effect = {
+			if = {
+				limit = {
+					any_megastructure = { CmtTriggerIsOpenedLgate = yes }
+					NOT = { has_global_flag = CmtFlagLgateOpenedNow }
+				}
+				country_event = { id = CrisisManagerMenu.7140 }
+			} else = { country_event = { id = CrisisManagerMenu.7000 } }
+		}
 	}
 	option = {
 		name = CrisisManagerMenu.7000.7142.name
@@ -276,8 +284,8 @@ country_event = {
 		allow = { has_distar = yes }
 		trigger = {
 			has_global_flag = CmtFlagMidGameEdition
-			any_megastructure = { CmtTriggerIsClosedLgate = yes }
 			has_global_flag = l_cluster_opened
+			any_megastructure = { CmtTriggerIsClosedLgate = yes }
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7142 } }
 	}
@@ -1861,14 +1869,16 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7140b.name
 		custom_tooltip = CrisisManagerMenu.7140b.tooltip
+		trigger = { NOT = { has_global_flag = l_cluster_opened } }
 		hidden_effect = {
-			event_target:CmtGlobalVar = { set_variable = { which = CmtVarManualTemp value = 0 } }
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarManualTemp value = 0 } }		## Random
 			country_event = { id = CrisisManagerMenu.7141 }
 		}
 	}
 	option = {
 		name = CrisisManagerMenu.7140c1.name
 		custom_tooltip = CrisisManagerMenu.7140c.tooltip
+		trigger = { NOT = { has_global_flag = l_cluster_opened } }
 		hidden_effect = {
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarManualTemp value = 1 } }		## Eerie Silence
 			country_event = { id = CrisisManagerMenu.7141 }
@@ -1877,6 +1887,7 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7140c2.name
 		custom_tooltip = CrisisManagerMenu.7140c.tooltip
+		trigger = { NAND = { has_global_flag = l_cluster_opened has_global_flag = dragon_season } }
 		hidden_effect = {
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarManualTemp value = 2 } }		## L-Drake
 			country_event = { id = CrisisManagerMenu.7141 }
@@ -1885,6 +1896,7 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7140c3.name
 		custom_tooltip = CrisisManagerMenu.7140c.tooltip
+		trigger = { NAND = { has_global_flag = l_cluster_opened has_global_flag = gray_goo_empire_set } }
 		hidden_effect = {
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarManualTemp value = 3 } }		## Dessanu
 			country_event = { id = CrisisManagerMenu.7141 }
@@ -1894,6 +1906,7 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7140c4.name
 		custom_tooltip = CrisisManagerMenu.7140c.tooltip
+		trigger = { NAND = { has_global_flag = l_cluster_opened has_global_flag = gray_goo_crisis_active } }
 		hidden_effect = {
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarManualTemp value = 4 } }		## Gray Tempest
 			country_event = { id = CrisisManagerMenu.7141 }
@@ -1927,7 +1940,7 @@ country_event = {
 	title = CrisisManagerMenu.7141.name
 	desc = {
 		text = CrisisManagerMenu.7141.desc1
-		trigger = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualLgate value > 8 } } } }
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualLgate value <= 8 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.7141.desc2
@@ -1968,13 +1981,55 @@ country_event = {
 					}
 				}
 				event_target:CmtTargetLgateOriginatingSystem = {
+
 					if = {
 						limit = {
 							exists = owner
 							owner = { CmtTriggerIsPlayableEmpire = yes }
 						}
-						owner = { country_event = { id = distar.10950 } }
-					} else = { event_target:CmtGlobalVar = { country_event = { id = distar.10950 } } }
+						owner = { save_event_target_as = CmtTempOwner }
+					} else_if = {
+						limit = {
+							has_global_flag = l_cluster_opened
+							# NOT = { has_global_flag = CmtFlagLgateOpenedNow }
+							any_playable_country = { has_country_flag = lcluster_opener }
+						}
+						random_playable_country = {
+							limit = { has_country_flag = lcluster_opener }
+							save_event_target_as = CmtTempOwner
+						}
+					} else = { event_target:CmtGlobalVar = { save_event_target_as = CmtTempOwner } }
+
+					if = {
+						limit = {
+							has_global_flag = l_cluster_opened
+							NOT = { has_global_flag = CmtFlagLgateOpenedNow }
+						}
+						if = {
+							limit = {
+								check_variable = { which = CmtVarManualTemp value = 2 }
+								NOT = { has_global_flag = dragon_season }
+							}
+							set_global_flag = dragon_season
+							event_target:CmtTempOwner = { country_event = { id = distar.13000 } }
+						} else_if = {
+							limit = {
+								check_variable = { which = CmtVarManualTemp value = 3 }
+								NOT = { has_global_flag = gray_goo_empire_set }
+							}
+							set_global_flag = gray_goo_empire_set
+							event_target:CmtTempOwner = { country_event = { id = graygoo.100 } }
+						} else_if = {
+							limit = {
+								check_variable = { which = CmtVarManualTemp value = 4 }
+								NOT = { has_global_flag = gray_goo_crisis_active }
+							}
+							set_global_flag = gray_goo_crisis_active
+							event_target:CmtTempOwner = { country_event = { id = graygoo.1 } }
+						}
+					} else = {
+						event_target:CmtTempOwner = { country_event = { id = distar.10950 } }
+					}
 				}
 				country_event = { id = CrisisManagerMenu.7000 }
 			}
@@ -1984,7 +2039,7 @@ country_event = {
 	}
 
 	option = {
-		name = CrisisManagerMenu.7141a.name
+		name = CrisisManagerMenu.7141a.name		# Back
 		custom_tooltip = CrisisManagerMenu.7141a.tooltip
 		hidden_effect = {
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarManualTemp value = 0 } }
@@ -1992,7 +2047,7 @@ country_event = {
 		}
 	}
 	option = {
-		name = CrisisManagerMenu.7141d.name
+		name = CrisisManagerMenu.7141d.name		# Reload
 		custom_tooltip = CrisisManagerMenu.7141d.tooltip
 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualLgate value > 8 } } }
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7141 } }
@@ -2008,7 +2063,7 @@ country_event = {
 	}
 
 	option = {
-		name = CrisisManagerMenu.7141b.name
+		name = CrisisManagerMenu.7141b.name		# Random
 		custom_tooltip = CrisisManagerMenu.7141b.tooltip
 		hidden_effect = {
 			random_megastructure = {
@@ -2075,7 +2130,10 @@ country_event = {
 	desc = CrisisManagerMenu.7142.desc
 	picture = GFX_evt_l-gateway
 	is_triggered_only = yes
-
+	trigger = {
+		has_global_flag = CmtFlagMidGameEdition
+		has_global_flag = l_cluster_opened
+	}
 	option = {
 		name = CrisisManagerMenu.7142a.name
 		custom_tooltip = CrisisManagerMenu.7142a.tooltip
@@ -2084,6 +2142,9 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7142b.name
 		custom_tooltip = CrisisManagerMenu.7142b.tooltip
+		trigger = {
+			any_megastructure = { CmtTriggerIsClosedLgate = yes }
+		}
 		hidden_effect = {
 			every_megastructure = {
 				limit = { CmtTriggerIsClosedLgate = yes }

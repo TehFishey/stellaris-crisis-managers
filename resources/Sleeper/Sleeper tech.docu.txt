@@ -79,3 +79,16 @@ id = war_in_heaven.16 MTTH months = 3
 ### War in Heaven Ends because of Both Ancients Gone (on_country_destroyed)
 id = war_in_heaven.17
 id = war_in_heaven.10 # first AFE dead by NAL
+
+
+# NAL
+### Find a leader for non-aligned league of empires: Scope = 1st Sleeper
+id = war_in_heaven.12 MTTH months = 1
+	### Order Leader for League
+	id = war_in_heaven.13
+		set_timed_country_flag = { flag = war_in_heaven_nonaligned_league_timer days = 180 }
+		set_country_flag = war_in_heaven_league_leader
+		set_global_flag = war_in_heaven_nonaligned_league
+		----
+		set_country_flag = war_in_heaven_league_leader_declined
+		remove_global_flag = war_in_heaven_seeking_league_leader
