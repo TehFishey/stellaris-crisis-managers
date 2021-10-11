@@ -508,6 +508,52 @@ defined_text = {
 	}
 }
 
+### Terminate FE or AFE
+defined_text = {
+	name = GetFallenEmpire_type
+	default = CmtIconEnd_FE
+	# trigger = { is_country_type = fallen_empire }
+	text = {
+		trigger = { is_country_type = awakened_fallen_empire }
+		localization_key = CmtIconEnd_AFE
+	}
+	# text = {
+	# 	trigger = {
+	# 		exists = event_target:CmtTargetManualSleeper1
+	# 		event_target:CmtTargetManualSleeper1 = { is_country_type = awakened_fallen_empire }
+	# 	}
+	# 	localization_key = CmtIconEnd_AFE
+	# }
+	# text = {
+	# 	trigger = {
+	# 		exists = event_target:CmtTargetManualSleeper2
+	# 		event_target:CmtTargetManualSleeper2 = { is_country_type = awakened_fallen_empire }
+	# 	}
+	# 	localization_key = CmtIconEnd_AFE
+	# }
+	# text = {
+	# 	trigger = {
+	# 		exists = event_target:CmtTargetManualSleeper3
+	# 		event_target:CmtTargetManualSleeper3 = { is_country_type = awakened_fallen_empire }
+	# 	}
+	# 	localization_key = CmtIconEnd_AFE
+	# }
+	# text = {
+	# 	trigger = {
+	# 		exists = event_target:CmtTargetManualSleeper4
+	# 		event_target:CmtTargetManualSleeper4 = { is_country_type = awakened_fallen_empire }
+	# 	}
+	# 	localization_key = CmtIconEnd_AFE
+	# }
+	# text = {
+	# 	trigger = {
+	# 		exists = event_target:CmtTargetManualSleeper5
+	# 		event_target:CmtTargetManualSleeper5 = { is_country_type = awakened_fallen_empire }
+	# 	}
+	# 	localization_key = CmtIconEnd_AFE
+	# }
+}
+
 ### L-Gate
 defined_text = {
 	name = GetName_LgateManualOpenEvent

@@ -15,7 +15,7 @@
 
 CmtEffectExitMenu = {
 	remove_global_flag = CmtFlagTemplateAppliedNow
-	every_country = { remove_country_flag = CmtFlagNowInMenu }
+	every_playable_country = { remove_country_flag = CmtFlagNowInMenu }
 }
 
 ### For ''We are Crisis''

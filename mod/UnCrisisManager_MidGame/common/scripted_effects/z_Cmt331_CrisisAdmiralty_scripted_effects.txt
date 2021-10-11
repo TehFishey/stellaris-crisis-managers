@@ -474,7 +474,7 @@ CmtEffectCreateAdmiralty_DessanuCapitalDefence = {
 }
 
 CmtEffectCreateAdmiralty_DessanuGarryson = {
-	space_owner = {
+	owner = {
 	# event_target:gate_builders = {
 		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Dessanu } }
 		if = {

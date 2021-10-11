@@ -420,7 +420,7 @@ country_event = {
 						NAND = {
 							has_owner = yes # exists = space_owner
 							exists = starbase
-							is_owned_by = root # space_owner = { is_same_empire = root.owner }
+							is_owned_by = root # is_owned_by = root.owner
 						}
 					}
 					prev = {

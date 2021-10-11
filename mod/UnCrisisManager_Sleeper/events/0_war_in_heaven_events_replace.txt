@@ -1733,6 +1733,11 @@ country_event = {
 					limit = { is_federation_leader = yes }
 					set_country_flag = last_best_hope
 				}
+				every_member = {
+					limit = { is_federation_leader = no }
+					leave_alliance = { override_requirements = yes }
+				}
+				dissolve_federation = yes
 			}
 			every_playable_country = {
 				limit = { is_ai = no }

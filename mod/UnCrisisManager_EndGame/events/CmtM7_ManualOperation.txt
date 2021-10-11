@@ -1896,7 +1896,13 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7140c3.name
 		custom_tooltip = CrisisManagerMenu.7140c.tooltip
-		trigger = { NAND = { has_global_flag = l_cluster_opened has_global_flag = gray_goo_empire_set } }
+		trigger = {
+			NAND = {
+				has_global_flag = l_cluster_opened
+				has_global_flag = gray_goo_empire_set
+				exists = event_target:graygoo_country
+			}
+		}
 		hidden_effect = {
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarManualTemp value = 3 } }		## Dessanu
 			country_event = { id = CrisisManagerMenu.7141 }
@@ -2015,7 +2021,7 @@ country_event = {
 						} else_if = {
 							limit = {
 								check_variable = { which = CmtVarManualTemp value = 3 }
-								NOT = { has_global_flag = gray_goo_empire_set }
+								NAND = { has_global_flag = gray_goo_empire_set exists = event_target:graygoo_country }
 							}
 							set_global_flag = gray_goo_empire_set
 							event_target:CmtTempOwner = { country_event = { id = graygoo.100 } }
