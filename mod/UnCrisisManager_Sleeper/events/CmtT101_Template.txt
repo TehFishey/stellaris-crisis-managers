@@ -2,9 +2,9 @@ namespace = CrisisManagerMenu
 
 ###############################
 ###############################
-#####                     #####
-#####    Template T101    #####
-#####                     #####
+#####					 #####
+#####	Template T101	#####
+#####					 #####
 ###############################
 ###############################
 
@@ -103,7 +103,7 @@ country_event = {
 				} else = { remove_global_flag = CmtFlagSynthTerrorAll }
 				set_variable = { which = CmtVarCybrexResurfacing value = @CmtT101_ConstCybrexResurfacing }
 
-				### Forced End of the Cycle
+				### Forced End of the Cycle.
 				if = {
 					limit = { always = @CmtT101_ConstAllowForcedEoc }
 					set_global_flag = CmtFlagAllowForcedEoc

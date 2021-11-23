@@ -1,17 +1,17 @@
 namespace = CrisisManagerMenu
 
-###############################################
-###############################################
-#####                                     #####
-#####    Crisis Manager                   #####
-#####                                     #####
-#####    Configuration of Crisis Power    #####
-#####                                     #####
-###############################################
-###############################################
+#############################################
+#############################################
+#####									#####
+#####	Crisis Manager					#####
+#####									#####
+#####	Configuration of Crisis Power	#####
+#####									#####
+#############################################
+#############################################
 
 ###################################
-###  Main Menu of Crisis Power  ###
+###- Main Menu of Crisis Power -###
 ###################################
 
 country_event = {
@@ -520,7 +520,7 @@ country_event = {
 }
 
 #####################
-###  Fleet Power  ###
+###- Fleet Power -###
 #####################
 
 country_event = {
@@ -1689,7 +1689,7 @@ country_event = {
 }
 
 ####################
-###  Army Power  ###
+###- Army Power -###
 ####################
 
 country_event = {
@@ -2142,9 +2142,9 @@ country_event = {
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
-#################################
-###  Number of Combat Fleets  ###
-#################################
+###############################
+### Number of Combat Fleets ###
+###############################
 
 country_event = {
 	id = CrisisManagerMenu.6300
@@ -3640,9 +3640,9 @@ country_event = {
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
-##############################
-###  Number of Army Fleets ###
-##############################
+#############################
+### Number of Army Fleets ###
+#############################
 
 country_event = {
 	id = CrisisManagerMenu.6400
@@ -4208,9 +4208,9 @@ country_event = {
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
-###################################
-###  Number of Auxiliary Ships  ###
-###################################
+#################################
+### Number of Auxiliary Ships ###
+#################################
 
 country_event = {
 	id = CrisisManagerMenu.6500

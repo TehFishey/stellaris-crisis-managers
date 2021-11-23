@@ -1,15 +1,15 @@
 namespace = CrisisManagerMenu
 namespace = crisis
 
-####################################
-####################################
-#####                          #####
-#####    Crisis Manager        #####
-#####                          #####
-#####    For Only Debugging    #####
-#####                          #####
-####################################
-####################################
+#####################################
+#####################################
+#####							#####
+#####	Crisis Manager			#####
+#####							#####
+#####	For Only Debugging		#####
+#####							#####
+#####################################
+#####################################
 
 ### Debug Menu
 country_event = {
@@ -91,7 +91,7 @@ country_event = {
 		country_event = { id = CrisisManagerMenu.9920 }
 	}
 
-	## Go Back to Main Menu
+	## Go Back to Main Menu.
 	option = {
 		name = CmtTextGoBack.name
 		country_event = { id = CrisisManagerMenu.0100 }
@@ -592,7 +592,7 @@ country_event = {
 	}
 }
 
-### Call Debug Mode from Console
+### Call Debug Mode from Console.
 country_event = {
 	id = crisis.9999
 	hide_window = yes

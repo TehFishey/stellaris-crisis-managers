@@ -1,16 +1,16 @@
 
-############################################
-############################################
-#####                                  #####
-#####    Crisis Manager                #####
-#####                                  #####
-#####    Scripted Triggers (Common)    #####
-#####                                  #####
-############################################
-############################################
+#############################################
+#############################################
+#####									#####
+#####	Crisis Manager					#####
+#####									#####
+#####	Scripted Triggers (Common)		#####
+#####									#####
+#############################################
+#############################################
 
 #######################
-###  Basic Trigger  ###
+###- Basic Trigger -###
 #######################
 
 ### For Spawning Each Countries, Scope: this = Stellar System
@@ -53,12 +53,12 @@ CmtTriggerIsStarbase = {		## Scope: this = ship
 }
 
 ############################
-###  Check Country Type  ###
+###- Check Country Type -###
 ############################
 
 ### Standard
 CmtTriggerIsPlayableEmpire = {
-	OR = {		## Written in also Cmt40 and Cmt50
+	OR = {		## Written in also Cmt40 and Cmt50.
 		is_country_type = default
 		is_zofe_country = yes # is_zofe_compatible
 		is_ai = no
@@ -201,12 +201,11 @@ CmtTriggerIsMarauder = {
 	}
 }
 
-# TODO REMOVE ME
 # DEPRECATED ## Scope = country
-CmtTriggerIsSleepingMarauder = {
-	is_country_type = dormant_marauders
-	NOT = { has_country_flag = restored_marauders_flag }
-}
+# CmtTriggerIsSleepingMarauder = {
+# 	is_country_type = dormant_marauders
+# 	NOT = { has_country_flag = restored_marauders_flag }
+# }
 
 CmtTriggerIsKhanCountry = {
 	is_country_type = awakened_marauders
@@ -219,7 +218,7 @@ CmtTriggerIsGraygoo = {
 }
 
 ##############################
-###  Exist Crisis Country  ###
+###- Exist Crisis Country -###
 ##############################
 
 ### End-Game Crisis
@@ -257,7 +256,7 @@ CmtTriggerExistGraygoo = {
 }
 
 #######################
-###  Now in Crisis  ###
+###- Now in Crisis -###
 #######################
 
 CmtTriggerInCrisisNow = {
@@ -294,7 +293,7 @@ CmtTriggerNowInKhanCrisis = {
 }
 
 #################################
-###  Trigger Check of Events  ###
+###- Trigger Check of Events -###
 #################################
 
 CmtTriggerAnyCrisisTriggered = {
@@ -374,7 +373,7 @@ CmtTriggerAnyManagedEventTriggered = {
 }
 
 ######################
-###  Control Menu  ###
+###- Control Menu -###
 ######################
 
 CmtTriggerAllViewerClosed = {
@@ -492,7 +491,7 @@ CmtTriggerUprisingConfig = {
 }
 
 ###################################
-###  Check Template Activation  ###
+###- Check Template Activation -###
 ###################################
 
 CmtTriggerTemplateActivated_T000 = {

@@ -1,62 +1,62 @@
 
-###########################################
-###########################################
-#####                                 #####
-#####    Crisis Manager               #####
-#####                                 #####
-#####    Scripted Effects for Khan    #####
-#####                                 #####
-###########################################
-###########################################
+#########################################
+#########################################
+#####								#####
+#####	Crisis Manager				#####
+#####								#####
+#####	Scripted Effects for Khan	#####
+#####								#####
+#########################################
+#########################################
 
 ###################
-###  Constants  ###
+###- Constants -###
 ###################
 
-### Reinforcement Cycle of Khan Fleets on Capital
-@CmtConstReinforceCycle_Khan1a =  1.0		## if disabled or x > Ta
-@CmtConstReinforceCycle_Khan2a =  1.0		## if x < Ta
-@CmtConstReinforceCycle_Khan2b =  1.2		## if x < Tb
-@CmtConstReinforceCycle_Khan2c =  1.6		## if x < Tc
-@CmtConstReinforceCycle_Khan2d =  2.0		## if x < Td
-@CmtConstReinforceCycle_Khan3a =  1.7		## if x < Ta
-@CmtConstReinforceCycle_Khan3b =  2.8		## if x < Tb
-@CmtConstReinforceCycle_Khan3c =  3.9		## if x < Tc
-@CmtConstReinforceCycle_Khan3d =  5.0		## if x < Td
-@CmtConstReinforceCycle_Khan4a =  2.5		## if x < Ta
-@CmtConstReinforceCycle_Khan4b =  5.0		## if x < Tb
-@CmtConstReinforceCycle_Khan4c =  7.5		## if x < Tc
-@CmtConstReinforceCycle_Khan4d = 10.0 		## if x < Td
+### Reinforcement Cycle of Khan Fleets on Capital.
+@CmtConstReinforceCycle_Khan1a = 1.0	## if disabled or x > Ta
+@CmtConstReinforceCycle_Khan2a = 1.0	## if x < Ta
+@CmtConstReinforceCycle_Khan2b = 1.2	## if x < Tb
+@CmtConstReinforceCycle_Khan2c = 1.6	## if x < Tc
+@CmtConstReinforceCycle_Khan2d = 2.0	## if x < Td
+@CmtConstReinforceCycle_Khan3a = 1.7	## if x < Ta
+@CmtConstReinforceCycle_Khan3b = 2.8	## if x < Tb
+@CmtConstReinforceCycle_Khan3c = 3.9	## if x < Tc
+@CmtConstReinforceCycle_Khan3d = 5.0	## if x < Td
+@CmtConstReinforceCycle_Khan4a = 2.5	## if x < Ta
+@CmtConstReinforceCycle_Khan4b = 5.0	## if x < Tb
+@CmtConstReinforceCycle_Khan4c = 7.5	## if x < Tc
+@CmtConstReinforceCycle_Khan4d = 10.0	## if x < Td
 
-### Threshold Navy Sizes for Reinforcement Cycle
-#CmtConstReinforceCycle_KhanT0 = 386		## Standard, Never Change
+### Threshold Navy Sizes for Reinforcement Cycle.
+# CmtConstReinforceCycle_KhanT0 = 386	## Standard, Never Change
 @CmtConstReinforceCycle_KhanTa = 309
 @CmtConstReinforceCycle_KhanTb = 232
 @CmtConstReinforceCycle_KhanTc = 154
-@CmtConstReinforceCycle_KhanTd =  77
+@CmtConstReinforceCycle_KhanTd = 77
 
 ### cf,
-#	Flags   	: { 18, 12,  6, 1} =  74
-#	Standard	: { 16,  8,  6, 1} =  64 (x 3)
-#	Mercenary 1	: { 16,  8,  6, 0} =  56
-#	Mercenary 2	: { 12,  6,  4, 0} =  40
-#	Mercenary 3	: {  8,  4,  2, 0} =  24
-#	Encourager	: { 22, 14,  8, 0} =  82
+#	Flags			: { 18, 12,		6, 1} =		74
+#	Standard	: { 16,		8,		6, 1} =		64 (x 3)
+#	Mercenary 1	: { 16,		8,		6, 0} =		56
+#	Mercenary 2	: { 12,		6,		4, 0} =		40
+#	Mercenary 3	: {		8,		4,		2, 0} =		24
+#	Encourager	: { 22, 14,		8, 0} =		82
 #	Encourager 5: { 36, 28, 18, 2} = 180
-#	Encourager 4: { 26, 18, 12, 1} =  94
-#	Encourager 3: { 22, 12,  8, 1} =  86
-#	Encourager 2: { 16,  8,  6, 1} =  64
-#	Encourager 1: { 10,  4,  2, 0} =  26
+#	Encourager 4: { 26, 18, 12, 1} =		94
+#	Encourager 3: { 22, 12,		8, 1} =		86
+#	Encourager 2: { 16,		8,		6, 1} =		64
+#	Encourager 1: { 10,		4,		2, 0} =		26
 #	----------------------------------
 #	Initial 	: {102, 54, 36, 4} = 386
-#	Reinforce 1	: { 16,  8,  6, 1} =  64
-#	Encourager	: { 22, 14,  8, 0} =  82
-#	Reinforce 2	: {  -,  -,  -, -} =  26 - 180
+#	Reinforce 1	: { 16,		8,		6, 1} =		64
+#	Encourager	: { 22, 14,		8, 0} =		82
+#	Reinforce 2	: {		-,		-,		-, -} =		26 - 180
 #
 
-#################
-###  Scripts  ###
-#################
+###############
+### Scripts ###
+###############
 
 ## Scope: root = Country (Khan) this = event_target:CmtGlobalVar
 CmtEffectKhanReinforceOnCapital = {
@@ -120,7 +120,7 @@ CmtEffectKhanIncreasementReinforcementCycle = {		## Scope: this = Strage of Vari
 			}
 		}		## Current: CmtVarTemp = regularized military ship number of Khan
 
-		### Increment of Counter, Call Next Cycle
+		### Increment of Counter, Call Next Cycle.
 		if = {
 			limit = { check_variable = { which = CmtVarReinforceCycle_Khan value = 2 } }
 			if = {
@@ -168,5 +168,5 @@ CmtEffectKhanIncreasementReinforcementCycle = {		## Scope: this = Strage of Vari
 			} else = { prev = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan1a } } }
 		} else = { prev = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan1a } } }
 	}
-			#log = "Cycle = [This.GetValue.CmtVarKhanReinforcementCounter], Ships = [CmtGlobalVar.GetValue.CmtVarTemp], This = [This.GetName]"
+			# log = "Cycle = [This.GetValue.CmtVarKhanReinforcementCounter], Ships = [CmtGlobalVar.GetValue.CmtVarTemp], This = [This.GetName]"
 }

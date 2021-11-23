@@ -1,12 +1,12 @@
-###############################################
-###############################################
-#####                                     #####
-#####    Crisis Manager                   #####
-#####                                     #####
-#####    Anomalies for Mid-Game Crises    #####
-#####                                     #####
-###############################################
-###############################################
+#############################################
+#############################################
+#####									#####
+#####	Crisis Manager					#####
+#####									#####
+#####	Anomalies for Mid-Game Crises	#####
+#####									#####
+#############################################
+#############################################
 
 ### Gray
 disco_gray_cat = {
@@ -23,7 +23,7 @@ disco_gray_cat = {
 			is_planet_class = pc_gray_goo
 			solar_system = { has_star_flag = lcluster }
 			event_target:CmtGlobalVar = {
-				NOT = { check_variable = { which = CmtVarLgateAloneGrayCondition value = 1 } }
+				check_variable = { which = CmtVarLgateAloneGrayCondition value != 1 }
 				OR = {
 					NOR = {
 						has_global_flag = dragon_season

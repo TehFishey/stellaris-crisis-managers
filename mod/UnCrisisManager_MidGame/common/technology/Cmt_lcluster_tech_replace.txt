@@ -43,6 +43,10 @@ tech_repeatable_lcluster_clue = {
 			has_country_flag = completed_lcluster_chain
 			has_global_flag = l_cluster_opened
 		}
+		OR = {
+			mid_game_years_passed > 0
+			NOT = { has_global_flag = gray_goo_crisis_set }
+		}
 	}
 
 	prereqfor_desc = {
@@ -99,9 +103,9 @@ tech_repeatable_lcluster_clue = {
 	}
 
 	weight_groups = {
-		#repeatable
+		# repeatable
 	}
 	mod_weight_if_group_picked = {
-		#repeatable = 0.01
+		# repeatable = 0.01
 	}
 }

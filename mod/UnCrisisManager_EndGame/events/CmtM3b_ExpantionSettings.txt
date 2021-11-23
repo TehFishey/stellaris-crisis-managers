@@ -2,11 +2,11 @@ namespace = CrisisManagerMenu
 
 #########################################################
 #########################################################
-#####                                               #####
-#####    Crisis Manager                             #####
-#####                                               #####
-#####    Common Configurations of Crisis Behavior   #####
-#####                                               #####
+#####												#####
+#####	Crisis Manager								#####
+#####												#####
+#####	Common Configurations of Crisis Behavior	#####
+#####												#####
 #########################################################
 #########################################################
 
@@ -279,7 +279,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.3231d.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarPlanetOccupy value = 4 } } }
 	}
-	#option = {
+	# option = {
 	#	name = CrisisManagerMenu.3231e.name
 	#	custom_tooltip = CrisisManagerMenu.3231e.tooltip
 	#	hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarPlanetOccupy value = 5 } } }

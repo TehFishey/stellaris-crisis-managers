@@ -1,15 +1,15 @@
-#######################################################
-#######################################################
-#####                                             #####
-#####    Crisis Manager                           #####
-#####                                             #####
-#####    Scripted Triggers for Mid-Game Crisis    #####
-#####                                             #####
-#######################################################
-#######################################################
+#####################################################
+#####################################################
+#####											#####
+#####	Crisis Manager							#####
+#####											#####
+#####	Scripted Triggers for Mid-Game Crisis	#####
+#####											#####
+#####################################################
+#####################################################
 
 ##############
-###  Khan  ###
+###- Khan -###
 ##############
 
 ### Global Conditions
@@ -21,7 +21,7 @@ CmtTriggerKhanAwakingMultipleCheck = {
 			has_global_flag = CmtFlagNowInKhanInterval
 		}
 		OR = {
-			#NOT = { has_global_flag = CmtFlagKhanTriggered
+			# NOT = { has_global_flag = CmtFlagKhanTriggered
 			NOT = { has_global_flag = marauder_crisis_started }
 			AND = {
 				check_variable = { which = CmtVarKhanMultiple value = 3 }
@@ -38,6 +38,7 @@ CmtTriggerHasPotentialKhanAwaking = { ## Scope = country
 		is_country_type = dormant_marauders
 		AND = { # Fallback
 			has_origin = "origin_khan_successor"
+			is_at_war = no
 			OR = {
 				has_country_flag = new_khanate_flag
 				has_country_flag = diadochi
@@ -153,7 +154,7 @@ CmtTriggerCountryHiringMarauder3 = {
 }
 
 #######################
-###  L-Gate Common  ###
+###- L-Gate Common -###
 #######################
 
 CmtTriggerIsClosedLgate = {
@@ -172,7 +173,7 @@ CmtTriggerIsOpenedLgate = {
 # }
 
 #################
-###  Dessanu  ###
+###- Dessanu -###
 #################
 
 CmtTriggerHasDessanuGift = {

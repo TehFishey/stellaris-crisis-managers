@@ -1,17 +1,17 @@
 namespace = CrisisManagerMenu
 
-###################################
-###################################
-#####                         #####
-#####    Crisis Manager       #####
-#####                         #####
-#####    Manual Operations    #####
-#####                         #####
-###################################
-###################################
+#################################
+#################################
+#####						#####
+#####	Crisis Manager		#####
+#####						#####
+#####	Manual Operations	#####
+#####						#####
+#################################
+#################################
 
 ###################
-###  Main Menu  ###
+###- Main Menu -###
 ###################
 
 country_event = {
@@ -291,7 +291,7 @@ country_event = {
 	}
 
 	### Uprising
-	#option = {
+	# option = {
 	#	name = CrisisManagerMenu.7000.7146.A.name
 	#	custom_tooltip = CrisisManagerMenu.7000.7146.A.tooltip
 	#	trigger = {
@@ -301,7 +301,7 @@ country_event = {
 	#	}
 	#	hidden_effect = { country_event = { id = CrisisManagerMenu.7146 } }
 	#}
-	#option = {
+	# option = {
 	#	name = CrisisManagerMenu.7000.7146.B.name
 	#	custom_tooltip = CrisisManagerMenu.7000.7146.B.tooltip
 	#	trigger = {
@@ -422,9 +422,9 @@ country_event = {
 	abort_effect = { CmtEffectExitMenu = yes }
 }
 
-###########################################
-###  Trigger End-Game Crisis Manuallly  ###
-###########################################
+#########################################
+### Trigger End-Game Crisis Manuallly ###
+#########################################
 
 ### Menu
 country_event = {
@@ -656,7 +656,7 @@ country_event = {
 	abort_effect = { CmtEffectExitMenu = yes }
 }
 
-### Trigger Random Crisis or All Crises
+### Trigger Random Crisis or All Crises.
 country_event = {
 	id = CrisisManagerMenu.7111
 	title = CrisisManagerMenu.7111.name
@@ -1015,7 +1015,7 @@ country_event = {
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
-### Force Covenant of End of the Cycle
+### Force Covenant of End of the Cycle.
 country_event = {
 	id = CrisisManagerMenu.7119
 	title = CrisisManagerMenu.7119.name
@@ -1101,7 +1101,7 @@ country_event = {
 		}
 		trigger = { ## 1 or more
 			any_country = { is_country_type = fallen_empire }
-			#count_country = { limit = { is_country_type = fallen_empire } count > 0 } # CmtTriggerIsOrganicSleeper = yes
+			# count_country = { limit = { is_country_type = fallen_empire } count > 0 } # CmtTriggerIsOrganicSleeper = yes
 		}
 		hidden_effect = {
 			if = {
@@ -1900,7 +1900,7 @@ country_event = {
 			NAND = {
 				has_global_flag = l_cluster_opened
 				has_global_flag = gray_goo_empire_set
-				exists = event_target:graygoo_country
+				exists = event_target:graygoo_country # gate_builders
 			}
 		}
 		hidden_effect = {
@@ -1912,7 +1912,12 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7140c4.name
 		custom_tooltip = CrisisManagerMenu.7140c.tooltip
-		trigger = { NAND = { has_global_flag = l_cluster_opened has_global_flag = gray_goo_crisis_active } }
+		trigger = {
+			NAND = {
+				has_global_flag = l_cluster_opened
+				has_global_flag = gray_goo_crisis_active
+			}
+		}
 		hidden_effect = {
 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarManualTemp value = 4 } }		## Gray Tempest
 			country_event = { id = CrisisManagerMenu.7141 }
@@ -1955,6 +1960,10 @@ country_event = {
 	picture = GFX_evt_l-gateway
 	is_triggered_only = yes
 
+	trigger = {
+		NOT = { has_global_flag = CmtFlagLgateOpenedNow }
+	}
+
 	immediate = {
 		CmtEffectManualTargetLgates = yes
 	}
@@ -1962,7 +1971,10 @@ country_event = {
 	after = {
 		hidden_effect = {
 			if = {
-				limit = { exists = event_target:CmtTargetLgateOriginatingSystem }
+				limit = {
+					exists = event_target:CmtTargetLgateOriginatingSystem
+					NOT = { has_global_flag = CmtFlagLgateOpenedNow }
+				}
 				set_global_flag = CmtFlagLgatePreludeTriggered
 				event_target:CmtGlobalVar = {
 					if = {
@@ -1974,9 +1986,13 @@ country_event = {
 					}
 					if = {
 						limit = { check_variable = { which = CmtVarManualTemp value = 1 } }
+						remove_global_flag = gray_goo_empire_set
+						remove_global_flag = gray_goo_crisis_set
+						remove_global_flag = dragon_season
 						remove_global_flag = CmtFlagLgateForbidSilence
 					} else_if = {
 						limit = { check_variable = { which = CmtVarManualTemp value = 2 } }
+						remove_global_flag = dragon_season
 						remove_global_flag = CmtFlagLgateForbidLdrake
 					} else_if = {
 						limit = { check_variable = { which = CmtVarManualTemp value = 3 } }
@@ -1987,7 +2003,6 @@ country_event = {
 					}
 				}
 				event_target:CmtTargetLgateOriginatingSystem = {
-
 					if = {
 						limit = {
 							exists = owner
@@ -1997,7 +2012,6 @@ country_event = {
 					} else_if = {
 						limit = {
 							has_global_flag = l_cluster_opened
-							# NOT = { has_global_flag = CmtFlagLgateOpenedNow }
 							any_playable_country = { has_country_flag = lcluster_opener }
 						}
 						random_playable_country = {
@@ -2009,30 +2023,38 @@ country_event = {
 					if = {
 						limit = {
 							has_global_flag = l_cluster_opened
-							NOT = { has_global_flag = CmtFlagLgateOpenedNow }
+							event_target:CmtGlobalVar = { is_variable_set = CmtVarManualTemp }
 						}
+						log="Run manual L-Cluster event with: \\[CmtGlobalVar.CmtVarManualTemp] \\[CmtTempOwner.GetName]"
 						if = {
 							limit = {
-								check_variable = { which = CmtVarManualTemp value = 2 }
+								event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualTemp value = 2 } }
 								NOT = { has_global_flag = dragon_season }
 							}
 							set_global_flag = dragon_season
 							event_target:CmtTempOwner = { country_event = { id = distar.13000 } }
 						} else_if = {
 							limit = {
-								check_variable = { which = CmtVarManualTemp value = 3 }
-								NAND = { has_global_flag = gray_goo_empire_set exists = event_target:graygoo_country }
+								event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualTemp value = 3 } }
+								NAND = {
+									has_global_flag = gray_goo_empire_set
+									exists = event_target:graygoo_country # gate_builders
+								}
 							}
 							set_global_flag = gray_goo_empire_set
 							event_target:CmtTempOwner = { country_event = { id = graygoo.100 } }
 						} else_if = {
 							limit = {
-								check_variable = { which = CmtVarManualTemp value = 4 }
-								NOT = { has_global_flag = gray_goo_crisis_active }
+								event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualTemp value = 4 } }
+								NAND = {
+									has_global_flag = gray_goo_crisis_active
+									exists = event_target:graygoo_country
+								}
 							}
-							set_global_flag = gray_goo_crisis_active
+							set_global_flag = gray_goo_crisis_set
 							event_target:CmtTempOwner = { country_event = { id = graygoo.1 } }
 						}
+						set_timed_global_flag = { flag = CmtFlagLgateOpenedNow days = 5 }
 					} else = {
 						event_target:CmtTempOwner = { country_event = { id = distar.10950 } }
 					}
@@ -2040,7 +2062,9 @@ country_event = {
 				country_event = { id = CrisisManagerMenu.7000 }
 			}
 			CmtEffectClearTargetLgates = yes
-			event_target:CmtGlobalVar = { set_variable = { which = CmtVarManualTemp value = 0 } }
+			event_target:CmtGlobalVar = {
+				clear_variable = CmtVarManualTemp # set_variable = { which = CmtVarManualTemp value = 0 }
+			}
 		}
 	}
 
@@ -2048,7 +2072,9 @@ country_event = {
 		name = CrisisManagerMenu.7141a.name		# Back
 		custom_tooltip = CrisisManagerMenu.7141a.tooltip
 		hidden_effect = {
-			event_target:CmtGlobalVar = { set_variable = { which = CmtVarManualTemp value = 0 } }
+			event_target:CmtGlobalVar = {
+				clear_variable = CmtVarManualTemp # set_variable = { which = CmtVarManualTemp value = 0 }
+			}
 			country_event = { id = CrisisManagerMenu.7140 }
 		}
 	}
@@ -2059,7 +2085,7 @@ country_event = {
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7141 } }
 	}
 	option = {
-		name = CmtTextSeparator.name
+		name = CmtTextSeparator.name			# ----
 		custom_tooltip = CmtTextSeparator.tooltip
 		trigger = {
 			NOT = { has_global_flag = CmtFlagNoSeparator }
@@ -2179,7 +2205,7 @@ country_event = {
 }
 
 #### Uprising
-#country_event = {
+# country_event = {
 #	id = CrisisManagerMenu.7146
 #	title = CrisisManagerMenu.7146.name
 #	desc = CrisisManagerMenu.7146.desc
@@ -2324,7 +2350,7 @@ country_event = {
 #	}
 #}
 #
-#country_event = {
+# country_event = {
 #	id = CrisisManagerMenu.7147
 #	title = CrisisManagerMenu.7147.name
 #	desc = CrisisManagerMenu.7147.desc
@@ -2571,9 +2597,9 @@ country_event = {
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
-##############################################
-###  Forced Termination of Crisis Country  ###
-##############################################
+############################################
+### Forced Termination of Crisis Country ###
+############################################
 
 ### Menu
 country_event = {
@@ -2627,7 +2653,7 @@ country_event = {
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7203 } }
 	}
 
-	### Forced End of the Cycle
+	### Forced End of the Cycle.
 	option = {
 		name = CrisisManagerMenu.7200d.name
 		custom_tooltip = CrisisManagerMenu.7200d.tooltip
@@ -2908,7 +2934,7 @@ country_event = {
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
-### Termination of War in Heaven
+### Termination of War in Heaven.
 country_event = {
 	id = CrisisManagerMenu.7206
 	title = CrisisManagerMenu.7206.name
@@ -3083,9 +3109,9 @@ country_event = {
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
-##################################
-### Create Fleet for Sleepers  ###
-##################################
+#################################
+### Create Fleet for Sleepers ###
+#################################
 
 ### Menu
 country_event = {
@@ -3150,7 +3176,7 @@ country_event = {
 	abort_effect = { CmtEffectExitMenu = yes }
 }
 
-### Create Standard Fleet for Sleeper
+### Create Standard Fleet for Sleeper.
 country_event = {
 	id = CrisisManagerMenu.7411
 	title = CrisisManagerMenu.7411.name
@@ -4009,9 +4035,9 @@ country_event = {
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
-##############################
-###  Create/Delete L-Gate  ###
-##############################
+############################
+### Create/Delete L-Gate ###
+############################
 
 country_event = {
 	id = CrisisManagerMenu.7500

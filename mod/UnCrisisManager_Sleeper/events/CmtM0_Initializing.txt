@@ -178,10 +178,7 @@ country_event = {
 		hidden_effect = {
 			if = {
 				limit = {
-					NOR = {
-						has_country_flag = CmtFlagNowInMenu
-						has_active_event = { CrisisManagerMenu.0100 }
-					}
+					NOT = { has_active_event = { CrisisManagerMenu.0100 } }
 				}
 				country_event = { id = CrisisManagerMenu.0100 }
 			}

@@ -1,19 +1,19 @@
 namespace = CrisisManagerMenu
 
-######################################
-######################################
-#####                            #####
-#####    Crisis Manager          #####
-#####                            #####
-#####    Configutation Viewer    #####
-#####    for Mid-Game Crisis     #####
-#####                            #####
-######################################
-######################################
+#####################################
+#####################################
+#####							#####
+#####	Crisis Manager			#####
+#####							#####
+#####	Configutation Viewer	#####
+#####	for Mid-Game Crisis		#####
+#####							#####
+#####################################
+#####################################
 
-################################
-###  Configurations of Khan  ###
-################################
+##############################
+### Configurations of Khan ###
+##############################
 
 country_event = {
 	id = CrisisManagerMenu.1026
@@ -602,9 +602,9 @@ country_event = {
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
-##################################
-###  Configurations of L-gate  ###
-##################################
+################################
+### Configurations of L-gate ###
+################################
 
 country_event = {
 	id = CrisisManagerMenu.1027
@@ -1272,21 +1272,21 @@ country_event = {
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
-####################################
-###  Configurations of Uprising  ###
-####################################
+##################################
+### Configurations of Uprising ###
+##################################
 
 country_event = {
 	id = CrisisManagerMenu.1028
 	title = CrisisManagerMenu.1028.name
 	desc = CmtDescNotImplemented
-#!!#	desc = {
-#!!#		text = CrisisManagerMenu.1028.desc1
-#!!#		trigger = { CmtTriggerUprisingConfig = yes }
+# !!#	desc = {
+# !!#		text = CrisisManagerMenu.1028.desc1
+# !!#		trigger = { CmtTriggerUprisingConfig = yes }
 #!!#	}
-#!!#	desc = {
-#!!#		text = CrisisManagerMenu.1028.desc2
-#!!#		trigger = { CmtTriggerUprisingConfig = no }
+# !!#	desc = {
+# !!#		text = CrisisManagerMenu.1028.desc2
+# !!#		trigger = { CmtTriggerUprisingConfig = no }
 #!!#	}
 	picture = GFX_evt_organic_oppression
 	is_triggered_only = yes

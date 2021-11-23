@@ -2,7 +2,7 @@
 @resolution_cost_t1 = 100
 @resolution_flag_timer = 360
 ## Vanilla Workaround Fix (still only static and more expensively)! Needs to be tested! (dynamic would be in relation to galaxy_size)
-## Using event_target for better performance and usability
+## Using event_target for better performance and usability.
 # TODO adding check_variable = { which = CmtVarGrayGooCybrexLimit value = trigger:num_fleets }
 resolution_galactic_focus_crisis_nanites = {
 	icon = "GFX_resolution_emergency_measure"
@@ -46,7 +46,7 @@ resolution_galactic_focus_crisis_nanites = {
 		NOT = { has_global_flag = galactic_focus_crisis_nanites }
 	}
 	active = {
-		# Resolution only in effect while this trigger is met
+		# Resolution only in effect while this trigger is met.
 		has_global_flag = gray_goo_crisis_active
 	}
 	ai_weight = {

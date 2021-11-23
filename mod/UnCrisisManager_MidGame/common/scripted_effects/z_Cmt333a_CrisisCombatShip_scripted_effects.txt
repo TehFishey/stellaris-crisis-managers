@@ -1,11 +1,11 @@
 
 ########################################################
 ########################################################
-#####                                              #####
-#####    Crisis Manager                            #####
-#####                                              #####
-#####    Scripted Effects for Creating Warships    #####
-#####                                              #####
+#####												#####
+#####	Crisis Manager							#####
+#####												#####
+#####	Scripted Effects for Creating Warships	#####
+#####												#####
 ########################################################
 ########################################################
 #
@@ -17,11 +17,11 @@
 #
 
 ###################
-###  Constants  ###
+### Constants	###
 ###################
 
 ##############
-###  Khan  ###
+### Khan	###
 ##############
 
 CmtEffectCreateShip_Outrider = {
@@ -105,7 +105,7 @@ CmtEffectCreateShip_KhanArmy = {
 }
 
 #################
-###  Dessanu  ###
+### Dessanu	###
 #################
 
 CmtEffectCreateShip_DessanuMother = {
@@ -113,7 +113,7 @@ CmtEffectCreateShip_DessanuMother = {
 		name = random
 		design = "NAME_Dessanu_Mothership"
 		graphical_culture = "reptilian_01"
-		#upgradable = no
+		# upgradable = no
 	}
 }
 
@@ -122,12 +122,12 @@ CmtEffectCreateShip_DessanuInterdictor = {
 		name = random
 		design = "NAME_Dessanu_Interdictor"
 		graphical_culture = "reptilian_01"
-		#upgradable = no
+		# upgradable = no
 	}
 }
 
 #################
-###  Graygoo  ###
+### Graygoo	###
 #################
 
 CmtEffectCreateShip_GraygooMother = {

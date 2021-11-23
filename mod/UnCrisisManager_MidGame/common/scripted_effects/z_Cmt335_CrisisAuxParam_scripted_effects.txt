@@ -1,13 +1,13 @@
-##########################################
-##########################################
-#####                                #####
-#####    Crisis Manager              #####
-#####                                #####
-#####    Scripted Effects to         #####
-#####    Set Auxiliary Parameters    #####
-#####                                #####
-##########################################
-##########################################
+#########################################
+#########################################
+#####								#####
+#####	Crisis Manager				#####
+#####								#####
+#####	Scripted Effects to			#####
+#####	Set Auxiliary Parameters	#####
+#####								#####
+#########################################
+#########################################
 #
 # Information
 #	All script in this file require following scopes
@@ -17,12 +17,8 @@
 #
 #
 
-###################
-###  Constants  ###
-###################
-
 ##############
-###  Khan  ###
+###- Khan -###
 ##############
 
 CmtFleetSetAuxParam_KhanCombat = {
@@ -38,10 +34,10 @@ CmtFleetSetAuxParam_KhanCombat = {
 				prevprev.solar_system.starbase = { NOT = { is_owned_by = prevprev } }
 			}
 			log_error = "marauder_rally_point not owned by Khan!?"
-			# Can only make a Starbase a Home Base if we or an ally own it
+			# Can only make a Starbase a Home Base if we or an ally own it.
 			prevprev.solar_system.starbase = { set_owner = prevprev }
 		}
-		set_home_base = prevprev.solar_system.starbase # maybe works only after fleet creation?
+		set_home_base = prevprev.solar_system.starbase # Maybe works only after fleet creation?
 	}
 }
 
@@ -66,7 +62,7 @@ CmtFleetSetAuxParam_KhanAuxiliary = {
 }
 
 #################
-###  Dessanu  ###
+###- Dessanu -###
 #################
 
 CmtFleetSetAuxParam_DessanuGarryson = {
@@ -163,7 +159,7 @@ CmtFleetSetAuxParam_DessanuRoamer = {
 }
 
 #################
-###  Graygoo  ###
+###- Graygoo -###
 #################
 
 CmtFleetSetAuxParam_GraygooGarryson = {

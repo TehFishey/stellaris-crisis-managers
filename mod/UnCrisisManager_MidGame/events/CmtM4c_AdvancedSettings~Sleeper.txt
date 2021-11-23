@@ -1,18 +1,18 @@
 namespace = CrisisManagerMenu
 
-###################################################
-###################################################
-#####                                         #####
-#####    Crisis Manager                       #####
-#####                                         #####
-#####    Advanced Congigurations              #####
-#####    for Awakening of Fallen Empires      #####
-#####                                         #####
-###################################################
-###################################################
+#################################################
+#################################################
+#####										#####
+#####	Crisis Manager						#####
+#####										#####
+#####	Advanced Congigurations				#####
+#####	for Awakening of Fallen Empires		#####
+#####										#####
+#################################################
+#################################################
 
 ###############################
-###  Awakening of Sleepers  ###
+###- Awakening of Sleepers -###
 ###############################
 
 ### Multiple Awakening of Sleepers
@@ -117,7 +117,7 @@ country_event = {
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
-### Interval for Awakening of Sleeper
+### Interval for Awakening of Sleeper.
 country_event = {
 	id = CrisisManagerMenu.4520
 	title = CrisisManagerMenu.4520.name
@@ -200,7 +200,7 @@ country_event = {
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
-### Sleeper to Awake at Earliest
+### Sleeper to Awake at Earliest.
 country_event = {
 	id = CrisisManagerMenu.4530
 	title = CrisisManagerMenu.4530.name
@@ -403,7 +403,7 @@ country_event = {
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
-### Required Fleet Power of Young for Awakening
+### Required Fleet Power of Young for Awakening.
 country_event = {
 	id = CrisisManagerMenu.4550
 	title = CrisisManagerMenu.4550.name
@@ -509,7 +509,7 @@ country_event = {
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
-### Required Fleet Power of Own for Awakening
+### Required Fleet Power of Own for Awakening.
 country_event = {
 	id = CrisisManagerMenu.4560
 	title = CrisisManagerMenu.4560.name
@@ -853,10 +853,10 @@ country_event = {
 }
 
 #######################
-###  War in Heaven  ###
+###- War in Heaven -###
 #######################
 
-### Probability of War in Heaven
+### Probability of War in Heaven.
 country_event = {
 	id = CrisisManagerMenu.4610
 	title = CrisisManagerMenu.4610.name
@@ -1303,7 +1303,7 @@ country_event = {
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
-### Progress Speed of Prelude Event to War in Heaven
+### Progress Speed of Prelude Event to War in Heaven.
 country_event = {
 	id = CrisisManagerMenu.4650
 	title = CrisisManagerMenu.4650.name
@@ -1561,7 +1561,7 @@ country_event = {
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
-### Exhaustion from War in Heaven
+### Exhaustion from War in Heaven.
 country_event = {
 	id = CrisisManagerMenu.4680
 	title = CrisisManagerMenu.4680.name

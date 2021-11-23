@@ -2,18 +2,18 @@ namespace = CrisisManagerMenu
 
 #########################################
 #########################################
-#####                               #####
-#####    Crisis Manager             #####
-#####                               #####
-#####    Advanced Congigurations    #####
-#####    for Mid-Game Crisis        #####
-#####                               #####
+#####								#####
+#####	Crisis Manager				#####
+#####								#####
+#####	Advanced Congigurations		#####
+#####	for Mid-Game Crisis			#####
+#####								#####
 #########################################
 #########################################
 
-##############
-###  Khan  ###
-##############
+################
+### - Khan - ###
+################
 
 ### Multiple Great Khans
 country_event = {
@@ -200,7 +200,7 @@ country_event = {
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
-### Khan to Reign at Earliest
+### Khan to Reign at Earliest.
 country_event = {
 	id = CrisisManagerMenu.4822
 	title = CrisisManagerMenu.4822.name
@@ -312,7 +312,7 @@ country_event = {
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
-### Last Chance of Khan Reigning
+### Last Chance of Khan Reigning.
 country_event = {
 	id = CrisisManagerMenu.4823
 	title = CrisisManagerMenu.4823.name
@@ -801,7 +801,7 @@ country_event = {
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
-### Latent Strength of Horde in Adversity
+### Latent Strength of Horde in Adversity.
 country_event = {
 	id = CrisisManagerMenu.4850
 	title = CrisisManagerMenu.4850.name
@@ -981,7 +981,7 @@ country_event = {
 }
 
 ################
-###  L-gate  ###
+###- L-gate -###
 ################
 
 ### Clues
@@ -2316,7 +2316,7 @@ country_event = {
 }
 
 ##################
-###  Uprising  ###
+###- Uprising -###
 ##################
 
 ### Chain of Uprising
@@ -2411,7 +2411,7 @@ country_event = {
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
-### Machines to Uprise at Earliest
+### Machines to Uprise at Earliest.
 country_event = {
 	id = CrisisManagerMenu.5120
 	title = CrisisManagerMenu.5120.name
@@ -2694,7 +2694,7 @@ country_event = {
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
-### Hotfix or Uprising, Controlled by Also 5133
+### Hotfix or Uprising, Controlled by Also 5133.
 country_event = {
 	id = CrisisManagerMenu.5134
 	title = CrisisManagerMenu.5134.name
@@ -3081,7 +3081,7 @@ country_event = {
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
-### Exhaustion from War of Uprising
+### Exhaustion from War of Uprising.
 country_event = {
 	id = CrisisManagerMenu.5152
 	title = CrisisManagerMenu.5152.name

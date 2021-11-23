@@ -1,17 +1,17 @@
 
-###############################################################
-###############################################################
-#####                                                     #####
-#####    Crisis Manager                                   #####
-#####                                                     #####
-#####    Scripted Effects for Controlling Crisis Power    #####
-#####                                                     #####
-###############################################################
-###############################################################
+#############################################################
+#############################################################
+#####													#####
+#####	Crisis Manager									#####
+#####													#####
+#####	Scripted Effects for Controlling Crisis Power	#####
+#####													#####
+#############################################################
+#############################################################
 
-###################################
-###  Apply Difficulty Template  ###
-###################################
+#################################
+### Apply Difficulty Template ###
+#################################
 
 CmtEffectApplyDifficulty_Endgame = {
 	event_target:CmtGlobalVar = {
@@ -49,9 +49,9 @@ CmtEffectApplyDifficulty_Midgame = {
 	}
 }
 
-#####################################
-###  Apply Common Strenght Value  ###
-#####################################
+###################################
+### Apply Common Strenght Value ###
+###################################
 
 ### Fleet Power
 CmtEffectApplyCommonPower_FleetPower = {
@@ -63,14 +63,14 @@ CmtEffectApplyCommonPowerEndgame_FleetPower = {
 	event_target:CmtGlobalVar = {
 		if = {
 			limit = { check_variable = { which = CmtVarFleetPower_Common value > 0.125 } }
-			set_variable = { which = CmtVarFleetPower_Prethoryn   value = CmtVarFleetPower_Common }
-			set_variable = { which = CmtVarFleetPower_Sentinel    value = CmtVarFleetPower_Common }
-			set_variable = { which = CmtVarFleetPower_Unbidden    value = CmtVarFleetPower_Common }
-			set_variable = { which = CmtVarFleetPower_Aberrant    value = CmtVarFleetPower_Common }
-			set_variable = { which = CmtVarFleetPower_Vehement    value = CmtVarFleetPower_Common }
-			set_variable = { which = CmtVarFleetPower_Contingency value = CmtVarFleetPower_Common }
-			set_variable = { which = CmtVarFleetPower_Cybrex      value = CmtVarFleetPower_Common }
-			set_variable = { which = CmtVarFleetPower_ForcedEoc   value = CmtVarFleetPower_Common }
+			set_variable = { which = CmtVarFleetPower_Prethoryn		value = CmtVarFleetPower_Common }
+			set_variable = { which = CmtVarFleetPower_Sentinel		value = CmtVarFleetPower_Common }
+			set_variable = { which = CmtVarFleetPower_Unbidden		value = CmtVarFleetPower_Common }
+			set_variable = { which = CmtVarFleetPower_Aberrant		value = CmtVarFleetPower_Common }
+			set_variable = { which = CmtVarFleetPower_Vehement		value = CmtVarFleetPower_Common }
+			set_variable = { which = CmtVarFleetPower_Contingency	value = CmtVarFleetPower_Common }
+			set_variable = { which = CmtVarFleetPower_Cybrex		value = CmtVarFleetPower_Common }
+			set_variable = { which = CmtVarFleetPower_ForcedEoc		value = CmtVarFleetPower_Common }
 		}
 	}
 }
@@ -79,8 +79,8 @@ CmtEffectApplyCommonPowerMidgame_FleetPower = {
 	event_target:CmtGlobalVar = {
 		if = {
 			limit = { check_variable = { which = CmtVarFleetPower_Common value > 0.125 } }
-			set_variable = { which = CmtVarFleetPower_Khan        value = CmtVarFleetPower_Common }
-			set_variable = { which = CmtVarFleetPower_Graygoo     value = CmtVarFleetPower_Common }
+			set_variable = { which = CmtVarFleetPower_Khan			value = CmtVarFleetPower_Common }
+			set_variable = { which = CmtVarFleetPower_Graygoo		value = CmtVarFleetPower_Common }
 		}
 	}
 }
@@ -95,8 +95,8 @@ CmtEffectApplyCommonPowerEndgame_ArmyPower = {
 	event_target:CmtGlobalVar = {
 		if = {
 			limit = { check_variable = { which = CmtVarArmyPower_Common value > 0.125 } }
-			set_variable = { which = CmtVarArmyPower_Prethoryn   value = CmtVarArmyPower_Common }
-			set_variable = { which = CmtVarArmyPower_Contingency value = CmtVarArmyPower_Common }
+			set_variable = { which = CmtVarArmyPower_Prethoryn		value = CmtVarArmyPower_Common }
+			set_variable = { which = CmtVarArmyPower_Contingency	value = CmtVarArmyPower_Common }
 		}
 	}
 }
@@ -104,7 +104,7 @@ CmtEffectApplyCommonPowerMidgame_ArmyPower = {
 	event_target:CmtGlobalVar = {
 		if = {
 			limit = { check_variable = { which = CmtVarArmyPower_Common value > 0.125 } }
-			set_variable = { which = CmtVarArmyPower_Khan        value = CmtVarArmyPower_Common }
+			set_variable = { which = CmtVarArmyPower_Khan			value = CmtVarArmyPower_Common }
 		}
 	}
 }
@@ -119,13 +119,13 @@ CmtEffectApplyCommonPowerEndgame_CombatFleetNumber = {
 	event_target:CmtGlobalVar = {
 		if = {
 			limit = { check_variable = { which = CmtVarCombatFleetNumber_Common value > 0.125 } }
-			set_variable = { which = CmtVarCombatFleetNumber_Prethoryn   value = CmtVarCombatFleetNumber_Common }
-			set_variable = { which = CmtVarCombatFleetNumber_Sentinel    value = CmtVarCombatFleetNumber_Common }
-			set_variable = { which = CmtVarCombatFleetNumber_Unbidden    value = CmtVarCombatFleetNumber_Common }
-			set_variable = { which = CmtVarCombatFleetNumber_Aberrant    value = CmtVarCombatFleetNumber_Common }
-			set_variable = { which = CmtVarCombatFleetNumber_Vehement    value = CmtVarCombatFleetNumber_Common }
+			set_variable = { which = CmtVarCombatFleetNumber_Prethoryn	value = CmtVarCombatFleetNumber_Common }
+			set_variable = { which = CmtVarCombatFleetNumber_Sentinel	value = CmtVarCombatFleetNumber_Common }
+			set_variable = { which = CmtVarCombatFleetNumber_Unbidden	value = CmtVarCombatFleetNumber_Common }
+			set_variable = { which = CmtVarCombatFleetNumber_Aberrant	value = CmtVarCombatFleetNumber_Common }
+			set_variable = { which = CmtVarCombatFleetNumber_Vehement	value = CmtVarCombatFleetNumber_Common }
 			set_variable = { which = CmtVarCombatFleetNumber_Contingency value = CmtVarCombatFleetNumber_Common }
-			set_variable = { which = CmtVarCombatFleetNumber_Cybrex      value = CmtVarCombatFleetNumber_Common }
+			set_variable = { which = CmtVarCombatFleetNumber_Cybrex		value = CmtVarCombatFleetNumber_Common }
 		}
 	}
 }
@@ -134,8 +134,8 @@ CmtEffectApplyCommonPowerMidgame_CombatFleetNumber = {
 	event_target:CmtGlobalVar = {
 		if = {
 			limit = { check_variable = { which = CmtVarCombatFleetNumber_Common value > 0.125 } }
-			set_variable = { which = CmtVarCombatFleetNumber_Khan        value = CmtVarCombatFleetNumber_Common }
-			set_variable = { which = CmtVarCombatFleetNumber_Graygoo     value = CmtVarCombatFleetNumber_Common }
+			set_variable = { which = CmtVarCombatFleetNumber_Khan		value = CmtVarCombatFleetNumber_Common }
+			set_variable = { which = CmtVarCombatFleetNumber_Graygoo	value = CmtVarCombatFleetNumber_Common }
 		}
 	}
 }
@@ -150,8 +150,8 @@ CmtEffectApplyCommonPowerEndgame_ArmyNumber = {
 	event_target:CmtGlobalVar = {
 		if = {
 			limit = { check_variable = { which = CmtVarArmyPower_Common value > 0.125 } }
-			set_variable = { which = CmtVarArmyNumber_Prethoryn   value = CmtVarArmyNumber_Common }
-			set_variable = { which = CmtVarArmyNumber_Contingency value = CmtVarArmyNumber_Common }
+			set_variable = { which = CmtVarArmyNumber_Prethoryn		value = CmtVarArmyNumber_Common }
+			set_variable = { which = CmtVarArmyNumber_Contingency	value = CmtVarArmyNumber_Common }
 		}
 	}
 }
@@ -160,7 +160,7 @@ CmtEffectApplyCommonPowerMidgame_ArmyNumber = {
 	event_target:CmtGlobalVar = {
 		if = {
 			limit = { check_variable = { which = CmtVarArmyPower_Common value > 0.125 } }
-			set_variable = { which = CmtVarArmyNumber_Khan        value = CmtVarArmyNumber_Common }
+			set_variable = { which = CmtVarArmyNumber_Khan		value = CmtVarArmyNumber_Common }
 		}
 	}
 }
@@ -175,10 +175,10 @@ CmtEffectApplyCommonPowerEndgame_ConstructorNumber = {
 	event_target:CmtGlobalVar = {
 		if = {
 			limit = { check_variable = { which = CmtVarConstructorNumber_Common value > 0.125 } }
-			set_variable = { which = CmtVarConstructorNumber_Prethoryn   value = CmtVarConstructorNumber_Common }
-			set_variable = { which = CmtVarConstructorNumber_Unbidden    value = CmtVarConstructorNumber_Common }
-			set_variable = { which = CmtVarConstructorNumber_Aberrant    value = CmtVarConstructorNumber_Common }
-			set_variable = { which = CmtVarConstructorNumber_Vehement    value = CmtVarConstructorNumber_Common }
+			set_variable = { which = CmtVarConstructorNumber_Prethoryn	value = CmtVarConstructorNumber_Common }
+			set_variable = { which = CmtVarConstructorNumber_Unbidden	value = CmtVarConstructorNumber_Common }
+			set_variable = { which = CmtVarConstructorNumber_Aberrant	value = CmtVarConstructorNumber_Common }
+			set_variable = { which = CmtVarConstructorNumber_Vehement	value = CmtVarConstructorNumber_Common }
 			set_variable = { which = CmtVarConstructorNumber_Contingency value = CmtVarConstructorNumber_Common }
 		}
 	}
@@ -188,22 +188,21 @@ CmtEffectApplyCommonPowerMidgame_ConstructorNumber = {
 	event_target:CmtGlobalVar = {
 		if = {
 			limit = { check_variable = { which = CmtVarConstructorNumber_Common value > 0.125 } }
-			set_variable = { which = CmtVarConstructorNumber_Khan        value = CmtVarConstructorNumber_Common }
+			set_variable = { which = CmtVarConstructorNumber_Khan	value = CmtVarConstructorNumber_Common }
 		}
 	}
 }
 
-############################
-###  Reset Common Value  ###
-############################
+##########################
+### Reset Common Value ###
+##########################
 
 CmtEffectResetCrisisPowerCommon = {
 	event_target:CmtGlobalVar = {
-		set_variable = { which = CmtVarFleetPower_Common        value = 0 }
-		set_variable = { which = CmtVarArmyPower_Common         value = 0 }
-		set_variable = { which = CmtVarCombatFleetNumber_Common value = 0 }
-		set_variable = { which = CmtVarArmyNumber_Common        value = 0 }
-		set_variable = { which = CmtVarConstructorNumber_Common value = 0 }
+		set_variable = { which = CmtVarFleetPower_Common		value = 0 }
+		set_variable = { which = CmtVarArmyPower_Common			value = 0 }
+		set_variable = { which = CmtVarCombatFleetNumber_Common	value = 0 }
+		set_variable = { which = CmtVarArmyNumber_Common		value = 0 }
+		set_variable = { which = CmtVarConstructorNumber_Common	value = 0 }
 	}
 }
-

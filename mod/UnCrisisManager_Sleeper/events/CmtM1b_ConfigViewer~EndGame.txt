@@ -1,19 +1,19 @@
 namespace = CrisisManagerMenu
 
-######################################
-######################################
-#####                            #####
-#####    Crisis Manager          #####
-#####                            #####
-#####    Configutation Viewer    #####
-#####    for End-Game Crisis     #####
-#####                            #####
-######################################
-######################################
+#####################################
+#####################################
+#####							#####
+#####	Crisis Manager			#####
+#####							#####
+#####	Configutation Viewer	#####
+#####	for End-Game Crisis		#####
+#####							#####
+#####################################
+#####################################
 
-###############################################
-###  Configuration of Crisis Trigger Event  ###
-###############################################
+#############################################
+### Configuration of Crisis Trigger Event ###
+#############################################
 
 country_event = {
 	id = CrisisManagerMenu.1010
@@ -733,9 +733,9 @@ country_event = {
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
-############################################
-###  Advanced Configurations: Prethoryn  ###
-############################################
+##########################################
+### Advanced Configurations: Prethoryn ###
+##########################################
 
 country_event = {
 	id = CrisisManagerMenu.1021
@@ -991,7 +991,7 @@ country_event = {
 }
 
 ###########################################################################
-###  Advanced Configurations: Extradimensionals  & Forced End of the Cycle  ###
+### Advanced Configurations: Extradimensionals & Forced End of the Cycle ###
 ###########################################################################
 
 country_event = {
@@ -1233,7 +1233,7 @@ country_event = {
 		allow = { hidden_trigger = { always = no } }
 	}
 
-	### Forced End of the Cycle
+	### Forced End of the Cycle.
 	option = {
 		name = CrisisManagerMenu.4410a.name
 		custom_tooltip = CrisisManagerMenu.4410a.tooltip
@@ -1384,9 +1384,9 @@ country_event = {
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 
-###############################################
-###  Advanced Configurations: Contingency   ###
-###############################################
+############################################
+### Advanced Configurations: Contingency ###
+############################################
 
 country_event = {
 	id = CrisisManagerMenu.1023

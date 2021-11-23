@@ -1,21 +1,21 @@
 
-########################################
-########################################
-#####                              #####
-#####    Common Scripted Effect    #####
-#####                              #####
-########################################
-########################################
+#####################################
+#####################################
+#####							#####
+#####	Common Scripted Effect	#####
+#####							#####
+#####################################
+#####################################
 
 ################################
-###  Common Effect for Menu  ###
+###- Common Effect for Menu -###
 ################################
 
 ### Hard Coated Option
 CmtEffectHardCoatedSettings = {
 	remove_global_flag = CmtFlagDebugMode
-	#set_global_flag = CmtFlagDebugMode		## Hidden menu is shown and MTTH several event is short
-	#set_global_flag = CmtFlagNoSeparator
+	# set_global_flag = CmtFlagDebugMode		## Hidden menu is shown and MTTH several event is short.
+	# set_global_flag = CmtFlagNoSeparator
 }
 
 ### Version check
@@ -179,9 +179,9 @@ CmtEffectDetectTotalWarPack = {}
 CmtEffectDetectPlayerCrisisPack = {}
 CmtEffectDetectFeeCompatPatch = {}
 
-########################
-###  Common Actions  ###
-########################
+######################
+### Common Actions ###
+######################
 
 ### scope: this = stellar_system, written in also Cmt400 in Total War Pack
 CmtEffectDestroySystemStarbase = {
@@ -202,7 +202,7 @@ CmtEffectChangeAwakenerCivic = {
 }
 
 ####################
-###  Debug tool  ###
+###- Debug tool -###
 ####################
 
 ### Test of FIOS/LIOS

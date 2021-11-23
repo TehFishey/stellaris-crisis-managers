@@ -1,16 +1,16 @@
 
-##########################################
-##########################################
-#####                                #####
-#####    Crisis Manager              #####
-#####                                #####
-#####    Scripted Effect for Menu    #####
-#####                                #####
-##########################################
-##########################################
+#########################################
+#########################################
+#####								#####
+#####	Crisis Manager				#####
+#####								#####
+#####	Scripted Effect for Menu	#####
+#####								#####
+#########################################
+#########################################
 
 ######################
-###  Basic Effect  ###
+###- Basic Effect -###
 ######################
 
 CmtEffectExitMenu = {
@@ -31,7 +31,7 @@ CmtEffectSaveOriginalCountry = {
 }
 
 ###########################
-###  Manual Operations  ###
+###- Manual Operations -###
 ###########################
 
 CmtEffectManualTargetSleepers = {
@@ -284,7 +284,7 @@ CmtEffectClearTargetPlayerCrisis = {
 	}
 }
 
-#CmtEffectManualTargetUprising = {
+# CmtEffectManualTargetUprising = {
 #	if = {
 #		limit = { root = { CmtTriggerUprisingPotentialManually = yes } }
 #		root = {
@@ -359,7 +359,7 @@ CmtEffectClearTargetPlayerCrisis = {
 #	}
 #}
 #
-#CmtEffectClearTargetUprising = {
+# CmtEffectClearTargetUprising = {
 #	every_country = {
 #		limit = { has_country_flag = CmtFlagManualUprisingListed }
 #		remove_country_flag = CmtFlagManualUprisingListed
@@ -398,9 +398,9 @@ CmtEffectClearTargetPlayerCrisis = {
 #	}
 #}
 
-##############################
-###  Configuration Viewer  ###
-##############################
+############################
+### Configuration Viewer ###
+############################
 
 ### Scope: this = country using Crisis Manager menu for configurations
 
@@ -1088,7 +1088,7 @@ CmtEffect1024TryCall4790 = {
 	}
 }
 
-### Forced End of the Cycle
+### Forced End of the Cycle.
 CmtEffect1022TryCall4410 = {
 	if = {
 		limit = { CmtTriggerForcedEocConfig = yes }
