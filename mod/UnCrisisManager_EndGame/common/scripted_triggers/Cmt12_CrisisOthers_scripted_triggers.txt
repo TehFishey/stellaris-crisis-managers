@@ -1,12 +1,12 @@
 
 ######################################################
 ######################################################
-#####                                            #####
-#####    Crisis Manager                          #####
-#####                                            #####
-#####    Scripted Trigger for End-Game Crises    #####
-#####    Except Triggering Crises                #####
-#####                                            #####
+#####											#####
+#####	Crisis Manager						  #####
+#####											#####
+#####	Scripted Trigger for End-Game Crises	#####
+#####	Except Triggering Crises				#####
+#####											#####
 ######################################################
 ######################################################
 
@@ -21,7 +21,7 @@ CmtTriggerPrethoryn1stTarget = {
 			any_neighbor_system = { exists = space_owner }
 			exists = space_owner
 		}
-		# Owned but not by fallen mpire
+		# Owned but not by fallen mpire.
 		AND = {
 			exists = space_owner
 			space_owner = { CmtTriggerIsFallenEmpire = no }
@@ -34,7 +34,7 @@ CmtTriggerPrethoryn1stTarget = {
 			space_owner = { CmtTriggerIsFallenEmpire = yes }
 		}
 	}
-	# Not Captial of Other Crisis Country
+	# Not Captial of Other Crisis Country.
 	CmtTriggerSpawnableSystem = yes
 }
 

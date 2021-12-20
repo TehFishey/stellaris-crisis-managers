@@ -2,12 +2,12 @@ namespace = crisis
 
 ##############################################
 ##############################################
-#####                                    #####
-#####    Crisis Events 3: Contingency    #####
-#####                                    #####
-#####    Trigger Events                  #####
-#####    Replaced by Crisis Manager      #####
-#####                                    #####
+#####									#####
+#####	Crisis Events 3: Contingency	#####
+#####									#####
+#####	Trigger Events				  #####
+#####	Replaced by Crisis Manager	  #####
+#####									#####
 ##############################################
 ##############################################
 
@@ -103,7 +103,7 @@ planet_event = {
 		}
 		create_country = {
 			name = "NAME_Contingency"
-			species = event_target:custodian_bot # for pops
+			species = event_target:custodian_bot # For pops
 			authority = auth_ancient_machine_intelligence
 			ethos = { ethic = ethic_gestalt_consciousness }
 			civics = {
@@ -460,7 +460,7 @@ planet_event = {
 		### Reinforcement of Combat Fleet
 		CmtEffectCreateAdmiralty_ContingencyReinforcement = yes
 
-		### Check if the number of constructor is less than upper limit
+		### Check if the number of constructor is less than upper limit.
 		event_target:CmtGlobalVar = {
 			set_variable = { which = CmtVarTemp value = @CmtConstContingencyConstructorUpperLimit }
 			multiply_variable = { which = CmtVarTemp value = CmtVarConstructorNumber_Contingency }
@@ -486,7 +486,7 @@ planet_event = {
 	}
 }
 
-### Machine World Army Reinforcement Cycle
+### Machine World Army Reinforcement Cycle.
 planet_event = {
 	id = crisis.2052
 	hide_window = yes
@@ -967,7 +967,7 @@ country_event = {
 ###  Terror Event for Machine Empire  ###
 #########################################
 
-### Warning Signs for Machine Empires
+### Warning Signs for Machine Empires.
 country_event = {
 	id = crisis.2313
 	title = "crisis.2313.name"
@@ -1313,8 +1313,8 @@ country_event = {
 			random_list = {
 				65 = { country_event = { id = crisis.2308 days = 120 } }
 				35 = { country_event = { id = crisis.2309 days = 120 } }
-				#65 = { country_event = { id = crisis.2308 days = 1 } }
-				#35 = { country_event = { id = crisis.2309 days = 1 } }
+				# 65 = { country_event = { id = crisis.2308 days = 1 } }
+				# 35 = { country_event = { id = crisis.2309 days = 1 } }
 			}
 		}
 	}
@@ -1587,7 +1587,7 @@ country_event = {
 	is_triggered_only = yes
 	trigger = { always = no }
 }
-# superfluous now
+# Superfluous now
 country_event = {
 	id = crisis.2045
 	hide_window = yes

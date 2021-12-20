@@ -33,7 +33,7 @@ CmtTriggerSpawnableSystem = {
 		has_star_flag = marauder_capital_3
 		has_star_flag = lgate
 		has_star_flag = lcluster
-		has_star_flag = sealed_system		## the system with no hyperlanes
+		has_star_flag = sealed_system		## The system with no hyperlanes.
 		# is_capital_system = yes
 	}
 }
@@ -183,7 +183,7 @@ CmtTriggerIsExpCrisisCountry = {
 }
 
 ### Sleeper
-CmtTriggerIsOrganicSleeper = {		## change to CmtTriggerSleeperPotentialAwakening
+CmtTriggerIsOrganicSleeper = {		## Change to CmtTriggerSleeperPotentialAwakening
 	is_country_type = fallen_empire
 	NOR = {
 		has_ethic = ethic_gestalt_consciousness
@@ -208,7 +208,10 @@ CmtTriggerIsMarauder = {
 # }
 
 CmtTriggerIsKhanCountry = {
-	is_country_type = awakened_marauders
+	OR = {
+		is_country_type = awakened_marauders
+		is_same_empire = event_target:raider_khanate
+	}
 	# CmtFlagKhanDeadCountry replaced with vanilla
 	NOT = { has_country_flag = khan_dead_event_fine }
 }

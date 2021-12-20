@@ -2,11 +2,11 @@ namespace = CrisisManagerControl
 
 ######################################################
 ######################################################
-#####                                            #####
-#####    Crisis Events 4: Forced End of the Cycle    #####
-#####                                            #####
-#####    Replaced by Crisis Manager              #####
-#####                                            #####
+#####											#####
+#####	Crisis Events 4: Forced End of the Cycle	#####
+#####											#####
+#####	Replaced by Crisis Manager			  #####
+#####											#####
 ######################################################
 ######################################################
 
@@ -53,7 +53,7 @@ country_event = {
 			}
 		}
 
-		### Select Term of Forced End of the Cycle
+		### Select Term of Forced End of the Cycle.
 		if = {
 			limit = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTermForcedEoc value = -1 } } } }
 			if = {
@@ -251,14 +251,14 @@ country_event = {
 		}
 
 		### Reckoning Marked Planet
-		event_target:CmtGlobalVar = { set_variable = { which = CmtVarTemp value = 0 } }		## for CmtVarEndPower
+		event_target:CmtGlobalVar = { set_variable = { which = CmtVarTemp value = 0 } }		## For CmtVarEndPower
 		every_galaxy_planet = {
 			limit = { has_modifier = covenant_shroud_marked }
 			remove_modifier = covenant_shroud_marked
 			remove_all_armies = yes
 			every_owned_pop = {
 				root = { change_variable = { which = end_power value = 1 } }
-				event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = 1 } }		## for CmtVarEndPower
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = 1 } }		## For CmtVarEndPower
 			}
 
 			if = {

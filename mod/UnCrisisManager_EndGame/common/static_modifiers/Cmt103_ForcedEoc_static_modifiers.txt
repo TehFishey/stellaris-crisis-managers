@@ -1,11 +1,11 @@
 
 ###################################################
 ###################################################
-#####                                         #####
-#####    Crisis Manager                       #####
-#####                                         #####
-#####    Modifiers for Forced End of the Cycle    #####
-#####                                         #####
+#####										 #####
+#####	Crisis Manager					   #####
+#####										 #####
+#####	Modifiers for Forced End of the Cycle	#####
+#####										 #####
 ###################################################
 ###################################################
 
@@ -13,32 +13,32 @@
 ###  Constants  ###
 ###################
 
-@CmtConstEndOfCycleModifierMult_013d      = 60.00		##  1400
-@CmtConstEndOfCycleModifierMult_088d      = 60.00		##   200
-@CmtConstEndOfCycleModifierMult_666d      = 60.00		##    27
-@CmtConstEndOfCycleModifierMult_04yr      = 12.00
-@CmtConstEndOfCycleModifierMult_13yr      =  3.75
-@CmtConstEndOfCycleModifierMult_17yr      =  3.00
-@CmtConstEndOfCycleModifierMult_23yr      =  2.00
-#CmtConstEndOfCycleModifierMult_50yr      =  1.00
+@CmtConstEndOfCycleModifierMult_013d	  = 60.00		##  1400
+@CmtConstEndOfCycleModifierMult_088d	  = 60.00		##   200
+@CmtConstEndOfCycleModifierMult_666d	  = 60.00		##	27
+@CmtConstEndOfCycleModifierMult_04yr	  = 12.00
+@CmtConstEndOfCycleModifierMult_13yr	  =  3.75
+@CmtConstEndOfCycleModifierMult_17yr	  =  3.00
+@CmtConstEndOfCycleModifierMult_23yr	  =  2.00
+# CmtConstEndOfCycleModifierMult_50yr	  =  1.00
 
 @CmtConstEndOfCycleModifierStarbase_013d  =   600		## 14000
 @CmtConstEndOfCycleModifierStarbase_088d  =   600		##  2000
 @CmtConstEndOfCycleModifierStarbase_666d  =   600		##   270
 @CmtConstEndOfCycleModifierStarbase_04yr  =   120
-@CmtConstEndOfCycleModifierStarbase_13yr  =    40
-@CmtConstEndOfCycleModifierStarbase_17yr  =    30
-@CmtConstEndOfCycleModifierStarbase_23yr  =    20
-#CmtConstEndOfCycleModifierStarbase_50yr  =    10
+@CmtConstEndOfCycleModifierStarbase_13yr  =	40
+@CmtConstEndOfCycleModifierStarbase_17yr  =	30
+@CmtConstEndOfCycleModifierStarbase_23yr  =	20
+# CmtConstEndOfCycleModifierStarbase_50yr  =	10
 
 @CmtConstEndOfCycleModifierInfluence_013d  =   300		##  7000
 @CmtConstEndOfCycleModifierInfluence_088d  =   300		##  1000
 @CmtConstEndOfCycleModifierInfluence_666d  =   300		##   135
-@CmtConstEndOfCycleModifierInfluence_04yr  =    60
-@CmtConstEndOfCycleModifierInfluence_13yr  =    20
-@CmtConstEndOfCycleModifierInfluence_17yr  =    15
-@CmtConstEndOfCycleModifierInfluence_23yr  =    10
-#CmtConstEndOfCycleModifierInfluence_50yr  =     5
+@CmtConstEndOfCycleModifierInfluence_04yr  =	60
+@CmtConstEndOfCycleModifierInfluence_13yr  =	20
+@CmtConstEndOfCycleModifierInfluence_17yr  =	15
+@CmtConstEndOfCycleModifierInfluence_23yr  =	10
+# CmtConstEndOfCycleModifierInfluence_50yr  =	 5
 
 ###############################
 ###  Covenant End of the Cycle  ###

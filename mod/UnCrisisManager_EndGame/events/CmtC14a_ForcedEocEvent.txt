@@ -2,11 +2,11 @@ namespace = CrisisManagerControl
 
 ################################################
 ################################################
-#####                                      #####
-#####    Crisis Manager                    #####
-#####                                      #####
-#####    Events for Forced End of the Cycle    #####
-#####                                      #####
+#####									  #####
+#####	Crisis Manager					#####
+#####									  #####
+#####	Events for Forced End of the Cycle	#####
+#####									  #####
 ################################################
 ################################################
 #
@@ -18,8 +18,8 @@ namespace = CrisisManagerControl
 ###################
 #
 # Days: Event Delay
-# Rand: Random part of days for event delay
-# Mtth: Mean time to happen in months
+# Rand: Random part of days for event delay.
+# Mtth: Mean time to happen in months.
 #
 
 ### Very Slow
@@ -31,7 +31,7 @@ namespace = CrisisManagerControl
 ### Random & Slow
 @CmtConstForcedCovenantEocDays21 = 1260		## Covenant
 @CmtConstForcedCovenantEocRand21 =  900
-@CmtConstForcedCovenantEocYear2a =    4		## Reckoning in years
+@CmtConstForcedCovenantEocYear2a =	4		## Reckoning in years
 @CmtConstForcedCovenantEocDays2a = 1440		## Reckoning
 @CmtConstForcedCovenantEocYear2b =   13		## Reckoning in years
 @CmtConstForcedCovenantEocDays2b = 4680		## Reckoning
@@ -39,7 +39,7 @@ namespace = CrisisManagerControl
 @CmtConstForcedCovenantEocDays2c = 6120		## Reckoning
 @CmtConstForcedCovenantEocYear2d =   23		## Reckoning in years
 @CmtConstForcedCovenantEocDays2d = 8280		## Reckoning
-#CmtConstForcedCovenantEocYear2e =  N/A		## Reckoning in years
+# CmtConstForcedCovenantEocYear2e =  N/A		## Reckoning in years
 @CmtConstForcedCovenantEocDays2e =  666		## Reckoning
 
 ### Vanilla
@@ -49,32 +49,32 @@ namespace = CrisisManagerControl
 @CmtConstForcedCovenantEocDays3a = 7200		## Reckoning
 
 ### Fast
-@CmtConstForcedCovenantEocDays41 =    1		## Covenant
+@CmtConstForcedCovenantEocDays41 =	1		## Covenant
 @CmtConstForcedCovenantEocRand41 =  360
-@CmtConstForcedCovenantEocYear4a =    4		## Reckoning in years
+@CmtConstForcedCovenantEocYear4a =	4		## Reckoning in years
 @CmtConstForcedCovenantEocDays4a = 1440		## Reckoning
 
 ### Random & Fast
 @CmtConstForcedCovenantEocDays51 =  540		## Covenant
 @CmtConstForcedCovenantEocRand51 =  900
-@CmtConstForcedCovenantEocYear5a =    4		## Reckoning in years
+@CmtConstForcedCovenantEocYear5a =	4		## Reckoning in years
 @CmtConstForcedCovenantEocDays5a = 1440		## Reckoning
-#CmtConstForcedCovenantEocYear5b =  N/A		## Reckoning in years
+# CmtConstForcedCovenantEocYear5b =  N/A		## Reckoning in years
 @CmtConstForcedCovenantEocDays5b =  666		## Reckoning
 
 ### Foxhound
-@CmtConstForcedCovenantEocDays61 =    1		## Covenant
-@CmtConstForcedCovenantEocRand61 =    3
-#CmtConstForcedCovenantEocYear6a =  N/A		## Reckoning in years
+@CmtConstForcedCovenantEocDays61 =	1		## Covenant
+@CmtConstForcedCovenantEocRand61 =	3
+# CmtConstForcedCovenantEocYear6a =  N/A		## Reckoning in years
 @CmtConstForcedCovenantEocDays6a =   13		## Reckoning
-#CmtConstForcedCovenantEocYear6b =  N/A		## Reckoning in years
+# CmtConstForcedCovenantEocYear6b =  N/A		## Reckoning in years
 @CmtConstForcedCovenantEocDays6b =   88		## Reckoning
 
 ################
 ###  Common  ###
 ################
 
-### Check Progress Speed of Opening Event Chain
+### Check Progress Speed of Opening Event Chain.
 country_event = {
 	id = CrisisManagerControl.4000
 	hide_window = yes
@@ -140,7 +140,7 @@ country_event = {
 			country_event = { id = CrisisManagerControl.4011 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			remove_global_flag = CmtFlagForcedEocTermInDays		## for initialization
+			remove_global_flag = CmtFlagForcedEocTermInDays		## For initialization
 			if = {
 				limit = { has_global_flag = CmtFlagForcedEocCrisisTerm }
 				set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocYear1a }
@@ -204,7 +204,7 @@ country_event = {
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
 
-			remove_global_flag = CmtFlagForcedEocTermInDays		## for initialization
+			remove_global_flag = CmtFlagForcedEocTermInDays		## For initialization
 			if = {
 				limit = { has_global_flag = CmtFlagForcedEocCrisisTerm }
 				random_list = {
@@ -287,7 +287,7 @@ country_event = {
 			country_event = { id = CrisisManagerControl.4031 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			remove_global_flag = CmtFlagForcedEocTermInDays		## for initialization
+			remove_global_flag = CmtFlagForcedEocTermInDays		## For initialization
 			set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocYear3a }
 			country_event = { id = CrisisManagerControl.4032 days = @CmtConstForcedCovenantEocDays3a }
 			event_target:CmtTargetVictimForcedEoc = {
@@ -343,7 +343,7 @@ country_event = {
 			country_event = { id = CrisisManagerControl.4041 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			remove_global_flag = CmtFlagForcedEocTermInDays		## for initialization
+			remove_global_flag = CmtFlagForcedEocTermInDays		## For initialization
 			if = {
 				limit = { has_global_flag = CmtFlagForcedEocCrisisTerm }
 				set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocYear4a }
@@ -406,7 +406,7 @@ country_event = {
 			country_event = { id = CrisisManagerControl.4051 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			remove_global_flag = CmtFlagForcedEocTermInDays		## for initialization
+			remove_global_flag = CmtFlagForcedEocTermInDays		## For initialization
 			if = {
 				limit = { has_global_flag = CmtFlagForcedEocCrisisTerm }
 				random_list = {
@@ -477,7 +477,7 @@ country_event = {
 			country_event = { id = CrisisManagerControl.4061 days = 1 }
 		} else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 1 }
-			remove_global_flag = CmtFlagForcedEocTermInDays		## for initialization
+			remove_global_flag = CmtFlagForcedEocTermInDays		## For initialization
 			if = {
 				limit = { has_global_flag = CmtFlagForcedEocCrisisTerm }
 				random_list = {

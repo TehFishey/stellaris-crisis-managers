@@ -2,11 +2,11 @@ namespace = crisis
 
 ############################################
 ############################################
-#####                                  #####
-#####    Crisis Events 1: Prethoryn    #####
-#####                                  #####
-#####    Replaced by Crisis Manager    #####
-#####                                  #####
+#####								  #####
+#####	Crisis Events 1: Prethoryn	#####
+#####								  #####
+#####	Replaced by Crisis Manager	#####
+#####								  #####
 ############################################
 ############################################
 
@@ -29,11 +29,9 @@ country_event = {
 	id = crisis.199
 	hide_window = yes
 	is_triggered_only = yes
-
 	trigger = {
 		NOT = { has_global_flag = prethoryn_invasion_happened }
 	}
-
 	immediate = {
 		endgame_telemetry = prethoryn
 		set_global_flag = galactic_crisis_happened
@@ -93,7 +91,7 @@ country_event = {
 ###  Opening Events  ###
 ########################
 
-### Notification of Approaching Subspace Echoes
+### Notification of Approaching Subspace Echoes.
 country_event = {
 	id = crisis.11
 	title = crisis.11.name
@@ -140,7 +138,7 @@ country_event = {
 	}
 }
 
-### Notification of Approaching the Outer Rim
+### Notification of Approaching the Outer Rim.
 country_event = {
 	id = crisis.13
 	title = crisis.13.name
@@ -571,7 +569,7 @@ country_event = {
 		}
 		observer_event = { id = observer.30 }
 
-		# Recreate Prethoryn if Vanguard was destroyed
+		# Recreate Prethoryn if Vanguard was destroyed.
 		if = {
 			limit = {
 				NOR = {
@@ -579,7 +577,7 @@ country_event = {
 					any_country = { is_country_type = swarm }
 				}
 			}
-			CmtEffectCreatePrethorynCountry = yes ## For Case of Vanguard Annihilated
+			CmtEffectCreatePrethorynCountry = yes ## For Case of Vanguard Annihilated.
 		}
 
 		# Custodian/Emperor Announcements (3.0.2)
@@ -673,7 +671,7 @@ country_event = {
 		}
 		CmtEffectFriendlyCrisis = yes
 
-		### Call Sentinels and Prethoryn Queen
+		### Call Sentinels and Prethoryn Queen.
 		every_country = {
 			limit = { CmtTriggerIsPrethoryn = yes }
 			if = {
@@ -727,7 +725,7 @@ event = {
 			CmtTriggerIsPrethoryn = yes
 			any_system_within_border = { exists = starbase }
 		}
-		NOT = { has_global_flag = CmtFlagNowHappen206 }		## To avoid double calling of on_yearly_pulse and on_bi_yearly_pulse
+		NOT = { has_global_flag = CmtFlagNowHappen206 }		## To avoid double calling of on_yearly_pulse and on_bi_yearly_pulse.
 	}
 
 	immediate = {
@@ -1425,7 +1423,7 @@ country_event = {
 			limit = { check_variable = { which = CmtVarFeralPrethoryn value = 4 } }
 			set_timed_global_flag = { flag = feral_prethoryn_can_spawn days = 18000 }	## 50 yr
 		} else_if = {
-			limit = { NOT = { check_variable = { which = CmtVarFeralPrethoryn value = 1 } } }
+			limit = { check_variable = { which = CmtVarFeralPrethoryn value != 1 } }
 			set_timed_global_flag = { flag = feral_prethoryn_can_spawn days = 5400 }	## 15 yr
 		}
 	}
@@ -1441,11 +1439,11 @@ event = {
 	trigger = {
 		has_global_flag = feral_prethoryn_can_spawn
 		event_target:CmtGlobalVar = {
-			NOT = { check_variable = { which = CmtVarFeralPrethoryn value = 1 } }
+			check_variable = { which = CmtVarFeralPrethoryn value != 1 }
 			OR = {
 				check_variable = { which = feral_prethoryn_spawned value < 5 }
 				AND = {
-					NOT = { check_variable = { which = CmtVarFeralPrethoryn value = 2 } }
+					check_variable = { which = CmtVarFeralPrethoryn value != 2 }
 					check_variable = { which = feral_prethoryn_spawned value < 10 }
 				}
 				check_variable = { which = CmtVarFeralPrethoryn value = 4 }
@@ -1614,7 +1612,7 @@ event = {
 country_event = {
 	id = crisis.16
 	title = "TRANSMISSION"
-	#desc = "crisis.16.desc"
+	# desc = "crisis.16.desc"
 
 	desc = {
 		text = "crisis.16.desc"
@@ -1816,7 +1814,7 @@ country_event = {
 
 ### HIDDEN SWARM FUNCTIONALITY
 
-# Infested to Barren after Orbital Bombardment
+# Infested to Barren after Orbital Bombardment.
 planet_event = {
 	id = crisis.200
 	hide_window = yes
@@ -1892,7 +1890,7 @@ country_event = {
 		set_global_flag = prethoryn_invasion_defeated
 		event_target:CmtGlobalVar = { country_event = { id = crisis.119 days = 360 } }		## Feral Prethoryn
 
-		# Crisis reward is handled through Galactic Focus if the community exists
+		# Crisis reward is handled through Galactic Focus if the community exists.
 		if = { limit = { NOT = { has_global_flag = galactic_community_formed } }
 			every_country = {
 				limit = { CmtTriggerIsEmpire = yes }

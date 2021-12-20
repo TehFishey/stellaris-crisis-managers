@@ -1,11 +1,11 @@
 
 #######################################################
 #######################################################
-#####                                             #####
-#####    Crisis Manager                           #####
-#####                                             #####
-#####    Target Control of Forced End of Cycle    #####
-#####                                             #####
+#####											 #####
+#####	Crisis Manager						   #####
+#####											 #####
+#####	Target Control of Forced End of Cycle	#####
+#####											 #####
 #######################################################
 #######################################################
 
@@ -28,8 +28,8 @@
 @CmtConstForcedEocFleetPower_4 =   380000	##   380 k
 @CmtConstForcedEocFleetPower_5 =   210000	##   210 k
 @CmtConstForcedEocFleetPower_6 =   120000	##   120 k
-@CmtConstForcedEocFleetPower_7 =    70000	##    70 k
-@CmtConstForcedEocFleetPower_8 =    40000	##    40 k
+@CmtConstForcedEocFleetPower_7 =	70000	##	70 k
+@CmtConstForcedEocFleetPower_8 =	40000	##	40 k
 
 @CmtConstForcedEocNumberOfPops_1 =  100
 @CmtConstForcedEocNumberOfPops_2 =  200
@@ -458,7 +458,7 @@ CmtEffectTargetingForcedEoc = {
 			}
 		}
 
-		### Trigger End of the Cycle
+		### Trigger End of the Cycle.
 		random_country = {
 			limit = { has_country_flag = CmtFlagForcedEocTargetList }
 			save_global_event_target_as = CmtTargetVictimForcedEoc

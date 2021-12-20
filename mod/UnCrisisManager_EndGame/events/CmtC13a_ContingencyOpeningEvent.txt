@@ -2,12 +2,12 @@ namespace = CrisisManagerControl
 
 #################################################
 #################################################
-#####                                       #####
-#####    Crisis Manager                     #####
-#####                                       #####
-#####    Contingency Opening Event Chain    #####
-#####    Ghost Signal                       #####
-#####                                       #####
+#####									   #####
+#####	Crisis Manager					 #####
+#####									   #####
+#####	Contingency Opening Event Chain	#####
+#####	Ghost Signal					   #####
+#####									   #####
 #################################################
 #################################################
 #
@@ -19,8 +19,8 @@ namespace = CrisisManagerControl
 ###################
 #
 # Days: Event Delay
-# Rand: Random part of days for event delay
-# Mtth: Mean time to happen in months
+# Rand: Random part of days for event delay.
+# Mtth: Mean time to happen in months.
 #
 
 ### Very Slow: Double Centrally Controled by The Ghost Signal & 1st Machine Worlds
@@ -67,7 +67,7 @@ namespace = CrisisManagerControl
 @CmtConstGhostSignalDays2c =  175	## 4th Machine Worlds
 @CmtConstGhostSignalRand2c =   10
 
-### Vanilla: Centrally Controled by the Ghost Signal
+### Vanilla: Centrally Controled by the Ghost Signal.
 @CmtConstGhostSignalDays31 =  200	## The Ghost Signal
 @CmtConstGhostSignalRand31 =  800
 @CmtConstGhostSignalDays32 =  100	## Synths Act Strange
@@ -79,7 +79,7 @@ namespace = CrisisManagerControl
 @CmtConstGhostSignalDays35 = 1000	## The Summons
 @CmtConstGhostSignalRand35 =  200
 @CmtConstGhostSignalDays36 = 1400	## The Arrival
-@CmtConstGhostSignalRand36 =    0
+@CmtConstGhostSignalRand36 =	0
 @CmtConstGhostSignalDays37 = 1450	## 1st Machine Worlds & Synth Infiltration
 @CmtConstGhostSignalRand37 =   10
 @CmtConstGhostSignalDays3a = 1500	## 2nd Machine Worlds
@@ -101,7 +101,7 @@ namespace = CrisisManagerControl
 @CmtConstGhostSignalDays45 = 1080	## The Summons
 @CmtConstGhostSignalRand45 =  150
 @CmtConstGhostSignalDays46 = 1410	## The Arrival
-@CmtConstGhostSignalRand46 =    0
+@CmtConstGhostSignalRand46 =	0
 @CmtConstGhostSignalDays47 = 1440	## 1st Machine Worlds & Synth Infiltration
 @CmtConstGhostSignalRand47 =   15
 @CmtConstGhostSignalDays4a = 1470	## 2nd Machine Worlds
@@ -112,7 +112,7 @@ namespace = CrisisManagerControl
 @CmtConstGhostSignalRand4c =   15
 
 ### Random & Fast
-@CmtConstGhostSignalDays51 =    1	## The Ghost Signal
+@CmtConstGhostSignalDays51 =	1	## The Ghost Signal
 @CmtConstGhostSignalRand51 =  360
 @CmtConstGhostSignalDays52 =   15	## Synths Act Strange, from
 @CmtConstGhostSignalRand52 =  240
@@ -134,32 +134,32 @@ namespace = CrisisManagerControl
 @CmtConstGhostSignalRand5c =   15
 
 ### Foxhound: Sequential Control
-@CmtConstGhostSignalDays61 =    1	## The Ghost Signal
-@CmtConstGhostSignalRand61 =    3
-@CmtConstGhostSignalDays62 =    1	## Synths Act Strange
-@CmtConstGhostSignalRand62 =    3
-@CmtConstGhostSignalDays63 =    1	## Synths Disappear
-@CmtConstGhostSignalRand63 =    3
-@CmtConstGhostSignalDays64 =    1	## Synthetic Disappearances
-@CmtConstGhostSignalRand64 =    3
-@CmtConstGhostSignalDays65 =    1	## The Summons
-@CmtConstGhostSignalRand65 =    3
-@CmtConstGhostSignalDays66 =    1	## The Arrival
-@CmtConstGhostSignalRand66 =    3
-@CmtConstGhostSignalDays67 =    1	## 1st Machine Worlds & Synth Infiltration
-@CmtConstGhostSignalRand67 =    3
-@CmtConstGhostSignalDays6a =    1	## 2nd Machine Worlds
-@CmtConstGhostSignalRand6a =    2
-@CmtConstGhostSignalDays6b =    1	## 3rd Machine Worlds
-@CmtConstGhostSignalRand6b =    2
-@CmtConstGhostSignalDays6c =    1	## 4th Machine Worlds
-@CmtConstGhostSignalRand6c =    2
+@CmtConstGhostSignalDays61 =	1	## The Ghost Signal
+@CmtConstGhostSignalRand61 =	3
+@CmtConstGhostSignalDays62 =	1	## Synths Act Strange
+@CmtConstGhostSignalRand62 =	3
+@CmtConstGhostSignalDays63 =	1	## Synths Disappear
+@CmtConstGhostSignalRand63 =	3
+@CmtConstGhostSignalDays64 =	1	## Synthetic Disappearances
+@CmtConstGhostSignalRand64 =	3
+@CmtConstGhostSignalDays65 =	1	## The Summons
+@CmtConstGhostSignalRand65 =	3
+@CmtConstGhostSignalDays66 =	1	## The Arrival
+@CmtConstGhostSignalRand66 =	3
+@CmtConstGhostSignalDays67 =	1	## 1st Machine Worlds & Synth Infiltration
+@CmtConstGhostSignalRand67 =	3
+@CmtConstGhostSignalDays6a =	1	## 2nd Machine Worlds
+@CmtConstGhostSignalRand6a =	2
+@CmtConstGhostSignalDays6b =	1	## 3rd Machine Worlds
+@CmtConstGhostSignalRand6b =	2
+@CmtConstGhostSignalDays6c =	1	## 4th Machine Worlds
+@CmtConstGhostSignalRand6c =	2
 
 ################
 ###  Common  ###
 ################
 
-### Check Progress Speed of Opening Event Chain
+### Check Progress Speed of Opening Event Chain.
 country_event = {
 	id = CrisisManagerControl.3000
 	hide_window = yes

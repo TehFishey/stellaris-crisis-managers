@@ -22,7 +22,7 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		# possible flag fix (to be sure) - sometimes not removed
+		# Possible flag fix (to be sure) - sometimes not removed.
 		if = {
 			limit = {
 				host_has_dlc = "Apocalypse"
@@ -163,7 +163,7 @@ country_event = {
 		}
 		hidden_effect = {
 			if = {
-				limit = { # hidden fallback
+				limit = { # Hidden fallback
 					OR = {
 						has_global_flag = war_in_heaven_debug
 						count_country = {
@@ -201,13 +201,13 @@ country_event = {
 			NOT = { has_global_flag = marauder_crisis_ongoing }
 			# CmtTriggerNowInKhanCrisis = no
 			OR = {
-				has_global_flag = marauder_crisis_started # possible fallback
+				has_global_flag = marauder_crisis_started # Possible fallback
 				any_country = { CmtTriggerHasPotentialKhanAwaking = yes }
 			}
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7138 } }
 	}
-	option = { # not possible (not ongoing)
+	option = { # Not possible (not ongoing)
 		name = CrisisManagerMenu.7000.7138.B.name
 		custom_tooltip = CrisisManagerMenu.7000.7138.B.tooltip
 		allow = { host_has_dlc = "Apocalypse" }
@@ -215,13 +215,13 @@ country_event = {
 			has_global_flag = CmtFlagMidGameEdition
 			NOR = {
 				has_global_flag = marauder_crisis_ongoing
-				has_global_flag = marauder_crisis_started # possible fallback
+				has_global_flag = marauder_crisis_started # Possible fallback
 				any_country = { CmtTriggerHasPotentialKhanAwaking = yes }
 			}
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
 	}
-	option = { # possible (but ongoing)
+	option = { # Possible (but ongoing)
 		name = CrisisManagerMenu.7000.7138.C.name
 		custom_tooltip = CrisisManagerMenu.7000.7138.C.tooltip
 		allow = { host_has_dlc = "Apocalypse" }
@@ -1316,7 +1316,7 @@ country_event = {
 					save_global_event_target_as = CmtTargetManualSleeperA
 				}
 			}
-			if = { # automatically last possible option
+			if = { # Automatically last possible option
 				limit = {
 					NOT = { exists = event_target:CmtTargetManualSleeperB }
 					count_country = {

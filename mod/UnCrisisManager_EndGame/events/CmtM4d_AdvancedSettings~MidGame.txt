@@ -1184,7 +1184,7 @@ country_event = {
 	picture = {
 		trigger = {
 			# `~(A + B) + ~(AD) + ~(A + C) + ~(B + C) + ~(B + D) + ~(D + C) + ABCD`
-			# is the same as: `(A + ~B + ~C + ~D) (~A + B + ~C + ~D) (~A + ~B + C + ~D) (~A + ~B + ~C + D)`
+			# Is the same as: `(A + ~B + ~C + ~D) (~A + B + ~C + ~D) (~A + ~B + C + ~D) (~A + ~B + ~C + D)`
 			OR = {
 				NOR = {
 					has_global_flag = CmtFlagLgateForbidSilence	# A

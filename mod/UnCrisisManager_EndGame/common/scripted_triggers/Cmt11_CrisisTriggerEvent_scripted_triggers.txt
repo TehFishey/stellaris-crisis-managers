@@ -1,11 +1,11 @@
 
 ##################################################################
 ##################################################################
-#####                                                        #####
-#####    Crisis Manager                                      #####
-#####                                                        #####
-#####    Scripted Triggers for Triggering End-Game Crises    #####
-#####                                                        #####
+#####														#####
+#####	Crisis Manager									  #####
+#####														#####
+#####	Scripted Triggers for Triggering End-Game Crises	#####
+#####														#####
 ##################################################################
 ##################################################################
 
@@ -140,7 +140,7 @@ CmtTriggerForbiddenContingency = {
 # 	}
 # }
 
-### Forced End of the Cycle
+### Forced End of the Cycle.
 #
 # CmtTriggerPotentialForcedEoc -> Cmt2_Others_scripted_triggers.txt
 # CmtTriggerForbiddenForcedEoc -> Cmt2_Others_scripted_triggers.txt
@@ -173,7 +173,7 @@ CmtTriggerShroudPatron = {
 # 	has_global_flag = CmtFlagExdsTriggered
 # }
 
-### Probability Control by This Mod
+### Probability Control by This Mod.
 
 # CmtTriggerTotalProbability_1 = {
 # 	check_variable = { which = CmtVarTriggerProbability value = 1 }

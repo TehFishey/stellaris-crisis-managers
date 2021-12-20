@@ -31,6 +31,38 @@ namespace = war_in_heaven
 @CmtConstHeavenLeagueLeaderFleetPower_TE =  500000
 @CmtConstHeavenLeagueLeaderFleetPower_TF = 1000000		## 1 M
 
+
+country_event = {
+	id = war_in_heaven.1000
+	title = OK
+	desc = OK
+	is_triggered_only = yes
+	# trigger = { always = no }
+	hide_window = yes
+	immediate = {
+		set_global_flag = sleepers_awake_happened
+		set_global_flag = war_in_heaven_debug
+		random_country = {
+			limit = {
+				is_country_type = fallen_empire
+				NOT = { has_ethic = ethic_gestalt_consciousness }
+			}
+			set_country_flag = sleepers_awake_first
+			country_event = { id = fallen_empires_awakening.3 }
+		}
+		# War in Heaven
+		random_country = {
+			limit = {
+				is_country_type = fallen_empire
+				NOT = { has_ethic = ethic_gestalt_consciousness }
+				NOT = { has_country_flag = sleepers_awake_first }
+			}
+			set_country_flag = sleepers_awake_ancient_rival
+			set_timed_country_flag = { flag = timed_ancient_rival days = 3650 }
+		}
+	}
+}
+
 ########################
 ###  Trigger Events  ###
 ########################
@@ -1427,7 +1459,7 @@ country_event = {
 	}
 }
 
-### Declear War (League vs. Ancient)
+### Declare War (League vs. Ancient)
 country_event = {
 	id = war_in_heaven.16
 	title = war_in_heaven.16.name
@@ -1455,9 +1487,17 @@ country_event = {
 				is_at_war_with = prev
 			}
 		}
+		# any_country = {
+		# 	count = 2
+		# 	CmtTriggerIsHeavenAFE = yes
+		# }
 		any_country = {
-			count = 2
-			CmtTriggerIsHeavenAFE = yes
+			is_country_type = awakened_fallen_empire
+			has_country_flag = sleepers_awake_first_sleeper
+		}
+		any_country = {
+			is_country_type = awakened_fallen_empire
+			has_country_flag = sleepers_awake_ancient_rival
 		}
 	}
 

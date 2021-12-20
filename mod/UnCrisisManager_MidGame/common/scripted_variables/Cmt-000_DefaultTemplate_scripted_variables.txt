@@ -17,11 +17,11 @@
 ################################
 
 ### Activate Template
-	@CmtT000_ConstActivatedEventEndgame = yes	## for events of End-Game Crisis, Guardians of Galaxy
-	@CmtT000_ConstActivatedEventMidgame = yes	## for events of Mid-Game Crisis (Khan, L-Gate)
-	@CmtT000_ConstActivatedEventSleeper = yes	## for events of Fallen Empire Awaking except Guarians of Galaxy
-	@CmtT000_ConstActivatedPowerEndgame = yes	## for military power of End-Game Crisis
-	@CmtT000_ConstActivatedPowerMidgame = yes	## for military power of Khan and Gray Tempest
+	@CmtT000_ConstActivatedEventEndgame = yes	## For events of End-Game Crisis, Guardians of Galaxy.
+	@CmtT000_ConstActivatedEventMidgame = yes	## For events of Mid-Game Crisis (Khan, L-Gate)
+	@CmtT000_ConstActivatedEventSleeper = yes	## For events of Fallen Empire Awaking except Guarians of Galaxy.
+	@CmtT000_ConstActivatedPowerEndgame = yes	## For military power of End-Game Crisis
+	@CmtT000_ConstActivatedPowerMidgame = yes	## For military power of Khan and Gray Tempest.
 		### yes: this template is activated for specified parameters.
 		### no : this template is ignored for specified parameters.
 		### * No configurations exist for military power of Fallen/Awakened Empires.
@@ -571,8 +571,8 @@
 
 ### Template of Crisis Power
 ### Template of Crisis Power
-	@CmtT000_ConstCrisisStrengthEnd = 2		## for End-Game Crisis
-	@CmtT000_ConstCrisisStrengthMid = 2		## for Mid-Game Crisis (Khan & Gray Tempest)
+	@CmtT000_ConstCrisisStrengthEnd = 2		## For End-Game Crisis
+	@CmtT000_ConstCrisisStrengthMid = 2		## For Mid-Game Crisis (Khan & Gray Tempest)
 		### Set configurations individually = 0
 		### Easy = 1, Normal = 2 (Default), Hard = 3, Doomsday = 4
 

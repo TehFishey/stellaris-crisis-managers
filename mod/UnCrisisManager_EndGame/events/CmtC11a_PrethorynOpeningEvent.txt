@@ -2,18 +2,18 @@ namespace = CrisisManagerControl
 
 ###############################################
 ###############################################
-#####                                     #####
-#####    Crisis Manager                   #####
-#####                                     #####
-#####    Prethoryn Opening Event Chain    #####
-#####    Comming Storm                    #####
-#####                                     #####
+#####									 #####
+#####	Crisis Manager				   #####
+#####									 #####
+#####	Prethoryn Opening Event Chain	#####
+#####	Comming Storm					#####
+#####									 #####
 ###############################################
 ###############################################
 #
 # Most of events in this file are country_event for global_event.
 #
-# Following flags are deleted from Vanilla
+# Following flags are deleted from Vanilla.
 #	prethoryn_subspace_echoes
 #	prethoryn_approaching_rim
 #	prethoryn_transmission
@@ -24,8 +24,8 @@ namespace = CrisisManagerControl
 ###################
 #
 # Days: Event Delay
-# Rand: Random part of days for event delay
-# Mtth: Mean time to happen in months
+# Rand: Random part of days for event delay.
+# Mtth: Mean time to happen in months.
 #
 
 ### Very Slow
@@ -46,7 +46,7 @@ namespace = CrisisManagerControl
 @CmtConstCommingStormDays22 = 1080	## Approaching the Outer Rim
 @CmtConstCommingStormRand22 = 5760
 @CmtConstCommingStormMtth23 = 1800	## (Approaching) Subspace Signal
-#CmtConstCommingStorm----23 =  N/A
+# CmtConstCommingStorm----23 =  N/A
 @CmtConstCommingStormDays24 =  180	## Vanguard Arrives (The First Wave)
 @CmtConstCommingStormRand24 =  360
 @CmtConstCommingStormDays25 =  400	## Prethoryn Main Invasion Arrives (The Second Wave)
@@ -55,16 +55,16 @@ namespace = CrisisManagerControl
 ### Vanilla
 @CmtConstCommingStormDays31 =  200	## Subspace Echoes
 @CmtConstCommingStormRand31 =  800
-@CmtConstCommingStormMtth32 =18000	## Approaching the Outer Rim, MTTH for all defaoult country
-#CmtConstCommingStorm----32 =  N/A
+@CmtConstCommingStormMtth32 =18000	## Approaching the Outer Rim, MTTH for all defaoult country.
+# CmtConstCommingStorm----32 =  N/A
 @CmtConstCommingStormMtth33 = 3600	## (Approaching) Subspace Signal, MTTH for all country
-#CmtConstCommingStorm----33 =  N/A
-@CmtConstCommingStormMtth34 =  900	## Vanguard Arrives (The First Wave), MTTH for all country
-#CmtConstCommingStorm----34 =  N/A
+# CmtConstCommingStorm----33 =  N/A
+@CmtConstCommingStormMtth34 =  900	## Vanguard Arrives (The First Wave), MTTH for all country.
+# CmtConstCommingStorm----34 =  N/A
 @CmtConstCommingStormDays35 =  400	## Prethoryn Main Invasion Arrives (The Second Wave)
 @CmtConstCommingStormRand35 =  200
 
-### Fast: Centrally Controled by Subspace Echoes
+### Fast: Centrally Controled by Subspace Echoes.
 @CmtConstCommingStormDays41 =  180	## Subspace Echoes
 @CmtConstCommingStormRand41 =   45
 @CmtConstCommingStormDays42 = 1080	## Approaching the Outer Rim
@@ -77,34 +77,34 @@ namespace = CrisisManagerControl
 @CmtConstCommingStormRand45 =   15
 
 ### Random & Fast
-@CmtConstCommingStormDays51 =    1	## Subspace Echoes
+@CmtConstCommingStormDays51 =	1	## Subspace Echoes
 @CmtConstCommingStormRand51 =  360
 @CmtConstCommingStormMtth52 =  540	## Approaching the Outer Rim
-#CmtConstCommingStorm----52 =  N/A
+# CmtConstCommingStorm----52 =  N/A
 @CmtConstCommingStormMtth53 =   30	## (Approaching) Subspace Signal
-#CmtConstCommingStorm----53 =  N/A
+# CmtConstCommingStorm----53 =  N/A
 @CmtConstCommingStormDays54 =  180	## Vanguard Arrives (The First Wave)
-@CmtConstCommingStormRand54 =    0
+@CmtConstCommingStormRand54 =	0
 @CmtConstCommingStormDays55 =   60	## Prethoryn Main Invasion Arrives (The Second Wave)
 @CmtConstCommingStormRand55 =   20
 
 ### Foxhound
-@CmtConstCommingStormDays61 =    1	## Subspace Echoes
-@CmtConstCommingStormRand61 =    5
-@CmtConstCommingStormDays62 =    3	## Approaching the Outer Rim
-@CmtConstCommingStormRand62 =    8
-@CmtConstCommingStormDays63 =    1	## (Approaching) Subspace Signal
-@CmtConstCommingStormRand63 =    5
-@CmtConstCommingStormDays64 =    1	## Vanguard Arrives (The First Wave)
-@CmtConstCommingStormRand64 =    3
-@CmtConstCommingStormDays65 =    1	## Prethoryn Main Invasion Arrives (The Second Wave)
-@CmtConstCommingStormRand65 =    3
+@CmtConstCommingStormDays61 =	1	## Subspace Echoes
+@CmtConstCommingStormRand61 =	5
+@CmtConstCommingStormDays62 =	3	## Approaching the Outer Rim
+@CmtConstCommingStormRand62 =	8
+@CmtConstCommingStormDays63 =	1	## (Approaching) Subspace Signal
+@CmtConstCommingStormRand63 =	5
+@CmtConstCommingStormDays64 =	1	## Vanguard Arrives (The First Wave)
+@CmtConstCommingStormRand64 =	3
+@CmtConstCommingStormDays65 =	1	## Prethoryn Main Invasion Arrives (The Second Wave)
+@CmtConstCommingStormRand65 =	3
 
 ################
 ###  Common  ###
 ################
 
-### Check Progress Speed of Opening Event Chain
+### Check Progress Speed of Opening Event Chain.
 country_event = {
 	id = CrisisManagerControl.1000
 	hide_window = yes

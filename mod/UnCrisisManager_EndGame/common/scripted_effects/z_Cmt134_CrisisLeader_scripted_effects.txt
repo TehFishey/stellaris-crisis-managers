@@ -1,12 +1,12 @@
 
 ######################################################
 ######################################################
-#####                                            #####
-#####    Crisis Manager                          #####
-#####                                            #####
-#####    Scripted Effects for Creating Leader    #####
-#####    of End-Game Crises                      #####
-#####                                            #####
+#####											#####
+#####	Crisis Manager						  #####
+#####											#####
+#####	Scripted Effects for Creating Leader	#####
+#####	of End-Game Crises					  #####
+#####											#####
 ######################################################
 ######################################################
 #
@@ -158,7 +158,7 @@ CmtEffectCreateAdmiral_PetQueen = {
 		species = event_target:swarm_species
 		name = "NAME_Fleet_Consciousness"
 		skill = 8
-		event_leader = yes		# prevents this leader from leading factions and winning elections
+		event_leader = yes		# Prevents this leader from leading factions and winning elections.
 		immortal = yes		# can't be killed (not even in battle, unless fleet is destroyed)
 		effect = { set_leader_flag = captured_queen }
 	}

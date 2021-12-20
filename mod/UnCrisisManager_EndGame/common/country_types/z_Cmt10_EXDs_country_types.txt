@@ -1,17 +1,17 @@
 
 ###############################################################
 ###############################################################
-#####                                                     #####
-#####    Crisis Manager                                   #####
-#####                                                     #####
-#####    country_types for improving Extradimensionals    #####
-#####                                                     #####
+#####													 #####
+#####	Crisis Manager								   #####
+#####													 #####
+#####	country_types for improving Extradimensionals	#####
+#####													 #####
 ###############################################################
 ###############################################################
 
-#extradimensional = {		## Un-modified
+# extradimensional = {		## Un-modified
 #	attack_unarmed_orbital_stations = yes
-#	scaled_difficulty_bonuses = 3.0	# scales to setting
+#	scaled_difficulty_bonuses = 3.0	# Scales to setting
 #	end_game_crisis = yes
 #	destroys_starbases = yes
 #	needs_survey = no
@@ -57,7 +57,7 @@
 
 extradimensional_2 = {
 	attack_unarmed_orbital_stations = yes
-	scaled_difficulty_bonuses = 3.0	# scales to setting
+	scaled_difficulty_bonuses = 3.0	# Scales to setting
 	end_game_crisis = yes
 	destroys_starbases = yes
 	needs_survey = no
@@ -80,7 +80,7 @@ extradimensional_2 = {
 		construction = yes
 		modules = {
 			invaders_military_minister_module
-			invaders_interior_minister_module		## modified line
+			invaders_interior_minister_module		## Modified line
 		}
 	}
 	faction = {
@@ -103,7 +103,7 @@ extradimensional_2 = {
 
 extradimensional_3 = {
 	attack_unarmed_orbital_stations = yes
-	scaled_difficulty_bonuses = 3.0	# scales to setting
+	scaled_difficulty_bonuses = 3.0	# Scales to setting
 	end_game_crisis = yes
 	destroys_starbases = yes
 	needs_survey = no
@@ -126,7 +126,7 @@ extradimensional_3 = {
 		construction = yes
 		modules = {
 			invaders_military_minister_module
-			invaders_interior_minister_module		## modified line
+			invaders_interior_minister_module		## Modified line
 		}
 	}
 	faction = {

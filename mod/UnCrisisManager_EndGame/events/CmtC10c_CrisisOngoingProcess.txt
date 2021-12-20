@@ -2,11 +2,11 @@ namespace = CrisisManagerControl
 
 #######################################
 #######################################
-#####                             #####
-#####    Crisis Manager           #####
-#####                             #####
-#####    Crisis Ongoing Events    #####
-#####                             #####
+#####							 #####
+#####	Crisis Manager		   #####
+#####							 #####
+#####	Crisis Ongoing Events	#####
+#####							 #####
 #######################################
 #######################################
 
@@ -14,7 +14,7 @@ namespace = CrisisManagerControl
 ###  Post-Crisis Process  ###
 #############################
 
-### Redirect only, Called by on_country_destroyed
+### Redirect only, Called by on_country_destroyed.
 country_event = {
 	id = CrisisManagerControl.0310
 	hide_window = yes
@@ -34,7 +34,7 @@ country_event = {
 	}
 }
 
-### Flag Control for Crisis Interval
+### Flag Control for Crisis Interval.
 country_event = {
 	id = CrisisManagerControl.0311
 	hide_window = yes
@@ -78,7 +78,7 @@ country_event = {
 #
 # Planet Occupied by Armies
 #	Prethoryn:  	crisis.201, 202
-#	Exds:       	(crisis.1011)
+#	Exds:	   	(crisis.1011)
 #	Contingency:	crisis.2041, 2044
 #
 
@@ -101,7 +101,7 @@ country_event = {
 			add_threat = { who = root amount = 2 }
 			set_controller = root
 			# ^ maxes out purge job weight
-			# Create and kill a pop to force job assignment updates
+			# Create and kill a pop to force job assignment updates.
 			create_pop = {}
 			last_created_pop = { kill_pop = yes }
 		}
@@ -118,7 +118,7 @@ country_event = {
 						planet_event = { id = crisis.202 }		## Prethoryn
 						planet_event = { id = crisis.2044 }		## Contingency
 					}
-					kill_pop = yes		## Kill Last One After Above 2 Events
+					kill_pop = yes		## Kill Last One After Above 2 Events.
 				}
 			}
 		}
@@ -203,7 +203,7 @@ planet_event = {
 		add_threat = { who = from amount = 2 }
 		set_controller = from
 
-		# Create and kill a pop to force job assignment updates
+		# Create and kill a pop to force job assignment updates.
 		create_pop = {}
 		last_created_pop = { kill_pop = yes }
 
@@ -248,7 +248,7 @@ planet_event = {
 		exists = controller
 		controller = { CmtTriggerIsExds = yes }
 		OR = {
-			num_pops < 2		## Last pop still alive when event triggered
+			num_pops < 2		## Last pop still alive when event triggered.
 			event_target:CmtGlobalVar = {
 				OR = {
 					check_variable = { which = CmtVarPurgeSpeed value < 2 }
@@ -297,10 +297,7 @@ planet_event = {
 		destroy_colony = yes
 		if = {
 			limit = {
-				NOR = {
-					is_planet_class = pc_ringworld_habitable
-					is_planet_class = pc_habitat
-				}
+				is_artificial = no
 			}
 			random_list = {
 				50 = { change_pc = pc_barren }

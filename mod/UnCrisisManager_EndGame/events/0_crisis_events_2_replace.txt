@@ -1,14 +1,14 @@
 namespace = crisis
 
-####################################################
-####################################################
-#####                                          #####
-#####    Crisis Events 2: Extradimensionals    #####
-#####                                          #####
-#####    Replaced by Crisis Manager            #####
-#####                                          #####
-####################################################
-####################################################
+#####################################################
+#####################################################
+#####											#####
+#####	Crisis Events 2: Extradimensionals		#####
+#####											#####
+#####	Replaced by Crisis Manager				#####
+#####											#####
+#####################################################
+#####################################################
 
 ###################
 ###  Constants  ###
@@ -32,7 +32,6 @@ country_event = {
 	}
 
 	immediate = {
-		endgame_telemetry = extradimensional
 		set_global_flag = galactic_crisis_happened
 		set_global_flag = extradimensional_invasion_happened
 		set_global_flag = CmtFlagExdsTriggered
@@ -60,6 +59,7 @@ country_event = {
 			}
 		}
 		awaken_guardians_of_the_galaxy = yes
+		endgame_telemetry = extradimensional
 
 		random_system = {
 			limit = {
@@ -77,7 +77,7 @@ country_event = {
 				create_species = {
 					name = "NAME_Unbidden"
 					class = EXD
-					namelist = "Extradimensional"
+					namelist = Extradimensional
 					portrait = exd1
 					traits = random
 					effect = { save_global_event_target_as = extradimensional_shabanash_species }
@@ -175,7 +175,7 @@ country_event = {
 					}
 				}
 			}
-			# make portal invincible
+			# Make portal invincible
 			event_target:extradimensionals = { country_event = { id = crisis.1280 } }
 		}
 		CmtEffectFriendlyCrisis = yes
@@ -210,7 +210,7 @@ country_event = {
 		}
 		observer_event = { id = observer.34 }
 
-		### For Controling Arrival of Aberrant
+		### For Controling Arrival of Aberrant.
 		set_timed_global_flag = { flag = CmtFlagUnbiddenFirstHalfDecade days = 1800 }
 		set_timed_global_flag = { flag = CmtFlagUnbiddenFirstDecade days = 3600 }
 		if = {
@@ -334,7 +334,7 @@ country_event = {
 		NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 1 } } }
 
 		is_country_type = extradimensional_2
-		exists = event_target:extradimensionals		#any_country = { is_country_type = extradimensional }
+		exists = event_target:extradimensionals		# any_country = { is_country_type = extradimensional }
 
 		event_target:CmtGlobalVar = {
 			OR = {
@@ -465,7 +465,7 @@ fleet_event = {
 ###  Reinforcement of Fleet  ###
 ################################
 
-### Clock Event for Regular Reinforcement
+### Clock Event for Regular Reinforcement.
 country_event = {
 	id = crisis.1260
 	hide_window = yes
@@ -481,7 +481,7 @@ country_event = {
 		### For Constructor
 		country_event = { id = crisis.1266 days = 6 }
 
-		### Check if number of total ships is less than upper limit
+		### Check if number of total ships is less than upper limit.
 		event_target:CmtGlobalVar = {
 			set_variable = { which = CmtVarTemp value = @CmtConstExdsShipsUpperLimit }
 			if = {
@@ -622,7 +622,7 @@ country_event = {
 	}
 }
 
-### Reinforcements Arrive After Building Anchor (on_building_starbase_exd), Re-overwrite Total War Pack
+### Reinforcements Arrive After Building Anchor (on_building_starbase_exd), Re-overwrite Total War Pack.
 ship_event = {
 	id = crisis.1267
 	hide_window = yes
@@ -644,7 +644,7 @@ ship_event = {
 				}
 			} else_if = {
 				limit = { check_variable = { which = CmtVarReinforceCycle_OnExdAnchorBuilt value < 510 } }
-				if = {		## Copy Cycle from Global Var to Each Exds Country if It Unexists
+				if = {		## Copy cycle from Global Var to each Exds country if it doesn't exist.
 					limit = { root.owner = { check_variable = { which = CmtVarReinforceCycle_OnExdAnchorBuilt value < 0.5 } } }
 					root.owner = {
 						set_variable = { which = CmtVarCountExdAnchorBuilt value = 0.1 }		## 0.1 = Margin
@@ -662,7 +662,7 @@ ship_event = {
 					if = {
 						limit = { NOT = { check_variable = { which = CmtVarCountExdAnchorBuilt value < CmtVarReinforceCycle_OnExdAnchorBuilt } } }
 						set_variable = { which = CmtVarCountExdAnchorBuilt value = 0.1 }		## 0.1 = Margin
-						country_event = { id = crisis.1266 days = 6 } 	# Spawn Construction Ships if needed
+						country_event = { id = crisis.1266 days = 6 } 	# Spawn Construction Ships if needed.
 						CmtEffectSaveTargetExdPortal = yes				## save_event_target_as = dimensional_portal
 						CmtEffectReinforcementExdCombat = yes
 					}
@@ -687,7 +687,7 @@ country_event = {
 	}
 
 	immediate = {
-		# Fallback: This should be already a global event target
+		# Fallback: This should be already a global event target.
 		if = { limit = { NOT = { exists = event_target:portal_holder_1 } }
 			log = "anchor built and crisis.1280 executed, not yet reaching fleet owner switch"
 			random_country = {
@@ -744,7 +744,7 @@ country_event = {
 	}
 }
 
-### Anchor Destroyed, Triggered Just After Destroying
+### Anchor Destroyed, Triggered Just After Destroying.
 country_event = {
 	id = crisis.1281
 	hide_window = yes
@@ -913,14 +913,14 @@ planet_event = {
 			planet_event = { id = CrisisManagerControl.0043 }
 		}
 		solar_system = {
-			if = { # Build starbase if no other colonies are left
+			if = { # Build starbase if no other colonies are left.
 				limit = {
 					NOR = {
 						exists = starbase
 						any_system_planet = {
 							has_owner = yes
 							owner =  {
-								NOT = { is_same_value = from }
+								NOT = { is_same_empire = from }
 							}
 						}
 					}
@@ -933,7 +933,7 @@ planet_event = {
 					limit = {
 						is_owned_by = from
 					}
-					ship_event = { id = crisis.1300 } # Check if starbase should be Anchor
+					ship_event = { id = crisis.1300 } # Check if starbase should be Anchor.
 					ship_event = { id = crisis.1310 } # Create system effect
 				}
 			}

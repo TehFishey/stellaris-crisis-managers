@@ -1,11 +1,11 @@
 
 ###########################################
 ###########################################
-#####                                 #####
-#####    Crisis Manager               #####
-#####                                 #####
-#####    Modifiers of Ghost Signal    #####
-#####                                 #####
+#####								 #####
+#####	Crisis Manager			   #####
+#####								 #####
+#####	Modifiers of Ghost Signal	#####
+#####								 #####
 ###########################################
 ###########################################
 
@@ -35,25 +35,25 @@
 @CmtConstTrackingGhostSignal_1b   =  -1
 
 ### Vanilla (Dummy)
-#CmtConstOrganicPopGhostSignal_5c =  -0.70
-#CmtConstOrganicPopGhostSignal_4c =  -0.55
-#CmtConstOrganicPopGhostSignal_3c =  -0.40
-#CmtConstOrganicPopGhostSignal_2c =  -0.25
-#CmtConstOrganicPopGhostSignal_1c =  -0.10
+# CmtConstOrganicPopGhostSignal_5c =  -0.70
+# CmtConstOrganicPopGhostSignal_4c =  -0.55
+# CmtConstOrganicPopGhostSignal_3c =  -0.40
+# CmtConstOrganicPopGhostSignal_2c =  -0.25
+# CmtConstOrganicPopGhostSignal_1c =  -0.10
 
-#CmtConstMachinePopGhostSignal_5c =  -0.40
-#CmtConstMachinePopGhostSignal_4c =  -0.25
+# CmtConstMachinePopGhostSignal_5c =  -0.40
+# CmtConstMachinePopGhostSignal_4c =  -0.25
 
-#CmtConstFirerateGhostSignal_5c   =  -0.50
-#CmtConstFirerateGhostSignal_4c   =  -0.40
-#CmtConstFirerateGhostSignal_3c   =  -0.30
-#CmtConstFirerateGhostSignal_2c   =  -0.20
-#CmtConstFirerateGhostSignal_1c   =  -0.10
-#CmtConstTrackingGhostSignal_5c   =  -5
-#CmtConstTrackingGhostSignal_4c   =  -4
-#CmtConstTrackingGhostSignal_3c   =  -3
-#CmtConstTrackingGhostSignal_2c   =  -2
-#CmtConstTrackingGhostSignal_1c   =  -1
+# CmtConstFirerateGhostSignal_5c   =  -0.50
+# CmtConstFirerateGhostSignal_4c   =  -0.40
+# CmtConstFirerateGhostSignal_3c   =  -0.30
+# CmtConstFirerateGhostSignal_2c   =  -0.20
+# CmtConstFirerateGhostSignal_1c   =  -0.10
+# CmtConstTrackingGhostSignal_5c   =  -5
+# CmtConstTrackingGhostSignal_4c   =  -4
+# CmtConstTrackingGhostSignal_3c   =  -3
+# CmtConstTrackingGhostSignal_2c   =  -2
+# CmtConstTrackingGhostSignal_1c   =  -1
 
 ### Strong
 @CmtConstOrganicPopGhostSignal_5d =  -0.85
@@ -101,18 +101,18 @@
 ###  Non  ###
 #############
 
-### for Synth
+### For Synth
 CmtModifierOrganicPopGhostSignal_5a = {}
 CmtModifierOrganicPopGhostSignal_4a = {}
 CmtModifierOrganicPopGhostSignal_3a = {}
 CmtModifierOrganicPopGhostSignal_2a = {}
 CmtModifierOrganicPopGhostSignal_1a = {}
 
-### for Mach Pops
+### For Mach Pops
 CmtModifierMachinePopGhostSignal_5a = {}
 CmtModifierMachinePopGhostSignal_4a = {}
 
-### for Ships
+### For Ships
 CmtModifierCombatShipGhostSignal_5a = {}
 CmtModifierCombatShipGhostSignal_4a = {}
 CmtModifierCombatShipGhostSignal_3a = {}
@@ -123,7 +123,7 @@ CmtModifierCombatShipGhostSignal_1a = {}
 ###  Weak  ###
 ##############
 
-### for Synth
+### For Synth
 CmtModifierOrganicPopGhostSignal_5b = {
 	planet_jobs_minerals_produces_mult = @CmtConstOrganicPopGhostSignal_5b
 	planet_jobs_energy_produces_mult = @CmtConstOrganicPopGhostSignal_5b
@@ -170,7 +170,7 @@ CmtModifierOrganicPopGhostSignal_1b = {
 	pop_government_ethic_attraction = @CmtConstOrganicPopGhostSignal_1b
 }
 
-### for Mach Pops
+### For Mach Pops
 CmtModifierMachinePopGhostSignal_5b = {
 	planet_jobs_minerals_produces_mult = @CmtConstMachinePopGhostSignal_5b
 	planet_jobs_energy_produces_mult = @CmtConstMachinePopGhostSignal_5b
@@ -186,7 +186,7 @@ CmtModifierMachinePopGhostSignal_4b = {
 	planet_jobs_engineering_research_produces_mult = @CmtConstMachinePopGhostSignal_4b
 }
 
-### for Ships
+### For Ships
 CmtModifierCombatShipGhostSignal_5b = {
 	ship_fire_rate_mult = @CmtConstFirerateGhostSignal_5b
 	ship_tracking_add = @CmtConstTrackingGhostSignal_5b
@@ -219,7 +219,7 @@ CmtModifierCombatShipGhostSignal_1b = {
 ###  Strong  ###
 ################
 
-### for Synth
+### For Synth
 CmtModifierOrganicPopGhostSignal_5d = {
 	planet_jobs_minerals_produces_mult = @CmtConstOrganicPopGhostSignal_5d
 	planet_jobs_energy_produces_mult = @CmtConstOrganicPopGhostSignal_5d
@@ -266,7 +266,7 @@ CmtModifierOrganicPopGhostSignal_1d = {
 	pop_government_ethic_attraction = @CmtConstOrganicPopGhostSignal_1d
 }
 
-### for Mach Pops
+### For Mach Pops
 CmtModifierMachinePopGhostSignal_5d = {
 	planet_jobs_minerals_produces_mult = @CmtConstMachinePopGhostSignal_5d
 	planet_jobs_energy_produces_mult = @CmtConstMachinePopGhostSignal_5d
@@ -282,7 +282,7 @@ CmtModifierMachinePopGhostSignal_4d = {
 	planet_jobs_engineering_research_produces_mult = @CmtConstMachinePopGhostSignal_4d
 }
 
-### for Ships
+### For Ships
 CmtModifierCombatShipGhostSignal_5d = {
 	ship_fire_rate_mult = @CmtConstFirerateGhostSignal_5d
 	ship_tracking_add = @CmtConstTrackingGhostSignal_5d
@@ -308,7 +308,7 @@ CmtModifierCombatShipGhostSignal_1d = {
 ###  Full  ###
 ##############
 
-### for Synth
+### For Synth
 CmtModifierOrganicPopGhostSignal_5e = {
 	planet_jobs_minerals_produces_mult = @CmtConstOrganicPopGhostSignal_5e
 	planet_jobs_energy_produces_mult = @CmtConstOrganicPopGhostSignal_5e
@@ -355,7 +355,7 @@ CmtModifierOrganicPopGhostSignal_1e = {
 	pop_government_ethic_attraction = @CmtConstOrganicPopGhostSignal_1e
 }
 
-### for Mach Pops
+### For Mach Pops
 CmtModifierMachinePopGhostSignal_5e = {
 	planet_jobs_minerals_produces_mult = @CmtConstMachinePopGhostSignal_5e
 	planet_jobs_energy_produces_mult = @CmtConstMachinePopGhostSignal_5e
@@ -371,7 +371,7 @@ CmtModifierMachinePopGhostSignal_4e = {
 	planet_jobs_engineering_research_produces_mult = @CmtConstMachinePopGhostSignal_4e
 }
 
-### for Ships
+### For Ships
 CmtModifierCombatShipGhostSignal_5e = {
 	ship_fire_rate_mult = @CmtConstFirerateGhostSignal_5e
 	ship_tracking_add = @CmtConstTrackingGhostSignal_5e

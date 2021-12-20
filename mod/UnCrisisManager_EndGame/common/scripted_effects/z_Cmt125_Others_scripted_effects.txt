@@ -1,11 +1,11 @@
 
 ############################################################
 ############################################################
-#####                                                  #####
-#####    Crisis Manager                                #####
-#####                                                  #####
-#####    Other Scripted Effects for End-Game Crisis    #####
-#####                                                  #####
+#####												  #####
+#####	Crisis Manager								#####
+#####												  #####
+#####	Other Scripted Effects for End-Game Crisis	#####
+#####												  #####
 ############################################################
 ############################################################
 
@@ -218,7 +218,7 @@ CmtEffectSaveTargetExdPortal = {
 			}
 		}
 	}
-	# superfluous fallback
+	# Superfluous fallback
 	if = { limit = { NOT = { exists = event_target:dimensional_portal } }
 		random_country = {
 			limit = { is_country_type = portal_holder }

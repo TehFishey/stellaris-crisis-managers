@@ -1,11 +1,11 @@
 
 ######################################################
 ######################################################
-#####                                            #####
-#####    Crisis Manager                          #####
-#####                                            #####
-#####    scripted_effects for Spawn Countries    #####
-#####                                            #####
+#####											#####
+#####	Crisis Manager						  #####
+#####											#####
+#####	scripted_effects for Spawn Countries	#####
+#####											#####
 ######################################################
 ######################################################
 
@@ -176,7 +176,7 @@ CmtEffectCallAberrant = {
 	}
 	observer_event = { id = observer.36 }
 
-	### For Controling Arrival of Vehement
+	### For Controling Arrival of Vehement.
 	set_timed_global_flag = { flag = CmtFlagAberrantFirstDecade days = 3600 }
 	set_timed_global_flag = { flag = CmtFlagAberrantFirstTwoDecades days = 7200 }
 	if = {

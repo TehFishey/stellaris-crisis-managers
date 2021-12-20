@@ -27,11 +27,11 @@ CmtEffectCreateAdmiral_MarauderStandard = {
 	if = {
 		limit = {
 			prev = { solar_system = { has_star_flag = marauder_capital_1 } }
-			exists = event_target:CmtTargetSpecies_Marauder1
+			exists = event_target:marauder_country_1
 		}
 		create_leader = {
 			class = admiral
-			species = event_target:CmtTargetSpecies_Marauder1
+			species = event_target:marauder_country_1.owner_species
 			name = random
 			skill = 3
 			leader_age_min = 25
@@ -44,11 +44,11 @@ CmtEffectCreateAdmiral_MarauderStandard = {
 	} else_if = {
 		limit = {
 			prev = { solar_system = { has_star_flag = marauder_capital_2 } }
-			exists = event_target:CmtTargetSpecies_Marauder2
+			exists = event_target:marauder_country_2
 		}
 		create_leader = {
 			class = admiral
-			species = event_target:CmtTargetSpecies_Marauder2
+			species = event_target:marauder_country_2.owner_species
 			name = random
 			skill = 3
 			leader_age_min = 25
@@ -61,11 +61,11 @@ CmtEffectCreateAdmiral_MarauderStandard = {
 	} else_if = {
 		limit = {
 			prev = { solar_system = { has_star_flag = marauder_capital_3 } }
-			exists = event_target:CmtTargetSpecies_Marauder3
+			exists = event_target:marauder_country_3
 		}
 		create_leader = {
 			class = admiral
-			species = event_target:CmtTargetSpecies_Marauder3
+			species = event_target:marauder_country_3.owner_species
 			name = random
 			skill = 3
 			leader_age_min = 25
@@ -89,17 +89,25 @@ CmtEffectCreateAdmiral_MarauderStandard = {
 			}
 		}
 	}
+	if = {
+		limit = {
+			prev = { space_owner = { NOT = { is_country_type = awakened_marauders } } }
+		}
+		last_created_leader = {
+			set_leader_flag = marauder_merc_leader
+		}
+	}
 }
 
 CmtEffectCreateGeneral_Marauder = {
 	if = {
 		limit = {
 			prev = { solar_system = { has_star_flag = marauder_capital_1 } }
-			exists = event_target:CmtTargetSpecies_Marauder1
+			exists = event_target:marauder_country_1
 		}
 		create_leader = {
 			class = general
-			species = event_target:CmtTargetSpecies_Marauder1
+			species = event_target:marauder_country_1.owner_species
 			name = random
 			skill = 3
 			traits = { trait = random_trait }
@@ -107,11 +115,11 @@ CmtEffectCreateGeneral_Marauder = {
 	} else_if = {
 		limit = {
 			prev = { solar_system = { has_star_flag = marauder_capital_2 } }
-			exists = event_target:CmtTargetSpecies_Marauder2
+			exists = event_target:marauder_country_2
 		}
 		create_leader = {
 			class = general
-			species = event_target:CmtTargetSpecies_Marauder2
+			species = event_target:marauder_country_2.owner_species
 			name = random
 			skill = 3
 			traits = { trait = random_trait }
@@ -119,11 +127,11 @@ CmtEffectCreateGeneral_Marauder = {
 	} else_if = {
 		limit = {
 			prev = { solar_system = { has_star_flag = marauder_capital_3 } }
-			exists = event_target:CmtTargetSpecies_Marauder3
+			exists = event_target:marauder_country_3
 		}
 		create_leader = {
 			class = general
-			species = event_target:CmtTargetSpecies_Marauder3
+			species = event_target:marauder_country_3.owner_species
 			name = random
 			skill = 3
 			traits = { trait = random_trait }

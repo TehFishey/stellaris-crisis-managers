@@ -2,11 +2,11 @@ namespace = CrisisManagerControl
 
 ##############################################
 ##############################################
-#####                                    #####
-#####    Crisis Manager                  #####
-#####                                    #####
-#####    Pre-Trigger Events of Crisis    #####
-#####                                    #####
+#####									#####
+#####	Crisis Manager				  #####
+#####									#####
+#####	Pre-Trigger Events of Crisis	#####
+#####									#####
 ##############################################
 ##############################################
 
@@ -105,7 +105,7 @@ country_event = {
 	}
 
 	immediate = {
-		###  Control Flag for Probability of Triggering Prethoryn
+		### Control Flag for Probability of Triggering Prethoryn.
 		if = {
 			limit = { NOT = { has_global_flag = CmtFlagCheckFirstTriggerChance } }
 			set_global_flag = CmtFlagCheckFirstTriggerChance
@@ -119,7 +119,7 @@ country_event = {
 	}
 }
 
-### Pre-Trigger / Manual Call Up
+### Pre-Trigger / Manual Call Up.
 country_event = {
 	id = CrisisManagerControl.0012
 	hide_window = yes
@@ -130,7 +130,7 @@ country_event = {
 	immediate = {
 		event_target:CmtGlobalVar = {
 			if = {
-				limit = { # Got to be someone doing jump drives in this case
+				limit = { # Got to be someone doing jump drives in this case.
 					CmtTriggerForbiddenExds = no
 					end_game_years_passed > 0
 					OR = {
@@ -141,7 +141,7 @@ country_event = {
 				}
 				set_timed_country_flag = { flag = only_unbidden_this_time days = 5 }
 			}
-			###  Call Trigger Event for Each Equalization Strength
+			### Call Trigger Event for Each Equalization Strength.
 			if = {
 				limit = { check_variable = { which = CmtVarEqualizingProbability value = 2 } }
 				country_event = { id = CrisisManagerControl.0022 }

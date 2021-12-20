@@ -1,13 +1,13 @@
 
 ###############################################
 ###############################################
-#####                                     #####
-#####    Crisis Manager                   #####
-#####                                     #####
-#####    Scripted Effects to              #####
-#####    Create Other Fleets and Bases    #####
-#####    of End-Game Crises               #####
-#####                                     #####
+#####									 #####
+#####	Crisis Manager				   #####
+#####									 #####
+#####	Scripted Effects to			  #####
+#####	Create Other Fleets and Bases	#####
+#####	of End-Game Crises			   #####
+#####									 #####
 ###############################################
 ###############################################
 #
@@ -35,7 +35,7 @@
 ###  Contingency  ###
 #####################
 
-## for only crisis.2025-2028
+## For only crisis.2025-2028
 CmtEffectCreateContingencyCore = {
 	create_fleet = {
 		name = "NAME_AI_Core"

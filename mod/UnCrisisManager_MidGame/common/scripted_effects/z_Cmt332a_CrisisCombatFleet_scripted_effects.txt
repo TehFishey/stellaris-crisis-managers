@@ -16,7 +16,7 @@
 #
 
 ##############
-### Khan ###
+###- Khan -###
 ##############
 
 ### Fleet for Khan Own
@@ -178,7 +178,10 @@ CmtEffectCreateFleet_KhanArmadaVoidborn = {
 		}
 		settings = {
 			can_upgrade = no
+			can_disband = no
 			can_change_composition = no
+			can_change_leader = no
+			uses_naval_capacity = no
 		}
 	}
 }
@@ -213,7 +216,10 @@ CmtEffectCreateFleet_KhanStarRiderFlotilla = {
 		}
 		settings = {
 			can_upgrade = no
+			can_disband = no
 			can_change_composition = no
+			can_change_leader = no
+			uses_naval_capacity = no
 		}
 	}
 }
@@ -247,7 +253,10 @@ CmtEffectCreateFleet_KhanFirstStormWing = {
 		}
 		settings = {
 			can_upgrade = no
+			can_disband = no
 			can_change_composition = no
+			can_change_leader = no
+			uses_naval_capacity = no
 		}
 	}
 }
@@ -282,7 +291,10 @@ CmtEffectCreateFleet_KhanDwamakBashers = {
 		}
 		settings = {
 			can_upgrade = no
+			can_disband = no
 			can_change_composition = no
+			can_change_leader = no
+			uses_naval_capacity = no
 		}
 	}
 }
@@ -317,7 +329,10 @@ CmtEffectCreateFleet_KhanUnhingedScreamerFlotilla = {
 		}
 		settings = {
 			can_upgrade = no
+			can_disband = no
 			can_change_composition = no
+			can_change_leader = no
+			uses_naval_capacity = no
 		}
 	}
 }
@@ -351,7 +366,10 @@ CmtEffectCreateFleet_KhanFrenziedVolunteerSquadron = {
 		}
 		settings = {
 			can_upgrade = no
+			can_disband = no
 			can_change_composition = no
+			can_change_leader = no
+			uses_naval_capacity = no
 		}
 	}
 }
@@ -386,7 +404,10 @@ CmtEffectCreateFleet_KhanHerChosenChampions = {
 		}
 		settings = {
 			can_upgrade = no
+			can_disband = no
 			can_change_composition = no
+			can_change_leader = no
+			uses_naval_capacity = no
 		}
 	}
 }
@@ -421,7 +442,10 @@ CmtEffectCreateFleet_KhanOrderEternalNight = {
 		}
 		settings = {
 			can_upgrade = no
+			can_disband = no
 			can_change_composition = no
+			can_change_leader = no
+			uses_naval_capacity = no
 		}
 	}
 }
@@ -455,7 +479,10 @@ CmtEffectCreateFleet_KhanTwilightCongregation = {
 		}
 		settings = {
 			can_upgrade = no
+			can_disband = no
 			can_change_composition = no
+			can_change_leader = no
+			uses_naval_capacity = no
 		}
 	}
 }
@@ -491,7 +518,7 @@ CmtEffectCreateFleet_KhanSubReinforcement1 = {
 		}
 		settings = {
 			can_upgrade = no
-					# can_disband = no
+			# can_disband = no
 			can_change_composition = no
 			can_change_leader = no
 			uses_naval_capacity = no
@@ -653,7 +680,7 @@ CmtEffectCreateFleet_KhanSubReinforcement5 = {
 		}
 		settings = {
 			can_upgrade = no
-					# can_disband = no
+			# can_disband = no
 			can_change_composition = no
 			can_change_leader = no
 			uses_naval_capacity = no
@@ -696,7 +723,7 @@ CmtEffectCreateAdmiralty_KhanEncourager = {
 }
 
 #################
-### Dessanu ###
+###- Dessanu -###
 #################
 
 ### Element
@@ -754,7 +781,7 @@ CmtEffectCreateFleet_DessanuRoamer = {
 }
 
 #################
-### Graygoo ###
+###- Graygoo -###
 #################
 
 ### Element

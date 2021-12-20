@@ -1,11 +1,11 @@
 namespace = CrisisManagerControl
 #######################################
 #######################################
-#####                             #####
-#####    Crisis Manager           #####
-#####                             #####
-#####    Crisis Trigger Events    #####
-#####                             #####
+#####							 #####
+#####	Crisis Manager		   #####
+#####							 #####
+#####	Crisis Trigger Events	#####
+#####							 #####
 #######################################
 #######################################
 
@@ -188,7 +188,7 @@ country_event = {
 				# }
 				CmtEffectTriggerContingency = yes
 			}
-			### Forced End of the Cycle
+			### Forced End of the Cycle.
 			10 = {
 				modifier = {
 					factor = 0
@@ -293,7 +293,7 @@ country_event = {
 				# 	factor = @CmtConstModPt1_R15
 				# 	CmtTriggerExistMechFe = yes
 				# }
-				### Forced End of the Cycle
+				### Forced End of the Cycle.
 				modifier = {
 					factor = 1.333
 					CmtTriggerPotentialForcedEoc = yes
@@ -430,7 +430,7 @@ country_event = {
 				# }
 				CmtEffectTriggerContingency = yes
 			}
-			### Forced End of the Cycle
+			### Forced End of the Cycle.
 			10 = {
 				modifier = {
 					factor = 0
@@ -535,7 +535,7 @@ country_event = {
 				# 	factor = @CmtConstModPt2_R15
 				# 	CmtTriggerExistMechFe = yes
 				# }
-				### Forced End of the Cycle
+				### Forced End of the Cycle.
 				modifier = {
 					factor = 1.333
 					CmtTriggerPotentialForcedEoc = yes
@@ -672,7 +672,7 @@ country_event = {
 				# }
 				CmtEffectTriggerContingency = yes
 			}
-			### Forced End of the Cycle
+			### Forced End of the Cycle.
 			10 = {
 				modifier = {
 					factor = 0
@@ -780,7 +780,7 @@ country_event = {
 				# 	factor = @CmtConstModPt3_R12
 				# 	CmtTriggerExistMechFe = yes
 				# }
-				### Forced End of the Cycle
+				### Forced End of the Cycle.
 				modifier = {
 					factor = 1.333
 					CmtTriggerPotentialForcedEoc = yes
@@ -917,7 +917,7 @@ country_event = {
 				# }
 				CmtEffectTriggerContingency = yes
 			}
-			### Forced End of the Cycle
+			### Forced End of the Cycle.
 			10 = {
 				modifier = {
 					factor = 0
@@ -1022,7 +1022,7 @@ country_event = {
 				# 	factor = @CmtConstModPt4_R15
 				# 	CmtTriggerExistMechFe = yes
 				# }
-				### Forced End of the Cycle
+				### Forced End of the Cycle.
 				modifier = {
 					factor = 1.333
 					CmtTriggerPotentialForcedEoc = yes

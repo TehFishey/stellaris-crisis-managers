@@ -1,6 +1,145 @@
+## Vanilla Fixes (FirePrince)
+## Primary modified crisis.2477
+
 namespace = crisis
 
-## Vanilla Fix (FirePrince)
+### Triggering Event
+# WARNING: May cause galactic mass extinction and/or loss of appetite.
+country_event = {
+	id = crisis.199
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { always = no }
+	immediate = {
+		set_global_flag = prethoryn_invasion_happened
+		set_global_flag = prethoryn_transmission
+		begin_event_chain = {
+			event_chain = "coming_storm_chain"
+			target = root
+		}
+		random_rim_system = {
+			set_star_flag = swarm_invasion_target_1
+			save_event_target_as = prethoryn_invasion_system
+		}
+		create_point_of_interest = {
+			id = coming_storm_poi.1
+			name = "coming_storm_poi_1_poi"
+			desc = "coming_storm_poi_1_poi_desc"
+			event_chain = "coming_storm_chain"
+			location = event_target:prethoryn_invasion_system
+		}
+		country_event = { id = crisis.17 days = 10 } # = fire_only_once
+	}
+}
+
+country_event = {
+	id = crisis.2000
+	hide_window = yes
+	is_triggered_only = yes
+	# trigger = { always = no }
+	immediate = {
+		# The Arrival
+		every_country = {
+			limit = {
+				OR = {
+					is_country_type_with_subjects = yes
+					is_fallen_empire = yes
+				}
+			}
+			country_event = { id = crisis.2022 }
+		}
+		# First Machine World
+		if = {
+			limit = {
+				any_galaxy_planet = { has_planet_flag = machine_world_1 }
+			}
+			random_galaxy_planet = {
+				limit = { has_planet_flag = machine_world_1 }
+				planet_event = { id = crisis.2025 days = 20 random = 10 }
+			}
+		}
+		else = {
+			random_galaxy_planet = {
+				limit = { is_planet_class = pc_barren }
+				planet_event = { id = crisis.2025 days = 20 random = 10 }
+			}
+		}
+		# Second Machine World
+		if = {
+			limit = {
+				any_galaxy_planet = { has_planet_flag = machine_world_2 }
+			}
+			random_galaxy_planet = {
+				limit = { has_planet_flag = machine_world_2 }
+				planet_event = { id = crisis.2026 days = 40 random = 10 }
+			}
+		}
+		else = {
+			random_galaxy_planet = {
+				limit = { is_planet_class = pc_molten }
+				planet_event = { id = crisis.2026 days = 40 random = 10 }
+			}
+		}
+		# Third Machine World
+		if = {
+			limit = {
+				any_galaxy_planet = { has_planet_flag = machine_world_3 }
+			}
+			random_galaxy_planet = {
+				limit = { has_planet_flag = machine_world_3 }
+				planet_event = { id = crisis.2027 days = 60 random = 10 }
+			}
+		}
+		else = {
+			random_galaxy_planet = {
+				limit = { is_planet_class = pc_gas_giant }
+				planet_event = { id = crisis.2027 days = 60 random = 10 }
+			}
+		}
+		# Fourth Machine World
+		if = {
+			limit = {
+				any_galaxy_planet = { has_planet_flag = machine_world_4 }
+			}
+			random_galaxy_planet = {
+				limit = { has_planet_flag = machine_world_4 }
+				planet_event = { id = crisis.2028 days = 80 random = 10 }
+			}
+		}
+		else = {
+			random_galaxy_planet = {
+				limit = { is_planet_class = pc_toxic }
+				planet_event = { id = crisis.2028 days = 80 random = 10 }
+			}
+		}
+		# Synth Infiltration
+		every_playable_country = {
+			if = {
+				limit = {
+					NOR = {
+						has_authority = auth_hive_mind
+						has_authority = auth_machine_intelligence
+						owner_species = { has_trait = trait_psionic }
+					}
+				}
+				country_event = { id = crisis.2085 days = 260 random = 20 }
+			}
+			if = {
+				limit = { has_authority = auth_hive_mind }
+				country_event = { id = crisis.2086 days = 260 random = 20 }
+			}
+			if = {
+				limit = { owner_species = { has_trait = trait_psionic } }
+				country_event = { id = crisis.2087 days = 260 random = 20 }
+			}
+			if = {
+				limit = { has_authority = auth_machine_intelligence }
+				country_event = { id = crisis.2313 days = 260 random = 20 }
+			}
+		}
+	}
+}
+
 # Cybrex Bombard Marauder Planet (HIDDEN)
 planet_event = {
 	id = crisis.2477
@@ -14,14 +153,14 @@ planet_event = {
 	trigger = {
 		exists = owner
 		owner = { is_country_type = awakened_marauders }
-		planet_devastation > 99
+		planet_devastation > 90
 		count_planet_army = { count < 1 }
 		NOR = { is_planet_class = pc_ai is_planet_class = pc_cybrex }
 		from = { is_country_type = cybrex_empire }
 	}
 
 	immediate = {
-		save_event_target_as = liberated_planet # for notify
+		save_event_target_as = liberated_planet # For notify
 		if = {
 			limit = {
 				exists = space_owner
@@ -93,6 +232,123 @@ planet_event = {
 			every_fleet_in_orbit = {
 				limit = { is_owned_by = from }
 				auto_move_to_planet = { target = solar_system.star clear_auto_move_on_arrival = yes }
+			}
+		}
+	}
+}
+
+# Declare Crisis Test (Used on desired Crisis Empire)
+country_event = {
+	id = crisis.4099
+	hide_window = yes
+	is_triggered_only = yes
+	# trigger = { always = no }
+	immediate = {
+		set_country_flag = declared_crisis
+		save_event_target_as = new_crisis
+		country_event = { id = crisis.4105 } # Notify
+		every_playable_country = {
+			limit = {
+				is_ai = no
+				NOT = { is_same_empire = prev }
+			}
+			country_event = { id = crisis.4100 }
+		}
+		if = {
+			limit = { is_galactic_community_formed = yes }
+			if = {
+				limit = { has_galactic_custodian = yes }
+				random_playable_country = {
+					limit = { is_galactic_custodian = yes }
+					save_event_target_as = community_war_leader
+					declare_war = {
+						target = event_target:new_crisis
+						name = "NAME_Declared_Crisis_War"
+						attacker_war_goal = "wg_declared_crisis"
+					}
+				}
+				every_playable_country = {
+					limit = {
+						is_galactic_custodian = no
+						is_galactic_community_member = yes
+					}
+					join_war = event_target:community_war_leader # Should use different effect to ensure they only join the correct war.
+				}
+			}
+			else = {
+				random_playable_country = {
+					limit = {
+						is_galactic_community_member = yes
+						galactic_community_rank = 1
+					}
+					save_event_target_as = community_war_leader
+					declare_war = {
+						target = event_target:new_crisis
+						name = "NAME_Declared_Crisis_War"
+						attacker_war_goal = "wg_declared_crisis"
+					}
+					every_playable_country = {
+						limit = {
+							is_galactic_community_member = yes
+							NOT = { is_same_value = event_target:community_war_leader }
+						}
+						join_war = event_target:community_war_leader # Should use different	 effect to ensure they only join the correct war
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = crisis.10001
+	hide_window = yes
+	is_triggered_only = yes
+	# trigger = { always = no }
+	immediate = {
+		if = {
+			limit = { NOT = { exists = event_target:portal_holder_1 } }
+			create_country = {
+				name = "NAME_Portal_Holder_1"
+				type = portal_holder
+				flag = {
+					icon= { category = "special" file = "extradimensional_01.dds" }
+					background= { category = "backgrounds" file = "circle.dds" }
+					colors={ "black" "black" "null" "null" }
+				}
+				effect = {
+					save_global_event_target_as = portal_holder_1
+					every_playable_country = {
+						establish_communications_no_message = event_target:portal_holder_1
+					}
+				}
+			}
+		}
+		#if = {
+		#	limit = { NOT = { any_country = { is_country_type = extradimensional has_country_flag = unbidden } } }
+			random_country = {
+				limit = { is_country_type = extradimensional }
+				set_country_flag = unbidden
+			}
+		#}
+		random_country = {
+			limit = { is_country_type = portal_holder }
+			random_owned_ship = { set_ship_flag = unbidden_portal }
+		}
+	}
+}
+
+country_event = {
+	id = crisis.10002
+	hide_window = yes
+	is_triggered_only = yes
+	# trigger = { always = no }
+	immediate = {
+		random_country = {
+			limit = { is_country_type = portal_holder }
+			random_owned_ship = {
+				limit = { is_ship_size = dimensional_portal_ed }
+				set_ship_flag = unbidden_portal
 			}
 		}
 	}

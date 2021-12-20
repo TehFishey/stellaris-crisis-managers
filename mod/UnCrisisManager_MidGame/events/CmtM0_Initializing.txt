@@ -60,7 +60,7 @@ event = {
 	id = CrisisManagerMenu.0002
 	hide_window = yes
 	is_triggered_only = yes
-	# dayly MTTH for fire_only_once event is a big waste of performance, but there is still no other way
+	# Dayly MTTH for fire_only_once event is a big waste of performance, but there is still no other way.
 	trigger = {
 		NOT = { has_global_flag = CmtFlagActivated }
 		# is_country_type = global_event
@@ -88,7 +88,7 @@ event = {
 
 ### Manual Call Up (Called from 'Mod Menu')
 country_event = {
-	id = CrisisManagerMenu.0003	# same as CrisisManagerMenu.3
+	id = CrisisManagerMenu.0003	# Same as CrisisManagerMenu.3
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { is_ai = no }
@@ -186,7 +186,7 @@ country_event = {
 	}
 }
 
-### Warning: Do Not Advance Time
+### Warning: Do Not Advance Time.
 country_event = {
 	id = CrisisManagerMenu.0014
 	title = CrisisManagerMenu.0014.name
@@ -218,7 +218,6 @@ country_event = {
 		is_country_type = global_event
 	}
 	immediate = {
-		# random_country = { limit = { is_country_type = global_event }
 		set_global_flag = CmtFlagActivated
 		save_global_event_target_as = CmtGlobalVar
 		CmtEffectHardCoatedSettings = yes
@@ -230,10 +229,10 @@ country_event = {
 				always = @CmtT201_ConstSleeperFleet_ApplyOnStart
 				has_global_flag = CmtFlagSleeperEdition
 			}
-			CmtEffectApplyTemplate201 = yes						## Apply Template for Initialization for Fleets of Sleepers
+			CmtEffectApplyTemplate201 = yes						## Apply Template for Initialization for Fleets of Sleepers.
 		}
 		# TODO outsource?
-		# Dyn. L-Gate clue req counter
+		# Dyn. L-Gate clue req counter.
 		switch = {
 			trigger = galaxy_size
 			tiny = { change_variable = { which = CmtVarLgateReqClues value = -2 } }

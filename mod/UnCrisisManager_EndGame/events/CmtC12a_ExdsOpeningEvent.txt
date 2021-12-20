@@ -2,12 +2,12 @@ namespace = CrisisManagerControl
 
 #######################################
 #######################################
-#####                             #####
-#####    Crisis Manager           #####
-#####                             #####
-#####    Opening Event Chain      #####
-#####    For Extradimensionals    #####
-#####                             #####
+#####							 #####
+#####	Crisis Manager		   #####
+#####							 #####
+#####	Opening Event Chain	  #####
+#####	For Extradimensionals	#####
+#####							 #####
 #######################################
 #######################################
 #
@@ -19,8 +19,8 @@ namespace = CrisisManagerControl
 ###################
 #
 # Days: Event Delay
-# Rand: Random part of days for event delay
-# Mtth: Mean time to happen in months
+# Rand: Random part of days for event delay.
+# Mtth: Mean time to happen in months.
 #
 
 ### Very Slow
@@ -44,14 +44,14 @@ namespace = CrisisManagerControl
 @CmtConstTriggerExdsRand51 = 1440
 
 ### Foxhound
-@CmtConstTriggerExdsDays61 =    5	## Unbidden Appears
+@CmtConstTriggerExdsDays61 =	5	## Unbidden Appears
 @CmtConstTriggerExdsRand61 =   20
 
 ################
 ###  Common  ###
 ################
 
-### Check Progress Speed of Opening Event Chain
+### Check Progress Speed of Opening Event Chain.
 country_event = {
 	id = CrisisManagerControl.2000
 	hide_window = yes

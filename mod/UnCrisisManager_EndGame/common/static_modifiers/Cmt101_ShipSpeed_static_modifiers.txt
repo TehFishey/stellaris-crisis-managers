@@ -1,11 +1,11 @@
 
 ###################################################
 ###################################################
-#####                                         #####
-#####    Crisis Manager                       #####
-#####                                         #####
-#####    Modifiers for Faster Constructors    #####
-#####                                         #####
+#####										 #####
+#####	Crisis Manager					   #####
+#####										 #####
+#####	Modifiers for Faster Constructors	#####
+#####										 #####
 ###################################################
 ###################################################
 #
@@ -13,28 +13,28 @@
 #
 #	Constructor Speed
 #		Default Empire:	140, 175, 210, 245, 280
-#		Prethoryn     :	100
-#		Exds          :	100
+#		Prethoryn	 :	100
+#		Exds		  :	100
 #		Contingency   :	175
-#		Khan          :	210
+#		Khan		  :	210
 #
 #	Combat Ship Speed
 #		Default Empire:	{ 100, 100, 120, 140, 160 } * { 1.00; 1.25; 1.50; 1.75; 2.00 }
-#		Prethoryn     :	100, 100, 100, 140
-#		Sentinels     :	200, 200, 280; 180, 214, 250, 284
-#		Exds          :	100, 120, 140
+#		Prethoryn	 :	100, 100, 100, 140
+#		Sentinels	 :	200, 200, 280; 180, 214, 250, 284
+#		Exds		  :	100, 120, 140
 #		Contingency   :	175, 210
-#		Cybrex        ;	175, 210
-#		Khan          :
+#		Cybrex		;	175, 210
+#		Khan		  :
 #
 #	FTL Charge
 #		Default Empire: 15 d * { 1.00, 0.75, 0.50, 0.30, 0.20 }
-#		Prethoryn     :	15 d * 1.00
-#		Sentinels     :	15 d * 0.50
-#		Exds          :	15 d * 0.20
+#		Prethoryn	 :	15 d * 1.00
+#		Sentinels	 :	15 d * 0.50
+#		Exds		  :	15 d * 0.20
 #		Contingency   :	15 d * 0.50
-#		Cybrex        ;	15 d * 0.50
-#		Khan          :	15 d * 0.75
+#		Cybrex		;	15 d * 0.50
+#		Khan		  :	15 d * 0.75
 #
 #
 #
@@ -98,7 +98,7 @@ CmtModifierShipSpeed_CybrexCombatShip2 = {
 ###  Middle  ###
 ################
 #
-# similar to constructor of mature FTL empire
+# Similar to constructor of mature FTL empire.
 #
 
 ### Constructor
@@ -161,7 +161,7 @@ CmtModifierShipSpeed_CybrexCombatShip3 = {
 ###  Fast  ###
 ##############
 #
-# faster then fallen empires
+# Faster then fallen empires
 #
 
 ### Constructor

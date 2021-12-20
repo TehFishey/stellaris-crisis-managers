@@ -20,7 +20,7 @@ CmtEffectSetSleeperInterval = {
 		if = {
 			limit = {
 				check_variable = { which = CmtVarSleeperInterval value < @CmtConstSleeperInterval_T0 }
-				NOT = { check_variable = { which = CmtVarSleeperInterval value = 0 } }
+				check_variable = { which = CmtVarSleeperInterval value != 0 }
 			}
 			### Do nothing
 		} else_if = {

@@ -2,11 +2,11 @@ namespace = CrisisManagerControl
 
 ###########################################
 ###########################################
-#####                                 #####
-#####    Crisis Manager               #####
-#####                                 #####
-#####    Synth Infiltration Events    #####
-#####                                 #####
+#####								 #####
+#####	Crisis Manager			   #####
+#####								 #####
+#####	Synth Infiltration Events	#####
+#####								 #####
 ###########################################
 ###########################################
 #
@@ -20,7 +20,7 @@ namespace = CrisisManagerControl
 ### No Events
 
 ### Slow
-@CmtConstTerrorDays21 = 720 	## Attack to Security, Days from 1st Machiene World Appears
+@CmtConstTerrorDays21 = 720 	## Attack to Security, Days from 1st Machiene World Appears.
 @CmtConstTerrorRand21 = 270
 @CmtConstTerrorDays22 = 240 	## Security Breach
 @CmtConstTerrorRand22 = 120
@@ -28,7 +28,7 @@ namespace = CrisisManagerControl
 @CmtConstTerrorRand23 = 720
 
 ### Vanilla
-@CmtConstTerrorDays31 = 345 	## Attack to Security, Days from 1st Machiene World Appears
+@CmtConstTerrorDays31 = 345 	## Attack to Security, Days from 1st Machiene World Appears.
 @CmtConstTerrorRand31 = 100
 @CmtConstTerrorDays32 = 120 	## Security Breach
 @CmtConstTerrorRand32 =   0
@@ -36,7 +36,7 @@ namespace = CrisisManagerControl
 @CmtConstTerrorRand33 = 200
 
 ### Fast
-@CmtConstTerrorDays41 =  90 	## Attack to Security, Days from 1st Machiene World Appears
+@CmtConstTerrorDays41 =  90 	## Attack to Security, Days from 1st Machiene World Appears.
 @CmtConstTerrorRand41 =  30
 @CmtConstTerrorDays42 =  20 	## Security Breach
 @CmtConstTerrorRand42 =  20
@@ -44,7 +44,7 @@ namespace = CrisisManagerControl
 @CmtConstTerrorRand43 =  45
 
 ### Foxhound
-@CmtConstTerrorDays51 =  10 	## Attack to Security, Days from 1st Machiene World Appears
+@CmtConstTerrorDays51 =  10 	## Attack to Security, Days from 1st Machiene World Appears.
 @CmtConstTerrorRand51 =   5
 @CmtConstTerrorDays52 =   3 	## Security Breach
 @CmtConstTerrorRand52 =   1
@@ -63,7 +63,7 @@ country_event = {
 
 	immediate = {
 		if = {
-			limit = { NOT = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 1 } } }
+			limit = { check_variable = { which = CmtVarSynthTerrorEventSpeed value != 1 } }
 			if = {
 				limit = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 2 } }
 				country_event = { id = CrisisManagerControl.3301 days = @CmtConstTerrorDays21 random = @CmtConstTerrorRand21 }

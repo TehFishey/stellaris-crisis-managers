@@ -1,11 +1,11 @@
 
 ################################
 ################################
-#####                      #####
-#####    Crisis Manager    #####
-#####                      #####
-#####    Template T103     #####
-#####                      #####
+#####					  #####
+#####	Crisis Manager	#####
+#####					  #####
+#####	Template T103	 #####
+#####					  #####
 ################################
 ################################
 #
@@ -19,11 +19,11 @@
 ################################
 
 ### Activate Template
-	@CmtT103_ConstActivatedEventEndgame = no		## for events of End-Game Crisis, Guardians of Galaxy
-	@CmtT103_ConstActivatedEventMidgame = no		## for events of Mid-Game Crisis (Khan, L-Gate)
-	@CmtT103_ConstActivatedEventSleeper = no		## for events of Fallen Empire Awaking except Guarians of Galaxy
-	@CmtT103_ConstActivatedPowerEndgame = no		## for military power of End-Game Crisis
-	@CmtT103_ConstActivatedPowerMidgame = no		## for military power of Khan and Gray Tempest
+	@CmtT103_ConstActivatedEventEndgame = no		## For events of End-Game Crisis, Guardians of Galaxy.
+	@CmtT103_ConstActivatedEventMidgame = no		## For events of Mid-Game Crisis (Khan, L-Gate)
+	@CmtT103_ConstActivatedEventSleeper = no		## For events of Fallen Empire Awaking except Guarians of Galaxy.
+	@CmtT103_ConstActivatedPowerEndgame = no		## For military power of End-Game Crisis
+	@CmtT103_ConstActivatedPowerMidgame = no		## For military power of Khan and Gray Tempest.
 		### yes: this template is activated for specified parameters.
 		### no : this template is ignored for specified parameters.
 		### * No configurations exist for military power of Fallen/Awakened Empires.
@@ -52,7 +52,7 @@
 		### It must be 0, 10, 25, 50, 75, 100 or 999 (Default = 0).
 		### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
 
-### Crises to Happen at Earliest
+### Crises to Happen at Earliest.
 	@CmtT103_ConstEarliestEgpy = 50
 		### Set x of ''End-Game Start Year + x years''.
 		### x must be -999, -100, -75, -50, -25, 0, 25, 50, 75, 100 or 999. (Default = 50)
@@ -68,7 +68,7 @@
 	@CmtT103_ConstEqualizingProbability = 1
 		### No = 1 (Default), Weak = 2, Strong = 3, Completely = 4
 
-### Progress Speed of Opening Event Chain
+### Progress Speed of Opening Event Chain.
 	@CmtT103_ConstOpeningEventSpeed = 3
 		### Very Slow = 1, Random and Slow = 2, Standard = 3 (Default)
 		### Fast = 4, Random and Fast = 5, Foxhound = 6
@@ -158,7 +158,7 @@
 	@CmtT103_ConstFeralPrethoryn = 3
 		### Never Spawn = 1. Spawn a Little = 2, Spawn = 3 (Default), Spawn frequently = 4
 
-### Unlimited Flavor Text of Prethoryn
+### Unlimited Flavor Text of Prethoryn.
 	@CmtT103_ConstPrethorynUnlimitedFlavor = no
 		### yes: Unlimited, no: Limited (Default)
 
@@ -190,7 +190,7 @@
 		### no : Spawn only inside border of Unbidden (Default)
 		### Caution: This option must be set ''yes'' if ''@CmtT103_ConstExdsChaserCondition = 6'' (Avenger) is selected.
 
-### Less Reinforcement on Starbases Built
+### Less Reinforcement on Starbases Built.
 	@CmtT103_ConstReinforceCycle_OnExdAnchorBuilt = 1
 		### Set the number of starbases for reinforcement (Default = 1)
 		### This number must be positive integer less than 500, or 999.
@@ -248,11 +248,11 @@
 #	Required for activating: @CmtT103_ConstActivatedEventEndgame = yes
 #
 
-### Allow Forced End of the Cycle
+### Allow Forced End of the Cycle.
 	@CmtT103_ConstAllowForcedEoc = no
 		### yes: Allow to happen
 		### no : Forbid to happen (Default)
-		### Caution: yes/no are inverse of another crisis
+		### Caution: yes/no are inverse of another crisis.
 
 ### Target Control of FEoC 1 (PC/NPC)
 	@CmtT103_ConstForcedEocTargetPlayer = 1
@@ -271,7 +271,7 @@
 		### Prefer to Empire Owing Larger Territory = 3 (Default)
 		### Prefer to Empire with Many POPs = 4
 
-### Term of Covenant End of the Cycle
+### Term of Covenant End of the Cycle.
 	@CmtT103_ConstForcedEocCrisisTerm = no
 		### yes: Term of the covenant conforms to ''Progress Speed of Opening Event Chain''
 		### no:  Term of the covenant is 50 years (Default)
@@ -298,7 +298,7 @@
 		### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
 		### Zero(0) cannot be set.
 
-### Sleepers to Awake at Earliest
+### Sleepers to Awake at Earliest.
 	@CmtT103_ConstSleeperEarliestEgsy = 0
 		### Set x of ''End-Game Start Year + x years''.
 		### x must be -999, -100, -75, -50, -25, 0, 25, 50, 75, 100 or 999. (Default = 0)
@@ -310,14 +310,14 @@
 		### Very Long = 1, Long = 2 (Default), Middle = 3
 		### Short = 4, As Soon as Condition Satisfied = 5
 
-### Fleet Power of Young for Awakening
+### Fleet Power of Young for Awakening.
 	@CmtT103_ConstSleeperFleetPowerYoung = 70
 		### Set Fleet Power in ** k. For example, ''10'' means 10 k
 		### It must be -1, 15, 25, 35, 50, 70, 90, 140, 210, 350 or 999 (Default = 70).
 		### Exception: -1 means ''Unlimited''
 		### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
 
-### Minimum Own Fleet Power for Awakening
+### Minimum Own Fleet Power for Awakening.
 	@CmtT103_ConstSleeperFleetPowerOwn = 60
 		### Set Fleet Power in ** k. For example, ''10'' means 10 k
 		### It must be -1, 15, 20, 30, 45, 60, 75, 120, 180, 300 or 999 (Default = 60).
@@ -327,8 +327,8 @@
 ### Awakenable Sleepers
 	@CmtT103_ConstSleeperForbidMaterialist  = no		## Keepers of Knowledge
 	@CmtT103_ConstSleeperForbidSpiritualist = no		## Holy Guardians
-	@CmtT103_ConstSleeperForbidXenophile    = no		## Enigmatic Observers
-	@CmtT103_ConstSleeperForbidXenophobe    = no		## Militant Isolationists
+	@CmtT103_ConstSleeperForbidXenophile	= no		## Enigmatic Observers
+	@CmtT103_ConstSleeperForbidXenophobe	= no		## Militant Isolationists
 		### yes: Forbid to Standardly Awaken
 		### no:  Allow to Standardly Awaken (Default)
 
@@ -344,12 +344,12 @@
 #	Required for activating: @CmtT103_ConstActivatedEventSleeper = yes
 #
 
-### Probability of War in Heaven
+### Probability of War in Heaven.
 	@CmtT103_ConstHeavenProbability = 3
 		### Happen = 1, Low = 2, Middle = 3 (Default)
 		### High = 4, Animosities Never Subside = 5
 
-### Ancient Rival for War in Heaven
+### Ancient Rival for War in Heaven.
 	@CmtT103_ConstHeavenAncientRival = 4
 		### Completely Random = 1. Opposite Ethics Preferred = 2, Opposite Ethics Has Priority = 3
 		### Opposite Ethics Highly Preferred = 4 (Default), Limited to Opposite Etics = 5
@@ -361,8 +361,8 @@
 
 	@CmtT103_ConstHeavenForbidMaterialist   = no		### Keepers of Knowledge
 	@CmtT103_ConstHeavenForbidSpiritualist  = no		### Holy Guardians
-	@CmtT103_ConstHeavenForbidXenophile     = no		### Enigmatic Observers
-	@CmtT103_ConstHeavenForbidXenophobe     = no		### Militant Isolationists
+	@CmtT103_ConstHeavenForbidXenophile	 = no		### Enigmatic Observers
+	@CmtT103_ConstHeavenForbidXenophobe	 = no		### Militant Isolationists
 		### yes: Forbid to Awaken as Ancient Rival
 		### no:  Allow to Awaken as Ancient Rival (Default)
 
@@ -370,7 +370,7 @@
 	@CmtT103_ConstHeavenIndomitableRival = 1
 		### Disallow = 1 (Default), Allow Indomitable = 2, Recovered = 3
 
-### Progress Speed of Prelude to War in Heaven
+### Progress Speed of Prelude to War in Heaven.
 	@CmtT103_ConstHeavenPreludeSpeed = 2
 		### Slow = 1, Middle = 2 (Default), Fast = 3, Super-Express = 4
 
@@ -384,7 +384,7 @@
 		### Never Formed = 1, Get Handful of Members = 2
 		### Get Middle Amount of Members = 3, Get Many Members = 4 (Default)
 
-### Exhaustion from War in Heaven
+### Exhaustion from War in Heaven.
 	@CmtT103_ConstHeavenExhaustion = 2
 		### Spineless = 1, Fickle = 2 (Default), Tough = 3, Vindictive = 4, All-Out War = 5
 
@@ -441,14 +441,14 @@
 		### It must be 0, 10, 25, 50, 75, 100 or 999 (Default = 0).
 		### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
 
-### Khan to Reign at Earliest
+### Khan to Reign at Earliest.
 	@CmtT103_ConstKhanEarliestMgpy = 10
 		### Set x of ''Mid-Game Start Year + x years''.
 		### x must be -999, -100, -75, -50, -25, 0, 10, 25, 50, 75 or 999. (Default = 10)
 		### Exception: -999 means 'at anytime'
 		### 999 means Template Unique Value (Beta Feature), set in ''common\scripted_variables\Cmt-xxx_Unique_scripted_variables.txt''.
 
-### Last Chance of Khan Reigning
+### Last Chance of Khan Reigning.
 	@CmtT103_ConstKhanLatestEgpy = 0
 		### Set x of ''End-Game Start Year + x years''.
 		### x must be -999, -100, -75, -50, -25, 0, 25, 50, 75, 100 or 999. (Default = 0)
@@ -461,7 +461,7 @@
 		### Very Long = 1, Long = 2 (Default), Middle = 3
 		### Short = 4, Impatient Khan = 5
 
-### Probability of Khan to Rise Up for Vengeance
+### Probability of Khan to Rise Up for Vengeance.
 	@CmtT103_ConstKhanVengeance = 2
 		### Never = 1, Low = 2 (Default), Middle = 3
 		### High = 4, Do Vengeance at Any Cost = 5
@@ -479,7 +479,7 @@
 		### Critical = 1, Fleeting = 2, Standard Lifespan = 3 (Default)
 		### Enduring = 4, Venerable = 5, Immortality = 6
 
-### Latent Strength of Horde in Adversity
+### Latent Strength of Horde in Adversity.
 	@CmtT103_ConstReinforceCycle_Khan = 1
 		### Disable = 1 (Default), Weak = 2, Middle = 3, Strong = 4
 
@@ -533,8 +533,8 @@
 		### Only One = 1, After Crisis = 2 (For Only Gray Tempest)
 		### One by One Slowly = 3, One by One Quickly = 4, Immediately All = 5
 		### Caution
-		###     These configurations are activated only if ''@CmtT103_ConstLgateCycleCommon = -1'' is set.
-		###     Other cases, they are ignored.
+		###	 These configurations are activated only if ''@CmtT103_ConstLgateCycleCommon = -1'' is set.
+		###	 Other cases, they are ignored.
 
 ### Quiet Stroller
 	@CmtT103_ConstLgateAloneGrayCondition = 2
@@ -568,73 +568,73 @@
 
 ### Template of Crisis Power
 ### Template of Crisis Power
-	@CmtT103_ConstCrisisStrengthEnd = 2		## for End-Game Crisis
-	@CmtT103_ConstCrisisStrengthMid = 2		## for Mid-Game Crisis (Khan & Gray Tempest)
+	@CmtT103_ConstCrisisStrengthEnd = 2		## For End-Game Crisis
+	@CmtT103_ConstCrisisStrengthMid = 2		## For Mid-Game Crisis (Khan & Gray Tempest)
 		### Set configurations individually = 0
 		### Easy = 1, Normal = 2 (Default), Hard = 3, Doomsday = 4
 
 ### Common information for ''Individual Configurations''
 	### - '@CmtT103_ConstCrisisStrength' must be set zero(0) for using following configurations.
-	###     > If it is NOT zero(0), all of following configurations are ignored.
+	###	 > If it is NOT zero(0), all of following configurations are ignored.
 	### - To set same parameter for all crisis
-	###     > Input scale factor to '@CmtT103_Const****_Common'.
-	###     > In this case, '@CmtT103_Const****_<name of faction>' are ignored.
-	###     > 0(Zero) or negative number can NOT be inputted.
+	###	 > Input scale factor to '@CmtT103_Const****_Common'.
+	###	 > In this case, '@CmtT103_Const****_<name of faction>' are ignored.
+	###	 > 0(Zero) or negative number can NOT be inputted.
 	### - To set parameter individually for each crisis
-	###     > Input 0(Zero) to '@CmtT103_Const****_Common'.
-	###     > Input scale factor to '@CmtT103_Const****_<name of crisis faction>'
+	###	 > Input 0(Zero) to '@CmtT103_Const****_Common'.
+	###	 > Input scale factor to '@CmtT103_Const****_<name of crisis faction>'
 	### - All factors must be positive number that is multiple of 0.25.
 	### - Caution
-	###     > Immoderate factor makes heavy load on CPU and GPU
-	###       because these configurations modify the number of ships.
-	###     > Also factors grater than 3 can be inputted if you endure processing load excessive.
+	###	 > Immoderate factor makes heavy load on CPU and GPU
+	###	   because these configurations modify the number of ships.
+	###	 > Also factors grater than 3 can be inputted if you endure processing load excessive.
 	###
 
-### Individual Configurations of Crisis Power
+### Individual Configurations of Crisis Power.
 ### Fleet Power
-	@CmtT103_ConstFleetPower_Common             = 1.00		## This value must be set to zero(0) if you set the value individually for each crisis.
-	@CmtT103_ConstFleetPower_Prethoryn          = 1.00
-	@CmtT103_ConstFleetPower_Sentinel           = 1.00
-	@CmtT103_ConstFleetPower_Unbidden           = 1.00
-	@CmtT103_ConstFleetPower_Aberrant           = 1.00
-	@CmtT103_ConstFleetPower_Vehement           = 1.00
-	@CmtT103_ConstFleetPower_Contingency        = 1.00
-	@CmtT103_ConstFleetPower_Cybrex             = 1.00
-	@CmtT103_ConstFleetPower_ForcedEoc          = 1.00		## Forced End of the Cycle
-	@CmtT103_ConstFleetPower_Khan               = 1.00
-	@CmtT103_ConstFleetPower_Graygoo            = 1.00		## Gray Tempest
-	@CmtT103_ConstFleetPower_Dessanu            = 1.00
+	@CmtT103_ConstFleetPower_Common			 = 1.00		## This value must be set to zero(0) if you set the value individually for each crisis.
+	@CmtT103_ConstFleetPower_Prethoryn		  = 1.00
+	@CmtT103_ConstFleetPower_Sentinel		   = 1.00
+	@CmtT103_ConstFleetPower_Unbidden		   = 1.00
+	@CmtT103_ConstFleetPower_Aberrant		   = 1.00
+	@CmtT103_ConstFleetPower_Vehement		   = 1.00
+	@CmtT103_ConstFleetPower_Contingency		= 1.00
+	@CmtT103_ConstFleetPower_Cybrex			 = 1.00
+	@CmtT103_ConstFleetPower_ForcedEoc		  = 1.00		## Forced End of the Cycle.
+	@CmtT103_ConstFleetPower_Khan			   = 1.00
+	@CmtT103_ConstFleetPower_Graygoo			= 1.00		## Gray Tempest
+	@CmtT103_ConstFleetPower_Dessanu			= 1.00
 
 ### Army Power
-	@CmtT103_ConstArmyPower_Common              = 1.00		## This value must be set to zero(0) if you set the value individually for each crisis.
-	@CmtT103_ConstArmyPower_Prethoryn           = 1.00
-	@CmtT103_ConstArmyPower_Contingency         = 1.00
-	@CmtT103_ConstArmyPower_Khan                = 1.00
+	@CmtT103_ConstArmyPower_Common			  = 1.00		## This value must be set to zero(0) if you set the value individually for each crisis.
+	@CmtT103_ConstArmyPower_Prethoryn		   = 1.00
+	@CmtT103_ConstArmyPower_Contingency		 = 1.00
+	@CmtT103_ConstArmyPower_Khan				= 1.00
 
 ### Number of Combat Fleets
-	@CmtT103_ConstCombatFleetNumber_Common      = 1.00		## This value must be set to zero(0) if you set the value individually for each crisis.
+	@CmtT103_ConstCombatFleetNumber_Common	  = 1.00		## This value must be set to zero(0) if you set the value individually for each crisis.
 	@CmtT103_ConstCombatFleetNumber_Prethoryn   = 1.00
-	@CmtT103_ConstCombatFleetNumber_Sentinel    = 1.00
-	@CmtT103_ConstCombatFleetNumber_Unbidden    = 1.00
-	@CmtT103_ConstCombatFleetNumber_Aberrant    = 1.00
-	@CmtT103_ConstCombatFleetNumber_Vehement    = 1.00
+	@CmtT103_ConstCombatFleetNumber_Sentinel	= 1.00
+	@CmtT103_ConstCombatFleetNumber_Unbidden	= 1.00
+	@CmtT103_ConstCombatFleetNumber_Aberrant	= 1.00
+	@CmtT103_ConstCombatFleetNumber_Vehement	= 1.00
 	@CmtT103_ConstCombatFleetNumber_Contingency = 1.00
-	@CmtT103_ConstCombatFleetNumber_Cybrex      = 1.00
-	@CmtT103_ConstCombatFleetNumber_Khan        = 1.00
-	@CmtT103_ConstCombatFleetNumber_Graygoo     = 1.00		## Gray Tempest
-	@CmtT103_ConstCombatFleetNumber_Dessanu     = 1.00
+	@CmtT103_ConstCombatFleetNumber_Cybrex	  = 1.00
+	@CmtT103_ConstCombatFleetNumber_Khan		= 1.00
+	@CmtT103_ConstCombatFleetNumber_Graygoo	 = 1.00		## Gray Tempest
+	@CmtT103_ConstCombatFleetNumber_Dessanu	 = 1.00
 
 ### Number of Army Fleets
-	@CmtT103_ConstArmyNumber_Common             = 1.00		## This value must be set to zero(0) if you set the value individually for each crisis.
-	@CmtT103_ConstArmyNumber_Prethoryn          = 1.00
-	@CmtT103_ConstArmyNumber_Contingency        = 1.00
-	@CmtT103_ConstArmyNumber_Khan               = 1.00
+	@CmtT103_ConstArmyNumber_Common			 = 1.00		## This value must be set to zero(0) if you set the value individually for each crisis.
+	@CmtT103_ConstArmyNumber_Prethoryn		  = 1.00
+	@CmtT103_ConstArmyNumber_Contingency		= 1.00
+	@CmtT103_ConstArmyNumber_Khan			   = 1.00
 
 ### Number of Auxiliary Ships/Fleets (Constructor, Colonizer)
-	@CmtT103_ConstConstructorNumber_Common      = 1.00		## This value must be set to zero(0) if you set the value individually for each crisis.
+	@CmtT103_ConstConstructorNumber_Common	  = 1.00		## This value must be set to zero(0) if you set the value individually for each crisis.
 	@CmtT103_ConstConstructorNumber_Prethoryn   = 1.00
-	@CmtT103_ConstConstructorNumber_Unbidden    = 1.00
-	@CmtT103_ConstConstructorNumber_Aberrant    = 1.00
-	@CmtT103_ConstConstructorNumber_Vehement    = 1.00
+	@CmtT103_ConstConstructorNumber_Unbidden	= 1.00
+	@CmtT103_ConstConstructorNumber_Aberrant	= 1.00
+	@CmtT103_ConstConstructorNumber_Vehement	= 1.00
 	@CmtT103_ConstConstructorNumber_Contingency = 1.00
-	@CmtT103_ConstConstructorNumber_Khan        = 1.00
+	@CmtT103_ConstConstructorNumber_Khan		= 1.00

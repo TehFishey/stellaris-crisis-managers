@@ -120,13 +120,13 @@ CmtTriggerCheckSleeperFleetPower = {
 		AND = {
 			event_target:CmtGlobalVar = {
 				check_variable = { which = CmtVarSleeperFleetPowerOwn value < @CmtConstSleeperFleetPowerOwn_T1 }
-				NOT = { check_variable = { which = CmtVarSleeperFleetPowerOwn value = 0 } }
+				check_variable = { which = CmtVarSleeperFleetPowerOwn value != 0 }
 			}
 		}
 		AND = {
 			event_target:CmtGlobalVar = {
 				NOT = { check_variable = { which = CmtVarSleeperFleetPowerOwn value < @CmtConstSleeperFleetPowerOwn_T1 } }
-				NOT = { check_variable = { which = CmtVarSleeperFleetPowerOwn value = 0 } }
+				check_variable = { which = CmtVarSleeperFleetPowerOwn value != 0 }
 				check_variable = { which = CmtVarSleeperFleetPowerOwn value < @CmtConstSleeperFleetPowerOwn_T2 }
 			}
 			fleet_power > @CmtConstSleeperFleetPowerOwn_V1
@@ -212,10 +212,10 @@ CmtTriggerCheckYoungsFleetPower = {
 			}
 			AND = {
 				check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T1 }
-				NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value = 0 } }
+				check_variable = { which = CmtVarSleeperFleetPowerYoung value != 0 }
 			}
 			AND = {
-				NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value = 0 } }
+				check_variable = { which = CmtVarSleeperFleetPowerYoung value != 0 }
 				NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T1 } }
 				check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T2 }
 				any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_V1 }

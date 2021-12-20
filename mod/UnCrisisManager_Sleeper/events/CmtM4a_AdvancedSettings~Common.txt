@@ -28,7 +28,7 @@ country_event = {
 	}
 
 	after = {
-		hidden_effect = { # since 3.1
+		hidden_effect = { # Since 3.1
 			event_target:CmtGlobalVar = {
 				if = {
 					limit = {
@@ -171,7 +171,7 @@ country_event = {
 		}
 		hidden_effect = {
 			if = {
-				limit = { ## hidden fallback
+				limit = { ## Hidden fallback
 					OR = {
 						has_global_flag = war_in_heaven_started
 						has_global_flag = guardians_of_the_galaxy_happened

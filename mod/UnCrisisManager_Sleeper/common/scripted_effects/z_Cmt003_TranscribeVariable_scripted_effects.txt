@@ -24,24 +24,24 @@ CmtEffectTransferAll = {
 ###- Khan -###
 ###############
 
-### Resurgence of Khan (Transcribe when they awakening)
-CmtEffectTransferKhanRemainingLive = {		### Scope: root = Awakened Khan Country
-	event_target:CmtGlobalVar = {
-		if = {
-			limit = { check_variable = { which = CmtVarKhanResurgence value < -0.5 } }
-			root = { set_variable = { which = CmtVarKhanRemainingLive value = -1 } }
-		} else = {
-			set_variable = { which = CmtVarTemp value = CmtVarKhanResurgence }
-			root = { set_variable = { which = CmtVarKhanRemainingLive value = 0 } }
-			while = {
-				limit = { check_variable = { which = CmtVarTemp value > 0.5 } }
-				change_variable = { which = CmtVarTemp value = -1 }
-				root = { change_variable = { which = CmtVarKhanRemainingLive value = 1 } }
-			}
-			set_variable = { which = CmtVarTemp value = 0 }
-		}
-	}
-}
+### Pre 3.1 Legacy: Resurgence of Khan (Transcribe when they awakening)
+# CmtEffectTransferKhanRemainingLive = {		### Scope: root = Awakened Khan Country
+# 	event_target:CmtGlobalVar = {
+# 		if = {
+# 			limit = { check_variable = { which = CmtVarKhanResurgence value < -0.5 } }
+# 			root = { set_variable = { which = CmtVarKhanRemainingLive value = -1 } }
+# 		} else = {
+# 			set_variable = { which = CmtVarTemp value = CmtVarKhanResurgence }
+# 			root = { set_variable = { which = CmtVarKhanRemainingLive value = 0 } }
+# 			while = {
+# 				limit = { check_variable = { which = CmtVarTemp value > 0.5 } }
+# 				change_variable = { which = CmtVarTemp value = -1 }
+# 				root = { change_variable = { which = CmtVarKhanRemainingLive value = 1 } }
+# 			}
+# 			set_variable = { which = CmtVarTemp value = 0 }
+# 		}
+# 	}
+# }
 
 ### Future of Horde
 CmtEffectTransferKhanPostDeath = {

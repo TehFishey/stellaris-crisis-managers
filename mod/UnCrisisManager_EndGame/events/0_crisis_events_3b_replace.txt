@@ -2,12 +2,12 @@ namespace = crisis
 
 ##############################################
 ##############################################
-#####                                    #####
-#####    Crisis Events 3: Contingency    #####
-#####                                    #####
-#####    Ghost Signal Events             #####
-#####    Replaced by Crisis Manager      #####
-#####                                    #####
+#####									#####
+#####	Crisis Events 3: Contingency	#####
+#####									#####
+#####	Ghost Signal Events			 #####
+#####	Replaced by Crisis Manager	  #####
+#####									#####
 ##############################################
 ##############################################
 
@@ -345,7 +345,7 @@ planet_event = {
 	trigger = {
 		is_planet_class = pc_ai
 		NOT = { has_planet_flag = machine_lair }
-		OR = { # cracked or bombarded to death
+		OR = { # Cracked or bombarded to death.
 			from = { is_same_value = root }
 			planet_devastation > 90		## 2.2.4.beta: >=50
 			has_planet_flag = destroyed_by_colossus
@@ -490,7 +490,7 @@ planet_event = {
 ###  Ordinary Events  ###
 #########################
 
-### for New Synth
+### For New Synth
 planet_event = {
 	id = crisis.2055
 	hide_window = yes
@@ -603,7 +603,7 @@ planet_event = {
 	}
 }
 
-### for New ships
+### For New ships
 ship_event = {
 	id = crisis.2056
 	hide_window = yes
@@ -780,7 +780,7 @@ ship_event = {
 	}
 }
 
-### for Upgraded Ships
+### For Upgraded Ships
 ship_event = {
 	id = crisis.2057
 	hide_window = yes
@@ -846,11 +846,11 @@ ship_event = {
 		remove_modifier = CmtModifierCombatShipGhostSignal_1d
 		remove_modifier = CmtModifierCombatShipGhostSignal_1e
 
-		ship_event = { id = crisis.2056 }		## Set Modifier if Ship Has Sapient CPU
+		ship_event = { id = crisis.2056 }		## Set Modifier if Ship Has Sapient CPU.
 	}
 }
 
-### for New Machine Empire Pop
+### For New Machine Empire Pop.
 planet_event = {
 	id = crisis.2312
 	hide_window = yes
@@ -915,7 +915,7 @@ planet_event = {
 	}
 }
 
-### Machine Empire Special Project Finished
+### Machine Empire Special Project Finished.
 country_event = {
 	id = crisis.2510
 	title = crisis.2510.name

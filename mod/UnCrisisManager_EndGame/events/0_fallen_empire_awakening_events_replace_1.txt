@@ -2,16 +2,16 @@ namespace = fallen_empires_awakening
 
 ###################################################
 ###################################################
-#####                                         #####
-#####    Awakening Events of Fallen Empire    #####
-#####    As Guradian of Galaxy                #####
-#####                                         #####
-#####    Replaced by Crisis Manager           #####
-#####                                         #####
+#####										 #####
+#####	Awakening Events of Fallen Empire	#####
+#####	As Guradian of Galaxy				#####
+#####										 #####
+#####	Replaced by Crisis Manager		   #####
+#####										 #####
 ###################################################
 ###################################################
 #
-# Some events are re-overwrittten by Sleeper Edition
+# Some events are re-overwrittten by Sleeper Edition.
 #
 
 ### Awakening of Sleeper: Re-Overwritten by Sleeper Edition
@@ -21,7 +21,7 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		### Flag/Target Control for War in Heaven
+		### Flag/Target Control for War in Heaven.
 		if = {
 			limit = {
 				NOR = {

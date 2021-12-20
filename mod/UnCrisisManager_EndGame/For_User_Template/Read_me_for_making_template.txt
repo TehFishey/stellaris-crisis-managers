@@ -1,8 +1,8 @@
 ###################################################################
 ###################################################################
-######                                                        #####
-######    The way to make user templates of Crisis Manager    #####
-######                                                        #####
+######														#####
+######	The way to make user templates of Crisis Manager	#####
+######														#####
 ###################################################################
 ###################################################################
 #
@@ -55,7 +55,7 @@
 #				(1) Copy above 2 items from new templates to old ones.
 #				(2) Change "1.02" in "@CmtT***_ConstVersionInfo = 1.02" to "1.03".
 #				(3) Copy a group "Template for Fleets of Fallen Empires"
-#				    in "CrisisManagerTemplate_l_<language>.yml" from old file to new one.
+#					in "CrisisManagerTemplate_l_<language>.yml" from old file to new one.
 #		25/Aug/2018	Ver.1.4
 #			- New Parameters: Configurations for L-Gate
 #			- Followings are required for using old template in new version of this mod.
