@@ -28,10 +28,31 @@ CmtFleetSetAuxParam_KhanCombat = {
 		angle = random
 	}
 	if = {
-		limit = { exists = prevprev.solar_system.starbase }
+		limit = {
+			exists = prevprev.solar_system.starbase
+			prev = {
+				OR = {
+					is_country_type = dormant_marauders
+					AND = {
+						exists = event_target:raider_khanate
+						CmtTriggerIsKhanCountry = yes
+					}
+				}
+			}
+		}
 		if = {
 			limit = {
-				prevprev.solar_system.starbase = { NOT = { is_owned_by = prevprev } }
+				prevprev.solar_system.starbase = {
+					NOR = {
+						is_owned_by = prevprev
+						owner = {
+							OR = {
+								is_country_type = awakened_marauders
+								is_country_type = dormant_marauders
+							}
+						}
+					}
+				}
 			}
 			log_error = "marauder_rally_point not owned by Khan!?"
 			# Can only make a Starbase a Home Base if we or an ally own it.

@@ -116,7 +116,7 @@ country_event = {
 			set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_1d }
 			event_target:CmtTargetFirstSleeper = { set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_1d } }
 			every_playable_country = {
-				limit = { CmtTriggerIsPlayableEmpire = yes }
+				# limit = { CmtTriggerIsPlayableEmpire = yes }
 				set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_1d }
 			}
 		} else_if = {
@@ -126,7 +126,7 @@ country_event = {
 			set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_3d }
 			event_target:CmtTargetFirstSleeper = { set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_3d } }
 			every_playable_country = {
-				limit = { CmtTriggerIsPlayableEmpire = yes }
+				# limit = { CmtTriggerIsPlayableEmpire = yes }
 				set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_3d }
 			}
 		} else_if = {
@@ -136,7 +136,7 @@ country_event = {
 			set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_4d }
 			event_target:CmtTargetFirstSleeper = { set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_4d } }
 			every_playable_country = {
-				limit = { CmtTriggerIsPlayableEmpire = yes }
+				# limit = { CmtTriggerIsPlayableEmpire = yes }
 				set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_4d }
 			}
 		} else = {
@@ -145,7 +145,7 @@ country_event = {
 			set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_2d }
 			event_target:CmtTargetFirstSleeper = { set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_2d } }
 			every_playable_country = {
-				limit = { CmtTriggerIsPlayableEmpire = yes }
+				# limit = { CmtTriggerIsPlayableEmpire = yes }
 				set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_2d }
 			}
 		}
@@ -330,21 +330,21 @@ country_event = {
 		if = {
 			limit = { has_galactic_emperor = no }
 			every_playable_country = {
-				limit = { CmtTriggerIsPlayableEmpire = yes }
+				# limit = { CmtTriggerIsPlayableEmpire = yes }
 				country_event = { id = war_in_heaven.4 }
 			}
 		}
 		else = {
 			every_playable_country = {
 				limit = {
-					CmtTriggerIsPlayableEmpire = yes
+					# CmtTriggerIsPlayableEmpire = yes
 					is_galactic_community_member = yes
 				}
 				country_event = { id = war_in_heaven.7 }
 			}
 			every_playable_country = {
 				limit = {
-					CmtTriggerIsPlayableEmpire = yes
+					# CmtTriggerIsPlayableEmpire = yes
 					is_galactic_community_member = no
 				}
 				country_event = { id = war_in_heaven.4 }

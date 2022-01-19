@@ -22,115 +22,115 @@ event = {
 
 	trigger = {
 		event_target:CmtGlobalVar = {
-			### Check Earliest Year
-			OR = {
-				check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T1 }
-				AND = {
-					NOT = { check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T1 } }
-					check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T2 }
-					mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V1
-				}
-				AND = {
-					NOT = { check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T2 } }
-					check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T3 }
-					mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V2
-				}
-				AND = {
-					NOT = { check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T3 } }
-					check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T4 }
-					mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V3
-				}
-				AND = {
-					NOT = { check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T4 } }
-					check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T5 }
-					mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V4
-				}
-				AND = {
-					NOT = { check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T5 } }
-					check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T6 }
-					mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V5
-				}
-				AND = {
-					NOT = { check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T6 } }
-					check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T7 }
-					mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V6
-				}
-				AND = {
-					NOT = { check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T7 } }
-					check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T8 }
-					mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V7
-				}
-				AND = {
-					NOT = { check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T8 } }
-					check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T9 }
-					mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V8
-				}
-				AND = {
-					NOT = { check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T9 } }
-					check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_TA }
-					mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V9
-				}
-				AND = {
-					NOT = { check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_TA } }
-					mid_game_years_passed >= @CmtConstTUnq_ConstKhanEarliestMgpy
-				}
-			}
-
-			### Check Latest Year
-			OR = {
-				AND = {
-					check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T1 }
-					end_game_years_passed <= @CmtConstTUnq_ConstKhanLatestEgpy
-				}
-				AND = {
-					NOT = { check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T1 } }
-					check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T2 }
-					end_game_years_passed <= @CmtConstKhanLatestEgpy_V1
-				}
-				AND = {
-					NOT = { check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T2 } }
-					check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T3 }
-					end_game_years_passed <= @CmtConstKhanLatestEgpy_V2
-				}
-				AND = {
-					NOT = { check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T3 } }
-					check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T4 }
-					end_game_years_passed <= @CmtConstKhanLatestEgpy_V3
-				}
-				AND = {
-					NOT = { check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T4 } }
-					check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T5 }
-					end_game_years_passed <= @CmtConstKhanLatestEgpy_V4
-				}
-				AND = {
-					NOT = { check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T5 } }
-					check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T6 }
-					end_game_years_passed <= @CmtConstKhanLatestEgpy_V5
-				}
-				AND = {
-					NOT = { check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T6 } }
-					check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T7 }
-					end_game_years_passed <= @CmtConstKhanLatestEgpy_V6
-				}
-				AND = {
-					NOT = { check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T7 } }
-					check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T8 }
-					end_game_years_passed <= @CmtConstKhanLatestEgpy_V7
-				}
-				AND = {
-					NOT = { check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T8 } }
-					check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T9 }
-					end_game_years_passed <= @CmtConstKhanLatestEgpy_V8
-				}
-				AND = {
-					NOT = { check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T9 } }
-					check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_TA }
-					end_game_years_passed <= @CmtConstKhanLatestEgpy_V9
-				}
-				NOT = { check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_TA } }
-			}
-
+			mid_game_years_passed > CmtVarKhanEarliestMgpy	# Check Earliest Year
+			end_game_years_passed < CmtVarKhanLatestEgpy	# Check Latest Year
 			CmtTriggerKhanAwakingMultipleCheck = yes
+			# pre 3.0 legacy
+			### Check Earliest Year
+			# OR = {
+			# 	check_variable = { which = CmtVarKhanEarliestMgpy value =< @CmtConstKhanEarliestMgpy_T1 }
+			# 	AND = {
+			# 		check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T2 } # -87.5
+			# 		mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V1 # -100
+			# 	}
+			# 	AND = {
+			# 		check_variable = { which = CmtVarKhanEarliestMgpy value > @CmtConstKhanEarliestMgpy_T2 } # -87.5
+			# 		check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T3 } # -62.5
+			# 		mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V2 # -75
+			# 	}
+			# 	AND = {
+			# 		check_variable = { which = CmtVarKhanEarliestMgpy value > @CmtConstKhanEarliestMgpy_T3 } # -62.5
+			# 		check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T4 } # -37.5
+			# 		mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V3 # -50
+			# 	}
+			# 	AND = {
+			# 		check_variable = { which = CmtVarKhanEarliestMgpy value > @CmtConstKhanEarliestMgpy_T4 }
+			# 		check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T5 }
+			# 		mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V4
+			# 	}
+			# 	AND = {
+			# 		check_variable = { which = CmtVarKhanEarliestMgpy value > @CmtConstKhanEarliestMgpy_T5 }
+			# 		check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T6 }
+			# 		mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V5
+			# 	}
+			# 	AND = {
+			# 		check_variable = { which = CmtVarKhanEarliestMgpy value > @CmtConstKhanEarliestMgpy_T6 }
+			# 		check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T7 }
+			# 		mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V6
+			# 	}
+			# 	AND = {
+			# 		check_variable = { which = CmtVarKhanEarliestMgpy value > @CmtConstKhanEarliestMgpy_T7 }
+			# 		check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T8 }
+			# 		mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V7
+			# 	}
+			# 	AND = {
+			# 		check_variable = { which = CmtVarKhanEarliestMgpy value > @CmtConstKhanEarliestMgpy_T8 }
+			# 		check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T9 }
+			# 		mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V8
+			# 	}
+			# 	AND = {
+			# 		check_variable = { which = CmtVarKhanEarliestMgpy value > @CmtConstKhanEarliestMgpy_T9 }
+			# 		check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_TA }
+			# 		mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V9
+			# 	}
+			# 	AND = {
+			# 		check_variable = { which = CmtVarKhanEarliestMgpy value > @CmtConstKhanEarliestMgpy_TA }
+			# 		mid_game_years_passed >= @CmtConstTUnq_ConstKhanEarliestMgpy
+			# 	}
+			# }
+			### Check Latest Year
+			# OR = {
+			# 	check_variable = { which = CmtVarKhanLatestEgpy value >= @CmtConstKhanLatestEgpy_TA }
+			# 	AND = {
+			# 		check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T1 }
+			# 		end_game_years_passed <= @CmtConstTUnq_ConstKhanLatestEgpy
+			# 	}
+			# 	AND = {
+			# 		check_variable = { which = CmtVarKhanLatestEgpy value > @CmtConstKhanLatestEgpy_T1 }
+			# 		check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T2 }
+			# 		end_game_years_passed <= @CmtConstKhanLatestEgpy_V1
+			# 	}
+			# 	AND = {
+			# 		check_variable = { which = CmtVarKhanLatestEgpy value > @CmtConstKhanLatestEgpy_T2 }
+			# 		check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T3 }
+			# 		end_game_years_passed <= @CmtConstKhanLatestEgpy_V2
+			# 	}
+			# 	AND = {
+			# 		check_variable = { which = CmtVarKhanLatestEgpy value > @CmtConstKhanLatestEgpy_T3 }
+			# 		check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T4 }
+			# 		end_game_years_passed <= @CmtConstKhanLatestEgpy_V3
+			# 	}
+			# 	AND = {
+			# 		check_variable = { which = CmtVarKhanLatestEgpy value > @CmtConstKhanLatestEgpy_T4 }
+			# 		check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T5 }
+			# 		end_game_years_passed <= @CmtConstKhanLatestEgpy_V4
+			# 	}
+			# 	AND = {
+			# 		check_variable = { which = CmtVarKhanLatestEgpy value > @CmtConstKhanLatestEgpy_T5 }
+			# 		check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T6 }
+			# 		end_game_years_passed <= @CmtConstKhanLatestEgpy_V5
+			# 	}
+			# 	AND = {
+			# 		check_variable = { which = CmtVarKhanLatestEgpy value > @CmtConstKhanLatestEgpy_T6 }
+			# 		check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T7 }
+			# 		end_game_years_passed <= @CmtConstKhanLatestEgpy_V6
+			# 	}
+			# 	AND = {
+			# 		check_variable = { which = CmtVarKhanLatestEgpy value > @CmtConstKhanLatestEgpy_T7 }
+			# 		check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T8 }
+			# 		end_game_years_passed <= @CmtConstKhanLatestEgpy_V7
+			# 	}
+			# 	AND = {
+			# 		check_variable = { which = CmtVarKhanLatestEgpy value > @CmtConstKhanLatestEgpy_T8 }
+			# 		check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T9 }
+			# 		end_game_years_passed <= @CmtConstKhanLatestEgpy_V8
+			# 	}
+			# 	AND = {
+			# 		check_variable = { which = CmtVarKhanLatestEgpy value > @CmtConstKhanLatestEgpy_T9 }
+			# 		check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_TA }
+			# 		end_game_years_passed <= @CmtConstKhanLatestEgpy_V9
+			# 	}
+			# }
 		}
 	}
 
@@ -183,7 +183,7 @@ event = {
 					set_timed_global_flag = { flag = CmtFlagKillDoubleBookingKhan days = 5 }
 					country_event = { id = marauder.500 days = 2 random = 358 }
 				}
-				99 = {
+				98 = {
 					modifier = {
 						factor = 3
 						event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanTriggerProbability value = 1 } }

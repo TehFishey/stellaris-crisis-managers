@@ -1,0 +1,19 @@
+# Use in war scope. War is deleted.
+# Vanilla Fix: don't break the loop
+end_war_effect = {
+	every_war_participant = {
+		limit = {
+			NOT = { is_war_participant = { who = prev side = prevprev } } # NOT = { is_same_empire = prevprev }
+		}
+		prev = { remove_war_participant = prev }
+		if = {
+			limit = {
+				NAND = {
+					exists = prev
+					prev = { is_scope_type = war }
+				}
+			}
+			break = yes
+		}
+	}
+}
