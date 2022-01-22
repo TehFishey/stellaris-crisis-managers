@@ -198,6 +198,7 @@ country_event = {
 		allow = { host_has_dlc = "Apocalypse" }
 		trigger = {
 			has_global_flag = CmtFlagMidGameEdition
+			num_marauder_empires_to_spawn > 0
 			NOT = { has_global_flag = marauder_crisis_ongoing }
 			# CmtTriggerNowInKhanCrisis = no
 			OR = {
@@ -2994,22 +2995,23 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = {
+		# Only to be sure
 		if = {
-			limit = { NOT = { exists = event_target:marauder_country_1 } }
+			limit = { num_marauder_empires_to_spawn > 0 NOT = { exists = event_target:marauder_country_1 } }
 			random_country = {
 				limit = { has_country_flag = marauder_1 }
 				save_global_event_target_as = marauder_country_1
 			}
 		}
 		if = {
-			limit = { NOT = { exists = event_target:marauder_country_2 } }
+			limit = { num_marauder_empires_to_spawn > 1 NOT = { exists = event_target:marauder_country_2 } }
 			random_country = {
 				limit = { has_country_flag = marauder_2 }
 				save_global_event_target_as = marauder_country_2
 			}
 		}
 		if = {
-			limit = { NOT = { exists = event_target:marauder_country_3 } }
+			limit = { num_marauder_empires_to_spawn > 2 NOT = { exists = event_target:marauder_country_3 } }
 			random_country = {
 				limit = { has_country_flag = marauder_3 }
 				save_global_event_target_as = marauder_country_3

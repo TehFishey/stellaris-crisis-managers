@@ -228,7 +228,19 @@ CmtEffectCreateFleet_FeralPrethorynInfighter = {
 ##################
 
 CmtEffectCreateFleet_SentinelCapitalDefense = {
-	CmtEffectCreateAdmiral_SentinelCapitalDefense = yes
+	# CmtEffectCreateAdmiral_SentinelCapitalDefense = yes legacy 3.2
+	event_target:crisis_sentinels = {
+		create_leader = {
+			class = admiral
+			species = owner_species
+			name = random
+			skill = 5
+			traits = {
+				trait = leader_trait_sentinel
+				trait = random_trait
+			}
+		}
+	}
 	create_fleet = {
 		name = "NAME_Sentinel_Defense_Fleet"
 		effect = {
@@ -341,7 +353,7 @@ CmtEffectCreateFleet_SentinelAttacker = {
 
 ### Require Additional Scope: root = donated empire
 CmtEffectCreateAdmiraltyDonation_SentinelTaskforce = {
-	event_target:sentinels = {
+	event_target:crisis_sentinels = {
 	# CmtEffectCreateFleetDonation_SentinelTaskforce = {
 		create_fleet = {
 			name = "NAME_Sentinel_Auxiliary_Fleet"

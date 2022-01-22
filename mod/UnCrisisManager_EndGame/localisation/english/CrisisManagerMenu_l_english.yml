@@ -1,14 +1,13 @@
 ﻿l_english:
-
- ##############################################
- ##############################################
- #####                                    #####
- #####    Crisis Manager                  #####
- #####                                    #####
- #####    Texts for Configuration Menu    #####
- #####                                    #####
- ##############################################
- ##############################################
+ ##########################################
+ ##########################################
+ #####																#####
+ #####	Crisis Manager								#####
+ #####																#####
+ #####	Texts for Configuration Menu	#####
+ #####																#####
+ ##########################################
+ ##########################################
 
  #############################
  ###  Common Words, Icons  ###
@@ -41,11 +40,11 @@
  CmtTextGoBackViewerMenu.tooltip:1 ""
  CmtTextKeepCurrent.name:0 "Keep Current Configuration £horizontal_right_button£"
  CmtTextKeepCurrent.tooltip:1 ""
- CmtTextSetIndividually.name:0 "Set Individually for Each Crises"        ## The active voice. This is used as title of options.
+ CmtTextSetIndividually.name:0 "Set Individually for Each Crises"
  CmtTextSetIndividually.tooltip:1 ""
  CmtTextErrUndefined.name:0 "§EUndefined§! (§RError!!§!)"
  CmtTextErrUndefined.tooltip:0 "Something is wrong, and this option is deactivated.\nPlease re-configure it for activating this option."
- CmtTextSeparator.name:1 "----------------------------------------------------------------"        ## '-' x64
+ CmtTextSeparator.name:1 "----------------------------------------------------------------"
  CmtTextSeparator.tooltip:0 "This is a separator with no effect."
  CmtTextTemplateUnique.name:0 "§WUnique Value of Template§!"
  CmtTextTemplateUnique.desc:0 "The unique value set by user template"
@@ -55,7 +54,7 @@
  CmtTextOperation:0 "§WSelected Operation: §!"
  CmtTextCurrentEnd:0 "§WCurrent Setting ($CmtNameEndgame$): §!"
  CmtTextCurrentMid:0 "§WCurrent Setting ($CmtNameMidgame$): §!"
- CmtTextSetIndividuallyPassive:0 "Set individually for each crises"        ## The passive voice. This is used like 'Current Settings: Set Individually for Each Crises'
+ CmtTextSetIndividuallyPassive:0 "Set individually for each crises"
 
  ### Common Words in Options
  CmtTextSwitchToForbid:0 "Switch to §BForbid§!"
@@ -77,10 +76,10 @@
  CmtTextUpdate2:0 "§GStable Version§!"
  CmtTextFriendly:0 "Friendly"
  CmtTextHostile:0 "$FC_RELATION_LABEL_HOSTILE$"
- CmtSignTimes:0 "×"        ## Multiplication Sign, used like ''Fleet Power: × 1.25''.
+ CmtSignTimes:0 "×"
  CmtSignPlus:0 "+"
  CmtSignMinus:0 "-"
- CmtSignZero:0 "±0"        ## Plus-Minus Zero
+ CmtSignZero:0 "±0"
 
  ### For only debug mode
  CmtTextTurnOn:0 ": Current §ROFF§!, Turn ON"
@@ -305,15 +304,15 @@
 
  CrisisManagerMenu.2100.name:0 "List of Configuration Templates"
  CrisisManagerMenu.2100.desc:0 "Here you can select any template of configurations.\n\n$CrisisManagerTemplateList.desc$\n\n$CmtDescTemplateInfoFull$"
- CrisisManagerTemplate_T000.title:0 "Default"        # Name of Template
+ CrisisManagerTemplate_T000.title:0 "Default"
  CrisisManagerTemplate_T000.tooltip:0 "Return all configurations to default."
  CmtTemplateEvent_EMS:0 " $CmtIconTemplateEvent$(All)"
  CmtTemplateEvent_EM_:0 " $CmtIconTemplateEvent$(E/M)"
  CmtTemplateEvent_E_S:0 " $CmtIconTemplateEvent$(E/S)"
- CmtTemplateEvent_E__:0 " $CmtIconTemplateEvent$(E)"        ### E: 1st letter of ''End-Game''
+ CmtTemplateEvent_E__:0 " $CmtIconTemplateEvent$(E)"		### E: 1st letter of ''End-Game''
  CmtTemplateEvent__MS:0 " $CmtIconTemplateEvent$(M/S)"
- CmtTemplateEvent__M_:0 " $CmtIconTemplateEvent$(M)"        ### M: 1st letter of ''Mid-Game''
- CmtTemplateEvent___S:0 " $CmtIconTemplateEvent$(S)"        ### S: 1st letter of ''Sleeper'', meaning Fallen Empires
+ CmtTemplateEvent__M_:0 " $CmtIconTemplateEvent$(M)"		### M: 1st letter of ''Mid-Game''
+ CmtTemplateEvent___S:0 " $CmtIconTemplateEvent$(S)"		### S: 1st letter of ''Sleeper'', meaning Fallen Empires
  CmtTemplateEvent____:1 ""
  CmtTemplatePower_EM_:0 " $CmtIconTemplatePower$(E/M)"
  CmtTemplatePower_E__:0 " $CmtIconTemplatePower$(E)"
@@ -523,7 +522,7 @@
  CrisisManagerMenu.3160c.title:0 "§GStandard§!"
  CrisisManagerMenu.3160d.title:0 "§Y$GAME_SPEED_4$§!"
  CrisisManagerMenu.3160e.title:0 "§HRandomly $GAME_SPEED_4$§!"
- CrisisManagerMenu.3160f.title:0 "§RFoxhound§!"        ## Origin of the name: Mig-31, interceptor aircraft.
+ CrisisManagerMenu.3160f.title:0 "§RFoxhound§!"		## Origin of the name: Mig-31, interceptor aircraft.
  CrisisManagerMenu.3160x.title:0 "Speed of Opening Event: "
  CrisisManagerMenu.3160y.name:0 "What does it mean?"
  CrisisManagerMenu.3160x.tooltip:0 "The time from crisis triggered to 1st attacking: "
@@ -1184,7 +1183,7 @@
  CrisisManagerMenu.4340b.title:0 "§B$GAME_SPEED_2$§!"
  CrisisManagerMenu.4340c.title:0 "§G$GAME_SPEED_3$§!"
  CrisisManagerMenu.4340d.title:0 "§H$GAME_SPEED_4$§!"
- CrisisManagerMenu.4340e.title:0 "§RZero-day Attack§!"        ## Origin of the name: one of the way of software cracking.
+ CrisisManagerMenu.4340e.title:0 "§RZero-day Attack§!"		## Origin of the name: one of the way of software cracking.
  CrisisManagerMenu.4340x.title:0 "Speed of Pre-Terror Events: "
  CrisisManagerMenu.4340a.tooltip:0 "These event will not happen."
  CrisisManagerMenu.4340b.tooltip:0 "§YAbout 5 years§! from appearance of 1st $pc_ai$."
@@ -2004,7 +2003,7 @@
  CrisisManagerMenu.4750c.title:0 "§YAwakening Randomly§!"
  CrisisManagerMenu.4750d.title:0 "§HAwakening Surely as Berserkers§!"
  CrisisManagerMenu.4750x.title:1 "$CrisisManagerMenu.4750.title$: "
- CrisisManagerMenu.4750a.tooltip:0 "The directive will reactivated for §R<<DATA BLOCK CORRUPTED>>§! rrup§R<<DATA BLOCK CORRUPTED>>.§!\n\nThey have forgotten their task in ages past, although it must have been very important.\nThey will never awaken."        ## rrup: Corruption (See also fallen_machine_empire.2.desc_01 in Stellaris original file.)
+ CrisisManagerMenu.4750a.tooltip:0 "The directive will reactivated for §R<<DATA BLOCK CORRUPTED>>§! rrup§R<<DATA BLOCK CORRUPTED>>.§!\n\nThey have forgotten their task in ages past, although it must have been very important.\nThey will never awaken."		## rrup: Corruption (See also fallen_machine_empire.2.desc_01 in Stellaris original file.)
  CrisisManagerMenu.4750b.tooltip:0 "Their ''Final Defense Directive'' is surely reliable."
  CrisisManagerMenu.4750c.tooltip:0 "They might awaken as the Guardians, and again they might awaken as Berserkers"
  CrisisManagerMenu.4750d.tooltip:0 "§R<<ERROR>> <<ERROR>> <<ERROR>> <<ERROR>> <<ERROR>>§!\n\n§R<<ERROR>> <<ERROR>> <<ERROR>> <<ERROR>> <<ERROR>>§!"
@@ -2074,7 +2073,7 @@
  CrisisManagerMenu.4821.V2.tooltip:1 ""
  CrisisManagerMenu.4821.V1.tooltip:1 ""
  CrisisManagerMenu.4821.V0.tooltip:1 ""
- CrisisManagerMenu.4821.VN.tooltip:0 "This configuration is activated only if $CrisisManagerMenu.4810c.title$ is selected."        ## ''$CrisisManagerMenu.4810d.title$'': Not implemented.
+ CrisisManagerMenu.4821.VN.tooltip:0 "This configuration is activated only if $CrisisManagerMenu.4810c.title$ is selected."		## ''$CrisisManagerMenu.4810d.title$'': Not implemented.
 
  CrisisManagerMenu.4821.name:1 "$CrisisManagerMenu.4821.title$ $CrisisManagerTitleC$"
  CrisisManagerMenu.4821.desc0:1 "$CrisisManagerMenu.4821.desc$\n\n$CmtTextCurrent$§W$CrisisManagerMenu.4821.V0.title$§!"
@@ -2764,11 +2763,11 @@
 #  ### Uprisable Exploitees
 #  CrisisManagerMenu.5112.title:0 "Uprisable Exploitees"
 #  CrisisManagerMenu.5112.desc:0 "A configuration which type of exploited pops can uprise.\nIn vanilla, only $CrisisManagerMenu.5112a.title$ can uprise.\n\n$CmtDescToggleConfig$\n\n$CmtTextCurrent$§WAllow Followings.§!\n$CrisisManagerMenu.5112.current$"
-#  CrisisManagerMenu.5112a.title:1 "§G$ROBOT_POP_SPECIES_3_plural$§!"        ## Synthetics
-#  CrisisManagerMenu.5112b.title:1 "§Y$ROBOT_POP_SPECIES_2_plural$§!"        ## Droids
+#  CrisisManagerMenu.5112a.title:1 "§G$ROBOT_POP_SPECIES_3_plural$§!"		## Synthetics
+#  CrisisManagerMenu.5112b.title:1 "§Y$ROBOT_POP_SPECIES_2_plural$§!"		## Droids
 #  CrisisManagerMenu.5112b3.title:0 "§L$ROBOT_POP_SPECIES_2_plural$: Cannot Allow§!"
-#  CrisisManagerMenu.5112c.title:0 "§HOrganic $citizenship_slavery$§!"        ## Slaves
-#  CrisisManagerMenu.5112d.title:1 "§R$citizenship_organic_trophy$§!"        ## Bio-Trophies
+#  CrisisManagerMenu.5112c.title:0 "§HOrganic $citizenship_slavery$§!"		## Slaves
+#  CrisisManagerMenu.5112d.title:1 "§R$citizenship_organic_trophy$§!"		## Bio-Trophies
 #  CrisisManagerMenu.5112x.title:0 "Allowed to Uprise: "
 #  CrisisManagerMenu.5112a.tooltip:1 ""
 #  CrisisManagerMenu.5112b.tooltip:1 ""
@@ -2984,8 +2983,8 @@
 #  ### Reserves for Uprising
 #  CrisisManagerMenu.5143.title:0 "Reserves for Uprising"
 #  CrisisManagerMenu.5143.desc:0 "An empire modifier is added to a empire of uprisers for several years. This configuration sets strength and a term of the modifier.\n\n$CmtWarn0$\n$CrisisManagerMenu.5143ax.title$: The upriser gets additional fixed monthly income. For example, +100 per month.\n$CrisisManagerMenu.5143bx.title$: The upriser's monthly income is increased by a factor. For example, +20%.\n\n$CmtWarn0$\n''$CrisisManagerMenu.5143bx.title$'' is recommended to be applied with ''$CrisisManagerMenu.5142c.name$'' or higher option."
-#  CrisisManagerMenu.5143xa.title:0 "§BNo Reserves§! for Uprising"        ## Colour Codes Separated to Quoted by Modifiers
-#  CrisisManagerMenu.5143xb.title:0 "§GSlipshod Reserves§! for Uprising"        ## Optimizing Reserves? lol.
+#  CrisisManagerMenu.5143xa.title:0 "§BNo Reserves§! for Uprising"		## Colour Codes Separated to Quoted by Modifiers
+#  CrisisManagerMenu.5143xb.title:0 "§GSlipshod Reserves§! for Uprising"		## Optimizing Reserves? lol.
 #  CrisisManagerMenu.5143xc.title:0 "§YPassably Reserves§! for Uprising"
 #  CrisisManagerMenu.5143xd.title:0 "§HExcellent Reserves§! for Uprising"
 #  CrisisManagerMenu.5143xe.title:0 "§RPerfect Reserves§! for Uprising"
@@ -3208,7 +3207,7 @@
  CrisisManagerMenu.6002.title:0 "More Information of Crisis Power 2"
  CrisisManagerMenu.6002.name:1 "$CrisisManagerMenu.6002.title$ $CrisisManagerTitleC$"
  CrisisManagerMenu.6002.desc:0 "These configurations modify the strength following factions.\n- $CmtNamePrethoryn$, $CmtNameSentinels$\n- $CmtNameUnbidden$, $CmtNameAberrant$, $CmtNameVehement$\n- $CmtNameContingency$, $CmtNameCybrex$\n- $CmtNameShroudSpirits$ (Only $CmtNameForcedEoc$)\n\nThese configurations do §HNOT§! modify the strength following factions.\n- Standard $CmtNameEoc$\n- $CmtNameFallenEmpire$, $CmtNameAwakenedEmpire$"
-     # CrisisManagerMenu.6002.desc:0 "These configurations modify the strength following factions.\n\n<$CrisisManagerEndgame$>\n- $CmtNamePrethoryn$, $CmtNameSentinels$\n- $CmtNameUnbidden$, $CmtNameAberrant$, $CmtNameVehement$\n- $CmtNameContingency$, $CmtNameCybrex$\n- $CmtNameShroudSpirits$ (Only $CmtNameForcedEoc$)\n\n<$CrisisManagerMidgame$>\n- $CmtNameKhan$\n- $CmtNameGraygoo$\n\nThese configurations do §HNOT§! modify the strength following factions.\n- Standard $CmtNameEoc$\n- $CmtNameFallenEmpire$, $CmtNameAwakenedEmpire$\n- Marauders with no $RT_GREAT_KHAN$ and the Empire after death of $RT_GREAT_KHAN$\n- $CmtNameLdrake$"
+	 # CrisisManagerMenu.6002.desc:0 "These configurations modify the strength following factions.\n\n<$CrisisManagerEndgame$>\n- $CmtNamePrethoryn$, $CmtNameSentinels$\n- $CmtNameUnbidden$, $CmtNameAberrant$, $CmtNameVehement$\n- $CmtNameContingency$, $CmtNameCybrex$\n- $CmtNameShroudSpirits$ (Only $CmtNameForcedEoc$)\n\n<$CrisisManagerMidgame$>\n- $CmtNameKhan$\n- $CmtNameGraygoo$\n\nThese configurations do §HNOT§! modify the strength following factions.\n- Standard $CmtNameEoc$\n- $CmtNameFallenEmpire$, $CmtNameAwakenedEmpire$\n- Marauders with no $RT_GREAT_KHAN$ and the Empire after death of $RT_GREAT_KHAN$\n- $CmtNameLdrake$"
 
  ### Target of Template
  CrisisManagerMenu.601x.title:0 "Select Target of Difficulty"
@@ -4771,7 +4770,7 @@
 
  CrisisManagerMenu.7140.title:1 "$CrisisManagerMenu.7000.7140.A.name$"
  CrisisManagerMenu.7140.desc:0 "Select type of L-Cluster Events."
- CrisisManagerMenu.7140a.name:0 "$CrisisManagerMenu.7136a.name$"        # I changed my mind.
+ CrisisManagerMenu.7140a.name:0 "$CrisisManagerMenu.7136a.name$"
  CrisisManagerMenu.7140b.name:0 "Random L-Cluster Events £probability_icon£"
  CrisisManagerMenu.7140c1.name:0 "$graygoo.550.name$"
  CrisisManagerMenu.7140c2.name:0 "L-Drake Event"
@@ -4784,7 +4783,7 @@
  CrisisManagerMenu.7141.title:1 "$CrisisManagerMenu.7000.7140.A.name$"
  CrisisManagerMenu.7141.desc1:0 "Select a L-Gate to be opened first.\nIn some cases, all $lgates$ open at once and this choice is wasted.\n$CmtDescNoCancelTail$\n\n$CmtTextOperation$§W[CmtGlobalVar.GetName_LgateManualOpenEvent]§!"
  CrisisManagerMenu.7141.desc2:1 "$CrisisManagerMenu.7141.desc1$\n\n$CmtDescListedNotAllLgate$"
- CrisisManagerMenu.7141a.name:0 "$CrisisManagerMenu.7136a.name$"        # I changed my mind.
+ CrisisManagerMenu.7141a.name:0 "$CrisisManagerMenu.7136a.name$"
  CrisisManagerMenu.7141b.name:0 "Open Random L-Gate £probability_icon£"
  CrisisManagerMenu.7141c1.name:0 "Open L-Gate in §Y[CmtTargetManualLgateSystem1.GetName]§!"
  CrisisManagerMenu.7141c2.name:0 "Open L-Gate in §Y[CmtTargetManualLgateSystem2.GetName]§!"
@@ -4811,7 +4810,7 @@
 
 #  CrisisManagerMenu.7146.title:1 "$CrisisManagerMenu.7000.7146.A.name$"
 #  CrisisManagerMenu.7146.desc:0 "Select an empire that the uprising happen.\n$CmtDescNoCancelTail$"
-#  CrisisManagerMenu.7146a.name:0 "$CrisisManagerMenu.7136a.name$"        # I changed my mind.
+#  CrisisManagerMenu.7146a.name:0 "$CrisisManagerMenu.7136a.name$"
 #  CrisisManagerMenu.7146b.name:0 "Trigger Uprising in Random Empire"
 #  CrisisManagerMenu.7146c1.name:0 "Trigger Uprising in §Y[CmtTargetManualUprising1.GetName]§!"
 #  CrisisManagerMenu.7146c2.name:0 "Trigger Uprising in §Y[CmtTargetManualUprising2.GetName]§!"
@@ -4878,9 +4877,9 @@
  CrisisManagerMenu.7150.desc1:0 "Selected empire will declare a war on all empires to kill, purge and liquidate every and all creatures, consciousness and existence in the galaxy.\n§RThere is no way to cancel it after the declaration.§! Are you sure to start?"
  CrisisManagerMenu.7150.desc2:1 "$CrisisManagerMenu.7150.desc1$\n\n$CmtDescAnyCountryIsAtWar$"
  CrisisManagerMenu.7150.desc3:1 "$CmtDescPlayerCrisis$"
- CrisisManagerMenu.7150a1.name:1 "$CrisisManagerControl.0510a1.name$"       ## I reconsider.
- CrisisManagerMenu.7150a2.name:1 "$CrisisManagerControl.0510a2.name$"       ## It is no good after all.
- CrisisManagerMenu.7150a3.name:1 "$CrisisManagerControl.0510a3.name$"       ## It is misoperation of the console.
+ CrisisManagerMenu.7150a1.name:1 "$CrisisManagerControl.0510a1.name$"	   ## I reconsider.
+ CrisisManagerMenu.7150a2.name:1 "$CrisisManagerControl.0510a2.name$"	   ## It is no good after all.
+ CrisisManagerMenu.7150a3.name:1 "$CrisisManagerControl.0510a3.name$"	   ## It is misoperation of the console.
  CrisisManagerMenu.7150b.name:0 "§RYes, we are a crisis!!!§!"
  CrisisManagerMenu.7150c1.name:0 "Yes, §Y[CmtTargetManualPlayerCrisis1.GetName]§! is a crisis!"
  CrisisManagerMenu.7150c2.name:0 "Yes, §Y[CmtTargetManualPlayerCrisis2.GetName]§! is a crisis!"
@@ -5116,7 +5115,7 @@
  CrisisManagerMenu.7523.desc1:0 "$CmtDescNoCancelHead$\nThen, Select the L-Gate you want to remove."
  CrisisManagerMenu.7523.desc2:1 "$CrisisManagerMenu.7523.desc1$\n\n$CmtDescListedNotAllLgate$"
  CrisisManagerMenu.75xxc.name:0 "Yes, do it!"
- CrisisManagerMenu.75xxb.name:1 "$CrisisManagerMenu.71xxa.name$"        ## No. I reconsider.
+ CrisisManagerMenu.75xxb.name:1 "$CrisisManagerMenu.71xxa.name$"		## No. I reconsider.
  CrisisManagerMenu.7523c1.name:0 "Remove L-Gate in §Y[CmtTargetManualLgateSystem1.GetName]§!"
  CrisisManagerMenu.7523c2.name:0 "Remove L-Gate in §Y[CmtTargetManualLgateSystem2.GetName]§!"
  CrisisManagerMenu.7523c3.name:0 "Remove L-Gate in §Y[CmtTargetManualLgateSystem3.GetName]§!"

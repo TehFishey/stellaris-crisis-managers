@@ -185,20 +185,21 @@ CmtEffectCreateAdmiral_SentinelAttacker = {
 	}
 }
 
-CmtEffectCreateAdmiral_SentinelCapitalDefense = {
-	event_target:sentinels = {
-		create_leader = {
-			class = admiral
-			species = owner_species
-			name = random
-			skill = 5
-			traits = {
-				trait = leader_trait_sentinel
-				trait = random_trait
-			}
-		}
-	}
-}
+# LEGACY 3.2
+# CmtEffectCreateAdmiral_SentinelCapitalDefense = {
+# 	event_target:sentinels = {
+# 		create_leader = {
+# 			class = admiral
+# 			species = owner_species
+# 			name = random
+# 			skill = 5
+# 			traits = {
+# 				trait = leader_trait_sentinel
+# 				trait = random_trait
+# 			}
+# 		}
+# 	}
+# }
 
 ###########################
 ###  Extradimensionals  ###

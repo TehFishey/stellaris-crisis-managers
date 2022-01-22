@@ -61,11 +61,11 @@ sentinel_system = {
 					}
 				}
 			}
-			every_country = { establish_communications = event_target:sentinels }
+			every_country = { establish_communications = event_target:crisis_sentinels }
 
 			create_fleet = {
 				effect = {
-					set_owner = event_target:sentinels
+					set_owner = event_target:crisis_sentinels
 					create_ship = {
 						name = "NAME_Sentinel_Alpha"
 						design = "NAME_Vigil"
@@ -79,11 +79,14 @@ sentinel_system = {
 				}
 			}
 
-			CmtEffectCreateAdmiralty_SentinelCapitalDefense = yes
+			# CmtEffectCreateAdmiralty_SentinelCapitalDefense = yes < 3.2
+			event_target:crisis_sentinels = {
+				CmtEffectCreateFleet_SentinelCapitalDefense = yes
+			}
 
 			create_fleet = {
 				effect = {
-					set_owner = event_target:sentinels
+					set_owner = event_target:crisis_sentinels
 					create_ship = {
 						name = "NAME_Early_Warning_X-34"
 						design = "NAME_Sentry"
@@ -97,7 +100,7 @@ sentinel_system = {
 			}
 			create_fleet = {
 				effect = {
-					set_owner = event_target:sentinels
+					set_owner = event_target:crisis_sentinels
 					create_ship = {
 						name = "NAME_Early_Warning_X-35"
 						design = "NAME_Sentry"
@@ -111,7 +114,7 @@ sentinel_system = {
 			}
 			create_fleet = {
 				effect = {
-					set_owner = event_target:sentinels
+					set_owner = event_target:crisis_sentinels
 					create_ship = {
 						name = "NAME_Early_Warning_X-36"
 						design = "NAME_Sentry"
@@ -125,7 +128,7 @@ sentinel_system = {
 			}
 			create_fleet = {
 				effect = {
-					set_owner = event_target:sentinels
+					set_owner = event_target:crisis_sentinels
 					create_ship = {
 						name = "NAME_Early_Warning_X-37"
 						design = "NAME_Sentry"
@@ -139,7 +142,7 @@ sentinel_system = {
 			}
 			create_fleet = {
 				effect = {
-					set_owner = event_target:sentinels
+					set_owner = event_target:crisis_sentinels
 					create_ship = {
 						name = "NAME_Early_Warning_X-38"
 						design = "NAME_Sentry"
@@ -165,7 +168,7 @@ sentinel_system = {
 			prevent_anomaly = yes
 			create_fleet = {
 				effect = {
-					set_owner = event_target:sentinels
+					set_owner = event_target:crisis_sentinels
 					create_ship = {
 						name = "NAME_Refugee_Site_Alpha"
 						design = "NAME_PR_417"
@@ -181,7 +184,7 @@ sentinel_system = {
 			create_fleet = {
 				name = "NAME_Refugee_Fleet"
 				effect = {
-					set_owner = event_target:sentinels
+					set_owner = event_target:crisis_sentinels
 					while = {
 						count = 6
 						create_ship = {
@@ -228,7 +231,7 @@ sentinel_system = {
 			prevent_anomaly = yes
 			create_fleet = {
 				effect = {
-					set_owner = event_target:sentinels
+					set_owner = event_target:crisis_sentinels
 					create_ship = {
 						name = "NAME_Refugee_Site_Beta"
 						design = "NAME_PR_417"
@@ -244,7 +247,7 @@ sentinel_system = {
 			create_fleet = {
 				name = "NAME_Refugee_Fleet"
 				effect = {
-					set_owner = event_target:sentinels
+					set_owner = event_target:crisis_sentinels
 					create_ship = {
 						name = "NAME_Gray_Moon"
 						design = "NAME_C1"
@@ -308,7 +311,7 @@ sentinel_system = {
 		save_global_event_target_as = sentinel_system
 		create_starbase = {
 			size = "starbase_citadel"
-			owner = event_target:sentinels
+			owner = event_target:crisis_sentinels
 
 			module = "shipyard"
 			module = "shipyard"

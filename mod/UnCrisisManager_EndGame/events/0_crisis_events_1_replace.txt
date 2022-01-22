@@ -971,7 +971,26 @@ fleet_event = {
 		owner = { every_owned_ship = { event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } } } }
 		if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value > 0 } } }
-			CmtEffectCreateAdmiralty_SentinelAttacker = yes
+			# CmtEffectCreateAdmiralty_SentinelAttacker = yes < 3.2
+			event_target:crisis_sentinels = {
+				event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Sentinel } }
+				while = {
+					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
+					event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -1 } }
+					CmtEffectCreateFleet_SentinelAttacker = yes
+				}
+				while = {
+					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
+					event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
+					random_list = {
+						100 = {
+							event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = 0 } }
+							CmtEffectCreateFleet_SentinelAttacker = yes
+						}
+						300 = { }
+					}
+				}
+			}
 		}
 	}
 }
@@ -1040,7 +1059,7 @@ country_event = {
 	diplomatic = yes
 
 	picture_event_data = {
-		portrait = event_target:sentinels
+		portrait = event_target:crisis_sentinels
 		room = "ethic_spaceship_room"
 	}
 
@@ -1049,8 +1068,8 @@ country_event = {
 		has_global_flag = sentinels_founded
 		NOT = { has_country_flag = sentinel_donation }
 		check_variable = { which = swarm_fleet_kills value > 6 }
-		exists = event_target:sentinels
-		event_target:sentinels = {
+		exists = event_target:crisis_sentinels
+		event_target:crisis_sentinels = {
 			count_owned_ship = { count > 30 }
 			root = { NOT = { is_at_war_with = prev } }
 		}
@@ -1068,7 +1087,11 @@ country_event = {
 		name = crisis.71.a
 		response_text = crisis.71.a.response
 		custom_tooltip = sentinel_fleet_gift
-		hidden_effect = { capital_scope = { CmtEffectCreateAdmiraltyDonation_SentinelTaskforce = yes } }
+		hidden_effect = {
+			capital_scope = {
+				CmtEffectCreateAdmiraltyDonation_SentinelTaskforce = yes
+			}
+		}
 	}
 	option = {
 		name = crisis.71.b
@@ -1526,11 +1549,11 @@ event = {
 			90 = {
 				modifier = {
 					factor = 2
-					check_variable = { which = CmtVarFeralPrethoryn value = 2 }
+					event_target:CmtGlobalVar = { check_variable = { which = CmtVarFeralPrethoryn value = 2 } }
 				}
 				modifier = {
 					factor = 0.4
-					check_variable = { which = CmtVarFeralPrethoryn value = 4 }
+					event_target:CmtGlobalVar = { check_variable = { which = CmtVarFeralPrethoryn value = 4 } }
 				}
 			}
 		}
@@ -1561,11 +1584,11 @@ event = {
 			50 = {
 				modifier = {
 					factor = 3
-					check_variable = { which = CmtVarFeralPrethoryn value = 2 }
+					event_target:CmtGlobalVar = { check_variable = { which = CmtVarFeralPrethoryn value = 2 } }
 				}
 				modifier = {
 					factor = 0
-					check_variable = { which = CmtVarFeralPrethoryn value = 4 }
+					event_target:CmtGlobalVar = { check_variable = { which = CmtVarFeralPrethoryn value = 4 } }
 				}
 			}
 		}
@@ -1593,11 +1616,11 @@ event = {
 			90 = {
 				modifier = {
 					factor = 2
-					check_variable = { which = CmtVarFeralPrethoryn value = 2 }
+					event_target:CmtGlobalVar = { check_variable = { which = CmtVarFeralPrethoryn value = 2 } }
 				}
 				modifier = {
 					factor = 0.4
-					check_variable = { which = CmtVarFeralPrethoryn value = 4 }
+					event_target:CmtGlobalVar = { check_variable = { which = CmtVarFeralPrethoryn value = 4 } }
 				}
 			}
 		}
@@ -1900,6 +1923,9 @@ country_event = {
 
 		observer_event = { id = observer.33 }
 		if = {
+			limit = { exists = event_target:crisis_sentinels }
+			event_target:crisis_sentinels = { country_event = { id = crisis.75 days = 15 random = 10 } }
+		} else_if = { # backward compat. < 3.3
 			limit = { exists = event_target:sentinels }
 			event_target:sentinels = { country_event = { id = crisis.75 days = 15 random = 10 } }
 		}
