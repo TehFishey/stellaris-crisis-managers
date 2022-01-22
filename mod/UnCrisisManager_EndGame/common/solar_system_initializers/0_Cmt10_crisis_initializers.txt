@@ -1,11 +1,11 @@
 
 #########################################################
 #########################################################
-#####											   #####
-#####	Crisis Manager							 #####
-#####											   #####
-#####	System Initializers for Crisis Factions	#####
-#####											   #####
+#####												#####
+#####	Crisis Manager								#####
+#####												#####
+#####	System Initializers for Crisis Factions		#####
+#####												#####
 #########################################################
 #########################################################
 
@@ -331,7 +331,7 @@ cybrex_beta = {
 	name = "NAME_Cybrex_Beta"
 	class = "sc_g"
 
-	flags = { cybrex_beta }
+	flags = { cybrex_beta ring_world_built }
 
 	planet = {
 		class = star
