@@ -113,7 +113,7 @@ CmtFleetSetAuxParam_DessanuRoamerCommon = {
 ### For Roamers: 			set_location = event_target:start_x (x = \d)
 CmtFleetSetAuxParam_DessanuRoamer = {
 	random_system_planet = {
-		limit = { is_planet_class = pc_gray_goo } # get changed after to pc_gaia
+		limit = { is_planet_class = pc_gray_goo } # Get changed after to pc_gaia.
 		last_created_fleet = {
 			set_location = prev
 			queue_actions = {

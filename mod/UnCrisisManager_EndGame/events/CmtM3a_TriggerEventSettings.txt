@@ -269,8 +269,7 @@ country_event = {
 					}
 					if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.3120 } } }
 						country_event = { id = CrisisManagerMenu.3120 }
-					}
-					else = { country_event = { id = CrisisManagerMenu.3110 } }
+					} else = { country_event = { id = CrisisManagerMenu.3110 } }
 				}
 			} else_if = {
 				limit = { has_country_flag = CmtFlagIndividual }

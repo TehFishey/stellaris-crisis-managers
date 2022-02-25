@@ -687,7 +687,7 @@ country_event = {
 	}
 
 	immediate = {
-		# Fallback: This should be already a global event target.
+		# Fallback: this should be already a global event target.
 		if = { limit = { NOT = { exists = event_target:portal_holder_1 } }
 			log = "anchor built and crisis.1280 executed, not yet reaching fleet owner switch"
 			random_country = {

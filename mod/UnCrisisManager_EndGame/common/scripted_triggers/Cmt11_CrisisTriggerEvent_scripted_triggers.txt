@@ -52,7 +52,6 @@ CmtTriggerForbiddenExds = {
 CmtTriggerNoJumpDrive0 = {
 	NOT = {
 		any_playable_country = {
-			CmtTriggerIsPlayableEmpire = yes
 			OR = {
 				has_technology = tech_psi_jump_drive_1
 				has_technology = tech_jump_drive_1
@@ -149,7 +148,6 @@ CmtTriggerForbiddenContingency = {
 CmtTriggerNoTelepathy = {
 	NOT = {
 		any_playable_country = {
-			CmtTriggerIsPlayableEmpire = yes
 			has_technology = tech_telepathy
 		}
 	}
@@ -157,14 +155,12 @@ CmtTriggerNoTelepathy = {
 
 CmtTriggerTranscendence = {
 	any_playable_country = {
-		CmtTriggerIsPlayableEmpire = yes
 		has_ascension_perk = ap_transcendence
 	}
 }
 
 CmtTriggerShroudPatron = {
 	any_playable_country = {
-		CmtTriggerIsPlayableEmpire = yes
 		has_country_flag = has_shroud_patron
 	}
 }
@@ -173,7 +169,7 @@ CmtTriggerShroudPatron = {
 # 	has_global_flag = CmtFlagExdsTriggered
 # }
 
-### Probability Control by This Mod.
+### Probability Control by this Mod.
 
 # CmtTriggerTotalProbability_1 = {
 # 	check_variable = { which = CmtVarTriggerProbability value = 1 }

@@ -1,4 +1,3 @@
-
 ################################################
 ################################################
 #####                                      #####
@@ -8,36 +7,53 @@
 #####                                      #####
 ################################################
 ################################################
-
 character = {
 	icon = {
 		orientation = lower_right
 		position = { x = 0 y = 0 }
-		scale = 1.0
+		scale = 1
 	}
 }
 
 portraits = {
-	CmtTexturePlayerCrisisNullSpcies = { texturefile = "gfx/interface/transp.dds" }
+	CmtTexturePlayerCrisisNullSpcies = {
+		# spriteType = "GFX_portrait_character"
+		texturefile = "gfx/interface/transp.dds"
+		clothes_selector = "no_texture"
+		hair_selector = "no_texture"
+		entity = "frontend_background_entity"
+	}
 }
 
 portrait_groups = {
 	CmtPortraitPlayerCrisisNull = {
-		default = CmtTexturePlayerCrisisNullSpcies			#icon class
-		game_setup = { #ruler portraits
-			add = { portraits = { CmtTexturePlayerCrisisNullSpcies } }
+		default = CmtTexturePlayerCrisisNullSpcies		#icon class
+		game_setup = {
+			#ruler portraits
+			add = {
+				portraits = { CmtTexturePlayerCrisisNullSpcies }
+			}
 		}
-		species = { #generic portrait for a species
-			add = { portraits = { CmtTexturePlayerCrisisNullSpcies } }
+		species = {
+			#generic portrait for a species
+			add = {
+				portraits = { CmtTexturePlayerCrisisNullSpcies }
+			}
 		}
 		pop = {
-			add = { portraits = { CmtTexturePlayerCrisisNullSpcies } }
+			add = {
+				portraits = { CmtTexturePlayerCrisisNullSpcies }
+			}
 		}
 		leader = {
-			add = { portraits = { CmtTexturePlayerCrisisNullSpcies } }
+			add = {
+				portraits = { CmtTexturePlayerCrisisNullSpcies }
+			}
 		}
 		ruler = {
-			add = { portraits = { CmtTexturePlayerCrisisNullSpcies } }
+			add = {
+				portraits = { CmtTexturePlayerCrisisNullSpcies }
+			}
 		}
 	}
 }

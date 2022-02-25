@@ -100,8 +100,8 @@ CmtEffectCreateAdmiralty_PrethorynReinforcement = {
 	}
 }
 
-# This = location
-# Prev = owner
+# this = location
+# prev = owner
 CmtEffectCreateAdmiralty_PrethorynArmy = {
 	prev = {
 		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarArmyNumber_Prethoryn } }
@@ -128,7 +128,7 @@ CmtEffectCreateAdmiralty_PrethorynArmy = {
 ###  Feral Prethoryn  ###
 #########################
 
-### This = stellar system
+### this = stellar system
 CmtEffectCreateAdmiraltySystem_FeralPrethorynGarrisonLarge = {
 	event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Prethoryn } }
 	while = {

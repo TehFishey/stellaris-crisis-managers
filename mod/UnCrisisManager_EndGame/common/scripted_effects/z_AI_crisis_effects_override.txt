@@ -8,22 +8,19 @@ destroy_machine_world = {
 			limit = { has_event_chain = "ai_crisis_chain" }
 			remove_point_of_interest = ai_crisis_poi.1
 		}
-	}
-	else_if = {
+	} else_if = {
 		limit = { has_planet_flag = machine_world_2 }
 		every_playable_country = {
 			limit = { has_event_chain = "ai_crisis_chain" }
 			remove_point_of_interest = ai_crisis_poi.2
 		}
-	}
-	else_if = {
+	} else_if = {
 		limit = { has_planet_flag = machine_world_3 }
 		every_playable_country = {
 			limit = { has_event_chain = "ai_crisis_chain" }
 			remove_point_of_interest = ai_crisis_poi.3
 		}
-	}
-	else_if = {
+	} else_if = {
 		limit = { has_planet_flag = machine_world_4 }
 		every_playable_country = {
 			limit = { has_event_chain = "ai_crisis_chain" }
@@ -69,34 +66,34 @@ destroy_machine_world = {
 					every_owned_pop = {
 						limit = { has_modifier = CmtModifierOrganicPopGhostSignal_5a }
 						remove_modifier = CmtModifierOrganicPopGhostSignal_5a
-						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_4a days = -1 }
+						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_4a }
 					}
 				} else_if = {
 					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
 					every_owned_pop = {
 						limit = { has_modifier = CmtModifierOrganicPopGhostSignal_5b }
 						remove_modifier = CmtModifierOrganicPopGhostSignal_5b
-						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_4b days = -1 }
+						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_4b }
 					}
 				} else_if = {
 					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
 					every_owned_pop = {
 						limit = { has_modifier = CmtModifierOrganicPopGhostSignal_5d }
 						remove_modifier = CmtModifierOrganicPopGhostSignal_5d
-						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_4d days = -1 }
+						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_4d }
 					}
 				} else_if = {
 					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
 					every_owned_pop = {
 						limit = { has_modifier = CmtModifierOrganicPopGhostSignal_5e }
 						remove_modifier = CmtModifierOrganicPopGhostSignal_5e
-						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_4e days = -1 }
+						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_4e }
 					}
 				} else = {
 					every_owned_pop = {
 						limit = { has_modifier = pop_ghost_signal_5 }
 						remove_modifier = pop_ghost_signal_5
-						add_modifier = { modifier = pop_ghost_signal_4 days = -1 }
+						add_modifier = { modifier = pop_ghost_signal_4 }
 					}
 				}
 				if = {
@@ -106,7 +103,7 @@ destroy_machine_world = {
 						every_owned_ship = {
 							limit = { has_sapient_combat_computer = yes }
 							remove_modifier = CmtModifierCombatShipGhostSignal_5a
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4a days = -1 }
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4a }
 						}
 					}
 				} else_if = {
@@ -116,7 +113,7 @@ destroy_machine_world = {
 						every_owned_ship = {
 							limit = { has_sapient_combat_computer = yes }
 							remove_modifier = CmtModifierCombatShipGhostSignal_5b
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4b days = -1 }
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4b }
 						}
 					}
 				} else_if = {
@@ -126,7 +123,7 @@ destroy_machine_world = {
 						every_owned_ship = {
 							limit = { has_sapient_combat_computer = yes }
 							remove_modifier = CmtModifierCombatShipGhostSignal_5d
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4d days = -1 }
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4d }
 						}
 					}
 				} else_if = {
@@ -136,7 +133,7 @@ destroy_machine_world = {
 						every_owned_ship = {
 							limit = { has_sapient_combat_computer = yes }
 							remove_modifier = CmtModifierCombatShipGhostSignal_5e
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4e days = -1 }
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4e }
 						}
 					}
 				} else = {
@@ -145,7 +142,7 @@ destroy_machine_world = {
 						every_owned_ship = {
 							limit = { has_sapient_combat_computer = yes }
 							remove_modifier = ship_ghost_signal_5
-							add_modifier = { modifier = ship_ghost_signal_4 days = -1 }
+							add_modifier = { modifier = ship_ghost_signal_4 }
 						}
 					}
 				}
@@ -159,34 +156,34 @@ destroy_machine_world = {
 					every_owned_pop = {
 						limit = { has_trait = trait_machine_unit }
 						remove_modifier = CmtModifierMachinePopGhostSignal_5a
-						add_modifier = { modifier = CmtModifierMachinePopGhostSignal_4a days = -1 }
+						add_modifier = { modifier = CmtModifierMachinePopGhostSignal_4a }
 					}
 				} else_if = {
 					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
 					every_owned_pop = {
 						limit = { has_trait = trait_machine_unit }
 						remove_modifier = CmtModifierMachinePopGhostSignal_5b
-						add_modifier = { modifier = CmtModifierMachinePopGhostSignal_4b days = -1 }
+						add_modifier = { modifier = CmtModifierMachinePopGhostSignal_4b }
 					}
 				} else_if = {
 					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
 					every_owned_pop = {
 						limit = { has_trait = trait_machine_unit }
 						remove_modifier = CmtModifierMachinePopGhostSignal_5d
-						add_modifier = { modifier = CmtModifierMachinePopGhostSignal_4d days = -1 }
+						add_modifier = { modifier = CmtModifierMachinePopGhostSignal_4d }
 					}
 				} else_if = {
 					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
 					every_owned_pop = {
 						limit = { has_trait = trait_machine_unit }
 						remove_modifier = CmtModifierMachinePopGhostSignal_5e
-						add_modifier = { modifier = CmtModifierMachinePopGhostSignal_4e days = -1 }
+						add_modifier = { modifier = CmtModifierMachinePopGhostSignal_4e }
 					}
 				} else = {
 					every_owned_pop = {
 						limit = { has_trait = trait_machine_unit }
 						remove_modifier = pop_ghost_signal_5_machine
-						add_modifier = { modifier = pop_ghost_signal_4_machine days = -1 }
+						add_modifier = { modifier = pop_ghost_signal_4_machine }
 					}
 				}
 				if = {
@@ -196,7 +193,7 @@ destroy_machine_world = {
 						every_owned_ship = {
 							limit = { has_sapient_combat_computer = yes }
 							remove_modifier = CmtModifierCombatShipGhostSignal_5a
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4a days = -1 }
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4a }
 						}
 					}
 				} else_if = {
@@ -206,7 +203,7 @@ destroy_machine_world = {
 						every_owned_ship = {
 							limit = { has_sapient_combat_computer = yes }
 							remove_modifier = CmtModifierCombatShipGhostSignal_5b
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4b days = -1 }
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4b }
 						}
 					}
 				} else_if = {
@@ -216,7 +213,7 @@ destroy_machine_world = {
 						every_owned_ship = {
 							limit = { has_sapient_combat_computer = yes }
 							remove_modifier = CmtModifierCombatShipGhostSignal_5d
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4d days = -1 }
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4d }
 						}
 					}
 				} else_if = {
@@ -226,7 +223,7 @@ destroy_machine_world = {
 						every_owned_ship = {
 							limit = { has_sapient_combat_computer = yes }
 							remove_modifier = CmtModifierCombatShipGhostSignal_5e
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4e days = -1 }
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4e }
 						}
 					}
 				} else = {
@@ -235,7 +232,7 @@ destroy_machine_world = {
 						every_owned_ship = {
 							limit = { has_sapient_combat_computer = yes }
 							remove_modifier = ship_ghost_signal_5
-							add_modifier = { modifier = ship_ghost_signal_4 days = -1 }
+							add_modifier = { modifier = ship_ghost_signal_4 }
 						}
 					}
 				}
@@ -259,34 +256,34 @@ destroy_machine_world = {
 					every_owned_pop = {
 						limit = { has_modifier = CmtModifierOrganicPopGhostSignal_4a }
 						remove_modifier = CmtModifierOrganicPopGhostSignal_4a
-						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_3a days = -1 }
+						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_3a }
 					}
 				} else_if = {
 					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
 					every_owned_pop = {
 						limit = { has_modifier = CmtModifierOrganicPopGhostSignal_4b }
 						remove_modifier = CmtModifierOrganicPopGhostSignal_4b
-						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_3b days = -1 }
+						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_3b }
 					}
 				} else_if = {
 					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
 					every_owned_pop = {
 						limit = { has_modifier = CmtModifierOrganicPopGhostSignal_4d }
 						remove_modifier = CmtModifierOrganicPopGhostSignal_4d
-						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_3d days = -1 }
+						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_3d }
 					}
 				} else_if = {
 					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
 					every_owned_pop = {
 						limit = { has_modifier = CmtModifierOrganicPopGhostSignal_4e }
 						remove_modifier = CmtModifierOrganicPopGhostSignal_4e
-						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_3e days = -1 }
+						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_3e }
 					}
 				} else = {
 					every_owned_pop = {
 						limit = { has_modifier = pop_ghost_signal_4 }
 						remove_modifier = pop_ghost_signal_4
-						add_modifier = { modifier = pop_ghost_signal_3 days = -1 }
+						add_modifier = { modifier = pop_ghost_signal_3 }
 					}
 				}
 				if = {
@@ -296,7 +293,7 @@ destroy_machine_world = {
 						every_owned_ship = {
 							limit = { has_sapient_combat_computer = yes }
 							remove_modifier = CmtModifierCombatShipGhostSignal_4a
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3a days = -1 }
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3a }
 						}
 					}
 				} else_if = {
@@ -306,7 +303,7 @@ destroy_machine_world = {
 						every_owned_ship = {
 							limit = { has_sapient_combat_computer = yes }
 							remove_modifier = CmtModifierCombatShipGhostSignal_4b
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3b days = -1 }
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3b }
 						}
 					}
 				} else_if = {
@@ -316,7 +313,7 @@ destroy_machine_world = {
 						every_owned_ship = {
 							limit = { has_sapient_combat_computer = yes }
 							remove_modifier = CmtModifierCombatShipGhostSignal_4d
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3d days = -1 }
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3d }
 						}
 					}
 				} else_if = {
@@ -326,7 +323,7 @@ destroy_machine_world = {
 						every_owned_ship = {
 							limit = { has_sapient_combat_computer = yes }
 							remove_modifier = CmtModifierCombatShipGhostSignal_4e
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3e days = -1 }
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3e }
 						}
 					}
 				} else = {
@@ -335,7 +332,7 @@ destroy_machine_world = {
 						every_owned_ship = {
 							limit = { has_sapient_combat_computer = yes }
 							remove_modifier = ship_ghost_signal_4
-							add_modifier = { modifier = ship_ghost_signal_3 days = -1 }
+							add_modifier = { modifier = ship_ghost_signal_3 }
 						}
 					}
 				}
@@ -441,34 +438,34 @@ destroy_machine_world = {
 					every_owned_pop = {
 						limit = { has_modifier = CmtModifierOrganicPopGhostSignal_3a }
 						remove_modifier = CmtModifierOrganicPopGhostSignal_3a
-						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_2a days = -1 }
+						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_2a }
 					}
 				} else_if = {
 					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
 					every_owned_pop = {
 						limit = { has_modifier = CmtModifierOrganicPopGhostSignal_3b }
 						remove_modifier = CmtModifierOrganicPopGhostSignal_3b
-						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_2b days = -1 }
+						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_2b }
 					}
 				} else_if = {
 					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
 					every_owned_pop = {
 						limit = { has_modifier = CmtModifierOrganicPopGhostSignal_3d }
 						remove_modifier = CmtModifierOrganicPopGhostSignal_3d
-						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_2d days = -1 }
+						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_2d }
 					}
 				} else_if = {
 					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
 					every_owned_pop = {
 						limit = { has_modifier = CmtModifierOrganicPopGhostSignal_3e }
 						remove_modifier = CmtModifierOrganicPopGhostSignal_3e
-						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_2e days = -1 }
+						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_2e }
 					}
 				} else = {
 					every_owned_pop = {
 						limit = { has_modifier = pop_ghost_signal_3 }
 						remove_modifier = pop_ghost_signal_3
-						add_modifier = { modifier = pop_ghost_signal_2 days = -1 }
+						add_modifier = { modifier = pop_ghost_signal_2 }
 					}
 				}
 				if = {
@@ -478,7 +475,7 @@ destroy_machine_world = {
 						every_owned_ship = {
 							limit = { has_sapient_combat_computer = yes }
 							remove_modifier = CmtModifierCombatShipGhostSignal_3a
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2a days = -1 }
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2a }
 						}
 					}
 				} else_if = {
@@ -488,7 +485,7 @@ destroy_machine_world = {
 						every_owned_ship = {
 							limit = { has_sapient_combat_computer = yes }
 							remove_modifier = CmtModifierCombatShipGhostSignal_3b
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2b days = -1 }
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2b }
 						}
 					}
 				} else_if = {
@@ -498,7 +495,7 @@ destroy_machine_world = {
 						every_owned_ship = {
 							limit = { has_sapient_combat_computer = yes }
 							remove_modifier = CmtModifierCombatShipGhostSignal_3d
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2d days = -1 }
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2d }
 						}
 					}
 				} else_if = {
@@ -508,7 +505,7 @@ destroy_machine_world = {
 						every_owned_ship = {
 							limit = { has_sapient_combat_computer = yes }
 							remove_modifier = CmtModifierCombatShipGhostSignal_3e
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2e days = -1 }
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2e }
 						}
 					}
 				} else = {
@@ -517,7 +514,7 @@ destroy_machine_world = {
 						every_owned_ship = {
 							limit = { has_sapient_combat_computer = yes }
 							remove_modifier = ship_ghost_signal_3
-							add_modifier = { modifier = ship_ghost_signal_2 days = -1 }
+							add_modifier = { modifier = ship_ghost_signal_2 }
 						}
 					}
 				}
@@ -539,34 +536,34 @@ destroy_machine_world = {
 					every_owned_pop = {
 						limit = { has_modifier = CmtModifierOrganicPopGhostSignal_2a }
 						remove_modifier = CmtModifierOrganicPopGhostSignal_2a
-						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_1a days = -1 }
+						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_1a }
 					}
 				} else_if = {
 					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
 					every_owned_pop = {
 						limit = { has_modifier = CmtModifierOrganicPopGhostSignal_2b }
 						remove_modifier = CmtModifierOrganicPopGhostSignal_2b
-						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_1b days = -1 }
+						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_1b }
 					}
 				} else_if = {
 					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
 					every_owned_pop = {
 						limit = { has_modifier = CmtModifierOrganicPopGhostSignal_2d }
 						remove_modifier = CmtModifierOrganicPopGhostSignal_2d
-						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_1d days = -1 }
+						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_1d }
 					}
 				} else_if = {
 					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
 					every_owned_pop = {
 						limit = { has_modifier = CmtModifierOrganicPopGhostSignal_2e }
 						remove_modifier = CmtModifierOrganicPopGhostSignal_2e
-						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_1e days = -1 }
+						add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_1e }
 					}
 				} else = {
 					every_owned_pop = {
 						limit = { has_modifier = pop_ghost_signal_2 }
 						remove_modifier = pop_ghost_signal_2
-						add_modifier = { modifier = pop_ghost_signal_1 days = -1 }
+						add_modifier = { modifier = pop_ghost_signal_1 }
 					}
 				}
 				if = {
@@ -576,7 +573,7 @@ destroy_machine_world = {
 						every_owned_ship = {
 							limit = { has_sapient_combat_computer = yes }
 							remove_modifier = CmtModifierCombatShipGhostSignal_2a
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1a days = -1 }
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1a }
 						}
 					}
 				} else_if = {
@@ -586,7 +583,7 @@ destroy_machine_world = {
 						every_owned_ship = {
 							limit = { has_sapient_combat_computer = yes }
 							remove_modifier = CmtModifierCombatShipGhostSignal_2b
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1b days = -1 }
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1b }
 						}
 					}
 				} else_if = {
@@ -596,7 +593,7 @@ destroy_machine_world = {
 						every_owned_ship = {
 							limit = { has_sapient_combat_computer = yes }
 							remove_modifier = CmtModifierCombatShipGhostSignal_2d
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1d days = -1 }
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1d }
 						}
 					}
 				} else_if = {
@@ -606,7 +603,7 @@ destroy_machine_world = {
 						every_owned_ship = {
 							limit = { has_sapient_combat_computer = yes }
 							remove_modifier = CmtModifierCombatShipGhostSignal_2e
-							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1e days = -1 }
+							add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1e }
 						}
 					}
 				} else = {
@@ -615,7 +612,7 @@ destroy_machine_world = {
 						every_owned_ship = {
 							limit = { has_sapient_combat_computer = yes }
 							remove_modifier = ship_ghost_signal_2
-							add_modifier = { modifier = ship_ghost_signal_1 days = -1 }
+							add_modifier = { modifier = ship_ghost_signal_1 }
 						}
 					}
 				}

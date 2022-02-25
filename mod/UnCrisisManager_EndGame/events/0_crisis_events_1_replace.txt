@@ -54,7 +54,7 @@ country_event = {
 		}
 
 		every_playable_country = {
-			limit = { CmtTriggerIsPlayableEmpire = yes }
+			# limit = { }
 			begin_event_chain = {
 				event_chain = "coming_storm_chain"
 				target = this
@@ -131,7 +131,7 @@ country_event = {
 			}
 		}
 		every_playable_country = {
-			limit = { CmtTriggerIsPlayableEmpire = yes }
+			# limit = { }
 			country_event = { id = crisis.13 }
 		}
 		observer_event = { id = observer.28 }
@@ -279,7 +279,7 @@ country_event = {
 		remove_global_flag = prethoryn_approaching_rim
 		set_global_flag = prethoryn_arrival
 		every_playable_country = {
-			limit = { CmtTriggerIsPlayableEmpire = yes }
+			# limit = { }
 			country_event = { id = crisis.18 }
 		}
 		observer_event = { id = observer.29 }
@@ -564,7 +564,7 @@ country_event = {
 		set_global_flag = ongoing_prethoryn_invasion
 
 		every_playable_country = {
-			limit = { CmtTriggerIsPlayableEmpire = yes }
+			# limit = { }
 			country_event = { id = crisis.20 }
 		}
 		observer_event = { id = observer.30 }
@@ -1248,7 +1248,7 @@ country_event = {
 			}
 		}
 		every_playable_country = {
-			limit = { CmtTriggerIsPlayableEmpire = yes }
+			# limit = { }
 			country_event = { id = crisis.101 }
 		}
 	}
@@ -1276,7 +1276,6 @@ ship_event = {
 		}
 		every_playable_country = {
 			limit = {
-				CmtTriggerIsPlayableEmpire = yes
 				has_special_project = CAPTURE_QUEEN
 				NOT = { is_same_value = event_target:ship_owner }
 			}
@@ -1858,7 +1857,7 @@ planet_event = {
 			50 = { change_pc = pc_barren_cold }
 		}
 		reset_planet = yes
-		add_modifier = { modifier = "terraforming_candidate" days = -1 }
+		add_modifier = { modifier = "terraforming_candidate" }
 		planet_event = { id = crisis.216 }
 	}
 }
@@ -1925,7 +1924,7 @@ country_event = {
 		if = {
 			limit = { exists = event_target:crisis_sentinels }
 			event_target:crisis_sentinels = { country_event = { id = crisis.75 days = 15 random = 10 } }
-		} else_if = { # backward compat. < 3.3
+		} else_if = { # Backward compat. < 3.3
 			limit = { exists = event_target:sentinels }
 			event_target:sentinels = { country_event = { id = crisis.75 days = 15 random = 10 } }
 		}

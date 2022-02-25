@@ -1,15 +1,15 @@
 
 ######################################################
 ######################################################
-#####                                            #####
-#####    Crisis Manager                          #####
-#####                                            #####
-#####    Diplomatic Actions for Player Crisis    #####
-#####                                            #####
+#####											#####
+#####	Crisis Manager						  #####
+#####											#####
+#####	Diplomatic Actions for Player Crisis	#####
+#####											#####
 ######################################################
 ######################################################
 
-action_close_borders = {	## Only closing, but not opening
+action_close_borders = {	## Only closing, but not opening.
 	icon = "GFX_diplomacy_status_closed_borders"
 	auto_accepted = yes
 	requires_actor_independence = no

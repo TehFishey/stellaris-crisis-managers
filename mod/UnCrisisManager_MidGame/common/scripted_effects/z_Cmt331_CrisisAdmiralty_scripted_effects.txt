@@ -17,29 +17,29 @@
 ###################
 ###- Constants -###
 ###################
-@CmtConstKhanConstructorUpperLimit = 5		## -1
-@CmtConstKhanArmyUpperLimit = 40		## -1
+@CmtConstKhanConstructorUpperLimit =	5		## -1
+@CmtConstKhanArmyUpperLimit =			40		## -1
 @CmtConstKhanFleetPowerUpperLimit_Base = 100000		## 100 k
 
-@CmtConstKhanFleetPowerUpperLimit_V1 =		25000		##		25 k
-@CmtConstKhanFleetPowerUpperLimit_V2 =		50000		##		50 k
-@CmtConstKhanFleetPowerUpperLimit_V3 =		75000		##		75 k
-@CmtConstKhanFleetPowerUpperLimit_V4 =		100000		##		100 k
-@CmtConstKhanFleetPowerUpperLimit_V5 =		150000		##		150 k
-@CmtConstKhanFleetPowerUpperLimit_V6 =		250000		##		250 k
-@CmtConstKhanFleetPowerUpperLimit_V7 =		500000		##		500 k
-@CmtConstKhanFleetPowerUpperLimit_V8 = 1000000		## 1000 k
+@CmtConstKhanFleetPowerUpperLimit_V1 =	25000		##		25 k
+@CmtConstKhanFleetPowerUpperLimit_V2 =	50000		##		50 k
+@CmtConstKhanFleetPowerUpperLimit_V3 =	75000		##		75 k
+@CmtConstKhanFleetPowerUpperLimit_V4 =	100000		##		100 k
+@CmtConstKhanFleetPowerUpperLimit_V5 =	150000		##		150 k
+@CmtConstKhanFleetPowerUpperLimit_V6 =	250000		##		250 k
+@CmtConstKhanFleetPowerUpperLimit_V7 =	500000		##		500 k
+@CmtConstKhanFleetPowerUpperLimit_V8 =	1000000		## 1000 k
 
-@CmtConstKhanFleetPowerUpperLimit_T1 =		37500		##		37.5 k
-@CmtConstKhanFleetPowerUpperLimit_T2 =		62500		##		62.5 k
-@CmtConstKhanFleetPowerUpperLimit_T3 =		87500		##		87.5 k
-@CmtConstKhanFleetPowerUpperLimit_T4 =		125000		##		125 k
-@CmtConstKhanFleetPowerUpperLimit_T5 =		200000		##		200 k
-@CmtConstKhanFleetPowerUpperLimit_T6 =		375000		##		375 k
-@CmtConstKhanFleetPowerUpperLimit_T7 =		750000		##		750 k
+@CmtConstKhanFleetPowerUpperLimit_T1 =	37500		##		37.5 k
+@CmtConstKhanFleetPowerUpperLimit_T2 =	62500		##		62.5 k
+@CmtConstKhanFleetPowerUpperLimit_T3 =	87500		##		87.5 k
+@CmtConstKhanFleetPowerUpperLimit_T4 =	125000		##		125 k
+@CmtConstKhanFleetPowerUpperLimit_T5 =	200000		##		200 k
+@CmtConstKhanFleetPowerUpperLimit_T6 =	375000		##		375 k
+@CmtConstKhanFleetPowerUpperLimit_T7 =	750000		##		750 k
 
-@CmtConstGraygooFleetNumberUpperLimit = 100		## >~4000 k
-@CmtGraygooFleetNumberGuardAwakeLimit = 0.7		# Percent of FleetLimit (1 = 100)
+@CmtConstGraygooFleetNumberUpperLimit =	100		## >~4000 k
+@CmtGraygooFleetNumberGuardAwakeLimit =	0.7		# Percent of FleetLimit (1 = 100)
 
 ##############
 ###- Khan -###
@@ -440,7 +440,7 @@ CmtEffectInitFleetUpperLimit = {
 	divide_variable = { which = CmtVarFleetAngle value = CmtVarCapitalDefenceNumber }
 	# We need integer not float.
 	round_variable = CmtVarFleetAngle
-	# divide_variable = { which = CmtVarFleetAngle value = 10 } # for more precise rounding
+	# divide_variable = { which = CmtVarFleetAngle value = 10 } # For more precise rounding
 	# multiply_variable = { which = CmtVarFleetAngle value = 100000 }
 	set_variable = { which = CmtVarWhileFleetAngle value = 0 }
 	# log = "Dessanu CmtVarFleetAngle [This.CmtVarFleetAngle] - CmtVarCapitalDefenceNumber [This.CmtVarCapitalDefenceNumber], Ships = [CmtGlobalVar. ], This = [This.GetName]"
@@ -459,7 +459,7 @@ CmtEffectCreateAdmiralty_DessanuCapitalDefence = {
 			CmtEffectCreateFleet_DessanuGarryson = yes
 			# CmtEffectCreateFleet_DessanuGarryson = { DIR = CmtVarWhileFleetAngle } # "Malformed token
 			last_created_fleet = {
-				# not working
+				# Not working
 				# set_variable = { which = CmtVarWhileFleetAngle value = prev.CmtVarWhileFleetAngle }
 				# log="CmtVarWhileFleetAngle [This.CmtVarWhileFleetAngle]"
 				# if = { limit = { prev = { check_variable = { which = CmtVarWhileFleetAngle value > 0 } } }
@@ -635,7 +635,7 @@ CmtEffectCreateAdmiralty_GraygooCapitalDefence = {
 			CmtEffectCreateFleet_GraygooGarryson = yes
 			# CmtEffectCreateFleet_GraygooGarryson = { DIR = CmtVarWhileFleetAngle } # "Malformed token
 			last_created_fleet = {
-				# not working
+				# Not working
 				# set_variable = { which = CmtVarWhileFleetAngle value = prev.CmtVarWhileFleetAngle }
 				# log="CmtVarWhileFleetAngle [This.CmtVarWhileFleetAngle]"
 				# if = { limit = { prev = { check_variable = { which = CmtVarWhileFleetAngle value > 0 } } }
@@ -655,8 +655,7 @@ CmtEffectCreateAdmiralty_GraygooGarryson = {
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
 		CmtEffectCreateFleet_GraygooGarryson = yes
-	}
-	else = {
+	} else = {
 		while = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
 			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }

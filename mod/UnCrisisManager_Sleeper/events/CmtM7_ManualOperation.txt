@@ -1660,7 +1660,7 @@ country_event = {
 						}
 						modifier = {
 							add = 1
-							any_neighbor_system = { has_owner = no }
+							any_neighbor_system = { is_valid_crystal_splitter_system = yes }
 						}
 						modifier = {
 							add = 3
@@ -1836,14 +1836,19 @@ country_event = {
 					create_marauder_starbase = yes
 				}
 				CmtEffectCreateFleet_KhanSubReinforcement3 = yes
-				random_neighbor_system = {
-					limit = { has_owner = no }
-					weights = {
-						base = 1
-						modifier = { add = 2 has_star_flag = marauder_system }
+				random_system_within_border = {
+					limit = {
+						any_neighbor_system = { is_valid_crystal_splitter_system = yes }
 					}
-					create_marauder_starbase = yes
-					prev = { CmtEffectCreateFleet_KhanSubReinforcement3 = yes }
+					random_neighbor_system = {
+						limit = { is_valid_crystal_splitter_system = yes }
+						weights = {
+							base = 1
+							modifier = { add = 2 has_star_flag = marauder_system }
+						}
+						create_marauder_starbase = yes
+						prev = { CmtEffectCreateFleet_KhanSubReinforcement3 = yes }
+					}
 				}
 				CmtEffectTriggerMarauderManually = yes
 			}

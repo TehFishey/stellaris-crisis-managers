@@ -2,17 +2,17 @@
 
 #######################################################
 #######################################################
-#####                                             #####
-#####    Crisis Manager                           #####
-#####                                             #####
-#####    Scripted Triggers for Total War Pack     #####
-#####                                             #####
+#####											 #####
+#####	Crisis Manager						   #####
+#####											 #####
+#####	Scripted Triggers for Total War Pack	 #####
+#####											 #####
 #######################################################
 #######################################################
 
 ### List of Country Types
 
-CmtTriggerIsPlayableEmpire = {		## Written in also Cmt00 and Cmt50
+CmtTriggerIsPlayableEmpire = {		## Written in also Cmt00 and Cmt50.
 	is_country_type = default
 }
 
@@ -44,8 +44,6 @@ CmtTriggerIsCrisisKillerCountry = {
 	}
 }
 
-
-
 ### Group of List
 
 CmtTriggerIsTotalWarCountry = {
@@ -55,7 +53,6 @@ CmtTriggerIsTotalWarCountry = {
 	}
 }
 
-
 CmtTriggerIsStarbaseCountry = {
 	OR = {
 		CmtTriggerIsCrisisStarbaseCountry = yes
@@ -63,15 +60,13 @@ CmtTriggerIsStarbaseCountry = {
 	}
 }
 
-
-
 ### For Locking/Unlocking Starbase, Scope: this = fleet, root = N/A (country/starbase)
 
 CmtTriggerStarbaseShouldLocked = {
 	solar_system = {
 		any_fleet_in_system = {
 			NOR = {
-				owner = { is_same_empire = prevprevprev.owner }
+				is_owned_by = prevprevprev.owner
 				is_ship_class = shipclass_starbase
 				is_ship_class = shipclass_military_station
 				is_ship_class = shipclass_science_ship

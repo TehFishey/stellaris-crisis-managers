@@ -1,14 +1,14 @@
 namespace = planet_destruction
 
-############################################
-############################################
-#####                                  #####
-#####    Holy World Destrutced         #####
-#####                                  #####
-#####    Replaced by Crisis Manager    #####
-#####                                  #####
-############################################
-############################################
+#############################################
+#############################################
+#####									#####
+#####	Holy World Destrutced			#####
+#####									#####
+#####	Replaced by Crisis Manager		#####
+#####									#####
+#############################################
+#############################################
 #
 #	Used in both of Sleeper Edition, Player Crisis Pack
 #
@@ -18,12 +18,12 @@ planet_event = {
 	id = planet_destruction.600
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_modifier = holy_planet
 		any_country = { has_ai_personality_behaviour = holy_planets }
 	}
-	
+
 	immediate = {
 		random_country = {
 			limit = { has_ai_personality_behaviour = holy_planets }
@@ -45,7 +45,7 @@ planet_event = {
 			} else_if = {
 				limit = {
 					NOR = {
-						is_at_war_with = outraged_FE
+						is_at_war_with = event_target:outraged_FE
 						exists = event_target:CmtTargetPlayerCrisisAggressor
 					}
 				}
@@ -76,9 +76,9 @@ country_event = {
 		city_level = event_target:outraged_FE
 		room = event_target:outraged_FE.ruler
 	}
-	
+
 	is_triggered_only = yes
-	
+
 	after = {
 		hidden_effect = {
 			if = {
@@ -104,77 +104,53 @@ country_event = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = planet_destruction.610.spiri
 		trigger = {
-			OR = {
-				has_ethic = ethic_spiritualist
-				has_ethic = ethic_fanatic_spiritualist
-			}
+			is_spiritualist = yes
 		}
 	}
 	option = {
 		name = planet_destruction.610.mater
 		trigger = {
-			OR = {
-				has_ethic = ethic_materialist
-				has_ethic = ethic_fanatic_materialist
-			}
+			is_materialist = yes
 		}
 	}
 	option = {
 		name = planet_destruction.610.milit
 		trigger = {
-			OR = {
-				has_ethic = ethic_militarist
-				has_ethic = ethic_fanatic_militarist
-			}
+			is_militarist = yes
 		}
 	}
 	option = {
 		name = planet_destruction.610.pacif
 		trigger = {
-			OR = {
-				has_ethic = ethic_pacifist
-				has_ethic = ethic_fanatic_pacifist
-			}
+			is_pacifist = yes
 		}
 	}
 	option = {
 		name = planet_destruction.610.autho
 		trigger = {
-			OR = {
-				has_ethic = ethic_authoritarian
-				has_ethic = ethic_fanatic_authoritarian
-			}
+			is_authoritarian = yes
 		}
 	}
 	option = {
 		name = planet_destruction.610.egali
 		trigger = {
-			OR = {
-				has_ethic = ethic_egalitarian
-				has_ethic = ethic_fanatic_egalitarian
-			}
+			is_egalitarian = yes
 		}
 	}
 	option = {
 		name = planet_destruction.610.phile
 		trigger = {
-			OR = {
-				has_ethic = ethic_xenophile
-				has_ethic = ethic_fanatic_xenophile
-			}
+			is_xenophile = yes
 		}
 	}
 	option = {
 		name = planet_destruction.610.phobe
 		trigger = {
-			OR = {
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
-			}
+			is_xenophobe = yes
 		}
 	}
 	option = {
@@ -200,7 +176,7 @@ country_event = {
 	id = planet_destruction.611
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	immediate = {
 		if = {
 			limit = { NOT = { exists = event_target:outraged_FE } }

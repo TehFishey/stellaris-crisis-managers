@@ -144,8 +144,7 @@ country_event = {
 			if = {
 				limit = { has_global_flag = CmtFlagForcedEocCrisisTerm }
 				set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocYear1a }
-				country_event = { id = CrisisManagerControl.4012 days = @CmtConstForcedCovenantEocDays1a }
-				else = {
+				country_event = { id = CrisisManagerControl.4012 days = @CmtConstForcedCovenantEocDays1a } else = {
 					set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocYear3a }
 					country_event = { id = CrisisManagerControl.4012 days = @CmtConstForcedCovenantEocDays3a }
 				}
@@ -347,8 +346,7 @@ country_event = {
 			if = {
 				limit = { has_global_flag = CmtFlagForcedEocCrisisTerm }
 				set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocYear4a }
-				country_event = { id = CrisisManagerControl.4042 days = @CmtConstForcedCovenantEocDays4a }
-				else = {
+				country_event = { id = CrisisManagerControl.4042 days = @CmtConstForcedCovenantEocDays4a } else = {
 					set_variable = { which = CmtVarTermForcedEoc value = @CmtConstForcedCovenantEocYear3a }
 					country_event = { id = CrisisManagerControl.4042 days = @CmtConstForcedCovenantEocDays3a }
 				}

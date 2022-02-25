@@ -18,7 +18,7 @@
 ####  Version Information  ###
 ##############################
 #
-#	This description
+#	this description
 #		23/Jun/2018: Items "3.2", "3.3" and "5.1" are updated.
 #		 1/Jul/2018: Footnote is updated
 #		13/Jul/2018: An item "5.1" is updated.
@@ -131,11 +131,11 @@
 #	3. Edit template files in "common\scripted effect"
 #		3.1. Select files to edit.
 #			- Cmt-001_PrimacyTemplate_scripted_variables.txt
-#				-> This template is applied automatically on game start.
+#				-> this template is applied automatically on game start.
 #			- "Cmt-101_..." ~ "Cmt-116_..."
 #				-> These templates are listed up into "Other configuration template"
 #			- "Cmt-201_TemplateSleeperInitialization_scripted_variables.txt"
-#				-> This is a template for "Manual Operation" -> "Create/Delete Fleets for Fallen Empires",
+#				-> this is a template for "Manual Operation" -> "Create/Delete Fleets for Fallen Empires",
 #				   that control fleet of fallen empires.
 #		3.2. Change "@CmtT***_ConstActivated******** = no" to "@CmtT***_ConstActivated******** = yes"
 #			- If all of them are "no", this template is ignored.

@@ -127,38 +127,38 @@ CmtEffectCreateShroudTheEnd = {
 
 			if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEndPower value <   4 } } }
-				add_modifier = { modifier = absorbed_consciousness_1 days = -1 }
+				add_modifier = { modifier = absorbed_consciousness_1 }
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEndPower value <   9 } } }
-				add_modifier = { modifier = absorbed_consciousness_2 days = -1 }
+				add_modifier = { modifier = absorbed_consciousness_2 }
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEndPower value <  16 } } }
-				add_modifier = { modifier = absorbed_consciousness_3 days = -1 }
+				add_modifier = { modifier = absorbed_consciousness_3 }
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEndPower value <  25 } } }
-				add_modifier = { modifier = absorbed_consciousness_4 days = -1 }
+				add_modifier = { modifier = absorbed_consciousness_4 }
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEndPower value <  36 } } }
-				add_modifier = { modifier = absorbed_consciousness_5 days = -1 }
+				add_modifier = { modifier = absorbed_consciousness_5 }
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEndPower value <  49 } } }
-				add_modifier = { modifier = CmtModifierAbsorvedConsciousness_6 days = -1 }
+				add_modifier = { modifier = CmtModifierAbsorvedConsciousness_6 }
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEndPower value <  64 } } }
-				add_modifier = { modifier = CmtModifierAbsorvedConsciousness_7 days = -1 }
+				add_modifier = { modifier = CmtModifierAbsorvedConsciousness_7 }
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEndPower value <  81 } } }
-				add_modifier = { modifier = CmtModifierAbsorvedConsciousness_8 days = -1 }
+				add_modifier = { modifier = CmtModifierAbsorvedConsciousness_8 }
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEndPower value < 100 } } }
-				add_modifier = { modifier = CmtModifierAbsorvedConsciousness_9 days = -1 }
+				add_modifier = { modifier = CmtModifierAbsorvedConsciousness_9 }
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEndPower value < 121 } } }
-				add_modifier = { modifier = CmtModifierAbsorvedConsciousness_A days = -1 }
+				add_modifier = { modifier = CmtModifierAbsorvedConsciousness_A }
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarEndPower value < 144 } } }
-				add_modifier = { modifier = CmtModifierAbsorvedConsciousness_B days = -1 }
-			} else = { add_modifier = { modifier = CmtModifierAbsorvedConsciousness_C days = -1 } }
+				add_modifier = { modifier = CmtModifierAbsorvedConsciousness_B }
+			} else = { add_modifier = { modifier = CmtModifierAbsorvedConsciousness_C } }
 		}
 	}
 }

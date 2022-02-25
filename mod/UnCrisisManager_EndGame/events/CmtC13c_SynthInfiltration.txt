@@ -90,7 +90,7 @@ country_event = {
 
 	immediate = {
 		every_playable_country = {
-			limit = { CmtTriggerIsPlayableEmpire = yes }
+			# limit = { }
 
 			### Notification Event
 			if = {
@@ -144,7 +144,7 @@ country_event = {
 
 	immediate = {
 		every_playable_country = {
-			limit = { CmtTriggerIsPlayableEmpire = yes }
+			# limit = { }
 
 			### Notification Event
 			if = {

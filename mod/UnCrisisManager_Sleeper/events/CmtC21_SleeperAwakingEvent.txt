@@ -113,7 +113,6 @@ event = {
 			### Check Conditions of Youngs: Does anyone have more than min fleet power OR taken a FE planet?
 			OR = {
 				any_playable_country = {
-					CmtTriggerIsPlayableEmpire = yes
 					any_owned_planet = { has_planet_flag = fallen_empire_world }
 				}
 				CmtTriggerCheckYoungsFleetPower = yes
@@ -131,51 +130,51 @@ event = {
 						AND = {
 							NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T1 } }
 							check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T2 }
-							any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_W1 }
+							any_playable_country = { fleet_power > @CmtConstSleeperFleetPowerYoung_W1 }
 						}
 						AND = {
 							NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T2 } }
 							check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T3 }
-							any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_W2 }
+							any_playable_country = { fleet_power > @CmtConstSleeperFleetPowerYoung_W2 }
 						}
 						AND = {
 							NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T3 } }
 							check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T4 }
-							any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_W3 }
+							any_playable_country = { fleet_power > @CmtConstSleeperFleetPowerYoung_W3 }
 						}
 						AND = {
 							NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T4 } }
 							check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T5 }
-							any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_W4 }
+							any_playable_country = { fleet_power > @CmtConstSleeperFleetPowerYoung_W4 }
 						}
 						AND = {
 							NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T5 } }
 							check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T6 }
-							any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_W5 }
+							any_playable_country = { fleet_power > @CmtConstSleeperFleetPowerYoung_W5 }
 						}
 						AND = {
 							NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T6 } }
 							check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T7 }
-							any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_W6 }
+							any_playable_country = { fleet_power > @CmtConstSleeperFleetPowerYoung_W6 }
 						}
 						AND = {
 							NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T7 } }
 							check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T8 }
-							any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_W7 }
+							any_playable_country = { fleet_power > @CmtConstSleeperFleetPowerYoung_W7 }
 						}
 						AND = {
 							NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T8 } }
 							check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T9 }
-							any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_W8 }
+							any_playable_country = { fleet_power > @CmtConstSleeperFleetPowerYoung_W8 }
 						}
 						AND = {
 							NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_T9 } }
 							check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_TA }
-							any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstSleeperFleetPowerYoung_W9 }
+							any_playable_country = { fleet_power > @CmtConstSleeperFleetPowerYoung_W9 }
 						}
 						AND = {
 							NOT = { check_variable = { which = CmtVarSleeperFleetPowerYoung value < @CmtConstSleeperFleetPowerYoung_TA } }
-							any_playable_country = { CmtTriggerIsPlayableEmpire = yes fleet_power > @CmtConstTUnq_ConstSleeperFleetPowerYoung2 }
+							any_playable_country = { fleet_power > @CmtConstTUnq_ConstSleeperFleetPowerYoung2 }
 						}
 					}
 				}
@@ -276,7 +275,6 @@ country_event = {
 				modifier = {
 					factor = 12
 					any_playable_country = {
-						CmtTriggerIsPlayableEmpire = yes
 						any_owned_planet = {
 							has_planet_flag = fallen_empire_world
 							NOT = { is_original_owner = root }

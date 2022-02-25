@@ -22,14 +22,14 @@ on_yearly_pulse = {
 	}
 }
 
-# This = owner of destroyed ship, From = owner of combatant ship, FromFrom = destroyed ship, FromFromFrom = combatant ship
+# this = owner of destroyed ship, from = owner of combatant ship, fromfrom = destroyed ship, fromfromfrom = combatant ship
 on_ship_destroyed_victim = {
 	events = {
 		CrisisManagerControl.4111		## Defeat of FEoC
 	}
 }
 
-# This = destroyed country, From = destroying country
+# this = destroyed country, from = destroying country
 on_country_destroyed = {
 	events = {
 		CrisisManagerControl.0310		## Post-Crisis Process
@@ -38,21 +38,21 @@ on_country_destroyed = {
 	}
 }
 
-# This = country (attacker), From = country (planet owner), FromFrom = planet
+# this = country (attacker), from = country (planet owner), fromfrom = planet
 on_planet_attackers_win = {
 	events = {
 		CrisisManagerControl.0041		## Occupy Planets by Army
 	}
 }
 
-# This = Planet, From = Bombarder(country)
+# this = Planet, from = Bombarder(country)
 on_planet_bombarded = {
 	events = {
 		CrisisManagerControl.0042		## Occupy Planets by Orbital Bombardment.
 	}
 }
 
-# This = Planet, From = Country, FromFrom = Pop
+# this = Planet, from = Country, fromfrom = Pop
 on_pop_purged = {
 	events = {
 		CrisisManagerControl.0043		## Purge by Exds Complete

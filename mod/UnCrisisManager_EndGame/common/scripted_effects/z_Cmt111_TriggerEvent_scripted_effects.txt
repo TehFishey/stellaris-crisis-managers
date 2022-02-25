@@ -133,7 +133,7 @@ CmtEffectTriggerTripleCrisis = {
 
 CmtEffectSubspaceEchoes = { 	### Alt. crisis.10
 	every_playable_country = {
-		limit = { CmtTriggerIsPlayableEmpire = yes }
+		# limit = { }
 		country_event = { id = crisis.11 }
 	}
 }
@@ -144,7 +144,7 @@ CmtEffectSubspaceEchoes = { 	### Alt. crisis.10
 
 CmtEffectSubspaceSignal = { 	### Alt. crisis.14
 	every_playable_country = {
-		limit = { CmtTriggerIsPlayableEmpire = yes }
+		# limit = { }
 		country_event = { id = crisis.15 }
 	}
 }
@@ -177,7 +177,7 @@ CmtEffectStartGhostSignal = {
 	if = {
 		limit = { NOT = { has_global_flag = CmtFlagSubmarineCrisis } }
 		every_playable_country = {
-			limit = { CmtTriggerIsPlayableEmpire = yes }
+			# limit = { }
 			country_event = { id = crisis.2010 }
 		}
 	}
@@ -187,7 +187,7 @@ CmtEffectSynthsActStrange = {
 	if = {
 		limit = { NOT = { has_global_flag = CmtFlagSubmarineCrisis } }
 		every_playable_country = {
-			limit = { CmtTriggerIsPlayableEmpire = yes }
+			# limit = { }
 			country_event = { id = crisis.2006 }
 		}
 		every_country = {
@@ -201,7 +201,7 @@ CmtEffectSynthsDisappear = {
 	if = {
 		limit = { NOT = { has_global_flag = CmtFlagSubmarineCrisis } }
 		every_playable_country = {
-			limit = { CmtTriggerIsPlayableEmpire = yes }
+			# limit = { }
 			country_event = { id = crisis.2007 }
 		}
 	}
@@ -211,7 +211,7 @@ CmtEffectSyntheticDisappearances = {
 	if = {
 		limit = { NOT = { has_global_flag = CmtFlagSubmarineCrisis } }
 		every_playable_country = {
-			limit = { CmtTriggerIsPlayableEmpire = yes }
+			# limit = { }
 			country_event = { id = crisis.2020 }
 		}
 	}
@@ -221,7 +221,7 @@ CmtEffectContingencySummons = {
 	if = {
 		limit = { NOT = { has_global_flag = CmtFlagSubmarineCrisis } }
 		every_playable_country = {
-			limit = { CmtTriggerIsPlayableEmpire = yes }
+			# limit = { }
 			country_event = { id = crisis.2021 }
 		}
 	}
@@ -229,7 +229,7 @@ CmtEffectContingencySummons = {
 
 CmtEffectContingencyArrival = {
 	every_playable_country = {
-		limit = { CmtTriggerIsPlayableEmpire = yes }
+		# limit = { }
 		country_event = { id = crisis.2022 }
 	}
 }

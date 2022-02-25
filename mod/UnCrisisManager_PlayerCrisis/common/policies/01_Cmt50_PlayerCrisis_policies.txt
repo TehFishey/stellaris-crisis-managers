@@ -1,11 +1,11 @@
 
 #####################################################
 #####################################################
-#####                                           #####
-#####    Crisis Manager                         #####
-#####                                           #####
-#####    Policies Modified for Player Crisis    #####
-#####                                           #####
+#####										   #####
+#####	Crisis Manager						 #####
+#####										   #####
+#####	Policies Modified for Player Crisis	#####
+#####										   #####
 #####################################################
 #####################################################
 
@@ -37,14 +37,11 @@ war_doctrine = {
 			factor = 10
 			modifier = {
 				factor = 0
-				NOR = {
-					has_ethic = ethic_pacifist
-					has_ethic = ethic_fanatic_pacifist
-				}
+				is_pacifist = no
 			}
 		}
 	}
-	
+
 	option = {
 		name = rapid_deployment_doctrine
 		policy_flags = {}
@@ -60,16 +57,15 @@ war_doctrine = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = no_retreat_doctrine
 		valid = {
 			OR = {
-				has_ethic = ethic_militarist
-				has_ethic = ethic_fanatic_militarist
+				is_militarist = yes
 				has_ethic = ethic_gestalt_consciousness
 				has_civic = civic_fanatic_purifiers
-				CmtTriggerIsPlayerCrisisAggressor = yes
+				has_been_declared_crisis = yes
 			}
 		}
 		policy_flags = {}
@@ -92,7 +88,6 @@ war_doctrine = {
 	}
 }
 
-
 orbital_bombardment = {
 	potential = {
 		OR = {
@@ -102,15 +97,12 @@ orbital_bombardment = {
 	}
 	option = {
 		name = orbital_bombardment_selective
-		potential = { NOT = { CmtTriggerIsPlayerCrisisAggressor = yes } }
+		potential = { has_been_declared_crisis = no }
 		policy_flags = { orbital_bombardment_selective }
 		AI_weight = {
 			modifier = {
 				factor = 0
-				NOR = {
-					has_ethic = ethic_pacifist
-					has_ethic = ethic_fanatic_pacifist
-				}
+				is_pacifist = no
 				NOT = {
 					is_galactic_community_member = yes
 					OR = {
@@ -124,14 +116,11 @@ orbital_bombardment = {
 	}
 	option = {
 		name = orbital_bombardment_indiscriminate
-		potential = { NOT = { CmtTriggerIsPlayerCrisisAggressor = yes } }
+		potential = { has_been_declared_crisis = no }
 		in_breach_of = { { key = resolution_rulesofwar_independent_tribunals } }
 		policy_flags = { orbital_bombardment_indiscriminate }
 		valid = {
-			NOR = {
-				has_ethic = ethic_pacifist
-				has_ethic = ethic_fanatic_pacifist
-			}
+			is_pacifist = no
 		}
 		AI_weight = {
 			modifier = {
@@ -150,7 +139,7 @@ orbital_bombardment = {
 			OR = {
 				has_valid_civic = civic_fanatic_purifiers
 				has_valid_civic = civic_machine_terminator
-				CmtTriggerIsPlayerCrisisAggressor = yes
+				has_been_declared_crisis = yes
 			}
 		}
 		in_breach_of = { { key = resolution_rulesofwar_independent_tribunals } }
@@ -171,7 +160,7 @@ interference = {
 	potential = { has_met_primitives = yes }
 	option = {
 		name = interference_passive
-		potential = { NOT = { CmtTriggerIsPlayerCrisisAggressor = yes } }
+		potential = { has_been_declared_crisis = no }
 		policy_flags = { interference_passive }
 		on_enabled = { hidden_effect = { set_country_flag = encountered_first_primitive } }
 		in_breach_of = { { key = resolution_galacticstudies_advanced_xenostudies } }
@@ -180,9 +169,7 @@ interference = {
 				is_subject_type = signatory
 				NOR = {
 					has_ethic = ethic_fanatic_xenophobe
-					has_valid_civic = civic_fanatic_purifiers
-					has_valid_civic = civic_hive_devouring_swarm
-					has_valid_civic = civic_machine_terminator
+					is_homicidal = yes
 				}
 			}
 		}
@@ -200,7 +187,7 @@ interference = {
 	}
 	option = {
 		name = interference_active
-		potential = { NOT = { CmtTriggerIsPlayerCrisisAggressor = yes } }
+		potential = { has_been_declared_crisis = no }
 		policy_flags = { interference_active }
 		on_enabled = { hidden_effect = { set_country_flag = encountered_first_primitive } }
 		valid = {
@@ -210,7 +197,7 @@ interference = {
 				has_valid_civic = civic_hive_devouring_swarm
 			}
 		}
-		
+
 		modifier = {}
 		AI_weight = {
 			modifier = {
@@ -246,11 +233,8 @@ interference = {
 		valid = {
 			NOT = { is_subject_type = signatory }
 			OR = {
-				NOR = {
-					has_ethic = ethic_pacifist
-					has_ethic = ethic_fanatic_pacifist
-				}
-				CmtTriggerIsPlayerCrisisAggressor = yes
+				is_pacifist = no
+				has_been_declared_crisis = yes
 			}
 		}
 
@@ -274,10 +258,7 @@ interference = {
 			}
 			modifier = {
 				factor = 0
-				OR = {
-					has_ethic = ethic_pacifist
-					has_ethic = ethic_fanatic_pacifist
-				}
+				is_pacifist = yes
 			}
 		}
 	}
@@ -295,10 +276,8 @@ pre_sapients = {
 		on_enabled = { hidden_effect = { set_country_flag = found_presapients } }
 		potential = {
 			NOR = {
-				has_valid_civic = civic_machine_terminator
-				has_valid_civic = civic_hive_devouring_swarm
-				has_valid_civic = civic_fanatic_purifiers
-				CmtTriggerIsPlayerCrisisAggressor = yes
+				is_homicidal = yes
+				has_been_declared_crisis = yes
 			}
 		}
 		policy_flags = { pre_sapients_protect }
@@ -315,10 +294,8 @@ pre_sapients = {
 		on_enabled = { hidden_effect = { set_country_flag = found_presapients } }
 		potential = {
 			NOR = {
-				has_valid_civic = civic_machine_terminator
-				has_valid_civic = civic_hive_devouring_swarm
-				has_valid_civic = civic_fanatic_purifiers
-				CmtTriggerIsPlayerCrisisAggressor = yes
+				is_homicidal = yes
+				has_been_declared_crisis = yes
 			}
 		}
 		policy_flags = { pre_sapients_allow }
@@ -334,11 +311,8 @@ pre_sapients = {
 		}
 		valid = {
 			OR = {
-				NOR = {
-					has_ethic = "ethic_xenophile"
-					has_ethic = "ethic_fanatic_xenophile"
-				}
-				CmtTriggerIsPlayerCrisisAggressor = yes
+				is_xenophile = no
+				has_been_declared_crisis = yes
 			}
 		}
 		policy_flags = { pre_sapients_eat }
@@ -356,25 +330,21 @@ pre_sapients = {
 		on_enabled = { hidden_effect = { set_country_flag = found_presapients } }
 		valid = {
 			OR = {
-				NOR = {
-					has_ethic = "ethic_xenophile"
-					has_ethic = "ethic_fanatic_xenophile"
-				}
-				CmtTriggerIsPlayerCrisisAggressor = yes
+				is_xenophile = no
+				has_been_declared_crisis = yes
 			}
 		}
 		policy_flags = { pre_sapients_purge }
-		
+
 		modifier = {}
-		
+
 		AI_weight = {
 			factor = 5
 			modifier = {
 				factor = 0
 				CmtTriggerIsPlayableEmpire = yes
 				NOR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
+					is_xenophobe = yes
 					has_ai_personality = CmtPersonalityPlayerCrisisAggressor
 					AND = {
 						has_authority = auth_machine_intelligence
@@ -383,7 +353,7 @@ pre_sapients = {
 							has_valid_civic = civic_machine_assimilator
 						}
 					}
-					CmtTriggerIsPlayerCrisisAggressor = yes
+					has_been_declared_crisis = yes
 				}
 			}
 		}
@@ -392,7 +362,7 @@ pre_sapients = {
 
 purge = {
 	potential = { NOT = { has_ethic = ethic_gestalt_consciousness } }
-	
+
 	option = {
 		name = purge_not_allowed
 		valid = {
@@ -403,7 +373,7 @@ purge = {
 		}
 		policy_flags = { purge_not_allowed }
 	}
-	
+
 	option = {
 		name = purge_displacement_only
 		policy_flags = { purge_displacement_only }
@@ -427,11 +397,8 @@ purge = {
 				has_valid_civic = civic_fanatic_purifiers
 			}
 			OR = {
-				NOR = {
-					has_ethic = ethic_xenophile
-					has_ethic = ethic_fanatic_xenophile
-				}
-				CmtTriggerIsPlayerCrisisAggressor = yes
+				is_xenophile = no
+				has_been_declared_crisis = yes
 			}
 		}
 		AI_weight = {
@@ -443,7 +410,7 @@ purge = {
 			}
 		}
 	}
-	
+
 	option = {
 		name = purge_allowed
 		in_breach_of = { { key = resolution_rulesofwar_reverence_for_life } }
@@ -453,9 +420,8 @@ purge = {
 			NOT = { is_subject_type = signatory }
 			OR = {
 				has_ethic = ethic_gestalt_consciousness
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
-				CmtTriggerIsPlayerCrisisAggressor = yes
+				is_xenophobe = yes
+				has_been_declared_crisis = yes
 			}
 		}
 		AI_weight = {
@@ -467,8 +433,7 @@ purge = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_ethic = ethic_pacifist
-					has_ethic = ethic_fanatic_pacifist
+					is_pacifist = yes
 					AND = {
 						has_valid_ai_personality = yes
 						NOT = { has_ai_personality_behaviour = purger }
@@ -492,4 +457,3 @@ purge = {
 		}
 	}
 }
-

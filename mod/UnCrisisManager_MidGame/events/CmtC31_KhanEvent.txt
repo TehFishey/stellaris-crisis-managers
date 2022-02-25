@@ -25,7 +25,7 @@ event = {
 			mid_game_years_passed > CmtVarKhanEarliestMgpy	# Check Earliest Year
 			end_game_years_passed < CmtVarKhanLatestEgpy	# Check Latest Year
 			CmtTriggerKhanAwakingMultipleCheck = yes
-			# pre 3.0 legacy
+			# Pre 3.0 legacy
 			### Check Earliest Year
 			# OR = {
 			# 	check_variable = { which = CmtVarKhanEarliestMgpy value =< @CmtConstKhanEarliestMgpy_T1 }

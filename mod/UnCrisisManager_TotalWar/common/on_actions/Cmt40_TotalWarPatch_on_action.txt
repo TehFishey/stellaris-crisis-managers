@@ -1,14 +1,13 @@
 
 ################################################
 ################################################
-#####                                      #####
-#####    Crisis Manager                    #####
-#####                                      #####
-#####    on_actions for Total War Pack     #####
-#####                                      #####
+#####									  #####
+#####	Crisis Manager					#####
+#####									  #####
+#####	on_actions for Total War Pack	 #####
+#####									  #####
 ################################################
 ################################################
-
 
 # This = Ship
 # From = Disabler Ship
@@ -17,7 +16,6 @@ on_ship_disabled = {
 		CrisisManagerControl.0211		## Transfer Stabase, Standard 1
 	}
 }
-
 
 # This = owner of ship 1 (destroyed)
 # From = owner of ship 2 (combatant)
@@ -44,6 +42,4 @@ on_monthly_pulse = {
 		CrisisManagerControl.0222		## Transfer Stabase, Backup 1
 	}
 }
-
-
 

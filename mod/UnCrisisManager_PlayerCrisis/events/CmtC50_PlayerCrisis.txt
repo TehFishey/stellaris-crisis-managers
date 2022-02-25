@@ -2,11 +2,11 @@ namespace = CrisisManagerControl
 
 ##########################################
 ##########################################
-#####                                #####
-#####    Crisis Manager              #####
-#####                                #####
-#####    Events for Player Crisis    #####
-#####                                #####
+#####								#####
+#####	Crisis Manager			  #####
+#####								#####
+#####	Events for Player Crisis	#####
+#####								#####
 ##########################################
 ##########################################
 
@@ -14,15 +14,13 @@ namespace = CrisisManagerControl
 ###  Constants  ###
 ###################
 
-@CmtConstParamilitaryLiquidatingCycle = 180		## in days
+@CmtConstParamilitaryLiquidatingCycle = 180		## In days
 @CmtConstParamilitaryLiquidatingFlagLimit = 178		## Must 'Cycle - 2'
 
-@CmtConstSelfLiquidatingCycle = 20		## in days
+@CmtConstSelfLiquidatingCycle = 20		## In days
 
-@CmtConstFinalLiquidationCycle = 15		## in days
+@CmtConstFinalLiquidationCycle = 15		## In days
 @CmtConstFinalLiquidationNumber = 5		## Number of Systems
-
-
 
 ######################
 ###  Outbreak War  ###
@@ -42,16 +40,16 @@ country_event = {
 	}
 	picture = GFX_evt_city_ruins
 	is_triggered_only = yes
-	
+
 	trigger = {
 		is_ai = no
 		CmtTriggerIsEmpire = yes
 	}
-	
+
 	immediate = {
 		set_country_flag = CmtFlagNowInMenu
 	}
-	
+
 	option = {
 		name = CrisisManagerControl.0510a1.name
 		custom_tooltip = CrisisManagerControl.0510a1.tooltip
@@ -59,7 +57,7 @@ country_event = {
 			NOT = {
 				any_country = {
 					has_country_flag = CmtFlagNowInMenu
-					NOT = { is_same_value = root }
+					NOT = { is_same_empire = root }
 				}
 			}
 		}
@@ -72,7 +70,7 @@ country_event = {
 			NOT = {
 				any_country = {
 					has_country_flag = CmtFlagNowInMenu
-					NOT = { is_same_value = root }
+					NOT = { is_same_empire = root }
 				}
 			}
 		}
@@ -90,7 +88,7 @@ country_event = {
 			NOT = {
 				any_country = {
 					has_country_flag = CmtFlagNowInMenu
-					NOT = { is_same_value = root }
+					NOT = { is_same_empire = root }
 				}
 			}
 		}
@@ -106,11 +104,11 @@ country_event = {
 	picture = GFX_evt_hangar_bay
 	show_sound = event_red_alert
 	is_triggered_only = yes
-	
+
 	trigger = {
 		CmtTriggerIsEmpire = yes
 	}
-	
+
 	after = {
 		hidden_effect = {
 			CmtEffectStartPlayerCrisis = yes
@@ -124,7 +122,7 @@ country_event = {
 			remove_country_flag = CmtFlagNowInMenu
 		}
 	}
-	
+
 	option = {
 		name = CrisisManagerControl.0511a.name
 		custom_tooltip = CrisisManagerControl.0511a.tooltip
@@ -139,21 +137,17 @@ country_event = {
 	picture = GFX_evt_news_room
 	show_sound = event_red_alert
 	is_triggered_only = yes
-	
+
 	trigger = {
 		is_ai = no
 		CmtTriggerIsEmpire = yes
 	}
-	
+
 	option = {
 		name = CrisisManagerControl.0512a.name
 		custom_tooltip = CrisisManagerControl.0512a.tooltip
 	}
 }
-
-
-
-
 
 #############################
 ###  Backup Code for War  ###
@@ -164,7 +158,7 @@ event = {
 	id = CrisisManagerControl.0521
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		exists = event_target:CmtTargetPlayerCrisisAggressor
 		any_country = {
@@ -174,7 +168,7 @@ event = {
 			}
 		}
 	}
-	
+
 	immediate = {
 		every_country = {
 			limit = { CmtTriggerPlayerCrisisJoinableCountry = yes }
@@ -187,8 +181,7 @@ event = {
 	}
 }
 
-
-### Re-Declare War when Status Quo
+### Re-Declare War when Status Quo.
 country_event = {
 	id = CrisisManagerControl.0522
 	hide_window = yes
@@ -198,13 +191,11 @@ country_event = {
 		exists = event_target:CmtTargetPlayerCrisisAggressor
 		any_country = { CmtTriggerPlayerCrisisJoinableCountry = yes }
 	}
-	
+
 	immediate = {
 		event_target:CmtTargetPlayerCrisisAggressor = { CmtEffectStartPlayerCrisis = yes }
 	}
 }
-
-
 
 #############################
 ###  Orbital Bombardment  ###
@@ -220,7 +211,7 @@ planet_event = {
 	id = CrisisManagerControl.0531
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_orbital_bombardment_stance = BombardmentPlayerCrisis
 		planet_devastation >= 100
@@ -229,13 +220,13 @@ planet_event = {
 		NOR = {
 			has_building = building_planetary_shield_generator
 			is_planet_class = pc_nuked
-			CmtTriggerIsHabitat = yes
-			CmtTriggerIsHabitableRingWorld = yes
+			is_planet_class = pc_habitat
+			is_planet_class = pc_ringworld_habitable
 		}
-		
+
 		from = { CmtTriggerIsEmpire = yes }
 	}
-	
+
 	immediate = {
 		random_list = {
 			200 = {}
@@ -248,7 +239,7 @@ planet_event = {
 				remove_modifier = atmospheric_hallucinogen
 				remove_modifier = lush_planet
 				remove_modifier = dangerous_wildlife
-				
+
 				from = { country_event = { id = CrisisManagerControl.0533 } }
 				owner = { country_event = { id = CrisisManagerControl.0534 } }
 			}
@@ -256,24 +247,24 @@ planet_event = {
 	}
 }
 
-### All Pops Kill by Bombardment
+### All Pops Kill by Bombardment.
 planet_event = {
 	id = CrisisManagerControl.0532
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_orbital_bombardment_stance = BombardmentPlayerCrisis
 		from = { CmtTriggerIsEmpire = yes }
 	}
 	immediate = {
 		if = {
-			limit = { CmtTriggerIsHabitableRingWorld = yes }
+			limit = { is_planet_class = pc_ringworld_habitable }
 			destroy_colony = yes
 			change_pc = pc_ringworld_habitable_damaged
 			reset_planet = yes
 		} else_if = {
-			limit = { CmtTriggerIsHabitat = yes }
+			limit = { is_planet_class = pc_habitat }
 			remove_planet = yes
 		} else = { CmtEffectLiquidatePlanetBombardment = yes }
 		from = { country_event = { id = CrisisManagerControl.0533 } }
@@ -364,11 +355,11 @@ country_event = {
 	show_sound = event_super_explosion
 	location = from
 	is_triggered_only = yes
-	
+
 	trigger = {
 		NOT = { has_country_flag = CmtFlagNoBombardmentNotification }
 	}
-	
+
 	option = {
 		name = CrisisManagerControl.0533a.name
 		custom_tooltip = CrisisManagerControl.0533a.tooltip
@@ -504,11 +495,11 @@ country_event = {
 	show_sound = event_super_explosion
 	location = from
 	is_triggered_only = yes
-	
+
 	trigger = {
 		NOT = { has_country_flag = CmtFlagNoBombardmentNotification }
 	}
-	
+
 	option = {
 		name = CrisisManagerControl.0534a.name
 		custom_tooltip = CrisisManagerControl.0534a.tooltip
@@ -564,7 +555,6 @@ country_event = {
 	}
 }
 
-
 #################
 ###  The End  ###
 #################
@@ -574,11 +564,11 @@ country_event = {
 	id = CrisisManagerControl.0540
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
-		CmtTriggerIsPlayerCrisisAggressor = yes
+		has_been_declared_crisis = yes
 	}
-	
+
 	immediate = {
 		every_country = {
 			limit = {
@@ -605,25 +595,23 @@ country_event = {
 	picture = GFX_evt_metropolis
 	show_sound = event_celebration
 	is_triggered_only = yes
-	
+
 	option = {
 		name = CrisisManagerControl.0541a.name
 		add_monthly_resource_mult = { resource = unity value = 48 }
 	}
 }
 
-
-
 ### Buckup Code for Series of End of Galaxy (on_monthly_pulse)
 event = {
 	id = CrisisManagerControl.0550
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		exists = event_target:CmtTargetPlayerCrisisAggressor
 	}
-	
+
 	immediate = {
 		event_target:CmtGlobalVar = { country_event = { id = CrisisManagerControl.0560 } }
 		event_target:CmtTargetPlayerCrisisAggressor = { country_event = { id = CrisisManagerControl.0552 } }
@@ -635,21 +623,21 @@ country_event = {
 	id = CrisisManagerControl.0551
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		exists = event_target:CmtTargetPlayerCrisisAggressor
 		NOR = {
-			CmtTriggerIsPlayerCrisisAggressor = yes
+			has_been_declared_crisis = yes
 			any_country = {
 				CmtTriggerIsEmpire = yes
 				NOR = {
-					is_same_value = root
-					CmtTriggerIsPlayerCrisisAggressor = yes
+					is_same_empire = root
+					has_been_declared_crisis = yes
 				}
 			}
 		}
 	}
-	
+
 	immediate = {
 		set_global_flag = CmtFlagOngoingLiquidationLv2
 		event_target:CmtGlobalVar = { country_event = { id = CrisisManagerControl.0560 } }
@@ -665,9 +653,9 @@ country_event = {
 	picture = GFX_evt_dead_city
 	show_sound = CmtSoundLiquidation1
 	is_triggered_only = yes
-	
+
 	trigger = {
-		CmtTriggerIsPlayerCrisisAggressor = yes
+		has_been_declared_crisis = yes
 		NOR = {
 			has_country_flag = CmtFlagLiquidationLv1Noticed
 			has_country_flag = CmtFlagLiquidationLv2Noticed
@@ -675,46 +663,44 @@ country_event = {
 			has_country_flag = CmtFlagLiquidationLv4Noticed
 			any_country = {
 				CmtTriggerIsEmpire = yes
-				NOT = { is_same_value = root }
+				NOT = { is_same_empire = root }
 				NAND = {
 					exists = from
-					is_same_value = from
+					is_same_empire = from
 				}
 			}
 		}
 		any_country = {
 			CmtTriggerIsExistence = yes
-			NOT = { is_same_value = root }
+			NOT = { is_same_empire = root }
 		}
 	}
-	
+
 	immediate = {
 		set_country_flag = CmtFlagLiquidationLv1Noticed
 		set_global_flag = CmtFlagOngoingLiquidationLv2
-		
+
 		set_timed_country_flag = { flag = CmtFlagClockForLiquidationLv2 days = @CmtConstParamilitaryLiquidatingFlagLimit }
 		country_event = { id = CrisisManagerControl.0556 days = @CmtConstParamilitaryLiquidatingCycle }
 	}
-	
+
 	option = {
 		name = CrisisManagerControl.0552a.name
 		custom_tooltip = CrisisManagerControl.0552a.tooltip
 	}
 }
 
-
-
 ### End Process of All Existences: Clock Flag Control when Fleet Destroyed, Planet Conquered
 country_event = {
 	id = CrisisManagerControl.0553
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_global_flag = CmtFlagOngoingLiquidationLv2
-		CmtTriggerIsPlayerCrisisAggressor = yes
+		has_been_declared_crisis = yes
 	}
-	
+
 	immediate = {
 		remove_country_flag = CmtFlagClockForLiquidationLv2
 		set_timed_country_flag = { flag = CmtFlagClockForLiquidationLv2 days = @CmtConstParamilitaryLiquidatingFlagLimit }
@@ -727,12 +713,12 @@ planet_event = {
 	id = CrisisManagerControl.0554
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_global_flag = CmtFlagOngoingLiquidationLv2
-		from = { CmtTriggerIsPlayerCrisisAggressor = yes }
+		from = { has_been_declared_crisis = yes }
 	}
-	
+
 	immediate = {
 		from = {
 			remove_country_flag = CmtFlagClockForLiquidationLv2
@@ -747,12 +733,12 @@ event = {
 	id = CrisisManagerControl.0555
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_global_flag = CmtFlagOngoingLiquidationLv2
 		exists = event_target:CmtTargetPlayerCrisisAggressor
 	}
-	
+
 	immediate = {
 		event_target:CmtTargetPlayerCrisisAggressor = {
 			country_event = { id = CrisisManagerControl.0556 }
@@ -760,9 +746,8 @@ event = {
 		}
 	}
 }
-	
 
-### Colony/Fleet of Reminnant Destroyed by Paramilitaries
+### Colony/Fleet of Reminnant Destroyed by Paramilitaries.
 country_event = {
 	id = CrisisManagerControl.0556
 	title = CrisisManagerControl.0556.name
@@ -794,22 +779,22 @@ country_event = {
 	}
 	show_sound = event_super_explosion
 	is_triggered_only = yes
-	
+
 	trigger = {
 		has_global_flag = CmtFlagOngoingLiquidationLv2
-		CmtTriggerIsPlayerCrisisAggressor = yes
+		has_been_declared_crisis = yes
 		NOT = { has_country_flag = CmtFlagClockForLiquidationLv2 }
 		any_country = {
 			CmtTriggerIsExistence = yes
-			NOT = { is_same_value = root }
+			NOT = { is_same_empire = root }
 		}
 	}
-	
+
 	immediate = {
 		random_country = {
 			limit = {
 				CmtTriggerIsExistence = yes
-				NOT = { is_same_value = root }
+				NOT = { is_same_empire = root }
 			}
 			if = {
 				limit = { any_owned_planet = { is_colony = yes } }
@@ -856,14 +841,14 @@ country_event = {
 		set_timed_country_flag = { flag = CmtFlagClockForLiquidationLv2 days = @CmtConstParamilitaryLiquidatingFlagLimit }
 		country_event = { id = CrisisManagerControl.0556 days = @CmtConstParamilitaryLiquidatingCycle }
 	}
-	
+
 	after = {
 		hidden_effect = {
 			set_country_flag = CmtFlagStartParamilitaryLiquidating
 			remove_country_flag = CmtFlagParamilitaryLiquidateColony
 		}
 	}
-	
+
 	option = {
 		name = CrisisManagerControl.0556a.name
 		custom_tooltip = CrisisManagerControl.0556a.tooltip
@@ -892,30 +877,28 @@ country_event = {
 	id = CrisisManagerControl.0560
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		is_country_type = global_event
-		OR = {
-			has_global_flag = CmtFlagOngoingLiquidationLv2
-		}
+		has_global_flag = CmtFlagOngoingLiquidationLv2
 		NOR = {
 			any_country = {
 				CmtTriggerIsExistence = yes
 				NOT = { is_same_value = event_target:CmtTargetPlayerCrisisAggressor }
 				NAND = {
 					exists = from
-					is_same_value = from		## Last Destroyed Empire
+					is_same_empire = from		## Last Destroyed Empire
 				}
 			}
 		}
 	}
-	
+
 	immediate = {
 		remove_global_flag = CmtFlagOngoingLiquidationLv2
 		set_variable = { which = CmtVarLiquidationGroup value = 0 }
 		set_global_flag = CmtFlagOngoingLiquidationLv3
 		country_event = { id = CrisisManagerControl.0562 }
-		
+
 		if = {
 			limit = { exists = event_target:CmtTargetPlayerCrisisAggressor }
 			event_target:CmtTargetPlayerCrisisAggressor = { country_event = { id = CrisisManagerControl.0561 } }
@@ -931,37 +914,37 @@ country_event = {
 	picture = GFX_evt_toxic
 	show_sound = CmtSoundLiquidation2
 	is_triggered_only = yes
-	
+
 	trigger = {
-		CmtTriggerIsPlayerCrisisAggressor = yes
+		has_been_declared_crisis = yes
 		NOR = {
 			has_country_flag = CmtFlagLiquidationLv2Noticed
 			has_country_flag = CmtFlagLiquidationLv3Noticed
 			has_country_flag = CmtFlagLiquidationLv4Noticed
 		}
 	}
-	
+
 	immediate = {
 		set_country_flag = CmtFlagLiquidationLv2Noticed
 	}
-	
+
 	option = {
 		name = CrisisManagerControl.0561a.name
 		custom_tooltip = CrisisManagerControl.0561a.tooltip
 	}
 }
 
-### End Process of Crisis Player
+### End Process of Crisis Player.
 country_event = {
 	id = CrisisManagerControl.0562
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		is_country_type = global_event
 		has_global_flag = CmtFlagOngoingLiquidationLv3
 	}
-	
+
 	immediate = {
 		if = {
 			limit = { exists = event_target:CmtTargetPlayerCrisisAggressor.capital_scope.solar_system }
@@ -1044,7 +1027,7 @@ country_event = {
 				CmtEffectLiquidateAgressor = yes
 				event_target:CmtTargetPlayerCrisisAggressor = { country_event = { id = CrisisManagerControl.0563 } }
 			}
-			
+
 			set_variable = { which = CmtVarLiquidationGroup value = 0 }
 			remove_global_flag = CmtFlagOngoingLiquidationLv3
 			set_global_flag = CmtFlagOngoingLiquidationLv4
@@ -1063,39 +1046,38 @@ country_event = {
 	picture = GFX_event_frame
 	show_sound = CmtSoundLiquidation3
 	is_triggered_only = yes
-	
+
 	trigger = {
-		CmtTriggerIsPlayerCrisisAggressor = yes
+		has_been_declared_crisis = yes
 		has_global_flag = CmtFlagOngoingLiquidationLv3
 		NOR = {
 			has_country_flag = CmtFlagLiquidationLv3Noticed
 			has_country_flag = CmtFlagLiquidationLv4Noticed
 		}
 	}
-	
+
 	immediate = {
 		set_country_flag = CmtFlagLiquidationLv3Noticed
 		every_system = { CmtEffectLiquidateSystemStructure = yes }
 	}
-	
+
 	option = {
 		name = CrisisManagerControl.0563a.name
 		custom_tooltip = CrisisManagerControl.0563a.tooltip
 	}
 }
 
-
-### Final End Process, 5 systems per 5 days, Heavey Load on PC
+### Final End Process, 5 systems per 5 days, Heavey Load on PC.
 country_event = {
 	id = CrisisManagerControl.0564
 	hide_window = yes
 	is_triggered_only = yes
-	
+
 	trigger = {
 		is_country_type = global_event
 		has_global_flag = CmtFlagOngoingLiquidationLv4
 	}
-	
+
 	immediate = {
 		if = {
 			limit = { any_system = { NOT = { has_star_flag = CmtFlagCompletelyLiquidatedSystem } } }
@@ -1117,62 +1099,55 @@ country_event = {
 	}
 }
 
-
-
-
-
 ################
 ###  Legacy  ###
 ################
 
-
 #### End of All Empires (Notification for Victims)
-#country_event = {
+# country_event = {
 #	id = CrisisManagerControl.0553
 #	title = CrisisManagerControl.0553.name
 #	desc = CrisisManagerControl.0553.desc
 #	picture = GFX_evt_dead_city
 #	show_sound = CmtSoundLiquidation1
 #	is_triggered_only = yes
-#	
+#
 #	trigger = {
 #		CmtTriggerIsEmpire = yes
 #		NOR = {
-#			CmtTriggerIsPlayerCrisisAggressor = yes
+#			has_been_declared_crisis = yes
 #			has_country_flag = CmtFlagLiquidationLv1Noticed
 #			any_country = {
 #				CmtTriggerIsEmpire = yes
 #				NOR = {
-#					is_same_value = root
-#					CmtTriggerIsPlayerCrisisAggressor = yes
+#					is_same_empire = root
+#					has_been_declared_crisis = yes
 #				}
 #			}
 #		}
 #	}
-#	
+#
 #	immediate = {
 #		set_country_flag = CmtFlagLiquidationLv1Noticed
 #	}
-#	
+#
 #	option = {
 #		name = CrisisManagerControl.0553a.name
 #		custom_tooltip = CrisisManagerControl.0553a.tooltip
 #	}
 #}
 
-
-
-#### Final End Process, 1 system per day, Heavey Load on PC
-#country_event = {
+#### Final End Process, 1 system per day, Heavey Load on PC.
+# country_event = {
 #	id = CrisisManagerControl.0564
 #	hide_window = yes
 #	is_triggered_only = yes
-#	
+#
 #	trigger = {
 #		is_country_type = global_event
 #		has_global_flag = CmtFlagOngoingLiquidationLv4
 #	}
-#	
+#
 #	immediate = {
 #		if = {
 #			limit = { any_system = { NOT = { has_star_flag = CmtFlagCompletelyLiquidatedSystem } } }
@@ -1181,7 +1156,7 @@ country_event = {
 #				CmtEffectLiquidateSystemStructure = yes
 #				CmtEffectLiquidateSystemCelestial = yes
 #			}
-#			#play_sound = CmtSoundNowLiquidating4
+#			# play_sound = CmtSoundNowLiquidating4
 #			country_event = { id = CrisisManagerControl.0564 days = 1 }
 #		} else = {
 #			every_system = { CmtEffectLiquidateSystemStructure = yes }
@@ -1192,18 +1167,17 @@ country_event = {
 #	}
 #}
 
-
 #### Final End Process, 10% of the galaxy per 20 days, Un... loud
-#country_event = {
+# country_event = {
 #	id = CrisisManagerControl.0564
 #	hide_window = yes
 #	is_triggered_only = yes
-#	
+#
 #	trigger = {
 #		is_country_type = global_event
 #		has_global_flag = CmtFlagOngoingLiquidationLv4
 #	}
-#	
+#
 #	immediate = {
 #		every_system = { CmtEffectLiquidateSystemStructure = yes }
 #		if = {
@@ -1281,17 +1255,17 @@ country_event = {
 #
 #
 
-#### Destroy Building with immune_to_bombardment, e.g. Planetary Shield Generator
-#planet_event = {
+#### Destroy Building with immune_to_bombardment, e.g. Planetary Shield Generator.
+# planet_event = {
 #	id = CrisisManagerControl.0535
 #	hide_window = yes
 #	is_triggered_only = yes
-#	
+#
 #	trigger = {
 #		has_orbital_bombardment_stance = BombardmentPlayerCrisis
 #		CmtTriggerAntiBomberdmentBuildings = yes
 #	}
-#	
+#
 #	immediate = {
 #		random_list = {
 #			80 = {
@@ -1319,16 +1293,10 @@ country_event = {
 #}
 
 #### Dummy
-#country_event = {
+# country_event = {
 #	id = CrisisManagerControl.0564
 #	hide_window = yes
 #	is_triggered_only = yes
-#	
+#
 #	trigger = { always = no }
 #}
-
-
-
-
-
-

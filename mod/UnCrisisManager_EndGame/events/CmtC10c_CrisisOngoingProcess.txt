@@ -304,7 +304,7 @@ planet_event = {
 				50 = { change_pc = pc_barren_cold }
 			}
 			reset_planet = yes
-			add_modifier = { modifier = terraforming_candidate days = -1 }
+			add_modifier = { modifier = terraforming_candidate }
 		} else = {
 			if = {
 				limit = { is_planet_class = pc_ringworld_habitable }

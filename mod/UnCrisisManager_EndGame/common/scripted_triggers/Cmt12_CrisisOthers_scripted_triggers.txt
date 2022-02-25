@@ -138,7 +138,7 @@ CmtTriggerExistExdPortal = {
 	}
 }
 
-CmtTriggerAnchorForPortalCreate = {		## This = Country (Exds)
+CmtTriggerAnchorForPortalCreate = {		## this = Country (Exds)
 	OR = {
 		AND = {
 			event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T0 } }
@@ -211,7 +211,7 @@ CmtTriggerAnchorForPortalCreate = {		## This = Country (Exds)
 	}
 }
 
-CmtTriggerAnchorForPortalDestroy = {		## This = Country (Exds)
+CmtTriggerAnchorForPortalDestroy = {		## this = Country (Exds)
 	NOR = {
 		AND = {
 			event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T0 } }

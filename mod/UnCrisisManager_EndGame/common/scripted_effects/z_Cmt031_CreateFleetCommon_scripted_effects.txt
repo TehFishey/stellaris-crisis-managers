@@ -69,192 +69,192 @@ CmtEffectProgressLoop2 = {
 CmtEffectFasterPrethorynConstructor = {
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 2 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_PrethorynConstructor2 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_PrethorynConstructor2 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 3 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_PrethorynConstructor3 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_PrethorynConstructor3 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 4 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_PrethorynConstructor4 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_PrethorynConstructor4 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 5 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_PrethorynConstructor5 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_PrethorynConstructor5 }
 	}
 }
 
 CmtEffectFasterUnbiddenConstructor = {
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 2 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_UnbiddenConstructor2 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_UnbiddenConstructor2 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 3 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_UnbiddenConstructor3 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_UnbiddenConstructor3 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 4 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_UnbiddenConstructor4 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_UnbiddenConstructor4 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 5 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_UnbiddenConstructor5 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_UnbiddenConstructor5 }
 	}
 }
 
 CmtEffectFasterAberrantConstructor = {
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 2 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_AberrantConstructor2 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_AberrantConstructor2 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 3 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_AberrantConstructor3 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_AberrantConstructor3 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 4 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_AberrantConstructor4 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_AberrantConstructor4 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 5 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_AberrantConstructor5 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_AberrantConstructor5 }
 	}
 }
 
 CmtEffectFasterVehementConstructor = {
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 2 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_VehementConstructor2 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_VehementConstructor2 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 3 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_VehementConstructor3 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_VehementConstructor3 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 4 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_VehementConstructor4 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_VehementConstructor4 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 5 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_VehementConstructor5 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_VehementConstructor5 }
 	}
 }
 
 CmtEffectFasterContingencyConstructor = {
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 2 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_ContingencyConstructor2 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_ContingencyConstructor2 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 3 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_ContingencyConstructor3 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_ContingencyConstructor3 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 4 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_ContingencyConstructor4 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_ContingencyConstructor4 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 5 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_ContingencyConstructor5 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_ContingencyConstructor5 }
 	}
 }
 
 CmtEffectFasterPrethorynCombatShip = {
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 2 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_PrethorynCombatShip2 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_PrethorynCombatShip2 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 3 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_PrethorynCombatShip3 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_PrethorynCombatShip3 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 4 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_PrethorynCombatShip4 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_PrethorynCombatShip4 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 5 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_PrethorynCombatShip5 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_PrethorynCombatShip5 }
 	}
 }
 
 CmtEffectFasterSentinelCombatShip = {
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 2 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_SentinelCombatShip2 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_SentinelCombatShip2 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 3 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_SentinelCombatShip3 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_SentinelCombatShip3 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 4 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_SentinelCombatShip4 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_SentinelCombatShip4 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 5 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_SentinelCombatShip5 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_SentinelCombatShip5 }
 	}
 }
 
 CmtEffectFasterUnbiddenCombatShip = {
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 2 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_UnbiddenCombatShip2 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_UnbiddenCombatShip2 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 3 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_UnbiddenCombatShip3 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_UnbiddenCombatShip3 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 4 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_UnbiddenCombatShip4 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_UnbiddenCombatShip4 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 5 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_UnbiddenCombatShip5 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_UnbiddenCombatShip5 }
 	}
 }
 
 CmtEffectFasterAberrantCombatShip = {
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 2 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_AberrantCombatShip2 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_AberrantCombatShip2 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 3 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_AberrantCombatShip3 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_AberrantCombatShip3 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 4 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_AberrantCombatShip4 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_AberrantCombatShip4 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 5 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_AberrantCombatShip5 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_AberrantCombatShip5 }
 	}
 }
 
 CmtEffectFasterVehementCombatShip = {
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 2 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_VehementCombatShip2 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_VehementCombatShip2 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 3 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_VehementCombatShip3 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_VehementCombatShip3 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 4 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_VehementCombatShip4 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_VehementCombatShip4 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 5 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_VehementCombatShip5 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_VehementCombatShip5 }
 	}
 }
 
 CmtEffectFasterContingencyCombatShip = {
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 2 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_ContingencyCombatShip2 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_ContingencyCombatShip2 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 3 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_ContingencyCombatShip3 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_ContingencyCombatShip3 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 4 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_ContingencyCombatShip4 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_ContingencyCombatShip4 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 5 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_ContingencyCombatShip5 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_ContingencyCombatShip5 }
 	}
 }
 
 CmtEffectFasterCybrexCombatShip = {
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 2 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_CybrexCombatShip2 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_CybrexCombatShip2 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 3 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_CybrexCombatShip3 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_CybrexCombatShip3 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 4 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_CybrexCombatShip4 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_CybrexCombatShip4 }
 	} else_if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 5 } } }
-		add_modifier = { modifier = CmtModifierShipSpeed_CybrexCombatShip5 days = -1 }
+		add_modifier = { modifier = CmtModifierShipSpeed_CybrexCombatShip5 }
 	}
 }
 

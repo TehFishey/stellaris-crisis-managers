@@ -2,12 +2,11 @@ namespace = CrisisManagerControl
 
 ##################################################
 ##################################################
-#####                                        #####
-#####    Crisis Manager - Total War Pack     #####
-#####                                        #####
+#####										#####
+#####	Crisis Manager - Total War Pack	 #####
+#####										#####
 ##################################################
 ##################################################
-
 
 ###################
 ###  Constants  ###
@@ -15,12 +14,11 @@ namespace = CrisisManagerControl
 
 @CmtConstTotalWarCrisisActivateBackup = yes
 
-
 ########################################
 ###  Main Effect: Transfar Starbase  ###
 ########################################
 #
-# Called by Trigger Events Written Later
+# Called by Trigger Events Written Later.
 #
 
 country_event = {
@@ -50,7 +48,7 @@ country_event = {
 					event_target:CmtGlobalVar = { check_variable = { which = CmtVarTotalWarPriority value = 1 } }
 				}
 			}
-			if = {		## Return Starbase to Former Owner
+			if = {		## Return Starbase to Former Owner.
 				limit = {
 					OR = {
 						AND = {
@@ -70,14 +68,14 @@ country_event = {
 					CmtEffectCreateStarbase = yes
 					remove_country_flag = CmtFlagSystemFormerOwner@event_target:CmtTargetTransferSystem
 				}
-			} else_if = {		## Wining Standard Country Gets Starbase
+			} else_if = {		## Wining Standard Country Gets Starbase.
 				limit = { CmtTriggerIsStandardStarbaseCountry = yes }
 				CmtEffectCreateStarbase = yes
 				every_country = {
 					limit = { has_country_flag = CmtFlagSystemFormerOwner@event_target:CmtTargetTransferSystem }
 					remove_country_flag = CmtFlagSystemFormerOwner@event_target:CmtTargetTransferSystem
 				}
-			} else_if = {		## Crisis Faction Gets Starbase & Set Flag for Former Owner
+			} else_if = {		## Crisis Faction Gets Starbase & Set Flag for Former Owner.
 				limit = { CmtTriggerIsCrisisStarbaseCountry = yes }
 				CmtEffectCreateStarbase = yes
 				if = {
@@ -97,8 +95,6 @@ country_event = {
 		}
 	}
 }
-
-
 
 ##########################################
 ###  Basic Trigger: Transfar Starbase  ###
@@ -159,20 +155,15 @@ country_event = {
 	}
 }
 
-
-
-
-
 ###########################################
 ###  Backup Trigger: Transfar Starbase  ###
 ###########################################
 #
-# On Fleet Entireing System & Every 10 Days
+# On Fleet Entireing System & Every 10 Days.
 # For the case that Starbase is disabled by unexpected country and is unable to be re-enabled because of crisis fleet staying around. 
 #
 
-
-### Transfer Starbase, if Only Disbabled Starbase Exist when Fleet Entireing System
+### Transfer Starbase, if Only Disbabled Starbase Exist when Fleet Entireing System.
 fleet_event = {
 	id = CrisisManagerControl.0221
 	hide_window = yes
@@ -197,7 +188,7 @@ fleet_event = {
 		from = {		## solar_system
 			any_fleet_in_system = {
 				exists = owner
-				NOT = { owner = { is_same_empire = prevprev.starbase.owner } }
+				NOT = { is_owned_by = prevprev.starbase.owner }
 				is_ship_class = shipclass_military
 			}
 		}
@@ -223,8 +214,7 @@ event = {
 	immediate = {
 		every_system = {
 			limit = { exists = starbase }
-			random_system_planet = {
-				limit = { is_star = yes }
+			star = {
 				planet_event = { id = CrisisManagerControl.0223 days =  5 }
 				planet_event = { id = CrisisManagerControl.0223 days = 15 }
 				planet_event = { id = CrisisManagerControl.0223 days = 25 }
@@ -250,16 +240,16 @@ planet_event = {
 		}
 		
 		solar_system = {
-			### Fleet of Starbase Owner Unexists
+			### Fleet of Starbase Owner Unexists.
 			NOT = {
 				any_fleet_in_system = {
 					exists = owner
-					owner = { is_same_empire = root.solar_system.starbase.owner }
+					is_owned_by = root.solar_system.starbase.owner
 					is_ship_class = shipclass_military
 				}
 			}
 			
-			### Starbase Owner or Attaker is Total War Pack
+			### Starbase Owner or Attaker is Total War Pack.
 			any_fleet_in_system = {
 				exists = owner
 				owner = { CmtTriggerIsCrisisStarbaseCountry = yes }
@@ -270,14 +260,14 @@ planet_event = {
 			}
 		}
 		
-		### Attacker is Only 1 Country
+		### Attacker is Only 1 Country.
 		count_country = {
 			limit = {
 				OR = {
 					CmtTriggerIsStarbaseCountry = yes
 					CmtTriggerIsCrisisKillerCountry = yes
 				}
-				NOT = { is_same_value = root.solar_system.starbase.owner }
+				NOT = { is_same_empire = root.solar_system.starbase.owner }
 				any_owned_fleet = {
 					is_ship_class = shipclass_military
 					any_owned_ship = { solar_system = { is_same_value = root.solar_system } }
@@ -298,7 +288,7 @@ planet_event = {
 					CmtTriggerIsStarbaseCountry = yes
 					CmtTriggerIsCrisisKillerCountry = yes
 				}
-				NOT = { is_same_value = root.solar_system.starbase.fleet.owner }
+				NOT = { is_same_empire = root.solar_system.starbase.fleet.owner }
 				any_owned_fleet = {
 					is_ship_class = shipclass_military
 					solar_system = { is_same_value = root.solar_system }
@@ -308,8 +298,6 @@ planet_event = {
 		}
 	}
 }
-
-
 
 ###############################################
 ###  Auto-Build Starbase to Unowned System  ###
@@ -355,8 +343,6 @@ fleet_event = {
 		owner = { CmtEffectCreateStarbase = yes }
 	}
 }
-
-
 
 #########################
 ###  Unlock Starbase  ###

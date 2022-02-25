@@ -64,7 +64,6 @@ country_event = {
 		if = {
 			limit = {
 				any_playable_country = {
-					CmtTriggerIsPlayableEmpire = yes
 					fleet_power > 50000
 				}
 			}
@@ -126,7 +125,7 @@ country_event = {
 		country_event = { id = fallen_empires_awakening.3 }
 
 		every_playable_country = {
-			limit = { CmtTriggerIsPlayableEmpire = yes }
+			# limit = { }
 			random_list = {
 				3 = { add_opinion_modifier = { who = root modifier = opinion_crisis_fighter } }
 				3 = { add_opinion_modifier = { who = root modifier = opinion_crisis_fighter_small } }

@@ -1,11 +1,11 @@
 
 ###################################################
 ###################################################
-#####                                         #####
-#####    Crisis Manager                       #####
-#####                                         #####
-#####    Scripted Effect for Player Crisis    #####
-#####                                         #####
+#####										 #####
+#####	Crisis Manager					   #####
+#####										 #####
+#####	Scripted Effect for Player Crisis	#####
+#####										 #####
 ###################################################
 ###################################################
 
@@ -18,21 +18,19 @@ CmtEffectDetectPlayerCrisisPack = {
 	set_global_flag = CmtFlagPlayerCrisisPatch
 }
 
-
-
 #################
 ###  The War  ###
 #################
 
 ### Start Player Crisis, Scope: this = country (Agrressor)
 CmtEffectStartPlayerCrisis = {
-	
+
 	### Target, Flag Control
 	if = {
 		limit = { exists = event_target:CmtTargetPlayerCrisisAggressor }
 		clear_global_event_target = CmtTargetPlayerCrisisAggressor
 	}
-	save_global_event_target_as = CmtTargetPlayerCrisisAggressor	## Do It before Finding Defence Leader
+	save_global_event_target_as = CmtTargetPlayerCrisisAggressor	## Do It before Finding Defence Leader.
 	if = {
 		limit = {
 			exists = event_target:CmtTargetPlayerCrisisDefenceLeader
@@ -42,12 +40,12 @@ CmtEffectStartPlayerCrisis = {
 	}
 	if = {
 		limit = {
-			any_country = {
+			any_playable_country = {
 				CmtTriggerIsPlayableEmpire = yes
 				CmtTriggerPlayerCrisisDefenceLeaderCandidate = yes
 			}
 		}
-		random_country = {
+		random_playable_country = {
 			limit = {
 				CmtTriggerIsPlayableEmpire = yes
 				CmtTriggerPlayerCrisisDefenceLeaderCandidate = yes
@@ -65,15 +63,15 @@ CmtEffectStartPlayerCrisis = {
 		set_country_flag = ai_no_wars
 		country_event = { id = CrisisManagerControl.0512 }
 	}
-	
-	
+
+
 	### Leave Federation, Release Subjects
 	if = {
 		limit = { has_federation = yes }
 		leave_alliance = { override_requirements = yes }
 	}
 	every_subject = { set_subject_of = { who = none } }
-	
+
 	### Declare War (To Leader Only)
 	if = {
 		limit = { NOT = { is_at_war_with = event_target:CmtTargetPlayerCrisisDefenceLeader } }
@@ -83,22 +81,22 @@ CmtEffectStartPlayerCrisis = {
 			attacker_war_goal = wg_CmtWarPlayerCrisisAttack
 		}
 	}
-	
+
 	### Add Opinion Modifiers, Join War
 	every_country = {
 		limit = {
 			CmtTriggerIsEmpire = yes
-			NOT = { CmtTriggerIsPlayerCrisisAggressor = yes }
+			has_been_declared_crisis = no
 		}
 		CmtEffectJoinWarPlayerCrisis = yes
 	}
-	
+
 	### Non-Empire Country: Common
 	every_country = {
 		limit = { CmtTriggerPlayerCrisisResistibleCountry = yes }
 		CmtEffectHostilizeToAggressor = yes
 	}
-	
+
 	### Cnclave: Common
 	every_country = {
 		limit = { is_country_type = enclave }
@@ -109,29 +107,29 @@ CmtEffectStartPlayerCrisis = {
 			remove_relation_flag = { who = prev flag = muutagan_trade }
 		}
 	}
-	
+
 	### Enclave: Artist
 	remove_modifier = enclave_artist_patron
 	remove_country_flag = artist_patron
 	set_country_flag = enclave_artist_ignores
-	
+
 	### Enclave: Traders
 	set_country_flag = attacked_xuracorp
 	set_country_flag = attacked_riggans
 	set_country_flag = attacked_muutagans
-	#remove_modifier = enclave_traders_sr1
-	#remove_modifier = enclave_traders_sr2
-	#remove_modifier = enclave_traders_sr3
+	# remove_modifier = enclave_traders_sr1
+	# remove_modifier = enclave_traders_sr2
+	# remove_modifier = enclave_traders_sr3
 	remove_xuracorp_trades = yes
 	remove_riggan_trades = yes
 	remove_muutagan_trades = yes
-	
+
 	### Enclave: Curator
 	set_country_flag = attacked_curators
 	remove_modifier = curator_insight
-	
+
 	### Marauders: non
-	#every_owned_fleet = {
+	# every_owned_fleet = {
 	#	limit = {
 	#		OR = {
 	#			has_fleet_flag = armada_of_the_voidborn
@@ -147,11 +145,11 @@ CmtEffectStartPlayerCrisis = {
 	#	}
 	#	leader = {
 	#		remove_leader_flag = marauder_merc_leader
-	#		kill_leader = { show_notification = no } 
+	#		kill_leader = { show_notification = no }
 	#	}
 	#	delete_fleet = this
 	#}
-	#every_owned_leader = {
+	# every_owned_leader = {
 	#	limit = {
 	#		OR = {
 	#			has_leader_flag = hired_merc_leader_1
@@ -161,14 +159,14 @@ CmtEffectStartPlayerCrisis = {
 	#	}
 	#	kill_leader = { show_notification = no }
 	#}
-	
+
 	### Dessanu
 	every_country = {
 		limit = { is_country_type = gate_builders }
 		root = { country_event = { id = graygoo.155 scopes = { from = prev } } }
 	}
 	set_country_flag = gate_builders_hostility		## Backup Code
-	
+
 	### War in Heaven
 	every_country = {
 		limit = { has_country_flag = war_in_heaven_league_leader }
@@ -176,8 +174,6 @@ CmtEffectStartPlayerCrisis = {
 	}
 	remove_global_flag = war_in_heaven_nonaligned_league
 }
-
-
 
 ### Add Opinion Modifiers, Join War, Scope: this = country, event_target = CmtTargetPlayerCrisisAggressor, CmtTargetPlayerCrisisDefenceLeader
 CmtEffectJoinWarPlayerCrisis = {
@@ -212,15 +208,15 @@ CmtEffectJoinWarPlayerCrisis = {
 	set_country_flag = CmtFlagPlayerCrisisDefender
 	set_country_flag = ai_no_wars
 	join_war = event_target:CmtTargetPlayerCrisisDefenceLeader
-	
+
 	add_opinion_modifier = { who = event_target:CmtTargetPlayerCrisisAggressor modifier = CmtOpinionPlayerCrisisAggressor }
 	event_target:CmtTargetPlayerCrisisAggressor = { add_opinion_modifier = { who = prev modifier = CmtOpinionPlayerCrisisPrey } }
 	every_country = {
 		limit = {
 			CmtTriggerIsEmpire = yes
 			NOR = {
-				is_same_value = prev
-				CmtTriggerIsPlayerCrisisAggressor = yes
+				is_same_empire = prev
+				has_been_declared_crisis = yes
 			}
 		}
 		add_opinion_modifier = { who = prev modifier = CmtOpinionPlayerCrisisAlly }
@@ -273,7 +269,7 @@ CmtEffectLiquidatePlanetBombardment = {
 			change_pc = pc_toxic
 			reroll_planet = yes
 			destroy_colony = yes
-			add_modifier = { modifier = terraforming_candidate days = -1 }
+			add_modifier = { modifier = terraforming_candidate }
 		}
 		100 = {
 			change_pc = pc_nuked
@@ -294,7 +290,6 @@ CmtEffectLiquidatePlanetBombardment = {
 	}
 }
 
-
 ######################
 ###  Till the End  ###
 ######################
@@ -312,7 +307,7 @@ CmtEffectLiquidateSystemStructure = {
 		every_owned_army = { remove_army = yes }
 	}
 	every_system_ambient_object = { destroy_ambient_object = this }
-	
+
 	every_system_planet = {
 		limit = {
 			OR = {
@@ -323,7 +318,7 @@ CmtEffectLiquidateSystemStructure = {
 		}
 		CmtEffectLiquidatePlanetFinal = yes
 	}
-	
+
 	every_system_megastructure = {
 		limit = { NOT = { has_megastructure_flag = CmtFlagPlayerCrisisLiquidatedObject } }
 		if = {
@@ -378,7 +373,7 @@ CmtEffectLiquidateSystemStructure = {
 		} else_if = {
 			limit = { is_megastructure_type = lgate_base }
 			set_megastructure_flag = CmtFlagPlayerCrisisLiquidatedObject
-		} else_if = { remove_megastructure = this }
+		} else = { remove_megastructure = this }
 	}
 }
 
@@ -398,7 +393,7 @@ CmtEffectLiquidateSystemCelestial = {
 
 CmtEffectLiquidateAgressor = {
 	event_target:CmtTargetPlayerCrisisAggressor = {
-		
+
 		### Trivials
 		clear_resources = yes
 		every_subject = { set_subject_of = { who = none } }
@@ -416,7 +411,7 @@ CmtEffectLiquidateAgressor = {
 			limit = { prev = { has_claim = prev } }
 			remove_claims = { who = prev }
 		}
-		
+
 		### Pops
 		create_species = {
 			name = CmtSpciesPlayerCrisisNull
@@ -426,16 +421,16 @@ CmtEffectLiquidateAgressor = {
 		}
 		every_owned_pop = { change_species = last_created_species }
 		change_dominant_species = { species = last_created_species }
-		
+
 		### Leaders except Ruler
 		every_owned_leader = {
-			limit = { NOT = { leader_class = ruler } }		## Put befor delete_fleet for Killing Silentry
+			limit = { NOT = { leader_class = ruler } }		## Put befor delete_fleet for Killing Silentry.
 			kill_leader = { show_notification = no }
 		}
 		every_owned_fleet = { delete_fleet = this }
 		every_owned_ship = { delete_ship = this }
 		every_owned_army = { remove_army = yes }
-		
+
 		### Government
 		country_remove_ethic = ethic_fanatic_authoritarian
 		country_remove_ethic = ethic_authoritarian
@@ -454,9 +449,9 @@ CmtEffectLiquidateAgressor = {
 		country_remove_ethic = ethic_fanatic_materialist
 		country_remove_ethic = ethic_materialist
 		country_remove_ethic = ethic_gestalt_consciousness
-		change_government = { authority = auth_CmtPlayerCrisisNull civics = {} }
+		change_government = { authority = auth_CmtPlayerCrisisNull civics = { civic = random } }
 		set_country_type = CmtCountryIiquidated
-		
+
 		### Rular
 		every_owned_leader = { kill_leader = { show_notification = no } }
 		create_leader = {
@@ -467,7 +462,7 @@ CmtEffectLiquidateAgressor = {
 			skill = 1
 		}
 		set_leader = last_created_leader
-		
+
 		### Colonies
 		every_galaxy_planet = {
 			limit = { has_planet_flag = CmtFlagLiquidateTargetPlanet }
@@ -480,11 +475,11 @@ CmtEffectLiquidatePlanetFinal = {
 	remove_all_buildings = yes
 	destroy_colony = yes
 	if = {
-		limit = { CmtTriggerIsHabitableRingWorld = yes }
+		limit = { is_planet_class = pc_ringworld_habitable }
 		change_pc = pc_ringworld_habitable_damaged
 		reset_planet = yes
 	} else_if = {
-		limit = { CmtTriggerIsHabitat = yes }
+		limit = { is_planet_class = pc_habitat }
 		remove_planet = yes
 	} else = {
 		set_planet_flag = armageddon_nuked
@@ -497,5 +492,3 @@ CmtEffectLiquidatePlanetFinal = {
 		reroll_planet = yes
 	}
 }
-
-

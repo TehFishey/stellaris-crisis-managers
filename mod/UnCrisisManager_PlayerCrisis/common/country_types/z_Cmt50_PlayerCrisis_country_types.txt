@@ -1,15 +1,13 @@
 
 #################################################
 #################################################
-#####                                       #####
-#####    Crisis Manager                     #####
-#####                                       #####
-#####    country_types for Player Crisis    #####
-#####                                       #####
+#####										#####
+#####	Crisis Manager						#####
+#####										#####
+#####	country_types for Player Crisis		#####
+#####										#####
 #################################################
 #################################################
-
-
 
 CmtCountryIiquidated = {
 	default_ships = no
@@ -17,8 +15,8 @@ CmtCountryIiquidated = {
 	has_capital = no
 	share_communications = no
 	government = no
-	#observable = yes
-	
+	# observable = yes
+
 	ai = {
 		enabled = no
 	}
@@ -32,7 +30,7 @@ CmtCountryIiquidated = {
 	modules = {
 		standard_event_module = {} # Needed for events
 		exclusive_diplomacy_module = {
-			contact_rule = script_only
+			contact_rule = on_action_only
 		}
 	}
 }

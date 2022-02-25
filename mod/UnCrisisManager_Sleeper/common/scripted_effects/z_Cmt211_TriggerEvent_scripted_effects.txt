@@ -56,7 +56,7 @@ CmtEffectSetAnciantRival = {
 		set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_1a }
 		root = { set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_1a } }
 		every_playable_country = {
-			limit = { CmtTriggerIsPlayableEmpire = yes }
+			limit = { }
 			set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_1a }
 		}
 	} else_if = {
@@ -65,7 +65,7 @@ CmtEffectSetAnciantRival = {
 		set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_3a }
 		root = { set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_3a } }
 		every_playable_country = {
-			limit = { CmtTriggerIsPlayableEmpire = yes }
+			limit = { }
 			set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_3a }
 		}
 	} else_if = {
@@ -74,7 +74,7 @@ CmtEffectSetAnciantRival = {
 		set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_4a }
 		root = { set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_4a } }
 		every_playable_country = {
-			limit = { CmtTriggerIsPlayableEmpire = yes }
+			limit = { }
 			set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_4a }
 		}
 	} else = {
@@ -82,7 +82,7 @@ CmtEffectSetAnciantRival = {
 		set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_2a }
 		root = { set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_2a } }
 		every_playable_country = {
-			limit = { CmtTriggerIsPlayableEmpire = yes }
+			limit = { }
 			set_timed_country_flag = { flag = ai_no_wars days = @CmtConstHeavenPreludeSpeed_2a }
 		}
 	}

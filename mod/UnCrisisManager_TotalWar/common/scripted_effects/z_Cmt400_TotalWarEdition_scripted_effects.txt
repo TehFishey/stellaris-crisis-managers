@@ -1,19 +1,18 @@
 ###########################################################
 ###########################################################
-#####                                                 #####
-#####    Crisis Manager                               #####
-#####                                                 #####
-#####    Common Scripted Effect of Total War Pack     #####
-#####                                                 #####
+#####												 #####
+#####	Crisis Manager							   #####
+#####												 #####
+#####	Common Scripted Effect of Total War Pack	 #####
+#####												 #####
 ###########################################################
 ###########################################################
-
 
 ################
 ###  Common  ###
 ################
 
-### Overwriting Cmt001 in Basic 3 Editions
+### Overwriting Cmt001 in Basic 3 Editions.
 CmtEffectDetectTotalWarPack = {
 	set_global_flag = CmtFlagTotalWarPatch
 }
@@ -34,10 +33,7 @@ CmtEffectCreateStarbase = {
 		event_target:CmtTargetTransferSystem = { create_starbase = { size = starbase_outpost owner = prev } }
 	} else_if = {
 		limit = {
-			OR = {
-				is_country_type = fallen_empire
-				is_country_type = awakened_fallen_empire
-			}
+			is_fallen_empire = yes
 		}
 		event_target:CmtTargetTransferSystem = {
 			if = {
@@ -122,7 +118,6 @@ CmtEffectCreateStarbase = {
 #	log = "Starbase of [This.GetName] in [event_target:CmtTargetTransferSystem.GetName] was NOT created."
 #	log = "Starbase in [This.GetStarName] was locked"
 #	log = "Starbase in [This.GetStarName] was NOT locked"
-
 
 ##############################################
 ###  Starbases of Fallen/Awakened Empires  ###

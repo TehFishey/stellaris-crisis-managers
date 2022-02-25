@@ -2129,14 +2129,14 @@ country_event = {
 		if = {
 			limit = { has_country_flag = CmtFlagKhanVengeanceCountry }
 			every_playable_country = {
-				limit = { CmtTriggerIsPlayableEmpire = yes }
+				limit = { }
 				establish_communications_no_message = root
 				country_event = { id = marauder.526 }
 				observer_event = { id = observer.18 }
 			}
 		} else = {
 			every_playable_country = {
-				limit = { CmtTriggerIsPlayableEmpire = yes  }
+				limit = {  }
 				establish_communications_no_message = root
 				country_event = { id = marauder.501 }
 				observer_event = { id = observer.13 }
@@ -3414,5 +3414,84 @@ country_event = {
 				} ### Do nothing on < @CmtConstKhanInterval_T0
 			}
 		}
+	}
+}
+
+# New Fleet (Fix missing ship_piracy_suppression_add)
+country_event = {
+	id = marauder.704
+	title = "marauder.704.name"
+	desc = "marauder.704.desc"
+	picture = GFX_evt_pirate_armada
+	show_sound = event_radio_chatter
+	is_triggered_only = yes
+	trigger = {
+		NOT = { has_country_flag = marauder_neighbor_event_4 }
+		years_passed > 30
+	}
+	immediate = { set_country_flag = marauder_neighbor_event_4 }
+	option = {
+		name = marauder.704.a
+		create_fleet = {
+			name = "NAME_Salvaged_Fleet"
+			effect = {
+				set_owner = root
+				while = {
+					count = 6
+					create_ship = {
+						name = "NAME_Outrider"
+						prefix = no
+						# design = "NAME_Outrider"
+						design = "NAME_Skull"
+						graphical_culture = "pirate_01"
+					}
+				}
+				while = {
+					count = 3
+					create_ship = {
+						name = "NAME_Lancer"
+						prefix = no
+						# design = "NAME_Lancer"
+						design = "NAME_Corsair"
+						graphical_culture = "pirate_01"
+					}
+				}
+				while = {
+					count = 2
+					create_ship = {
+						name = "NAME_Void_Champion"
+						prefix = no
+						# design = "NAME_Void_Champion"
+						design = "NAME_Black_Earl"
+						graphical_culture = "pirate_01"
+					}
+				}
+				set_location = root.capital_scope
+			}
+		}
+		custom_tooltip = gain_marauder_fleet
+		# hidden_effect = {
+		# 	create_fleet = {
+		# 		name = "NAME_Salvaged_Fleet"
+		# 		effect = {
+		# 			set_owner = root
+		# 			while = {
+		# 				count = 1
+		# 				create_ship = {
+		# 					name = random
+		# 					prefix = no
+		# 					design = "NAME_Black_Earl"
+		# 					graphical_culture = "pirate_01"
+		# 				}
+		# 			}
+		# 			create_privateer_ships_5 = yes
+		# 			set_location = root.capital_scope
+		# 		}
+		# 	}
+		# }
+	}
+	option = {
+		name = marauder.704.b
+		add_resource = { minerals = 200 }
 	}
 }

@@ -170,7 +170,7 @@ CmtEffectHostileCrisis = {
 ###########################
 
 ## Vanilla fix
-## Scope: This = Owner Country (Exds)
+## Scope: this = Owner Country (Exds)
 CmtEffectSaveTargetExdPortal = {
 	if = {
 		limit = { is_country_type = extradimensional }
@@ -241,7 +241,7 @@ CmtEffectSaveTargetExdPortal = {
 	}
 }
 
-CmtEffectReinforcementExdCombat = {		## Scope: This = Owner Country (Exds)
+CmtEffectReinforcementExdCombat = {		## Scope: this = Owner Country (Exds)
 	CmtEffectSaveTargetExdPortal = yes		## save_event_target_as = dimensional_portal
 	if = {
 		limit = { is_country_type = extradimensional }

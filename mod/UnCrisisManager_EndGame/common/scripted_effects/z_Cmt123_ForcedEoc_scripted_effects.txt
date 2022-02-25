@@ -68,8 +68,7 @@ CmtEffectTargetingForcedEoc = {
 					has_ascension_perk = ap_transcendence
 				}
 				set_country_flag = CmtFlagForcedEocTargetList
-			}
-			else = {
+			} else = {
 				every_country = {
 					limit = { CmtTriggerForcedEocTargetList = yes }
 					set_country_flag = CmtFlagForcedEocTargetList

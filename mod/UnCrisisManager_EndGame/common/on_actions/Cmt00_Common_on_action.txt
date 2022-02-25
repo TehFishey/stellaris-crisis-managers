@@ -35,8 +35,8 @@ on_single_player_save_game_load = {
 # }
 
 # Planet has taken damage from orbital bombardment - Damage is applied daily.
-# This = Planet
-# From = Bombarder
+# this = Planet
+# from = Bombarder
 on_planet_bombarded = {
 	events = {
 		crisis.2477 # Fix Cybrex bombard

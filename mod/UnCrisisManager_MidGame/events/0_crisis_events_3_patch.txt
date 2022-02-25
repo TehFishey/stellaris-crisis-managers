@@ -57,8 +57,7 @@ country_event = {
 				limit = { has_planet_flag = machine_world_1 }
 				planet_event = { id = crisis.2025 days = 20 random = 10 }
 			}
-		}
-		else = {
+		} else = {
 			random_galaxy_planet = {
 				limit = { is_planet_class = pc_barren }
 				planet_event = { id = crisis.2025 days = 20 random = 10 }
@@ -73,8 +72,7 @@ country_event = {
 				limit = { has_planet_flag = machine_world_2 }
 				planet_event = { id = crisis.2026 days = 40 random = 10 }
 			}
-		}
-		else = {
+		} else = {
 			random_galaxy_planet = {
 				limit = { is_planet_class = pc_molten }
 				planet_event = { id = crisis.2026 days = 40 random = 10 }
@@ -89,8 +87,7 @@ country_event = {
 				limit = { has_planet_flag = machine_world_3 }
 				planet_event = { id = crisis.2027 days = 60 random = 10 }
 			}
-		}
-		else = {
+		} else = {
 			random_galaxy_planet = {
 				limit = { is_planet_class = pc_gas_giant }
 				planet_event = { id = crisis.2027 days = 60 random = 10 }
@@ -105,8 +102,7 @@ country_event = {
 				limit = { has_planet_flag = machine_world_4 }
 				planet_event = { id = crisis.2028 days = 80 random = 10 }
 			}
-		}
-		else = {
+		} else = {
 			random_galaxy_planet = {
 				limit = { is_planet_class = pc_toxic }
 				planet_event = { id = crisis.2028 days = 80 random = 10 }
@@ -274,8 +270,7 @@ country_event = {
 					}
 					join_war = event_target:community_war_leader # Should use different effect to ensure they only join the correct war.
 				}
-			}
-			else = {
+			} else = {
 				random_playable_country = {
 					limit = {
 						is_galactic_community_member = yes

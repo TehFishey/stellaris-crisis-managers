@@ -2,17 +2,16 @@ namespace = crisis
 
 ####################################################
 ####################################################
-#####                                          #####
-#####    Crisis Events 2: Extradimensionals    #####
-#####                                          #####
-#####    Replaced by Crisis Manager            #####
-#####                                          #####
+#####										  #####
+#####	Crisis Events 2: Extradimensionals	#####
+#####										  #####
+#####	Replaced by Crisis Manager			#####
+#####										  #####
 ####################################################
 ####################################################
 #
 # End-Game Edition has a priority over this file.
 #
-
 
 ### Reinforcements Arrive After Building Anchor (on_building_starbase_exd), OverWritten by End-Game Edition
 ship_event = {
@@ -55,7 +54,7 @@ ship_event = {
 					}
 				}
 			}
-			num_ships < 2001		## Only Here, but NOT in CmtTriggerHasExdPortal
+			num_ships < 2001		## Only Here, but NOT in CmtTriggerHasExdPortal.
 		}
 	}
 	
@@ -67,7 +66,7 @@ ship_event = {
 				set_variable = { which = CmtVarCountExdAnchorBuilt value = 0 }
 				
 				### Copy of crisis.1267 in Vanilla
-				country_event = { id = crisis.1266 days = 6 } # Spawn Construction Ships if needed
+				country_event = { id = crisis.1266 days = 6 } # Spawn Construction Ships if needed.
 				random_country = {
 					limit = { is_country_type = portal_holder }
 					random_owned_ship = {
@@ -122,7 +121,7 @@ ship_event = {
 					# Create Fleet
 					create_fleet = {
 						effect = {
-							set_owner = ROOT.owner
+							set_owner = root.owner
 							create_ship = {
 								name = random
 								design = "NAME_Revenant"
@@ -206,7 +205,7 @@ ship_event = {
 					# Create Fleet
 					create_fleet = {
 						effect = {
-							set_owner = ROOT.owner
+							set_owner = root.owner
 							create_ship = {
 								name = random
 								design = "NAME_Huntress"
@@ -290,7 +289,7 @@ ship_event = {
 					# Create Fleet
 					create_fleet = {
 						effect = {
-							set_owner = ROOT.owner
+							set_owner = root.owner
 							create_ship = {
 								name = random
 								design = "NAME_Eradicator"

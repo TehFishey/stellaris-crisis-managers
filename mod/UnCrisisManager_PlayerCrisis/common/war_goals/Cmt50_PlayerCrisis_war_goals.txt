@@ -1,11 +1,11 @@
 
 ############################################
 ############################################
-#####                                  #####
-#####    Crisis Manager                #####
-#####                                  #####
-#####    War Goal for Player Crisis    #####
-#####                                  #####
+#####								  #####
+#####	Crisis Manager				#####
+#####								  #####
+#####	War Goal for Player Crisis	#####
+#####								  #####
 ############################################
 ############################################
 #
@@ -20,11 +20,13 @@ wg_CmtWarPlayerCrisisAttack = {
 	war_exhaustion = 0
 	threat_multiplier = 0
 	set_defender_wargoal = wg_CmtWarPlayerCrisisDefence
-	
-	potential = { always = no }		## event only
+	allowed_peace_offers = {
+		demand_surrender
+	}
+	potential = { always = no }		## Event only
 	possible = { always = yes }
 	ai_weight = { weight = 100 }
-	
+
 	on_status_quo = {
 		custom_tooltip = CmtWarPlayerCrisisStatusQuo
 		hidden_effect = { country_event = { id = CrisisManagerControl.0522 days = 1 } }
@@ -38,13 +40,15 @@ wg_CmtWarPlayerCrisisDefence = {
 	war_exhaustion = 0
 	threat_multiplier = 0
 	set_defender_wargoal = wg_CmtWarPlayerCrisisAttack
-	
-	potential = { always = no }		## event only
+	allowed_peace_offers = {
+		demand_surrender
+	}
+
+	potential = { always = no }		## Event only
 	possible = { always = yes }
 	ai_weight = { weight = 100 }
-	
+
 	on_status_quo = {
 		custom_tooltip = CmtWarPlayerCrisisStatusQuo
 	}
 }
-

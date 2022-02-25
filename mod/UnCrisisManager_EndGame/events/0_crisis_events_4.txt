@@ -44,12 +44,12 @@ country_event = {
 
 		every_owned_planet = {
 			limit = { NOT = { has_modifier = covenant_shroud_marked } }
-			add_modifier = { modifier = covenant_shroud_marked days = -1 }
+			add_modifier = { modifier = covenant_shroud_marked }
 		}
 		every_subject = {
 			every_owned_planet = {
 				limit = { NOT = { has_modifier = covenant_shroud_marked } }
-				add_modifier = { modifier = covenant_shroud_marked days = -1 }
+				add_modifier = { modifier = covenant_shroud_marked }
 			}
 		}
 
@@ -310,7 +310,6 @@ country_event = {
 		### Notification
 		every_playable_country = {
 			limit = {
-				CmtTriggerIsPlayableEmpire = yes
 				NOT = { is_same_value = root }
 			}
 			set_country_flag = end_of_the_cycle_reckoning

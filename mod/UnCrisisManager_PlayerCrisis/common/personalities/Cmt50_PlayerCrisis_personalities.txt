@@ -9,7 +9,6 @@
 ###############################################
 ###############################################
 
-
 CmtPersonalityPlayerCrisisAggressor = {
 	aggressiveness = 10.0
 	trade_willingness = 0.0
@@ -17,24 +16,24 @@ CmtPersonalityPlayerCrisisAggressor = {
 	combat_bravery = 1.5
 	military_spending = 1.2
 	colony_spending = 1.2
-	
+
 	federation_acceptance = -1000
 	nap_acceptance = -1000
 	defensive_pact_acceptance = -1000
 	migration_pact_acceptance = -1000
-	
+
 	advanced_start_chance = 100
-	
+
 	weapon_preferences = weapon_type_energy
 	armor_ratio = 0.5
 	shields_ratio = 0.2
 	hull_ratio = 0.3
-	
+
 	threat_modifier = 0.0
 	threat_others_modifier = 0.0
 	friction_modifier = 0.0
 	claims_modifier = 0.0
-	
+
 	behaviour = {
 		conqueror = yes
 		subjugator = no
@@ -54,12 +53,10 @@ CmtPersonalityPlayerCrisisAggressor = {
 		crisis_fighter = no
 		attack_neutrals = yes
 	}
-	
+
 	allow = { always = no }		## No way for implement is found since neither flag nor event_target is available.
 	weight_modifier = { weight = 1000 }
 }
-
-
 
 CmtPersonalityPlayerCrisisNull = {
 	aggressiveness = 1
@@ -68,24 +65,24 @@ CmtPersonalityPlayerCrisisNull = {
 	combat_bravery = 1
 	military_spending = 1
 	colony_spending = 1
-	
+
 	federation_acceptance = 0
 	nap_acceptance = 0
 	defensive_pact_acceptance = 0
 	migration_pact_acceptance = 0
-	
+
 	advanced_start_chance = 1
-	
+
 	weapon_preferences = weapon_type_strike_craft
 	armor_ratio = 0.4
 	shields_ratio = 0.4
 	hull_ratio = 0.2
-	
+
 	threat_modifier = 1
 	threat_others_modifier = 1
 	friction_modifier = 1
 	claims_modifier = 2
-	
+
 	behaviour = {
 		conqueror = yes
 		subjugator = yes
@@ -104,7 +101,7 @@ CmtPersonalityPlayerCrisisNull = {
 		multispecies = no
 		crisis_fighter = no
 	}
-	
+
 	allow = { is_country_type = CmtCountryIiquidated }
 	weight_modifier = { weight = 1000 }
 }

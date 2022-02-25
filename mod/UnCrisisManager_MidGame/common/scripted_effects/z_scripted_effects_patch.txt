@@ -1,19 +1,49 @@
 # Use in war scope. War is deleted.
+# Prev = war_participant
 # Vanilla Fix: don't break the loop
 end_war_effect = {
-	every_war_participant = {
+	# every_war_participant = {
+	if = { # Is defenders
+		# Because strange log behavior
 		limit = {
-			NOT = { is_war_participant = { who = prev side = prevprev } } # NOT = { is_same_empire = prevprev }
-		}
-		prev = { remove_war_participant = prev }
-		if = {
-			limit = {
-				NAND = {
-					exists = prev
-					prev = { is_scope_type = war }
-				}
+			exists = this
+			is_scope_valid = yes
+			is_scope_type = war
+			count_attacker = {
+				count > 0
+				# limit = {  }
 			}
-			break = yes
+		}
+		every_attacker = {
+			limit = {
+				# NOT = { is_same_empire = prevprev }
+				# NOT = { is_war_participant = { war = prev side = prevprev } }
+				is_war_participant = { war = prev side = attackers } # Because strange log behavior
+			}
+			prev = { remove_war_participant = prev }
+			if = { # Seems superflous
+				limit = {
+					NAND = {
+						exists = prev
+						prev = { is_scope_type = war }
+					}
+				}
+				break = yes
+			}
+		}
+		if = { # Is defenders
+			limit = {
+				exists = this
+				is_scope_valid = yes
+				is_scope_type = war
+				count_war_participants = {
+					count > 0
+					# limit = {  }
+					side = prev
+				}
+				prev = { is_war_participant = { who = prev side = prevprev } }
+			}
+			remove_war_participant = prev
 		}
 	}
 }

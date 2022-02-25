@@ -1,44 +1,78 @@
+#########################################
+#########################################
+#####								#####
+#####	Crisis Manager				#####
+#####								#####
+#####	Edict for Player Crisis		#####
+#####								#####
+#########################################
+#########################################
 
-#########################################
-#########################################
-#####                               #####
-#####    Crisis Manager             #####
-#####                               #####
-#####    Edict for Player Crisis    #####
-#####                               #####
-#########################################
-#########################################
+@CmtConstEdictDebugMode = no
 
 ### Trigger Player Crisis
 CmtEdictTriggerPlayerCrisis = {
+	icon = "GFX_resource_menace"
 	length = 0
 	resources = {
 		category = campaigns
 		cost = {}
 	}
-	
+
 	potential = {
 		is_ai = no
 		end_game_years_passed >= 0
 		NOT = { exists = event_target:CmtTargetPlayerCrisisAggressor }
 	}
-	
+
 	allow = {
-		CmtTriggerPlayerCrisisAggressorCandidateEdict = yes
 		custom_tooltip = {
 			fail_text = CmtFailTextNowMenuOpened
 			NOT = { any_country = { has_country_flag = CmtFlagNowInMenu } }
 		}
+		# CmtTriggerPlayerCrisisAggressorCandidateEdict = yes
+		# CmtTriggerPlayerCrisisAggressorCandidateCommon = yes
+		hidden_trigger = { CmtTriggerIsPlayableEmpire = yes }
+		custom_tooltip = {
+			fail_text = CmtFailTextRequireIndependency
+			is_subject = no
+		}
+		custom_tooltip = {
+			fail_text = CmtFailTextRequireNoWar
+			is_at_war = no
+		}
+		custom_tooltip = {
+			fail_text = CmtFailTextRequireMoreRelativeFleetPower
+			OR = {
+				always = @CmtConstEdictDebugMode
+				NOT = {
+					any_country = {
+						CmtTriggerIsEmpire = yes
+						NOT = { is_same_empire = prev }
+						OR = {
+							relative_power = { who = prev category = fleet value > equivalent }
+							AND = {
+								CmtTriggerIsPlayableEmpire = yes
+								relative_power = { who = prev category = fleet value > inferior }
+							}
+						}
+					}
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = CmtFailTextRequireNoFederation
+			has_federation = no
+		}
 	}
-	
+
 	ai_weight = { weight = 0 }
-	
+
 	effect = {
 		hidden_effect = {
 			if = {
 				limit = { NOT = { exists = event_target:CmtGlobalVar } }
-				random_country = {
-					limit = { is_country_type = global_event }
+				event_target:global_event_country = {
 					save_global_event_target_as = CmtGlobalVar
 				}
 			}

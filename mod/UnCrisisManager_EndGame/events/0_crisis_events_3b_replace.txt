@@ -47,30 +47,30 @@ country_event = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
 				every_owned_pop = {
 					limit = { has_trait = trait_machine_unit }
-					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_5a days = -1 }
+					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_5a }
 				}
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
 				every_owned_pop = {
 					limit = { has_trait = trait_machine_unit }
-					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_5b days = -1 }
+					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_5b }
 				}
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
 				every_owned_pop = {
 					limit = { has_trait = trait_machine_unit }
-					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_5d days = -1 }
+					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_5d }
 				}
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
 				every_owned_pop = {
 					limit = { has_trait = trait_machine_unit }
-					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_5e days = -1 }
+					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_5e }
 				}
 			} else = {
 				every_owned_pop = {
 					limit = { has_trait = trait_machine_unit }
-					add_modifier = { modifier = pop_ghost_signal_5_machine days = -1 }
+					add_modifier = { modifier = pop_ghost_signal_5_machine }
 				}
 			}
 		} else = {
@@ -79,30 +79,30 @@ country_event = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
 				every_owned_pop = {
 					limit = { CmtTriggerGhostTargetPop = yes }
-					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_5a days = -1 }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_5a }
 				}
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
 				every_owned_pop = {
 					limit = { CmtTriggerGhostTargetPop = yes }
-					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_5b days = -1 }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_5b }
 				}
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
 				every_owned_pop = {
 					limit = { CmtTriggerGhostTargetPop = yes }
-					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_5d days = -1 }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_5d }
 				}
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
 				every_owned_pop = {
 					limit = { CmtTriggerGhostTargetPop = yes }
-					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_5e days = -1 }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_5e }
 				}
 			} else = {
 				every_owned_pop = {
 					limit = { CmtTriggerGhostTargetPop = yes }
-					add_modifier = { modifier = pop_ghost_signal_5 days = -1 }
+					add_modifier = { modifier = pop_ghost_signal_5 }
 				}
 			}
 		}
@@ -124,7 +124,7 @@ country_event = {
 				limit = { is_civilian = no }
 				every_owned_ship = {
 				limit = { has_sapient_combat_computer = yes }
-					add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5a days = -1 }
+					add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5a }
 				}
 			}
 		} else_if = {
@@ -133,7 +133,7 @@ country_event = {
 				limit = { is_civilian = no }
 				every_owned_ship = {
 				limit = { has_sapient_combat_computer = yes }
-					add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5b days = -1 }
+					add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5b }
 				}
 			}
 		} else_if = {
@@ -142,7 +142,7 @@ country_event = {
 				limit = { is_civilian = no }
 				every_owned_ship = {
 				limit = { has_sapient_combat_computer = yes }
-					add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5d days = -1 }
+					add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5d }
 				}
 			}
 		} else_if = {
@@ -151,7 +151,7 @@ country_event = {
 				limit = { is_civilian = no }
 				every_owned_ship = {
 				limit = { has_sapient_combat_computer = yes }
-					add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5e days = -1 }
+					add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5e }
 				}
 			}
 		} else = {
@@ -159,7 +159,7 @@ country_event = {
 				limit = { is_civilian = no }
 				every_owned_ship = {
 				limit = { has_sapient_combat_computer = yes }
-					add_modifier = { modifier = ship_ghost_signal_5 days = -1 }
+					add_modifier = { modifier = ship_ghost_signal_5 }
 				}
 			}
 		}
@@ -423,8 +423,7 @@ planet_event = {
 				event_target:final_machine_world_player_destroyer = {
 					country_event = { id = crisis.2480 days = 10 random = 10 }
 				}
-			}
-			else_if = {
+			} else_if = {
 				limit = { has_planet_flag = planet_shielded }
 				event_target:final_machine_world_player_destroyer = {
 					country_event = { id = crisis.2481 days = 10 random = 10 }
@@ -513,90 +512,90 @@ planet_event = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
 				if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_5 } }
-					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_5a days = -1 }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_5a }
 				} else_if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_4 } }
-					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_4a days = -1 }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_4a }
 				} else_if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_3 } }
-					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_3a days = -1 }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_3a }
 				} else_if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_2 } }
-					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_2a days = -1 }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_2a }
 				} else_if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_1 } }
-					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_1a days = -1 }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_1a }
 				}
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
 				if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_5 } }
-					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_5b days = -1 }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_5b }
 				} else_if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_4 } }
-					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_4b days = -1 }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_4b }
 				} else_if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_3 } }
-					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_3b days = -1 }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_3b }
 				} else_if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_2 } }
-					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_2b days = -1 }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_2b }
 				} else_if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_1 } }
-					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_1b days = -1 }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_1b }
 				}
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
 				if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_5 } }
-					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_5d days = -1 }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_5d }
 				} else_if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_4 } }
-					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_4d days = -1 }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_4d }
 				} else_if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_3 } }
-					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_3d days = -1 }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_3d }
 				} else_if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_2 } }
-					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_2d days = -1 }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_2d }
 				} else_if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_1 } }
-					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_1d days = -1 }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_1d }
 				}
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
 				if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_5 } }
-					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_5e days = -1 }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_5e }
 				} else_if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_4 } }
-					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_4e days = -1 }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_4e }
 				} else_if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_3 } }
-					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_3e days = -1 }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_3e }
 				} else_if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_2 } }
-					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_2e days = -1 }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_2e }
 				} else_if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_1 } }
-					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_1e days = -1 }
+					add_modifier = { modifier = CmtModifierOrganicPopGhostSignal_1e }
 				}
 			} else = {
 				if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_5 } }
-					add_modifier = { modifier = pop_ghost_signal_5 days = -1 }
+					add_modifier = { modifier = pop_ghost_signal_5 }
 				} else_if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_4 } }
-					add_modifier = { modifier = pop_ghost_signal_4 days = -1 }
+					add_modifier = { modifier = pop_ghost_signal_4 }
 				} else_if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_3 } }
-					add_modifier = { modifier = pop_ghost_signal_3 days = -1 }
+					add_modifier = { modifier = pop_ghost_signal_3 }
 				} else_if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_2 } }
-					add_modifier = { modifier = pop_ghost_signal_2 days = -1 }
+					add_modifier = { modifier = pop_ghost_signal_2 }
 				} else_if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_1 } }
-					add_modifier = { modifier = pop_ghost_signal_1 days = -1 }
+					add_modifier = { modifier = pop_ghost_signal_1 }
 				}
 			}
 		}
@@ -628,7 +627,7 @@ ship_event = {
 						}
 					}
 				}
-				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5a days = -1 }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5a }
 			} else_if = {
 				limit = {
 					owner = {
@@ -638,16 +637,16 @@ ship_event = {
 						}
 					}
 				}
-				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4a days = -1 }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4a }
 			} else_if = {
 				limit = { owner = { has_notification_modifier = ghost_signal_3 } }
-				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3a days = -1 }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3a }
 			} else_if = {
 				limit = { owner = { has_notification_modifier = ghost_signal_2 } }
-				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2a days = -1 }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2a }
 			} else_if = {
 				limit = { owner = { has_notification_modifier = ghost_signal_1 } }
-				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1a days = -1 }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1a }
 			}
 		} else_if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
@@ -660,7 +659,7 @@ ship_event = {
 						}
 					}
 				}
-				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5b days = -1 }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5b }
 			} else_if = {
 				limit = {
 					owner = {
@@ -670,16 +669,16 @@ ship_event = {
 						}
 					}
 				}
-				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4b days = -1 }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4b }
 			} else_if = {
 				limit = { owner = { has_notification_modifier = ghost_signal_3 } }
-				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3b days = -1 }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3b }
 			} else_if = {
 				limit = { owner = { has_notification_modifier = ghost_signal_2 } }
-				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2b days = -1 }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2b }
 			} else_if = {
 				limit = { owner = { has_notification_modifier = ghost_signal_1 } }
-				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1b days = -1 }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1b }
 			}
 		} else_if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
@@ -692,7 +691,7 @@ ship_event = {
 						}
 					}
 				}
-				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5d days = -1 }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5d }
 			} else_if = {
 				limit = {
 					owner = {
@@ -702,16 +701,16 @@ ship_event = {
 						}
 					}
 				}
-				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4d days = -1 }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4d }
 			} else_if = {
 				limit = { owner = { has_notification_modifier = ghost_signal_3 } }
-				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3d days = -1 }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3d }
 			} else_if = {
 				limit = { owner = { has_notification_modifier = ghost_signal_2 } }
-				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2d days = -1 }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2d }
 			} else_if = {
 				limit = { owner = { has_notification_modifier = ghost_signal_1 } }
-				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1d days = -1 }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1d }
 			}
 		} else_if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
@@ -724,7 +723,7 @@ ship_event = {
 						}
 					}
 				}
-				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5e days = -1 }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_5e }
 			} else_if = {
 				limit = {
 					owner = {
@@ -734,16 +733,16 @@ ship_event = {
 						}
 					}
 				}
-				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4e days = -1 }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_4e }
 			} else_if = {
 				limit = { owner = { has_notification_modifier = ghost_signal_3 } }
-				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3e days = -1 }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_3e }
 			} else_if = {
 				limit = { owner = { has_notification_modifier = ghost_signal_2 } }
-				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2e days = -1 }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_2e }
 			} else_if = {
 				limit = { owner = { has_notification_modifier = ghost_signal_1 } }
-				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1e days = -1 }
+				add_modifier = { modifier = CmtModifierCombatShipGhostSignal_1e }
 			}
 		} else = {
 			if = {
@@ -755,7 +754,7 @@ ship_event = {
 						}
 					}
 				}
-				add_modifier = { modifier = ship_ghost_signal_5 days = -1 }
+				add_modifier = { modifier = ship_ghost_signal_5 }
 			} else_if = {
 				limit = {
 					owner = {
@@ -765,16 +764,16 @@ ship_event = {
 						}
 					}
 				}
-				add_modifier = { modifier = ship_ghost_signal_4 days = -1 }
+				add_modifier = { modifier = ship_ghost_signal_4 }
 			} else_if = {
 				limit = { owner = { has_notification_modifier = ghost_signal_3 } }
-				add_modifier = { modifier = ship_ghost_signal_3 days = -1 }
+				add_modifier = { modifier = ship_ghost_signal_3 }
 			} else_if = {
 				limit = { owner = { has_notification_modifier = ghost_signal_2 } }
-				add_modifier = { modifier = ship_ghost_signal_2 days = -1 }
+				add_modifier = { modifier = ship_ghost_signal_2 }
 			} else_if = {
 				limit = { owner = { has_notification_modifier = ghost_signal_1 } }
-				add_modifier = { modifier = ship_ghost_signal_1 days = -1 }
+				add_modifier = { modifier = ship_ghost_signal_1 }
 			}
 		}
 	}
@@ -870,45 +869,45 @@ planet_event = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
 				if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_5_machine } }
-					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_5a days = -1 }
+					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_5a }
 				} else_if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_4_machine } }
-					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_4a days = -1 }
+					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_4a }
 				}
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
 				if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_5_machine } }
-					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_5b days = -1 }
+					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_5b }
 				} else_if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_4_machine } }
-					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_4b days = -1 }
+					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_4b }
 				}
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
 				if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_5_machine } }
-					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_5d days = -1 }
+					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_5d }
 				} else_if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_4_machine } }
-					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_4d days = -1 }
+					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_4d }
 				}
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
 				if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_5_machine } }
-					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_5e days = -1 }
+					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_5e }
 				} else_if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_4_machine } }
-					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_4e days = -1 }
+					add_modifier = { modifier = CmtModifierMachinePopGhostSignal_4e }
 				}
 			} else = {
 				if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_5_machine } }
-					add_modifier = { modifier = pop_ghost_signal_5_machine days = -1 }
+					add_modifier = { modifier = pop_ghost_signal_5_machine }
 				} else_if = {
 					limit = { owner = { has_notification_modifier = ghost_signal_4_machine } }
-					add_modifier = { modifier = pop_ghost_signal_4_machine days = -1 }
+					add_modifier = { modifier = pop_ghost_signal_4_machine }
 				}
 			}
 		}

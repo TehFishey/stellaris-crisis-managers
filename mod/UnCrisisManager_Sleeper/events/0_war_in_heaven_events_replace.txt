@@ -54,8 +54,10 @@ country_event = {
 		random_country = {
 			limit = {
 				is_country_type = fallen_empire
-				NOT = { has_ethic = ethic_gestalt_consciousness }
-				NOT = { has_country_flag = sleepers_awake_first }
+				NOR = {
+					has_ethic = ethic_gestalt_consciousness
+					has_country_flag = sleepers_awake_first
+				}
 			}
 			set_country_flag = sleepers_awake_ancient_rival
 			set_timed_country_flag = { flag = timed_ancient_rival days = 3650 }
@@ -1487,7 +1489,7 @@ country_event = {
 				is_at_war_with = prev
 			}
 		}
-		# any_country = {
+		# count_country = {
 		# 	count = 2
 		# 	CmtTriggerIsHeavenAFE = yes
 		# }

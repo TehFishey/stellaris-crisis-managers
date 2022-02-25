@@ -9,7 +9,7 @@
 ################################
 ################################
 #
-#	This template is listed up into the ''Other Templates''
+#	this template is listed up into the ''Other Templates''
 #
 #	How to use: See ''ReadMe_for_making_template.txt''
 #
@@ -28,7 +28,7 @@
 		### no : this template is ignored for specified parameters.
 		### * No configurations exist for military power of Fallen/Awakened Empires.
 
-### The version of Crisis Manager. This template corresponds to:
+### The version of Crisis Manager. this template corresponds to:
 	@CmtT116_ConstVersionInfo = 1.11
 		### Never change this value.
 		### For example, ''1.03'' means ''ver.1.3'' but not ''ver.1.0.3''
@@ -188,7 +188,7 @@
 	@CmtT116_ConstExdsChaserAnywhere = yes
 		### yes: Spawn anywhere in the galaxy
 		### no : Spawn only inside border of Unbidden (Default)
-		### Caution: This option must be set ''yes'' if ''@CmtT116_ConstExdsChaserCondition = 6'' (Avenger) is selected.
+		### Caution: this option must be set ''yes'' if ''@CmtT116_ConstExdsChaserCondition = 6'' (Avenger) is selected.
 
 ### Less Reinforcement on Starbases Built.
 	@CmtT116_ConstReinforceCycle_OnExdAnchorBuilt = 1
@@ -411,7 +411,7 @@
 	@CmtT116_ConstDoubleGurdian = 4
 		### Forbidden = 1 (Default), Low Probability = 2, High Probability = 3, Forced = 4
 		### Only Materialist Can Awaken = 1.1, Only Xenophile Can Awaken = 1.1
-		### * Fallen Machine Empire Igore This Configuration
+		### * Fallen Machine Empire Igore this Configuration
 
 ### Worn-Out Guardians
 	@CmtT116_ConstGuardianWornOut = 3

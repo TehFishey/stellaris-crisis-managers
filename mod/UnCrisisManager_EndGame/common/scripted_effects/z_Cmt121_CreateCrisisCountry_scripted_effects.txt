@@ -111,12 +111,12 @@ CmtEffectCallSentinel = {
 			save_global_event_target_as = sentinel_fallen_empire
 		}
 		every_playable_country = {
-			limit = { CmtTriggerIsPlayableEmpire = yes }
+			# limit = { }
 			establish_communications = event_target:sentinel_fallen_empire
 		}
 	}
 	every_playable_country = {
-		limit = { CmtTriggerIsPlayableEmpire = yes }
+		# limit = { }
 		country_event = { id = crisis.51 days = 1 }
 	}
 	event_target:sentinel_alpha = {

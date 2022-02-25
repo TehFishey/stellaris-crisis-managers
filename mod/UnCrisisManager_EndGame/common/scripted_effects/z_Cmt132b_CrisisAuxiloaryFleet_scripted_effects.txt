@@ -39,8 +39,8 @@ CmtEffectCreateFleet_PrethorynArmy = {
 	}
 }
 
-# This = Owner
-# Prev = location
+# this = Owner
+# prev = location
 CmtEffectCreateFleet_PrethorynConstructor = {
 	event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarConstructorNumber_Prethoryn } }
 	while = {

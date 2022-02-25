@@ -1,10 +1,10 @@
 #####################################################
 #####################################################
-#####                                           #####
-#####    Crisis Manager                         #####
-#####                                           #####
-#####    Scripted Triggers for Player Crisis    #####
-#####                                           #####
+#####											#####
+#####	Crisis Manager							#####
+#####											#####
+#####	Scripted Triggers for Player Crisis		#####
+#####											#####
 #####################################################
 #####################################################
 
@@ -12,33 +12,39 @@
 ###  Constants  ###
 ###################
 
-@CmtConstEdictDebugMode = no
-
+# @CmtConstEdictDebugMode = no
 
 #######################
 ###  Basic Trigger  ###
 #######################
 
 ### Scope: this = country
-CmtTriggerIsPlayableEmpire = {		## Written in also Cmt00 and Cmt40
-	is_country_type = default
+CmtTriggerIsPlayableEmpire = {		## Written in Cmt00 Cmt40 and Cmt50
+	OR = {
+		is_country_type = default
+		is_zofe_country = yes # is_zofe_compatible
+	}
+}
+
+is_zofe_country = {
+	always = no
 }
 
 CmtTriggerIsEmpire = {		## Written in also Cmt00
 	OR = {
 		CmtTriggerIsPlayableEmpire = yes
-		is_country_type = fallen_empire
-		is_country_type = awakened_fallen_empire
+		is_fallen_empire = yes
 	}
 }
 
+# DEPRECATED: reaplced by has_been_declared_crisis
 ### Scope: this = country
-CmtTriggerIsPlayerCrisisAggressor = {
-	hidden_trigger = {
-		exists = event_target:CmtTargetPlayerCrisisAggressor
-		is_same_value = event_target:CmtTargetPlayerCrisisAggressor
-	}
-}
+# CmtTriggerIsPlayerCrisisAggressor = {
+# 	hidden_trigger = {
+# 		exists = event_target:CmtTargetPlayerCrisisAggressor
+# 		is_same_empire = event_target:CmtTargetPlayerCrisisAggressor
+# 	}
+# }
 
 ### Scope: this = country
 CmtTriggerIsExistence = {
@@ -49,93 +55,56 @@ CmtTriggerIsExistence = {
 }
 
 ### Scope: this = country
-CmtTriggerIsResistibleExistence = {
-	OR = {
-		any_owned_fleet = {
-			OR = {
-				is_ship_class = shipclass_military
-				is_ship_class = shipclass_military_special
-			}
-		}
-	}
-}
+# CmtTriggerIsResistibleExistence = {
+# 	any_owned_fleet = {
+# 		OR = {
+# 			is_ship_class = shipclass_military
+# 			is_ship_class = shipclass_military_special
+# 		}
+# 	}
+# }
 
 ### Scope: this = Planet
-CmtTriggerIsHabitableRingWorld = {
-	is_planet_class = pc_ringworld_habitable
-}
+# CmtTriggerIsHabitableRingWorld = {
+# 	is_planet_class = pc_ringworld_habitable
+# }
 
-### Scope: this = Planet
-CmtTriggerIsHabitat = {
-	is_planet_class = pc_habitat
-}
-
+# ### Scope: this = Planet
+# CmtTriggerIsHabitat = {
+# 	is_planet_class = pc_habitat
+# }
 
 ########################################
 ###  For Aggressor of Player Crisis  ###
 ########################################
 
 ### Scope: this = country
-CmtTriggerPlayerCrisisAggressorCandidateCommon = {
+CmtTriggerPlayerCrisisAggressorCandidateMenu = {
+	# CmtTriggerPlayerCrisisAggressorCandidateCommon = yes
 	hidden_trigger = { CmtTriggerIsPlayableEmpire = yes }
 	custom_tooltip = {
 		fail_text = CmtFailTextRequireIndependency
-		NOT = { is_subject = yes }
+		is_subject = no
 	}
 	custom_tooltip = {
 		fail_text = CmtFailTextRequireNoWar
 		is_at_war = no
 	}
-}
-
-### Scope: this = country
-CmtTriggerPlayerCrisisAggressorCandidateMenu = {
-	CmtTriggerPlayerCrisisAggressorCandidateCommon = yes
 	OR = {
 		AND = {
 			is_ai = no
 			exists = root
-			is_same_value = root
+			is_same_empire = root
 		}
 		NOT = {
 			any_country = {
 				CmtTriggerIsEmpire = yes
-				NOT = { is_same_value = prev }
+				NOT = { is_same_empire = prev }
 				relative_power = { who = prev category = fleet value > equivalent }
 			}
 		}
 	}
 }
-
-### Scope: this = country
-CmtTriggerPlayerCrisisAggressorCandidateEdict = {
-	CmtTriggerPlayerCrisisAggressorCandidateCommon = yes
-	custom_tooltip = {
-		fail_text = CmtFailTextRequireMoreRelativeFleetPower
-		OR = {
-			always = @CmtConstEdictDebugMode
-			NOT = {
-				any_country = {
-					CmtTriggerIsEmpire = yes
-					NOT = { is_same_value = prev }
-					OR = {
-						relative_power = { who = prev category = fleet value > equivalent }
-						AND = {
-							CmtTriggerIsPlayableEmpire = yes
-							relative_power = { who = prev category = fleet value > inferior }
-						}
-					}
-				}
-			}
-		}
-	}
-	custom_tooltip = {
-		fail_text = CmtFailTextRequireNoFederation
-		NOT = { has_federation = yes }
-	}
-}
-
-
 
 ########################################
 ###  For Defenders of Player Crisis  ###
@@ -146,14 +115,14 @@ CmtTriggerPlayerCrisisDefenceLeaderCandidate = {
 	CmtTriggerIsEmpire = yes
 	NOR = {
 		is_subject = yes
-		CmtTriggerIsPlayerCrisisAggressor = yes
+		has_been_declared_crisis = yes
 	}
 }
 
 ### Scope: this = country, target = CmtTargetPlayerCrisisAggressor
 CmtTriggerPlayerCrisisJoinableCountry = {
 	CmtTriggerIsEmpire = yes
-	NOT = { CmtTriggerIsPlayerCrisisAggressor = yes }
+	has_been_declared_crisis = no
 	NAND = {
 		has_country_flag = CmtFlagPlayerCrisisDefender
 		is_at_war_with = event_target:CmtTargetPlayerCrisisAggressor
@@ -164,11 +133,10 @@ CmtTriggerPlayerCrisisJoinableCountry = {
 CmtTriggerPlayerCrisisResistibleCountry = {
 	NOR = {
 		CmtTriggerIsEmpire = yes
-		CmtTriggerIsPlayerCrisisAggressor = yes
+		has_been_declared_crisis = yes
 		is_hostile = event_target:CmtTargetPlayerCrisisAggressor
 	}
 }
-
 
 ################
 ###  Legacy  ###
@@ -181,3 +149,44 @@ CmtTriggerPlayerCrisisResistibleCountry = {
 #			has_building = building_zanaam_obelisk
 #		}
 #	}
+
+### Scope: this = country
+# CmtTriggerPlayerCrisisAggressorCandidateEdict = {
+# 	CmtTriggerPlayerCrisisAggressorCandidateCommon = yes
+# 	custom_tooltip = {
+# 		fail_text = CmtFailTextRequireMoreRelativeFleetPower
+# 		OR = {
+# 			always = @CmtConstEdictDebugMode
+# 			NOT = {
+# 				any_country = {
+# 					CmtTriggerIsEmpire = yes
+# 					NOT = { is_same_empire = prev }
+# 					OR = {
+# 						relative_power = { who = prev category = fleet value > equivalent }
+# 						AND = {
+# 							CmtTriggerIsPlayableEmpire = yes
+# 							relative_power = { who = prev category = fleet value > inferior }
+# 						}
+# 					}
+# 				}
+# 			}
+# 		}
+# 	}
+# 	custom_tooltip = {
+# 		fail_text = CmtFailTextRequireNoFederation
+# 		has_federation = no
+# 	}
+# }
+
+### Scope: this = country
+# CmtTriggerPlayerCrisisAggressorCandidateCommon = {
+# 	hidden_trigger = { CmtTriggerIsPlayableEmpire = yes }
+# 	custom_tooltip = {
+# 		fail_text = CmtFailTextRequireIndependency
+# 		is_subject = no
+# 	}
+# 	custom_tooltip = {
+# 		fail_text = CmtFailTextRequireNoWar
+# 		is_at_war = no
+# 	}
+# }

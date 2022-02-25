@@ -1,4 +1,4 @@
-version="3.3.0.b"
+version="3.3.1.0"
 name="Crisis Manager - End-Game Edition (3.3.¢)"
 tags={
 	"Balance"

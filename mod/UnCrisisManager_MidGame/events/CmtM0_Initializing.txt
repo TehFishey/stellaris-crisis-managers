@@ -40,6 +40,7 @@ event = {
 					limit = { NOT = { has_active_event = { CrisisManagerMenu.0100 } } }
 					country_event = { id = CrisisManagerMenu.0100 }
 				}
+				# log="Cmt Game started is_scope_type = country"
 			} else = {
 				random_playable_country = {
 					limit = {
@@ -47,9 +48,10 @@ event = {
 						NOT = { has_active_event = { CrisisManagerMenu.0100 } }
 					}
 					country_event = { id = CrisisManagerMenu.0100 }
+					# log="Cmt Game started random_playable_country"
 				}
 			}
-			# log="Cmt Game started 1 without CmtFlagNoCall"
+			log="Cmt Game started 1 without CmtFlagNoCall"
 		}
 		# log="Cmt Game started 1"
 	}

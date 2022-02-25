@@ -4,7 +4,7 @@
 #####	Crisis Manager							#####
 #####											#####
 #####	Default Template						#####
-#####	Never Modify Anything in This File		#####
+#####	Never modify Anything in this File		#####
 #####											#####
 #####################################################
 #####################################################
@@ -31,7 +31,7 @@
 		### yes: Crisis Maneger menu is opened automatically on game start. (Default)
 		### no : Crisis Maneger menu is NOT opened automatically on game start.
 
-### The version of Crisis Manager. This template corresponds to:
+### The version of Crisis Manager template corresponds to:
 	@CmtT000_ConstVersionInfo = 1.11
 		### Never change this value.
 		### For example, ''1.03'' means ''ver.1.3'' but not ''ver.1.0.3''
@@ -414,7 +414,7 @@
 	@CmtT000_ConstDoubleGurdian = 1
 		### Forbidden = 1 (Default), Low Probability = 2, High Probability = 3, Forced = 4
 		### Only Materialist Can Awaken = 1.1, Only Xenophile Can Awaken = 1.1
-		### * Fallen Machine Empire Igore This Configuration
+		### * Fallen Machine Empire Ignore this Configuration
 
 ### Worn-Out Guardians
 	@CmtT000_ConstGuardianWornOut = 1
