@@ -1,5 +1,5 @@
 # Use in war scope. War is deleted.
-# Prev = war_participant
+# prev = war_participant
 # Vanilla Fix: don't break the loop
 end_war_effect = {
 	# every_war_participant = {
@@ -11,7 +11,7 @@ end_war_effect = {
 			is_scope_type = war
 			count_attacker = {
 				count > 0
-				# limit = {  }
+				# limit = { }
 			}
 		}
 		every_attacker = {
@@ -38,7 +38,7 @@ end_war_effect = {
 				is_scope_type = war
 				count_war_participants = {
 					count > 0
-					# limit = {  }
+					# limit = { }
 					side = prev
 				}
 				prev = { is_war_participant = { who = prev side = prevprev } }

@@ -82,7 +82,7 @@ resolution_galactic_focus_crisis_nanites = {
 			factor = 1.1
 			event_target:graygoo_country = {
 				fleet_power > 300000
-				# fleet_power <= 500000 # not needed as the next modifier triggers anyway (simple math op. should be cheaper than EUD conditional statements)
+				# fleet_power <= 500000 # Not needed as the next modifier triggers anyway (simple math op. should be cheaper than EUD conditional statements)
 				# galaxy_percentage > 0.1
 				# galaxy_percentage <= 0.2
 			}

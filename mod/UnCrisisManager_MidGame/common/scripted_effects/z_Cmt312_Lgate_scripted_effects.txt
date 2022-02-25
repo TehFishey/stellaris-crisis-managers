@@ -39,7 +39,7 @@ start_lcluster_chain = {
 						# prev = { set_variable = { which = CmtVarLgateReqClues value = 7 } }
 					} else = {
 						set_variable = { which = CmtVarTemp value = CmtVarLgateReqClues }
-						# prev = { set_variable = { which = CmtVarLgateReqClues value = prev.CmtVarLgateReqClues } } # pre Lem 3.1
+						# prev = { set_variable = { which = CmtVarLgateReqClues value = prev.CmtVarLgateReqClues } } # Pre Lem 3.1
 					}
 				}
 				set_variable = { which = CmtVarLgateReqClues value = event_target:CmtGlobalVar.CmtVarTemp }
@@ -55,7 +55,7 @@ start_lcluster_chain = {
 					event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } }
 				}
 				change_variable = { which = CmtVarLgateReqClues value = -2 }
-				set_variable = { which = num_lcluster_clues value = 0 }		## for Liquidation
+				set_variable = { which = num_lcluster_clues value = 0 }		## For Liquidation
 
 				# log="TEST start needed clues: \\[This.CmtVarLgateReqClues]"
 			}
@@ -102,26 +102,26 @@ CmtEffectOpenLgate = {		## Scope: this = megastructure (L-Gate)
 #################
 
 CmtEffectAddDessanuGift4 = {
-	add_modifier = { modifier = dessanu_gift days = -1 }
+	add_modifier = { modifier = dessanu_gift }
 }
 
 CmtEffectAddDessanuGift2 = {
 	random_list = {
-		100 = { add_modifier = { modifier = CmtModifierDessanuGift_21 days = -1 } }
-		100 = { add_modifier = { modifier = CmtModifierDessanuGift_22 days = -1 } }
-		100 = { add_modifier = { modifier = CmtModifierDessanuGift_23 days = -1 } }
-		100 = { add_modifier = { modifier = CmtModifierDessanuGift_24 days = -1 } }
-		100 = { add_modifier = { modifier = CmtModifierDessanuGift_25 days = -1 } }
-		100 = { add_modifier = { modifier = CmtModifierDessanuGift_26 days = -1 } }
+		100 = { add_modifier = { modifier = CmtModifierDessanuGift_21 } }
+		100 = { add_modifier = { modifier = CmtModifierDessanuGift_22 } }
+		100 = { add_modifier = { modifier = CmtModifierDessanuGift_23 } }
+		100 = { add_modifier = { modifier = CmtModifierDessanuGift_24 } }
+		100 = { add_modifier = { modifier = CmtModifierDessanuGift_25 } }
+		100 = { add_modifier = { modifier = CmtModifierDessanuGift_26 } }
 	}
 }
 
 CmtEffectAddDessanuGift1 = {
 	random_list = {
-		100 = { add_modifier = { modifier = CmtModifierDessanuGift_11 days = -1 } }
-		100 = { add_modifier = { modifier = CmtModifierDessanuGift_12 days = -1 } }
-		100 = { add_modifier = { modifier = CmtModifierDessanuGift_13 days = -1 } }
-		100 = { add_modifier = { modifier = CmtModifierDessanuGift_14 days = -1 } }
+		100 = { add_modifier = { modifier = CmtModifierDessanuGift_11 } }
+		100 = { add_modifier = { modifier = CmtModifierDessanuGift_12 } }
+		100 = { add_modifier = { modifier = CmtModifierDessanuGift_13 } }
+		100 = { add_modifier = { modifier = CmtModifierDessanuGift_14 } }
 	}
 }
 
@@ -183,14 +183,14 @@ CmtEffectDestroyGraygoo = {
 			}
 			every_galaxy_planet = {
 				limit = { is_planet_class = pc_gray_goo }
-				add_modifier = { modifier = CmtModifierAutoTerraform days = -1 }
+				add_modifier = { modifier = CmtModifierAutoTerraform }
 				planet_event = { id = CrisisManagerControl.6211 days = 90 random = 450 }	## Auto-Terraform
 			}
 		} else_if = {
 			limit = { check_variable = { which = CmtVarLgateTerraformNanite value != 1 } }
 			every_galaxy_planet = {
 				limit = { is_planet_class = pc_gray_goo }
-				add_modifier = { modifier = terraforming_candidate days = -1 }
+				add_modifier = { modifier = terraforming_candidate }
 			}
 		}
 		country_event = { id = CrisisManagerControl.6202 }		## Open L-Gates

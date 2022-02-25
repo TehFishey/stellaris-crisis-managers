@@ -191,7 +191,7 @@
 	@CmtT000_ConstExdsChaserAnywhere = no
 		### yes: Spawn anywhere in the galaxy
 		### no : Spawn only inside border of Unbidden (Default)
-		### Caution: This option must be set ''yes'' if ''@CmtT000_ConstExdsChaserCondition = 6'' (Avenger) is selected.
+		### Caution: this option must be set ''yes'' if ''@CmtT000_ConstExdsChaserCondition = 6'' (Avenger) is selected.
 
 ### Less Reinforcement on Starbases Built.
 	@CmtT000_ConstReinforceCycle_OnExdAnchorBuilt = 1

@@ -14,19 +14,19 @@
 ###################
 
 ### Reinforcement Cycle of Khan Fleets on Capital.
-@CmtConstReinforceCycle_Khan1a = 1.0	## if disabled or x > Ta
-@CmtConstReinforceCycle_Khan2a = 1.0	## if x < Ta
-@CmtConstReinforceCycle_Khan2b = 1.2	## if x < Tb
-@CmtConstReinforceCycle_Khan2c = 1.6	## if x < Tc
-@CmtConstReinforceCycle_Khan2d = 2.0	## if x < Td
-@CmtConstReinforceCycle_Khan3a = 1.7	## if x < Ta
-@CmtConstReinforceCycle_Khan3b = 2.8	## if x < Tb
-@CmtConstReinforceCycle_Khan3c = 3.9	## if x < Tc
-@CmtConstReinforceCycle_Khan3d = 5.0	## if x < Td
-@CmtConstReinforceCycle_Khan4a = 2.5	## if x < Ta
-@CmtConstReinforceCycle_Khan4b = 5.0	## if x < Tb
-@CmtConstReinforceCycle_Khan4c = 7.5	## if x < Tc
-@CmtConstReinforceCycle_Khan4d = 10.0	## if x < Td
+@CmtConstReinforceCycle_Khan1a = 1.0	## If disabled or x > Ta
+@CmtConstReinforceCycle_Khan2a = 1.0	## If x < Ta
+@CmtConstReinforceCycle_Khan2b = 1.2	## If x < Tb
+@CmtConstReinforceCycle_Khan2c = 1.6	## If x < Tc
+@CmtConstReinforceCycle_Khan2d = 2.0	## If x < Td
+@CmtConstReinforceCycle_Khan3a = 1.7	## If x < Ta
+@CmtConstReinforceCycle_Khan3b = 2.8	## If x < Tb
+@CmtConstReinforceCycle_Khan3c = 3.9	## If x < Tc
+@CmtConstReinforceCycle_Khan3d = 5.0	## If x < Td
+@CmtConstReinforceCycle_Khan4a = 2.5	## If x < Ta
+@CmtConstReinforceCycle_Khan4b = 5.0	## If x < Tb
+@CmtConstReinforceCycle_Khan4c = 7.5	## If x < Tc
+@CmtConstReinforceCycle_Khan4d = 10.0	## If x < Td
 
 ### Threshold Navy Sizes for Reinforcement Cycle.
 # CmtConstReinforceCycle_KhanT0 = 386	## Standard, Never Change
@@ -168,5 +168,5 @@ CmtEffectKhanIncreasementReinforcementCycle = {		## Scope: this = Strage of Vari
 			} else = { prev = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan1a } } }
 		} else = { prev = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan1a } } }
 	}
-			# log = "Cycle = [This.GetValue.CmtVarKhanReinforcementCounter], Ships = [CmtGlobalVar.GetValue.CmtVarTemp], This = [This.GetName]"
+			# log = "Cycle = [This.GetValue.CmtVarKhanReinforcementCounter], Ships = [CmtGlobalVar.GetValue.CmtVarTemp], this = [This.GetName]"
 }

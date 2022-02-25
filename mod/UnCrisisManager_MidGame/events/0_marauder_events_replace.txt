@@ -2,11 +2,11 @@ namespace = marauder
 
 ############################################
 ############################################
-#####                                  #####
-#####    Khan (Horde Crisis) Events    #####
-#####                                  #####
-#####    Replaced by Crisis Manager    #####
-#####                                  #####
+#####								  #####
+#####	Khan (Horde Crisis) Events	#####
+#####								  #####
+#####	Replaced by Crisis Manager	#####
+#####								  #####
 ############################################
 ############################################
 #
@@ -18,20 +18,20 @@ namespace = marauder
 ###################
 
 ### Critical (Lifespan of Khan, debug code)
-@CmtConstKhanLifespan_1a =     1		### Minimun Lifespan / day
+@CmtConstKhanLifespan_1a =	 1		### Minimun Lifespan / day
 @CmtConstKhanLifespan_1b =  0.025		### Probability of Death (2%/month for 1)
-@CmtConstKhanLifespan_1c =    35		### Maximun Lifespan / day (days = 1c)
-@CmtConstKhanLifespan_1d =     5		### Maximun Lifespan / day (random = 1d)
-@CmtConstKhanLifespan_1e =     8		### Time-Lag of Post-Death Process (days = 1e)
-@CmtConstKhanLifespan_1f =     4		### Time-Lag of Post-Death Process (random = 1f)
+@CmtConstKhanLifespan_1c =	35		### Maximun Lifespan / day (days = 1c)
+@CmtConstKhanLifespan_1d =	 5		### Maximun Lifespan / day (random = 1d)
+@CmtConstKhanLifespan_1e =	 8		### Time-Lag of Post-Death Process (days = 1e)
+@CmtConstKhanLifespan_1f =	 4		### Time-Lag of Post-Death Process (random = 1f)
 
 ### Fleeting (Lifespan of Khan)
 @CmtConstKhanLifespan_2a =  4320		### Minimun Lifespan / day
 @CmtConstKhanLifespan_2b =  0.75		### Probability of Death (2%/month for 1)
 @CmtConstKhanLifespan_2c =  7200		### Maximun Lifespan / day (days = 1c)
 @CmtConstKhanLifespan_2d =  2880		### Maximun Lifespan / day (random = 1d)
-@CmtConstKhanLifespan_2e =    90		### Time-Lag of Post-Death Process (days = 1e)
-@CmtConstKhanLifespan_2f =    60		### Time-Lag of Post-Death Process (random = 1f)
+@CmtConstKhanLifespan_2e =	90		### Time-Lag of Post-Death Process (days = 1e)
+@CmtConstKhanLifespan_2f =	60		### Time-Lag of Post-Death Process (random = 1f)
 
 ### Standard (Lifespan of Khan)
 @CmtConstKhanLifespan_3a =  7200		### Minimun Lifespan / day
@@ -62,10 +62,10 @@ namespace = marauder
 @CmtConstKhanLifespan_6f =   360		### Time-Lag of Post-Death Process (random = 1f)
 
 ### Marauders Destroyed (HIDDEN) on_ship_destroyed_victim
-# This = owner of ship 1 (destroyed)
-# From = owner of ship 2 (combatant)
-# FromFrom = ship 1
-# FromFromFrom = ship 2
+# this = owner of ship 1 (destroyed)
+# from = owner of ship 2 (combatant)
+# fromfrom = ship 1
+# fromfromfrom = ship 2
 country_event = {
 	id = marauder.4
 	hide_window = yes
@@ -249,8 +249,7 @@ country_event = {
 				}
 			}
 
-		}
-		else = { destroy_country = yes }
+		} else = { destroy_country = yes }
 	}
 }
 
@@ -306,7 +305,7 @@ country_event = {
 	after = {
 		hidden_effect = { remove_country_flag = marauder_diplomacy_engaged }
 	}
-	# Hire Armada of the Voidborn
+	# Hire Armada of the Voidborn.
 	option = {
 		name = marauder.34.1.a
 		trigger = {
@@ -481,7 +480,7 @@ country_event = {
 			country_event = { id = marauder.37 }
 		}
 	}
-	# Hire Order of Eternal Night
+	# Hire Order of Eternal Night.
 	option = {
 		name = marauder.34.3.b
 		trigger = {
@@ -585,7 +584,7 @@ country_event = {
 			limit = { is_fallen_empire = yes }
 			save_event_target_as = random_fallen_empire
 		}
-		# Create global Rally Point event_targets
+		# Create global Rally Point event_targets.
 		event_target:current_marauder_diplomacy = {
 			switch = {
 				trigger = has_country_flag
@@ -637,7 +636,7 @@ country_event = {
 	immediate = {
 		switch = {
 			trigger = has_country_flag
-			# Hire Armada of the Voidborn
+			# Hire Armada of the Voidborn.
 			merc_fleet_1_1_hired = {
 				remove_country_flag = merc_fleet_1_1_hired
 				event_target:CmtTargetMarauderRallyPoint1 = {
@@ -707,7 +706,7 @@ country_event = {
 					}
 				}
 			}
-			# Hire Order of Eternal Night
+			# Hire Order of Eternal Night.
 			merc_fleet_2_3_hired = {
 				remove_country_flag = merc_fleet_2_3_hired
 				event_target:CmtTargetMarauderRallyPoint3 = {
@@ -729,7 +728,7 @@ country_event = {
 			}
 		}
 		last_created_fleet = {
-			save_event_target_as = hired_merc_fleet # nowhere used??
+			save_event_target_as = hired_merc_fleet # Nowhere used??
 			set_location = root.capital_scope
 			fleet_event = { id = marauder.50 days = 1800 }
 		}
@@ -737,8 +736,8 @@ country_event = {
 }
 
 ### Mercenaries Leave (Home Systems Destroyed)
-# This = Hiring country
-# From = Destroyed Marauders
+# this = Hiring country
+# from = Destroyed Marauders
 country_event = {
 	id = marauder.76
 	title = "marauder.76.name"
@@ -895,7 +894,7 @@ country_event = {
 				# delete_fleet = { target = this destroy_template = yes }
 				set_owner = event_target:raider_khanate
 				if = { limit = { has_global_flag = gf_great_khan_active }
-					fleet_event = { id = khan.611 days = -1 }
+					fleet_event = { id = khan.611 }
 				}
 			}
 
@@ -939,7 +938,7 @@ country_event = {
 				# delete_fleet = { target = this destroy_template = yes }
 				set_owner = event_target:raider_khanate
 				if = { limit = { has_global_flag = gf_great_khan_active }
-					fleet_event = { id = khan.611 days = -1 }
+					fleet_event = { id = khan.611 }
 				}
 			}
 			every_owned_leader = {
@@ -982,7 +981,7 @@ country_event = {
 				# delete_fleet = { target = this destroy_template = yes }
 				set_owner = event_target:raider_khanate
 				if = { limit = { has_global_flag = gf_great_khan_active }
-					fleet_event = { id = khan.611 days = -1 }
+					fleet_event = { id = khan.611 }
 				}
 			}
 			every_owned_leader = {
@@ -1049,7 +1048,7 @@ country_event = {
 
 # Raiders Hit Planet (HIDDEN)
 # Vanilla fix
-# From = Bombarder
+# from = Bombarder
 planet_event = {
 	id = marauder.103
 	hide_window = yes
@@ -1334,7 +1333,6 @@ planet_event = {
 	}
 }
 
-
 # Raiders Hit Planet (Slaves)
 planet_event = {
 	id = marauder.105
@@ -1366,8 +1364,8 @@ planet_event = {
 			} else_if = { limit = { exists = fromfrom exists = fromfrom.species }
 				fromfrom.species = { save_event_target_as = marauder_species }
 			}
-			# log="Marauder From.species exists \\[marauder_species.GetName]"
-		} # else = { log="No Marauder Species FromFrom \\[FromFrom.GetName]" }
+			# log="Marauder from.species exists \\[marauder_species.GetName]"
+		} # else = { log="No Marauder Species fromfrom \\[FromFrom.GetName]" }
 
 		owner = {
 			set_variable = { which = destruction_amount value = 3 }
@@ -1469,7 +1467,7 @@ planet_event = {
 }
 
 # (The Great Khan Expanded)
-# Helper event only - Create global Rally Point event_targets
+# Helper event only - Create global Rally Point event_targets.
 country_event = {
 	id = marauder.499
 	hide_window = yes
@@ -1947,7 +1945,7 @@ country_event = {
 			}
 		}
 
-		### Unify All Marauders if Great Khan
+		### Unify All Marauders if Great Khan.
 		if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanMultiple value = 5 } } }
 			every_country = {
@@ -2012,7 +2010,7 @@ country_event = {
 		}
 		assign_leader = last_created_leader
 
-		### Lifespan, Remaining Live of Khan
+		### Lifespan, Remaining Live of Khan.
 		if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLifespan value = 1 } } }
 			set_timed_global_flag = { flag = khan_no_die days = @CmtConstKhanLifespan_1a }
@@ -2129,14 +2127,14 @@ country_event = {
 		if = {
 			limit = { has_country_flag = CmtFlagKhanVengeanceCountry }
 			every_playable_country = {
-				limit = { }
+				# limit = { }
 				establish_communications_no_message = root
 				country_event = { id = marauder.526 }
 				observer_event = { id = observer.18 }
 			}
 		} else = {
 			every_playable_country = {
-				limit = {  }
+				# limit = { }
 				establish_communications_no_message = root
 				country_event = { id = marauder.501 }
 				observer_event = { id = observer.13 }
@@ -2346,7 +2344,7 @@ country_event = {
 ###  Death of Khan  ###
 #######################
 
-### Khan Defeated in Combat But NOT Die
+### Khan Defeated in Combat But NOT Die.
 country_event = {
 	id = marauder.505
 	hide_window = yes
@@ -2414,7 +2412,7 @@ country_event = {
 	}
 }
 
-### Khan Defeated in Combat And Die
+### Khan Defeated in Combat And Die.
 country_event = {
 	id = marauder.509
 	hide_window = yes
@@ -2539,7 +2537,7 @@ event = {
 	}
 }
 
-### Great Khan Dies for Other Reasons
+### Great Khan Dies for Other Reasons.
 country_event = {
 	id = marauder.512
 	hide_window = yes
@@ -2624,7 +2622,7 @@ country_event = {
 	}
 }
 
-### Great Khan Dies of Old Ages
+### Great Khan Dies of Old Ages.
 country_event = {
 	id = marauder.514
 	hide_window = yes
@@ -3024,8 +3022,8 @@ country_event = {
 	}
 }
 
-### Initial Reinforcement for Encouraging Satrap
-### Marauder Establishes Base in Capital System
+### Initial Reinforcement for Encouraging Satrap.
+### Marauder Establishes Base in Capital System.
 country_event = {
 	id = marauder.553
 	title = "marauder.553.name"
@@ -3053,7 +3051,7 @@ country_event = {
 ###  While Khan Reigning  ###
 #############################
 
-### NPC (AI Empire) Submits to Marauder
+### NPC (AI Empire) Submits to Marauder.
 country_event = {
 	id = marauder.555
 	hide_window = yes
@@ -3143,7 +3141,7 @@ country_event = {
 				}
 				hidden_effect = {
 					country_event = { id = marauder.553 days = 10 }
-					add_modifier = { modifier = "satrapy_of_horde" days = -1 }
+					add_modifier = { modifier = "satrapy_of_horde" }
 					event_target:raider_khanate = {
 						set_faction_hostility = {
 							target = prev
@@ -3160,7 +3158,7 @@ country_event = {
 			subject_type = satrapy
 		}
 		country_event = { id = marauder.553 days = 10 }
-		add_modifier = { modifier = "satrapy_of_horde" days = -1 }
+		add_modifier = { modifier = "satrapy_of_horde" }
 		event_target:raider_khanate = {
 			set_faction_hostility = {
 				target = event_target:new_satrapy
@@ -3181,7 +3179,7 @@ country_event = {
 }
 
 ## Regular Reinforcements at Capital of Satrap (Marauder Auxiliary Cycle)
-# This = Garrison_Base
+# this = Garrison_Base
 fleet_event = {
 	id = marauder.560
 	hide_window = yes
@@ -3237,7 +3235,7 @@ fleet_event = {
 				}
 			} else = {
 				# TODO needs FIX: CM somehow not working as fleet power gets unlimited (over 5M)
-				# So static limit is of 4 fleets is set
+				# So static limit is of 4 fleets is set.
 				fleet_event = { id = marauder.560 days = 160 random = 80 }
 				if = {
 					limit = { check_variable = { which = CmtVarKhanReinforcementCounter value > 9.5 } }
@@ -3328,10 +3326,10 @@ country_event = {
 							factor = 6
 							event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanPostDeathKhanate value = 4 } }
 						}
-						# Stays united in New Khanate
+						# Stays united in New Khanate.
 						country_event = { id = marauder.602 }
 						modifier = {
-							factor = 0 # Can only happens if Horde owns planets
+							factor = 0 # Can only happens if Horde owns planets.
 							num_owned_planets < 1
 						}
 					}
@@ -3366,21 +3364,21 @@ country_event = {
 					10 = {
 						country_event = { id = marauder.602 }
 						modifier = {
-							factor = 0 # Can only happens if Horde owns planets
+							factor = 0 # Can only happens if Horde owns planets.
 							num_owned_planets < 1
 						}
 					}
 					10 = {
 						# Turns into Democratic Federation
 						modifier = {
-							factor = 0 # Can only happen if there are enough Satrapies
+							factor = 0 # Can only happen if there are enough Satrapies.
 							count_country = {
 								limit = { is_subject_type = satrapy }
 								count < 2
 							}
 						}
 						modifier = {
-							factor = 0 # Can only happens if Horde owns planets
+							factor = 0 # Can only happens if Horde owns planets.
 							num_owned_planets < 1
 						}
 						country_event = { id = marauder.603 }

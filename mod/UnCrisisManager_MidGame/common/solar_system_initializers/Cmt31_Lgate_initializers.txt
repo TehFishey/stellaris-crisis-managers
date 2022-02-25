@@ -7,7 +7,7 @@
 #####													#####
 #############################################################
 #############################################################
-### L-Gate System for Manual Creation
+### L-Gate System for Manual Creation.
 #
 #	copy of distantstars_init_00 with some modification:
 #	(followings are deleted: usage, usage_odds, max_instances, scaled_spawn_chance
@@ -20,7 +20,7 @@ CmtInitManualLgate00 = {
 	flags = { hostile_system lgate }
 	planet = {
 		class = star
-		size = { min = @standard_min max = @standard_max } # for Real Space
+		size = { min = @standard_min max = @standard_max } # For Real Space
 		orbit_distance = 0
 	}
 	change_orbit = 60

@@ -2,11 +2,11 @@ namespace = distar
 
 ###############################################
 ###############################################
-#####                                     #####
-#####    L-Gates Events except Graygoo    #####
-#####                                     #####
-#####    Replaced by Crisis Manager       #####
-#####                                     #####
+#####									 #####
+#####	L-Gates Events except Graygoo	#####
+#####									 #####
+#####	Replaced by Crisis Manager	   #####
+#####									 #####
 ###############################################
 ###############################################
 
@@ -61,19 +61,16 @@ country_event = {
 					from = { is_scope_type = ship }
 				}
 				from.solar_system = { save_global_event_target_as = CmtTargetLgateOriginatingSystem }
-			}
-			else_if = {
+			} else_if = {
 				limit = { exists = event_target:candidate_gateway_system }
 				event_target:candidate_gateway_system = { save_global_event_target_as = CmtTargetLgateOriginatingSystem }
-			}
-			else_if = {
+			} else_if = {
 				limit = { exists = event_target:candidate_gateway }
 				event_target:candidate_gateway = {
 					solar_system = { save_global_event_target_as = CmtTargetLgateOriginatingSystem }
 				}
-			}
-			else = {
-				# If no valid scope search generally
+			} else = {
+				# If no valid scope search generally.
 				every_system_within_border = {
 					limit = { has_star_flag = lgate }
 					every_fleet_in_system = {
@@ -91,7 +88,7 @@ country_event = {
 				}
 			}
 			if = {
-				# only last fallback
+				# Only last fallback
 				limit = {
 					NOT = { exists = event_target:CmtTargetLgateOriginatingSystem }
 				}
@@ -106,7 +103,7 @@ country_event = {
 		if = {
 			limit = {
 				OR = {
-					has_global_flag = dragon_season # vanilla temp workaround fix (save game): must be re-run due bug in 3.0 at game_start
+					has_global_flag = dragon_season # Vanilla temp workaround fix (save game): must be re-run due bug in 3.0 at game_start
 					AND = {
 						has_global_flag = CmtFlagLgateForbidSilence
 						NOR = {
@@ -175,8 +172,8 @@ country_event = {
 		country_event = { id = CrisisManagerControl.6201 }		## Open L-Gates Cycle
 		event_target:CmtTargetLgateOriginatingSystem = {
 			if = {
-				# flag prevents the Tempest from using this gate,
-				# do not set the flag if there's only one l-gate system
+				# Flag prevents the Tempest from using this gate,
+				# Do not set the flag if there's only one l-gate system
 				limit = {		## 2 or more L-Gates exist in Galaxy
 					any_system = {
 						has_star_flag = lgate
@@ -223,7 +220,7 @@ country_event = {
 			}
 			every_galaxy_planet = {
 				limit = { is_planet_class = pc_gray_goo }
-				add_modifier = { modifier = terraforming_candidate days = -1 }
+				add_modifier = { modifier = terraforming_candidate }
 			}
 		}
 
@@ -311,7 +308,7 @@ country_event = {
 						}
 						set_star_flag = dragon_point_picked
 
-						# notify re: destination
+						# Notify re: destination
 						if = {
 							limit = { prevprev = { exists = owner } }		## prevprev = L-Gate System
 							save_event_target_as = dragons_target

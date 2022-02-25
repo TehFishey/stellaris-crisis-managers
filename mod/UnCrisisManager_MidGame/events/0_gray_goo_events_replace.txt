@@ -2,11 +2,11 @@ namespace = graygoo
 
 ############################################
 ############################################
-#####                                  #####
-#####    Graygoo/Dessanu Events        #####
-#####                                  #####
-#####    Replaced by Crisis Manager    #####
-#####                                  #####
+#####								  #####
+#####	Graygoo/Dessanu Events		#####
+#####								  #####
+#####	Replaced by Crisis Manager	#####
+#####								  #####
 ############################################
 ############################################
 
@@ -301,7 +301,7 @@ country_event = {
 					create_pop = { species = owner_species }
 				}
 
-				##Add buildings + Districts (ToDo: Move to scripted effect)
+				## Add buildings + Districts (ToDo: Move to scripted effect)
 				while = {
 					count = 2
 					add_district_and_planet_size_if_needed_effect = { district = district_city }
@@ -323,8 +323,7 @@ country_event = {
 						add_district_and_planet_size_if_needed_effect = { district = district_mining }
 					}
 					add_district_and_planet_size_if_needed_effect = { district = district_generator }
-				}
-				else = {
+				} else = {
 					while = {
 						count = 3
 						add_district_and_planet_size_if_needed_effect = { district = district_farming }
@@ -543,7 +542,7 @@ country_event = {
 							}
 						}
 					}
-					add_modifier = { modifier = terraforming_candidate days = -1 }
+					add_modifier = { modifier = terraforming_candidate }
 				}
 			}
 		}
@@ -633,7 +632,7 @@ country_event = {
 		}
 		observer_event = { id = observer.67 }
 
-		if = {		## Change Gaia Planet to Graygoo
+		if = {		## Change Gaia Planet to Graygoo.
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarLgateTerraformNanite value = 5 } } }
 			every_owned_planet = {
 				limit = { is_planet_class = pc_gaia }
@@ -642,7 +641,7 @@ country_event = {
 			}
 			every_galaxy_planet = {
 				limit = { is_planet_class = pc_gray_goo }
-				add_modifier = { modifier = terraforming_candidate days = -1 }
+				add_modifier = { modifier = terraforming_candidate }
 			}
 		} else_if = {
 			limit = {
@@ -668,7 +667,7 @@ country_event = {
 				remove_all_buildings = yes
 				destroy_colony = yes
 				reroll_planet = yes
-				add_modifier = { modifier = terraforming_candidate days = -1 }
+				add_modifier = { modifier = terraforming_candidate }
 			}
 		}
 		every_owned_fleet = { destroy_fleet = this }
