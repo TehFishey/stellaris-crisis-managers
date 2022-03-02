@@ -83,7 +83,10 @@ CmtEffectCreateFleet_KhanArmy = {
 				}
 			}
 			CmtFleetSetAuxParam_KhanAuxiliary = yes
-			set_fleet_stance = evasive
+			random = {
+				chance = 50
+				set_fleet_stance = evasive # AI does not handle this well too
+			}
 		}
 	}
 	last_created_army = { assign_leader = last_created_leader }
@@ -115,7 +118,10 @@ CmtEffectCreateShip_KhanConstructor = {
 				# effect = { CmtEffectFasterKhanConstructor = yes }
 			}
 			CmtFleetSetAuxParam_KhanAuxiliary = yes
-			set_fleet_stance = evasive
+			random = {
+				chance = 50
+				set_fleet_stance = evasive # AI does not handle this well too
+			}
 		}
 	}
 }

@@ -445,9 +445,31 @@ sleeper_deus_init_03 = {
 	}
 	init_effect = {
 		create_fe_home_citadel = yes
-		spawn_natural_wormhole = {
-			bypass_type = wormhole
-			random_pos = yes
+		# Done this way to ensure we don't spawn "orphan wormholes"
+		random_rim_system = {
+			limit = {
+				has_natural_wormhole = no
+				count_fleet_in_system = {
+					count = 0
+					limit = {
+						is_civilian = no
+						exists = owner
+						owner = { CmtTriggerIsPlayableEmpire = yes }
+					}
+				}
+			}
+			spawn_natural_wormhole = {
+				bypass_type = wormhole
+				random_pos = yes
+				orbit_angle = 360
+			}
+			prev = {
+				spawn_natural_wormhole = {
+					bypass_type = wormhole
+					random_pos = yes
+				}
+				link_wormholes = prev
+			}
 		}
 	}
 }

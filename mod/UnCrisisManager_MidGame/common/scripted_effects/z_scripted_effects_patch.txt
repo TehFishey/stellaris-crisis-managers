@@ -1,5 +1,5 @@
 # Use in war scope. War is deleted.
-# prev = war_participant
+# Prev = war_participant
 # Vanilla Fix: don't break the loop
 end_war_effect = {
 	# every_war_participant = {
@@ -11,7 +11,7 @@ end_war_effect = {
 			is_scope_type = war
 			count_attacker = {
 				count > 0
-				# limit = { }
+				# limit = {  }
 			}
 		}
 		every_attacker = {
@@ -38,12 +38,53 @@ end_war_effect = {
 				is_scope_type = war
 				count_war_participants = {
 					count > 0
-					# limit = { }
+					# limit = {  }
 					side = prev
 				}
 				prev = { is_war_participant = { who = prev side = prevprev } }
 			}
 			remove_war_participant = prev
+		}
+	}
+}
+
+# Make some factions neutral (not everything should be hostile to non crisis factions)
+# Scope = country (hostile)
+make_moderately_hostile = {
+	every_country = {
+		limit = {
+			CmtTriggerIsPlayableEmpire = no
+			OR = {
+				is_country_type = fallen_empire						# is_fallen_empire = yes
+				is_country_type = enclave
+				is_country_type = caravaneer_home
+				is_country_type = caravaneer_fleet
+				is_country_type = guardian_sphere
+				is_country_type = marauder_raiders
+				is_country_type = ratlings
+				is_country_type = ldragon_country
+				is_tiyanki_country_type = yes
+				is_amoeba_country_type = yes
+				is_crystal_country_type = yes
+				is_drone_country_type = yes
+				is_country_type = vluur
+				is_primitive = yes
+			}
+			OR = {
+				is_hostile = prev
+				prev = { is_hostile = prev }
+				# prev = { NOT = { is_neutral_to = prev } }
+			}
+			# prev = { NOR = { is_friendly_to = prev is_neutral_to = prev } }
+		}
+		establish_communications_no_message = root
+		prev = {
+			set_faction_hostility = {
+				target = prev
+				set_hostile = no
+				set_neutral = yes
+				# set_friendly = no
+			}
 		}
 	}
 }
