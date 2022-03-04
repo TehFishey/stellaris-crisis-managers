@@ -288,7 +288,9 @@ CmtEffectCreateCountryAberrant = {
 		}
 	}
 
-	event_target:extradimensionals2 = { country_event = { id = crisis.1280 } }
+	event_target:extradimensionals2 = {
+		random_owned_ship = { limit = { NOT = { is_ship_size = dimensional_portal_ed } } ship_event = { id = crisis.1280 } }
+	}
 }
 
 ##################
@@ -457,7 +459,9 @@ CmtEffectCreateCountryVehement = {	## Scope = Stellar System
 		}
 	}
 
-	event_target:extradimensionals3 = { country_event = { id = crisis.1280 } }
+	event_target:extradimensionals3 = {
+		random_owned_ship = { limit = { NOT = { is_ship_size = dimensional_portal_ed } } ship_event = { id = crisis.1280 } }
+	}
 }
 
 ################

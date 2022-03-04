@@ -176,7 +176,9 @@ country_event = {
 				}
 			}
 			# Make portal invincible
-			event_target:extradimensionals = { country_event = { id = crisis.1280 } }
+			event_target:extradimensionals3 = {
+				random_owned_ship = { limit = { NOT = { is_ship_size = dimensional_portal_ed } } ship_event = { id = crisis.1280 } }
+			}
 		}
 		CmtEffectFriendlyCrisis = yes
 
@@ -677,67 +679,69 @@ ship_event = {
 ###########################
 
 ### Transfer Portal to Holder Just BEFORE Anchor Built, Never Use ''From''
-country_event = {
+ship_event = {
 	id = crisis.1280
 	hide_window = yes
 	is_triggered_only = yes
 
 	trigger = {
-		CmtTriggerIsExds = yes
+		owner = { CmtTriggerIsExds = yes }
 	}
 
 	immediate = {
-		# Fallback: this should be already a global event target.
-		if = { limit = { NOT = { exists = event_target:portal_holder_1 } }
-			log = "anchor built and crisis.1280 executed, not yet reaching fleet owner switch"
-			random_country = {
-				limit = { is_country_type = portal_holder }
-				save_global_event_target_as = portal_holder_1
+		owner = {
+			# Fallback: this should be already a global event target.
+			if = { limit = { NOT = { exists = event_target:portal_holder_1 } }
+				log = "anchor built and crisis.1280 executed, not yet reaching fleet owner switch"
+				random_country = {
+					limit = { is_country_type = portal_holder }
+					save_global_event_target_as = portal_holder_1
+				}
 			}
-		}
 
-		### Transfer Portal
-		if = {
-			limit = { CmtTriggerAnchorForPortalCreate = yes }
-			random_owned_ship = {
-				limit = { is_ship_size = dimensional_portal_ed }
-				fleet = {
-					set_event_locked = yes
-					set_owner = event_target:portal_holder_1
-					# log = "anchor built and crisis.1280 executed, reaching fleet owner switch"
+			### Transfer Portal
+			if = {
+				limit = { CmtTriggerAnchorForPortalCreate = yes }
+				random_owned_ship = {
+					limit = { is_ship_size = dimensional_portal_ed }
+					fleet = {
+						set_event_locked = yes
+						set_owner = event_target:portal_holder_1
+						# log = "anchor built and crisis.1280 executed, reaching fleet owner switch"
+					}
 				}
 			}
-		}
 
-		### Increase Counter
-		if = {
-			limit = { is_country_type = extradimensional }
-			every_playable_country = {
-				limit = { has_event_chain = "extradimensional_invasion_chain" }
-				add_event_chain_counter = {
-					event_chain = "extradimensional_invasion_chain"
-					counter = "dimensional_anchors_1"
-					amount = 1
+			### Increase Counter
+			if = {
+				limit = { is_country_type = extradimensional }
+				every_playable_country = {
+					limit = { has_event_chain = "extradimensional_invasion_chain" }
+					add_event_chain_counter = {
+						event_chain = "extradimensional_invasion_chain"
+						counter = "dimensional_anchors_1"
+						amount = 1
+					}
 				}
-			}
-		} else_if = {
-			limit = { is_country_type = extradimensional_2 }
-			every_playable_country = {
-				limit = { has_event_chain = "extradimensional_invasion_chain_2" }
-				add_event_chain_counter = {
-					event_chain = "extradimensional_invasion_chain_2"
-					counter = "dimensional_anchors_2"
-					amount = 1
+			} else_if = {
+				limit = { is_country_type = extradimensional_2 }
+				every_playable_country = {
+					limit = { has_event_chain = "extradimensional_invasion_chain_2" }
+					add_event_chain_counter = {
+						event_chain = "extradimensional_invasion_chain_2"
+						counter = "dimensional_anchors_2"
+						amount = 1
+					}
 				}
-			}
-		} else_if = {
-			limit = { is_country_type = extradimensional_3 }
-			every_playable_country = {
-				limit = { has_event_chain = "extradimensional_invasion_chain_3" }
-				add_event_chain_counter = {
-					event_chain = "extradimensional_invasion_chain_3"
-					counter = "dimensional_anchors_3"
-					amount = 1
+			} else_if = {
+				limit = { is_country_type = extradimensional_3 }
+				every_playable_country = {
+					limit = { has_event_chain = "extradimensional_invasion_chain_3" }
+					add_event_chain_counter = {
+						event_chain = "extradimensional_invasion_chain_3"
+						counter = "dimensional_anchors_3"
+						amount = 1
+					}
 				}
 			}
 		}
