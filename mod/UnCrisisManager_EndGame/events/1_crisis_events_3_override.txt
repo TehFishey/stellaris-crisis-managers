@@ -3,7 +3,7 @@
 
 namespace = crisis
 
-### Triggering Event
+### Triggering Test Events
 # WARNING: May cause galactic mass extinction and/or loss of appetite.
 country_event = {
 	id = crisis.199
@@ -36,7 +36,7 @@ country_event = {
 	id = crisis.2000
 	hide_window = yes
 	is_triggered_only = yes
-	# trigger = { always = no }
+	trigger = { always = no }
 	immediate = {
 		# The Arrival
 		every_country = {
@@ -299,7 +299,7 @@ country_event = {
 	id = crisis.10001
 	hide_window = yes
 	is_triggered_only = yes
-	# trigger = { always = no }
+	trigger = { always = no }
 	immediate = {
 		if = {
 			limit = { NOT = { exists = event_target:portal_holder_1 } }
@@ -337,7 +337,7 @@ country_event = {
 	id = crisis.10002
 	hide_window = yes
 	is_triggered_only = yes
-	# trigger = { always = no }
+	trigger = { always = no }
 	immediate = {
 		random_country = {
 			limit = { is_country_type = portal_holder }

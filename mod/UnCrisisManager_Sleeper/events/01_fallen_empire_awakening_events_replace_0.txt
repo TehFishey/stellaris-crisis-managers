@@ -16,11 +16,30 @@ country_event = {
 	id = fallen_empires_awakening.1
 	hide_window = yes
 	is_triggered_only = yes
-
-	trigger = {
-		CmtTriggerIsOrganicSleeper = yes
-	}
-
+	trigger = { CmtTriggerIsOrganicSleeper = yes }
+	# mean_time_to_happen = {
+	# 	years = 50
+	# 	modifier = {
+	# 		factor = 0.5
+	# 		any_playable_country = { fleet_power > 120000 }
+	# 	}
+	# 	modifier = { factor = 1.5 num_fallen_empires > 1 num_fallen_empires < 3 }
+	# 	modifier = { factor = 2 num_fallen_empires > 2 num_fallen_empires < 4 }
+	# 	modifier = { factor = 2.5 num_fallen_empires > 3 }
+	# 	modifier = {
+	# 		factor = 0.1
+	# 		any_playable_country = {
+	# 			any_owned_planet = {
+	# 				has_planet_flag = fallen_empire_world
+	# 				NOT = { is_original_owner = root }
+	# 			}
+	# 		}
+	# 	}
+	# 	modifier = {
+	# 		factor = 0.01
+	# 		has_global_flag = high_awaken_chance			# Ascended Spiritualist awakening does this.
+	# 	}
+	# }
 	immediate = {
 		set_global_flag = sleepers_awake_happened
 		country_event = { id = fallen_empires_awakening.3 }		### Do this process at FIRST
@@ -109,7 +128,7 @@ country_event = {
 		### Establish Communications
 		every_country = {
 			limit = {
-				CmtTriggerIsEmpire = yes
+				merg_is_standard_empire = yes
 				NOT = { has_communications = root }
 			}
 			establish_communications_no_message = root

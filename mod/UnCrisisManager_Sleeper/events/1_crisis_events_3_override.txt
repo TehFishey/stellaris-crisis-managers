@@ -162,7 +162,7 @@ planet_event = {
 				exists = space_owner
 				space_owner = {
 					NOT = { is_same_empire = from }
-					CmtTriggerIsEmpire = yes
+					merg_is_standard_empire = yes
 				}
 			}
 			every_fleet_in_orbit = {
@@ -186,7 +186,7 @@ planet_event = {
 				closest_system = {
 					max_steps = 2
 					use_bypasses = no
-					limit = { has_owner = yes space_owner = { CmtTriggerIsEmpire = yes } }
+					limit = { has_owner = yes space_owner = { merg_is_standard_empire = yes } }
 					space_owner = { save_event_target_as = planet_former_owner }
 				}
 			}

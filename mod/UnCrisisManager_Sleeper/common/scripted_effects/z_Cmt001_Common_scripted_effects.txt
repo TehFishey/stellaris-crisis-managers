@@ -193,10 +193,20 @@ CmtEffectDestroySystemStarbase = {
 
 ### scope: this = country (fallen empire), Overwritten by FFE_CMT
 CmtEffectChangeAwakenerCivic = {
-	change_government = {
-		civics = {
-			civic = civic_revanchist_fervor
-			civic = civic_ancient_caches_of_technology
+	if = {
+		limit = { has_authority = auth_hive_mind has_global_flag = has_FEE_mod }
+		change_government = {
+			civics = {
+				civic = civic_invigorated_coalescence
+				civic = civic_rejuvenated_drones
+			}
+		} else = {
+			change_government = {
+				civics = {
+					civic = civic_revanchist_fervor
+					civic = civic_ancient_caches_of_technology
+				}
+			}
 		}
 	}
 }

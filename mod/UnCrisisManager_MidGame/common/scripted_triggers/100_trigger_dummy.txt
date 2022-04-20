@@ -1,0 +1,26 @@
+# For compatibility
+# HFE
+hfe_trigger_insane_admiral_trait = {
+	always = no
+	# OR = {
+	# 	is_country_type = hfe_pirate
+	# 	has_valid_civic = hfe_civic_features_aggressive_diplomacy
+	# }
+}
+# HFE
+hfe_trigger_is_human_fallen = {
+	always = no
+	# OR = {
+	# 	has_country_flag = hfe_egypt
+	# 	has_country_flag = hfe_future
+	# 	is_country_type = human_fallen_empire
+	# }
+}
+# ZOFE
+is_zofe_country = {
+	always = no
+	# OR = {
+	# 	is_country_type = ascended_empire
+	# 	is_country_type = lost_empire
+	# }
+}

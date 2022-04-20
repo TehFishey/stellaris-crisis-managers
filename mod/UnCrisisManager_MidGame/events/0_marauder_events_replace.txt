@@ -1114,7 +1114,7 @@ planet_event = {
 				remove_auto_move_target = yes
 				clear_orders = yes
 				clear_fleet_actions = this
-				set_disabled = yes
+				every_owned_ship = { set_disabled = yes }
 				set_event_locked = yes
 			}
 

@@ -59,8 +59,9 @@ CmtTriggerIsStarbase = {		## Scope: this = ship
 ### Standard
 CmtTriggerIsPlayableEmpire = {
 	OR = {		## Written in also Cmt40 and Cmt50.
-		is_country_type = default
-		is_zofe_country = yes # is_zofe_compatible
+		# is_country_type = default
+		# is_zofe_country = yes # is_zofe_compatible
+		merg_is_default_empire = yes
 		is_ai = no
 	}
 }
@@ -69,11 +70,13 @@ CmtTriggerIsEmpire = {		## Written in also Cmt50
 	OR = {
 		# CmtTriggerIsPlayableEmpire = yes
 		# CmtTriggerIsFallenEmpire = yes
-		is_country_type = default
+		# is_country_type = default
+		# is_zofe_country = yes # is_zofe_compatible
+		merg_is_default_empire = yes
 		is_ai = no
-		is_zofe_country = yes # is_zofe_compatible
-		is_country_type = fallen_empire
-		is_country_type = awakened_fallen_empire
+		# is_country_type = fallen_empire
+		# is_country_type = awakened_fallen_empire
+		CmtTriggerIsFallenEmpire = yes
 	}
 }
 
@@ -210,7 +213,7 @@ CmtTriggerIsMarauder = {
 CmtTriggerIsKhanCountry = {
 	OR = {
 		is_country_type = awakened_marauders
-		is_same_empire = event_target:raider_khanate
+		is_same_value = event_target:raider_khanate
 	}
 	# CmtFlagKhanDeadCountry replaced with vanilla
 	NOT = { has_country_flag = khan_dead_event_fine }
