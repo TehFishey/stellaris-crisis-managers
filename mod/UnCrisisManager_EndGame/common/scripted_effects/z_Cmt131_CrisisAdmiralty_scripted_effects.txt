@@ -31,7 +31,7 @@ CmtEffectCreateAdmiralty_PrethorynVanguard = {
 		while = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
 			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
-			random_list = { 300 = { CmtEffectCreateFleet_PrethorynVanguard = yes } 100 = { } }
+			random = { chance = 75 CmtEffectCreateFleet_PrethorynVanguard = yes }
 		}
 
 		CmtEffectCreateFleet_PrethorynConstructor = yes
@@ -52,7 +52,7 @@ CmtEffectCreateAdmiralty_PrethorynBrood = {
 		while = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
 			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
-			random_list = { 300 = { CmtEffectCreateFleet_PrethorynBrood = yes } 100 = { } }
+			random = { chance = 75 CmtEffectCreateFleet_PrethorynBrood = yes }
 		}
 
 		### Create Army
@@ -67,7 +67,7 @@ CmtEffectCreateAdmiralty_PrethorynBrood = {
 		while = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
 			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
-			random_list = { 300 = { CmtEffectCreateFleet_PrethorynArmy = yes } 100 = { } }
+			random = { chance = 75 CmtEffectCreateFleet_PrethorynArmy = yes }
 		}
 
 		CmtEffectCreateFleet_PrethorynColonyzer = yes
@@ -454,7 +454,7 @@ CmtEffectCreateAdmiralty_ContingencyCapital = {
 		if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
 			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
-			random_list = { 500 = { CmtEffectCreateFleet_ContingencyAttacker = yes } 500 = { } }
+			random = { chance = 50 CmtEffectCreateFleet_ContingencyAttacker = yes }
 		}
 
 		### Create Army
@@ -467,7 +467,7 @@ CmtEffectCreateAdmiralty_ContingencyCapital = {
 		if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.25 } } }
 			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.5 } }
-			random_list = { 500 = { CmtEffectCreateFleet_ContingencyArmy = yes } 500 = { } }
+			random = { chance = 50 CmtEffectCreateFleet_ContingencyArmy = yes }
 		}
 
 		### Create Constructor
@@ -511,7 +511,7 @@ CmtEffectCreateAdmiralty_ContingencyArmy = {
 		if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
 			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
-			random_list = { 500 = { CmtEffectCreateFleet_ContingencyArmy = yes } 500 = { } }
+			random = { chance = 50 CmtEffectCreateFleet_ContingencyArmy = yes }
 		}
 	}
 }

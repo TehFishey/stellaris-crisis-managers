@@ -3230,7 +3230,7 @@ country_event = {
 		hidden_effect = {
 			every_country = {
 				limit = { is_country_type = fallen_empire }
-				random_list = { 10 = { capital_scope = { CmtEffectCreateSleeperStandard = yes } } 20 = {} }
+				random = { chance = 33 capital_scope = { CmtEffectCreateSleeperStandard = yes } }
 			}
 		}
 	}
@@ -3240,7 +3240,7 @@ country_event = {
 		hidden_effect = {
 			every_country = {
 				limit = { is_country_type = fallen_empire }
-				random_list = { 20 = { capital_scope = { CmtEffectCreateSleeperStandard = yes } } 10 = {} }
+				random = { chance = 67 capital_scope = { CmtEffectCreateSleeperStandard = yes } }
 			}
 		}
 	}
@@ -3396,7 +3396,7 @@ country_event = {
 					is_country_type = fallen_empire
 					NOT = { any_owned_ship = { is_ship_size = massive_ship_fallen_empire } }
 				}
-				random_list = { 10 = { capital_scope = { CmtEffectCreateSleeperTitan = yes } } 30 = {} }
+				random = { chance = 25 capital_scope = { CmtEffectCreateSleeperTitan = yes } }
 			}
 		}
 	}
@@ -3409,7 +3409,7 @@ country_event = {
 					is_country_type = fallen_empire
 					NOT = { any_owned_ship = { is_ship_size = massive_ship_fallen_empire } }
 				}
-				random_list = { 20 = { capital_scope = { CmtEffectCreateSleeperTitan = yes } } 30 = {} }
+				random = { chance = 40 capital_scope = { CmtEffectCreateSleeperTitan = yes } }
 			}
 		}
 	}
@@ -3422,7 +3422,7 @@ country_event = {
 					is_country_type = fallen_empire
 					NOT = { any_owned_ship = { is_ship_size = massive_ship_fallen_empire } }
 				}
-				random_list = { 20 = { capital_scope = { CmtEffectCreateSleeperTitan = yes } } 10 = {} }
+				random = { chance = 67 capital_scope = { CmtEffectCreateSleeperTitan = yes } }
 			}
 		}
 	}
@@ -3682,7 +3682,7 @@ country_event = {
 					is_country_type = fallen_empire
 					NOT = { any_owned_ship = { is_ship_size = colossus } }
 				}
-				random_list = { 10 = { capital_scope = { CmtEffectCreateSleeperColossus = yes } } 90 = {} }
+				random = { chance = 10 capital_scope = { CmtEffectCreateSleeperColossus = yes } }
 			}
 		}
 	}
@@ -3695,7 +3695,7 @@ country_event = {
 					is_country_type = fallen_empire
 					NOT = { any_owned_ship = { is_ship_size = colossus } }
 				}
-				random_list = { 10 = { capital_scope = { CmtEffectCreateSleeperColossus = yes } } 20 = {} }
+				random = { chance = 33 capital_scope = { CmtEffectCreateSleeperColossus = yes } }
 			}
 		}
 	}
@@ -3708,7 +3708,7 @@ country_event = {
 					is_country_type = fallen_empire
 					NOT = { any_owned_ship = { is_ship_size = colossus } }
 				}
-				random_list = { 20 = { capital_scope = { CmtEffectCreateSleeperColossus = yes } } 10 = {} }
+				random = { chance = 67 capital_scope = { CmtEffectCreateSleeperColossus = yes } }
 			}
 		}
 	}
@@ -3919,11 +3919,11 @@ country_event = {
 				capital_scope = {
 					CmtEffectCreateSleeperStandard = yes
 					CmtEffectCreateSleeperStandard = yes
-					random_list = { 10 = { CmtEffectCreateSleeperStandard = yes } 20 = {} }
-					random_list = { 10 = { CmtEffectCreateSleeperTitan = yes } 30 = {} }
+					random = { chance = 33 CmtEffectCreateSleeperStandard = yes }
+					random = { chance = 25 CmtEffectCreateSleeperTitan = yes }
 					if = {
 						limit = { host_has_dlc = "Apocalypse" }
-						random_list = { 10 = { CmtEffectCreateSleeperColossus = yes } 90 = {} }
+						random = { chance = 10 CmtEffectCreateSleeperColossus = yes }
 					}
 				}
 			}

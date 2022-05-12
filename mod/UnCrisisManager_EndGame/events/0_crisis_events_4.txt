@@ -58,7 +58,7 @@ country_event = {
 			limit = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTermForcedEoc value = -1 } } } }
 			if = {
 				limit = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTermForcedEoc value > 0 } } } }
-				add_modifier = { modifier = CmtModifierCovenantFEoC_23yr days = 8280 }		## 23 years
+				add_modifier = { modifier = CmtModifierCovenantFEoC_23yr years = 23 }		## 23 years
 			} else_if = {
 				limit = { has_global_flag = CmtFlagForcedEocTermInDays }
 				if = {
@@ -72,18 +72,18 @@ country_event = {
 				}
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTermForcedEoc value < 9 } } }
-				add_modifier = { modifier = CmtModifierCovenantFEoC_04yr days = 1440 }		## 4 years
+				add_modifier = { modifier = CmtModifierCovenantFEoC_04yr years = 4 }		## 4 years
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTermForcedEoc value < 15 } } }
-				add_modifier = { modifier = CmtModifierCovenantFEoC_13yr days = 4680 }		## 13 years
+				add_modifier = { modifier = CmtModifierCovenantFEoC_13yr years = 13 }		## 13 years
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTermForcedEoc value < 20 } } }
-				add_modifier = { modifier = CmtModifierCovenantFEoC_17yr days = 6120 }		## 17 years
+				add_modifier = { modifier = CmtModifierCovenantFEoC_17yr years = 17 }		## 17 years
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTermForcedEoc value < 35 } } }
-				add_modifier = { modifier = CmtModifierCovenantFEoC_23yr days = 8280 }		## 23 years
+				add_modifier = { modifier = CmtModifierCovenantFEoC_23yr years = 23 }		## 23 years
 			} else = {
-				add_modifier = { modifier = covenant_end_of_the_cycle days = 18000 }		## 50 years
+				add_modifier = { modifier = covenant_end_of_the_cycle years = 50 }		## 50 years
 			}
 		}
 	}

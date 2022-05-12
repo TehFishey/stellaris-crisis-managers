@@ -735,7 +735,7 @@ planet_event = {
 		owner = {
 			if = {
 				limit = { NOT = { has_modifier = unity_reduction_crisis_2204 } }
-				add_modifier = { modifier = unity_reduction_crisis_2204 days = 1800 }
+				add_modifier = { modifier = unity_reduction_crisis_2204 years = 5 }
 			}
 		}
 	}
@@ -802,7 +802,7 @@ planet_event = {
 
 	immediate = {
 		owner = { set_country_flag = synth_fear }
-		add_modifier = { modifier = synth_planet_paranoia days = 7200 }
+		add_modifier = { modifier = synth_planet_paranoia years = 20 }
 	}
 
 	option = {
@@ -1236,7 +1236,7 @@ country_event = {
 					num_districts = { type = district_generator value > 3 }
 					NOT = { has_modifier = contingency_sabotage }
 				}
-				add_modifier = { modifier = contingency_sabotage days = 1800 }
+				add_modifier = { modifier = contingency_sabotage years = 5 }
 			}
 		}
 	}

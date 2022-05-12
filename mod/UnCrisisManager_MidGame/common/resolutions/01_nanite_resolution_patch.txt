@@ -24,9 +24,7 @@ resolution_galactic_focus_crisis_nanites = {
 				days = @resolution_flag_timer
 			}
 			add_modifier = {
-				modifier = resolution_passed_diplomatic_weight
-				days = 2200
-			}
+				modifier = resolution_passed_diplomatic_weight years = 6 }
 		}
 	}
 	fail_effects = {
@@ -36,9 +34,7 @@ resolution_galactic_focus_crisis_nanites = {
 				days = @resolution_flag_timer
 			}
 			add_modifier = {
-				modifier = resolution_failed_diplomatic_weight
-				days = 2200
-			}
+				modifier = resolution_failed_diplomatic_weight years = 6 }
 		}
 	}
 	potential = {

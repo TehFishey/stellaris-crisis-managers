@@ -103,8 +103,8 @@ CmtEffectCreateAdmiralty_KhanStarterPack = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
 			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
 			CmtEffectCreateFleet_KhanArmy = yes
-			random_list = { 300 = { CmtEffectCreateFleet_KhanStandard = yes } 100 = { } }
-			random_list = { 300 = { CmtEffectCreateFleet_KhanConstructor = yes } 100 = { } }
+			random = { chance = 75 CmtEffectCreateFleet_KhanStandard = yes }
+			random = { chance = 75 CmtEffectCreateFleet_KhanConstructor = yes }
 		}
 	}
 }
@@ -856,10 +856,7 @@ CmtEffectCreateAdmiralty_GraygooAttackerB = {
 			while = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
-				random_list = {
-					30 = { CmtEffectCreateFleet_GraygooAttacker = { AMOUNT = $AMOUNT|1$ } }
-					10 = { }
-				}
+				random = { chance = 75 CmtEffectCreateFleet_GraygooAttacker = { AMOUNT = $AMOUNT|1$ } }
 			}
 		}
 	}

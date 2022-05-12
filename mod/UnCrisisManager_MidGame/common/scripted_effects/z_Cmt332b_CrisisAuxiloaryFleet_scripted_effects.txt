@@ -102,7 +102,7 @@ CmtEffectCreateFleet_KhanConstructor = {
 	while = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
 		event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
-		random_list = { 100 = { CmtEffectCreateShip_KhanConstructor = yes } 300 = { } }
+		random = { chance = 25 CmtEffectCreateShip_KhanConstructor = yes }
 	}
 }
 
