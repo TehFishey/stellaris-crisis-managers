@@ -185,9 +185,7 @@ CmtEffectSelectAncientRival = {
 ### Scope: this = attacker country, prev = defender country
 CmtEffectDeclareWarInHeaven = {
 	set_timed_global_flag = {
-		flag = war_in_heaven_recently_started
-		days = 5400
-	}
+		flag = war_in_heaven_recently_started years = 15 }
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarHeavenExhaustion value = 1 } } }
 		declare_war = {

@@ -55,31 +55,16 @@ CmtTriggerIsStarbase = {		## Scope: this = ship
 ############################
 ###- Check Country Type -###
 ############################
-
+# TODO DEPRECATED
 ### Standard
 CmtTriggerIsPlayableEmpire = {
-	OR = {		## Written in also Cmt40 and Cmt50.
-		# is_country_type = default
-		# is_zofe_country = yes # is_zofe_compatible
-		merg_is_default_empire = yes
-		is_ai = no
-	}
+	merg_is_default_empire = yes
+	# OR = {		## Written in also Cmt40 and Cmt50.
+	# 	is_country_type = default
+	# 	is_zofe_country = yes # is_zofe_compatible
+	# }
 }
-
-CmtTriggerIsEmpire = {		## Written in also Cmt50
-	OR = {
-		# CmtTriggerIsPlayableEmpire = yes
-		# CmtTriggerIsFallenEmpire = yes
-		# is_country_type = default
-		# is_zofe_country = yes # is_zofe_compatible
-		merg_is_default_empire = yes
-		is_ai = no
-		# is_country_type = fallen_empire
-		# is_country_type = awakened_fallen_empire
-		CmtTriggerIsFallenEmpire = yes
-	}
-}
-
+# TODO DEPRECATED
 CmtTriggerIsFallenEmpire = {
 	OR = {
 		is_zofe_fe = yes # is_country_type = fallen_empire
@@ -87,10 +72,26 @@ CmtTriggerIsFallenEmpire = {
 	}
 }
 
+# TODO DEPRECATED (merg_is_standard_empire)
+CmtTriggerIsEmpire = {		## Written in also Cmt50
+	OR = {
+		# CmtTriggerIsPlayableEmpire = yes
+		# CmtTriggerIsFallenEmpire = yes
+		# is_country_type = default
+		# is_zofe_country = yes # is_zofe_compatible
+		merg_is_default_empire = yes
+		# is_ai = no
+		# is_country_type = fallen_empire
+		# is_country_type = awakened_fallen_empire
+		CmtTriggerIsFallenEmpire = yes
+	}
+}
+
 ### Standard For ZoFE - Legacy (replaced by own trigger)
 # CmtTriggerIsLostEmpire = { always = no }
 # CmtTrigggerIsAscendedEmpire = { always = no }
 # CmtTriggerIsZofeEmpireA = { always = no }
+
 is_zofe_fe = {
 	is_country_type = fallen_empire
 	# always = no
@@ -109,7 +110,7 @@ is_zofe_ae = {
 }
 
 is_zofe_country = {
-	always = no
+	is_ai = no
 	# OR = {
 	# 	is_country_type = ascended_empire
 	# 	is_country_type = lost_empire
@@ -187,10 +188,49 @@ CmtTriggerIsExpCrisisCountry = {
 
 ### Sleeper
 CmtTriggerIsOrganicSleeper = {		## Change to CmtTriggerSleeperPotentialAwakening
-	is_country_type = fallen_empire
-	NOR = {
-		has_ethic = ethic_gestalt_consciousness
-		has_country_flag = FEE_spiritualist_ascended
+	merg_is_fallen_empire = yes # is_country_type = fallen_empire
+	OR = {
+		NOT = {
+			has_global_flag = gigastructures_enabled
+		}
+		NOR = {
+			has_ai_personality = fallen_empire_gamers
+			has_ai_personality = fallen_empire_pouchkinn
+		}
+	}
+	OR = {
+		has_country_flag = holy_world_killed
+		NOR = {
+			is_gestalt = yes
+			has_country_flag = FEE_spiritualist_ascended
+		}
+		# AND = {
+		# 	NOR = {
+		# 		has_global_flag = sleepers_awake_happened
+		# 		has_global_flag = guardians_of_the_galaxy_happened
+		# 	}
+		# 	end_game_years_passed >= 0
+		# 	NOR = {
+		# 		has_ethic = ethic_gestalt_consciousness
+		# 		has_country_flag = FEE_spiritualist_ascended
+		# 	}
+		# 	is_at_war = no
+		# 	fleet_power > 60000
+		# 	any_playable_country = {
+		# 		OR = {
+		# 			fleet_power > 70000
+		# 			AND = {
+		# 				has_federation = yes
+		# 				federation = {
+		# 					fleet_power > 90000
+		# 				}
+		# 			}
+		# 			any_owned_planet = {
+		# 				has_planet_flag = fallen_empire_world
+		# 			}
+		# 		}
+		# 	}
+		# }
 	}
 }
 

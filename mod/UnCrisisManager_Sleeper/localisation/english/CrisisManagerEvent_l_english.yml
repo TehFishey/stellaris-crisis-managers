@@ -17,7 +17,7 @@
  #	cf. utopia.3310.name, covenant.cycle.desc, covenant.cycle.option
  #  utopia.3320.name, utopia.3320.desc.a, utopia.3320.desc.b, utopia.3320.opt.a
 
- NAME_Absorbed_XXX:0 "Absorbed [Root.GetSpeciesNamePlural]"
+ NAME_Absorbed_XXX:0 "$NAME_Absorbed_Species$"
 
  CrisisManagerControl.4101.name:0 "$utopia.3310.name$"  ## memo: utopia.3310.name = Covenant Formed
  CrisisManagerControl.4101.desc.y:0 "What..., what's happening!? Unidentified power have forced us to form a Covenant with the §R$CmtNameEoc$§!. As we forced its bargain, two words and only two words were spoken: §R''[CmtGlobalVar.CmtVarTermForcedEoc] YEARS''§!. Then, silence, as we were left to contemplate the future consequences of what does the uncanny Covenant mean."

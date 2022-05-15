@@ -18,7 +18,8 @@ hfe_trigger_is_human_fallen = {
 }
 # ZOFE
 is_zofe_country = {
-	always = no
+	is_ai = no
+	# always = no
 	# OR = {
 	# 	is_country_type = ascended_empire
 	# 	is_country_type = lost_empire

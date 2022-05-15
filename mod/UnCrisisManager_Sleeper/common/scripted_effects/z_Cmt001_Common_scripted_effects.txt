@@ -187,7 +187,7 @@ CmtEffectDetectFeeCompatPatch = {}
 CmtEffectDestroySystemStarbase = {
 	if = {
 		limit = { exists = starbase }
-		starbase = { fleet = { destroy_fleet = this } }
+		starbase = { destroy_fleet = fleet }
 	}
 }
 

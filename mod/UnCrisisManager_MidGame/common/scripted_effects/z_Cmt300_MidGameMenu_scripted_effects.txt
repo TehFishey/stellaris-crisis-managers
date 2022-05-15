@@ -30,7 +30,7 @@ CmtEffectTriggerMarauderManually = {
 				count > 1
 			}
 			exists = prev
-			prev = { CmtTriggerIsPlayableEmpire = yes }
+			prev = { merg_is_default_empire = yes }
 		}
 		random_owned_ship = {
 			limit = { is_ship_size = marauder_void_dwelling }

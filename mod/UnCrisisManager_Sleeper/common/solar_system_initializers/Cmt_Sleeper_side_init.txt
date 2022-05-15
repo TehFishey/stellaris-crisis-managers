@@ -454,7 +454,7 @@ sleeper_deus_init_03 = {
 					limit = {
 						is_civilian = no
 						exists = owner
-						owner = { CmtTriggerIsPlayableEmpire = yes }
+						owner = { merg_is_default_empire = yes }
 					}
 				}
 			}

@@ -21,7 +21,7 @@ CmtEffectExitMenu = {
 ### For ''We are Crisis''
 CmtEffectSaveOriginalCountry = {
 	if = {
-		limit = { CmtTriggerIsPlayableEmpire = yes }
+		limit = { merg_is_default_empire = yes }
 		if = {
 			limit = { exists = event_target:OriginalCountry }
 			clear_global_event_target = OriginalCountry

@@ -2012,7 +2012,7 @@ country_event = {
 					if = {
 						limit = {
 							exists = owner
-							owner = { CmtTriggerIsPlayableEmpire = yes }
+							owner = { merg_is_default_empire = yes }
 						}
 						owner = { save_event_target_as = CmtTempOwner }
 					} else_if = {
@@ -2690,7 +2690,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7200e.tooltip
 		trigger = {
 			has_global_flag = CmtFlagSleeperEdition
-			any_country = { CmtTriggerIsFallenEmpire = yes }
+			any_country = { merg_is_fallen_empire = yes }
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7205 } }
 	}

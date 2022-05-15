@@ -113,51 +113,35 @@ country_event = {
 
 	option = {
 		name = planet_destruction.610.spiri
-		trigger = {
-			is_ethics_aligned = { ARG1 = spiritualist }
-		}
+		trigger = { is_spiritualist = yes }
 	}
 	option = {
 		name = planet_destruction.610.mater
-		trigger = {
-			is_ethics_aligned = { ARG1 = materialist }
-		}
+		trigger = { is_materialist = yes }
 	}
 	option = {
 		name = planet_destruction.610.milit
-		trigger = {
-			is_ethics_aligned = { ARG1 = militarist }
-		}
+		trigger = { is_militarist = yes }
 	}
 	option = {
 		name = planet_destruction.610.pacif
-		trigger = {
-			is_ethics_aligned = { ARG1 = pacifist }
-		}
+		trigger = { is_pacifist = yes }
 	}
 	option = {
 		name = planet_destruction.610.autho
-		trigger = {
-			is_ethics_aligned = { ARG1 = authoritarian }
-		}
+		trigger = { is_authoritarian = yes }
 	}
 	option = {
 		name = planet_destruction.610.egali
-		trigger = {
-			is_ethics_aligned = { ARG1 = egalitarian }
-		}
+		trigger = { is_egalitarian = yes }
 	}
 	option = {
 		name = planet_destruction.610.phile
-		trigger = {
-			is_ethics_aligned = { ARG1 = xenophile }
-		}
+		trigger = { is_xenophile = yes }
 	}
 	option = {
 		name = planet_destruction.610.phobe
-		trigger = {
-			is_ethics_aligned = { ARG1 = xenophobe }
-		}
+		trigger = { is_xenophobe = yes }
 	}
 	option = {
 		name = planet_destruction.610.gesta
@@ -197,7 +181,11 @@ country_event = {
 			root = {
 				declare_war = {
 					target = event_target:FE_outrager
-					name = "NAME_Holy_World_War"
+					name = {
+						key = "NAME_Holy_World_War"
+						variable_string = "This.MainAttacker.GetAdj"
+					}
+					# "[This.MainAttacker.GetAdj] Holy World War"
 					attacker_war_goal = wg_subjugation
 				}
 			}
