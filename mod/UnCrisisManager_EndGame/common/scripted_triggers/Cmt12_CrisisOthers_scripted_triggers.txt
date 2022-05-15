@@ -24,14 +24,14 @@ CmtTriggerPrethoryn1stTarget = {
 		# Owned but not by fallen mpire.
 		AND = {
 			exists = space_owner
-			space_owner = { CmtTriggerIsFallenEmpire = no }
+			space_owner = { is_fallen_empire = no }
 		}
 	}
 	# No neighboring fallen empires
 	NOT = {
 		any_neighbor_system = {
 			exists = space_owner
-			space_owner = { CmtTriggerIsFallenEmpire = yes }
+			space_owner = { is_fallen_empire = yes }
 		}
 	}
 	# Not Captial of Other Crisis Country.
@@ -331,7 +331,7 @@ CmtTriggerTerrorMachineGlobal = {
 CmtTriggerTerrorMachineCountry = {
 	has_country_flag = post_arrival_events_machine
 	has_authority = auth_machine_intelligence
-	CmtTriggerIsPlayableEmpire = yes
+	merg_is_default_empire = yes
 	OR = {
 		has_notification_modifier = ghost_signal_4_machine
 		has_notification_modifier = ghost_signal_5_machine
@@ -344,7 +344,7 @@ CmtTriggerGhostTargetPop = {
 	has_trait = trait_mechanical
 	NAND = {
 		owner = { has_country_flag = synthetic_empire }		## NOT Synthetically Ascended Empires
-		is_same_species = owner.species
+		is_same_species = owner_species
 	}
 }
 
@@ -420,7 +420,7 @@ CmtTriggerAllowedManualForcedEoc = {
 }
 
 CmtTriggerForcedEocTargetList = {
-	CmtTriggerIsPlayableEmpire = yes
+	merg_is_default_empire = yes
 	OR = {
 		AND = {
 			event_target:CmtGlobalVar = {

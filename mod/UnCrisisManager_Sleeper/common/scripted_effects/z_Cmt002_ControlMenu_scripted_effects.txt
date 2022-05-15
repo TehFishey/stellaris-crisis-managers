@@ -177,112 +177,112 @@ CmtEffectClearTargetLgates = {
 	}
 }
 
-CmtEffectManualTargetPlayerCrisis = {
-	root = { set_country_flag = CmtFlagPlayerCrisisListed }
-	random_country = {
-		limit = {
-			CmtTriggerPlayerCrisisAggressorCandidateMenu = yes
-			NOT = { has_country_flag = CmtFlagPlayerCrisisListed }
-		}
-		save_global_event_target_as = CmtTargetManualPlayerCrisis1
-		set_country_flag = CmtFlagPlayerCrisisListed
-	}
-	random_country = {
-		limit = {
-			CmtTriggerPlayerCrisisAggressorCandidateMenu = yes
-			NOT = { has_country_flag = CmtFlagPlayerCrisisListed }
-		}
-		save_global_event_target_as = CmtTargetManualPlayerCrisis2
-		set_country_flag = CmtFlagPlayerCrisisListed
-	}
-	random_country = {
-		limit = {
-			CmtTriggerPlayerCrisisAggressorCandidateMenu = yes
-			NOT = { has_country_flag = CmtFlagPlayerCrisisListed }
-		}
-		save_global_event_target_as = CmtTargetManualPlayerCrisis3
-		set_country_flag = CmtFlagPlayerCrisisListed
-	}
-	random_country = {
-		limit = {
-			CmtTriggerPlayerCrisisAggressorCandidateMenu = yes
-			NOT = { has_country_flag = CmtFlagPlayerCrisisListed }
-		}
-		save_global_event_target_as = CmtTargetManualPlayerCrisis4
-		set_country_flag = CmtFlagPlayerCrisisListed
-	}
-	random_country = {
-		limit = {
-			CmtTriggerPlayerCrisisAggressorCandidateMenu = yes
-			NOT = { has_country_flag = CmtFlagPlayerCrisisListed }
-		}
-		save_global_event_target_as = CmtTargetManualPlayerCrisis5
-		set_country_flag = CmtFlagPlayerCrisisListed
-	}
-	random_country = {
-		limit = {
-			CmtTriggerPlayerCrisisAggressorCandidateMenu = yes
-			NOT = { has_country_flag = CmtFlagPlayerCrisisListed }
-		}
-		save_global_event_target_as = CmtTargetManualPlayerCrisis6
-		set_country_flag = CmtFlagPlayerCrisisListed
-	}
-	random_country = {
-		limit = {
-			CmtTriggerPlayerCrisisAggressorCandidateMenu = yes
-			NOT = { has_country_flag = CmtFlagPlayerCrisisListed }
-		}
-		save_global_event_target_as = CmtTargetManualPlayerCrisis7
-		set_country_flag = CmtFlagPlayerCrisisListed
-	}
-	random_country = {
-		limit = {
-			CmtTriggerPlayerCrisisAggressorCandidateMenu = yes
-			NOT = { has_country_flag = CmtFlagPlayerCrisisListed }
-		}
-		save_global_event_target_as = CmtTargetManualPlayerCrisis8
-		set_country_flag = CmtFlagPlayerCrisisListed
-	}
-}
+# CmtEffectManualTargetPlayerCrisis = {
+# 	root = { set_country_flag = CmtFlagPlayerCrisisListed }
+# 	random_country = {
+# 		limit = {
+# 			CmtTriggerPlayerCrisisAggressorCandidateMenu = yes
+# 			NOT = { has_country_flag = CmtFlagPlayerCrisisListed }
+# 		}
+# 		save_global_event_target_as = CmtTargetManualPlayerCrisis1
+# 		set_country_flag = CmtFlagPlayerCrisisListed
+# 	}
+# 	random_country = {
+# 		limit = {
+# 			CmtTriggerPlayerCrisisAggressorCandidateMenu = yes
+# 			NOT = { has_country_flag = CmtFlagPlayerCrisisListed }
+# 		}
+# 		save_global_event_target_as = CmtTargetManualPlayerCrisis2
+# 		set_country_flag = CmtFlagPlayerCrisisListed
+# 	}
+# 	random_country = {
+# 		limit = {
+# 			CmtTriggerPlayerCrisisAggressorCandidateMenu = yes
+# 			NOT = { has_country_flag = CmtFlagPlayerCrisisListed }
+# 		}
+# 		save_global_event_target_as = CmtTargetManualPlayerCrisis3
+# 		set_country_flag = CmtFlagPlayerCrisisListed
+# 	}
+# 	random_country = {
+# 		limit = {
+# 			CmtTriggerPlayerCrisisAggressorCandidateMenu = yes
+# 			NOT = { has_country_flag = CmtFlagPlayerCrisisListed }
+# 		}
+# 		save_global_event_target_as = CmtTargetManualPlayerCrisis4
+# 		set_country_flag = CmtFlagPlayerCrisisListed
+# 	}
+# 	random_country = {
+# 		limit = {
+# 			CmtTriggerPlayerCrisisAggressorCandidateMenu = yes
+# 			NOT = { has_country_flag = CmtFlagPlayerCrisisListed }
+# 		}
+# 		save_global_event_target_as = CmtTargetManualPlayerCrisis5
+# 		set_country_flag = CmtFlagPlayerCrisisListed
+# 	}
+# 	random_country = {
+# 		limit = {
+# 			CmtTriggerPlayerCrisisAggressorCandidateMenu = yes
+# 			NOT = { has_country_flag = CmtFlagPlayerCrisisListed }
+# 		}
+# 		save_global_event_target_as = CmtTargetManualPlayerCrisis6
+# 		set_country_flag = CmtFlagPlayerCrisisListed
+# 	}
+# 	random_country = {
+# 		limit = {
+# 			CmtTriggerPlayerCrisisAggressorCandidateMenu = yes
+# 			NOT = { has_country_flag = CmtFlagPlayerCrisisListed }
+# 		}
+# 		save_global_event_target_as = CmtTargetManualPlayerCrisis7
+# 		set_country_flag = CmtFlagPlayerCrisisListed
+# 	}
+# 	random_country = {
+# 		limit = {
+# 			CmtTriggerPlayerCrisisAggressorCandidateMenu = yes
+# 			NOT = { has_country_flag = CmtFlagPlayerCrisisListed }
+# 		}
+# 		save_global_event_target_as = CmtTargetManualPlayerCrisis8
+# 		set_country_flag = CmtFlagPlayerCrisisListed
+# 	}
+# }
 
-CmtEffectClearTargetPlayerCrisis = {
-	every_country = {
-		limit = { has_country_flag = CmtFlagPlayerCrisisListed }
-		remove_country_flag = CmtFlagPlayerCrisisListed
-	}
-	if = {
-		limit = { exists = event_target:CmtTargetManualPlayerCrisis1 }
-		clear_global_event_target = CmtTargetManualPlayerCrisis1
-	}
-	if = {
-		limit = { exists = event_target:CmtTargetManualPlayerCrisis2 }
-		clear_global_event_target = CmtTargetManualPlayerCrisis2
-	}
-	if = {
-		limit = { exists = event_target:CmtTargetManualPlayerCrisis3 }
-		clear_global_event_target = CmtTargetManualPlayerCrisis3
-	}
-	if = {
-		limit = { exists = event_target:CmtTargetManualPlayerCrisis4 }
-		clear_global_event_target = CmtTargetManualPlayerCrisis4
-	}
-	if = {
-		limit = { exists = event_target:CmtTargetManualPlayerCrisis5 }
-		clear_global_event_target = CmtTargetManualPlayerCrisis5
-	}
-	if = {
-		limit = { exists = event_target:CmtTargetManualPlayerCrisis6 }
-		clear_global_event_target = CmtTargetManualPlayerCrisis6
-	}
-	if = {
-		limit = { exists = event_target:CmtTargetManualPlayerCrisis7 }
-		clear_global_event_target = CmtTargetManualPlayerCrisis7
-	}
-	if = {
-		limit = { exists = event_target:CmtTargetManualPlayerCrisis8 }
-		clear_global_event_target = CmtTargetManualPlayerCrisis8
-	}
-}
+# CmtEffectClearTargetPlayerCrisis = {
+# 	every_country = {
+# 		limit = { has_country_flag = CmtFlagPlayerCrisisListed }
+# 		remove_country_flag = CmtFlagPlayerCrisisListed
+# 	}
+# 	if = {
+# 		limit = { exists = event_target:CmtTargetManualPlayerCrisis1 }
+# 		clear_global_event_target = CmtTargetManualPlayerCrisis1
+# 	}
+# 	if = {
+# 		limit = { exists = event_target:CmtTargetManualPlayerCrisis2 }
+# 		clear_global_event_target = CmtTargetManualPlayerCrisis2
+# 	}
+# 	if = {
+# 		limit = { exists = event_target:CmtTargetManualPlayerCrisis3 }
+# 		clear_global_event_target = CmtTargetManualPlayerCrisis3
+# 	}
+# 	if = {
+# 		limit = { exists = event_target:CmtTargetManualPlayerCrisis4 }
+# 		clear_global_event_target = CmtTargetManualPlayerCrisis4
+# 	}
+# 	if = {
+# 		limit = { exists = event_target:CmtTargetManualPlayerCrisis5 }
+# 		clear_global_event_target = CmtTargetManualPlayerCrisis5
+# 	}
+# 	if = {
+# 		limit = { exists = event_target:CmtTargetManualPlayerCrisis6 }
+# 		clear_global_event_target = CmtTargetManualPlayerCrisis6
+# 	}
+# 	if = {
+# 		limit = { exists = event_target:CmtTargetManualPlayerCrisis7 }
+# 		clear_global_event_target = CmtTargetManualPlayerCrisis7
+# 	}
+# 	if = {
+# 		limit = { exists = event_target:CmtTargetManualPlayerCrisis8 }
+# 		clear_global_event_target = CmtTargetManualPlayerCrisis8
+# 	}
+# }
 
 # CmtEffectManualTargetUprising = {
 #	if = {
@@ -1415,103 +1415,103 @@ CmtEffect1027TryCall4970 = {
 }
 
 ### Uprising
-CmtEffect1028TryCall5111 = {
-	if = {
-		limit = { CmtTriggerUprisingConfig = yes }
-		if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.5111 } } }
-			country_event = { id = CrisisManagerMenu.5111 }
-		}
-	} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1028 } } }
-		country_event = { id = CrisisManagerMenu.1028 }
-	}
-}
-CmtEffect1028TryCall5120 = {
-	if = {
-		limit = { CmtTriggerUprisingConfig = yes }
-		if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.5120 } } }
-			country_event = { id = CrisisManagerMenu.5120 }
-		}
-	} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1028 } } }
-		country_event = { id = CrisisManagerMenu.1028 }
-	}
-}
-CmtEffect1028TryCall5131 = {
-	if = {
-		limit = { CmtTriggerUprisingConfig = yes }
-		if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.5131 } } }
-			country_event = { id = CrisisManagerMenu.5131 }
-		}
-	} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1028 } } }
-		country_event = { id = CrisisManagerMenu.1028 }
-	}
-}
-CmtEffect1028TryCall5133 = {
-	if = {
-		limit = { CmtTriggerUprisingConfig = yes }
-		if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.5133 } } }
-			country_event = { id = CrisisManagerMenu.5133 }
-		}
-	} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1028 } } }
-		country_event = { id = CrisisManagerMenu.1028 }
-	}
-}
-CmtEffect1028TryCall5134 = {
-	if = {
-		limit = { CmtTriggerUprisingConfig = yes }
-		if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.5134 } } }
-			country_event = { id = CrisisManagerMenu.5134 }
-		}
-	} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1028 } } }
-		country_event = { id = CrisisManagerMenu.1028 }
-	}
-}
-CmtEffect1028TryCall5112 = {
-	if = {
-		limit = { CmtTriggerUprisingConfig = yes }
-		if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.5112 } } }
-			country_event = { id = CrisisManagerMenu.5112 }
-		}
-	} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1028 } } }
-		country_event = { id = CrisisManagerMenu.1028 }
-	}
-}
-CmtEffect1028TryCall5141 = {
-	if = {
-		limit = { CmtTriggerUprisingConfig = yes }
-		if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.5141 } } }
-			country_event = { id = CrisisManagerMenu.5141 }
-		}
-	} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1028 } } }
-		country_event = { id = CrisisManagerMenu.1028 }
-	}
-}
-CmtEffect1028TryCall5152 = {
-	if = {
-		limit = { CmtTriggerUprisingConfig = yes }
-		if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.5152 } } }
-			country_event = { id = CrisisManagerMenu.5152 }
-		}
-	} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1028 } } }
-		country_event = { id = CrisisManagerMenu.1028 }
-	}
-}
-CmtEffect1028TryCall5151 = {
-	if = {
-		limit = { CmtTriggerUprisingConfig = yes }
-		if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.5151 } } }
-			country_event = { id = CrisisManagerMenu.5151 }
-		}
-	} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1028 } } }
-		country_event = { id = CrisisManagerMenu.1028 }
-	}
-}
-CmtEffect1028TryCall5143 = {
-	if = {
-		limit = { CmtTriggerUprisingConfig = yes }
-		if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.5143 } } }
-			country_event = { id = CrisisManagerMenu.5143 }
-		}
-	} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1028 } } }
-		country_event = { id = CrisisManagerMenu.1028 }
-	}
-}
+# CmtEffect1028TryCall5111 = {
+# 	if = {
+# 		limit = { CmtTriggerUprisingConfig = yes }
+# 		if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.5111 } } }
+# 			country_event = { id = CrisisManagerMenu.5111 }
+# 		}
+# 	} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1028 } } }
+# 		country_event = { id = CrisisManagerMenu.1028 }
+# 	}
+# }
+# CmtEffect1028TryCall5120 = {
+# 	if = {
+# 		limit = { CmtTriggerUprisingConfig = yes }
+# 		if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.5120 } } }
+# 			country_event = { id = CrisisManagerMenu.5120 }
+# 		}
+# 	} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1028 } } }
+# 		country_event = { id = CrisisManagerMenu.1028 }
+# 	}
+# }
+# CmtEffect1028TryCall5131 = {
+# 	if = {
+# 		limit = { CmtTriggerUprisingConfig = yes }
+# 		if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.5131 } } }
+# 			country_event = { id = CrisisManagerMenu.5131 }
+# 		}
+# 	} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1028 } } }
+# 		country_event = { id = CrisisManagerMenu.1028 }
+# 	}
+# }
+# CmtEffect1028TryCall5133 = {
+# 	if = {
+# 		limit = { CmtTriggerUprisingConfig = yes }
+# 		if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.5133 } } }
+# 			country_event = { id = CrisisManagerMenu.5133 }
+# 		}
+# 	} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1028 } } }
+# 		country_event = { id = CrisisManagerMenu.1028 }
+# 	}
+# }
+# CmtEffect1028TryCall5134 = {
+# 	if = {
+# 		limit = { CmtTriggerUprisingConfig = yes }
+# 		if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.5134 } } }
+# 			country_event = { id = CrisisManagerMenu.5134 }
+# 		}
+# 	} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1028 } } }
+# 		country_event = { id = CrisisManagerMenu.1028 }
+# 	}
+# }
+# CmtEffect1028TryCall5112 = {
+# 	if = {
+# 		limit = { CmtTriggerUprisingConfig = yes }
+# 		if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.5112 } } }
+# 			country_event = { id = CrisisManagerMenu.5112 }
+# 		}
+# 	} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1028 } } }
+# 		country_event = { id = CrisisManagerMenu.1028 }
+# 	}
+# }
+# CmtEffect1028TryCall5141 = {
+# 	if = {
+# 		limit = { CmtTriggerUprisingConfig = yes }
+# 		if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.5141 } } }
+# 			country_event = { id = CrisisManagerMenu.5141 }
+# 		}
+# 	} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1028 } } }
+# 		country_event = { id = CrisisManagerMenu.1028 }
+# 	}
+# }
+# CmtEffect1028TryCall5152 = {
+# 	if = {
+# 		limit = { CmtTriggerUprisingConfig = yes }
+# 		if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.5152 } } }
+# 			country_event = { id = CrisisManagerMenu.5152 }
+# 		}
+# 	} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1028 } } }
+# 		country_event = { id = CrisisManagerMenu.1028 }
+# 	}
+# }
+# CmtEffect1028TryCall5151 = {
+# 	if = {
+# 		limit = { CmtTriggerUprisingConfig = yes }
+# 		if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.5151 } } }
+# 			country_event = { id = CrisisManagerMenu.5151 }
+# 		}
+# 	} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1028 } } }
+# 		country_event = { id = CrisisManagerMenu.1028 }
+# 	}
+# }
+# CmtEffect1028TryCall5143 = {
+# 	if = {
+# 		limit = { CmtTriggerUprisingConfig = yes }
+# 		if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.5143 } } }
+# 			country_event = { id = CrisisManagerMenu.5143 }
+# 		}
+# 	} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1028 } } }
+# 		country_event = { id = CrisisManagerMenu.1028 }
+# 	}
+# }

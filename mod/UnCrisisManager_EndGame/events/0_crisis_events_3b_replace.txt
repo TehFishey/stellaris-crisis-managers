@@ -446,7 +446,7 @@ planet_event = {
 			remove_modifier = unity_reduction_crisis_2204
 		}
 		every_country = {
-			limit = { CmtTriggerIsEmpire = yes }
+			limit = { merg_is_standard_empire = yes }
 			country_event = { id = crisis.2038 }
 			every_owned_planet = {
 				limit = { has_modifier = synth_planet_paranoia }

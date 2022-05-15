@@ -74,7 +74,7 @@ country_event = {
 		### Communications
 		every_country = {
 			limit = {
-				CmtTriggerIsEmpire = yes
+				merg_is_standard_empire = yes
 				NOT = { has_communications = root }
 			}
 			establish_communications_no_message = root
@@ -145,7 +145,7 @@ country_event = {
 # In scpipted effect
 #	CmtEffectAwakingAsGuardians = {
 #		set_country_flag = guardians_of_the_galaxy
-#		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy days = 1825 }
+#		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy years = 5 }
 #		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy_2 days = 3650 }
 #	}
 #

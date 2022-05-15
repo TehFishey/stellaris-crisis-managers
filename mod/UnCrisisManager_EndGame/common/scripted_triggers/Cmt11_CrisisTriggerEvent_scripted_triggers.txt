@@ -74,14 +74,14 @@ CmtTriggerNoJumpDrive0 = {
 
 # CmtTriggerPsiJumpDrive = {
 # 	any_playable_country = {
-# 		CmtTriggerIsPlayableEmpire = yes
+# 		merg_is_default_empire = yes
 # 		has_technology = tech_psi_jump_drive_1
 # 	}
 # }
 
 # CmtTriggerRougeScientist = {
 # 	any_playable_country = {
-# 		CmtTriggerIsPlayableEmpire = yes
+# 		merg_is_default_empire = yes
 # 		has_country_flag = completed_rogue_scientist
 # 	}
 # }
@@ -103,7 +103,7 @@ CmtTriggerForbiddenContingency = {
 # CmtTriggerSynthetic_0000 = {
 # 	NOT = {
 # 		any_playable_country = {
-# 			CmtTriggerIsPlayableEmpire = yes
+# 			merg_is_default_empire = yes
 # 			has_technology = tech_synthetic_workers
 # 			any_owned_pop = { has_trait = trait_mechanical }
 # 		}
@@ -112,7 +112,7 @@ CmtTriggerForbiddenContingency = {
 
 # CmtTriggerSynthetic_0250 = {
 # 	any_playable_country = {
-# 		CmtTriggerIsPlayableEmpire = yes
+# 		merg_is_default_empire = yes
 # 		has_technology = tech_synthetic_workers
 # 		pop_percentage = {
 # 			percentage >= 0.25
@@ -123,7 +123,7 @@ CmtTriggerForbiddenContingency = {
 
 # CmtTriggerSynthetic_0500 = {
 # 	any_playable_country = {
-# 		CmtTriggerIsPlayableEmpire = yes
+# 		merg_is_default_empire = yes
 # 		has_technology = tech_synthetic_workers
 # 		pop_percentage = {
 # 			percentage >= 0.50

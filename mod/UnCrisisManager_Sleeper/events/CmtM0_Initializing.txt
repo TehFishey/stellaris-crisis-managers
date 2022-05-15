@@ -222,7 +222,8 @@ country_event = {
 	immediate = {
 		set_global_flag = CmtFlagActivated
 		save_global_event_target_as = CmtGlobalVar
-		CmtEffectHardCoatedSettings = yes
+		# CmtEffectHardCoatedSettings = yes
+		remove_global_flag = CmtFlagDebugMode
 		# country_event = { id = CrisisManagerControl.9011 }	## For only debugging
 		country_event = { id = CrisisManagerMenu.2000 }			## Apply Vanilla Template
 		country_event = { id = CrisisManagerMenu.2001 }			## Auto apply of Template

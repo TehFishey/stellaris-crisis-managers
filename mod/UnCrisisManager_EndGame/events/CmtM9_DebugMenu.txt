@@ -601,6 +601,9 @@ event = {
 	immediate = {
 		if = { limit = { has_global_flag = CmtFlagDebugMode }
 			remove_global_flag = CmtFlagDebugMode
-		} else = { set_global_flag = CmtFlagDebugMode }
+		} else = {
+			set_global_flag = CmtFlagDebugMode
+			set_global_flag = CmtFlagNoSeparator
+		}
 	}
 }

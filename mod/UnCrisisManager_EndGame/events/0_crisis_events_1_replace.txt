@@ -1044,7 +1044,7 @@ country_event = {
 	immediate = {
 		set_country_flag = sentinel_anatomy_files
 		every_country = {
-			limit = { CmtTriggerIsEmpire = yes }
+			limit = { merg_is_standard_empire = yes }
 			country_event = { id = crisis.78 }
 		}
 	}
@@ -1064,7 +1064,7 @@ country_event = {
 	}
 
 	trigger = {
-		CmtTriggerIsPlayableEmpire = yes
+		merg_is_default_empire = yes
 		has_global_flag = sentinels_founded
 		NOT = { has_country_flag = sentinel_donation }
 		check_variable = { which = swarm_fleet_kills value > 6 }
@@ -1305,37 +1305,40 @@ ship_event = {
 	}
 }
 
-### Queen Breeds (Pet Queen)
-fleet_event = {
+### Queen Breeds (Pet Queen) Domesticated_Prethoryn
+# v3.4 fix performance (converted from fleet_event to country_event)
+country_event = {
 	id = crisis.106
 	hide_window = yes
-
 	trigger = {
-		has_fleet_flag = pet_queen
-		any_galaxy_fleet = { is_ship_size = queen_swarm }
-		OR = {
-			AND = {
-				event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Prethoryn value > 2.875 } }
-				num_ships < 180
+		has_global_flag = prethoryn_main_invasion
+		merg_is_default_empire = yes
+		has_country_flag = queen_captured
+		any_owned_fleet = {
+			has_fleet_flag = pet_queen
+			any_owned_ship = { is_ship_size = queen_swarm }
+			OR = {
+				AND = {
+					event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Prethoryn value > 2.875 } }
+					num_ships < 180
+				}
+				AND = {
+					event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Prethoryn value > 2.125 } }
+					num_ships < 90
+				}
+				AND = {
+					event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Prethoryn value > 1.125 } }
+					num_ships < 60
+				}
+				AND = {
+					event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Prethoryn value > 0.375 } }
+					num_ships < 30
+				}
+				num_ships < 15
 			}
-			AND = {
-				event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Prethoryn value > 2.125 } }
-				num_ships < 90
-			}
-			AND = {
-				event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Prethoryn value > 1.125 } }
-				num_ships < 60
-			}
-			AND = {
-				event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Prethoryn value > 0.375 } }
-				num_ships < 30
-			}
-			num_ships < 15
 		}
 	}
-
 	mean_time_to_happen = { months = 2 }
-
 	immediate = {
 		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Prethoryn } }
 		while = {
@@ -1373,7 +1376,7 @@ country_event = {
 	show_sound = event_alien_nature
 
 	trigger = {
-		CmtTriggerIsPlayableEmpire = yes
+		merg_is_default_empire = yes
 		has_crisis = no
 		any_owned_leader = { has_leader_flag = captured_queen }
 		CmtTriggerExistPrethoryn = no
@@ -1440,13 +1443,13 @@ country_event = {
 		set_variable = { which = feral_prethoryn_spawned value = 0 }
 		if = {
 			limit = { check_variable = { which = CmtVarFeralPrethoryn value = 2 } }
-			set_timed_global_flag = { flag = feral_prethoryn_can_spawn days = 3600 }	## 10 yr
+			set_timed_global_flag = { flag = feral_prethoryn_can_spawn years = 10 }	## 10 yr
 		} else_if = {
 			limit = { check_variable = { which = CmtVarFeralPrethoryn value = 4 } }
-			set_timed_global_flag = { flag = feral_prethoryn_can_spawn days = 18000 }	## 50 yr
+			set_timed_global_flag = { flag = feral_prethoryn_can_spawn years = 50 }	## 50 yr
 		} else_if = {
 			limit = { check_variable = { which = CmtVarFeralPrethoryn value != 1 } }
-			set_timed_global_flag = { flag = feral_prethoryn_can_spawn days = 5400 }	## 15 yr
+			set_timed_global_flag = { flag = feral_prethoryn_can_spawn years = 15 }	## 15 yr
 		}
 	}
 }
@@ -1915,7 +1918,7 @@ country_event = {
 		# Crisis reward is handled through Galactic Focus if the community exists.
 		if = { limit = { NOT = { has_global_flag = galactic_community_formed } }
 			every_country = {
-				limit = { CmtTriggerIsEmpire = yes }
+				limit = { merg_is_standard_empire = yes }
 				country_event = { id = crisis.211 }
 			}
 		}

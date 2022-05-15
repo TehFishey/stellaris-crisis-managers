@@ -170,7 +170,7 @@ CmtEffectCreateAdmiral_PetQueen = {
 
 CmtEffectCreateAdmiral_SentinelAttacker = {
 	random_country = {
-		limit = { exists = owner_species CmtTriggerIsPlayableEmpire = yes }
+		limit = { exists = owner_species merg_is_default_empire = yes }
 		owner_species = { save_event_target_as = random_species }
 	}
 	create_leader = {

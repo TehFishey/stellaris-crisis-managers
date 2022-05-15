@@ -15,8 +15,10 @@
 
 ### For Spawning Each Countries, Scope: this = Stellar System
 CmtTriggerSpawnableSystem = {
-	is_capital_system = no
 	NOR = {
+		is_star_class = sc_pulsar
+		is_star_class = sc_binary_1
+		is_capital_system = yes
 		has_star_flag = swarm_invasion_target_1
 		has_star_flag = swarm_invasion_target_2
 		has_star_flag = swarm_invasion_target_3
@@ -34,7 +36,6 @@ CmtTriggerSpawnableSystem = {
 		has_star_flag = lgate
 		has_star_flag = lcluster
 		has_star_flag = sealed_system		## The system with no hyperlanes.
-		# is_capital_system = yes
 	}
 }
 
@@ -55,37 +56,37 @@ CmtTriggerIsStarbase = {		## Scope: this = ship
 ############################
 ###- Check Country Type -###
 ############################
-# TODO DEPRECATED
+# TODO DEPRECATED (merg_is_default_empire)
 ### Standard
-CmtTriggerIsPlayableEmpire = {
-	merg_is_default_empire = yes
-	# OR = {		## Written in also Cmt40 and Cmt50.
-	# 	is_country_type = default
-	# 	is_zofe_country = yes # is_zofe_compatible
-	# }
-}
-# TODO DEPRECATED
-CmtTriggerIsFallenEmpire = {
-	OR = {
-		is_zofe_fe = yes # is_country_type = fallen_empire
-		is_zofe_ae = yes # is_country_type = awakened_fallen_empire
-	}
-}
+# CmtTriggerIsPlayableEmpire = {
+# 	merg_is_default_empire = yes
+# 	# OR = {		## Written in also Cmt40 and Cmt50.
+# 	# 	is_country_type = default
+# 	# 	is_zofe_country = yes # is_zofe_compatible
+# 	# }
+# }
+# TODO DEPRECATED (is_fallen_empire)
+# CmtTriggerIsFallenEmpire = {
+# 	OR = {
+# 		merg_is_fallen_empire # is_zofe_fe = yes # is_country_type = fallen_empire
+# 		merg_is_awakened_fe # is_zofe_ae = yes # is_country_type = awakened_fallen_empire
+# 	}
+# }
 
 # TODO DEPRECATED (merg_is_standard_empire)
-CmtTriggerIsEmpire = {		## Written in also Cmt50
-	OR = {
-		# CmtTriggerIsPlayableEmpire = yes
-		# CmtTriggerIsFallenEmpire = yes
-		# is_country_type = default
-		# is_zofe_country = yes # is_zofe_compatible
-		merg_is_default_empire = yes
-		# is_ai = no
-		# is_country_type = fallen_empire
-		# is_country_type = awakened_fallen_empire
-		CmtTriggerIsFallenEmpire = yes
-	}
-}
+# CmtTriggerIsEmpire = {		## Written in also Cmt50
+# 	OR = {
+# 		# merg_is_default_empire = yes
+# 		# is_fallen_empire = yes
+# 		# is_country_type = default
+# 		# is_zofe_country = yes # is_zofe_compatible
+# 		merg_is_default_empire = yes
+# 		# is_ai = no
+# 		# is_country_type = fallen_empire
+# 		# is_country_type = awakened_fallen_empire
+# 		is_fallen_empire = yes
+# 	}
+# }
 
 ### Standard For ZoFE - Legacy (replaced by own trigger)
 # CmtTriggerIsLostEmpire = { always = no }

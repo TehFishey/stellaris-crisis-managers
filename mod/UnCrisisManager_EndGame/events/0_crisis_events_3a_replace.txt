@@ -44,7 +44,7 @@ country_event = {
 
 		# The Arrival
 		every_country = {
-			limit = { CmtTriggerIsEmpire = yes }
+			limit = { merg_is_standard_empire = yes }
 			country_event = { id = crisis.2022 }
 		}
 
@@ -182,7 +182,7 @@ planet_event = {
 			country_event = { id = crisis.2030 }
 		}
 		every_country = {
-			limit = { CmtTriggerIsEmpire = yes }
+			limit = { merg_is_standard_empire = yes }
 			establish_communications_no_message = event_target:AI_crisis
 		}
 		every_playable_country = {
@@ -1544,7 +1544,7 @@ country_event = {
 	}
 
 	trigger = {
-		CmtTriggerIsPlayableEmpire = yes
+		merg_is_default_empire = yes
 		has_global_flag = cybrex_resurface
 		NOR = {
 			has_global_flag = cybrex_destroyed

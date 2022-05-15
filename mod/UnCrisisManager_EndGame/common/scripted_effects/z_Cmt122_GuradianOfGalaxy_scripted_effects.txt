@@ -111,17 +111,17 @@ CmtEffectAwakingAsGuardians = {
 	set_country_flag = guardians_of_the_galaxy
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTimingAwakingGuardians value = 1 } } }
-		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy days = 3600 }
-		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy_2 days = 10800 }
+		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy years = 10 }
+		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy_2 years = 30 }
 	}
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTimingAwakingGuardians value = 3 } } }
-		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy days = 360 }
-		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy_2 days = 1800 }
+		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy years = 1 }
+		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy_2 years = 5 }
 	}
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTimingAwakingGuardians value = 4 } } }
-		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy_2 days = 30 }
+		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy_2 months = 1 }
 		country_event = { id = fallen_empires_awakening.4 days = 20 random = 10 }
 	}
 	if = {
@@ -134,7 +134,7 @@ CmtEffectAwakingAsGuardians = {
 				}
 			}
 		}
-		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy days = 1825 }
+		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy years = 5 }
 		set_timed_country_flag = { flag = timed_guardians_of_the_galaxy_2 days = 3650 }
 	}
 }

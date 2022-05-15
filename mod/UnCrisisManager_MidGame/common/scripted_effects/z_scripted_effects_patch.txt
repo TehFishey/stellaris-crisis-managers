@@ -53,7 +53,7 @@ end_war_effect = {
 make_moderately_hostile = {
 	every_country = {
 		limit = {
-			CmtTriggerIsPlayableEmpire = no
+			merg_is_default_empire = no
 			OR = {
 				is_country_type = fallen_empire						# is_fallen_empire = yes
 				is_country_type = enclave

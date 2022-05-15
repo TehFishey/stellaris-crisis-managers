@@ -104,7 +104,7 @@ country_event = {
 		}
 		random_relation = {
 			limit = {
-				CmtTriggerIsPlayableEmpire = yes
+				merg_is_default_empire = yes
 				has_policy_flag = refugees_allowed
 				has_communications = root
 			}
@@ -114,7 +114,7 @@ country_event = {
 		# Vengeance if Mercenaries hired
 		if = {
 			limit = {
-				from = { CmtTriggerIsPlayableEmpire = yes }
+				from = { merg_is_default_empire = yes }
 				OR = {
 					has_country_flag = merc_fleet_1_hired
 					has_country_flag = merc_fleet_2_hired
@@ -1060,7 +1060,7 @@ planet_event = {
 	trigger = {
 		planet_devastation > 15
 		from = { is_country_type = marauder_raiders }
-		owner = { CmtTriggerIsEmpire = yes }
+		owner = { merg_is_standard_empire = yes }
 		NOT = { has_planet_flag = planet_raided }
 	}
 	immediate = {
@@ -1097,7 +1097,7 @@ planet_event = {
 						exists = controller
 						NOT = { is_controlled_by = owner }
 						controller = {
-							CmtTriggerIsEmpire = yes
+							merg_is_standard_empire = yes
 							NOT = { has_country_flag = under_marauder_attack }
 							# OR = {
 							# 	has_relation_flag = { who = event_target:marauder_country flag = hired_fleet }
@@ -1134,7 +1134,7 @@ planet_event = {
 					exists = controller
 					NOT = { is_controlled_by = owner }
 					controller = {
-						CmtTriggerIsEmpire = yes
+						merg_is_standard_empire = yes
 						OR = {
 							has_relation_flag = { who = event_target:marauder_country flag = hired_fleet }
 							is_friendly_to = from
@@ -1175,7 +1175,7 @@ planet_event = {
 							exists = controller
 							NOT = { is_controlled_by = owner }
 							controller = {
-								CmtTriggerIsEmpire = yes
+								merg_is_standard_empire = yes
 								NOT = { has_country_flag = under_marauder_attack }
 								OR = {
 									is_friendly_to = from
@@ -1188,7 +1188,7 @@ planet_event = {
 				# log="Save New Marauder Raid Target Victim"
 				random_country = {
 					limit = {
-						CmtTriggerIsEmpire = yes
+						merg_is_standard_empire = yes
 						has_country_flag = under_marauder_attack
 						has_country_flag = raid_target_of@event_target:marauder_country
 						has_relation_flag = { who = event_target:marauder_country flag = current_hired_target }
@@ -1301,7 +1301,7 @@ planet_event = {
 			}
 		}
 
-		set_timed_planet_flag = { flag = planet_raided days = 600 }
+		set_timed_planet_flag = { flag = planet_raided months = 20 }
 		event_target:raiding_fleet = { # Return home
 			set_event_locked = no
 			fleet_event = { id = marauder.110 days = 20 }
@@ -2088,7 +2088,7 @@ country_event = {
 		### Should not attack: the Khan is not that bad!
 		every_country = {
 			limit = {
-				CmtTriggerIsPlayableEmpire = no
+				merg_is_default_empire = no
 				OR = {
 					is_country_type = fallen_empire # is_fallen_empire = yes
 					is_country_type = enclave
@@ -2452,7 +2452,7 @@ country_event = {
 		from = {
 			save_event_target_as = khan_destroyer
 			set_country_flag = no_khan_do
-			if = { limit = { CmtTriggerIsPlayableEmpire = yes } # is_ai = no
+			if = { limit = { merg_is_default_empire = yes } # is_ai = no
 				country_event = { id = marauder.710 days = 10 random = 8 }
 			}
 		}
@@ -2721,7 +2721,7 @@ country_event = {
 		NOT = { has_global_flag = marauder_crisis_ongoing }
 		is_country_type = dormant_marauders
 		fromfrom = { is_ship_size = marauder_void_dwelling }
-		from = { CmtTriggerIsPlayableEmpire = yes }
+		from = { merg_is_default_empire = yes }
 
 		NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanVengeance value = 1 } } }
 		OR = {
@@ -2777,7 +2777,7 @@ country_event = {
 	desc = {
 		trigger = {
 			NOR = {
-				is_subject_type = satrapy
+				any_agreement = { agreement_preset = preset_satrapy }
 				has_country_flag = rebelling_satrapy
 				is_homicidal = yes
 			}
@@ -2787,7 +2787,7 @@ country_event = {
 	desc = {
 		trigger = {
 			NOR = {
-				is_subject_type = satrapy
+				any_agreement = { agreement_preset = preset_satrapy }
 				has_country_flag = rebelling_satrapy
 				is_homicidal = yes
 			}
@@ -2797,7 +2797,7 @@ country_event = {
 	desc = {
 		trigger = {
 			NOR = {
-				is_subject_type = satrapy
+				any_agreement = { agreement_preset = preset_satrapy }
 				has_country_flag = rebelling_satrapy
 				is_homicidal = yes
 			}
@@ -2807,7 +2807,7 @@ country_event = {
 	desc = {
 		trigger = {
 			NOR = {
-				is_subject_type = satrapy
+				any_agreement = { agreement_preset = preset_satrapy }
 				has_country_flag = rebelling_satrapy
 				is_homicidal = yes
 			}
@@ -2817,7 +2817,7 @@ country_event = {
 	desc = {
 		trigger = {
 			NOR = {
-				is_subject_type = satrapy
+				any_agreement = { agreement_preset = preset_satrapy }
 				has_country_flag = rebelling_satrapy
 				is_homicidal = yes
 			}
@@ -2827,7 +2827,7 @@ country_event = {
 	desc = {
 		trigger = {
 			NOR = {
-				is_subject_type = satrapy
+				any_agreement = { agreement_preset = preset_satrapy }
 				has_country_flag = rebelling_satrapy
 				is_homicidal = yes
 			}
@@ -2837,7 +2837,7 @@ country_event = {
 	desc = {
 		trigger = {
 			NOR = {
-				is_subject_type = satrapy
+				any_agreement = { agreement_preset = preset_satrapy }
 				has_country_flag = rebelling_satrapy
 				is_homicidal = yes
 			}
@@ -2847,7 +2847,7 @@ country_event = {
 	desc = {
 		trigger = {
 			NOR = {
-				is_subject_type = satrapy
+				any_agreement = { agreement_preset = preset_satrapy }
 				has_country_flag = rebelling_satrapy
 				is_homicidal = yes
 			}
@@ -2857,7 +2857,7 @@ country_event = {
 	desc = {
 		trigger = {
 			NOR = {
-				is_subject_type = satrapy
+				any_agreement = { agreement_preset = preset_satrapy }
 				has_country_flag = rebelling_satrapy
 				is_homicidal = yes
 			}
@@ -2865,51 +2865,51 @@ country_event = {
 		text = "marauder.550.i.desc"
 	}
 	desc = {
-		trigger = { is_subject_type = satrapy }
+		trigger = { any_agreement = { agreement_preset = preset_satrapy } }
 		text = "marauder.550.j.desc"
 	}
 	desc = {
-		trigger = { is_subject_type = satrapy }
+		trigger = { any_agreement = { agreement_preset = preset_satrapy } }
 		text = "marauder.550.k.desc"
 	}
 	desc = {
 		trigger = {
-			is_subject_type = satrapy
+			any_agreement = { agreement_preset = preset_satrapy }
 			has_authority = auth_machine_intelligence
 		}
 		text = "marauder.550.l.desc"
 	}
 	desc = {
 		trigger = {
-			is_subject_type = satrapy
+			any_agreement = { agreement_preset = preset_satrapy }
 			has_authority = auth_machine_intelligence
 		}
 		text = "marauder.550.m.desc"
 	}
 	desc = {
 		trigger = {
-			is_subject_type = satrapy
+			any_agreement = { agreement_preset = preset_satrapy }
 			has_authority = auth_hive_mind
 		}
 		text = "marauder.550.n.desc"
 	}
 	desc = {
 		trigger = {
-			is_subject_type = satrapy
+			any_agreement = { agreement_preset = preset_satrapy }
 			has_authority = auth_hive_mind
 		}
 		text = "marauder.550.o.desc"
 	}
 	desc = {
 		trigger = {
-			is_subject_type = satrapy
+			any_agreement = { agreement_preset = preset_satrapy }
 			NOT = { has_ethic = ethic_gestalt_consciousness }
 		}
 		text = "marauder.550.p.desc"
 	}
 	desc = {
 		trigger = {
-			is_subject_type = satrapy
+			any_agreement = { agreement_preset = preset_satrapy }
 			NOT = { has_ethic = ethic_gestalt_consciousness }
 		}
 		text = "marauder.550.q.desc"
@@ -2963,7 +2963,7 @@ country_event = {
 		name = marauder.550.a
 		trigger = {
 			NOR = {
-				is_subject_type = satrapy
+				any_agreement = { agreement_preset = preset_satrapy }
 				has_country_flag = rebelling_satrapy
 				is_homicidal = yes
 			}
@@ -3006,7 +3006,7 @@ country_event = {
 
 	option = {		# Rebel?
 		name = marauder.550.d
-		trigger = { is_subject_type = satrapy }
+		trigger = { any_agreement = { agreement_preset = preset_satrapy } }
 		allow = {
 			custom_tooltip = {
 				fail_text = marauder.550.d_fail
@@ -3061,7 +3061,7 @@ country_event = {
 		has_global_flag = marauder_crisis_ongoing
 		exists = event_target:raider_khanate
 		CmtTriggerExistKhanCountry = yes
-		CmtTriggerIsPlayableEmpire = yes
+		merg_is_default_empire = yes
 		is_subject = no
 		is_ai = yes
 		is_homicidal = no
@@ -3137,7 +3137,7 @@ country_event = {
 			every_subject = {
 				set_subject_of = {
 					who = event_target:raider_khanate
-					subject_type = satrapy
+					preset = preset_satrapy
 				}
 				hidden_effect = {
 					country_event = { id = marauder.553 days = 10 }
@@ -3155,7 +3155,7 @@ country_event = {
 		}
 		set_subject_of = {
 			who = event_target:raider_khanate
-			subject_type = satrapy
+			preset = preset_satrapy
 		}
 		country_event = { id = marauder.553 days = 10 }
 		add_modifier = { modifier = "satrapy_of_horde" }
@@ -3288,7 +3288,7 @@ country_event = {
 						}
 						NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanPostDeathKhanate value = 1 } } }
 						NOR = {
-							count_country = { limit = { is_subject_type = satrapy } count < 2 }
+							count_country = { limit = { any_agreement = { agreement_preset = preset_satrapy } } count < 2 }
 							event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanPostDeathDemocratic value = 1 } }
 						}
 					}
@@ -3337,7 +3337,7 @@ country_event = {
 						modifier = {
 							factor = 0
 							OR = {
-								count_country = { limit = { is_subject_type = satrapy } count < 2 }
+								count_country = { limit = { any_agreement = { agreement_preset = preset_satrapy } } count < 2 }
 								event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanPostDeathDemocratic value = 1 } }
 							}
 						}
@@ -3373,7 +3373,7 @@ country_event = {
 						modifier = {
 							factor = 0 # Can only happen if there are enough Satrapies.
 							count_country = {
-								limit = { is_subject_type = satrapy }
+								limit = { any_agreement = { agreement_preset = preset_satrapy } }
 								count < 2
 							}
 						}

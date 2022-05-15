@@ -63,11 +63,9 @@ country_event = {
 
 		random_system = {
 			limit = {
-				NOT = {
-					any_country = {
-						CmtTriggerIsFallenEmpire = yes
-						any_system_within_border = { is_same_value = prev }
-					}
+				NAND = {
+					exists = owner
+					owner = { is_fallen_empire = yes }
 				}
 				CmtTriggerSpawnableSystem = yes
 			}
@@ -200,7 +198,7 @@ country_event = {
 		}
 
 		every_country = {
-			limit = { CmtTriggerIsEmpire = yes }
+			limit = { merg_is_standard_empire = yes }
 			if = {
 				limit = {
 					intel_level = { level < high system = event_target:extradimensional_system }
@@ -213,8 +211,8 @@ country_event = {
 		observer_event = { id = observer.34 }
 
 		### For Controling Arrival of Aberrant.
-		set_timed_global_flag = { flag = CmtFlagUnbiddenFirstHalfDecade days = 1800 }
-		set_timed_global_flag = { flag = CmtFlagUnbiddenFirstDecade days = 3600 }
+		set_timed_global_flag = { flag = CmtFlagUnbiddenFirstHalfDecade years = 5 }
+		set_timed_global_flag = { flag = CmtFlagUnbiddenFirstDecade years = 10 }
 		if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 6 } } }
 			event_target:extradimensionals = { country_event = { id = crisis.1100 days = 10 random = 5 } }

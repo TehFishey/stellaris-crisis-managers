@@ -41,9 +41,10 @@ country_event = {
 		trigger = { has_country_flag = CmtFlagConfigViewerSeq }
 		hidden_effect = {
 			remove_country_flag = CmtFlagConfigViewerShowing1031
-			if = { limit = { has_global_flag = CmtFlagUprisingEdition }
-				country_event = { id = CrisisManagerMenu.1028 }
-			} else_if = { limit = { has_global_flag = CmtFlagMidGameEdition }
+			# if = { limit = { has_global_flag = CmtFlagUprisingEdition }
+			# 	country_event = { id = CrisisManagerMenu.1028 }
+			# } else_
+			if = { limit = { has_global_flag = CmtFlagMidGameEdition }
 				country_event = { id = CrisisManagerMenu.1027 }
 			} else = { country_event = { id = CrisisManagerMenu.1024 } }
 		}

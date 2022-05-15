@@ -1,94 +1,38 @@
 ﻿l_russian:
- 
- ##################################################
- ##################################################
- #####                                        #####
- #####    Crisis Manager                      #####
- #####                                        #####
- #####    Names of Configuration Templates    #####
- #####                                        #####
- ##################################################
- ##################################################
- 
- ##########################################
- ###  Standard Configuration Templates  ###
- ##########################################
- 
- CrisisManagerTemplateList.desc:0 "Эти шаблоны являются образцами.\n$CmtWarn0$: Вы можете сделать оригинальные шаблоны как мини-мод."
- 
- #------------------------------------------------------------#
- 
- CrisisManagerTemplate_T001.title:0 "Шаблон первенства"
- CrisisManagerTemplate_T001.tooltip:0 "Приветствую!"
- 
- #------------------------------------------------------------#
- 
- CrisisManagerTemplate_T101.title:0 "§BЛегкий режим§!"
- CrisisManagerTemplate_T101.tooltip:0 "Не принимайте это близко к сердцу.\nEverything will be ok."
- 
- CrisisManagerTemplate_T102.title:0 "§GФанатичный Эгалитарист§!"
- CrisisManagerTemplate_T102.tooltip:0 "Все равно.\nВероятность срабатывания каждого кризиса, место, куда прибывает Рой Преторианцев, террор со стороны Контингенции и любой другой."
- 
- CrisisManagerTemplate_T103.title:0 "§GОдинокая галактика§!"
- CrisisManagerTemplate_T103.tooltip:0 "Никто тебе не поможет.\nКаждая империя должна противостоять кризису без помощников."
- 
- CrisisManagerTemplate_T104.title:1 ""
- CrisisManagerTemplate_T104.tooltip:1 ""
- 
- #------------------------------------------------------------#
- 
- CrisisManagerTemplate_T105.title:0 "§GМножественный кризис ~ Легкий§!"
- CrisisManagerTemplate_T105.tooltip:0 "Каждый кризис случится когда-нибудь.\n2nd/3rd кризис не случится, пока предыдущий кризис не закончится."
- 
- CrisisManagerTemplate_T106.title:0 "§YМножественный кризис ~ Средний§!"
- CrisisManagerTemplate_T106.tooltip:0 "Каждый кризис случится когда-нибудь.\n2nd/3rd кризис произойдет с большим интервалом от предыдущего кризиса."
- 
- CrisisManagerTemplate_T107.title:0 "§YМножественный кризис ~ Сложный§!"
- CrisisManagerTemplate_T107.tooltip:0 "Каждый кризис случится когда-нибудь.\n2nd/3rd кризис может случиться в любое время."
- 
- CrisisManagerTemplate_T108.title:1 ""
- CrisisManagerTemplate_T108.tooltip:1 ""
- 
- #------------------------------------------------------------#
- 
- CrisisManagerTemplate_T109.title:0 "§HШумная галактика§!"
- CrisisManagerTemplate_T109.tooltip:0 "Собираются вокруг!\n$CmtWarn0$:  Настоятельно рекомендуется играть с 4 или 5 павшими империями."
- 
- CrisisManagerTemplate_T110.title:0 "§HТройная атака - Начало§!"
- CrisisManagerTemplate_T110.tooltip:0 "Все кризисы будут происходить вместе.\n\n$CmtWarn0$:  Этот шаблон изменяет ТОЛЬКО кризисы в конце игры."
- 
- CrisisManagerTemplate_T111.title:0 "§HТройная атака - Возрождение§!"
- CrisisManagerTemplate_T111.tooltip:0 "Все кризисы будут происходить вместе.\n\n$CmtWarn0$:  Этот шаблон изменяет как кризис в конце игры, так и в середине игры, если установлено соответствующее издание."
- 
- CrisisManagerTemplate_T112.title:0 "§RКонечный код§!"
- CrisisManagerTemplate_T112.tooltip:0 "§RУМРИ.§!"
- 
- #------------------------------------------------------------#
- 
- CrisisManagerTemplate_T113.title:0 "Шаблон 13"
- CrisisManagerTemplate_T113.tooltip:1 ""
- 
- CrisisManagerTemplate_T114.title:0 "Шаблон 14"
- CrisisManagerTemplate_T114.tooltip:1 ""
- 
- CrisisManagerTemplate_T115.title:0 "§WТолько для веб-образца§!"
- CrisisManagerTemplate_T115.tooltip:0 "N/A"
- 
- CrisisManagerTemplate_T116.title:0 "§WТестовый режим игры§!$CmtTooltipInfo2$"
- CrisisManagerTemplate_T116.tooltip:0 "Только для тестовой игры.\nВсе настройки для событий развиваются очень быстро."
- 
- #------------------------------------------------------------#
- 
- 
- 
- ###############################################
- ###  Template for Fleets of Fallen Empires  ###
- ###############################################
- #
- # Manual Operations -> Create/Delete Fleets for Fallen Empires
- #
- 
- 
- CrisisManagerTemplate_SleeperInitializing.title:0 "Шаблон пользователя: NULL"
- CrisisManagerTemplate_SleeperInitializing.tooltip:1 ""
- 
+ CrisisManagerTemplateList.desc: "Эти шаблоны являются образцами.\n$CmtWarn0$: Вы можете сделать оригинальные шаблоны как мини-мод."
+ CrisisManagerTemplate_SleeperInitializing.title: "Шаблон пользователя: NULL"
+ CrisisManagerTemplate_SleeperInitializing.tooltip: ""
+ CrisisManagerTemplate_T001.title: "Шаблон первенства"
+ CrisisManagerTemplate_T001.tooltip: "Приветствую!"
+ CrisisManagerTemplate_T101.title: "§BЛегкий режим§!"
+ CrisisManagerTemplate_T101.tooltip: "Не принимайте это близко к сердцу.\nEverything will be ok."
+ CrisisManagerTemplate_T102.title: "§GФанатичный Эгалитарист§!"
+ CrisisManagerTemplate_T102.tooltip: "Все равно.\nВероятность срабатывания каждого кризиса, место, куда прибывает Рой Преторианцев, террор со стороны Контингенции и любой другой."
+ CrisisManagerTemplate_T103.title: "§GОдинокая галактика§!"
+ CrisisManagerTemplate_T103.tooltip: "Никто тебе не поможет.\nКаждая империя должна противостоять кризису без помощников."
+ CrisisManagerTemplate_T104.title: ""
+ CrisisManagerTemplate_T104.tooltip: ""
+ CrisisManagerTemplate_T105.title: "§GМножественный кризис ~ Легкий§!"
+ CrisisManagerTemplate_T105.tooltip: "Каждый кризис случится когда-нибудь.\n2nd/3rd кризис не случится, пока предыдущий кризис не закончится."
+ CrisisManagerTemplate_T106.title: "§YМножественный кризис ~ Средний§!"
+ CrisisManagerTemplate_T106.tooltip: "Каждый кризис случится когда-нибудь.\n2nd/3rd кризис произойдет с большим интервалом от предыдущего кризиса."
+ CrisisManagerTemplate_T107.title: "§YМножественный кризис ~ Сложный§!"
+ CrisisManagerTemplate_T107.tooltip: "Каждый кризис случится когда-нибудь.\n2nd/3rd кризис может случиться в любое время."
+ CrisisManagerTemplate_T108.title: ""
+ CrisisManagerTemplate_T108.tooltip: ""
+ CrisisManagerTemplate_T109.title: "§HШумная галактика§!"
+ CrisisManagerTemplate_T109.tooltip: "Собираются вокруг!\n$CmtWarn0$: Настоятельно рекомендуется играть с 4 или 5 павшими империями."
+ CrisisManagerTemplate_T110.title: "§HТройная атака - Начало§!"
+ CrisisManagerTemplate_T110.tooltip: "Все кризисы будут происходить вместе.\n\n$CmtWarn0$: Этот шаблон изменяет ТОЛЬКО кризисы в конце игры."
+ CrisisManagerTemplate_T111.title: "§HТройная атака - Возрождение§!"
+ CrisisManagerTemplate_T111.tooltip: "Все кризисы будут происходить вместе.\n\n$CmtWarn0$: Этот шаблон изменяет как кризис в конце игры, так и в середине игры, если установлено соответствующее издание."
+ CrisisManagerTemplate_T112.title: "§RКонечный код§!"
+ CrisisManagerTemplate_T112.tooltip: "§RУМРИ.§!"
+ CrisisManagerTemplate_T113.title: "Шаблон 13"
+ CrisisManagerTemplate_T113.tooltip: ""
+ CrisisManagerTemplate_T114.title: "Шаблон 14"
+ CrisisManagerTemplate_T114.tooltip: ""
+ CrisisManagerTemplate_T115.title: "§WТолько для веб-образца§!"
+ CrisisManagerTemplate_T115.tooltip: "N/A"
+ CrisisManagerTemplate_T116.title: "§WТестовый режим игры§!$CmtTooltipInfo2$"
+ CrisisManagerTemplate_T116.tooltip: "Только для тестовой игры.\nВсе настройки для событий развиваются очень быстро."

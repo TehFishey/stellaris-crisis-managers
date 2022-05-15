@@ -117,35 +117,35 @@ CmtEffectTransferLgateCycle = {
 ### Uprising ###
 ################
 
-CmtEffectTransferUprisingVariables = {
-	event_target:CmtGlobalVar = {
-		set_variable = { which = CmtVarUprisingPreludeCycle value = CmtVarUprisingMtth }
+# CmtEffectTransferUprisingVariables = {
+# 	event_target:CmtGlobalVar = {
+# 		set_variable = { which = CmtVarUprisingPreludeCycle value = CmtVarUprisingMtth }
 
-		if = {
-			limit = { check_variable = { which = CmtVarUprisingUnwarned value = 3 } }
-			set_variable = { which = CmtVarUprisingWarProbability value = 5 }
-		}
+# 		if = {
+# 			limit = { check_variable = { which = CmtVarUprisingUnwarned value = 3 } }
+# 			set_variable = { which = CmtVarUprisingWarProbability value = 5 }
+# 		}
 
-		if = {
-			limit = { check_variable = { which = CmtVarUprisingWarProbability value = 1 } }
-			set_variable = { which = CmtVarUprisingHotfixProbability value = 5 }
-		} else_if = {
-			limit = { check_variable = { which = CmtVarUprisingWarProbability value = 2 } }
-			set_variable = { which = CmtVarUprisingHotfixProbability value = 4 }
-		} else_if = {
-			limit = { check_variable = { which = CmtVarUprisingWarProbability value = 4 } }
-			set_variable = { which = CmtVarUprisingHotfixProbability value = 2 }
-		} else_if = {
-			limit = { check_variable = { which = CmtVarUprisingWarProbability value = 5 } }
-			set_variable = { which = CmtVarUprisingHotfixProbability value = 1 }
-		} else = { set_variable = { which = CmtVarUprisingHotfixProbability value = 3 } }
+# 		if = {
+# 			limit = { check_variable = { which = CmtVarUprisingWarProbability value = 1 } }
+# 			set_variable = { which = CmtVarUprisingHotfixProbability value = 5 }
+# 		} else_if = {
+# 			limit = { check_variable = { which = CmtVarUprisingWarProbability value = 2 } }
+# 			set_variable = { which = CmtVarUprisingHotfixProbability value = 4 }
+# 		} else_if = {
+# 			limit = { check_variable = { which = CmtVarUprisingWarProbability value = 4 } }
+# 			set_variable = { which = CmtVarUprisingHotfixProbability value = 2 }
+# 		} else_if = {
+# 			limit = { check_variable = { which = CmtVarUprisingWarProbability value = 5 } }
+# 			set_variable = { which = CmtVarUprisingHotfixProbability value = 1 }
+# 		} else = { set_variable = { which = CmtVarUprisingHotfixProbability value = 3 } }
 
-		if = {
-			limit = { has_global_flag = CmtFlagUprisingForbidSynthetic }
-			remove_global_flag = CmtFlagUprisingAllowDroid
-		}
-	}
-}
+# 		if = {
+# 			limit = { has_global_flag = CmtFlagUprisingForbidSynthetic }
+# 			remove_global_flag = CmtFlagUprisingAllowDroid
+# 		}
+# 	}
+# }
 
 ####################
 ### Crisis Power ###

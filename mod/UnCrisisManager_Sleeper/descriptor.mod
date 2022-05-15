@@ -1,5 +1,5 @@
-version="3.4.2"
-name="Crisis Manager - Sleeper Edition (3.3.¢)"
+version="3.4.2.1"
+name="Crisis Manager - Sleeper Edition (3.4.¢)"
 tags={
 	"Balance"
 	"Events"

@@ -245,24 +245,24 @@ country_event = {
 	}
 
 	### Machine Uprising
-	option = {
-		name = CrisisManagerMenu.4000.5100.name
-		custom_tooltip = CrisisManagerMenu.4000.5100.tooltip
-		trigger = {
-			CmtTriggerUprisingConfig = yes
-			has_global_flag = CmtFlagUprisingEdition
-		}
-		hidden_effect = { country_event = { id = CrisisManagerMenu.5111 } }
-	}
-	option = {
-		name = CrisisManagerMenu.4000.5100.fail.name
-		custom_tooltip = CrisisManagerMenu.4000.5100.fail.tooltip
-		trigger = {
-			CmtTriggerUprisingConfig = no
-			has_global_flag = CmtFlagUprisingEdition
-		}
-		hidden_effect = { country_event = { id = CrisisManagerMenu.4000 } }
-	}
+	# option = {
+	# 	name = CrisisManagerMenu.4000.5100.name
+	# 	custom_tooltip = CrisisManagerMenu.4000.5100.tooltip
+	# 	trigger = {
+	# 		CmtTriggerUprisingConfig = yes
+	# 		has_global_flag = CmtFlagUprisingEdition
+	# 	}
+	# 	hidden_effect = { country_event = { id = CrisisManagerMenu.5111 } }
+	# }
+	# option = {
+	# 	name = CrisisManagerMenu.4000.5100.fail.name
+	# 	custom_tooltip = CrisisManagerMenu.4000.5100.fail.tooltip
+	# 	trigger = {
+	# 		CmtTriggerUprisingConfig = no
+	# 		has_global_flag = CmtFlagUprisingEdition
+	# 	}
+	# 	hidden_effect = { country_event = { id = CrisisManagerMenu.4000 } }
+	# }
 
 	### Common
 	option = {

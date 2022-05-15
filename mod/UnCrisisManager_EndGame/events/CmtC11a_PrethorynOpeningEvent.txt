@@ -395,7 +395,7 @@ country_event = {
 	hide_window = yes
 
 	trigger = {
-		CmtTriggerIsPlayableEmpire = yes
+		merg_is_default_empire = yes
 		has_global_flag = CmtFlagAllow1032
 	}
 	mean_time_to_happen = { days = @CmtConstCommingStormMtth32 }

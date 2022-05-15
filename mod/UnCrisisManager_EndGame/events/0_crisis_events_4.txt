@@ -352,7 +352,7 @@ country_event = {
 		# }
 		# every_playable_country = {
 		# 	limit = {
-		# 		CmtTriggerIsPlayableEmpire = yes
+		# 		merg_is_default_empire = yes
 		# 		NOT = { is_same_value = from }
 		# 	}
 		# 	country_event = { id = CrisisManagerControl.4117 }

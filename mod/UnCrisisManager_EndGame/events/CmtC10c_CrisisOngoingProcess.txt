@@ -60,7 +60,7 @@ country_event = {
 		NOT = {
 			any_country = {
 				OR = {
-					CmtTriggerIsEmpire = yes
+					merg_is_standard_empire = yes
 					CmtTriggerIsMarauder = yes
 				}
 			}

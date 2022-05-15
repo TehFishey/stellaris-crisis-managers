@@ -19,22 +19,14 @@ resolution_galactic_focus_crisis_nanites = {
 			set_global_flag = galactic_focus_crisis_nanites
 			set_global_flag = galactic_community_crisis_fighting
 			set_global_flag = galactic_community_resolution_passed
-			set_timed_country_flag = {
-				flag = galactic_community_resolution_passed_general
-				days = @resolution_flag_timer
-			}
-			add_modifier = {
-				modifier = resolution_passed_diplomatic_weight years = 6 }
+			set_timed_country_flag = { flag = galactic_community_resolution_passed_general days = @resolution_flag_timer }
+			add_modifier = { modifier = resolution_passed_diplomatic_weight years = 6 }
 		}
 	}
 	fail_effects = {
 		hidden_effect = {
-			set_timed_country_flag = {
-				flag = galactic_community_resolution_failed_general
-				days = @resolution_flag_timer
-			}
-			add_modifier = {
-				modifier = resolution_failed_diplomatic_weight years = 6 }
+			set_timed_country_flag = { flag = galactic_community_resolution_failed_general days = @resolution_flag_timer }
+			add_modifier = { modifier = resolution_failed_diplomatic_weight years = 6 }
 		}
 	}
 	potential = {
@@ -52,7 +44,12 @@ resolution_galactic_focus_crisis_nanites = {
 			# any_neighbor_country = { is_same_empire = event_target:graygoo_country }
 			OR = {
 				has_country_flag = nanite_bomb_affected
-				event_target:graygoo_country = { num_killed_ships = { target = prev value > 15 } }
+				event_target:graygoo_country = {
+					num_killed_ships = {
+						target = prev
+						value > 15
+					}
+				}
 				event_target:graygoo_country = {
 					any_owned_fleet = {
 						exists = solar_system
@@ -73,6 +70,7 @@ resolution_galactic_focus_crisis_nanites = {
 				# galaxy_percentage < 0.1
 				fleet_power <= 300000
 			}
+			desc = gal_com_gray_goo_size_smallest
 		}
 		modifier = {
 			factor = 1.1
@@ -82,60 +80,61 @@ resolution_galactic_focus_crisis_nanites = {
 				# galaxy_percentage > 0.1
 				# galaxy_percentage <= 0.2
 			}
+			desc = gal_com_gray_goo_size_small
 		}
 		modifier = {
-			factor = 1.37 # 1.5
+			factor = 1.37			# 1.5
 			event_target:graygoo_country = {
 				fleet_power > 500000
 				# fleet_power <= 750000
 				# galaxy_percentage > 0.2
 				# galaxy_percentage <= 0.3
 			}
+			desc = gal_com_gray_goo_size_medium
 		}
 		modifier = {
-			factor = 1.33 # 2
+			factor = 1.33			# 2
 			event_target:graygoo_country = {
 				fleet_power > 750000
 				# fleet_power <= 1100000
 				# galaxy_percentage > 0.3
 				# galaxy_percentage <= 0.4
 			}
+			desc = gal_com_gray_goo_size_large
 		}
 		modifier = {
-			factor = 1.5 # 3
+			factor = 1.5			# 3
 			event_target:graygoo_country = {
 				fleet_power > 1100000
 				# fleet_power <= 1600000
 				# galaxy_percentage > 0.4
 				# galaxy_percentage <= 0.5
 			}
+			desc = gal_com_gray_goo_size_very_large
 		}
 		modifier = {
-			factor = 3.33 # 10
+			factor = 3.33			# 10
 			event_target:graygoo_country = {
 				fleet_power > 1600000
 				# galaxy_percentage > 0.5
 			}
+			desc = gal_com_gray_goo_size_huge
 		}
-		modifier = {
-			factor = 10
-			has_ascension_perk = ap_defender_of_the_galaxy
-		}
-		modifier = {
-			factor = 1.2
-			is_militarist = yes
-		}
-		modifier = {
-			factor = 1.2
-			is_materialist = yes
-		}
+		modifier = { factor = 10 has_ascension_perk = ap_defender_of_the_galaxy desc = ap_defender_of_the_galaxy }
+		modifier = { factor = 1.2 is_militarist = yes desc = ethic_militarist }
+		modifier = { factor = 1.2 is_materialist = yes desc = ethic_materialist }
 		modifier = {
 			factor = 0.5
 			is_xenophobe = yes
 			NOR = {
 				# any_neighbor_country = { is_same_empire = event_target:graygoo_country }
 				has_country_flag = nanite_bomb_affected
-				event_target:graygoo_country = { num_killed_ships = { target = prev value > 15 } }
+				event_target:graygoo_country = {
+					num_killed_ships = {
+						target = prev
+						value > 15
+					}
+				}
 				event_target:graygoo_country = {
 					any_owned_fleet = {
 						exists = solar_system
@@ -149,6 +148,7 @@ resolution_galactic_focus_crisis_nanites = {
 					}
 				}
 			}
+			desc = ethic_xenophobe
 		}
 	}
 }

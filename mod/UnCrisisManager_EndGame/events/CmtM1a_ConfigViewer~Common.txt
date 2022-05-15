@@ -73,9 +73,9 @@ country_event = {
 			} else_if = {
 				limit = { has_global_flag = CmtFlagMidGameEdition }
 				country_event = { id = CrisisManagerMenu.1026 }
-			} else_if = {
-				limit = { has_global_flag = CmtFlagUprisingEdition }
-				country_event = { id = CrisisManagerMenu.1028 }
+			# } else_if = {
+			# 	limit = { has_global_flag = CmtFlagUprisingEdition }
+			# 	country_event = { id = CrisisManagerMenu.1028 }
 			} else = { country_event = { id = CrisisManagerMenu.1000 } }
 		}
 	}
@@ -196,12 +196,12 @@ country_event = {
 		trigger = { has_global_flag = CmtFlagMidGameEdition }
 		hidden_effect = { country_event = { id = CrisisManagerMenu.1027 } }
 	}
-	option = {
-		name = CrisisManagerMenu.1000.1028.name
-		custom_tooltip = CrisisManagerMenu.1000.1028.tooltip
-		trigger = { has_global_flag = CmtFlagUprisingEdition }
-		hidden_effect = { country_event = { id = CrisisManagerMenu.1028 } }
-	}
+	# option = {
+	# 	name = CrisisManagerMenu.1000.1028.name
+	# 	custom_tooltip = CrisisManagerMenu.1000.1028.tooltip
+	# 	trigger = { has_global_flag = CmtFlagUprisingEdition }
+	# 	hidden_effect = { country_event = { id = CrisisManagerMenu.1028 } }
+	# }
 
 	option = {
 		name = CmtTextSeparator.name

@@ -55,7 +55,7 @@ CmtEffectCreatePrethorynCountry = {
 
 	### Communications and Opinion Modifiers
 	every_country = {
-		limit = { CmtTriggerIsEmpire = yes }
+		limit = { merg_is_standard_empire = yes }
 		establish_communications_no_message = event_target:prethoryn
 		add_opinion_modifier = {
 			who = event_target:prethoryn
@@ -104,10 +104,10 @@ CmtEffectCallSentinel = {
 		}
 	}
 	if = {
-		limit = { any_country = { CmtTriggerIsFallenEmpire = yes } }
+		limit = { any_country = { is_fallen_empire = yes } }
 		set_global_flag = sentinel_fe_support
 		random_country = {
-			limit = { CmtTriggerIsFallenEmpire = yes }
+			limit = { is_fallen_empire = yes }
 			save_global_event_target_as = sentinel_fallen_empire
 		}
 		every_playable_country = {
@@ -167,7 +167,7 @@ CmtEffectCallAberrant = {
 	CmtEffectFriendlyCrisis = yes
 
 	every_country = {
-		limit = { CmtTriggerIsEmpire = yes }
+		limit = { merg_is_standard_empire = yes }
 		country_event = { id = crisis.1110 days = 1 }
 	}
 	random_country = {
@@ -177,8 +177,8 @@ CmtEffectCallAberrant = {
 	observer_event = { id = observer.36 }
 
 	### For Controling Arrival of Vehement.
-	set_timed_global_flag = { flag = CmtFlagAberrantFirstDecade days = 3600 }
-	set_timed_global_flag = { flag = CmtFlagAberrantFirstTwoDecades days = 7200 }
+	set_timed_global_flag = { flag = CmtFlagAberrantFirstDecade years = 10 }
+	set_timed_global_flag = { flag = CmtFlagAberrantFirstTwoDecades years = 20 }
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 6 } } }
 		event_target:extradimensionals2 = { country_event = { id = crisis.1200 days = 10 random = 5 } }
@@ -342,7 +342,7 @@ CmtEffectCallVehement = {
 	CmtEffectFriendlyCrisis = yes
 
 	every_country = {
-		limit = { CmtTriggerIsEmpire = yes }
+		limit = { merg_is_standard_empire = yes }
 		country_event = { id = crisis.1210 days = 1 }
 	}
 	every_country = {

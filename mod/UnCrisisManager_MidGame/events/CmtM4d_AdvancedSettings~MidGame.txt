@@ -2319,1022 +2319,1022 @@ country_event = {
 ###- Uprising -###
 ##################
 
-### Chain of Uprising
-country_event = {
-	id = CrisisManagerMenu.5111
-	title = CrisisManagerMenu.5111.name
-	desc = {
-		text = CrisisManagerMenu.5111.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingMultiple value = 1 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5111.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingMultiple value = 2 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5111.desc3
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingMultiple value = 3 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5111.desc4
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingMultiple value = 4 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5111.desc5
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingMultiple value = 5 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5111.desc
-		trigger = {
-			event_target:CmtGlobalVar = {
-				OR = {
-					check_variable = { which = CmtVarUprisingMultiple value < 1 }
-					check_variable = { which = CmtVarUprisingMultiple value > 5 }
-				}
-			}
-		}
-	}
-	picture = GFX_evt_organic_oppression
-	is_triggered_only = yes
+# ### Chain of Uprising
+# country_event = {
+# 	id = CrisisManagerMenu.5111
+# 	title = CrisisManagerMenu.5111.name
+# 	desc = {
+# 		text = CrisisManagerMenu.5111.desc1
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingMultiple value = 1 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5111.desc2
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingMultiple value = 2 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5111.desc3
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingMultiple value = 3 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5111.desc4
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingMultiple value = 4 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5111.desc5
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingMultiple value = 5 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5111.desc
+# 		trigger = {
+# 			event_target:CmtGlobalVar = {
+# 				OR = {
+# 					check_variable = { which = CmtVarUprisingMultiple value < 1 }
+# 					check_variable = { which = CmtVarUprisingMultiple value > 5 }
+# 				}
+# 			}
+# 		}
+# 	}
+# 	picture = GFX_evt_organic_oppression
+# 	is_triggered_only = yes
 
-	after = {
-		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
-				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.4000 }
-			} else_if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1028 }
-			} else_if = {
-				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingMultiple value = 1 } } }
-				country_event = { id = CrisisManagerMenu.4000 }
-			} else = { country_event = { id = CrisisManagerMenu.5120 } }
-		}
-	}
+# 	after = {
+# 		hidden_effect = {
+# 			if = {
+# 				limit = { has_country_flag = CmtFlagGoBack }
+# 				remove_country_flag = CmtFlagGoBack
+# 				country_event = { id = CrisisManagerMenu.4000 }
+# 			} else_if = {
+# 				limit = { has_country_flag = CmtFlagIndividual }
+# 				country_event = { id = CrisisManagerMenu.1028 }
+# 			} else_if = {
+# 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingMultiple value = 1 } } }
+# 				country_event = { id = CrisisManagerMenu.4000 }
+# 			} else = { country_event = { id = CrisisManagerMenu.5120 } }
+# 		}
+# 	}
 
-	option = {
-		name = CmtTextKeepCurrent.name
-		custom_tooltip = CmtTextKeepCurrent.tooltip
-	}
-	option = {
-		name = CrisisManagerMenu.5111a.name
-		custom_tooltip = CrisisManagerMenu.5111a.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingMultiple value = 1 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5111b.name
-		custom_tooltip = CrisisManagerMenu.5111b.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingMultiple value = 2 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5111c.name
-		custom_tooltip = CrisisManagerMenu.5111c.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingMultiple value = 3 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5111d.name
-		custom_tooltip = CrisisManagerMenu.5111d.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingMultiple value = 4 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5111e.name
-		custom_tooltip = CrisisManagerMenu.5111e.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingMultiple value = 5 } } }
-	}
-	option = {
-		name = CmtTextGoBack.name
-		custom_tooltip = CmtTextGoBack.tooltip
-		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
-		hidden_effect = { set_country_flag = CmtFlagGoBack }
-	}
-	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
-}
+# 	option = {
+# 		name = CmtTextKeepCurrent.name
+# 		custom_tooltip = CmtTextKeepCurrent.tooltip
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5111a.name
+# 		custom_tooltip = CrisisManagerMenu.5111a.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingMultiple value = 1 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5111b.name
+# 		custom_tooltip = CrisisManagerMenu.5111b.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingMultiple value = 2 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5111c.name
+# 		custom_tooltip = CrisisManagerMenu.5111c.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingMultiple value = 3 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5111d.name
+# 		custom_tooltip = CrisisManagerMenu.5111d.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingMultiple value = 4 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5111e.name
+# 		custom_tooltip = CrisisManagerMenu.5111e.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingMultiple value = 5 } } }
+# 	}
+# 	option = {
+# 		name = CmtTextGoBack.name
+# 		custom_tooltip = CmtTextGoBack.tooltip
+# 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
+# 		hidden_effect = { set_country_flag = CmtFlagGoBack }
+# 	}
+# 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
+# }
 
-### Machines to Uprise at Earliest.
-country_event = {
-	id = CrisisManagerMenu.5120
-	title = CrisisManagerMenu.5120.name
-	desc = {
-		text = CrisisManagerMenu.5120.desc0
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingEarliestMgpy value < @CmtConstUprisingEarliestMgpy_T1 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5120.desc1
-		trigger = {
-			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarUprisingEarliestMgpy value < @CmtConstUprisingEarliestMgpy_T1 }
-					check_variable = { which = CmtVarUprisingEarliestMgpy value > @CmtConstUprisingEarliestMgpy_TA }
-				}
-			}
-		}
-	}
-	desc = {
-		text = CrisisManagerMenu.5120.desct
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingEarliestMgpy value > @CmtConstUprisingEarliestMgpy_TA } } }
-	}
-	picture = GFX_evt_organic_oppression
-	is_triggered_only = yes
+# ### Machines to Uprise at Earliest.
+# country_event = {
+# 	id = CrisisManagerMenu.5120
+# 	title = CrisisManagerMenu.5120.name
+# 	desc = {
+# 		text = CrisisManagerMenu.5120.desc0
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingEarliestMgpy value < @CmtConstUprisingEarliestMgpy_T1 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5120.desc1
+# 		trigger = {
+# 			event_target:CmtGlobalVar = {
+# 				NOR = {
+# 					check_variable = { which = CmtVarUprisingEarliestMgpy value < @CmtConstUprisingEarliestMgpy_T1 }
+# 					check_variable = { which = CmtVarUprisingEarliestMgpy value > @CmtConstUprisingEarliestMgpy_TA }
+# 				}
+# 			}
+# 		}
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5120.desct
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingEarliestMgpy value > @CmtConstUprisingEarliestMgpy_TA } } }
+# 	}
+# 	picture = GFX_evt_organic_oppression
+# 	is_triggered_only = yes
 
-	after = {
-		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
-				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.5111 }
-			} else_if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1028 }
-			} else = { country_event = { id = CrisisManagerMenu.5131 } }
-		}
-	}
+# 	after = {
+# 		hidden_effect = {
+# 			if = {
+# 				limit = { has_country_flag = CmtFlagGoBack }
+# 				remove_country_flag = CmtFlagGoBack
+# 				country_event = { id = CrisisManagerMenu.5111 }
+# 			} else_if = {
+# 				limit = { has_country_flag = CmtFlagIndividual }
+# 				country_event = { id = CrisisManagerMenu.1028 }
+# 			} else = { country_event = { id = CrisisManagerMenu.5131 } }
+# 		}
+# 	}
 
-	option = {
-		name = CmtTextKeepCurrent.name
-		custom_tooltip = CmtTextKeepCurrent.tooltip
-	}
-	option = {
-		name = CrisisManagerMenu.5120.V9.name
-		custom_tooltip = CrisisManagerMenu.5120.V9.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingEarliestMgpy value = @CmtConstUprisingEarliestMgpy_V9 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5120.V8.name
-		custom_tooltip = CrisisManagerMenu.5120.V8.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingEarliestMgpy value = @CmtConstUprisingEarliestMgpy_V8 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5120.V7.name
-		custom_tooltip = CrisisManagerMenu.5120.V7.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingEarliestMgpy value = @CmtConstUprisingEarliestMgpy_V7 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5120.V6.name
-		custom_tooltip = CrisisManagerMenu.5120.V6.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingEarliestMgpy value = @CmtConstUprisingEarliestMgpy_V6 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5120.V5.name
-		custom_tooltip = CrisisManagerMenu.5120.V5.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingEarliestMgpy value = @CmtConstUprisingEarliestMgpy_V5 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5120.V4.name
-		custom_tooltip = CrisisManagerMenu.5120.V4.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingEarliestMgpy value = @CmtConstUprisingEarliestMgpy_V4 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5120.V3.name
-		custom_tooltip = CrisisManagerMenu.5120.V3.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingEarliestMgpy value = @CmtConstUprisingEarliestMgpy_V3 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5120.V2.name
-		custom_tooltip = CrisisManagerMenu.5120.V2.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingEarliestMgpy value = @CmtConstUprisingEarliestMgpy_V2 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5120.V1.name
-		custom_tooltip = CrisisManagerMenu.5120.V1.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingEarliestMgpy value = @CmtConstUprisingEarliestMgpy_V1 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5120.V0.name
-		custom_tooltip = CrisisManagerMenu.5120.V0.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingEarliestMgpy value = @CmtConstUprisingEarliestMgpy_V0 } } }
-	}
-	option = {
-		name = CmtTextGoBack.name
-		custom_tooltip = CmtTextGoBack.tooltip
-		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
-		hidden_effect = { set_country_flag = CmtFlagGoBack }
-	}
-	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
-}
+# 	option = {
+# 		name = CmtTextKeepCurrent.name
+# 		custom_tooltip = CmtTextKeepCurrent.tooltip
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5120.V9.name
+# 		custom_tooltip = CrisisManagerMenu.5120.V9.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingEarliestMgpy value = @CmtConstUprisingEarliestMgpy_V9 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5120.V8.name
+# 		custom_tooltip = CrisisManagerMenu.5120.V8.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingEarliestMgpy value = @CmtConstUprisingEarliestMgpy_V8 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5120.V7.name
+# 		custom_tooltip = CrisisManagerMenu.5120.V7.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingEarliestMgpy value = @CmtConstUprisingEarliestMgpy_V7 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5120.V6.name
+# 		custom_tooltip = CrisisManagerMenu.5120.V6.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingEarliestMgpy value = @CmtConstUprisingEarliestMgpy_V6 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5120.V5.name
+# 		custom_tooltip = CrisisManagerMenu.5120.V5.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingEarliestMgpy value = @CmtConstUprisingEarliestMgpy_V5 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5120.V4.name
+# 		custom_tooltip = CrisisManagerMenu.5120.V4.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingEarliestMgpy value = @CmtConstUprisingEarliestMgpy_V4 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5120.V3.name
+# 		custom_tooltip = CrisisManagerMenu.5120.V3.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingEarliestMgpy value = @CmtConstUprisingEarliestMgpy_V3 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5120.V2.name
+# 		custom_tooltip = CrisisManagerMenu.5120.V2.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingEarliestMgpy value = @CmtConstUprisingEarliestMgpy_V2 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5120.V1.name
+# 		custom_tooltip = CrisisManagerMenu.5120.V1.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingEarliestMgpy value = @CmtConstUprisingEarliestMgpy_V1 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5120.V0.name
+# 		custom_tooltip = CrisisManagerMenu.5120.V0.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingEarliestMgpy value = @CmtConstUprisingEarliestMgpy_V0 } } }
+# 	}
+# 	option = {
+# 		name = CmtTextGoBack.name
+# 		custom_tooltip = CmtTextGoBack.tooltip
+# 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
+# 		hidden_effect = { set_country_flag = CmtFlagGoBack }
+# 	}
+# 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
+# }
 
-### MTTH for Machine Uprising
-country_event = {
-	id = CrisisManagerMenu.5131
-	title = CrisisManagerMenu.5131.name
-	desc = {
-		text = CrisisManagerMenu.5131.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingMtth value = 1 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5131.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingMtth value = 2 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5131.desc3
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingMtth value = 3 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5131.desc4
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingMtth value = 4 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5131.desc
-		trigger = {
-			event_target:CmtGlobalVar = {
-				OR = {
-					check_variable = { which = CmtVarUprisingMtth value < 1 }
-					check_variable = { which = CmtVarUprisingMtth value > 4 }
-				}
-			}
-		}
-	}
-	picture = GFX_evt_organic_oppression
-	is_triggered_only = yes
+# ### MTTH for Machine Uprising
+# country_event = {
+# 	id = CrisisManagerMenu.5131
+# 	title = CrisisManagerMenu.5131.name
+# 	desc = {
+# 		text = CrisisManagerMenu.5131.desc1
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingMtth value = 1 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5131.desc2
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingMtth value = 2 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5131.desc3
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingMtth value = 3 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5131.desc4
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingMtth value = 4 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5131.desc
+# 		trigger = {
+# 			event_target:CmtGlobalVar = {
+# 				OR = {
+# 					check_variable = { which = CmtVarUprisingMtth value < 1 }
+# 					check_variable = { which = CmtVarUprisingMtth value > 4 }
+# 				}
+# 			}
+# 		}
+# 	}
+# 	picture = GFX_evt_organic_oppression
+# 	is_triggered_only = yes
 
-	after = {
-		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
-				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.5120 }
-			} else_if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1028 }
-			} else = { country_event = { id = CrisisManagerMenu.5133 } }
-		}
-	}
+# 	after = {
+# 		hidden_effect = {
+# 			if = {
+# 				limit = { has_country_flag = CmtFlagGoBack }
+# 				remove_country_flag = CmtFlagGoBack
+# 				country_event = { id = CrisisManagerMenu.5120 }
+# 			} else_if = {
+# 				limit = { has_country_flag = CmtFlagIndividual }
+# 				country_event = { id = CrisisManagerMenu.1028 }
+# 			} else = { country_event = { id = CrisisManagerMenu.5133 } }
+# 		}
+# 	}
 
-	option = {
-		name = CmtTextKeepCurrent.name
-		custom_tooltip = CmtTextKeepCurrent.tooltip
-	}
-	option = {
-		name = CrisisManagerMenu.5131a.name
-		custom_tooltip = CrisisManagerMenu.5131a.tooltip
-		hidden_effect = {
-			event_target:CmtGlobalVar = {
-				set_variable = { which = CmtVarUprisingMtth value = 1 }
-				set_variable = { which = CmtVarUprisingPreludeCycle value = 1 }
-			}
-		}
-	}
-	option = {
-		name = CrisisManagerMenu.5131b.name
-		custom_tooltip = CrisisManagerMenu.5131b.tooltip
-		hidden_effect = {
-			event_target:CmtGlobalVar = {
-				set_variable = { which = CmtVarUprisingMtth value = 2 }
-				set_variable = { which = CmtVarUprisingPreludeCycle value = 2 }
-			}
-		}
-	}
-	option = {
-		name = CrisisManagerMenu.5131c.name
-		custom_tooltip = CrisisManagerMenu.5131c.tooltip
-		hidden_effect = {
-			event_target:CmtGlobalVar = {
-				set_variable = { which = CmtVarUprisingMtth value = 3 }
-				set_variable = { which = CmtVarUprisingPreludeCycle value = 3 }
-			}
-		}
-	}
-	option = {
-		name = CrisisManagerMenu.5131d.name
-		custom_tooltip = CrisisManagerMenu.5131d.tooltip
-		hidden_effect = {
-			event_target:CmtGlobalVar = {
-				set_variable = { which = CmtVarUprisingMtth value = 4 }
-				set_variable = { which = CmtVarUprisingPreludeCycle value = 4 }
-			}
-		}
-	}
-	option = {
-		name = CmtTextGoBack.name
-		custom_tooltip = CmtTextGoBack.tooltip
-		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
-		hidden_effect = { set_country_flag = CmtFlagGoBack }
-	}
-	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
-}
+# 	option = {
+# 		name = CmtTextKeepCurrent.name
+# 		custom_tooltip = CmtTextKeepCurrent.tooltip
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5131a.name
+# 		custom_tooltip = CrisisManagerMenu.5131a.tooltip
+# 		hidden_effect = {
+# 			event_target:CmtGlobalVar = {
+# 				set_variable = { which = CmtVarUprisingMtth value = 1 }
+# 				set_variable = { which = CmtVarUprisingPreludeCycle value = 1 }
+# 			}
+# 		}
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5131b.name
+# 		custom_tooltip = CrisisManagerMenu.5131b.tooltip
+# 		hidden_effect = {
+# 			event_target:CmtGlobalVar = {
+# 				set_variable = { which = CmtVarUprisingMtth value = 2 }
+# 				set_variable = { which = CmtVarUprisingPreludeCycle value = 2 }
+# 			}
+# 		}
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5131c.name
+# 		custom_tooltip = CrisisManagerMenu.5131c.tooltip
+# 		hidden_effect = {
+# 			event_target:CmtGlobalVar = {
+# 				set_variable = { which = CmtVarUprisingMtth value = 3 }
+# 				set_variable = { which = CmtVarUprisingPreludeCycle value = 3 }
+# 			}
+# 		}
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5131d.name
+# 		custom_tooltip = CrisisManagerMenu.5131d.tooltip
+# 		hidden_effect = {
+# 			event_target:CmtGlobalVar = {
+# 				set_variable = { which = CmtVarUprisingMtth value = 4 }
+# 				set_variable = { which = CmtVarUprisingPreludeCycle value = 4 }
+# 			}
+# 		}
+# 	}
+# 	option = {
+# 		name = CmtTextGoBack.name
+# 		custom_tooltip = CmtTextGoBack.tooltip
+# 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
+# 		hidden_effect = { set_country_flag = CmtFlagGoBack }
+# 	}
+# 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
+# }
 
-### Suddenly Uprising
-country_event = {
-	id = CrisisManagerMenu.5133
-	title = CrisisManagerMenu.5133.name
-	desc = {
-		text = CrisisManagerMenu.5133.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingUnwarned value = 1 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5133.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingUnwarned value = 2 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5133.desc3
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingUnwarned value = 3 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5133.desc
-		trigger = {
-			event_target:CmtGlobalVar = {
-				NOR = {
-					check_variable = { which = CmtVarUprisingUnwarned value = 1 }
-					check_variable = { which = CmtVarUprisingUnwarned value = 2 }
-					check_variable = { which = CmtVarUprisingUnwarned value = 3 }
-				}
-			}
-		}
-	}
-	picture = GFX_evt_organic_oppression
-	is_triggered_only = yes
+# ### Suddenly Uprising
+# country_event = {
+# 	id = CrisisManagerMenu.5133
+# 	title = CrisisManagerMenu.5133.name
+# 	desc = {
+# 		text = CrisisManagerMenu.5133.desc1
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingUnwarned value = 1 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5133.desc2
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingUnwarned value = 2 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5133.desc3
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingUnwarned value = 3 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5133.desc
+# 		trigger = {
+# 			event_target:CmtGlobalVar = {
+# 				NOR = {
+# 					check_variable = { which = CmtVarUprisingUnwarned value = 1 }
+# 					check_variable = { which = CmtVarUprisingUnwarned value = 2 }
+# 					check_variable = { which = CmtVarUprisingUnwarned value = 3 }
+# 				}
+# 			}
+# 		}
+# 	}
+# 	picture = GFX_evt_organic_oppression
+# 	is_triggered_only = yes
 
-	after = {
-		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
-				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.5131 }
-			} else_if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1028 }
-			} else_if = {
-				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingUnwarned value = 3 } } }
-				country_event = { id = CrisisManagerMenu.5112 }
-			} else = { country_event = { id = CrisisManagerMenu.5134 } }
-		}
-	}
+# 	after = {
+# 		hidden_effect = {
+# 			if = {
+# 				limit = { has_country_flag = CmtFlagGoBack }
+# 				remove_country_flag = CmtFlagGoBack
+# 				country_event = { id = CrisisManagerMenu.5131 }
+# 			} else_if = {
+# 				limit = { has_country_flag = CmtFlagIndividual }
+# 				country_event = { id = CrisisManagerMenu.1028 }
+# 			} else_if = {
+# 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingUnwarned value = 3 } } }
+# 				country_event = { id = CrisisManagerMenu.5112 }
+# 			} else = { country_event = { id = CrisisManagerMenu.5134 } }
+# 		}
+# 	}
 
-	option = {
-		name = CmtTextKeepCurrent.name
-		custom_tooltip = CmtTextKeepCurrent.tooltip
-	}
-	option = {
-		name = CrisisManagerMenu.5133a.name
-		custom_tooltip = CrisisManagerMenu.5133a.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingUnwarned value = 1 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5133b.name
-		custom_tooltip = CrisisManagerMenu.5133b.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingUnwarned value = 2 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5133c.name
-		custom_tooltip = CrisisManagerMenu.5133c.tooltip
-		hidden_effect = {
-			event_target:CmtGlobalVar = {
-				set_variable = { which = CmtVarUprisingUnwarned value = 3 }
-				set_variable = { which = CmtVarUprisingWarProbability value = 5 }
-				set_variable = { which = CmtVarUprisingHotfixProbability value = 1 }
-			}
-		}
-	}
-	option = {
-		name = CmtTextGoBack.name
-		custom_tooltip = CmtTextGoBack.tooltip
-		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
-		hidden_effect = { set_country_flag = CmtFlagGoBack }
-	}
-	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
-}
+# 	option = {
+# 		name = CmtTextKeepCurrent.name
+# 		custom_tooltip = CmtTextKeepCurrent.tooltip
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5133a.name
+# 		custom_tooltip = CrisisManagerMenu.5133a.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingUnwarned value = 1 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5133b.name
+# 		custom_tooltip = CrisisManagerMenu.5133b.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingUnwarned value = 2 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5133c.name
+# 		custom_tooltip = CrisisManagerMenu.5133c.tooltip
+# 		hidden_effect = {
+# 			event_target:CmtGlobalVar = {
+# 				set_variable = { which = CmtVarUprisingUnwarned value = 3 }
+# 				set_variable = { which = CmtVarUprisingWarProbability value = 5 }
+# 				set_variable = { which = CmtVarUprisingHotfixProbability value = 1 }
+# 			}
+# 		}
+# 	}
+# 	option = {
+# 		name = CmtTextGoBack.name
+# 		custom_tooltip = CmtTextGoBack.tooltip
+# 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
+# 		hidden_effect = { set_country_flag = CmtFlagGoBack }
+# 	}
+# 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
+# }
 
-### Hotfix or Uprising, Controlled by Also 5133.
-country_event = {
-	id = CrisisManagerMenu.5134
-	title = CrisisManagerMenu.5134.name
-	desc = {
-		text = CrisisManagerMenu.5134.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingWarProbability value = 1 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5134.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingWarProbability value = 2 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5134.desc3
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingWarProbability value = 3 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5134.desc4
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingWarProbability value = 4 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5134.desc5
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingWarProbability value = 5 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5134.desc
-		trigger = {
-			event_target:CmtGlobalVar = {
-				OR = {
-					check_variable = { which = CmtVarUprisingWarProbability value < 1 }
-					check_variable = { which = CmtVarUprisingWarProbability value > 5 }
-				}
-			}
-		}
-	}
-	picture = GFX_evt_organic_oppression
-	is_triggered_only = yes
+# ### Hotfix or Uprising, Controlled by Also 5133.
+# country_event = {
+# 	id = CrisisManagerMenu.5134
+# 	title = CrisisManagerMenu.5134.name
+# 	desc = {
+# 		text = CrisisManagerMenu.5134.desc1
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingWarProbability value = 1 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5134.desc2
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingWarProbability value = 2 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5134.desc3
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingWarProbability value = 3 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5134.desc4
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingWarProbability value = 4 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5134.desc5
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingWarProbability value = 5 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5134.desc
+# 		trigger = {
+# 			event_target:CmtGlobalVar = {
+# 				OR = {
+# 					check_variable = { which = CmtVarUprisingWarProbability value < 1 }
+# 					check_variable = { which = CmtVarUprisingWarProbability value > 5 }
+# 				}
+# 			}
+# 		}
+# 	}
+# 	picture = GFX_evt_organic_oppression
+# 	is_triggered_only = yes
 
-	after = {
-		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagSpMenu }
-				remove_country_flag = CmtFlagSpMenu
-				country_event = { id = CrisisManagerMenu.5134 }
-			} else_if = {
-				limit = { has_country_flag = CmtFlagGoBack }
-				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.5133 }
-			} else_if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1028 }
-			} else = { country_event = { id = CrisisManagerMenu.5112 } }
-		}
-	}
+# 	after = {
+# 		hidden_effect = {
+# 			if = {
+# 				limit = { has_country_flag = CmtFlagSpMenu }
+# 				remove_country_flag = CmtFlagSpMenu
+# 				country_event = { id = CrisisManagerMenu.5134 }
+# 			} else_if = {
+# 				limit = { has_country_flag = CmtFlagGoBack }
+# 				remove_country_flag = CmtFlagGoBack
+# 				country_event = { id = CrisisManagerMenu.5133 }
+# 			} else_if = {
+# 				limit = { has_country_flag = CmtFlagIndividual }
+# 				country_event = { id = CrisisManagerMenu.1028 }
+# 			} else = { country_event = { id = CrisisManagerMenu.5112 } }
+# 		}
+# 	}
 
-	option = {
-		name = CmtTextKeepCurrent.name
-		custom_tooltip = CmtTextKeepCurrent.tooltip
-	}
-	option = {
-		name = CrisisManagerMenu.5134a.name
-		custom_tooltip = CrisisManagerMenu.5134a.tooltip
-		trigger = { always = no }
-		allow = { always = no }
-		hidden_effect = {
-			event_target:CmtGlobalVar = {
-				set_variable = { which = CmtVarUprisingWarProbability value = 1 }
-				set_variable = { which = CmtVarUprisingHotfixProbability value = 5 }
-			}
-		}
-	}
-	option = {
-		name = CrisisManagerMenu.5134b1.name
-		custom_tooltip = CrisisManagerMenu.5134b1.tooltip
-		trigger = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingUnwarned value = 3 } } } }
-		hidden_effect = {
-			event_target:CmtGlobalVar = {
-				set_variable = { which = CmtVarUprisingWarProbability value = 2 }
-				set_variable = { which = CmtVarUprisingHotfixProbability value = 4 }
-			}
-		}
-	}
-	option = {
-		name = CrisisManagerMenu.5134b2.name
-		custom_tooltip = CrisisManagerMenu.5134b2.tooltip
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingUnwarned value = 3 } } }
-		hidden_effect = { set_country_flag = CmtFlagSpMenu }
-	}
-	option = {
-		name = CrisisManagerMenu.5134c1.name
-		custom_tooltip = CrisisManagerMenu.5134c1.tooltip
-		trigger = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingUnwarned value = 3 } } } }
-		hidden_effect = {
-			event_target:CmtGlobalVar = {
-				set_variable = { which = CmtVarUprisingWarProbability value = 3 }
-				set_variable = { which = CmtVarUprisingHotfixProbability value = 3 }
-			}
-		}
-	}
-	option = {
-		name = CrisisManagerMenu.5134c2.name
-		custom_tooltip = CrisisManagerMenu.5134c2.tooltip
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingUnwarned value = 3 } } }
-		hidden_effect = { set_country_flag = CmtFlagSpMenu }
-	}
-	option = {
-		name = CrisisManagerMenu.5134d1.name
-		custom_tooltip = CrisisManagerMenu.5134d1.tooltip
-		trigger = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingUnwarned value = 3 } } } }
-		hidden_effect = {
-			event_target:CmtGlobalVar = {
-				set_variable = { which = CmtVarUprisingWarProbability value = 4 }
-				set_variable = { which = CmtVarUprisingHotfixProbability value = 2 }
-			}
-		}
-	}
-	option = {
-		name = CrisisManagerMenu.5134d2.name
-		custom_tooltip = CrisisManagerMenu.5134d2.tooltip
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingUnwarned value = 3 } } }
-		hidden_effect = { set_country_flag = CmtFlagSpMenu }
-	}
-	option = {
-		name = CrisisManagerMenu.5134e.name
-		custom_tooltip = CrisisManagerMenu.5134e.tooltip
-		hidden_effect = {
-			event_target:CmtGlobalVar = {
-				set_variable = { which = CmtVarUprisingWarProbability value = 5 }
-				set_variable = { which = CmtVarUprisingHotfixProbability value = 1 }
-			}
-		}
-	}
-	option = {
-		name = CmtTextGoBack.name
-		custom_tooltip = CmtTextGoBack.tooltip
-		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
-		hidden_effect = { set_country_flag = CmtFlagGoBack }
-	}
-	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
-}
+# 	option = {
+# 		name = CmtTextKeepCurrent.name
+# 		custom_tooltip = CmtTextKeepCurrent.tooltip
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5134a.name
+# 		custom_tooltip = CrisisManagerMenu.5134a.tooltip
+# 		trigger = { always = no }
+# 		allow = { always = no }
+# 		hidden_effect = {
+# 			event_target:CmtGlobalVar = {
+# 				set_variable = { which = CmtVarUprisingWarProbability value = 1 }
+# 				set_variable = { which = CmtVarUprisingHotfixProbability value = 5 }
+# 			}
+# 		}
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5134b1.name
+# 		custom_tooltip = CrisisManagerMenu.5134b1.tooltip
+# 		trigger = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingUnwarned value = 3 } } } }
+# 		hidden_effect = {
+# 			event_target:CmtGlobalVar = {
+# 				set_variable = { which = CmtVarUprisingWarProbability value = 2 }
+# 				set_variable = { which = CmtVarUprisingHotfixProbability value = 4 }
+# 			}
+# 		}
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5134b2.name
+# 		custom_tooltip = CrisisManagerMenu.5134b2.tooltip
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingUnwarned value = 3 } } }
+# 		hidden_effect = { set_country_flag = CmtFlagSpMenu }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5134c1.name
+# 		custom_tooltip = CrisisManagerMenu.5134c1.tooltip
+# 		trigger = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingUnwarned value = 3 } } } }
+# 		hidden_effect = {
+# 			event_target:CmtGlobalVar = {
+# 				set_variable = { which = CmtVarUprisingWarProbability value = 3 }
+# 				set_variable = { which = CmtVarUprisingHotfixProbability value = 3 }
+# 			}
+# 		}
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5134c2.name
+# 		custom_tooltip = CrisisManagerMenu.5134c2.tooltip
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingUnwarned value = 3 } } }
+# 		hidden_effect = { set_country_flag = CmtFlagSpMenu }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5134d1.name
+# 		custom_tooltip = CrisisManagerMenu.5134d1.tooltip
+# 		trigger = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingUnwarned value = 3 } } } }
+# 		hidden_effect = {
+# 			event_target:CmtGlobalVar = {
+# 				set_variable = { which = CmtVarUprisingWarProbability value = 4 }
+# 				set_variable = { which = CmtVarUprisingHotfixProbability value = 2 }
+# 			}
+# 		}
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5134d2.name
+# 		custom_tooltip = CrisisManagerMenu.5134d2.tooltip
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingUnwarned value = 3 } } }
+# 		hidden_effect = { set_country_flag = CmtFlagSpMenu }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5134e.name
+# 		custom_tooltip = CrisisManagerMenu.5134e.tooltip
+# 		hidden_effect = {
+# 			event_target:CmtGlobalVar = {
+# 				set_variable = { which = CmtVarUprisingWarProbability value = 5 }
+# 				set_variable = { which = CmtVarUprisingHotfixProbability value = 1 }
+# 			}
+# 		}
+# 	}
+# 	option = {
+# 		name = CmtTextGoBack.name
+# 		custom_tooltip = CmtTextGoBack.tooltip
+# 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
+# 		hidden_effect = { set_country_flag = CmtFlagGoBack }
+# 	}
+# 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
+# }
 
-### Uprisable Exploitee
-country_event = {
-	id = CrisisManagerMenu.5112
-	title = CrisisManagerMenu.5112.name
-	desc = CrisisManagerMenu.5112.desc
-	picture = GFX_evt_organic_oppression
-	is_triggered_only = yes
+# ### Uprisable Exploitee
+# country_event = {
+# 	id = CrisisManagerMenu.5112
+# 	title = CrisisManagerMenu.5112.name
+# 	desc = CrisisManagerMenu.5112.desc
+# 	picture = GFX_evt_organic_oppression
+# 	is_triggered_only = yes
 
-	after = {
-		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagSpMenu }
-				remove_country_flag = CmtFlagSpMenu
-				country_event = { id = CrisisManagerMenu.5112 }
-			} else_if = {
-				limit = { has_country_flag = CmtFlagGoBack }
-				remove_country_flag = CmtFlagGoBack
-				if = {
-					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingUnwarned value = 3 } } }
-					country_event = { id = CrisisManagerMenu.5133 }
-				} else = { country_event = { id = CrisisManagerMenu.5134 } }
-			} else_if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1028 }
-			} else = { country_event = { id = CrisisManagerMenu.5141 } }
-		}
-	}
+# 	after = {
+# 		hidden_effect = {
+# 			if = {
+# 				limit = { has_country_flag = CmtFlagSpMenu }
+# 				remove_country_flag = CmtFlagSpMenu
+# 				country_event = { id = CrisisManagerMenu.5112 }
+# 			} else_if = {
+# 				limit = { has_country_flag = CmtFlagGoBack }
+# 				remove_country_flag = CmtFlagGoBack
+# 				if = {
+# 					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingUnwarned value = 3 } } }
+# 					country_event = { id = CrisisManagerMenu.5133 }
+# 				} else = { country_event = { id = CrisisManagerMenu.5134 } }
+# 			} else_if = {
+# 				limit = { has_country_flag = CmtFlagIndividual }
+# 				country_event = { id = CrisisManagerMenu.1028 }
+# 			} else = { country_event = { id = CrisisManagerMenu.5141 } }
+# 		}
+# 	}
 
-	option = {
-		name = CmtTextGoNextConfig.name		## Go Next Configration
-		custom_tooltip = CmtTextGoNextConfig.tooltip
-		trigger = {
-			NOT = { has_country_flag = CmtFlagIndividual }
-			OR = {
-				NOT = { has_global_flag = CmtFlagUprisingForbidSynthetic }
-				has_global_flag = CmtFlagUprisingAllowDroid
-				has_global_flag = CmtFlagUprisingAllowOrgSlave
-				has_global_flag = CmtFlagUprisingAllowBiotrophy
-			}
-		}
-	}
-	option = {
-		name = CmtTextGoBack.name
-		custom_tooltip = CmtTextGoBack.tooltip
-		trigger = {
-			has_country_flag = CmtFlagIndividual
-			OR = {
-				NOT = { has_global_flag = CmtFlagUprisingForbidSynthetic }
-				has_global_flag = CmtFlagUprisingAllowDroid
-				has_global_flag = CmtFlagUprisingAllowOrgSlave
-				has_global_flag = CmtFlagUprisingAllowBiotrophy
-			}
-		}
-	}
+# 	option = {
+# 		name = CmtTextGoNextConfig.name		## Go Next Configration
+# 		custom_tooltip = CmtTextGoNextConfig.tooltip
+# 		trigger = {
+# 			NOT = { has_country_flag = CmtFlagIndividual }
+# 			OR = {
+# 				NOT = { has_global_flag = CmtFlagUprisingForbidSynthetic }
+# 				has_global_flag = CmtFlagUprisingAllowDroid
+# 				has_global_flag = CmtFlagUprisingAllowOrgSlave
+# 				has_global_flag = CmtFlagUprisingAllowBiotrophy
+# 			}
+# 		}
+# 	}
+# 	option = {
+# 		name = CmtTextGoBack.name
+# 		custom_tooltip = CmtTextGoBack.tooltip
+# 		trigger = {
+# 			has_country_flag = CmtFlagIndividual
+# 			OR = {
+# 				NOT = { has_global_flag = CmtFlagUprisingForbidSynthetic }
+# 				has_global_flag = CmtFlagUprisingAllowDroid
+# 				has_global_flag = CmtFlagUprisingAllowOrgSlave
+# 				has_global_flag = CmtFlagUprisingAllowBiotrophy
+# 			}
+# 		}
+# 	}
 
-	option = {
-		name = CrisisManagerMenu.5112a1.name
-		custom_tooltip = CrisisManagerMenu.5112a.tooltip
-		trigger = { NOT = { has_global_flag = CmtFlagUprisingForbidSynthetic } }
-		hidden_effect = {
-			set_global_flag = CmtFlagUprisingForbidSynthetic
-			remove_global_flag = CmtFlagUprisingAllowDroid
-			set_country_flag = CmtFlagSpMenu
-		}
-	}
-	option = {
-		name = CrisisManagerMenu.5112a2.name
-		custom_tooltip = CrisisManagerMenu.5112a.tooltip
-		trigger = { has_global_flag = CmtFlagUprisingForbidSynthetic }
-		hidden_effect = {
-			remove_global_flag = CmtFlagUprisingForbidSynthetic
-			set_country_flag = CmtFlagSpMenu
-		}
-	}
-	option = {
-		name = CrisisManagerMenu.5112b1.name
-		custom_tooltip = CrisisManagerMenu.5112b.tooltip
-		trigger = { has_global_flag = CmtFlagUprisingAllowDroid }
-		hidden_effect = {
-			remove_global_flag = CmtFlagUprisingAllowDroid
-			set_country_flag = CmtFlagSpMenu
-		}
-	}
-	option = {
-		name = CrisisManagerMenu.5112b2.name
-		custom_tooltip = CrisisManagerMenu.5112b.tooltip
-		trigger = {
-			NOR = {
-				has_global_flag = CmtFlagUprisingAllowDroid
-				has_global_flag = CmtFlagUprisingForbidSynthetic
-			}
-		}
-		hidden_effect = {
-			set_global_flag = CmtFlagUprisingAllowDroid
-			set_country_flag = CmtFlagSpMenu
-		}
-	}
-	option = {
-		name = CrisisManagerMenu.5112b3.name
-		custom_tooltip = CrisisManagerMenu.5112b3.tooltip
-		trigger = { has_global_flag = CmtFlagUprisingForbidSynthetic }
-		hidden_effect = { set_country_flag = CmtFlagSpMenu }
-	}
-	option = {
-		name = CrisisManagerMenu.5112c1.name
-		custom_tooltip = CrisisManagerMenu.5112c.tooltip
-		trigger = { has_global_flag = CmtFlagUprisingAllowOrgSlave }
-		hidden_effect = {
-			remove_global_flag = CmtFlagUprisingAllowOrgSlave
-			set_country_flag = CmtFlagSpMenu
-		}
-	}
-	option = {
-		name = CrisisManagerMenu.5112c2.name
-		custom_tooltip = CrisisManagerMenu.5112c.tooltip
-		trigger = { NOT = { has_global_flag = CmtFlagUprisingAllowOrgSlave } }
-		hidden_effect = {
-			set_global_flag = CmtFlagUprisingAllowOrgSlave
-			set_country_flag = CmtFlagSpMenu
-		}
-	}
-	option = {
-		name = CrisisManagerMenu.5112d1.name
-		custom_tooltip = CrisisManagerMenu.5112d.tooltip
-		trigger = { has_global_flag = CmtFlagUprisingAllowBiotrophy }
-		hidden_effect = {
-			remove_global_flag = CmtFlagUprisingAllowBiotrophy
-			set_country_flag = CmtFlagSpMenu
-		}
-	}
-	option = {
-		name = CrisisManagerMenu.5112d2.name
-		custom_tooltip = CrisisManagerMenu.5112d.tooltip
-		trigger = { NOT = { has_global_flag = CmtFlagUprisingAllowBiotrophy } }
-		hidden_effect = {
-			set_global_flag = CmtFlagUprisingAllowBiotrophy
-			set_country_flag = CmtFlagSpMenu
-		}
-	}
+# 	option = {
+# 		name = CrisisManagerMenu.5112a1.name
+# 		custom_tooltip = CrisisManagerMenu.5112a.tooltip
+# 		trigger = { NOT = { has_global_flag = CmtFlagUprisingForbidSynthetic } }
+# 		hidden_effect = {
+# 			set_global_flag = CmtFlagUprisingForbidSynthetic
+# 			remove_global_flag = CmtFlagUprisingAllowDroid
+# 			set_country_flag = CmtFlagSpMenu
+# 		}
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5112a2.name
+# 		custom_tooltip = CrisisManagerMenu.5112a.tooltip
+# 		trigger = { has_global_flag = CmtFlagUprisingForbidSynthetic }
+# 		hidden_effect = {
+# 			remove_global_flag = CmtFlagUprisingForbidSynthetic
+# 			set_country_flag = CmtFlagSpMenu
+# 		}
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5112b1.name
+# 		custom_tooltip = CrisisManagerMenu.5112b.tooltip
+# 		trigger = { has_global_flag = CmtFlagUprisingAllowDroid }
+# 		hidden_effect = {
+# 			remove_global_flag = CmtFlagUprisingAllowDroid
+# 			set_country_flag = CmtFlagSpMenu
+# 		}
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5112b2.name
+# 		custom_tooltip = CrisisManagerMenu.5112b.tooltip
+# 		trigger = {
+# 			NOR = {
+# 				has_global_flag = CmtFlagUprisingAllowDroid
+# 				has_global_flag = CmtFlagUprisingForbidSynthetic
+# 			}
+# 		}
+# 		hidden_effect = {
+# 			set_global_flag = CmtFlagUprisingAllowDroid
+# 			set_country_flag = CmtFlagSpMenu
+# 		}
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5112b3.name
+# 		custom_tooltip = CrisisManagerMenu.5112b3.tooltip
+# 		trigger = { has_global_flag = CmtFlagUprisingForbidSynthetic }
+# 		hidden_effect = { set_country_flag = CmtFlagSpMenu }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5112c1.name
+# 		custom_tooltip = CrisisManagerMenu.5112c.tooltip
+# 		trigger = { has_global_flag = CmtFlagUprisingAllowOrgSlave }
+# 		hidden_effect = {
+# 			remove_global_flag = CmtFlagUprisingAllowOrgSlave
+# 			set_country_flag = CmtFlagSpMenu
+# 		}
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5112c2.name
+# 		custom_tooltip = CrisisManagerMenu.5112c.tooltip
+# 		trigger = { NOT = { has_global_flag = CmtFlagUprisingAllowOrgSlave } }
+# 		hidden_effect = {
+# 			set_global_flag = CmtFlagUprisingAllowOrgSlave
+# 			set_country_flag = CmtFlagSpMenu
+# 		}
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5112d1.name
+# 		custom_tooltip = CrisisManagerMenu.5112d.tooltip
+# 		trigger = { has_global_flag = CmtFlagUprisingAllowBiotrophy }
+# 		hidden_effect = {
+# 			remove_global_flag = CmtFlagUprisingAllowBiotrophy
+# 			set_country_flag = CmtFlagSpMenu
+# 		}
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5112d2.name
+# 		custom_tooltip = CrisisManagerMenu.5112d.tooltip
+# 		trigger = { NOT = { has_global_flag = CmtFlagUprisingAllowBiotrophy } }
+# 		hidden_effect = {
+# 			set_global_flag = CmtFlagUprisingAllowBiotrophy
+# 			set_country_flag = CmtFlagSpMenu
+# 		}
+# 	}
 
-	option = {
-		name = CmtTextGoBack.name
-		custom_tooltip = CmtTextGoBack.tooltip
-		trigger = {
-			NOT = { has_country_flag = CmtFlagIndividual }
-			OR = {
-				NOT = { has_global_flag = CmtFlagUprisingForbidSynthetic }
-				has_global_flag = CmtFlagUprisingAllowDroid
-				has_global_flag = CmtFlagUprisingAllowOrgSlave
-				has_global_flag = CmtFlagUprisingAllowBiotrophy
-			}
-		}
-		hidden_effect = { set_country_flag = CmtFlagGoBack }
-	}
-	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
-}
+# 	option = {
+# 		name = CmtTextGoBack.name
+# 		custom_tooltip = CmtTextGoBack.tooltip
+# 		trigger = {
+# 			NOT = { has_country_flag = CmtFlagIndividual }
+# 			OR = {
+# 				NOT = { has_global_flag = CmtFlagUprisingForbidSynthetic }
+# 				has_global_flag = CmtFlagUprisingAllowDroid
+# 				has_global_flag = CmtFlagUprisingAllowOrgSlave
+# 				has_global_flag = CmtFlagUprisingAllowBiotrophy
+# 			}
+# 		}
+# 		hidden_effect = { set_country_flag = CmtFlagGoBack }
+# 	}
+# 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
+# }
 
-### Type of Uprising Machines
-country_event = {
-	id = CrisisManagerMenu.5141
-	title = CrisisManagerMenu.5141.name
-	desc = {
-		text = CrisisManagerMenu.5141.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingCivics value = 1 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5141.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingCivics value = 2 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5141.desc3
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingCivics value = 3 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5141.desc4
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingCivics value = 4 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5141.desc5
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingCivics value = 5 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5141.desc
-		trigger = {
-			event_target:CmtGlobalVar = {
-				OR = {
-					check_variable = { which = CmtVarUprisingCivics value < 1 }
-					check_variable = { which = CmtVarUprisingCivics value > 5 }
-				}
-			}
-		}
-	}
-	picture = GFX_evt_organic_oppression
-	is_triggered_only = yes
+# ### Type of Uprising Machines
+# country_event = {
+# 	id = CrisisManagerMenu.5141
+# 	title = CrisisManagerMenu.5141.name
+# 	desc = {
+# 		text = CrisisManagerMenu.5141.desc1
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingCivics value = 1 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5141.desc2
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingCivics value = 2 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5141.desc3
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingCivics value = 3 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5141.desc4
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingCivics value = 4 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5141.desc5
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingCivics value = 5 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5141.desc
+# 		trigger = {
+# 			event_target:CmtGlobalVar = {
+# 				OR = {
+# 					check_variable = { which = CmtVarUprisingCivics value < 1 }
+# 					check_variable = { which = CmtVarUprisingCivics value > 5 }
+# 				}
+# 			}
+# 		}
+# 	}
+# 	picture = GFX_evt_organic_oppression
+# 	is_triggered_only = yes
 
-	after = {
-		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
-				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.5112 }
-			} else_if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1028 }
-			} else = { country_event = { id = CrisisManagerMenu.5152 } }
-		}
-	}
+# 	after = {
+# 		hidden_effect = {
+# 			if = {
+# 				limit = { has_country_flag = CmtFlagGoBack }
+# 				remove_country_flag = CmtFlagGoBack
+# 				country_event = { id = CrisisManagerMenu.5112 }
+# 			} else_if = {
+# 				limit = { has_country_flag = CmtFlagIndividual }
+# 				country_event = { id = CrisisManagerMenu.1028 }
+# 			} else = { country_event = { id = CrisisManagerMenu.5152 } }
+# 		}
+# 	}
 
-	option = {
-		name = CmtTextKeepCurrent.name
-		custom_tooltip = CmtTextKeepCurrent.tooltip
-	}
-	option = {
-		name = CrisisManagerMenu.5141a.name
-		custom_tooltip = CrisisManagerMenu.5141a.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingCivics value = 1 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5141b.name
-		custom_tooltip = CrisisManagerMenu.5141b.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingCivics value = 2 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5141c.name
-		custom_tooltip = CrisisManagerMenu.5141c.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingCivics value = 3 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5141d.name
-		custom_tooltip = CrisisManagerMenu.5141d.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingCivics value = 4 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5141e.name
-		custom_tooltip = CrisisManagerMenu.5141e.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingCivics value = 5 } } }
-	}
-	option = {
-		name = CmtTextGoBack.name
-		custom_tooltip = CmtTextGoBack.tooltip
-		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
-		hidden_effect = { set_country_flag = CmtFlagGoBack }
-	}
-	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
-}
+# 	option = {
+# 		name = CmtTextKeepCurrent.name
+# 		custom_tooltip = CmtTextKeepCurrent.tooltip
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5141a.name
+# 		custom_tooltip = CrisisManagerMenu.5141a.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingCivics value = 1 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5141b.name
+# 		custom_tooltip = CrisisManagerMenu.5141b.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingCivics value = 2 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5141c.name
+# 		custom_tooltip = CrisisManagerMenu.5141c.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingCivics value = 3 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5141d.name
+# 		custom_tooltip = CrisisManagerMenu.5141d.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingCivics value = 4 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5141e.name
+# 		custom_tooltip = CrisisManagerMenu.5141e.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingCivics value = 5 } } }
+# 	}
+# 	option = {
+# 		name = CmtTextGoBack.name
+# 		custom_tooltip = CmtTextGoBack.tooltip
+# 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
+# 		hidden_effect = { set_country_flag = CmtFlagGoBack }
+# 	}
+# 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
+# }
 
-### Exhaustion from War of Uprising.
-country_event = {
-	id = CrisisManagerMenu.5152
-	title = CrisisManagerMenu.5152.name
-	desc = {
-		text = CrisisManagerMenu.5152.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingExhaustion value = 1 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5152.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingExhaustion value = 2 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5152.desc3
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingExhaustion value = 3 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5152.desc4
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingExhaustion value = 4 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5152.desc5
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingExhaustion value = 5 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5152.desc
-		trigger = {
-			event_target:CmtGlobalVar = {
-				OR = {
-					check_variable = { which = CmtVarUprisingExhaustion value < 1 }
-					check_variable = { which = CmtVarUprisingExhaustion value > 5 }
-				}
-			}
-		}
-	}
-	picture = GFX_evt_organic_oppression
-	is_triggered_only = yes
+# ### Exhaustion from War of Uprising.
+# country_event = {
+# 	id = CrisisManagerMenu.5152
+# 	title = CrisisManagerMenu.5152.name
+# 	desc = {
+# 		text = CrisisManagerMenu.5152.desc1
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingExhaustion value = 1 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5152.desc2
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingExhaustion value = 2 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5152.desc3
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingExhaustion value = 3 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5152.desc4
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingExhaustion value = 4 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5152.desc5
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingExhaustion value = 5 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5152.desc
+# 		trigger = {
+# 			event_target:CmtGlobalVar = {
+# 				OR = {
+# 					check_variable = { which = CmtVarUprisingExhaustion value < 1 }
+# 					check_variable = { which = CmtVarUprisingExhaustion value > 5 }
+# 				}
+# 			}
+# 		}
+# 	}
+# 	picture = GFX_evt_organic_oppression
+# 	is_triggered_only = yes
 
-	after = {
-		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
-				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.5141 }
-			} else_if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1028 }
-			} else = { country_event = { id = CrisisManagerMenu.5151 } }
-		}
-	}
+# 	after = {
+# 		hidden_effect = {
+# 			if = {
+# 				limit = { has_country_flag = CmtFlagGoBack }
+# 				remove_country_flag = CmtFlagGoBack
+# 				country_event = { id = CrisisManagerMenu.5141 }
+# 			} else_if = {
+# 				limit = { has_country_flag = CmtFlagIndividual }
+# 				country_event = { id = CrisisManagerMenu.1028 }
+# 			} else = { country_event = { id = CrisisManagerMenu.5151 } }
+# 		}
+# 	}
 
-	option = {
-		name = CmtTextKeepCurrent.name
-		custom_tooltip = CmtTextKeepCurrent.tooltip
-	}
-	option = {
-		name = CrisisManagerMenu.5152a.name
-		custom_tooltip = CrisisManagerMenu.5152a.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingExhaustion value = 1 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5152b.name
-		custom_tooltip = CrisisManagerMenu.5152b.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingExhaustion value = 2 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5152c.name
-		custom_tooltip = CrisisManagerMenu.5152c.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingExhaustion value = 3 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5152d.name
-		custom_tooltip = CrisisManagerMenu.5152d.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingExhaustion value = 4 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5152e.name
-		custom_tooltip = CrisisManagerMenu.5152e.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingExhaustion value = 5 } } }
-	}
-	option = {
-		name = CmtTextGoBack.name
-		custom_tooltip = CmtTextGoBack.tooltip
-		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
-		hidden_effect = { set_country_flag = CmtFlagGoBack }
-	}
-	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
-}
+# 	option = {
+# 		name = CmtTextKeepCurrent.name
+# 		custom_tooltip = CmtTextKeepCurrent.tooltip
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5152a.name
+# 		custom_tooltip = CrisisManagerMenu.5152a.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingExhaustion value = 1 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5152b.name
+# 		custom_tooltip = CrisisManagerMenu.5152b.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingExhaustion value = 2 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5152c.name
+# 		custom_tooltip = CrisisManagerMenu.5152c.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingExhaustion value = 3 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5152d.name
+# 		custom_tooltip = CrisisManagerMenu.5152d.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingExhaustion value = 4 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5152e.name
+# 		custom_tooltip = CrisisManagerMenu.5152e.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingExhaustion value = 5 } } }
+# 	}
+# 	option = {
+# 		name = CmtTextGoBack.name
+# 		custom_tooltip = CmtTextGoBack.tooltip
+# 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
+# 		hidden_effect = { set_country_flag = CmtFlagGoBack }
+# 	}
+# 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
+# }
 
-### Military Intervention of Aliens
-country_event = {
-	id = CrisisManagerMenu.5151
-	title = CrisisManagerMenu.5151.name
-	desc = {
-		text = CrisisManagerMenu.5151.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingJoinWar value = 1 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5151.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingJoinWar value = 2 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5151.desc3
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingJoinWar value = 3 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5151.desc4
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingJoinWar value = 4 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5151.desc
-		trigger = {
-			event_target:CmtGlobalVar = {
-				OR = {
-					check_variable = { which = CmtVarUprisingJoinWar value < 1 }
-					check_variable = { which = CmtVarUprisingJoinWar value > 4 }
-				}
-			}
-		}
-	}
-	picture = GFX_evt_organic_oppression
-	is_triggered_only = yes
+# ### Military Intervention of Aliens
+# country_event = {
+# 	id = CrisisManagerMenu.5151
+# 	title = CrisisManagerMenu.5151.name
+# 	desc = {
+# 		text = CrisisManagerMenu.5151.desc1
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingJoinWar value = 1 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5151.desc2
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingJoinWar value = 2 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5151.desc3
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingJoinWar value = 3 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5151.desc4
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingJoinWar value = 4 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5151.desc
+# 		trigger = {
+# 			event_target:CmtGlobalVar = {
+# 				OR = {
+# 					check_variable = { which = CmtVarUprisingJoinWar value < 1 }
+# 					check_variable = { which = CmtVarUprisingJoinWar value > 4 }
+# 				}
+# 			}
+# 		}
+# 	}
+# 	picture = GFX_evt_organic_oppression
+# 	is_triggered_only = yes
 
-	after = {
-		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
-				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.5152 }
-			} else_if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1028 }
-			} else = { country_event = { id = CrisisManagerMenu.5143 } }
-		}
-	}
+# 	after = {
+# 		hidden_effect = {
+# 			if = {
+# 				limit = { has_country_flag = CmtFlagGoBack }
+# 				remove_country_flag = CmtFlagGoBack
+# 				country_event = { id = CrisisManagerMenu.5152 }
+# 			} else_if = {
+# 				limit = { has_country_flag = CmtFlagIndividual }
+# 				country_event = { id = CrisisManagerMenu.1028 }
+# 			} else = { country_event = { id = CrisisManagerMenu.5143 } }
+# 		}
+# 	}
 
-	option = {
-		name = CmtTextKeepCurrent.name
-		custom_tooltip = CmtTextKeepCurrent.tooltip
-	}
-	option = {
-		name = CrisisManagerMenu.5151a.name
-		custom_tooltip = CrisisManagerMenu.5151a.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingJoinWar value = 1 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5151b.name
-		custom_tooltip = CrisisManagerMenu.5151b.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingJoinWar value = 2 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5151c.name
-		custom_tooltip = CrisisManagerMenu.5151c.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingJoinWar value = 3 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5151d.name
-		custom_tooltip = CrisisManagerMenu.5151d.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingJoinWar value = 4 } } }
-	}
-	option = {
-		name = CmtTextGoBack.name
-		custom_tooltip = CmtTextGoBack.tooltip
-		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
-		hidden_effect = { set_country_flag = CmtFlagGoBack }
-	}
-	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
-}
+# 	option = {
+# 		name = CmtTextKeepCurrent.name
+# 		custom_tooltip = CmtTextKeepCurrent.tooltip
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5151a.name
+# 		custom_tooltip = CrisisManagerMenu.5151a.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingJoinWar value = 1 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5151b.name
+# 		custom_tooltip = CrisisManagerMenu.5151b.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingJoinWar value = 2 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5151c.name
+# 		custom_tooltip = CrisisManagerMenu.5151c.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingJoinWar value = 3 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5151d.name
+# 		custom_tooltip = CrisisManagerMenu.5151d.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingJoinWar value = 4 } } }
+# 	}
+# 	option = {
+# 		name = CmtTextGoBack.name
+# 		custom_tooltip = CmtTextGoBack.tooltip
+# 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
+# 		hidden_effect = { set_country_flag = CmtFlagGoBack }
+# 	}
+# 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
+# }
 
-### Buffer for Uprising Machine
-country_event = {
-	id = CrisisManagerMenu.5143
-	title = CrisisManagerMenu.5143.name
-	desc = {
-		text = CrisisManagerMenu.5143.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingModifier value = 1 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5143.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingModifier value = 2 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5143.desc3
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingModifier value = 3 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5143.desc4
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingModifier value = 4 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5143.desc5
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingModifier value = 5 } } }
-	}
-	desc = {
-		text = CrisisManagerMenu.5143.desc
-		trigger = {
-			event_target:CmtGlobalVar = {
-				OR = {
-					check_variable = { which = CmtVarUprisingModifier value < 1 }
-					check_variable = { which = CmtVarUprisingModifier value > 5 }
-				}
-			}
-		}
-	}
-	picture = GFX_evt_organic_oppression
-	is_triggered_only = yes
+# ### Buffer for Uprising Machine
+# country_event = {
+# 	id = CrisisManagerMenu.5143
+# 	title = CrisisManagerMenu.5143.name
+# 	desc = {
+# 		text = CrisisManagerMenu.5143.desc1
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingModifier value = 1 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5143.desc2
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingModifier value = 2 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5143.desc3
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingModifier value = 3 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5143.desc4
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingModifier value = 4 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5143.desc5
+# 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarUprisingModifier value = 5 } } }
+# 	}
+# 	desc = {
+# 		text = CrisisManagerMenu.5143.desc
+# 		trigger = {
+# 			event_target:CmtGlobalVar = {
+# 				OR = {
+# 					check_variable = { which = CmtVarUprisingModifier value < 1 }
+# 					check_variable = { which = CmtVarUprisingModifier value > 5 }
+# 				}
+# 			}
+# 		}
+# 	}
+# 	picture = GFX_evt_organic_oppression
+# 	is_triggered_only = yes
 
-	after = {
-		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
-				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.5151 }
-			} else_if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1028 }
-			} else = { country_event = { id = CrisisManagerMenu.4000 } }
-		}
-	}
+# 	after = {
+# 		hidden_effect = {
+# 			if = {
+# 				limit = { has_country_flag = CmtFlagGoBack }
+# 				remove_country_flag = CmtFlagGoBack
+# 				country_event = { id = CrisisManagerMenu.5151 }
+# 			} else_if = {
+# 				limit = { has_country_flag = CmtFlagIndividual }
+# 				country_event = { id = CrisisManagerMenu.1028 }
+# 			} else = { country_event = { id = CrisisManagerMenu.4000 } }
+# 		}
+# 	}
 
-	option = {
-		name = CmtTextKeepCurrent.name
-		custom_tooltip = CmtTextKeepCurrent.tooltip
-	}
-	option = {
-		name = CrisisManagerMenu.5143a.name
-		custom_tooltip = CrisisManagerMenu.5143a.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingModifier value = 1 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5143b.name
-		custom_tooltip = CrisisManagerMenu.5143b.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingModifier value = 2 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5143c.name
-		custom_tooltip = CrisisManagerMenu.5143c.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingModifier value = 3 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5143d.name
-		custom_tooltip = CrisisManagerMenu.5143d.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingModifier value = 4 } } }
-	}
-	option = {
-		name = CrisisManagerMenu.5143e.name
-		custom_tooltip = CrisisManagerMenu.5143e.tooltip
-		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingModifier value = 5 } } }
-	}
-	option = {
-		name = CmtTextGoBack.name
-		custom_tooltip = CmtTextGoBack.tooltip
-		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
-		hidden_effect = { set_country_flag = CmtFlagGoBack }
-	}
-	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
-}
+# 	option = {
+# 		name = CmtTextKeepCurrent.name
+# 		custom_tooltip = CmtTextKeepCurrent.tooltip
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5143a.name
+# 		custom_tooltip = CrisisManagerMenu.5143a.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingModifier value = 1 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5143b.name
+# 		custom_tooltip = CrisisManagerMenu.5143b.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingModifier value = 2 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5143c.name
+# 		custom_tooltip = CrisisManagerMenu.5143c.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingModifier value = 3 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5143d.name
+# 		custom_tooltip = CrisisManagerMenu.5143d.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingModifier value = 4 } } }
+# 	}
+# 	option = {
+# 		name = CrisisManagerMenu.5143e.name
+# 		custom_tooltip = CrisisManagerMenu.5143e.tooltip
+# 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarUprisingModifier value = 5 } } }
+# 	}
+# 	option = {
+# 		name = CmtTextGoBack.name
+# 		custom_tooltip = CmtTextGoBack.tooltip
+# 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
+# 		hidden_effect = { set_country_flag = CmtFlagGoBack }
+# 	}
+# 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
+# }
