@@ -15,8 +15,10 @@
 
 ### For Spawning Each Countries, Scope: this = Stellar System
 CmtTriggerSpawnableSystem = {
-	is_capital_system = no
 	NOR = {
+		is_star_class = sc_pulsar
+		is_star_class = sc_binary_1
+		is_capital_system = yes
 		has_star_flag = swarm_invasion_target_1
 		has_star_flag = swarm_invasion_target_2
 		has_star_flag = swarm_invasion_target_3
@@ -34,7 +36,6 @@ CmtTriggerSpawnableSystem = {
 		has_star_flag = lgate
 		has_star_flag = lcluster
 		has_star_flag = sealed_system		## The system with no hyperlanes.
-		# is_capital_system = yes
 	}
 }
 

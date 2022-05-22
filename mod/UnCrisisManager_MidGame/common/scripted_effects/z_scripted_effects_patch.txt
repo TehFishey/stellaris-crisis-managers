@@ -6,44 +6,46 @@ end_war_effect = {
 	if = { # Is defenders
 		# Because strange log behavior
 		limit = {
+			# years_passed > 1 # Try to omit error.log
 			exists = this
 			is_scope_valid = yes
 			is_scope_type = war
-			count_attacker = {
-				count > 0
-				# limit = { }
-			}
+			# count_attacker = { count > 0 throws already error
+			exists = prev
+			prev = { is_scope_valid = yes is_scope_type = country }
+			any_attacker = { always = yes }
+			any_defender = { always = yes }
 		}
-		every_attacker = {
+		# Try to omit error.log
+		every_defender = {
 			limit = {
-				# NOT = { is_same_empire = prevprev }
-				# NOT = { is_war_participant = { war = prev side = prevprev } }
-				is_war_participant = { war = prev side = attackers } # Because strange log behavior
+				is_war_participant = { war = prev side = defenders } # Because strange log behavior
 			}
 			prev = { remove_war_participant = prev }
-			if = { # Seems superflous
-				limit = {
-					NAND = {
-						exists = prev
-						prev = { is_scope_type = war }
-					}
-				}
-				break = yes
-			}
 		}
-		if = { # Is defenders
-			limit = {
+
+		if = {
+			limit = { # Check again all after remove_war_participant.
 				exists = this
 				is_scope_valid = yes
 				is_scope_type = war
-				count_war_participants = {
-					count > 0
-					# limit = { }
-					side = prev
-				}
-				prev = { is_war_participant = { who = prev side = prevprev } }
+				any_attacker = { always = yes }
+				# count_war_participants = {
+				# 	count > 0
+				# 	# limit = { }
+				# 	side = prev
+				# }
+				# prev = { is_war_participant = { who = prev side = prevprev } }
 			}
-			remove_war_participant = prev
+			every_attacker = {
+				limit = {
+					# NOT = { is_same_empire = prevprev }
+					# NOT = { is_war_participant = { war = prev side = prevprev } }
+					is_war_participant = { war = prev side = attackers } # Because strange log behavior
+				}
+				prev = { remove_war_participant = prev }
+			}
+			# remove_war_participant = prev
 		}
 	}
 }
