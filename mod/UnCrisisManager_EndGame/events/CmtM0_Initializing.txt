@@ -125,7 +125,7 @@ country_event = {
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
 	option = {
-		name = CmtTextOK.name
+		name = "graygoo.504.d"
 		custom_tooltip = CmtTextOK.tooltip
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
@@ -153,7 +153,7 @@ country_event = {
 	picture = GFX_evt_nuclear_explosion
 	is_triggered_only = yes
 	option = {
-		name = CmtTextOK.name
+		name = "graygoo.504.d"
 		custom_tooltip = CmtTextOK.tooltip
 		hidden_effect = { CmtEffectExitMenu = yes }
 	}
@@ -171,7 +171,7 @@ country_event = {
 		any_playable_country = { is_ai = no has_country_flag = CmtFlagNowInMenu }
 	}
 	option = {
-		name = CmtTextOK.name
+		name = "graygoo.504.d"
 		custom_tooltip = CmtTextOK.tooltip
 	}
 	option = {
@@ -201,7 +201,7 @@ country_event = {
 		is_ai = no
 	}
 	option = {
-		name = CmtTextOK.name
+		name = "graygoo.504.d"
 		custom_tooltip = CmtTextOK.tooltip
 	}
 	option = {

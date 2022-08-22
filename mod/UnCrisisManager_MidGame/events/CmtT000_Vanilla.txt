@@ -40,8 +40,7 @@ country_event = {
 				set_variable = { which = CmtVarTriggerProbability value = @CmtT000_ConstTriggerProbability }
 				set_variable = { which = CmtVarEqualizingProbability value = @CmtT000_ConstEqualizingProbability }
 				set_variable = { which = CmtVarOpeningEventSpeed value = @CmtT000_ConstOpeningEventSpeed }
-				if = {
-					limit = { always = @CmtT000_ConstSubmarineCrisis }
+				if = { limit = { always = @CmtT000_ConstSubmarineCrisis }
 					set_global_flag = CmtFlagSubmarineCrisis
 				} else = { remove_global_flag = CmtFlagSubmarineCrisis }
 
@@ -54,33 +53,27 @@ country_event = {
 				set_variable = { which = CmtVarFriendlyCrisis value = @CmtT000_ConstFriendlyCrisis }
 
 				### Prethoryn
-				if = {
-					limit = { always = @CmtT000_ConstForbiddenPrethoryn }
+				if = { limit = { always = @CmtT000_ConstForbiddenPrethoryn }
 					set_global_flag = CmtFlagForbiddenPrethoryn
 				} else = { remove_global_flag = CmtFlagForbiddenPrethoryn }
-				if = {
-					limit = { always = @CmtT000_ConstPrethorynNonRimAttack }
+				if = { limit = { always = @CmtT000_ConstPrethorynNonRimAttack }
 					set_global_flag = CmtFlagPrethorynNonRimAttack
 				} else = { remove_global_flag = CmtFlagPrethorynNonRimAttack }
 				set_variable = { which = CmtVarPrethorynQueen value = @CmtT000_ConstPrethorynQueen }
 				set_variable = { which = CmtVarSentinelRise value = @CmtT000_ConstSentinelRise }
-				if = {
-					limit = { always = @CmtT000_ConstForbiddenAnatomy }
+				if = { limit = { always = @CmtT000_ConstForbiddenAnatomy }
 					set_global_flag = CmtFlagForbiddenAnatomy
 				} else = { remove_global_flag = CmtFlagForbiddenAnatomy }
 				set_variable = { which = CmtVarFeralPrethoryn value = @CmtT000_ConstFeralPrethoryn }
-				if = {
-					limit = { always = @CmtT000_ConstPrethorynUnlimitedFlavor }
+				if = { limit = { always = @CmtT000_ConstPrethorynUnlimitedFlavor }
 					set_global_flag = CmtFlagPrethorynUnlimitedFlavor
 				} else = { remove_global_flag = CmtFlagPrethorynUnlimitedFlavor }
 
 				### Extradimensionals
-				if = {
-					limit = { always = @CmtT000_ConstForbiddenExds }
+				if = { limit = { always = @CmtT000_ConstForbiddenExds }
 					set_global_flag = CmtFlagForbiddenExds
 				} else = { remove_global_flag = CmtFlagForbiddenExds }
-				if = {
-					limit = { always = @CmtT000_ConstNoJumpButExds }
+				if = { limit = { always = @CmtT000_ConstNoJumpButExds }
 					set_global_flag = CmtFlagNoJumpButExds
 				} else = { remove_global_flag = CmtFlagNoJumpButExds }
 				set_variable = { which = CmtVarExdsChaserCondition value = @CmtT000_ConstExdsChaserCondition }
@@ -97,29 +90,25 @@ country_event = {
 				set_variable = { which = CmtVarExdsPortalStability value = @CmtT000_ConstExdsPortalStability }
 
 				### Contingency
-				if = {
-					limit = { always = @CmtT000_ConstForbiddenContingency }
+				if = { limit = { always = @CmtT000_ConstForbiddenContingency }
 					set_global_flag = CmtFlagForbiddenContingency
 				} else = { remove_global_flag = CmtFlagForbiddenContingency }
 				set_variable = { which = CmtVarGhostStrength value = @CmtT000_ConstGhostStrength }
 				set_variable = { which = CmtVarSynthTerrorEventSpeed value = @CmtT000_ConstSynthTerrorEventSpeed }
 				set_variable = { which = CmtVarFreqTerror value = @CmtT000_ConstFreqTerror }
-				if = {
-					limit = { always = @CmtT000_ConstSynthTerrorAll }
+				if = { limit = { always = @CmtT000_ConstSynthTerrorAll }
 					set_global_flag = CmtFlagSynthTerrorAll
 				} else = { remove_global_flag = CmtFlagSynthTerrorAll }
 				set_variable = { which = CmtVarCybrexResurfacing value = @CmtT000_ConstCybrexResurfacing }
 
 				### Forced End of the Cycle.
-				if = {
-					limit = { always = @CmtT000_ConstAllowForcedEoc }
+				if = { limit = { always = @CmtT000_ConstAllowForcedEoc }
 					set_global_flag = CmtFlagAllowForcedEoc
 				} else = { remove_global_flag = CmtFlagAllowForcedEoc }
 				set_variable = { which = CmtVarForcedEocTargetPlayer value = @CmtT000_ConstForcedEocTargetPlayer }
 				set_variable = { which = CmtVarForcedEocTranscendence value = @CmtT000_ConstForcedEocTranscendence }
 				set_variable = { which = CmtVarForcedEocCountryStrength value = @CmtT000_ConstForcedEocCountryStrength }
-				if = {
-					limit = { always = @CmtT000_ConstForcedEocCrisisTerm }
+				if = { limit = { always = @CmtT000_ConstForcedEocCrisisTerm }
 					set_global_flag = CmtFlagForcedEocCrisisTerm
 				} else = { remove_global_flag = CmtFlagForcedEocCrisisTerm }
 			}
@@ -135,20 +124,16 @@ country_event = {
 				set_variable = { which = CmtVarSleeperProbability value = @CmtT000_ConstSleeperProbability }
 				set_variable = { which = CmtVarSleeperFleetPowerYoung value = @CmtT000_ConstSleeperFleetPowerYoung }
 				set_variable = { which = CmtVarSleeperFleetPowerOwn value = @CmtT000_ConstSleeperFleetPowerOwn }
-				if = {
-					limit = { always = @CmtT000_ConstSleeperForbidMaterialist }
+				if = { limit = { always = @CmtT000_ConstSleeperForbidMaterialist }
 					set_global_flag = CmtFlagSleeperForbidMaterialist
 				} else = { remove_global_flag = CmtFlagSleeperForbidMaterialist }
-				if = {
-					limit = { always = @CmtT000_ConstSleeperForbidSpiritualist }
+				if = { limit = { always = @CmtT000_ConstSleeperForbidSpiritualist }
 					set_global_flag = CmtFlagSleeperForbidSpiritualist
 				} else = { remove_global_flag = CmtFlagSleeperForbidSpiritualist }
-				if = {
-					limit = { always = @CmtT000_ConstSleeperForbidXenophile }
+				if = { limit = { always = @CmtT000_ConstSleeperForbidXenophile }
 					set_global_flag = CmtFlagSleeperForbidXenophile
 				} else = { remove_global_flag = CmtFlagSleeperForbidXenophile }
-				if = {
-					limit = { always = @CmtT000_ConstSleeperForbidXenophobe }
+				if = { limit = { always = @CmtT000_ConstSleeperForbidXenophobe }
 					set_global_flag = CmtFlagSleeperForbidXenophobe
 				} else = { remove_global_flag = CmtFlagSleeperForbidXenophobe }
 				set_variable = { which = CmtVarSleeperHolyClacker value = @CmtT000_ConstSleeperHolyClacker }
@@ -162,24 +147,19 @@ country_event = {
 				set_variable = { which = CmtVarHeavenProbability value = @CmtT000_ConstHeavenProbability }
 				set_variable = { which = CmtVarHeavenAncientRival value = @CmtT000_ConstHeavenAncientRival }
 				set_variable = { which = CmtVarHeavenIndomitableRival value = @CmtT000_ConstHeavenIndomitableRival }
-				if = {
-					limit = { always = @CmtT000_ConstHeavenForbidIndependently }
+				if = { limit = { always = @CmtT000_ConstHeavenForbidIndependently }
 					set_global_flag = CmtFlagHeavenForbidIndependently
 				} else = { remove_global_flag = CmtFlagHeavenForbidIndependently }
-				if = {
-					limit = { always = @CmtT000_ConstHeavenForbidMaterialist }
+				if = { limit = { always = @CmtT000_ConstHeavenForbidMaterialist }
 					set_global_flag = CmtFlagHeavenForbidMaterialist
 				} else = { remove_global_flag = CmtFlagHeavenForbidMaterialist }
-				if = {
-					limit = { always = @CmtT000_ConstHeavenForbidSpiritualist }
+				if = { limit = { always = @CmtT000_ConstHeavenForbidSpiritualist }
 					set_global_flag = CmtFlagHeavenForbidSpiritualist
 				} else = { remove_global_flag = CmtFlagHeavenForbidSpiritualist }
-				if = {
-					limit = { always = @CmtT000_ConstHeavenForbidXenophile }
+				if = { limit = { always = @CmtT000_ConstHeavenForbidXenophile }
 					set_global_flag = CmtFlagHeavenForbidXenophile
 				} else = { remove_global_flag = CmtFlagHeavenForbidXenophile }
-				if = {
-					limit = { always = @CmtT000_ConstHeavenForbidXenophobe }
+				if = { limit = { always = @CmtT000_ConstHeavenForbidXenophobe }
 					set_global_flag = CmtFlagHeavenForbidXenophobe
 				} else = { remove_global_flag = CmtFlagHeavenForbidXenophobe }
 				set_variable = { which = CmtVarHeavenPreludeSpeed value = @CmtT000_ConstHeavenPreludeSpeed }
@@ -214,30 +194,26 @@ country_event = {
 
 				### L-Gate
 				set_variable = { which = CmtVarLgateReqClues value = @CmtT000_ConstLgateReqClues }
-				if = {
-					limit = { always = @CmtT000_ConstLgateSkipTech }
+				if = { limit = { always = @CmtT000_ConstLgateSkipTech }
 					set_global_flag = CmtFlagLgateSkipTech
 				} else = { remove_global_flag = CmtFlagLgateSkipTech }
-				if = {
-					limit = { always = @CmtT000_ConstLgateReqPlayer }
+				if = { limit = { always = @CmtT000_ConstLgateReqPlayer }
 					set_global_flag = CmtFlagLgateReqPlayer
 				} else = { remove_global_flag = CmtFlagLgateReqPlayer }
-				if = {
-					limit = { always = @CmtT000_ConstLgateForbidSilence }
+				if = { limit = { always = @CmtT000_ConstLgateForbidSilence }
 					set_global_flag = CmtFlagLgateForbidSilence
 				} else = { remove_global_flag = CmtFlagLgateForbidSilence }
-				if = {
-					limit = { always = @CmtT000_ConstLgateForbidLdrake }
+				if = { limit = { always = @CmtT000_ConstLgateForbidLdrake }
 					set_global_flag = CmtFlagLgateForbidLdrake
 				} else = { remove_global_flag = CmtFlagLgateForbidLdrake }
-				if = {
-					limit = { always = @CmtT000_ConstLgateForbidDessanu }
+				if = { limit = { always = @CmtT000_ConstLgateForbidDessanu }
 					set_global_flag = CmtFlagLgateForbidDessanu
 				} else = { remove_global_flag = CmtFlagLgateForbidDessanu }
-				if = {
-					limit = { always = @CmtT000_ConstLgateForbidGraygoo }
+				if = { limit = { always = @CmtT000_ConstLgateForbidGraygoo }
 					set_global_flag = CmtFlagLgateForbidGraygoo
-				} else = { remove_global_flag = CmtFlagLgateForbidGraygoo }
+				} else_if = { limit = { lgate_enabled = yes }
+					remove_global_flag = CmtFlagLgateForbidGraygoo
+				}
 				set_variable = { which = CmtVarLgateCycleCommon value = @CmtT000_ConstLgateCycleCommon }
 				set_variable = { which = CmtVarLgateCycleSilence value = @CmtT000_ConstLgateCycleSilence }
 				set_variable = { which = CmtVarLgateCycleLdrake value = @CmtT000_ConstLgateCycleLdrake }
@@ -251,14 +227,11 @@ country_event = {
 			}
 
 			### Crisis Power (End Game)
-			if = {
-				limit = { always = @CmtT000_ConstActivatedPowerEndgame }
-
+			if = { limit = { always = @CmtT000_ConstActivatedPowerEndgame }
 				set_variable = { which = CmtVarCrisisPower_Endgame value = @CmtT000_ConstCrisisStrengthEnd }
 				CmtEffectApplyDifficulty_Endgame = yes
 
-				if = {
-					limit = { check_variable = { which = CmtVarCrisisPower_Endgame value < 0.5 } }
+				if = { limit = { check_variable = { which = CmtVarCrisisPower_Endgame value < 0.5 } }
 					set_variable = { which = CmtVarFleetPower_Common value = @CmtT000_ConstFleetPower_Common }
 					if = {
 						limit = { check_variable = { which = CmtVarFleetPower_Common value < 0.125 } }
@@ -317,8 +290,7 @@ country_event = {
 				set_variable = { which = CmtVarCrisisPower_Midgame value = @CmtT000_ConstCrisisStrengthMid }
 				CmtEffectApplyDifficulty_Midgame = yes
 
-				if = {
-					limit = { check_variable = { which = CmtVarCrisisPower_Midgame value < 0.5 } }
+				if = { limit = { check_variable = { which = CmtVarCrisisPower_Midgame value < 0.5 } }
 					set_variable = { which = CmtVarFleetPower_Common value = @CmtT000_ConstFleetPower_Common }
 					if = {
 						limit = { check_variable = { which = CmtVarFleetPower_Common value < 0.125 } }

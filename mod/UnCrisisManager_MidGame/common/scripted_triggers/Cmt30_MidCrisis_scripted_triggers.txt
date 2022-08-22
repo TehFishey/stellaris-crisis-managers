@@ -32,7 +32,8 @@ CmtTriggerKhanAwakingMultipleCheck = {
 }
 
 ### Country Conditions
-CmtTriggerHasPotentialKhanAwaking = { ## Scope = country
+## Scope = country
+CmtTriggerHasPotentialKhanAwaking = {
 	OR = {
 		is_country_type = dormant_marauders
 		AND = { # Fallback
@@ -133,21 +134,21 @@ CmtTriggerHiredMarauderFleet3 = {
 
 CmtTriggerCountryHiringMarauder1 = {
 	OR = {
-		any_owned_fleet = { CmtTriggerHiredMarauderFleet1 = yes }
+		any_controlled_fleet = { CmtTriggerHiredMarauderFleet1 = yes }
 		any_owned_leader = { has_leader_flag = hired_merc_leader_1 }
 	}
 }
 
 CmtTriggerCountryHiringMarauder2 = {
 	OR = {
-		any_owned_fleet = { CmtTriggerHiredMarauderFleet2 = yes }
+		any_controlled_fleet = { CmtTriggerHiredMarauderFleet2 = yes }
 		any_owned_leader = { has_leader_flag = hired_merc_leader_2 }
 	}
 }
 
 CmtTriggerCountryHiringMarauder3 = {
 	OR = {
-		any_owned_fleet = { CmtTriggerHiredMarauderFleet3 = yes }
+		any_controlled_fleet = { CmtTriggerHiredMarauderFleet3 = yes }
 		any_owned_leader = { has_leader_flag = hired_merc_leader_3 }
 	}
 }

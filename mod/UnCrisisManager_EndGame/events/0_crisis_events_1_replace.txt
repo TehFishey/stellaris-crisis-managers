@@ -1340,28 +1340,53 @@ country_event = {
 	}
 	mean_time_to_happen = { months = 2 }
 	immediate = {
-		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Prethoryn } }
-		while = {
-			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.875 } } }
-			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -1 } }
-			random_list = {
-				33 = { CmtEffectCreateShip_PetQueenLarge = yes }
-				66 = { CmtEffectCreateShip_PetQueenSmall = yes }
+		random_owned_fleet = {
+			limit = {
+				has_fleet_flag = pet_queen
+				any_owned_ship = { is_ship_size = queen_swarm }
+				OR = {
+					AND = {
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Prethoryn value > 2.875 } }
+						num_ships < 180
+					}
+					AND = {
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Prethoryn value > 2.125 } }
+						num_ships < 90
+					}
+					AND = {
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Prethoryn value > 1.125 } }
+						num_ships < 60
+					}
+					AND = {
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Prethoryn value > 0.375 } }
+						num_ships < 30
+					}
+					num_ships < 15
+				}
 			}
-		}
-		while = {
-			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
-			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
-			random_list = {
-				34 = {
-					event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = 0 } }
-					CmtEffectCreateShip_PetQueenLarge = yes
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Prethoryn } }
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.875 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -1 } }
+				random_list = {
+					33 = { CmtEffectCreateShip_PetQueenLarge = yes }
+					66 = { CmtEffectCreateShip_PetQueenSmall = yes }
 				}
-				66 = {
-					event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = 0 } }
-					CmtEffectCreateShip_PetQueenSmall = yes
+			}
+			while = {
+				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+				random_list = {
+					34 = {
+						event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = 0 } }
+						CmtEffectCreateShip_PetQueenLarge = yes
+					}
+					66 = {
+						event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = 0 } }
+						CmtEffectCreateShip_PetQueenSmall = yes
+					}
+					300 = { }
 				}
-				300 = { }
 			}
 		}
 	}

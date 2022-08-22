@@ -24,7 +24,53 @@
 ##############
 
 CmtEffectCreateFleet_KhanArmy = {
-	CmtEffectCreateGeneral_Marauder = yes
+	# CmtEffectCreateGeneral_Marauder
+	if = {
+		limit = {
+			prev = { solar_system = { has_star_flag = marauder_capital_1 } }
+			exists = event_target:marauder_country_1
+		}
+		create_leader = {
+			class = general
+			species = event_target:marauder_country_1.owner_species
+			name = random
+			skill = 3
+			traits = { trait = random_trait }
+		}
+	} else_if = {
+		limit = {
+			prev = { solar_system = { has_star_flag = marauder_capital_2 } }
+			exists = event_target:marauder_country_2
+		}
+		create_leader = {
+			class = general
+			species = event_target:marauder_country_2.owner_species
+			name = random
+			skill = 3
+			traits = { trait = random_trait }
+		}
+	} else_if = {
+		limit = {
+			prev = { solar_system = { has_star_flag = marauder_capital_3 } }
+			exists = event_target:marauder_country_3
+		}
+		create_leader = {
+			class = general
+			species = event_target:marauder_country_3.owner_species
+			name = random
+			skill = 3
+			traits = { trait = random_trait }
+		}
+	} else = {
+		create_leader = {
+			class = general
+			species = owner_species
+			name = random
+			skill = 3
+			traits = { trait = random_trait }
+		}
+	}
+
 	create_fleet = {
 		effect = {
 			set_owner = prev
@@ -83,9 +129,10 @@ CmtEffectCreateFleet_KhanArmy = {
 				}
 			}
 			CmtFleetSetAuxParam_KhanAuxiliary = yes
-			random = {
-				chance = 50
-				set_fleet_stance = evasive # AI does not handle this well too.
+			random_list = {
+				2 = {}
+				3 = { set_fleet_stance = evasive } # AI does not handle this well too.
+				5 = { set_fleet_stance = aggressive }
 			}
 		}
 	}

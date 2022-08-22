@@ -14,6 +14,7 @@
 ################
 
 CmtEffectDifficulty_EndgameEasy = {
+	optimize_memory
 	event_target:CmtGlobalVar = {
 		CmtEffectResetCrisisPowerCommon = yes
 
@@ -49,6 +50,7 @@ CmtEffectDifficulty_EndgameEasy = {
 }
 
 CmtEffectDifficulty_MidgameEasy = {
+	optimize_memory
 	event_target:CmtGlobalVar = {
 		CmtEffectResetCrisisPowerCommon = yes
 		set_variable = { which = CmtVarFleetPower_Khan				value = 0.75 }
@@ -72,6 +74,7 @@ CmtEffectDifficulty_MidgameEasy = {
 ##################
 
 CmtEffectDifficulty_EndgameNormal = {
+	optimize_memory
 	event_target:CmtGlobalVar = {
 		CmtEffectResetCrisisPowerCommon = yes
 
@@ -107,6 +110,7 @@ CmtEffectDifficulty_EndgameNormal = {
 }
 
 CmtEffectDifficulty_MidgameNormal = {
+	optimize_memory
 	event_target:CmtGlobalVar = {
 		CmtEffectResetCrisisPowerCommon = yes
 		set_variable = { which = CmtVarFleetPower_Khan				value = 1.00 }
@@ -130,6 +134,7 @@ CmtEffectDifficulty_MidgameNormal = {
 ################
 
 CmtEffectDifficulty_EndgameHard = {
+	optimize_memory
 	event_target:CmtGlobalVar = {
 		CmtEffectResetCrisisPowerCommon = yes
 
@@ -165,6 +170,7 @@ CmtEffectDifficulty_EndgameHard = {
 }
 
 CmtEffectDifficulty_MidgameHard = {
+	optimize_memory
 	event_target:CmtGlobalVar = {
 		CmtEffectResetCrisisPowerCommon = yes
 		set_variable = { which = CmtVarFleetPower_Khan				value = 1.25 }
@@ -188,6 +194,7 @@ CmtEffectDifficulty_MidgameHard = {
 #################
 
 CmtEffectDifficulty_EndgameVeryHard = {
+	optimize_memory
 	event_target:CmtGlobalVar = {
 		CmtEffectResetCrisisPowerCommon = yes
 
@@ -223,6 +230,7 @@ CmtEffectDifficulty_EndgameVeryHard = {
 }
 
 CmtEffectDifficulty_MidgameVeryHard = {
+	optimize_memory
 	# event_target:CmtGlobalVar = {
 	CmtEffectResetCrisisPowerCommon = yes
 	set_variable = { which = CmtVarFleetPower_Khan				value = 2.00 }
@@ -246,6 +254,7 @@ CmtEffectDifficulty_MidgameVeryHard = {
 ########################
 
 CmtEffectDifficulty_EndgameConstructorSpam = {
+	optimize_memory
 	event_target:CmtGlobalVar = {
 		set_variable = { which = CmtVarCrisisStrength				value = 0 }
 		set_variable = { which = CmtVarConstructorNumber_Common		value = 0.00 }
@@ -259,6 +268,7 @@ CmtEffectDifficulty_EndgameConstructorSpam = {
 }
 
 CmtEffectDifficulty_MidgameConstructorSpam = {
+	optimize_memory
 	event_target:CmtGlobalVar = {
 		set_variable = { which = CmtVarCrisisStrength				value = 0 }
 		set_variable = { which = CmtVarConstructorNumber_Common		value = 0.00 }

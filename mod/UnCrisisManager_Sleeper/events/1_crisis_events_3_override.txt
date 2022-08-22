@@ -40,12 +40,7 @@ country_event = {
 	immediate = {
 		# The Arrival
 		every_country = {
-			limit = {
-				OR = {
-					is_country_type_with_subjects = yes
-					is_fallen_empire = yes
-				}
-			}
+			limit = { merg_is_standard_empire = yes }
 			country_event = { id = crisis.2022 }
 		}
 		# First Machine World
@@ -186,7 +181,7 @@ planet_event = {
 				closest_system = {
 					max_steps = 2
 					use_bypasses = no
-					limit = { has_owner = yes space_owner = { merg_is_standard_empire = yes } }
+					limit = { has_owner = yes exists = space_owner space_owner = { merg_is_standard_empire = yes } }
 					space_owner = { save_event_target_as = planet_former_owner }
 				}
 			}

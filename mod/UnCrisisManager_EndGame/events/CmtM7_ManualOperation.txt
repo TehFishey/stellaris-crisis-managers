@@ -198,7 +198,10 @@ country_event = {
 		allow = { host_has_dlc = "Apocalypse" }
 		trigger = {
 			has_global_flag = CmtFlagMidGameEdition
-			num_marauder_empires_to_spawn > 0
+			OR = {
+				num_marauder_empires_to_spawn > 0
+				event_target:global_event_country = { has_country_flag = outer_bulwark_inactive }
+			}
 			NOT = { has_global_flag = marauder_crisis_ongoing }
 			# CmtTriggerNowInKhanCrisis = no
 			OR = {
@@ -378,7 +381,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7000.7400.A.tooltip
 		trigger = {
 			has_global_flag = CmtFlagSleeperEdition
-			any_country = { is_country_type = fallen_empire }
+			any_country = { merg_is_fallen_empire = yes }
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7400 } }
 	}
@@ -387,7 +390,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7000.7400.B.tooltip
 		trigger = {
 			has_global_flag = CmtFlagSleeperEdition
-			NOT = { any_country = { is_country_type = fallen_empire } }
+			NOT = { any_country = { merg_is_fallen_empire = yes } }
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
 	}
@@ -1101,8 +1104,8 @@ country_event = {
 			any_country = { CmtTriggerIsOrganicSleeper = yes }
 		}
 		trigger = { ## 1 or more
-			any_country = { is_country_type = fallen_empire }
-			# count_country = { limit = { is_country_type = fallen_empire } count > 0 } # CmtTriggerIsOrganicSleeper = yes
+			any_country = { merg_is_fallen_empire = yes }
+			# count_country = { limit = { merg_is_fallen_empire = yes } count > 0 } # CmtTriggerIsOrganicSleeper = yes
 		}
 		hidden_effect = {
 			if = {
@@ -1186,7 +1189,7 @@ country_event = {
 		trigger = {
 			exists = event_target:CmtTargetManualSleeper5
 			hidden_trigger = {
-				event_target:CmtTargetManualSleeper5 = { CmtTriggerIsOrganicSleeper = no is_country_type = fallen_empire }
+				event_target:CmtTargetManualSleeper5 = { CmtTriggerIsOrganicSleeper = no merg_is_fallen_empire = yes }
 			}
 		}
 		hidden_effect = {
@@ -1206,7 +1209,7 @@ country_event = {
 		trigger = {
 			exists = event_target:CmtTargetManualSleeper5
 			hidden_trigger = {
-				event_target:CmtTargetManualSleeper5 = { CmtTriggerIsOrganicSleeper = no is_country_type = fallen_empire }
+				event_target:CmtTargetManualSleeper5 = { CmtTriggerIsOrganicSleeper = no merg_is_fallen_empire = yes }
 			}
 		}
 		hidden_effect = {
@@ -1668,13 +1671,11 @@ country_event = {
 						}
 					}
 					random_system_planet = {
-						limit = { is_a_planet = yes }
+						limit = { is_star = no }
 						weights = {
 							base = 1
-							modifier = {
-								add = 3
-								has_planet_flag = marauder_rally_point
-							}
+							modifier = { add = 3 has_planet_flag = marauder_rally_point }
+							modifier = { add = 2 is_a_planet = yes } # possible inconsisent due other mods
 						}
 						save_event_target_as = former_marauder_capital
 						# log="Manual marauder strong fallback \\[This.GetName]"
@@ -1685,17 +1686,16 @@ country_event = {
 	}
 
 	after = {
-
 		if = {
-			limit = { exists = event_target:marauder_country_1 NOT = { event_target:marauder_country_1 = { CmtTriggerHasPotentialKhanAwaking = yes } } }
+			limit = { exists = event_target:marauder_country_1 event_target:marauder_country_1 = { CmtTriggerHasPotentialKhanAwaking = no } }
 			clear_global_event_target = marauder_country_1
 		}
 		if = {
-			limit = { exists = event_target:marauder_country_2 NOT = { event_target:marauder_country_2 = { CmtTriggerHasPotentialKhanAwaking = yes } } }
+			limit = { exists = event_target:marauder_country_2 event_target:marauder_country_2 = { CmtTriggerHasPotentialKhanAwaking = no } }
 			clear_global_event_target = marauder_country_2
 		}
 		if = {
-			limit = { exists = event_target:marauder_country_3 NOT = { event_target:marauder_country_3 = { CmtTriggerHasPotentialKhanAwaking = yes } } }
+			limit = { exists = event_target:marauder_country_3 event_target:marauder_country_3 = { CmtTriggerHasPotentialKhanAwaking = no } }
 			clear_global_event_target = marauder_country_3
 		}
 
@@ -2873,7 +2873,7 @@ country_event = {
 		trigger = { hidden_trigger = { exists = event_target:CmtTargetManualSleeper1 } }
 		hidden_effect = {
 			event_target:CmtTargetManualSleeper1 = {
-				if = { limit = { is_country_type = fallen_empire }
+				if = { limit = { merg_is_fallen_empire = yes }
 					destroy_country = yes
 				} else = {
 					country_event = { id = CrisisManagerControl.7205 }
@@ -2887,7 +2887,7 @@ country_event = {
 		trigger = { hidden_trigger = { exists = event_target:CmtTargetManualSleeper2 } }
 		hidden_effect = {
 			event_target:CmtTargetManualSleeper2 = {
-				if = { limit = { is_country_type = fallen_empire }
+				if = { limit = { merg_is_fallen_empire = yes }
 					destroy_country = yes
 				} else = {
 					country_event = { id = CrisisManagerControl.7205 }
@@ -2901,7 +2901,7 @@ country_event = {
 		trigger = { hidden_trigger = { exists = event_target:CmtTargetManualSleeper3 } }
 		hidden_effect = {
 			event_target:CmtTargetManualSleeper3 = {
-				if = { limit = { is_country_type = fallen_empire }
+				if = { limit = { merg_is_fallen_empire = yes }
 					destroy_country = yes
 				} else = {
 					country_event = { id = CrisisManagerControl.7205 }
@@ -2915,7 +2915,7 @@ country_event = {
 		trigger = { hidden_trigger = { exists = event_target:CmtTargetManualSleeper4 } }
 		hidden_effect = {
 			event_target:CmtTargetManualSleeper4 = {
-				if = { limit = { is_country_type = fallen_empire }
+				if = { limit = { merg_is_fallen_empire = yes }
 					destroy_country = yes
 				} else = {
 					country_event = { id = CrisisManagerControl.7205 }
@@ -2929,7 +2929,7 @@ country_event = {
 		trigger = { hidden_trigger = { exists = event_target:CmtTargetManualSleeper5 } }
 		hidden_effect = {
 			event_target:CmtTargetManualSleeper5 = {
-				if = { limit = { is_country_type = fallen_empire }
+				if = { limit = { merg_is_fallen_empire = yes }
 					destroy_country = yes
 				} else = {
 					country_event = { id = CrisisManagerControl.7205 }
@@ -3219,7 +3219,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7411d0.tooltip
 		hidden_effect = {
 			every_country = {
-				limit = { is_country_type = fallen_empire }
+				limit = { merg_is_fallen_empire = yes }
 				every_owned_ship = { limit = { is_ship_class = shipclass_military } delete_ship = this }
 			}
 		}
@@ -3229,7 +3229,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7411b1.tooltip
 		hidden_effect = {
 			every_country = {
-				limit = { is_country_type = fallen_empire }
+				limit = { merg_is_fallen_empire = yes }
 				random = { chance = 33 capital_scope = { CmtEffectCreateSleeperStandard = yes } }
 			}
 		}
@@ -3239,7 +3239,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7411b2.tooltip
 		hidden_effect = {
 			every_country = {
-				limit = { is_country_type = fallen_empire }
+				limit = { merg_is_fallen_empire = yes }
 				random = { chance = 67 capital_scope = { CmtEffectCreateSleeperStandard = yes } }
 			}
 		}
@@ -3249,7 +3249,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7411c1.tooltip
 		hidden_effect = {
 			every_country = {
-				limit = { is_country_type = fallen_empire }
+				limit = { merg_is_fallen_empire = yes }
 				capital_scope = { CmtEffectCreateSleeperStandard = yes }
 			}
 		}
@@ -3259,7 +3259,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7411c2.tooltip
 		hidden_effect = {
 			every_country = {
-				limit = { is_country_type = fallen_empire }
+				limit = { merg_is_fallen_empire = yes }
 				capital_scope = {
 					while = {
 						count = 2
@@ -3274,7 +3274,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7411c3.tooltip
 		hidden_effect = {
 			every_country = {
-				limit = { is_country_type = fallen_empire }
+				limit = { merg_is_fallen_empire = yes }
 				capital_scope = {
 					while = {
 						count = 3
@@ -3289,7 +3289,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7411c4.tooltip
 		hidden_effect = {
 			every_country = {
-				limit = { is_country_type = fallen_empire }
+				limit = { merg_is_fallen_empire = yes }
 				capital_scope = {
 					while = {
 						count = 4
@@ -3304,7 +3304,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7411c5.tooltip
 		hidden_effect = {
 			every_country = {
-				limit = { is_country_type = fallen_empire }
+				limit = { merg_is_fallen_empire = yes }
 				capital_scope = {
 					while = {
 						count = 5
@@ -3393,7 +3393,7 @@ country_event = {
 		hidden_effect = {
 			every_country = {
 				limit = {
-					is_country_type = fallen_empire
+					merg_is_fallen_empire = yes
 					NOT = { any_owned_ship = { is_ship_size = massive_ship_fallen_empire } }
 				}
 				random = { chance = 25 capital_scope = { CmtEffectCreateSleeperTitan = yes } }
@@ -3406,7 +3406,7 @@ country_event = {
 		hidden_effect = {
 			every_country = {
 				limit = {
-					is_country_type = fallen_empire
+					merg_is_fallen_empire = yes
 					NOT = { any_owned_ship = { is_ship_size = massive_ship_fallen_empire } }
 				}
 				random = { chance = 40 capital_scope = { CmtEffectCreateSleeperTitan = yes } }
@@ -3419,7 +3419,7 @@ country_event = {
 		hidden_effect = {
 			every_country = {
 				limit = {
-					is_country_type = fallen_empire
+					merg_is_fallen_empire = yes
 					NOT = { any_owned_ship = { is_ship_size = massive_ship_fallen_empire } }
 				}
 				random = { chance = 67 capital_scope = { CmtEffectCreateSleeperTitan = yes } }
@@ -3431,7 +3431,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7412c1.tooltip
 		hidden_effect = {
 			every_country = {
-				limit = { is_country_type = fallen_empire }
+				limit = { merg_is_fallen_empire = yes }
 				capital_scope = { CmtEffectCreateSleeperTitan = yes }
 			}
 		}
@@ -3441,7 +3441,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7412c2.tooltip
 		hidden_effect = {
 			every_country = {
-				limit = { is_country_type = fallen_empire }
+				limit = { merg_is_fallen_empire = yes }
 				capital_scope = {
 					while = {
 						count = 2
@@ -3456,7 +3456,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7412c3.tooltip
 		hidden_effect = {
 			every_country = {
-				limit = { is_country_type = fallen_empire }
+				limit = { merg_is_fallen_empire = yes }
 				capital_scope = {
 					while = {
 						count = 3
@@ -3480,7 +3480,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7412d0.tooltip
 		hidden_effect = {
 			every_country = {
-				limit = { is_country_type = fallen_empire }
+				limit = { merg_is_fallen_empire = yes }
 				every_owned_ship = { limit = { is_ship_size = massive_ship_fallen_empire } delete_ship = this }
 			}
 		}
@@ -3490,7 +3490,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7412d1.tooltip
 		hidden_effect = {
 			every_country = {
-				limit = { is_country_type = fallen_empire }
+				limit = { merg_is_fallen_empire = yes }
 				capital_scope = {
 					while = {
 						limit = { prev = { count_owned_ship = { limit = { is_ship_size = massive_ship_fallen_empire } count < 1 } } }
@@ -3509,7 +3509,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7412d2.tooltip
 		hidden_effect = {
 			every_country = {
-				limit = { is_country_type = fallen_empire }
+				limit = { merg_is_fallen_empire = yes }
 				capital_scope = {
 					while = {
 						limit = { prev = { count_owned_ship = { limit = { is_ship_size = massive_ship_fallen_empire } count < 2 } } }
@@ -3528,7 +3528,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7412d3.tooltip
 		hidden_effect = {
 			every_country = {
-				limit = { is_country_type = fallen_empire }
+				limit = { merg_is_fallen_empire = yes }
 				capital_scope = {
 					while = {
 						limit = { prev = { count_owned_ship = { limit = { is_ship_size = massive_ship_fallen_empire } count < 3 } } }
@@ -3547,7 +3547,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7412d4.tooltip
 		hidden_effect = {
 			every_country = {
-				limit = { is_country_type = fallen_empire }
+				limit = { merg_is_fallen_empire = yes }
 				capital_scope = {
 					while = {
 						limit = { prev = { count_owned_ship = { limit = { is_ship_size = massive_ship_fallen_empire } count < 4 } } }
@@ -3566,7 +3566,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7412d5.tooltip
 		hidden_effect = {
 			every_country = {
-				limit = { is_country_type = fallen_empire }
+				limit = { merg_is_fallen_empire = yes }
 				capital_scope = {
 					while = {
 						limit = { prev = { count_owned_ship = { limit = { is_ship_size = massive_ship_fallen_empire } count < 5 } } }
@@ -3585,7 +3585,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7412d9.tooltip
 		hidden_effect = {
 			every_country = {
-				limit = { is_country_type = fallen_empire }
+				limit = { merg_is_fallen_empire = yes }
 				every_owned_ship = {
 					limit = { is_ship_size = massive_ship_fallen_empire }
 					delete_ship = this
@@ -3679,7 +3679,7 @@ country_event = {
 		hidden_effect = {
 			every_country = {
 				limit = {
-					is_country_type = fallen_empire
+					merg_is_fallen_empire = yes
 					NOT = { any_owned_ship = { is_ship_size = colossus } }
 				}
 				random = { chance = 10 capital_scope = { CmtEffectCreateSleeperColossus = yes } }
@@ -3692,7 +3692,7 @@ country_event = {
 		hidden_effect = {
 			every_country = {
 				limit = {
-					is_country_type = fallen_empire
+					merg_is_fallen_empire = yes
 					NOT = { any_owned_ship = { is_ship_size = colossus } }
 				}
 				random = { chance = 33 capital_scope = { CmtEffectCreateSleeperColossus = yes } }
@@ -3705,7 +3705,7 @@ country_event = {
 		hidden_effect = {
 			every_country = {
 				limit = {
-					is_country_type = fallen_empire
+					merg_is_fallen_empire = yes
 					NOT = { any_owned_ship = { is_ship_size = colossus } }
 				}
 				random = { chance = 67 capital_scope = { CmtEffectCreateSleeperColossus = yes } }
@@ -3717,7 +3717,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7413c1.tooltip
 		hidden_effect = {
 			every_country = {
-				limit = { is_country_type = fallen_empire }
+				limit = { merg_is_fallen_empire = yes }
 				capital_scope = { CmtEffectCreateSleeperColossus = yes }
 			}
 		}
@@ -3736,7 +3736,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7413d0.tooltip
 		hidden_effect = {
 			every_country = {
-				limit = { is_country_type = fallen_empire }
+				limit = { merg_is_fallen_empire = yes }
 				every_owned_ship = { limit = { is_ship_size = colossus } delete_ship = this }
 			}
 		}
@@ -3746,7 +3746,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7413d1.tooltip
 		hidden_effect = {
 			every_country = {
-				limit = { is_country_type = fallen_empire }
+				limit = { merg_is_fallen_empire = yes }
 				capital_scope = {
 					while = {
 						limit = { prev = { count_owned_ship = { limit = { is_ship_size = colossus } count < 1 } } }
@@ -3765,7 +3765,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7413d2.tooltip
 		hidden_effect = {
 			every_country = {
-				limit = { is_country_type = fallen_empire }
+				limit = { merg_is_fallen_empire = yes }
 				capital_scope = {
 					while = {
 						limit = { prev = { count_owned_ship = { limit = { is_ship_size = colossus } count < 2 } } }
@@ -3784,7 +3784,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7413d3.tooltip
 		hidden_effect = {
 			every_country = {
-				limit = { is_country_type = fallen_empire }
+				limit = { merg_is_fallen_empire = yes }
 				capital_scope = {
 					while = {
 						limit = { prev = { count_owned_ship = { limit = { is_ship_size = colossus } count < 3 } } }
@@ -3877,7 +3877,7 @@ country_event = {
 		hidden_effect = {
 			every_country = {
 				limit = {
-					is_country_type = fallen_empire
+					merg_is_fallen_empire = yes
 					is_at_war = no
 				}
 				every_owned_ship = {
@@ -3904,7 +3904,7 @@ country_event = {
 		hidden_effect = {
 			every_country = {
 				limit = {
-					is_country_type = fallen_empire
+					merg_is_fallen_empire = yes
 					is_at_war = no
 				}
 				every_owned_ship = {
@@ -3937,7 +3937,7 @@ country_event = {
 		hidden_effect = {
 			every_country = {
 				limit = {
-					is_country_type = fallen_empire
+					merg_is_fallen_empire = yes
 					is_at_war = no
 				}
 				every_owned_ship = {
@@ -3970,7 +3970,7 @@ country_event = {
 		hidden_effect = {
 			every_country = {
 				limit = {
-					is_country_type = fallen_empire
+					merg_is_fallen_empire = yes
 					is_at_war = no
 				}
 				every_owned_ship = {
@@ -4004,7 +4004,7 @@ country_event = {
 		hidden_effect = {
 			every_country = {
 				limit = {
-					is_country_type = fallen_empire
+					merg_is_fallen_empire = yes
 					is_at_war = no
 				}
 				every_owned_ship = {

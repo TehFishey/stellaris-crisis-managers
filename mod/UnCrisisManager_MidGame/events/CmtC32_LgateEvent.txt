@@ -27,7 +27,6 @@ country_event = {
 
 	immediate = {
 		event_target:CmtGlobalVar = {
-
 			### Transference Variable
 			if = {
 				limit = { has_global_flag = gray_goo_crisis_set }
@@ -39,7 +38,6 @@ country_event = {
 				limit = { has_global_flag = dragon_season }
 				set_variable = { which = CmtVarTemp value = CmtVarLgateCycleLdrake }
 			} else = { set_variable = { which = CmtVarTemp value = CmtVarLgateCycleSilence } }
-
 			### Open L-Gate
 			if = {
 				limit = {
@@ -65,7 +63,6 @@ country_event = {
 					CmtEffectOpenLgate = yes
 				}
 			}
-
 			### Time Cycle Control
 			if = {
 				limit = { check_variable = { which = CmtVarTemp value = 4 } }

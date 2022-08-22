@@ -20,6 +20,7 @@
 
 ### Version check
 CmtEffectVersionUp = {
+	optimize_memory
 	event_target:CmtGlobalVar = {
 		if = {
 			limit = { check_variable = { which = CmtVarVersion value < @CmtT000_ConstVersionInfo } }
@@ -151,6 +152,7 @@ CmtEffectVersionUp = {
 
 ### Edition Check
 CmtEffectClearDetectedEdition = {
+	optimize_memory
 	remove_global_flag = CmtFlagEndGameEdition
 	remove_global_flag = CmtFlagMidGameEdition
 	remove_global_flag = CmtFlagSleeperEdition
@@ -161,6 +163,7 @@ CmtEffectClearDetectedEdition = {
 }
 
 CmtEffectSetDetectedEdition = {
+	optimize_memory
 	CmtEffectDetectEndGameEdition = yes
 	CmtEffectDetectMidGameEdition = yes
 	CmtEffectDetectSleeperEdition = yes
@@ -185,6 +188,7 @@ CmtEffectDetectFeeCompatPatch = {}
 
 ### scope: this = stellar_system, written in also Cmt400 in Total War Pack
 CmtEffectDestroySystemStarbase = {
+	optimize_memory
 	if = {
 		limit = { exists = starbase }
 		starbase = { destroy_fleet = fleet }
@@ -193,6 +197,7 @@ CmtEffectDestroySystemStarbase = {
 
 ### scope: this = country (fallen empire), Overwritten by FFE_CMT
 CmtEffectChangeAwakenerCivic = {
+	optimize_memory
 	if = {
 		limit = { has_authority = auth_hive_mind has_global_flag = has_FEE_mod }
 		change_government = {
@@ -217,6 +222,7 @@ CmtEffectChangeAwakenerCivic = {
 
 ### Test of FIOS/LIOS
 CmtEffectFiosLiosTest = {
+	optimize_memory
 	event_target:CmtGlobalVar = {
 		# log="Debug \\[This.CmtVarFiosLios]"
 		change_variable = { which = CmtVarFiosLios value = 1 }

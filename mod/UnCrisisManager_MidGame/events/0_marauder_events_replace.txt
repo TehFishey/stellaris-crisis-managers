@@ -2090,8 +2090,9 @@ country_event = {
 			limit = {
 				merg_is_default_empire = no
 				OR = {
-					is_country_type = fallen_empire # is_fallen_empire = yes
+					merg_is_fallen_empire = yes # is_fallen_empire = yes
 					is_country_type = enclave
+					is_country_type = enclave_mercenary
 					is_country_type = caravaneer_home
 					is_country_type = caravaneer_fleet
 					is_country_type = guardian_sphere
@@ -3141,7 +3142,7 @@ country_event = {
 				}
 				hidden_effect = {
 					country_event = { id = marauder.553 days = 10 }
-					add_modifier = { modifier = "satrapy_of_horde" }
+					# add_modifier = { modifier = "satrapy_of_horde" }
 					event_target:raider_khanate = {
 						set_faction_hostility = {
 							target = prev
@@ -3158,7 +3159,7 @@ country_event = {
 			preset = preset_satrapy
 		}
 		country_event = { id = marauder.553 days = 10 }
-		add_modifier = { modifier = "satrapy_of_horde" }
+		# add_modifier = { modifier = "satrapy_of_horde" }
 		event_target:raider_khanate = {
 			set_faction_hostility = {
 				target = event_target:new_satrapy
