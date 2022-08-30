@@ -265,7 +265,6 @@ CmtTriggerIsMarauder = {
 # }
 
 CmtTriggerIsKhanCountry = {
-	optimize_memory
 	OR = {
 		is_country_type = awakened_marauders
 		is_same_value = event_target:raider_khanate
@@ -315,10 +314,9 @@ CmtTriggerExistCrisisCountry = {
 }
 
 ### Mid-Game Crisis
-CmtTriggerExistKhanCountry = {
-	optimize_memory
-	any_country = { CmtTriggerIsKhanCountry = yes }
-}
+# CmtTriggerExistKhanCountry = {
+# 	any_country = { CmtTriggerIsKhanCountry = yes }
+# }
 
 CmtTriggerExistGraygoo = {
 	optimize_memory

@@ -29,7 +29,8 @@ CmtEffectCreateShip_Outrider = {
 		name = random
 		design = "NAME_Outrider"
 		prefix = no
-		graphical_culture = "pirate_01"
+		# upgradable = yes
+		graphical_culture = prev.owner # "madd_01"
 	}
 }
 
@@ -38,7 +39,8 @@ CmtEffectCreateShip_Lancer = {
 		name = random
 		design = "NAME_Lancer"
 		prefix = no
-		graphical_culture = "pirate_01"
+		# upgradable = yes
+		graphical_culture = prev.owner # "madd_01"
 	}
 }
 
@@ -47,7 +49,8 @@ CmtEffectCreateShip_VoidChampion = {
 		name = random
 		design = "NAME_Void_Champion"
 		prefix = no
-		graphical_culture = "pirate_01"
+		# upgradable = yes
+		graphical_culture = prev.owner # "madd_01"
 	}
 }
 
@@ -56,7 +59,8 @@ CmtEffectCreateShip_AncestralGlory = {
 		name = random
 		design = "NAME_Ancestral_Glory"
 		prefix = no
-		graphical_culture = "pirate_01"
+		# upgradable = yes
+		graphical_culture = prev.owner # "madd_01"
 	}
 }
 
@@ -64,42 +68,42 @@ CmtEffectCreateShip_KhanArmy = {
 	if = {
 		limit = {
 			prevprev.solar_system = { has_star_flag = marauder_capital_1 }
-			exists = event_target:CmtTargetSpecies_Marauder1
+			exists = event_target:marauder_country_1
 		}
 		create_army_transport = {
 			ship_name = "NAME_Pirate_Transport"
 			graphical_culture = "mammalian_01"
-			army_type = "assault_army"
-			species = event_target:CmtTargetSpecies_Marauder1
+			army_type = $TYPE|assault_army$
+			species = event_target:marauder_country_1.owner_species
 		}
 	} else_if = {
 		limit = {
 			prevprev.solar_system = { has_star_flag = marauder_capital_2 }
-			exists = event_target:CmtTargetSpecies_Marauder2
+			exists = event_target:marauder_country_2
 		}
 		create_army_transport = {
 			ship_name = "NAME_Pirate_Transport"
 			graphical_culture = "mammalian_01"
-			army_type = "assault_army"
-			species = event_target:CmtTargetSpecies_Marauder2
+			army_type = $TYPE|assault_army$
+			species = event_target:marauder_country_2.owner_species
 		}
 	} else_if = {
 		limit = {
 			prevprev.solar_system = { has_star_flag = marauder_capital_3 }
-			exists = event_target:CmtTargetSpecies_Marauder3
+			exists = event_target:marauder_country_3
 		}
 		create_army_transport = {
 			ship_name = "NAME_Pirate_Transport"
 			graphical_culture = "mammalian_01"
-			army_type = "assault_army"
-			species = event_target:CmtTargetSpecies_Marauder3
+			army_type = $TYPE|assault_army$
+			species = event_target:marauder_country_3.owner_species
 		}
 	} else = {
 		create_army_transport = {
 			ship_name = "NAME_Pirate_Transport"
 			graphical_culture = "mammalian_01"
-			army_type = "assault_army"
-			species = event_target:raider_khanate
+			army_type = $TYPE|assault_army$
+			species = prev.owner # event_target:raider_khanate
 		}
 	}
 }

@@ -30,44 +30,28 @@ CmtEffectCreateFleet_KhanArmy = {
 			prev = { solar_system = { has_star_flag = marauder_capital_1 } }
 			exists = event_target:marauder_country_1
 		}
-		create_leader = {
-			class = general
-			species = event_target:marauder_country_1.owner_species
-			name = random
-			skill = 3
-			traits = { trait = random_trait }
-		}
+		event_target:marauder_country_1.owner_species = { save_event_target_as = marauder_species }
 	} else_if = {
 		limit = {
 			prev = { solar_system = { has_star_flag = marauder_capital_2 } }
 			exists = event_target:marauder_country_2
 		}
-		create_leader = {
-			class = general
-			species = event_target:marauder_country_2.owner_species
-			name = random
-			skill = 3
-			traits = { trait = random_trait }
-		}
+		event_target:marauder_country_2.owner_species = { save_event_target_as = marauder_species }
 	} else_if = {
 		limit = {
 			prev = { solar_system = { has_star_flag = marauder_capital_3 } }
 			exists = event_target:marauder_country_3
 		}
-		create_leader = {
-			class = general
-			species = event_target:marauder_country_3.owner_species
-			name = random
-			skill = 3
-			traits = { trait = random_trait }
-		}
-	} else = {
-		create_leader = {
-			class = general
-			species = owner_species
-			name = random
-			skill = 3
-			traits = { trait = random_trait }
+		event_target:marauder_country_3.owner_species = { save_event_target_as = marauder_species }
+	}
+	create_leader = {
+		class = general
+		species = event_target:marauder_species
+		name = random
+		skill = 3
+		traits = {
+			trait = leader_trait_general_mercenary_warrior
+			trait = random_trait
 		}
 	}
 

@@ -197,6 +197,9 @@ CmtEffectCreateAdmiralty_KhanMercenaries3 = {
 ### Reinforcement (Capital/Sub-Capital)
 CmtEffectCreateAdmiralty_KhanReinforcement = {
 	event_target:raider_khanate = {
+		if = { limit = { NOT = { exists = event_target:marauder_species } exists = owner_species }
+			owner_species = { save_event_target_as = marauder_species }
+		}
 		### Constructor
 		if = {
 			limit = {
@@ -350,51 +353,52 @@ CmtEffectCreateAdmiralty_KhanReinforcement = {
 # }
 
 ### Reinforcement (Satrap)
-CmtEffectCreateAdmiralty_KhanSubReinforcement = {
-	event_target:raider_khanate = {
-		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Khan } }
-		while = {
-			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
-			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -1 } }
-			if = {
-				limit = { event_target:satrapy_empire = { max_naval_capacity < 100 } }
-				CmtEffectCreateFleet_KhanSubReinforcement1 = yes
-			} else_if = {
-				limit = { event_target:satrapy_empire = { max_naval_capacity < 200 } }
-				CmtEffectCreateFleet_KhanSubReinforcement2 = yes
-			} else_if = {
-				limit = { event_target:satrapy_empire = { max_naval_capacity < 300 } }
-				CmtEffectCreateFleet_KhanSubReinforcement3 = yes
-			} else_if = {
-				limit = { event_target:satrapy_empire = { max_naval_capacity < 500 } }
-				CmtEffectCreateFleet_KhanSubReinforcement4 = yes
-			} else = { CmtEffectCreateFleet_KhanSubReinforcement5 = yes }
-		}
-		while = {
-			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
-			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
-			random_list = {
-				100 = {
-					event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = 0 } }
-					if = {
-						limit = { event_target:satrapy_empire = { max_naval_capacity < 100 } }
-						CmtEffectCreateFleet_KhanSubReinforcement1 = yes
-					} else_if = {
-						limit = { event_target:satrapy_empire = { max_naval_capacity < 200 } }
-						CmtEffectCreateFleet_KhanSubReinforcement2 = yes
-					} else_if = {
-						limit = { event_target:satrapy_empire = { max_naval_capacity < 300 } }
-						CmtEffectCreateFleet_KhanSubReinforcement3 = yes
-					} else_if = {
-						limit = { event_target:satrapy_empire = { max_naval_capacity < 500 } }
-						CmtEffectCreateFleet_KhanSubReinforcement4 = yes
-					} else = { CmtEffectCreateFleet_KhanSubReinforcement5 = yes }
-				}
-				300 = { }
-			}
-		}
-	}
-}
+# This = location
+# CmtEffectCreateAdmiralty_KhanSubReinforcement = {
+# 	event_target:raider_khanate = {
+# 		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Khan } }
+# 		while = {
+# 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
+# 			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -1 } }
+# 			if = {
+# 				limit = { event_target:satrapy_empire = { max_naval_capacity < 100 } }
+# 				CmtEffectCreateFleet_KhanSubReinforcement1 = yes
+# 			} else_if = {
+# 				limit = { event_target:satrapy_empire = { max_naval_capacity < 200 } }
+# 				CmtEffectCreateFleet_KhanSubReinforcement2 = yes
+# 			} else_if = {
+# 				limit = { event_target:satrapy_empire = { max_naval_capacity < 300 } }
+# 				CmtEffectCreateFleet_KhanSubReinforcement3 = yes
+# 			} else_if = {
+# 				limit = { event_target:satrapy_empire = { max_naval_capacity < 500 } }
+# 				CmtEffectCreateFleet_KhanSubReinforcement4 = yes
+# 			} else = { CmtEffectCreateFleet_KhanSubReinforcement5 = yes }
+# 		}
+# 		while = {
+# 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
+# 			event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
+# 			random_list = {
+# 				100 = {
+# 					event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = 0 } }
+# 					if = {
+# 						limit = { event_target:satrapy_empire = { max_naval_capacity < 100 } }
+# 						CmtEffectCreateFleet_KhanSubReinforcement1 = yes
+# 					} else_if = {
+# 						limit = { event_target:satrapy_empire = { max_naval_capacity < 200 } }
+# 						CmtEffectCreateFleet_KhanSubReinforcement2 = yes
+# 					} else_if = {
+# 						limit = { event_target:satrapy_empire = { max_naval_capacity < 300 } }
+# 						CmtEffectCreateFleet_KhanSubReinforcement3 = yes
+# 					} else_if = {
+# 						limit = { event_target:satrapy_empire = { max_naval_capacity < 500 } }
+# 						CmtEffectCreateFleet_KhanSubReinforcement4 = yes
+# 					} else = { CmtEffectCreateFleet_KhanSubReinforcement5 = yes }
+# 				}
+# 				300 = { }
+# 			}
+# 		}
+# 	}
+# }
 
 # Dynamic Fleet Limit (country)
 CmtEffectInitFleetUpperLimit = {

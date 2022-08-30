@@ -210,6 +210,7 @@ planet_event = {
 			## Planet belonged to liberator
 			# else = {
 			# 	if = { limit = { num_pops > 0 }
+			#	every_owned_pop = { unemploy_pop = yes kill_pop = yes } # ghost pop bug
 			# 	destroy_colony = yes # set_owner = from
 			# }
 		}
@@ -228,45 +229,26 @@ planet_event = {
 	}
 }
 
-# Declare Crisis Test (Used on desired Crisis Empire)
+# Declare Crisis (Used on desired Crisis Empire)
 country_event = {
 	id = crisis.4099
 	hide_window = yes
 	is_triggered_only = yes
-	# trigger = { always = no }
+	# trigger = { always = no } Test only
 	immediate = {
 		set_country_flag = declared_crisis
 		save_event_target_as = new_crisis
 		country_event = { id = crisis.4105 } # Notify
 		every_playable_country = {
-			limit = {
-				is_ai = no
-				NOT = { is_same_empire = prev }
-			}
+			limit = { is_ai = no NOT = { is_same_empire = root } }
 			country_event = { id = crisis.4100 }
 		}
-		if = {
-			limit = { is_galactic_community_formed = yes }
+		if = { limit = { is_galactic_community_formed = yes }
 			if = {
 				limit = { has_galactic_custodian = yes }
 				random_playable_country = {
 					limit = { is_galactic_custodian = yes }
 					save_event_target_as = community_war_leader
-					declare_war = {
-						target = event_target:new_crisis
-						name = {
-							key = "NAME_Declared_Crisis_War"
-							variable_string = "This.MainDefender.GetAdj"
-						}
-						attacker_war_goal = "wg_declared_crisis"
-					}
-				}
-				every_playable_country = {
-					limit = {
-						is_galactic_custodian = no
-						is_galactic_community_member = yes
-					}
-					join_war = event_target:community_war_leader # Should use different effect to ensure they only join the correct war.
 				}
 			} else = {
 				random_playable_country = {
@@ -275,17 +257,21 @@ country_event = {
 						galactic_community_rank = 1
 					}
 					save_event_target_as = community_war_leader
+				}
+			}
+			if = { limit = { exists = event_target:community_war_leader }
+				event_target:community_war_leader = {
 					declare_war = {
-						target = event_target:new_crisis
-						name = "NAME_Declared_Crisis_War"
+						target = root
+						name = { key = "NAME_Declared_Crisis_War" variable_string = "This.MainDefender.GetAdj" }
 						attacker_war_goal = "wg_declared_crisis"
 					}
 					every_playable_country = {
 						limit = {
 							is_galactic_community_member = yes
-							NOT = { is_same_value = event_target:community_war_leader }
+							NOT = { is_same_empire = prev }
 						}
-						join_war = event_target:community_war_leader # Should use different	 effect to ensure they only join the correct war
+						join_war = prev # Should use different	effect to ensure they only join the correct war
 					}
 				}
 			}
@@ -319,10 +305,10 @@ country_event = {
 		}
 		#if = {
 		#	limit = { NOT = { any_country = { is_country_type = extradimensional has_country_flag = unbidden } } }
-			random_country = {
-				limit = { is_country_type = extradimensional }
-				set_country_flag = unbidden
-			}
+		random_country = {
+			limit = { is_country_type = extradimensional }
+			set_country_flag = unbidden
+		}
 		#}
 		random_country = {
 			limit = { is_country_type = portal_holder }

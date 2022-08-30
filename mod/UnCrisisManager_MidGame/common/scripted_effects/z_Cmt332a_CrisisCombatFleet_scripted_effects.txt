@@ -488,6 +488,8 @@ CmtEffectCreateFleet_KhanTwilightCongregation = {
 }
 
 ### Encourager
+#  This = CmtGlobalVar
+#  Prev = Khan
 CmtEffectCreateFleet_KhanSubReinforcement1 = {
 	CmtEffectCreateAdmiral_MarauderEncourager = yes
 	create_fleet = {
@@ -703,39 +705,42 @@ CmtEffectCreateFleet_KhanSubReinforcement5 = {
 	}
 }
 
-CmtEffectCreateAdmiralty_KhanEncourager = {
-	event_target:raider_khanate = {
-	# CmtEffectCreateFleet_KhanEncourager = {
-		create_fleet = {
-			name = "NAME_Garrison_Fleet"
-			effect = {
-				set_owner = prev
-				set_fleet_flag = satrapy_garrison_fleet
-				event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
-				prev = { CmtEffectResetLoop = yes }
-				while = {
-					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
-					event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+# CmtEffectCreateAdmiralty_KhanEncourager = {
+# 	event_target:raider_khanate = {
+# 	# CmtEffectCreateFleet_KhanEncourager = {
+# 		create_fleet = {
+# 			name = "NAME_Garrison_Fleet"
+# 			effect = {
+# 				set_owner = prev
+# 				set_fleet_flag = satrapy_garrison_fleet
+# 				event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Khan } }
+# 				prev = { CmtEffectResetLoop = yes }
+# 				while = {
+# 					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+# 					event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
 
-					while = { count = 5 CmtEffectCreateShip_Outrider = yes }			## 22
-					while = { count = 3 CmtEffectCreateShip_Lancer = yes }				## 14
-					while = { count = 2 CmtEffectCreateShip_VoidChampion = yes }		## 8
-					prev = {
-						CmtEffectProgressLoop2 = yes
-						switch = {
-							trigger = has_country_flag
-							CmtFlagLoopA = { prev = { CmtEffectCreateShip_Lancer = yes } }
-							CmtFlagLoopZ = { prev = { CmtEffectCreateShip_Outrider = yes } }
-						}
-					}
-				}
+# 					while = { count = 5 CmtEffectCreateShip_Outrider = yes }			## 22
+# 					while = { count = 3 CmtEffectCreateShip_Lancer = yes }				## 14
+# 					while = { count = 2 CmtEffectCreateShip_VoidChampion = yes }		## 8
+# 					prev = {
+# 						CmtEffectProgressLoop2 = yes
+# 						switch = {
+# 							trigger = has_country_flag
+# 							CmtFlagLoopA = { prev = { CmtEffectCreateShip_Lancer = yes } }
+# 							CmtFlagLoopZ = { prev = { CmtEffectCreateShip_Outrider = yes } }
+# 						}
+# 					}
+# 				}
 
-				CmtFleetSetAuxParam_KhanEncourager = yes
-			}
-			settings = { garrison = yes }
-		}
-	}
-}
+# 				CmtFleetSetAuxParam_KhanEncourager = yes
+# 			}
+# 			settings = {
+# 				garrison = yes
+# 				uses_naval_capacity = no
+# 			}
+# 		}
+# 	}
+# }
 
 #################
 ###- Dessanu -###
