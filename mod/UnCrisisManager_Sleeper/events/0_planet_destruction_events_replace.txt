@@ -145,7 +145,7 @@ country_event = {
 	}
 	option = {
 		name = planet_destruction.610.gesta
-		trigger = { has_ethic = ethic_gestalt_consciousness }
+		trigger = { is_gestalt = yes }
 	}
 	option = {
 		name = planet_destruction.610.devou

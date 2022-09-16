@@ -1665,7 +1665,7 @@ planet_event = {
 		owner = { save_event_target_as = raid_victim }
 
 		if = {
-			limit = { owner = { NOT = { has_ethic = ethic_gestalt_consciousness } } }
+			limit = { owner = { is_gestalt = no } }
 			random_list = {
 				50 = { planet_event = { id = marauder.104 } }
 				50 = { planet_event = { id = marauder.105 } }
@@ -1673,7 +1673,7 @@ planet_event = {
 		} else_if = {
 			limit = {
 				owner = {
-					has_authority = auth_machine_intelligence
+					is_machine_empire = yes
 					NOT = { has_valid_civic = civic_machine_servitor }
 				}
 			}
@@ -1682,7 +1682,7 @@ planet_event = {
 			limit = { owner = { has_valid_civic = civic_machine_servitor } }
 			planet_event = { id = marauder.107 }
 		} else_if = {
-			limit = { owner = { has_authority = auth_hive_mind } }
+			limit = { owner = { is_hive_empire = yes } }
 			planet_event = { id = marauder.108 }
 		}
 	}
@@ -3650,42 +3650,42 @@ country_event = {
 	desc = {
 		trigger = {
 			any_agreement = { agreement_preset = preset_satrapy }
-			has_authority = auth_machine_intelligence
+			is_machine_empire = yes
 		}
 		text = "marauder.550.l.desc"
 	}
 	desc = {
 		trigger = {
 			any_agreement = { agreement_preset = preset_satrapy }
-			has_authority = auth_machine_intelligence
+			is_machine_empire = yes
 		}
 		text = "marauder.550.m.desc"
 	}
 	desc = {
 		trigger = {
 			any_agreement = { agreement_preset = preset_satrapy }
-			has_authority = auth_hive_mind
+			is_hive_empire = yes
 		}
 		text = "marauder.550.n.desc"
 	}
 	desc = {
 		trigger = {
 			any_agreement = { agreement_preset = preset_satrapy }
-			has_authority = auth_hive_mind
+			is_hive_empire = yes
 		}
 		text = "marauder.550.o.desc"
 	}
 	desc = {
 		trigger = {
 			any_agreement = { agreement_preset = preset_satrapy }
-			NOT = { has_ethic = ethic_gestalt_consciousness }
+			is_gestalt = no
 		}
 		text = "marauder.550.p.desc"
 	}
 	desc = {
 		trigger = {
 			any_agreement = { agreement_preset = preset_satrapy }
-			NOT = { has_ethic = ethic_gestalt_consciousness }
+			is_gestalt = no
 		}
 		text = "marauder.550.q.desc"
 	}

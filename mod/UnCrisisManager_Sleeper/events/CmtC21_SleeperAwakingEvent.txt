@@ -361,7 +361,7 @@ country_event = {
 
 	trigger = {
 		event_target:CmtGlobalVar = { check_variable = { which = CmtVarSleeperMultiple value = 4 } }
-		NOT = { any_country = { is_country_type = awakened_fallen_empire } }
+		NOT = { any_country = { merg_is_awakened_fe = yes } }
 	}
 
 	immediate = {
@@ -401,7 +401,7 @@ country_event = {
 				}
 				event_target:outraged_FE = {
 					if = {
-						limit = { is_country_type = awakened_fallen_empire }
+						limit = { merg_is_awakened_fe = yes }
 						country_event = { id = planet_destruction.611 }
 					} else = { country_event = { id = fallen_empires_awakening.1 } }
 				}
@@ -419,7 +419,7 @@ country_event = {
 	# trigger = {  }
 
 	immediate = {
-		# if = { limit = { is_country_type = fallen_empire }
+		# if = { limit = { merg_is_fallen_empire = yes }
 		# 	destroy_country = yes
 		# }
 		remove_country_flag = sleepers_awake_first_sleeper
@@ -1043,7 +1043,7 @@ country_event = {
 		# 	}
 		# }
 
-		if = { limit = { has_authority = auth_machine_intelligence }
+		if = { limit = { is_machine_empire = yes }
 			country_event = { id = fallen_machine_empire.1 days = 30 random = 15 }
 		} else = { country_event = { id = fallen_empires_awakening.1 days = 30 random = 15 } }
 

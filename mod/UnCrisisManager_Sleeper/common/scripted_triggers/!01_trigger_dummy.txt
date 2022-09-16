@@ -1,4 +1,4 @@
-# For compatibility
+# For compatibility: Dummy triggers - to be overwritten by their respective mods.
 # HFE
 hfe_trigger_insane_admiral_trait = {
 	always = no
@@ -25,3 +25,8 @@ is_zofe_country = {
 	# 	is_country_type = lost_empire
 	# }
 }
+# PD
+is_planetary_diversity_ringworld = { always = no }
+is_pd_habitat = { always = no }
+is_pd_hive_arcology = { always = no }
+is_pd_robot_arcology = { always = no }

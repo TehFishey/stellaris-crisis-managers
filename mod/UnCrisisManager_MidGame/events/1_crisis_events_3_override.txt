@@ -108,15 +108,15 @@ country_event = {
 			if = {
 				limit = {
 					NOR = {
-						has_authority = auth_hive_mind
-						has_authority = auth_machine_intelligence
+						is_hive_empire = yes
+						is_machine_empire = yes
 						owner_species = { has_trait = trait_psionic }
 					}
 				}
 				country_event = { id = crisis.2085 days = 260 random = 20 }
 			}
 			if = {
-				limit = { has_authority = auth_hive_mind }
+				limit = { is_hive_empire = yes }
 				country_event = { id = crisis.2086 days = 260 random = 20 }
 			}
 			if = {
@@ -124,7 +124,7 @@ country_event = {
 				country_event = { id = crisis.2087 days = 260 random = 20 }
 			}
 			if = {
-				limit = { has_authority = auth_machine_intelligence }
+				limit = { is_machine_empire = yes }
 				country_event = { id = crisis.2313 days = 260 random = 20 }
 			}
 		}

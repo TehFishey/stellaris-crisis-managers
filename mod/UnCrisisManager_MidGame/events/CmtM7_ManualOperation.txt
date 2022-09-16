@@ -28,7 +28,7 @@ country_event = {
 				host_has_dlc = "Apocalypse"
 				has_global_flag = CmtFlagMidGameEdition
 				has_global_flag = marauder_crisis_ongoing
-				CmtTriggerNowInKhanCrisis = no
+				NOT = { any_country = { is_country_type = awakened_marauders } } # CmtTriggerNowInKhanCrisis = no
 			}
 			remove_global_flag = marauder_crisis_ongoing
 		}
@@ -1686,17 +1686,19 @@ country_event = {
 	}
 
 	after = {
-		if = {
-			limit = { exists = event_target:marauder_country_1 event_target:marauder_country_1 = { CmtTriggerHasPotentialKhanAwaking = no } }
-			clear_global_event_target = marauder_country_1
-		}
-		if = {
-			limit = { exists = event_target:marauder_country_2 event_target:marauder_country_2 = { CmtTriggerHasPotentialKhanAwaking = no } }
-			clear_global_event_target = marauder_country_2
-		}
-		if = {
-			limit = { exists = event_target:marauder_country_3 event_target:marauder_country_3 = { CmtTriggerHasPotentialKhanAwaking = no } }
-			clear_global_event_target = marauder_country_3
+		hidden_effect = {
+			if = {
+				limit = { exists = event_target:marauder_country_1 event_target:marauder_country_1 = { CmtTriggerHasPotentialKhanAwaking = no } }
+				clear_global_event_target = marauder_country_1
+			}
+			if = {
+				limit = { exists = event_target:marauder_country_2 event_target:marauder_country_2 = { CmtTriggerHasPotentialKhanAwaking = no } }
+				clear_global_event_target = marauder_country_2
+			}
+			if = {
+				limit = { exists = event_target:marauder_country_3 event_target:marauder_country_3 = { CmtTriggerHasPotentialKhanAwaking = no } }
+				clear_global_event_target = marauder_country_3
+			}
 		}
 
 		# legacy
