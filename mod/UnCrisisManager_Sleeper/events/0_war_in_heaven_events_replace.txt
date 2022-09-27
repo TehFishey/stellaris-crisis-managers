@@ -45,7 +45,7 @@ country_event = {
 		random_country = {
 			limit = {
 				merg_is_fallen_empire = yes
-				NOT = { is_gestalt = yes }
+				is_gestalt = no
 			}
 			set_country_flag = sleepers_awake_first
 			country_event = { id = fallen_empires_awakening.3 }

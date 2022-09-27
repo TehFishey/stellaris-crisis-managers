@@ -249,7 +249,6 @@ CmtTriggerIsOrganicSleeper = {
 
 ### Mid-Game Crises ###
 CmtTriggerIsMarauder = {
-	optimize_memory
 	OR = {
 		is_country_type = dormant_marauders
 		is_country_type = ruined_marauders
@@ -265,7 +264,6 @@ CmtTriggerIsMarauder = {
 # }
 
 CmtTriggerIsKhanCountry = {
-	optimize_memory
 	OR = {
 		is_country_type = awakened_marauders
 		is_same_value = event_target:raider_khanate
@@ -315,10 +313,9 @@ CmtTriggerExistCrisisCountry = {
 }
 
 ### Mid-Game Crisis
-CmtTriggerExistKhanCountry = {
-	optimize_memory
-	any_country = { CmtTriggerIsKhanCountry = yes }
-}
+# CmtTriggerExistKhanCountry = {
+# 	any_country = { CmtTriggerIsKhanCountry = yes }
+# }
 
 CmtTriggerExistGraygoo = {
 	optimize_memory
@@ -360,10 +357,9 @@ CmtTriggerNowSleeperStayup = {
 	}
 }
 
-CmtTriggerNowInKhanCrisis = {
-	optimize_memory
-	any_country = { is_country_type = awakened_marauders }
-}
+# CmtTriggerNowInKhanCrisis = {
+# 	any_country = { is_country_type = awakened_marauders }
+# }
 
 #################################
 ###- Trigger Check of Events -###
@@ -398,14 +394,15 @@ CmtTriggerSleepersAwakingTriggered = {
 # 	}
 # }
 
-CmtTriggerLgateEventTriggered = {
-	optimize_memory
-	OR = {
-		has_global_flag = l_cluster_opened
-		has_global_flag = lgates_activated_globally
-		has_global_flag = CmtFlagLgatePreludeTriggered
-	}
-}
+# DEPRECATED (2 times usage)
+# CmtTriggerLgateEventTriggered = {
+# 	optimize_memory
+# 	OR = {
+# 		has_global_flag = l_cluster_opened
+# 		has_global_flag = lgates_activated_globally
+# 		has_global_flag = CmtFlagLgatePreludeTriggered
+# 	}
+# }
 
 CmtTriggerUprisingTriggered = {
 	optimize_memory
@@ -442,10 +439,15 @@ CmtTriggerAnyManagedEventTriggered = {
 		AND = {
 			has_global_flag = CmtFlagMidGameEdition
 			# OR = {
-			CmtTriggerLgateEventTriggered = yes
-			has_global_flag = marauder_crisis_started
-			# CmtTriggerKhanTriggered = yes
+			# 	CmtTriggerLgateEventTriggered = yes
+			# 	CmtTriggerKhanTriggered = yes
 			# }
+			OR = {
+				has_global_flag = l_cluster_opened
+				has_global_flag = lgates_activated_globally
+				has_global_flag = CmtFlagLgatePreludeTriggered
+				has_global_flag = marauder_crisis_started
+			}
 		}
 	}
 }
@@ -564,11 +566,16 @@ CmtTriggerKhanConfig = {
 
 CmtTriggerLgateConfig = {
 	optimize_memory
+	has_global_flag = CmtFlagMidGameEdition
 	OR = {
-		CmtTriggerLgateEventTriggered = no
+		# CmtTriggerLgateEventTriggered = no
+		NOR = {
+			has_global_flag = l_cluster_opened
+			has_global_flag = lgates_activated_globally
+			has_global_flag = CmtFlagLgatePreludeTriggered
+		}
 		has_global_flag = CmtFlagDebugMode
 	}
-	has_global_flag = CmtFlagMidGameEdition
 }
 
 CmtTriggerUprisingConfig = {

@@ -37,6 +37,7 @@ CmtEffectCreateAdmiral_MarauderStandard = {
 			leader_age_min = 25
 			leader_age_max = 45
 			traits = {
+				trait = random_trait
 				trait = leader_trait_mercenary_warrior
 				trait = random_trait
 			}
@@ -54,6 +55,7 @@ CmtEffectCreateAdmiral_MarauderStandard = {
 			leader_age_min = 25
 			leader_age_max = 45
 			traits = {
+				trait = random_trait
 				trait = leader_trait_mercenary_warrior
 				trait = random_trait
 			}
@@ -71,6 +73,7 @@ CmtEffectCreateAdmiral_MarauderStandard = {
 			leader_age_min = 25
 			leader_age_max = 45
 			traits = {
+				trait = random_trait
 				trait = leader_trait_mercenary_warrior
 				trait = random_trait
 			}
@@ -84,6 +87,7 @@ CmtEffectCreateAdmiral_MarauderStandard = {
 			leader_age_min = 25
 			leader_age_max = 45
 			traits = {
+				trait = random_trait
 				trait = leader_trait_mercenary_warrior
 				trait = random_trait
 			}
@@ -91,7 +95,7 @@ CmtEffectCreateAdmiral_MarauderStandard = {
 	}
 	if = {
 		limit = {
-			prev = { 
+			prev = {
 				NAND = {
 					exists = space_owner
 					space_owner = { is_country_type = awakened_marauders }

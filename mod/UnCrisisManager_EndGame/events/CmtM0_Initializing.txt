@@ -243,6 +243,9 @@ country_event = {
 			large = { change_variable = { which = CmtVarLgateReqClues value = 1 } }
 			huge = { change_variable = { which = CmtVarLgateReqClues value = 2 } }
 		}
+		if = { limit = { lgate_enabled = no }
+			change_variable = { which = CmtVarLgateReqClues value = -1 }
+		}
 		# Dyn. CybrexLimit for fleet comp.
 		if = { limit = { is_variable_set = CmtVarCybrexResurfacing }
 			if = { limit = { check_variable = { which = CmtVarCybrexResurfacing value = 5 } }

@@ -299,15 +299,13 @@ fleet_event = {
 			min_steps = 2
 			use_bypasses = yes
 			limit = {
-				any_system_planet = {
-					has_owner = yes
+				any_system_colony = {
 					is_owned_by = from
 					num_pops > 1
 				}
 			}
-			random_system_planet = {
+			random_system_colony = {
 				limit = {
-					has_owner = yes
 					is_owned_by = from
 					num_pops > 1
 				}
@@ -347,16 +345,14 @@ fleet_event = {
 			min_steps = 1
 			use_bypasses = yes
 			limit = {
-				any_system_planet = {
-					has_owner = yes
+				any_system_colony = {
 					is_owned_by = from
 					num_pops > 1
 				}
 				prev = { can_access_system = prev }
 			}
-			random_system_planet = {
+			random_system_colony = {
 				limit = {
-					has_owner = yes
 					is_owned_by = from
 					num_pops > 1
 				}
@@ -403,8 +399,7 @@ fleet_event = {
 					fleet = { is_disabled = no } # Not working for starbase?
 				}
 				NOR = {
-					any_system_planet = {
-						has_owner = yes
+					any_system_colony = {
 						is_owned_by = from
 						num_pops > 0
 					}
@@ -1599,19 +1594,17 @@ planet_event = {
 				solar_system = {
 					closest_system = {
 						limit = {
-							any_system_planet = {
+							any_system_colony = {
 								has_owner = yes
 								is_owned_by = event_target:raid_victim
-								is_colony = yes
 								is_occupied_flag = no
 								NOT = { has_planet_flag = planet_raided }
 								num_pops > 1
 							}
 							# event_target:raiding_fleet = { can_access_system = prev }
 						}
-						random_system_planet = {
+						random_system_colony = {
 							limit = {
-								has_owner = yes
 								is_owned_by = event_target:raid_victim
 								is_colony = yes
 								is_occupied_flag = no
@@ -2034,16 +2027,14 @@ event = {
 							limit = {
 								has_owner = yes
 								is_owned_by = event_target:marauder_target
-								any_system_planet = {
-									has_owner = yes
+								any_system_colony = {
 									is_owned_by = event_target:marauder_target
 									num_pops > 0
 								}
 								# prev = { can_access_system = prev }
 							}
-							random_system_planet = {
+							random_system_colony = {
 								limit = {
-									has_owner = yes
 									is_owned_by = event_target:marauder_target
 									num_pops > 0
 								}

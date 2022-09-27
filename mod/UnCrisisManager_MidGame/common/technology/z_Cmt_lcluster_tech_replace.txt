@@ -30,9 +30,8 @@ tech_repeatable_lcluster_clue = {
 	area = engineering
 	cost = @tier2cost1
 	cost_per_level = @repeatableTechLevelCost
-	tier = 3
+	tier = 2
 	is_rare = yes
-	is_dangerous = yes
 	category = { voidcraft }
 	levels = -1
 	weight = @tier3weight2
@@ -46,6 +45,7 @@ tech_repeatable_lcluster_clue = {
 		OR = {
 			mid_game_years_passed > 0
 			NOT = { has_global_flag = gray_goo_crisis_set }
+			has_global_flag = l_cluster_origin
 		}
 	}
 
@@ -57,7 +57,7 @@ tech_repeatable_lcluster_clue = {
 	}
 	weight_modifier = {
 		modifier = {
-			factor = @federation_perk_factor
+			factor = @federation_perk_factor # = 2
 			has_federation = yes
 			federation = {
 				has_federation_perk = rare_tech_boost
@@ -68,6 +68,15 @@ tech_repeatable_lcluster_clue = {
 			factor = 0.2
 			NOT = {
 				any_system_within_border = { has_star_flag = lgate }
+			}
+		}
+		modifier = { # Mod lclusterplus
+			factor = @federation_perk_factor # = 2
+			is_ai = no
+			has_global_flag = l_cluster_origin
+			OR = {
+				has_origin = origin_lclusterplus_gatebuilders
+				has_origin = origin_lclusterplus_gatebuilders_advanced
 			}
 		}
 	}

@@ -53,6 +53,7 @@ CmtEffectCreateAdmiralty_Khan1stFleet = {		### Exception: Leader = event_target:
 				}
 				CmtFleetSetAuxParam_KhanCombat = yes
 				assign_leader = event_target:great_khan
+				set_fleet_flag = khan_fleet
 			}
 			settings = {
 				can_upgrade = no
@@ -96,6 +97,7 @@ CmtEffectCreateFleet_Khan2ndFleet = {	### Exception: Leader = exiled_khan
 			}
 			CmtFleetSetAuxParam_KhanCombat = yes
 			set_leader = exiled_khan
+			set_fleet_flag = khan_fleet
 		}
 		settings = {
 			can_upgrade = no

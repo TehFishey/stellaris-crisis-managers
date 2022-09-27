@@ -2006,7 +2006,7 @@ country_event = {
 						limit = { check_variable = { which = CmtVarManualTemp value = 3 } }
 						remove_global_flag = CmtFlagLgateForbidDessanu
 					} else_if = {
-						limit = { check_variable = { which = CmtVarManualTemp value = 4 lgate_enabled = yes } }
+						limit = { check_variable = { which = CmtVarManualTemp value = 4 } lgate_enabled = yes }
 						remove_global_flag = CmtFlagLgateForbidGraygoo
 					}
 				}

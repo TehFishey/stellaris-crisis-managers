@@ -210,7 +210,6 @@ planet_event = {
 			## Planet belonged to liberator
 			# else = {
 			# 	if = { limit = { num_pops > 0 }
-			#	every_owned_pop = { unemploy_pop = yes kill_pop = yes } # ghost pop bug
 			# 	destroy_colony = yes # set_owner = from
 			# }
 		}
