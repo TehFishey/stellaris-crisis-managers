@@ -311,7 +311,7 @@ planet_event = {
 				change_pc = pc_ringworld_habitable_damaged
 				reset_planet = yes
 			} else_if = {
-				limit = { is_planet_class = pc_habitat }
+				limit = { merg_is_habitat = yes }
 				remove_planet = yes
 			}
 		}

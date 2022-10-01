@@ -1,0 +1,887 @@
+# Replaced graphical_culture = prev.owner # "madd_01"
+# Not really necessary, as vanilla graphical_culture gets ignored if invalid.
+# This = Fleet
+create_dyn_marauder_fleet = {
+	# default: OUTRIDER = 18 LANCER = 12 CHAMPION = 6 GLORY = 1
+	while = {
+		# count = @\[ $AMOUNT|3$ * 6 ]
+		count = $OUTRIDER|18$
+		create_ship = {
+			name = random
+			design = NAME_Outrider$VARIANT$
+			prefix = no
+			# upgradable = yes
+			graphical_culture = prev.owner # "madd_01"
+		}
+	}
+	while = {
+		count = $LANCER|12$
+		create_ship = {
+			name = random
+			design = NAME_Lancer$VARIANT$
+			prefix = no
+			# upgradable = yes
+			graphical_culture = prev.owner # "madd_01"
+		}
+	}
+	while = {
+		count = $CHAMPION|6$
+		create_ship = {
+			name = random
+			design = NAME_Void_Champion$VARIANT$
+			prefix = no
+			# upgradable = yes
+			graphical_culture = prev.owner # "madd_01"
+		}
+	}
+	while = {
+		count = $GLORY|1$
+		create_ship = {
+			name = random
+			design = NAME_Ancestral_Glory$VARIANT$
+			prefix = no
+			# upgradable = yes
+			graphical_culture = prev.owner # "madd_01"
+		}
+	}
+}
+
+create_1st_khan_fleet = {
+	optimize_memory
+	create_fleet = {
+		name = "NAME_Chosen_of_the_Great_Khan"
+		effect = {
+			set_owner = event_target:raider_khanate
+			create_ship = {
+				# name = "NAME_JuukTidir"
+				design = "NAME_JuukTidir"
+				# random_existing_design = npc_galleon_01
+				graphical_culture = "npf_01" # _dirty
+			}
+			assign_leader = last_created_leader
+			set_fleet_flag = khan_fleet
+			if = {
+				limit = {
+					OR = {
+						has_global_flag = expanded_spaceborne_installed
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Khan value > 1.74 } }
+					}
+				}
+				create_dyn_marauder_fleet = { OUTRIDER = 36 LANCER = 24 CHAMPION = 12 }
+			} else = {
+				create_dyn_marauder_fleet = { GLORY = 0 }
+			}
+			set_location = {
+				target = event_target:marauder_rally_point
+				distance = 45
+				angle = random
+			}
+			set_home_base = event_target:marauder_rally_point.solar_system.starbase
+		}
+		settings = {
+			can_upgrade = no
+			can_disband = no
+			can_change_composition = no
+			can_change_leader = no
+			uses_naval_capacity = no
+		}
+	}
+}
+
+create_2nd_khan_fleet = {
+	optimize_memory
+	create_fleet = {
+		name = "NAME_Chosen_of_the_Great_Khan"
+		effect = {
+			set_owner = event_target:raider_khanate
+			create_ship = {
+				# name = "NAME_Glorious_Might"
+				design = "NAME_Glorious_Might"
+				# random_existing_design = npc_galleon_01
+				graphical_culture = "npf_01_dirty"
+			}
+			set_leader = exiled_khan
+			set_fleet_flag = khan_fleet
+			if = {
+				limit = {
+					OR = {
+						has_global_flag = expanded_spaceborne_installed
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Khan value > 1.74 } }
+					}
+				}
+				create_dyn_marauder_fleet = { OUTRIDER = 36 LANCER = 24 CHAMPION = 12 }
+			} else = {
+				create_dyn_marauder_fleet = yes
+			}
+
+			set_location = {
+				target = event_target:marauder_rally_point
+				distance = 45
+				angle = random
+			}
+			set_home_base = event_target:marauder_rally_point.solar_system.starbase
+		}
+		settings = {
+			can_upgrade = no
+			can_disband = no
+			can_change_composition = no
+			can_change_leader = no
+			uses_naval_capacity = no
+		}
+	}
+}
+
+create_marauder_fleet = {
+	optimize_memory # as replaced and not used by this mod
+	create_leader = {
+		class = admiral
+		species = owner_species
+		name = random
+		skill = 3
+		leader_age_min = 25
+		leader_age_max = 45
+		traits = {
+			trait = random_trait
+			trait = leader_trait_mercenary_warrior
+			trait = random_trait
+		}
+	}
+	create_fleet = {
+		effect = {
+			random_list = {
+				50 = {
+					set_owner = event_target:raider_khanate
+					if = {
+						limit = {
+							OR = {
+								has_global_flag = expanded_spaceborne_installed
+								event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Khan value > 1.74 } }
+							}
+						}
+						create_dyn_marauder_fleet = { OUTRIDER = 32 LANCER = 16 CHAMPION = 12 }
+					} else = {
+						create_dyn_marauder_fleet = { OUTRIDER = 16 LANCER = 8 }
+					}
+				}
+				50 = { # Own ships
+					set_owner = root
+					while = {
+						count = 16
+						create_ship = {
+							name = random
+							prefix = no
+							random_existing_design = corvette
+							graphical_culture = root
+						}
+					}
+					while = {
+						count = 8
+						create_ship = {
+							name = random
+							prefix = no
+							random_existing_design = destroyer
+							graphical_culture = root
+						}
+					}
+					if = { limit = { root = { any_owned_design = { is_ship_size = cruiser } } }
+						while = {
+							count = 3
+							create_ship = {
+								name = random
+								prefix = no
+								random_existing_design = cruiser
+								graphical_culture = root
+							}
+						}
+					}
+				}
+			}
+
+			assign_leader = last_created_leader
+			set_location = {
+				target = event_target:marauder_rally_point
+				distance = 45
+				angle = random
+			}
+			set_home_base = event_target:marauder_rally_point.solar_system.starbase
+		}
+		settings = {
+			uses_naval_capacity = no
+			can_upgrade = no
+			can_change_composition = no
+		}
+	}
+	last_created_fleet = { set_owner = event_target:raider_khanate }
+}
+
+create_small_marauder_auxiliaries = {
+	optimize_memory
+	create_leader = {
+		class = admiral
+		species = event_target:satrapy_species
+		name = random
+		leader_age_min = 34
+		leader_age_max = 45
+		traits = { trait = random_trait }
+	}
+	create_fleet = {
+		name = {
+			key = "NAME_Horde_Auxiliary_Fleet"
+			variable_string = "satrapy_species.GetName"
+		}
+		effect = {
+			set_owner = event_target:raider_khanate
+			set_fleet_flag = horde_auxuliaries
+			if = {
+				limit = {
+					OR = {
+						has_global_flag = expanded_spaceborne_installed
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Khan value > 1.74 } }
+					}
+				}
+				create_dyn_marauder_fleet = { OUTRIDER = 20 LANCER = 8 CHAMPION = 4 GLORY = 0 }
+			} else = {
+				create_dyn_marauder_fleet = { OUTRIDER = 10 LANCER = 4 CHAMPION = 2 GLORY = 0 }
+			}
+			assign_leader = last_created_leader
+			set_location = {
+				target = root
+				distance = 10
+				angle = random
+			}
+			set_home_base = root.solar_system.starbase
+		}
+		settings = {
+			can_upgrade = no
+			can_disband = no
+			can_change_composition = no
+			can_change_leader = no
+			uses_naval_capacity = no
+		}
+	}
+}
+
+create_medium_marauder_auxiliaries = {
+	optimize_memory
+	create_leader = {
+		class = admiral
+		species = event_target:satrapy_species
+		name = random
+		leader_age_min = 34
+		leader_age_max = 45
+		traits = { trait = random_trait }
+	}
+	create_fleet = {
+		name = {
+			key = "NAME_Horde_Auxiliary_Fleet"
+			variable_string = "satrapy_species.GetName"
+		}
+		effect = {
+			set_owner = event_target:raider_khanate
+			set_fleet_flag = horde_auxuliaries
+			if = {
+				limit = {
+					OR = {
+						has_global_flag = expanded_spaceborne_installed
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Khan value > 1.74 } }
+					}
+				}
+				create_dyn_marauder_fleet = { OUTRIDER = 32 LANCER = 16 CHAMPION = 12 }
+			} else = {
+				create_dyn_marauder_fleet = yes
+			}
+			assign_leader = last_created_leader
+			set_location = {
+				target = root
+				distance = 10
+				angle = random
+			}
+			set_home_base = root.solar_system.starbase
+		}
+		settings = {
+			can_upgrade = no
+			can_disband = no
+			can_change_composition = no
+			can_change_leader = no
+			uses_naval_capacity = no
+		}
+	}
+}
+
+create_large_marauder_auxiliaries = {
+	optimize_memory
+	create_leader = {
+		class = admiral
+		species = event_target:satrapy_species
+		name = random
+		leader_age_min = 34
+		leader_age_max = 45
+		traits = { trait = random_trait }
+	}
+	create_fleet = {
+		name = {
+			key = "NAME_Horde_Auxiliary_Fleet"
+			variable_string = "satrapy_species.GetName"
+		}
+		effect = {
+			set_owner = event_target:raider_khanate
+			set_fleet_flag = horde_auxuliaries
+			if = {
+				limit = {
+					OR = {
+						has_global_flag = expanded_spaceborne_installed
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Khan value > 1.74 } }
+					}
+				}
+				create_dyn_marauder_fleet = { OUTRIDER = 44 LANCER = 24 CHAMPION = 16 }
+			} else = {
+				create_dyn_marauder_fleet = { OUTRIDER = 22 LANCER = 12 CHAMPION = 8 }
+			}
+			assign_leader = last_created_leader
+			set_location = {
+				target = root
+				distance = 10
+				angle = random
+			}
+			set_home_base = root.solar_system.starbase
+		}
+		settings = {
+			can_upgrade = no
+			can_disband = no
+			can_change_composition = no
+			can_change_leader = no
+			uses_naval_capacity = no
+		}
+	}
+}
+
+create_very_large_marauder_auxiliaries = {
+	optimize_memory
+	create_leader = {
+		class = admiral
+		species = event_target:satrapy_species
+		name = random
+		traits = { trait = random_trait }
+	}
+	last_created_leader = { set_age = 37 }
+	create_fleet = {
+		name = {
+			key = "NAME_Horde_Auxiliary_Fleet"
+			variable_string = "satrapy_species.GetName"
+		}
+		effect = {
+			set_owner = event_target:raider_khanate
+			set_fleet_flag = horde_auxuliaries
+			if = {
+				limit = {
+					OR = {
+						has_global_flag = expanded_spaceborne_installed
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Khan value > 1.74 } }
+					}
+				}
+				create_dyn_marauder_fleet = { OUTRIDER = 52 LANCER = 36 CHAMPION = 24 }
+			} else = {
+				create_dyn_marauder_fleet = { OUTRIDER = 26 LANCER = 18 CHAMPION = 12 }
+			}
+			assign_leader = last_created_leader
+			set_location = {
+				target = root
+				distance = 10
+				angle = random
+			}
+			set_home_base = root.solar_system.starbase
+		}
+		settings = {
+			can_upgrade = no
+			can_disband = no
+			can_change_composition = no
+			can_change_leader = no
+			uses_naval_capacity = no
+		}
+	}
+}
+
+create_marauder_successor_fleet = {
+	optimize_memory
+	random_owned_planet = { save_event_target_as = fleet_position }
+	create_leader = {
+		class = admiral
+		species = owner_species
+		name = random
+		skill = 3
+		leader_age_min = 25
+		leader_age_max = 45
+		traits = {
+			trait = random_trait
+			trait = leader_trait_mercenary_warrior
+			trait = random_trait
+		}
+	}
+	create_fleet = {
+		effect = {
+			set_owner = prev
+			if = {
+				limit = {
+					OR = {
+						has_global_flag = expanded_spaceborne_installed
+						event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Khan value > 1.74 } }
+					}
+				}
+				create_dyn_marauder_fleet = { OUTRIDER = 32 LANCER = 16 CHAMPION = 12 }
+			} else = {
+				create_dyn_marauder_fleet = { OUTRIDER = 16 LANCER = 8 }
+			}
+			assign_leader = last_created_leader
+			set_location = {
+				target = event_target:fleet_position
+				distance = 45
+				angle = random
+			}
+			set_home_base = event_target:fleet_position.solar_system.starbase
+		}
+		settings = {
+			uses_naval_capacity = no
+			can_upgrade = no
+			can_change_composition = no
+		}
+	}
+}
+
+create_first_diadochi = {
+	optimize_memory
+	if = {
+		limit = {
+			exists = event_target:first_diadochi_origin
+		}
+		create_country = {
+			name_list = random
+			# name = random
+			species = event_target:marauder_species
+			type = default
+			authority = auth_imperial
+			civics = { civic = civic_diadochi civic = random civic = random }
+			origin = "origin_khan_successor"
+			ethos = {
+				ethic = ethic_militarist
+				ethic = ethic_xenophobe
+				ethic = ethic_authoritarian
+			}
+			ignore_initial_colony_error = yes
+			effect = {
+				if = {
+					limit = {
+						exists = capital_scope
+						capital_scope = {
+							any_owned_species = {
+								is_same_species_class = prevprev
+							}
+						}
+					}
+					modify_species = {
+						species = this
+						ideal_planet_class = capital_scope
+					}
+				}
+				save_event_target_as = first_diadochi
+				set_country_flag = diadochi_1
+				set_name = random
+				shift_ethic = ethic_fanatic_militarist
+			}
+		}
+		# Flip Starbases
+		every_system_within_border = {
+			limit = {
+				has_star_flag = first_diadochi_system
+				exists = starbase
+			}
+			starbase = {
+				set_owner = event_target:first_diadochi
+			}
+			# Flip Planets
+			every_system_colony = {
+				limit = { is_owned_by = root }
+				set_owner = event_target:first_diadochi
+				set_controller = event_target:first_diadochi
+			}
+			remove_star_flag = first_diadochi_system
+		}
+		last_created_country = {
+			country_event = { id = khan.610 days = -1 } # Handover some old stuff
+		}
+	}
+}
+
+create_second_diadochi = {
+	optimize_memory
+	if = {
+		limit = {
+			exists = event_target:second_diadochi_origin
+		}
+		create_country = {
+			name_list = random
+			# name = random
+			species = event_target:marauder_species
+			type = default
+			authority = auth_imperial
+			civics = { civic = civic_diadochi civic = random civic = random }
+			origin = "origin_khan_successor"
+			ethos = {
+				ethic = ethic_militarist
+				ethic = ethic_xenophobe
+				ethic = ethic_authoritarian
+			}
+			ignore_initial_colony_error = yes
+			effect = {
+				if = {
+					limit = {
+						exists = capital_scope
+						capital_scope = {
+							any_owned_species = {
+								is_same_species_class = prevprev
+							}
+						}
+					}
+					modify_species = {
+						species = this
+						ideal_planet_class = capital_scope
+					}
+				}
+				save_event_target_as = second_diadochi
+				set_country_flag = diadochi_2
+				set_name = random
+				shift_ethic = ethic_fanatic_militarist
+			}
+		}
+		# Flip Starbases
+		every_system_within_border = {
+			limit = {
+				has_star_flag = second_diadochi_system
+				exists = starbase
+			}
+			starbase = {
+				set_owner = event_target:second_diadochi
+			}
+			# Flip Planets
+			every_system_colony = {
+				limit = { is_owned_by = root }
+				set_owner = event_target:second_diadochi
+				set_controller = event_target:second_diadochi
+			}
+			remove_star_flag = second_diadochi_system
+		}
+		last_created_country = {
+			country_event = { id = khan.610 days = -1 } # Handover some old stuff
+		}
+	}
+}
+
+create_third_diadochi = {
+	optimize_memory
+	if = {
+		limit = {
+			exists = event_target:third_diadochi_origin
+		}
+		create_country = {
+			name_list = random
+			# name = random
+			species = event_target:marauder_species
+			type = default
+			authority = auth_imperial
+			civics = { civic = civic_diadochi civic = random civic = random }
+			origin = "origin_khan_successor"
+			ethos = {
+				ethic = ethic_militarist
+				ethic = ethic_xenophobe
+				ethic = ethic_authoritarian
+			}
+			ignore_initial_colony_error = yes
+			effect = {
+				if = {
+					limit = {
+						exists = capital_scope
+						capital_scope = {
+							any_owned_species = {
+								is_same_species_class = prevprev
+							}
+						}
+					}
+					modify_species = {
+						species = this
+						ideal_planet_class = capital_scope
+					}
+				}
+				save_event_target_as = third_diadochi
+				set_country_flag = diadochi_3
+				set_name = random
+				shift_ethic = ethic_fanatic_militarist
+			}
+		}
+		# Flip Starbases
+		every_system_within_border = {
+			limit = {
+				has_star_flag = third_diadochi_system
+				exists = starbase
+			}
+			starbase = {
+				set_owner = event_target:third_diadochi
+			}
+			# Flip Planets
+			every_system_colony = {
+				limit = { is_owned_by = root }
+				set_owner = event_target:third_diadochi
+				set_controller = event_target:third_diadochi
+			}
+			remove_star_flag = third_diadochi_system
+		}
+		last_created_country = {
+			country_event = { id = khan.610 days = -1 } # Handover some old stuff
+		}
+	}
+}
+
+create_fourth_diadochi = {
+	optimize_memory
+	if = {
+		limit = {
+			exists = event_target:fourth_diadochi_origin
+		}
+		create_country = {
+			name_list = random
+			# name = random
+			species = event_target:marauder_species
+			type = default
+			authority = auth_imperial
+			civics = { civic = civic_diadochi civic = random civic = random }
+			origin = "origin_khan_successor"
+			ethos = {
+				ethic = ethic_xenophobe
+				ethic = ethic_authoritarian
+				ethic = ethic_militarist
+			}
+			ignore_initial_colony_error = yes
+			effect = {
+				if = {
+					limit = {
+						exists = capital_scope
+						capital_scope = {
+							any_owned_species = {
+								is_same_species_class = prevprev
+							}
+						}
+					}
+					modify_species = {
+						species = this
+						ideal_planet_class = capital_scope
+					}
+				}
+				save_event_target_as = fourth_diadochi
+				set_country_flag = diadochi_4
+				set_name = random
+				shift_ethic = ethic_fanatic_militarist
+			}
+		}
+		# Flip Starbases
+		every_system_within_border = {
+			limit = {
+				has_star_flag = fourth_diadochi_system
+				exists = starbase
+			}
+			starbase = {
+				set_owner = event_target:fourth_diadochi
+			}
+			# Flip Planets
+			every_system_colony = {
+				limit = { is_owned_by = root }
+				set_owner = event_target:fourth_diadochi
+				set_controller = event_target:fourth_diadochi
+			}
+			remove_star_flag = fourth_diadochi_system
+		}
+
+		last_created_country = {
+			country_event = { id = khan.610 days = -1 } # Handover some old stuff
+		}
+	}
+}
+
+# This = Marauder
+get_marauder_species = {
+	if = {
+		limit = { exists = owner_species }
+		owner_species = { save_event_target_as = marauder_species }
+	}
+	if = {
+		limit = {
+			OR = {
+				NOT = { exists = event_target:marauder_species }
+				event_target:marauder_species = {
+					OR = {
+						species_can_be_necrophaged = no							# Implies is_robotic
+						is_archetype = LITHOID
+						is_archetype = PRESAPIENT
+					}
+				}
+			}
+		}
+		random_owned_pop_species = {
+			limit = {
+				species_can_be_necrophaged = yes
+				NOR = {
+					is_archetype = LITHOID
+					is_archetype = PRESAPIENT
+				}
+			}
+			weights = {
+				base = 1
+				modifier = {
+					add = 1
+					prev = {
+						count_owned_pop = {
+							count > 5
+							limit = { is_same_species = prevprev }
+						}
+					}
+				}
+				modifier = {
+					add = 2
+					prev = {
+						count_owned_pop = {
+							count > 10
+							limit = { is_same_species = prevprev }
+						}
+					}
+				}
+				modifier = {
+					add = 3
+					prev = {
+						count_owned_pop = {
+							count > 17
+							limit = { is_same_species = prevprev }
+						}
+					}
+				}
+				# modifier = { add = 3 is_same_species = root.owner_species }
+				modifier = {
+					add = 2
+					prev = {
+						capital_scope = {
+							habitability = {
+								who = prev
+								value > 0.6
+							}
+						}
+					}
+				}
+				modifier = {
+					add = 4
+					root = {
+						any_owned_planet = {
+							is_homeworld = yes
+							is_same_value = prevprev.home_planet
+						}
+					}
+				}
+			}
+			save_event_target_as = marauder_species
+			root = {
+				change_dominant_species = { species = prev }
+				set_built_species = prev
+			}
+		}
+	}
+}
+
+# Scope = event_target:raiding_marauder
+get_marauder_raid_source = {
+	random_planet_within_border = {
+		limit = { is_star = no }
+		weights = {
+			base = 1
+			modifier = { add = 3 has_planet_flag = raid_source }
+			modifier = { add = 1 is_colonizable = yes }
+		}
+		save_event_target_as = raid_source
+	}
+
+	### Rally Point Fallback
+	if = {
+		limit = { NOT = { exists = event_target:raid_source } }
+		switch = {
+			trigger = has_country_flag
+			marauder_1 = {
+				random_system = {
+					limit = { has_star_flag = marauder_capital_1 }
+					random_system_planet = {
+						limit = { is_star = no }
+						weights = {
+							base = 1
+							modifier = { add = 3 has_planet_flag = raid_source }
+							modifier = { add = 1 is_colonizable = yes }
+						}
+						save_event_target_as = raid_source
+					}
+				}
+			}
+			marauder_2 = {
+				random_system = {
+					limit = { has_star_flag = marauder_capital_2 }
+					random_system_planet = {
+						limit = { is_star = no }
+						weights = {
+							base = 1
+							modifier = { add = 3 has_planet_flag = raid_source }
+							modifier = { add = 1 is_colonizable = yes }
+						}
+						save_event_target_as = raid_source
+					}
+				}
+			}
+			marauder_3 = {
+				random_system = {
+					limit = { has_star_flag = marauder_capital_3 }
+					random_system_planet = {
+						limit = { is_star = no }
+						weights = {
+							base = 1
+							modifier = { add = 3 has_planet_flag = raid_source }
+							modifier = { add = 1 is_colonizable = yes }
+						}
+						save_event_target_as = raid_source
+					}
+				}
+			}
+		}
+	}
+
+	### Last Fallback
+	if = {
+		limit = { NOT = { exists = event_target:raid_source } }
+		# ordered_owned_starbase = {
+		random_owned_starbase = {
+			limit = {
+				exists = solar_system
+				solar_system = {
+					any_system_planet = { is_star = no }
+				}
+			}
+			# position = 0
+			# order_by = fleet.trigger:fleet_power
+			solar_system = {
+				random_system_planet = {
+					limit = { is_star = no }
+					weights = {
+						base = 1
+						modifier = { add = 3 has_planet_flag = raid_source }
+						modifier = { add = 1 is_colonizable = yes }
+					}
+					save_event_target_as = raid_source
+				}
+			}
+		}
+	}
+	event_target:raid_source = {
+		solar_system = {
+			save_event_target_as = marauder_system
+		}
+	}
+}

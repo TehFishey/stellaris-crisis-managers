@@ -1,0 +1,1756 @@
+#########################################
+#########################################
+#####			Marauder			#####
+#####	Khan (Horde Crisis) Events	#####
+#####		By FirePrince			#####
+#####								#####
+#########################################
+#########################################
+namespace = khan
+# TODO as special project?
+# Force integrate subject
+country_event = {
+	id = khan.219
+	# title = DIPLOMACY_INTEGRATION_TITLE
+	# desc = ACTION_INTEGRATE_SUBJECT_OFFER_DESC # "§H[Actor.GetName]§! has begun integrating §H[Recipient.GetName]§! into their nation."
+	hide_window = yes
+	picture = GFX_evt_khan_throne_room
+	show_sound = event_conversation
+	is_triggered_only = yes
+	trigger = {
+		exists = event_target:raider_khanate
+		is_same_empire = event_target:raider_khanate
+		is_overlord = yes
+	}
+	immediate = {
+		ordered_subject = {
+			position = 0
+			order_by = trigger:fleet_power
+			inverse = yes
+			limit = {
+				is_subject_of_khan = yes
+				OR = {
+					is_ai = yes
+					NOT = {
+						any_subject = { is_ai = yes }
+					}
+				}
+			}
+			root = { save_event_target_as = new_khanate }
+			country_event = { id = marauder.609 days = 30 }
+		}
+	}
+}
+
+# (on_game_start) Gets overwritten by The Greath Khan Expanded
+event = {
+	id = khan.300
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		# Config only for minimal compatibility Crisis Manager.
+		if = {
+			limit = {
+				NOR = {
+					exists = event_target:CmtGlobalVar
+					has_global_flag = CmtFlagActivated
+				}
+			}
+			if = {
+				limit = {
+					NOT = { exists = event_target:global_event_country }
+				}
+				save_global_event_target_as = global_event_country
+			}
+			event_target:global_event_country = {
+				save_global_event_target_as = CmtGlobalVar
+				set_variable = { which = CmtVarKhanMultiple value = 2 }
+				set_variable = { which = CmtVarKhanInterval value = 0 }
+				set_variable = { which = CmtKhanEarliestMgpy value = 10 }
+				set_variable = { which = CmtVarKhanLatestEgpy value = 0 }
+				set_variable = { which = CmtVarKhanTriggerProbability value = 2 }
+				set_variable = { which = CmtVarKhanVengeance value = 2 }
+				set_variable = { which = CmtVarKhanResurgence value = 1 }
+				set_variable = { which = CmtVarKhanLifespan value = 3 }
+				set_variable = { which = CmtVarReinforceCycle_Khan value = 1 }
+				set_variable = { which = CmtVarKhanPostDeathSummary value = 1 }
+				# Crisis Power
+				set_variable = { which = CmtVarFleetPower_Khan value = 1 }
+				set_variable = { which = CmtVarCombatFleetNumber_Khan value = 1 }
+				set_variable = { which = CmtVarArmyPower_Khan value = 1 }
+				set_variable = { which = CmtVarArmyNumber_Khan value = 1 }
+				set_variable = { which = CmtVarConstructorNumber_Khan value = 1 }
+			}
+		}
+		if = {
+			# Workaround bugfix (unknown reason on saveload): Khan fights own subjects (seems since 3.1)
+			limit = {
+				has_global_flag = marauder_crisis_ongoing
+				exists = event_target:raider_khanate
+			}
+			event_target:raider_khanate = {
+				# Fix ongoing hostility (is_hostile seems not immediately working on load)
+				if = { limit = { has_country_flag = declared_crisis }
+					remove_country_flag = declared_crisis
+				}
+				country_event = { id = khan.309 }
+				country_event = { id = khan.309 days = 4 }
+				# TEMP FIX KHAN NO RESPAWN.
+				country_event = { id = marauder.507 days = 105 random = 80 }
+			}
+		}
+		## TEST raiding_marauder stuck fix
+		every_country = {
+			# Find raiding_marauder (parent)
+			limit = {
+				is_country_type = dormant_marauders
+				has_country_flag = raid_ongoing
+			}
+			country_event = { id = marauder.28 days = 8 }
+		}
+	}
+}
+
+# Create Citadel
+system_event = {
+	id = khan.301
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		exists = event_target:raider_khanate
+	}
+	immediate = {
+		if = {
+			limit = {
+				NAND = {
+					exists = starbase
+					starbase = { has_starbase_size >= starbase_citadel }
+				}
+			}
+			# space_owner = {
+			# 	if = {
+			# 		limit = { graphical_culture = pirate_01 }
+			# 		set_graphical_culture = "reptilian_01"
+			# 		# log="set_graphical_culture reptilian_01"
+			# 		set_variable = { which = has_pirate_01 value = 1 }
+			# 	}
+			# }
+			# TODO Trying to create a starbase with an invalid starbase design sik'El'Re for ship size starbase_citadel (note: starbases cannot have components that allow them to move or go FTL)
+			log="Try create starbase_citadel"
+			event_target:raider_khanate = {
+				if = {
+					limit = {
+						NOR = {
+							has_technology = tech_starbase_2
+							has_technology = tech_starbase_3
+							has_technology = tech_starbase_4
+							has_technology = tech_starbase_5
+						}
+					}
+					give_technology = { tech = tech_starbase_2 message = no }
+					give_technology = { tech = tech_starbase_3 message = no }
+					give_technology = { tech = tech_starbase_4 message = no }
+					give_technology = { tech = tech_starbase_5 message = no }
+				}
+				if = {
+					limit = { NOT = { has_existing_ship_design = starbase_citadel } }
+					create_ship_design = { design = "NAME_Marauder_Citadel" }
+					add_ship_design = last_created_design
+				}
+			}
+			# TODO Trying to create a starbase with an invalid starbase design sik'El'Re for ship size starbase_citadel (note: starbases cannot have components that allow them to move or go FTL)
+			create_starbase = {
+				size = "starbase_citadel"
+				# module = "shipyard"
+				# module = "shipyard"
+				# module = "shipyard"
+				# module = "gun_battery"
+				# module = "missile_battery"
+				# building = "crew_quarters"
+				# building = "target_uplink_computer"
+				# building = "defense_grid"
+				owner = event_target:raider_khanate
+				effect = {
+					starbase_event = { id = khan.302 days = 2 }
+					# workaround
+					while = {
+						count = 6
+						create_ship = {
+							name = random
+							design = "NAME_Warrior_Freehold"
+							graphical_culture = "pirate_01"
+						}
+					}
+				}
+			}
+			# starbase = {
+			# 	set_starbase_size = starbase_citadel
+			# 	starbase_event = { id = khan.302 days = 2 } # workaround
+			# }
+		}
+		closest_system = {
+			limit = {
+				has_star_flag = marauder_system
+				exists = starbase
+				starbase = {
+					OR = {
+						has_starbase_size < starbase_starfortress
+						NOR = {
+							has_starbase_size = starbase_citadel
+							has_starbase_size = starbase_marauder
+						}
+					}
+				}
+			}
+			max_steps = 4
+			create_starbase = {
+				size = starbase_starfortress
+				owner = event_target:raider_khanate
+				# module = shipyard
+				# module = missile_battery
+				# building = defense_grid
+				effect = {
+					starbase_event = { id = khan.302 days = 2 }
+					# workaround
+				}
+			}
+		}
+	}
+}
+
+# Upgrate starbase
+starbase_event = {
+	id = khan.302
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		if = { limit = { NOT = { is_owned_by = event_target:raider_khanate } }
+			set_owner = event_target:raider_khanate
+		}
+		# TODO needs free slot check somehow: "Building slot is invalid."
+		if = {
+			limit = { NOT = { has_starbase_module = "shipyard" } }
+			set_starbase_module = { slot = 1 module = "shipyard" }
+		}
+		if = {
+			limit = {
+				count_starbase_modules = { type = "shipyard" count < 2 }
+				NOT = { is_starbase_building_module = "shipyard" }
+			}
+			set_starbase_module = { slot = 2 module = "shipyard" }
+		}
+		if = {
+			limit = { NOT = { has_starbase_module = "gun_battery" } }
+			set_starbase_module = { slot = 3 module = "gun_battery" }
+		}
+		if = {
+			limit = {
+				count_starbase_modules = { type = "gun_battery" count < 2 }
+				NOT = { is_starbase_building_module = "gun_battery" }
+			}
+			set_starbase_module = { slot = 4 module = "gun_battery" }
+		}
+		if = {
+			limit = { NOT = { has_starbase_building = "fleet_academy" } }
+			set_starbase_building = { slot = 1 building = "fleet_academy" }
+		}
+		if = {
+			limit = { NOT = { has_starbase_building = "resource_silo" } }
+			set_starbase_building = { slot = 2 building = "resource_silo" }
+		}
+		if = {
+			limit = { has_starbase_size > starbase_starfortress }
+			if = {
+				limit = {
+					count_starbase_modules = { type = "shipyard" count < 3 }
+					NOT = { is_starbase_building_module = "shipyard" }
+				}
+				set_starbase_module = { slot = 6 module = "shipyard" }
+			}
+			if = {
+				limit = {
+					NOR = {
+						has_starbase_module = "missile_battery"
+						is_starbase_building_module = "missile_battery"
+					}
+				}
+				set_starbase_module = { slot = 5 module = "missile_battery" }
+			}
+			if = {
+				limit = { NOT = { has_starbase_building = "crew_quarters" } }
+				set_starbase_building = { slot = 3 building = "crew_quarters" }
+			}
+			if = {
+				limit = { NOT = { has_starbase_building = "target_uplink_computer" } }
+				set_starbase_building = { slot = 4 building = "target_uplink_computer" }
+			}
+			# if = {
+			# 	limit = { NOT = { has_starbase_building = "listening_post" } }
+			# 	set_starbase_building = { slot = 5 building = "listening_post" }
+			# }
+		}
+		while = { count = 4
+			create_ship = { name = random design = "NAME_Warrior_Freehold" }
+		}
+		fleet = {
+			set_event_locked = no
+			every_owned_ship = { set_disabled = no reduce_hp_percent = 98 }
+		}
+
+		# fleet = {
+		# 	every_owned_ship = { set_disable_at_health = -1 } # Needed as they get not conquered.
+		# }
+		# owner = {
+		# 	if = {
+		# 		limit = { check_variable = { which = has_pirate_01 value = 1 } }
+		# 		set_graphical_culture = "pirate_01"
+		# 		clear_variable = has_pirate_01
+		# 	} else = { set_graphical_culture = "madd_01" }
+		# }
+	}
+}
+
+## DEPRECATED/LEGACY
+# # Get marauder_species
+# country_event = {
+# 	id = khan.303
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	immediate = {
+# 		if = {
+# 			limit = { exists = owner_species }
+# 			owner_species = { save_event_target_as = marauder_species }
+# 		}
+# 		if = {
+# 			limit = {
+# 				OR = {
+# 					NOT = { exists = event_target:marauder_species }
+# 					event_target:marauder_species = {
+# 						OR = {
+# 							species_can_be_necrophaged = no							# Implies is_robotic
+# 							is_archetype = LITHOID
+# 							is_archetype = PRESAPIENT
+# 						}
+# 					}
+# 				}
+# 			}
+# 			random_owned_pop_species = {
+# 				limit = {
+# 					species_can_be_necrophaged = yes
+# 					NOR = {
+# 						is_archetype = LITHOID
+# 						is_archetype = PRESAPIENT
+# 					}
+# 				}
+# 				weights = {
+# 					base = 1
+# 					modifier = {
+# 						add = 1
+# 						prev = {
+# 							count_owned_pop = {
+# 								count > 5
+# 								limit = { is_same_species = prevprev }
+# 							}
+# 						}
+# 					}
+# 					modifier = {
+# 						add = 2
+# 						prev = {
+# 							count_owned_pop = {
+# 								count > 10
+# 								limit = { is_same_species = prevprev }
+# 							}
+# 						}
+# 					}
+# 					modifier = {
+# 						add = 3
+# 						prev = {
+# 							count_owned_pop = {
+# 								count > 17
+# 								limit = { is_same_species = prevprev }
+# 							}
+# 						}
+# 					}
+# 					# modifier = { add = 3 is_same_species = root.owner_species }
+# 					modifier = {
+# 						add = 2
+# 						prev = {
+# 							capital_scope = {
+# 								habitability = {
+# 									who = prev
+# 									value > 0.6
+# 								}
+# 							}
+# 						}
+# 					}
+# 					modifier = {
+# 						add = 4
+# 						root = {
+# 							any_owned_planet = {
+# 								is_homeworld = yes
+# 								is_same_value = prevprev.home_planet
+# 							}
+# 						}
+# 					}
+# 				}
+# 				save_event_target_as = marauder_species
+# 				root = {
+# 					change_dominant_species = { species = prev }
+# 					set_built_species = prev
+# 				}
+# 			}
+# 		}
+# 		# if = { # legacy
+# 		# 	limit = { NOT = { exists = event_target:marauder_species } }
+# 		# 	owner_species = { save_event_target_as = marauder_species }
+# 		# }
+# 	}
+# }
+
+# Marauder System Liberated - on_disabled Marauder starbase (HIDDEN)
+# this = Ship
+# from = Disabler Ship
+ship_event = {
+	id = khan.304
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		is_scope_valid = yes
+		exists = owner
+		owner = { is_country_type = awakened_marauders }
+		exists = from
+		is_ship_class = shipclass_starbase
+		# NOT = {
+		# 	is_ship_size = starbase_marauder
+			# solar_system = {
+			# 	any_fleet_in_system = {
+			# 		NOT = { is_owned_by = root.owner }
+			# 		is_ship_class = shipclass_starbase
+			# 	}
+			# }
+		# }
+	}
+	immediate = {
+		if = {
+			limit = { # Keep station
+				NOT = { is_ship_size = starbase_marauder }
+				exists = from.owner
+				from.owner = { merg_is_default_empire = yes }
+				solar_system = { # Not dead end systems
+					OR = {
+						count_neighbor_system = { count > 1 }
+						count_system_planet = { count > 0 limit = { is_colonizable = yes } }
+					}
+				}
+			}
+			# Give former owner
+			solar_system = {
+				if = {
+					limit = {
+						NOT = {
+							any_system_colony = {
+								is_owned_by = from.owner
+							}
+						}
+						any_system_planet = {
+							colonizable_planet = yes
+							OR = {
+								any_playable_country = {
+									NOT = { is_hostile_to = from.owner }
+									OR = {
+										has_country_flag = former_owner@prev
+										prev = { is_planet = prev.home_planet }
+									}
+								}
+								AND = {
+									has_owner = yes
+									is_colony = yes
+									exists = owner
+									owner = {
+										NOT = { is_hostile_to = from.owner }
+									}
+								}
+							}
+						}
+					}
+					if = {
+						limit = {
+							any_system_planet = {
+								colonizable_planet = yes
+								any_playable_country = { has_country_flag = former_owner@prev }
+							}
+						}
+						random_system_planet = {
+							limit = {
+								colonizable_planet = yes
+								any_playable_country = { has_country_flag = former_owner@prev }
+							}
+							random_playable_country = {
+								limit = { has_country_flag = former_owner@prev }
+								root.fleet = { set_owner = prev }
+								if = { limit = { NOT = { has_global_flag = marauder_crisis_ongoing } }
+									remove_country_flag = former_owner@prev
+								}
+							}
+						}
+					} else_if = {
+						limit = {
+							any_system_planet = {
+								# colonizable_planet = yes
+								any_playable_country = { prev = { is_planet = prev.home_planet } }
+							}
+						}
+						random_system_planet = {
+							limit = {
+								# colonizable_planet = yes
+								any_playable_country = { prev = { is_planet = prev.home_planet } }
+							}
+							random_playable_country = {
+								limit = { prev = { is_planet = prev.home_planet } }
+								root.fleet = { set_owner = prev }
+							}
+						}
+					} else_if = {
+						limit = {
+							any_system_colony = {
+								is_colony = yes
+								NOT = { is_owned_by = root.owner }
+								NAND = {
+									exists = controller
+									controller = { is_same_empire = root.owner }
+								}
+							}
+						}
+						random_system_colony = {
+							limit = {
+								is_colony = yes
+								NOT = { is_owned_by = root.owner }
+								NAND = {
+									exists = controller
+									controller = { is_same_empire = root.owner }
+								}
+							}
+							root.fleet = { set_owner = prev.owner }
+						}
+					} else = {
+						root.fleet = { set_owner = from.owner }
+					}
+				} else = {
+					root.fleet = { set_owner = from.owner }
+				}
+			}
+		} else = {
+			fleet = { every_owned_ship = { set_disable_at_health = -1 destroy_ship = this } }
+			destroy_fleet = fleet
+		}
+
+		# if = {
+		# 	limit = {
+		# 		NOT = {
+		# 			solar_system = {
+		# 				any_fleet_in_system = {
+		# 					owner = { is_hostile = event_target:marauder_starbase_owner }
+		# 				}
+		# 			}
+		# 		}
+		# 	}
+		# owner = { save_event_target_as = marauder_starbase_owner }
+		# solar_system = {
+		#	create_marauder_starbase = yes
+		# last_created_fleet = {
+		# 	random_owned_ship = { reduce_hp_percent = 98 set_disabled = no }
+		# }
+	}
+}
+
+# on_enabled Marauder station - destroy (HIDDEN)
+ship_event = {
+	id = khan.305
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		is_ship_class = shipclass_starbase
+		has_global_flag = marauder_crisis_ongoing
+		exists = event_target:raider_khanate
+		NOR = {
+			is_ship_size = starbase_marauder
+			solar_system = {
+				any_fleet_in_system = {
+					is_owned_by = root.owner
+					NOT = { is_same_value = root.fleet }
+				}
+				# any_fleet_in_system = {
+				# 	NOT = { is_owned_by = root.owner }
+				# 	is_ship_class = shipclass_starbase
+				# }
+			}
+		}
+	}
+	immediate = {
+		# fleet = { every_owned_ship = { set_disable_at_health = -1 set_disabled = no } }
+		if = {
+			limit = {
+				exists = owner
+				exists = solar_system
+				solar_system = {
+					any_fleet_in_system = {
+						exists = owner
+						is_civilian = no
+						is_mobile = yes
+						NOT = { is_owned_by = root.owner }
+						owner = { is_hostile = root.owner }
+					}
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						owner = { is_country_type = awakened_marauders }
+						solar_system = {
+							any_fleet_in_system = {
+								exists = owner
+								is_civilian = no
+								is_mobile = yes
+								owner = {
+									NOT = { is_same_empire = root.owner }
+									is_hostile = root.owner
+									is_country_type = awakened_marauders
+								}
+							}
+						}
+					}
+				}
+				log="destroy starbase marauder"
+				fleet = {
+					every_owned_ship = { destroy_ship = this }
+				}
+				destroy_fleet = fleet
+			}
+		}
+	}
+}
+
+### Check / Create (fallback) marauder_rally_point
+country_event = {
+	id = khan.306
+	hide_window = yes
+	is_triggered_only = yes
+	# trigger = {}
+	immediate = {
+		if = {
+			limit = {
+				exists = event_target:marauder_rally_point
+				event_target:marauder_rally_point = {
+					OR = {
+						has_owner = no
+						is_owned_by = root
+						is_controlled_by = root
+					}
+					solar_system = {
+						OR = {
+							has_owner = no
+							is_owned_by = root
+						}
+						NAND = {
+							exists = starbase
+							starbase = { has_starbase_size = starbase_citadel }
+						}
+						NOT = {
+							any_fleet_in_system = {
+								exists = owner
+								OR = {
+									is_in_combat = yes
+									owner = { is_hostile = root }
+								}
+							}
+						}
+					}
+				}
+			}
+			event_target:marauder_rally_point = {
+				solar_system = {
+					system_event = { id = khan.301 } # Create Citadel
+				}
+			}
+		} else_if = {
+			limit = {
+				NOR = {
+					exists = event_target:marauder_rally_point
+					exists = event_target:marauder_rally_point.solar_system.owner
+					event_target:marauder_rally_point.solar_system = { is_owned_by = root }
+				}
+			}
+			random_system_within_border = {
+				limit = {
+					exists = starbase
+					any_system_planet = { is_star = no }
+				}
+				weights = {
+					base = 1
+					modifier = {
+						add = 1
+						starbase = { has_starbase_size >= starbase_starhold }
+					}
+					modifier = {
+						add = 1
+						any_system_planet = {
+							OR = {
+								is_colony = yes
+								is_owned_by = root
+								has_planet_flag = marauder_rally_point
+								has_planet_flag = CmtFlagMarauderExpRallyPoint
+							}
+						}
+					}
+					modifier = { add = 1 CmtTriggerMarauderCapitalSystem = yes }
+					modifier = { add = 1 is_capital_system = yes }
+				}
+				random_system_planet = {
+					limit = { is_star = no }
+					weights = {
+						base = 1
+						modifier = { add = 1 is_a_planet = yes } # possible inconsisent due other mods
+						modifier = { add = 2 has_planet_flag = raid_source }
+						modifier = { add = 2 is_colony = yes }
+						modifier = { add = 3 is_capital = yes }
+					}
+					save_global_event_target_as = marauder_rally_point
+					set_planet_flag = marauder_rally_point
+				}
+				system_event = { id = khan.301 } # Create Citadel
+			}
+		}
+	}
+}
+
+# Reenable fleets (hack)
+# from = former opponent
+country_event = {
+	id = khan.307	# Same as a_deadly_tempest.13007
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { has_country_flag = attacking_fleets_stopped }
+	immediate = {
+		remove_country_flag = attacking_fleets_stopped
+		every_controlled_fleet = {
+			limit = {
+				is_mobile = yes
+				is_ship_class = shipclass_military
+				is_disabled = yes
+			}
+			every_owned_ship = { set_disabled = no }
+		}
+		# Also armies (using owner hack)
+		every_owned_army = {
+			limit = {
+				exists = fleet
+				has_army_flag = attacking_fleets_stopped@from
+			}
+			set_owner = from
+			remove_army_flag = attacking_fleets_stopped@from
+			if = {
+				limit = {
+					fleet = {
+						NOT = { is_owned_by = from }
+					}
+				}
+				fleet = { set_owner = from }
+			}
+		}
+	}
+}
+
+# Set country friendly
+# this = target1 country - fleets
+# from = target2
+country_event = {
+	id = khan.308
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		# log = "Fix ongoing hostility"		# \\[This.GetName]
+		# Before we need to stop fleets attacking.
+		every_controlled_fleet = {
+			limit = {
+				is_mobile = yes
+				is_in_combat = yes
+				is_ship_class = shipclass_military
+				is_disabled = no
+				# any_owned_ship = {
+				# 	is_ship_class = shipclass_military
+				# 	is_disabled = no
+				# }
+				exists = solar_system
+				any_combatant_fleet = {
+					exists = owner
+					is_owned_by = from
+				}
+			}
+			every_owned_ship = { set_disabled = yes }
+		}
+		# Also armies!?
+		every_owned_planet = {
+			limit = {
+				has_ground_combat = yes
+				any_ground_combat_attacker = { is_owned_by = from }
+			}
+			every_planet_army = {
+				limit = { is_owned_by = from }
+				set_army_flag = attacking_fleets_stopped@from
+				set_owner = prev
+			}
+		}
+		from = {
+			every_controlled_fleet = {
+				limit = {
+					is_mobile = yes
+					is_in_combat = yes
+					is_ship_class = shipclass_military
+					is_disabled = no
+					# any_owned_ship = {
+					# 	is_ship_class = shipclass_military
+					# 	is_disabled = no
+					# }
+					exists = solar_system
+					any_combatant_fleet = {
+						exists = owner
+						is_owned_by = root
+					}
+				}
+				every_owned_ship = { set_disabled = yes }
+			}
+			# Also armies
+			every_owned_planet = {
+				limit = {
+					has_ground_combat = yes
+					any_ground_combat_attacker = { is_owned_by = root }
+				}
+				every_planet_army = {
+					limit = { is_owned_by = root }
+					set_army_flag = attacking_fleets_stopped@root
+					set_owner = prev
+				}
+			}
+			set_country_flag = attacking_fleets_stopped
+			country_event = { id = khan.307 days = 3 } # Just reenable
+		}
+
+		add_trust = { amount = 100 who = from }
+		set_faction_hostility = {
+			target = from
+			set_hostile = no
+			set_neutral = no
+			set_friendly = yes
+		}
+		random_agreement = {
+			limit = {
+				is_owned_by = event_target:raider_khanate
+				target = { is_same_value = root }
+			}
+			add_loyalty = 25
+		}
+
+		# if = {
+		# 	limit = { exists = event_target:marauders_garrison_1 }
+		# 	event_target:marauders_garrison_1 = {
+		# 		if = {
+		# 			limit = { is_hostile = root }
+		# 			set_faction_hostility = {
+		# 				target = root
+		# 				set_hostile = no
+		# 			}
+		# 		}
+		# 		if = {
+		# 			limit = { is_hostile = from }
+		# 			set_faction_hostility = {
+		# 				target = from
+		# 				set_hostile = no
+		# 			}
+		# 		}
+		# 	}
+		# }
+		from = { # Superfluous?
+			add_trust = { amount = 100 who = root }
+			set_faction_hostility = {
+				target = root
+				set_hostile = no
+				set_neutral = no
+				set_friendly = yes
+			}
+		}
+
+		set_country_flag = attacking_fleets_stopped
+		country_event = {
+			id = khan.307
+			days = 3
+			scopes = { from = from }
+		}		# Just reenable
+	}
+}
+
+## Workaround fix (ongoing hostility)
+## this = Khan
+country_event = {
+	id = khan.309
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_global_flag = marauder_crisis_ongoing
+		exists = event_target:raider_khanate
+		is_same_empire = event_target:raider_khanate # CmtTriggerIsKhanCountry = yes
+	}
+	immediate = {
+		if = {
+			limit = { is_war_leader = yes }
+			every_war = {
+				limit = {
+					any_attacker = { is_same_empire = prevprev }
+				}
+				every_attacker = {
+					limit = { is_hostile = prevprev }
+					set_faction_hostility = {
+						target = prevprev
+						set_friendly = yes
+					}
+				}
+				every_defender = {
+					limit = {
+						NOT = { is_hostile = prevprev }
+					}
+					set_faction_hostility = {
+						target = prevprev
+						set_hostile = yes
+					}
+				}
+			}
+			every_war = {
+				# Less probably
+				limit = {
+					any_defender = { is_same_empire = prevprev }
+				}
+				every_defender = {
+					limit = { is_hostile = prevprev }
+					set_faction_hostility = {
+						target = prevprev
+						set_friendly = yes
+					}
+				}
+				every_attacker = {
+					limit = {
+						NOT = { is_hostile = prevprev }
+					}
+					set_faction_hostility = {
+						target = prevprev
+						set_hostile = yes
+					}
+				}
+			}
+		}
+		## Fix ongoing hostility
+		if = {
+			limit = { is_overlord = yes }
+			# log="The Great Khan is_overlord"
+			every_subject = {
+				limit = {
+					# is_subject_of_khan = yes
+					NOT = { has_country_flag = rebelling_satrapy }
+					is_hostile = prev
+				}
+				log = "Fix ongoing hostility for \\[This.GetName]"
+				prev = {
+					country_event = {
+						id = khan.308
+						scopes = { from = prev }
+					}					# Set friendly
+				}
+			}
+			if = {
+				limit = { has_federation = yes }
+				# if = {
+				# 	limit = {
+				# 		has_global_flag = great_khan_wins
+				# 		merg_is_default_empire = no
+				# 	}
+				# 	set_country_type = default
+				# }
+				federation = {
+					every_member = {
+						limit = {
+							is_subject_of_khan = no
+							NOT = { has_country_flag = rebelling_satrapy }
+							prevprev = { is_hostile = prev }
+						}
+						prevprev = {
+							country_event = {
+								id = khan.308
+								scopes = { from = prev }
+							}							# Set friendly
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+# Create Citadel
+system_event = {
+	id = khan.310
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		# NOT = { exists = starbase }
+		exists = fromfrom
+		exists = event_target:former_starbase_owner
+		# NAND = {
+		# 	starbase = { has_starbase_size = starbase_citadel }
+		# }
+	}
+	immediate = {
+		# system_owner does not exists
+		# log="test khan.310 \\[former_starbase_owner.GetName] or \\[Fromfrom.Owner.GetName]"
+		if = { limit = { exists = starbase has_owner = yes }
+			delete_fleet = starbase.fleet
+			# if = { limit = { NOT = { has_star_flag = starbase_destroyed } }
+			# 	system_event = { id = khan.310 days = 2 scopes = { fromfrom = fromfrom } }
+			# 	set_timed_star_flag = { flag = starbase_destroyed days = 5 }
+			# 	log="khan.310 exists = starbase \\[former_starbase_owner.GetName] or \\[Fromfrom.Owner.GetName]"
+			# }
+			# break = yes
+		}
+		if = {
+			limit = {
+				NAND = {
+					exists = fromfrom
+					fromfrom = { has_fleet_flag = starbase_destroyed }
+				}
+			}
+			create_starbase = {
+				size = "starbase_starfortress"
+				owner = event_target:former_starbase_owner				# from.owner
+				effect = {
+					# set_disabled = yes only ship
+					# set_graphical_culture = event_target:former_starbase_owner
+					starbase_event = { id = khan.302 days = 20 }
+					# workaround
+				}
+			}
+		} else = {
+			create_starbase = {
+				size = "starbase_citadel"
+				owner = event_target:former_starbase_owner
+				effect = {
+					# set_disabled = yes only ship
+					starbase_event = { id = khan.302 days = 20 }
+				}
+			}
+		}
+		last_created_fleet = {
+			set_event_locked = yes
+			set_owner = event_target:raider_khanate
+			every_owned_ship = {
+				set_disabled = yes
+				reduce_hp_percent = 95
+			}
+			while = {
+				count = 3
+				create_ship = {
+					name = random
+					design = "NAME_Warrior_Freehold"
+					effect = { reduce_hp_percent = 95 }
+				}
+			}
+		}
+	}
+}
+
+# Assign Gov on capital for Marauders (on_capital_changed).
+planet_event = {
+	id = khan.320
+	hide_window = yes
+	is_triggered_only = yes
+	pre_triggers= {
+		has_owner = yes
+		is_ai = yes
+	}
+	trigger = {
+		exists = sector
+		NOT = { exists = sector.leader }
+		exists = owner
+		owner = {
+			CmtTriggerIsMarauder = yes
+			any_owned_leader = {
+				leader_class = governor
+				NOT = { exists = sector }
+			}
+		}
+		# NOT = { has_global_flag = great_khan_wins }
+	}
+	immediate = {
+		owner = {
+			random_owned_leader = {
+				limit = {
+					leader_class = governor
+					NOT = { exists = sector }
+				}
+				root.sector = {
+					assign_leader = prev
+				}
+			}
+		}
+	}
+}
+
+# Submit to Khan (Pre-Helper)
+# Used also for marauder.555 and marauder.551
+# This = new subject
+country_event = {
+	id = khan.559
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { is_subject_of_khan = no }
+	immediate = {
+		## If has_federation give Horde malus partial back.
+		if = {
+			limit = { exists = capital_scope }
+			capital_scope = { save_event_target_as = capital_planet }
+		} else = {
+			ordered_owned_planet = {
+				limit = { is_colony = yes }
+				position = 0
+				order_by = trigger:num_pops
+				save_event_target_as = capital_planet
+			}
+		}
+		event_target:capital_planet = {
+			set_variable = { which = "planets_lost_to_marauder" value = 1 } # temp. only
+			if = { limit = { root = { has_federation = yes } }
+				change_variable = { which = "planets_lost_to_marauder" value = 1 }
+				if = { limit = { root = { is_federation_leader = yes } }
+					change_variable = { which = "planets_lost_to_marauder" value = 1 }
+				}
+				root.federation = {
+					every_member = {
+						change_variable = { which = "planets_lost_to_marauder" value = prevprev.planets_lost_to_marauder }
+					}
+				}
+			}
+			if = { limit = { root = { num_defensive_pacts > 0 } }
+				every_playable_country = {
+					limit = { has_defensive_pact = root }
+					change_variable = { which = "planets_lost_to_marauder" value = 1 }
+					change_variable = { which = "planets_lost_to_marauder" value = prev.planets_lost_to_marauder }
+				}
+			}
+		}
+		if = { limit = { check_variable = { which = "planets_lost_to_marauder" value < 6 } }
+			set_variable = { which = "planets_lost_to_marauder" value = 6 }
+		}
+		divide_variable = { which = "planets_lost_to_marauder" value = 2 }
+
+		if = { limit = { is_overlord = yes }
+			every_subject = {
+				limit = { merg_is_standard_empire = yes }
+				set_subject_of = { who = none }
+				change_variable = { which = "planets_lost_to_marauder" value = 1 }
+				if = {
+					limit = {
+						OR = {
+							is_ai = no
+							fleet_power < 24000
+							check_variable = { which = "planets_lost_to_marauder" value > 22 }
+							num_owned_planets < 3
+						}
+						NOT = { has_active_event = { marauder.551 } }
+					}
+					country_event = { id = marauder.551 } # Submit Dialog
+				}
+			}
+			leave_alliance = { override_requirements = yes }
+		} else_if = { limit = { is_subject = yes exists = overlord }
+			overlord = { # Much less likely
+				change_variable = { which = "planets_lost_to_marauder" value = 2 }
+			}
+			leave_alliance = { override_requirements = yes }
+		}
+
+		if = { limit = { is_galactic_community_member = yes }
+			remove_from_galactic_community = yes
+		}
+
+		# Can't rebel for a year after submitting.
+		set_timed_country_flag = { flag = rebellion_cooldown days = @CmtConstKhanLifespan_5e }
+		save_event_target_as = new_satrapy
+		every_playable_country = { # Notify
+			limit = {
+				is_ai = no
+				has_communications = root
+				NOT = { is_same_empire = root }
+			}
+			country_event = { id = marauder.552 days = 2 }
+		}
+		observer_event = { id = observer.19 }
+		country_event = { id = marauder.553 days = 12 } # Init base
+		# add_modifier = { modifier = "satrapy_of_horde" }
+
+		event_target:raider_khanate = {
+			copy_random_tech_from = { who = prev area = physics }
+			add_resource = { influence = 100 }
+		}
+		event_target:capital_planet = {
+			if = { limit = { is_variable_set = planets_lost_to_marauder }
+				clear_variable = planets_lost_to_marauder
+			}
+		}
+	}
+}
+
+# Handover parts of marauder country for Diadochi (HIDDEN)
+# Via marauder.601 and marauder.609
+# this = Diadochi
+# from = raider_khanate
+country_event = {
+	id = khan.610
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		# NOR = { has_global_flag = great_khan_wins }
+	}
+	immediate = {
+		set_country_flag = diadochi
+		set_country_flag = first_alien_life
+		set_country_flag = has_encountered_other_empire
+		# log="Handover raider_khanate \\[From.GetName] to Diadochi."
+		# event_target:raider_khanate = {
+		from = {
+			if = {
+				limit = {
+					NOT = { has_global_flag = marauder_crisis_ongoing }
+				}
+				# random_owned_fleet = { pre 3.1
+				ordered_owned_fleet = {
+					limit = {
+						is_mobile = yes
+						exists = leader
+						exists = solar_system
+						solar_system = { is_owned_by = root }
+						is_civilian = no
+						any_owned_ship = { is_ship_class = shipclass_military }
+					}
+					position = 1
+					order_by = trigger:fleet_power
+					# weights = { pre 3.1
+					# 	base = 1
+					# 	# modifier = { add = 1 num_ships > 5 }
+					# 	# modifier = { add = 2 num_ships > 10 }
+					# 	# modifier = { add = 3 num_ships > 20 }
+					# 	modifier = { add = 1 fleet_power > 5500 }
+					# 	modifier = { add = 2 fleet_power > 11000 }
+					# 	modifier = { add = 3 fleet_power > 22000 }
+					# }
+					set_owner = root
+					leader = { set_owner = root }
+				}
+			}
+			random_owned_fleet = {
+				limit = {
+					is_mobile = yes
+					exists = leader
+				}
+				set_owner = root
+				leader = { set_owner = root }				# Recruit leader
+				if = {
+					limit = {
+						NOT = { is_ship_class = shipclass_transport }
+					}
+					assign_leader = leader
+				}
+				fleet_event = { id = khan.611 days = -1 }
+			}
+			prev = {
+				add_resource = {
+					minerals = 20000
+					energy = 40000
+					alloys = 20000
+					consumer_goods = 20000
+					food = 20000
+					influence = 1000
+				}
+				copy_techs_from = { target = prev }
+				if = {
+					limit = {
+						prev = { num_owned_relics > 0 }
+					}
+					steal_relic = {
+						target = prev
+						relic = random
+					}
+				}
+				add_500_unity_per_year_passed = yes
+				# Normalize Starbases
+				every_owned_starbase = {
+					limit = { has_starbase_size = starbase_marauder }					# Maybe all?
+					set_starbase_size = starbase_outpost
+				}
+				random_system_within_border = {
+					limit = { CmtTriggerMarauderCapitalSystem = yes }
+					system_event = { id = khan.301 } # Create Citadel
+				}
+				while = {
+					limit = {
+						any_owned_starbase = { has_starbase_size < starbase_starhold }
+					}
+					count = 3
+					random_system_within_border = {
+						limit = {
+							exists = starbase
+							starbase = { has_starbase_size < starbase_starhold }
+						}
+						weights = {
+							base = 1
+							modifier = { add = 1 is_inside_nebula = yes }
+							modifier = { add = 2 has_natural_wormhole = yes }
+							modifier = { factor = 3 is_bottleneck_system = yes }
+							modifier = {
+								factor = 5
+								any_system_colony = { is_under_colonization = no }
+							}
+						}
+						starbase = {
+							set_starbase_size = starbase_starhold
+							starbase_event = { id = khan.302 days = 2 }
+						}
+					}
+				}
+			}
+			# Survey Own Space
+			every_planet_within_border = {
+				set_surveyed = {
+					surveyed = yes
+					surveyor = root
+				}
+			}
+			# Survey Rest of Horde's Space
+			root = {
+				every_planet_within_border = {
+					set_surveyed = {
+						surveyed = yes
+						surveyor = root
+					}
+				}
+			}
+			# Mining and Research Stations
+			every_planet_within_border = {
+				limit = {
+					has_deposit_for = shipclass_mining_station
+					has_mining_station = no
+				}
+				create_mining_station = { owner = root }
+			}
+			every_planet_within_border = {
+				limit = {
+					has_deposit_for = shipclass_research_station
+					has_research_station = no
+				}
+				create_research_station = { owner = root }
+			}
+			# Take all old leaders!?
+			random_owned_leader = {
+				limit = { leader_class = scientist }
+				set_owner = root
+			}
+			country_event = { id = game_start.6 days = 6 random = 4 }
+			# advanced_empire
+			country_event = { id = game_start.9 days = 12 random = 8 }
+			# empire_init_create_ships civil
+			create_fleet_from_naval_cap = 0.2
+			### Units
+			create_ship_design = { design = "NAME_Pirate_Transport" }
+			add_ship_design = last_created_design
+			create_ship_design = { design = "NAME_Clan_Builder" }
+			add_ship_design = last_created_design
+			create_ship_design = { design = "NAME_Outrider" }
+			add_ship_design = last_created_design
+			### Dynamic Empire fleet_power
+			set_variable = { which = "successor_fleet_power" value = 40000 }
+			# Store each fleet_power to var.
+			every_playable_country = {
+				limit = {
+					NOT = { is_variable_set = "successor_fleet_power" }
+					fleet_power > 40000
+				}
+				if = {
+					limit = {
+						any_owned_planet = { has_planet_flag = fallen_empire_world }
+					}
+					set_variable = { which = "successor_fleet_power" value = 220000 }
+				} else = {
+					export_trigger_value_to_variable = { trigger = fleet_power variable = "successor_fleet_power" }
+				}
+			}
+			random_owned_planet = {
+				limit = {
+					solar_system = { exists = starbase }
+				}
+				weights = {
+					base = 1
+					modifier = { add = 1 is_colony = yes }
+					modifier = { add = 2 is_capital = yes }
+					modifier = {
+						add = 3
+						solar_system = { is_potential_diadochi_system = no }
+					}
+				}
+				prev = {
+					# CmtEffectCreateFleet_KhanStandard = yes
+					while = {
+						count = 2
+						CmtEffectCreateFleet_KhanArmy = yes
+						CmtEffectCreateFleet_KhanConstructor = yes
+					}
+				}
+				# save_event_target_as = unit_spawn_point
+				# event_target:unit_spawn_point = {
+				while = {
+					count = 5
+					limit = {
+						any_playable_country = {
+							is_variable_set = "successor_fleet_power"
+							check_variable = { which = "successor_fleet_power" value > prevprev.successor_fleet_power }
+						}
+					}
+					# Own old to get the right design!?
+					prev = {
+						change_variable = { which = "successor_fleet_power" value = 20000 }
+						CmtEffectCreateFleet_KhanStandard = { DIADOCHI = yes }
+					}
+					last_created_leader = { set_owner = root }
+					last_created_fleet = {
+						set_owner = root
+						assign_leader = last_created_leader
+					}
+				}
+			}
+			# Establish Communications
+			every_country = {
+				limit = {
+					OR = {
+						has_communications = prev
+						has_government = gov_diadochi
+					}
+				}
+				establish_communications_no_message = root
+			}
+		}
+		country_event = { id = khan.612 days = 7 }
+		# Build Habitats
+		# # event_target:second_diadochi_origin
+		# random_owned_planet = {
+		# 	prev = { CmtEffectCreateAdmiral_MarauderStandard = yes }
+		# 	create_fleet = {
+		# 		effect = {
+		# 			set_owner = event_target:raider_khanate
+		# 			if = {
+		# 				limit = { has_global_flag = expanded_spaceborne_installed }
+		# 				create_dyn_marauder_fleet = { OUTRIDER = 32 LANCER = 16 CHAMPION = 12 }
+		# 			} else = {
+		# 				create_dyn_marauder_fleet = { OUTRIDER = 16 LANCER = 8 }
+		# 			}
+		# 			set_location = {
+		# 				target = prev
+		# 				distance = 45
+		# 				angle = random
+		# 			}
+		# 		}
+		# 		settings = {
+		# 			uses_naval_capacity = no
+		# 		}
+		# 	}
+		# }
+		# # last_created_leader = { set_owner = prev }
+		# last_created_fleet = { set_owner = prev assign_leader = last_created_leader }
+	}
+}
+
+# Back to the fold
+# Via marauder.610, 609, 604, 505, 77
+fleet_event = {
+	id = khan.611
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		exists = solar_system
+		# is_civilian = no
+		is_mobile = yes
+		any_owned_ship = {
+			OR = {
+				is_ship_class = shipclass_military
+				is_ship_class = shipclass_transport
+			}
+		}
+		# NOT = { is_within_borders_of = root.owner }
+	}
+	immediate = {
+		solar_system = {
+			if = {
+				limit = {
+					NAND = {
+						has_owner = yes						# exists = space_owner
+						exists = starbase
+						is_owned_by = root.owner						# is_owned_by = root.owner
+					}
+				}
+				prev = {
+					if = {
+						limit = { exists = event_target:marauder_rally_point }
+						if = {
+							limit = {
+								OR = {
+									is_in_combat = yes
+									has_fleet_order = merge_fleet_order
+									has_fleet_order = land_armies_order
+								}
+							}
+							# log="auto_move_to_planet \\[This.GetName]"
+							auto_move_to_planet = {
+								target = event_target:marauder_rally_point
+								clear_auto_move_on_arrival = yes
+							}
+						} else = {
+							remove_auto_move_target = yes
+							clear_fleet_actions = this
+							# log="set_mia \\[This.GetName]"
+							set_mia = yes
+						}
+					} else = {
+						# log="order_forced_return \\[This.GetName]"
+						order_forced_return = yes
+					}
+				}
+			}
+		}
+	}
+}
+
+### Build Marauder Habitats
+country_event = {
+	id = khan.612
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		is_ai = yes
+		OR = {
+			has_origin = "origin_khan_successor"
+			is_country_type = awakened_marauders
+		}
+	}
+	immediate = {
+		# TODO: Capital habitat? Special deposits? Flavor difference between khan, diadochi and fed?
+		# Place increasingly many habitats depending on game year, late game Khan should be scary too! (I really should scale the initial crisis strength too...)
+		if = {
+			# Because we loop
+			limit = {
+				NOT = { is_variable_set = marauder_habitat_count }
+			}
+			set_variable = { which = marauder_habitat_count value = 0 }
+			every_system_within_border = {
+				prev = {
+					change_variable = { which = marauder_habitat_count value = 1 }
+				}
+			}
+			if = {
+				limit = { years_passed < 110 }
+				# Two habitats base + every 8 systems.
+				divide_variable = { which = marauder_habitat_count value = 9 }
+				change_variable = { which = marauder_habitat_count value = 1 }
+			} else_if = {
+				limit = { years_passed < 160 }
+				# Three habitats base + every 7 systems.
+				divide_variable = { which = marauder_habitat_count value = 8 }
+				change_variable = { which = marauder_habitat_count value = 2 }
+			} else_if = {
+				limit = { years_passed < 220 }
+				# Four habitats base + every 6 systems.
+				divide_variable = { which = marauder_habitat_count value = 7 }
+				change_variable = { which = marauder_habitat_count value = 3 }
+			} else = {
+				# Five habitats base + every 5 systems.
+				divide_variable = { which = marauder_habitat_count value = 6 }
+				change_variable = { which = marauder_habitat_count value = 4 }
+			}
+		}
+		if = {
+			limit = {
+				check_variable = { which = marauder_habitat_count value > 0 }
+			}
+			ceiling_variable = marauder_habitat_count
+			random_system_within_border = {
+				limit = {
+					exists = starbase
+					any_system_planet = {
+						is_star = no
+						NOR = {
+							has_planet_flag = megastructure
+							has_planet_flag = has_megastructure
+						}
+					}
+				}
+				weights = {
+					base = 1
+					modifier = { add = 3 any_system_planet = { colonizable_planet = yes } }
+					# Prefer to place with existing planets.
+					modifier = {
+						add = 1
+						starbase = { has_starbase_size >= starbase_starhold }
+					}
+					modifier = {
+						add = 3
+						any_system_planet = {
+							is_a_planet = yes
+							NOR = {
+								has_planet_flag = megastructure
+								has_planet_flag = has_megastructure
+							}
+							OR = {
+								is_colony = yes
+								has_planet_flag = marauder_rally_point
+								has_planet_flag = CmtFlagMarauderExpRallyPoint
+							}
+						}
+					}
+				}
+				system_event = { id = khan.622 days = 7 random = 14 }
+			}
+		}
+	}
+}
+
+# Trigger for every system after future of the horde.
+system_event = {
+	id = khan.622
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		exists = from # space_owner
+		from = {
+			check_variable = { which = marauder_habitat_count value > 0 }
+		}
+		NOT = { has_star_flag = ring_world_built }
+	}
+	immediate = {
+		# log = "---Attempting habitat construction in \\[This.GetName]"
+		random_system_planet = {
+			limit = {
+				is_star = no
+				is_moon = no
+				is_asteroid = no
+				NOR = {
+					has_planet_flag = megastructure
+					has_planet_flag = has_megastructure
+				}
+				is_ringworld = no
+
+			}
+			weights = { base = 1 modifier = { add = 2 is_a_planet = yes } }
+			# log = "--- Habitat build site chosen on planet \\[This.GetName], proceeding..."
+			prev = {
+				# Spawn marauder habitat
+				spawn_megastructure = {
+					type = "habitat_0"
+					planet = prev
+					owner = from # space_owner
+					graphical_culture = "mammalian_01"
+				}
+				# set_star_flag = marauder_habitat_placed
+			}
+			# Populate marauder habitat
+			random_moon = {
+				limit = {
+					uses_district_set = habitat
+					# merg_is_habitat = yes
+					is_colony = no
+					is_colonizable = yes
+				}
+
+				# log = "--- Habitat \\[This.GetName] is being populated..."
+				# space_owner = {
+				# 	save_event_target_as = colony_country
+				# 	species = { save_event_target_as = colony_species }
+				# }
+				# TODO: Force-set to random/mining habitat?
+				# random_list = { # Hackely hack! ^_^
+				# 	3 = { set_planet_flag = mining_habitat }
+				# 	2 = { set_planet_flag = research_habitat }
+				# 	3 = { set_planet_flag = energy_habitat }
+				# }
+				while = {
+					count = 7
+					create_pop = {
+						species = from.owner_main_species
+						ethos = { ethic = "ethic_militarist" } # ethic = "ethic_egalitarian"
+					}
+				}
+				# set_owner = space_owner
+				set_controller = from # space_owner
+				set_name = random # TODO more variations?
+				add_building = building_hab_major_capital	# 3 jobs
+				# add_building = building_foundry_1			# 2
+				# add_building = building_foundry_1			# 2
+				# add_building = building_factory_1			# 2
+				# add_building = building_hydroponics_farm	# 3
+				add_district = district_hab_housing
+				add_district = district_hab_cultural		# 3
+				if = { # 6 jobs
+					limit = { has_planet_flag = mining_habitat }
+					add_district = district_hab_mining
+					add_district = district_hab_mining
+				} else_if = {
+					limit = { has_planet_flag = energy_habitat }
+					add_district = district_hab_energy
+					add_district = district_hab_energy
+				} else_if = {
+					limit = { has_planet_flag = research_habitat }
+					add_district = district_hab_science
+					add_district = district_hab_science
+				} else = {
+					add_district = district_hab_commercial
+					add_district = district_hab_commercial
+				}
+				from = {
+					change_variable = { which = marauder_habitat_count value = -1 }
+					country_event = { id = khan.612 days = 480 }		# Build Habitats
+				}
+				# TODO: Add negative modifier that needs to be removed with expensive decision?
+				start_colony = {
+					owner = from
+					species = from.owner_main_species
+					# ethos = random
+				} # "Unexpected token:  (everything after scope start_colony)
+			}
+		}
+		# Unknown "Unexpected token: country_event, near line: 3543
+		from = {
+			random_planet_within_border = {
+				limit = {
+					is_colonizable = yes
+					habitability = { who = prev.owner_main_species value > 0.65 }
+				}
+				weights = {
+					base = 1
+					modifier = {
+						add = 3
+						OR = {
+							uses_district_set = habitat
+							uses_district_set = ring_world
+						}
+					}
+				}
+				start_colony = {
+					owner = prev
+					species = prev.owner_main_species
+					# ethos = owner
+				}
+			}
+		}
+	}
+}

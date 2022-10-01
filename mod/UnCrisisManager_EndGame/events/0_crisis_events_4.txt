@@ -272,7 +272,7 @@ country_event = {
 			}
 
 			if = {
-				limit = { is_planet_class = pc_habitat }
+				limit = { merg_is_habitat = yes }
 				destroy_colony = yes
 				remove_planet = yes
 			} else_if = {

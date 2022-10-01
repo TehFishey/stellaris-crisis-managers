@@ -99,7 +99,7 @@ country_event = {
 			}
 			if = {
 				limit = {
-					has_authority = auth_hive_mind
+					is_hive_empire = yes
 					NOT = { has_global_flag = CmtFlagSynthTerrorAll }
 				}
 				country_event = { id = crisis.2086 }
@@ -113,7 +113,7 @@ country_event = {
 				country_event = { id = crisis.2087 }
 			}
 			if = {
-				limit = { has_authority = auth_machine_intelligence }
+				limit = { is_machine_empire = yes }
 				country_event = { id = crisis.2313 }
 			}
 		}
@@ -152,7 +152,7 @@ country_event = {
 				country_event = { id = crisis.2090 }
 			}
 			if = {
-				limit = { has_authority = auth_machine_intelligence }
+				limit = { is_machine_empire = yes }
 				country_event = { id = crisis.2314 }
 			}
 		}

@@ -20,11 +20,11 @@ country_event = {
 	id = crisis.2022
 	title = crisis.2022.name
 	desc = {
-		trigger = { NOT = { has_authority = auth_machine_intelligence } }
+		trigger = { NOT = { is_machine_empire = yes } }
 		text = crisis.2022.desc
 	}
 	desc = {
-		trigger = { has_authority = auth_machine_intelligence }
+		trigger = { is_machine_empire = yes }
 		text = crisis.2022.desc.b
 	}
 	picture = GFX_evt_machine_sapience
@@ -41,7 +41,7 @@ country_event = {
 
 		### Ghost Signal for POPs
 		if = {
-			limit = { has_authority = auth_machine_intelligence }
+			limit = { is_machine_empire = yes }
 			add_notification_modifier = ghost_signal_5_machine
 			if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }

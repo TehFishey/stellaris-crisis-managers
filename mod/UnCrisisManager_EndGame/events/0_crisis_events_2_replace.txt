@@ -919,8 +919,7 @@ planet_event = {
 				limit = {
 					NOR = {
 						exists = starbase
-						any_system_planet = {
-							has_owner = yes
+						any_system_colony = {
 							owner =  {
 								NOT = { is_same_empire = from }
 							}
