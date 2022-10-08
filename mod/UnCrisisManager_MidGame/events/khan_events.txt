@@ -223,8 +223,14 @@ starbase_event = {
 	id = khan.302
 	hide_window = yes
 	is_triggered_only = yes
+	# trigger = { }
 	immediate = {
-		if = { limit = { NOT = { is_owned_by = event_target:raider_khanate } }
+		if = {
+			limit = {
+				exists = event_target:raider_khanate
+				NOT = { is_owned_by = event_target:raider_khanate }
+				has_global_flag = marauder_crisis_ongoing
+			}
 			set_owner = event_target:raider_khanate
 		}
 		# TODO needs free slot check somehow: "Building slot is invalid."
@@ -1200,6 +1206,40 @@ country_event = {
 		event_target:capital_planet = {
 			if = { limit = { is_variable_set = planets_lost_to_marauder }
 				clear_variable = planets_lost_to_marauder
+			}
+		}
+	}
+}
+
+# Remove old Marauder
+# Remove old Marauder
+country_event = {
+	id = khan.606
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		if = { limit = { exists = event_target:raider_khanate }
+			clear_global_event_target = raider_khanate
+		}
+		if = { limit = { exists = event_target:marauder_precursor }
+			clear_global_event_target = marauder_precursor
+		}
+		if = { limit = { exists = event_target:marauder_rally_point }
+			clear_global_event_target = marauder_rally_point
+		}
+		destroy_country = yes
+		if = { limit = { exists = event_target:marauders_garrison_1 }
+			event_target:marauders_garrison_1 = {
+				every_controlled_fleet = {
+					limit = {
+						OR = {
+							has_fleet_flag = satrapy_garrison
+							has_fleet_flag = satrapy_garrison_fleet
+						}
+					}
+					destroy_fleet = this
+				}
+				destroy_country = yes
 			}
 		}
 	}

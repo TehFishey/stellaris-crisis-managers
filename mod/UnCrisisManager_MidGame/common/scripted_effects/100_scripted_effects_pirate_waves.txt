@@ -379,22 +379,18 @@ set_pirates_difficulty = {
 				is_country_type = outer_bulwarks
 			}
 		}
-		root = {
-			if = {
-				limit = {
+		if = {
+			limit = {
+				exists = root
+				root = {
 					is_scope_type = country
 					is_ai = no
 				}
-				prev = {
-					if = {
-						limit = {
-							check_variable = { which = pirates_factor value > 1 }
-						}
-						divide_variable = { which = pirates_factor value = 1.5 }
-					} else = {
-						multiply_variable = { which = pirates_factor value = 2 }
-					}
-				}
+			}
+			if = { limit = { check_variable = { which = pirates_factor value > 1 } }
+				divide_variable = { which = pirates_factor value = 1.5 }
+			} else = {
+				multiply_variable = { which = pirates_factor value = 2 }
 			}
 		}
 		divide_variable = { which = pirates_factor value = 2 }		# Only half
