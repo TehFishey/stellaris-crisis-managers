@@ -1856,6 +1856,29 @@ country_event = {
 			}
 		}
 	}
+	# Multiple
+	option = {
+		name = CrisisManagerMenu.4810e.name
+		custom_tooltip = CrisisManagerMenu.4810e.tooltip
+		allow = {
+			event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanMultiple value != 5 } }
+		}
+		trigger = {
+			calc_true_if = {
+				amount >= 2
+				AND = { exists = event_target:marauder_country_1 event_target:marauder_country_1 = { CmtTriggerHasPotentialKhanAwaking = yes } }
+				AND = { exists = event_target:marauder_country_2 event_target:marauder_country_2 = { CmtTriggerHasPotentialKhanAwaking = yes } }
+				AND = { exists = event_target:marauder_country_3 event_target:marauder_country_3 = { CmtTriggerHasPotentialKhanAwaking = yes } }
+			}
+		}
+		hidden_effect = {
+			event_target:CmtGlobalVar = { set_variable = { which = CmtVarKhanMultiple value = 5 } }
+			random_country = {
+				limit = { CmtTriggerHasPotentialKhanAwaking = yes }
+				CmtEffectTriggerMarauderManually = yes
+			}
+		}
+	}
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
 

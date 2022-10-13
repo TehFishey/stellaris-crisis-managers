@@ -14,13 +14,14 @@ namespace = CrisisManagerControl
 ### Standard Awakening of Khan (Not Vengeance) ###
 ##################################################
 
-### Check Trigger Condition
+### Check Trigger Condition (on_yearly_pulse)
 event = {
 	id = CrisisManagerControl.6101
 	hide_window = yes
 	is_triggered_only = yes
 
 	trigger = {
+		NOT = { has_global_flag = marauder_crisis_started }
 		event_target:CmtGlobalVar = {
 			mid_game_years_passed > CmtVarKhanEarliestMgpy	# Check Earliest Year
 			end_game_years_passed < CmtVarKhanLatestEgpy	# Check Latest Year

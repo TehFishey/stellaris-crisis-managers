@@ -11,7 +11,8 @@
 @ships_count_easy = 500
 @ships_count_medium = 1000
 @ships_count_hard = 2000
-@ships_count_insane = 4000
+@ships_count_very_hard = 3200
+@ships_count_insane = 5000
 # Prev = owner
 create_dyn_pirate_fleet = {
 	prev = {
@@ -265,10 +266,20 @@ set_pirates_difficulty = {
 	remove_country_flag = pirate_waves_easy
 	remove_country_flag = pirate_waves_medium
 	remove_country_flag = pirate_waves_hard
+	remove_country_flag = pirate_waves_very_hard
 	remove_country_flag = pirate_waves_insane
+	# Using same var name in player and pirate countries.
 	if = { limit = { is_variable_set = pirate_waves_difficulty }
-		set_variable = { which = pirate_waves_difficulty value = 4 } # reset
-	} else = { set_variable = { which = pirate_waves_difficulty value = 1 } }
+		set_variable = { which = pirate_waves_difficulty value = 5 } # reset
+	} else = {
+		if = { limit = { is_difficulty > 3 }
+			set_variable = { which = pirate_waves_difficulty value = 2 }
+		} else_if = { limit = { is_difficulty > 2 }
+			set_variable = { which = pirate_waves_difficulty value = 1 }
+		} else = {
+			set_variable = { which = pirate_waves_difficulty value = 0 }
+		}
+	}
 	if = {
 		limit = { is_multiplayer = yes }
 		# set_variable = { which = num_pirate_waves_player value = 0 }
@@ -301,15 +312,14 @@ set_pirates_difficulty = {
 			}
 		}
 	}
+
 	# Checks the ship limit of this country.
 	if = {
 		limit = {
-			OR = {
-				NOT = { is_variable_set = pirate_waves_difficulty }
-				check_variable = { which = pirate_waves_difficulty value = 1 }
-			}
+			# OR = { NOT = { is_variable_set = pirate_waves_difficulty }
+			check_variable = { which = pirate_waves_difficulty value = 1 }
 		}
-		set_variable = { which = pirate_waves_difficulty value = 1 }
+		# set_variable = { which = pirate_waves_difficulty value = 1 }
 		set_country_flag = pirate_waves_easy
 		set_variable = { which = pirates_factor value = 0.5 }
 		event_target:global_event_country = {
@@ -362,6 +372,19 @@ set_pirates_difficulty = {
 		limit = {
 			check_variable = { which = pirate_waves_difficulty value = 4 }
 		}
+		set_country_flag = pirate_waves_very_hard
+		set_variable = { which = pirates_factor value = 3 }
+		event_target:global_event_country = {
+			set_variable = { which = CmtVarCombatFleetNumber_Khan value = 2 }
+		}		# compat. CM
+		if = {
+			limit = { num_ships < @ships_count_very_hard }
+			set_timed_country_flag = { flag = pirate_waves_spawn_allowed months = 1 }
+		}
+	} else_if = {
+		limit = {
+			check_variable = { which = pirate_waves_difficulty value = 5 }
+		}
 		set_country_flag = pirate_waves_insane
 		set_variable = { which = pirates_factor value = 4 }
 		event_target:global_event_country = {
@@ -411,7 +434,7 @@ set_pirates_difficulty = {
 		# 		set_variable = { which = marauder_shipnum_b value = 8 }
 		# 		set_variable = { which = marauder_shipnum_c value = 6 }
 		# 	}
-		# 	ships_count_hard = {
+		# 	pirate_waves_hard = {
 		# 		set_variable = { which = marauder_shipnum_a value = 20 }
 		# 		set_variable = { which = marauder_shipnum_b value = 10 }
 		# 		set_variable = { which = marauder_shipnum_c value = 7 }
@@ -440,15 +463,20 @@ set_pirates_difficulty = {
 				set_variable = { which = marauder_shipnum_b value = 4 }
 				set_variable = { which = marauder_shipnum_c value = 2 }
 			}
-			ships_count_hard = {
+			pirate_waves_hard = {
 				set_variable = { which = marauder_shipnum_a value = 10 }
 				set_variable = { which = marauder_shipnum_b value = 6 }
 				set_variable = { which = marauder_shipnum_c value = 3 }
 			}
-			pirate_waves_insane = {
+			pirate_waves_very_hard = {
 				set_variable = { which = marauder_shipnum_a value = 12 }
 				set_variable = { which = marauder_shipnum_b value = 7 }
 				set_variable = { which = marauder_shipnum_c value = 4 }
+			}
+			pirate_waves_insane = {
+				set_variable = { which = marauder_shipnum_a value = 15 }
+				set_variable = { which = marauder_shipnum_b value = 9 }
+				set_variable = { which = marauder_shipnum_c value = 5 }
 			}
 		}
 	}
@@ -476,19 +504,106 @@ add_pirate_waves_pirate_event_chain = {
 # prev = owner country
 # scope = fleet
 create_pirate_waves_fleet = {
+	# Save wave location - ToDo: bit hacky!? (test the custom targets are needed)
+	if = {
+		limit = {
+			exists = root
+			root = {
+				OR = {
+					exists = solar_system
+					is_scope_type = galactic_object
+				}
+			}
+		}
+		root = { save_event_target_as = wave_location }
+	} else_if = { # Fleet is already placed
+		limit = { exists = solar_system }
+		save_event_target_as = wave_location
+	} else_if = {
+		limit = { exists = event_target:attacked_system_star }
+		event_target:attacked_system_star = { save_event_target_as = wave_location }
+	} else_if = {
+		limit = { exists = event_target:raid_source }
+		event_target:raid_source = { save_event_target_as = wave_location }
+	} else_if = {
+		limit = {
+			exists = event_target:mercenary_hirer
+			exists = event_target:mercenary_hirer.capital_scope
+		}
+		event_target:mercenary_hirer.capital_scope = { save_event_target_as = wave_location }
+	}
+
 	# Difficulty modifiers
 	prev = {
 		set_variable = { which = years_passed_tmp value = trigger:years_passed }
 		# Pirates loose motivation when they gain power.
-		if = { limit = { is_pirate_waves_closest_country_pathetic = yes }
-			multiply_variable = { which = pirates_factor value = 0.1 }
+		# is_pirate_waves_closest_country_pathetic = yes
+		if = {
+			limit = { exists = event_target:wave_location }
+			if = {
+				limit = {
+					event_target:wave_location = {
+						closest_system = {
+							limit = {
+								exists = space_owner
+								space_owner = { merg_is_default_empire = yes }
+							}
+							space_owner = {
+								relative_power = {
+									who = prevprevprev
+									category = fleet
+									value = pathetic
+								}
+							}
+						}
+					}
+				}
+				multiply_variable = { which = pirates_factor value = 0.1 }
+			}
+			# is_pirate_waves_closest_country_inferior = yes
+			else_if = {
+				limit = {
+					event_target:wave_location = {
+						closest_system = {
+							limit = {
+								exists = space_owner
+								space_owner = { merg_is_default_empire = yes }
+							}
+							space_owner = {
+								relative_power = {
+									who = prevprevprev
+									category = fleet
+									value = inferior
+								}
+							}
+						}
+					}
+				}
+				multiply_variable = { which = pirates_factor value = 0.25 }
+			}
+			# is_pirate_waves_closest_country_equivalent = yes
+			else_if = {
+				limit = {
+					event_target:wave_location = {
+						closest_system = {
+							limit = {
+								exists = space_owner
+								space_owner = { merg_is_default_empire = yes }
+							}
+							space_owner = {
+								relative_power = {
+									who = prevprevprev
+									category = fleet
+									value = equivalent
+								}
+							}
+						}
+					}
+				}
+				multiply_variable = { which = pirates_factor value = 0.5 }
+			}
 		}
-		if = { limit = { is_pirate_waves_closest_country_inferior = yes }
-			multiply_variable = { which = pirates_factor value = 0.25 }
-		}
-		if = { limit = { is_pirate_waves_closest_country_equivalent = yes }
-			multiply_variable = { which = pirates_factor value = 0.5 }
-		}
+
 		# Time passed based modifiers
 		set_variable = { which = pirates_f_tmp value = pirates_factor }
 		if = { limit = { years_passed > 260 }
@@ -503,9 +618,13 @@ create_pirate_waves_fleet = {
 		divide_variable = { which = pirates_f_tmp value = pirates_f_tmp2 }
 		round_variable_to_closest = { which = pirates_f_tmp value = 0.01 }
 	}
+	set_variable = { which = pirates_factor2 value = pirates_factor }
+	multiply_variable = { which = pirates_factor2 value = 75 }
+	round_variable = pirates_factor2
+
 	# Corvettes: AVG 100 FP
 	while = {
-		count = 75
+		count = pirates_factor2
 		random = {
 			chance = prev.pirates_f_tmp
 			random_list = {
@@ -515,7 +634,7 @@ create_pirate_waves_fleet = {
 		}
 	}
 	while = {
-		count = 75
+		count = pirates_factor2
 		random = {
 			chance = prev.pirates_f_tmp
 			random_list = {
@@ -525,7 +644,7 @@ create_pirate_waves_fleet = {
 		}
 	}
 	while = {
-		count = 75
+		count = pirates_factor2
 		random = {
 			chance = prev.pirates_f_tmp
 			random_list = {
@@ -553,7 +672,7 @@ create_pirate_waves_fleet = {
 			round_variable_to_closest = { which = pirates_f_tmp value = 0.01 }
 		}
 		while = {
-			count = 75
+			count = pirates_factor2
 			random = {
 				chance = prev.pirates_f_tmp
 				random_list = {
@@ -563,7 +682,7 @@ create_pirate_waves_fleet = {
 			}
 		}
 		while = {
-			count = 75
+			count = pirates_factor2
 			random = {
 				chance = prev.pirates_f_tmp
 				random_list = {
@@ -593,7 +712,7 @@ create_pirate_waves_fleet = {
 				round_variable_to_closest = { which = pirates_f_tmp value = 0.01 }
 			}
 			while = {
-				count = 75
+				count = pirates_factor2
 				random = {
 					chance = prev.pirates_f_tmp
 					random_list = {
@@ -636,4 +755,5 @@ create_pirate_waves_fleet = {
 			prev = { clear_variable = pirates_f_tmp3 }
 		}
 	}
+	clear_variable = pirates_factor2
 }

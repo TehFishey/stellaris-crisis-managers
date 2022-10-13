@@ -59,7 +59,7 @@ make_moderately_hostile = {
 		limit = {
 			merg_is_default_empire = no
 			OR = {
-				merg_is_fallen_empire = yes						# is_fallen_empire = yes
+				# merg_is_fallen_empire = yes # is_fallen_empire = yes
 				is_country_type = enclave
 				is_country_type = enclave_mercenary
 				is_country_type = caravaneer_home

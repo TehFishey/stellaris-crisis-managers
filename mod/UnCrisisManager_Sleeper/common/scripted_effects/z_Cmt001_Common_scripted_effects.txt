@@ -199,7 +199,7 @@ CmtEffectDestroySystemStarbase = {
 CmtEffectChangeAwakenerCivic = {
 	optimize_memory
 	if = {
-		limit = { has_authority = auth_hive_mind has_global_flag = has_FEE_mod }
+		limit = { is_hive_empire = yes has_global_flag = has_FEE_mod }
 		change_government = {
 			civics = {
 				civic = civic_invigorated_coalescence

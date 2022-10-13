@@ -40,20 +40,21 @@ CmtTriggerSpawnableSystem = {
 	}
 }
 
-CmtTriggerIsStarbase = {
-	optimize_memory		## Scope: this = ship
-	OR = {
-		is_ship_size = starbase_outpost
-		is_ship_size = starbase_starport
-		is_ship_size = starbase_starhold
-		is_ship_size = starbase_starfortress
-		is_ship_size = starbase_citadel
-		is_ship_size = starbase_swarm
-		is_ship_size = starbase_exd
-		is_ship_size = starbase_ai
-		is_ship_size = starbase_marauder
-	}
-}
+# DEPRECATED
+# CmtTriggerIsStarbase = {
+# 	optimize_memory		## Scope: this = ship
+# 	OR = {
+# 		is_ship_size = starbase_outpost
+# 		is_ship_size = starbase_starport
+# 		is_ship_size = starbase_starhold
+# 		is_ship_size = starbase_starfortress
+# 		is_ship_size = starbase_citadel
+# 		is_ship_size = starbase_swarm
+# 		is_ship_size = starbase_exd
+# 		is_ship_size = starbase_ai
+# 		is_ship_size = starbase_marauder
+# 	}
+# }
 
 ############################
 ###- Check Country Type -###
