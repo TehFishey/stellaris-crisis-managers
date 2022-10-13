@@ -618,13 +618,14 @@ create_pirate_waves_fleet = {
 		divide_variable = { which = pirates_f_tmp value = pirates_f_tmp2 }
 		round_variable_to_closest = { which = pirates_f_tmp value = 0.01 }
 	}
-	set_variable = { which = pirates_factor2 value = pirates_factor }
-	multiply_variable = { which = pirates_factor2 value = 75 }
-	round_variable = pirates_factor2
+	set_variable = { which = pirates_fleet_factor value = prev.pirates_factor }
+	multiply_variable = { which = pirates_fleet_factor value = 140 } # 75
+	round_variable = pirates_fleet_factor
+	log = "pirates_fleet_factor [This.pirates_fleet_factor]"
 
 	# Corvettes: AVG 100 FP
 	while = {
-		count = pirates_factor2
+		count = pirates_fleet_factor
 		random = {
 			chance = prev.pirates_f_tmp
 			random_list = {
@@ -634,7 +635,7 @@ create_pirate_waves_fleet = {
 		}
 	}
 	while = {
-		count = pirates_factor2
+		count = pirates_fleet_factor
 		random = {
 			chance = prev.pirates_f_tmp
 			random_list = {
@@ -644,7 +645,7 @@ create_pirate_waves_fleet = {
 		}
 	}
 	while = {
-		count = pirates_factor2
+		count = pirates_fleet_factor
 		random = {
 			chance = prev.pirates_f_tmp
 			random_list = {
@@ -672,7 +673,7 @@ create_pirate_waves_fleet = {
 			round_variable_to_closest = { which = pirates_f_tmp value = 0.01 }
 		}
 		while = {
-			count = pirates_factor2
+			count = pirates_fleet_factor
 			random = {
 				chance = prev.pirates_f_tmp
 				random_list = {
@@ -682,7 +683,7 @@ create_pirate_waves_fleet = {
 			}
 		}
 		while = {
-			count = pirates_factor2
+			count = pirates_fleet_factor
 			random = {
 				chance = prev.pirates_f_tmp
 				random_list = {
@@ -712,7 +713,7 @@ create_pirate_waves_fleet = {
 				round_variable_to_closest = { which = pirates_f_tmp value = 0.01 }
 			}
 			while = {
-				count = pirates_factor2
+				count = pirates_fleet_factor
 				random = {
 					chance = prev.pirates_f_tmp
 					random_list = {
@@ -755,5 +756,5 @@ create_pirate_waves_fleet = {
 			prev = { clear_variable = pirates_f_tmp3 }
 		}
 	}
-	clear_variable = pirates_factor2
+	clear_variable = pirates_fleet_factor
 }
