@@ -16,7 +16,7 @@ namespace = CrisisManagerControl
 
 ### Check Trgger Condision
 country_event = {
-	id = CrisisManagerControl.0011
+	id = CrisisManagerControl.11
 	hide_window = yes
 	is_triggered_only = yes
 	# this = event_target:CmtGlobalVar
@@ -109,19 +109,19 @@ country_event = {
 		if = {
 			limit = { NOT = { has_global_flag = CmtFlagCheckFirstTriggerChance } }
 			set_global_flag = CmtFlagCheckFirstTriggerChance
-			country_event = { id = CrisisManagerControl.0101 days =  3590 }	## 10 yr - 10 d
-			country_event = { id = CrisisManagerControl.0102 days = 10790 }	## 30 yr - 10 d
-			country_event = { id = CrisisManagerControl.0102 days = 17990 }	## 50 yr - 10 d
+			country_event = { id = CrisisManagerControl.101 days =  3590 }	## 10 yr - 10 d
+			country_event = { id = CrisisManagerControl.102 days = 10790 }	## 30 yr - 10 d
+			country_event = { id = CrisisManagerControl.102 days = 17990 }	## 50 yr - 10 d
 		}
 
 		###  Call Pre-Trigger Event
-		country_event = { id = CrisisManagerControl.0012 }
+		country_event = { id = CrisisManagerControl.12 }
 	}
 }
 
 ### Pre-Trigger / Manual Call Up.
 country_event = {
-	id = CrisisManagerControl.0012
+	id = CrisisManagerControl.12
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -144,14 +144,14 @@ country_event = {
 			### Call Trigger Event for Each Equalization Strength.
 			if = {
 				limit = { check_variable = { which = CmtVarEqualizingProbability value = 2 } }
-				country_event = { id = CrisisManagerControl.0022 }
+				country_event = { id = CrisisManagerControl.22 }
 			} else_if = {
 				limit = { check_variable = { which = CmtVarEqualizingProbability value = 3 } }
-				country_event = { id = CrisisManagerControl.0023 }
+				country_event = { id = CrisisManagerControl.23 }
 			} else_if = {
 				limit = { check_variable = { which = CmtVarEqualizingProbability value = 4 } }
-				country_event = { id = CrisisManagerControl.0024 }
-			} else = { country_event = { id = CrisisManagerControl.0021 } }
+				country_event = { id = CrisisManagerControl.24 }
+			} else = { country_event = { id = CrisisManagerControl.21 } }
 		}
 	}
 }
@@ -161,7 +161,7 @@ country_event = {
 ###################################################
 
 country_event = {
-	id = CrisisManagerControl.0101
+	id = CrisisManagerControl.101
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -171,7 +171,7 @@ country_event = {
 }
 
 country_event = {
-	id = CrisisManagerControl.0102
+	id = CrisisManagerControl.102
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -181,7 +181,7 @@ country_event = {
 }
 
 country_event = {
-	id = CrisisManagerControl.0103
+	id = CrisisManagerControl.103
 	hide_window = yes
 	is_triggered_only = yes
 

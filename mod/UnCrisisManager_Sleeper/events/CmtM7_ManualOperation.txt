@@ -415,7 +415,7 @@ country_event = {
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
-		hidden_effect = { country_event = { id = CrisisManagerMenu.0100 } }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.100 } }
 	}
 	option = {
 		name = CmtTextExit.name
@@ -686,7 +686,7 @@ country_event = {
 		hidden_effect = {
 			while = {
 				limit = { NOT = { has_global_flag = galactic_crisis_happened } }
-				country_event = { id = CrisisManagerControl.0012 }
+				country_event = { id = CrisisManagerControl.12 }
 			}
 			country_event = { id = CrisisManagerMenu.7121 }
 		}
@@ -1686,21 +1686,20 @@ country_event = {
 	}
 
 	after = {
-		hidden_effect = {
-			if = {
-				limit = { exists = event_target:marauder_country_1 event_target:marauder_country_1 = { CmtTriggerHasPotentialKhanAwaking = no } }
-				clear_global_event_target = marauder_country_1
-			}
-			if = {
-				limit = { exists = event_target:marauder_country_2 event_target:marauder_country_2 = { CmtTriggerHasPotentialKhanAwaking = no } }
-				clear_global_event_target = marauder_country_2
-			}
-			if = {
-				limit = { exists = event_target:marauder_country_3 event_target:marauder_country_3 = { CmtTriggerHasPotentialKhanAwaking = no } }
-				clear_global_event_target = marauder_country_3
-			}
-		}
-
+		# hidden_effect = {
+		# 	if = {
+		# 		limit = { exists = event_target:marauder_country_1 event_target:marauder_country_1 = { CmtTriggerHasPotentialKhanAwaking = no } }
+		# 		clear_global_event_target = marauder_country_1
+		# 	}
+		# 	if = {
+		# 		limit = { exists = event_target:marauder_country_2 event_target:marauder_country_2 = { CmtTriggerHasPotentialKhanAwaking = no } }
+		# 		clear_global_event_target = marauder_country_2
+		# 	}
+		# 	if = {
+		# 		limit = { exists = event_target:marauder_country_3 event_target:marauder_country_3 = { CmtTriggerHasPotentialKhanAwaking = no } }
+		# 		clear_global_event_target = marauder_country_3
+		# 	}
+		# }
 		# legacy
 		# if = {
 		# 	limit = { exists = event_target:CmtTargetManualMarauder1 }
@@ -2504,7 +2503,7 @@ country_event = {
 # 		}
 # 		hidden_effect = {
 # 			remove_country_flag = CmtFlagNowInMenu
-# 			country_event = { id = CrisisManagerControl.0511 }
+# 			country_event = { id = CrisisManagerControl.511 }
 # 			CmtEffectClearTargetPlayerCrisis = yes
 # 		}
 # 	}
@@ -2529,8 +2528,8 @@ country_event = {
 # 			exists = event_target:CmtTargetManualPlayerCrisis1
 # 		}
 # 		hidden_effect = {
-# 			country_event = { id = CrisisManagerMenu.0100 }
-# 			event_target:CmtTargetManualPlayerCrisis1 = { country_event = { id = CrisisManagerControl.0511 } }
+# 			country_event = { id = CrisisManagerMenu.100 }
+# 			event_target:CmtTargetManualPlayerCrisis1 = { country_event = { id = CrisisManagerControl.511 } }
 # 			CmtEffectClearTargetPlayerCrisis = yes
 # 		}
 # 	}
@@ -2542,8 +2541,8 @@ country_event = {
 # 			exists = event_target:CmtTargetManualPlayerCrisis2
 # 		}
 # 		hidden_effect = {
-# 			country_event = { id = CrisisManagerMenu.0100 }
-# 			event_target:CmtTargetManualPlayerCrisis2 = { country_event = { id = CrisisManagerControl.0511 } }
+# 			country_event = { id = CrisisManagerMenu.100 }
+# 			event_target:CmtTargetManualPlayerCrisis2 = { country_event = { id = CrisisManagerControl.511 } }
 # 			CmtEffectClearTargetPlayerCrisis = yes
 # 		}
 # 	}
@@ -2555,8 +2554,8 @@ country_event = {
 # 			exists = event_target:CmtTargetManualPlayerCrisis3
 # 		}
 # 		hidden_effect = {
-# 			country_event = { id = CrisisManagerMenu.0100 }
-# 			event_target:CmtTargetManualPlayerCrisis3 = { country_event = { id = CrisisManagerControl.0511 } }
+# 			country_event = { id = CrisisManagerMenu.100 }
+# 			event_target:CmtTargetManualPlayerCrisis3 = { country_event = { id = CrisisManagerControl.511 } }
 # 			CmtEffectClearTargetPlayerCrisis = yes
 # 		}
 # 	}
@@ -2568,8 +2567,8 @@ country_event = {
 # 			exists = event_target:CmtTargetManualPlayerCrisis4
 # 		}
 # 		hidden_effect = {
-# 			country_event = { id = CrisisManagerMenu.0100 }
-# 			event_target:CmtTargetManualPlayerCrisis4 = { country_event = { id = CrisisManagerControl.0511 } }
+# 			country_event = { id = CrisisManagerMenu.100 }
+# 			event_target:CmtTargetManualPlayerCrisis4 = { country_event = { id = CrisisManagerControl.511 } }
 # 			CmtEffectClearTargetPlayerCrisis = yes
 # 		}
 # 	}
@@ -2581,8 +2580,8 @@ country_event = {
 # 			exists = event_target:CmtTargetManualPlayerCrisis5
 # 		}
 # 		hidden_effect = {
-# 			country_event = { id = CrisisManagerMenu.0100 }
-# 			event_target:CmtTargetManualPlayerCrisis5 = { country_event = { id = CrisisManagerControl.0511 } }
+# 			country_event = { id = CrisisManagerMenu.100 }
+# 			event_target:CmtTargetManualPlayerCrisis5 = { country_event = { id = CrisisManagerControl.511 } }
 # 			CmtEffectClearTargetPlayerCrisis = yes
 # 		}
 # 	}
@@ -2594,8 +2593,8 @@ country_event = {
 # 			exists = event_target:CmtTargetManualPlayerCrisis6
 # 		}
 # 		hidden_effect = {
-# 			country_event = { id = CrisisManagerMenu.0100 }
-# 			event_target:CmtTargetManualPlayerCrisis6 = { country_event = { id = CrisisManagerControl.0511 } }
+# 			country_event = { id = CrisisManagerMenu.100 }
+# 			event_target:CmtTargetManualPlayerCrisis6 = { country_event = { id = CrisisManagerControl.511 } }
 # 			CmtEffectClearTargetPlayerCrisis = yes
 # 		}
 # 	}
@@ -2607,8 +2606,8 @@ country_event = {
 # 			exists = event_target:CmtTargetManualPlayerCrisis7
 # 		}
 # 		hidden_effect = {
-# 			country_event = { id = CrisisManagerMenu.0100 }
-# 			event_target:CmtTargetManualPlayerCrisis7 = { country_event = { id = CrisisManagerControl.0511 } }
+# 			country_event = { id = CrisisManagerMenu.100 }
+# 			event_target:CmtTargetManualPlayerCrisis7 = { country_event = { id = CrisisManagerControl.511 } }
 # 			CmtEffectClearTargetPlayerCrisis = yes
 # 		}
 # 	}
@@ -2620,8 +2619,8 @@ country_event = {
 # 			exists = event_target:CmtTargetManualPlayerCrisis8
 # 		}
 # 		hidden_effect = {
-# 			country_event = { id = CrisisManagerMenu.0100 }
-# 			event_target:CmtTargetManualPlayerCrisis8 = { country_event = { id = CrisisManagerControl.0511 } }
+# 			country_event = { id = CrisisManagerMenu.100 }
+# 			event_target:CmtTargetManualPlayerCrisis8 = { country_event = { id = CrisisManagerControl.511 } }
 # 			CmtEffectClearTargetPlayerCrisis = yes
 # 		}
 # 	}

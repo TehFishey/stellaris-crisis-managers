@@ -60,7 +60,7 @@ country_event = {
 			if = {
 				limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.0100 }
+				country_event = { id = CrisisManagerMenu.100 }
 			} else_if = {
 				limit = { has_country_flag = CmtFlagIndividual }
 				country_event = { id = CrisisManagerMenu.1010 }
@@ -247,7 +247,7 @@ country_event = {
 				if = {
 					limit = { has_global_flag = CmtFlagTotalWarPatch }
 					country_event = { id = CrisisManagerMenu.3220 }
-				} else = { country_event = { id = CrisisManagerMenu.0100 } }
+				} else = { country_event = { id = CrisisManagerMenu.100 } }
 			} else_if = {
 				limit = { has_country_flag = CmtFlagIndividual }
 				country_event = { id = CrisisManagerMenu.1010 }
@@ -647,7 +647,7 @@ country_event = {
 			} else_if = {
 				limit = { has_country_flag = CmtFlagIndividual }
 				country_event = { id = CrisisManagerMenu.1010 }
-			} else = { country_event = { id = CrisisManagerMenu.0100 } }
+			} else = { country_event = { id = CrisisManagerMenu.100 } }
 		}
 	}
 

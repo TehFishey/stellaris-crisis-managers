@@ -187,6 +187,20 @@ CmtEffectDestroyGraygoo = {
 	}
 	observer_event = { id = observer.65 }
 
+	# For Dessanu Graygoo
+	every_system = {
+		limit = { has_star_flag = lcluster }
+		every_system_planet = {
+			limit = {
+				is_planet_class = pc_gaia
+				has_planet_flag = hidden_nanite_world
+			}
+			change_pc = pc_gray_goo
+			reset_planet = yes
+			remove_planet_flag = hidden_nanite_world
+		}
+	}
+
 	event_target:CmtGlobalVar = {
 		if = {
 			limit = {

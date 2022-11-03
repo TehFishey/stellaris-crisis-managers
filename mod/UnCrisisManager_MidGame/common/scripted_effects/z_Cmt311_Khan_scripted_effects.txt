@@ -60,9 +60,29 @@
 
 ## Scope: root = Country (Khan)
 # this = event_target:CmtGlobalVar
+
+
+
 CmtEffectKhanReinforceOnCapital = {
 	if = {
-		limit = { check_variable = { which = CmtVarKhanMultiple value = 5 } }
+		limit = {
+			calc_true_if = {
+				amount >= 2
+				check_variable = { which = CmtVarKhanMultiple value = 5 }
+				AND = {
+					exists = event_target:CmtTargetMarauderRallyPoint3
+					event_target:CmtTargetMarauderRallyPoint3 = { is_within_borders_of = root }
+				}
+				AND = {
+					exists = event_target:CmtTargetMarauderRallyPoint2
+					event_target:CmtTargetMarauderRallyPoint2 = { is_within_borders_of = root }
+				}
+				AND = {
+					exists = event_target:CmtTargetMarauderRallyPoint1
+					event_target:CmtTargetMarauderRallyPoint1 = { is_within_borders_of = root }
+				}
+			}
+		}
 		root = {
 			every_planet_within_border = {
 				limit = { has_planet_flag = CmtFlagMarauderExpRallyPoint }

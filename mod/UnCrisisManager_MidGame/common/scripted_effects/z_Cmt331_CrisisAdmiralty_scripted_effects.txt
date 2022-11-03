@@ -52,7 +52,9 @@
 # 	}
 # }
 
+# TODO DEPRECATE
 CmtEffectCreateAdmiralty_Khan2ndFleetSet = {		### Exception: Leader = exiled_khan
+	optimize_memory
 	event_target:raider_khanate = {
 		CmtEffectCreateFleet_Khan2ndFleet = yes
 		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Khan } }
@@ -83,9 +85,11 @@ CmtEffectCreateAdmiralty_Khan2ndFleetSet = {		### Exception: Leader = exiled_kha
 }
 
 ### Consorts of Khan
+# This = planet
+# Prev = event_target:raider_khanate
 CmtEffectCreateAdmiralty_KhanStarterPack = {
-	# event_target:raider_khanate = {
 	prev = {
+		get_marauder_species = { PLANET = prev }
 		event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Khan } }
 		while = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
@@ -197,9 +201,7 @@ CmtEffectCreateAdmiralty_KhanMercenaries3 = {
 ### Reinforcement (Capital/Sub-Capital)
 CmtEffectCreateAdmiralty_KhanReinforcement = {
 	event_target:raider_khanate = {
-		if = { limit = { NOT = { exists = event_target:marauder_species } exists = owner_species }
-			owner_species = { save_event_target_as = marauder_species }
-		}
+		get_marauder_species = { PLANET = prev }
 		### Constructor
 		if = {
 			limit = {

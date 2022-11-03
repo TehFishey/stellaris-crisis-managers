@@ -19,8 +19,10 @@ country_event = {
 	id = CrisisManagerMenu.1031
 	title = CrisisManagerMenu.1031.name
 	desc = CrisisManagerMenu.1031.desc
-	picture = GFX_evt_small_space_battle
+	# picture = GFX_evt_small_space_battle
+	diplomatic = yes
 	is_triggered_only = yes
+	custom_gui = sgm_ScrollbarEventWindow
 
 	immediate = {
 		set_country_flag = CmtFlagConfigViewerShowing1031
@@ -335,8 +337,10 @@ country_event = {
 	id = CrisisManagerMenu.1032
 	title = CrisisManagerMenu.1032.name
 	desc = CrisisManagerMenu.1032.desc
-	picture = GFX_evt_small_space_battle
+	# picture = GFX_evt_small_space_battle
+	diplomatic = yes
 	is_triggered_only = yes
+	custom_gui = sgm_ScrollbarEventWindow
 
 	immediate = {
 		set_country_flag = CmtFlagConfigViewerShowing1032
@@ -536,8 +540,10 @@ country_event = {
 	id = CrisisManagerMenu.1033
 	title = CrisisManagerMenu.1033.name
 	desc = CrisisManagerMenu.1033.desc
-	picture = GFX_evt_small_space_battle
+	# picture = GFX_evt_small_space_battle
+	diplomatic = yes
 	is_triggered_only = yes
+	custom_gui = sgm_ScrollbarEventWindow
 
 	immediate = {
 		set_country_flag = CmtFlagConfigViewerShowing1033

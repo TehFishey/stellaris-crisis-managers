@@ -191,17 +191,28 @@ country_event = {
 	# 	hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
 	# }
 
-	### Khan
+	### Call Khan
 	option = { # valid
 		name = CrisisManagerMenu.7000.7138.A.name
 		custom_tooltip = CrisisManagerMenu.7000.7138.A.tooltip
-		allow = { host_has_dlc = "Apocalypse" }
+		allow = {
+			host_has_dlc = "Apocalypse"
+			crisis_happened_and_defeated = no
+			hidden_trigger = {
+				OR = {
+					num_marauder_empires_to_spawn > 0
+					has_global_flag = pirate_waves_active # Mod
+					event_target:global_event_country = { has_country_flag = outer_bulwark_inactive } # Mod
+				}
+				NOR = {
+					has_global_flag = great_khan_wins
+					has_global_flag = war_in_heaven_started
+					any_country = { is_country_type = awakened_marauders } # CmtTriggerNowInKhanCrisis
+				}
+			}
+		}
 		trigger = {
 			has_global_flag = CmtFlagMidGameEdition
-			OR = {
-				num_marauder_empires_to_spawn > 0
-				event_target:global_event_country = { has_country_flag = outer_bulwark_inactive }
-			}
 			NOT = { has_global_flag = marauder_crisis_ongoing }
 			# CmtTriggerNowInKhanCrisis = no
 			OR = {
@@ -242,7 +253,9 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7000.7140.A.name
 		custom_tooltip = CrisisManagerMenu.7000.7140.A.tooltip
-		allow = { has_distar = yes }
+		allow = {
+			has_distar = yes
+		}
 		trigger = {
 			has_global_flag = CmtFlagMidGameEdition
 			any_megastructure = { CmtTriggerIsClosedLgate = yes }
@@ -415,7 +428,7 @@ country_event = {
 	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
-		hidden_effect = { country_event = { id = CrisisManagerMenu.0100 } }
+		hidden_effect = { country_event = { id = CrisisManagerMenu.100 } }
 	}
 	option = {
 		name = CmtTextExit.name
@@ -686,7 +699,7 @@ country_event = {
 		hidden_effect = {
 			while = {
 				limit = { NOT = { has_global_flag = galactic_crisis_happened } }
-				country_event = { id = CrisisManagerControl.0012 }
+				country_event = { id = CrisisManagerControl.12 }
 			}
 			country_event = { id = CrisisManagerMenu.7121 }
 		}
@@ -1637,7 +1650,7 @@ country_event = {
 						}
 					}
 				}
-				# log="Manual marauder fallback 1 \\[former_marauder_capital.GetName]"
+				log="Manual marauder fallback 1 \\[former_marauder_capital.GetName]"
 			}
 			# Create very strong fallback (look for dead marauders)
 			if = {
@@ -1678,11 +1691,11 @@ country_event = {
 							modifier = { add = 2 is_a_planet = yes } # possible inconsisent due other mods
 						}
 						save_event_target_as = former_marauder_capital
-						# log="Manual marauder strong fallback \\[This.GetName]"
+						log="Manual marauder strong fallback \\[This.GetName]"
 					}
 				}
 			} else = { no_scope = { save_event_target_as = former_marauder_capital } } # clear
-		}
+		} else = { log="Manual Horde" }
 	}
 
 	after = {
@@ -1700,7 +1713,6 @@ country_event = {
 				clear_global_event_target = marauder_country_3
 			}
 		}
-
 		# legacy
 		# if = {
 		# 	limit = { exists = event_target:CmtTargetManualMarauder1 }
@@ -2504,7 +2516,7 @@ country_event = {
 # 		}
 # 		hidden_effect = {
 # 			remove_country_flag = CmtFlagNowInMenu
-# 			country_event = { id = CrisisManagerControl.0511 }
+# 			country_event = { id = CrisisManagerControl.511 }
 # 			CmtEffectClearTargetPlayerCrisis = yes
 # 		}
 # 	}
@@ -2529,8 +2541,8 @@ country_event = {
 # 			exists = event_target:CmtTargetManualPlayerCrisis1
 # 		}
 # 		hidden_effect = {
-# 			country_event = { id = CrisisManagerMenu.0100 }
-# 			event_target:CmtTargetManualPlayerCrisis1 = { country_event = { id = CrisisManagerControl.0511 } }
+# 			country_event = { id = CrisisManagerMenu.100 }
+# 			event_target:CmtTargetManualPlayerCrisis1 = { country_event = { id = CrisisManagerControl.511 } }
 # 			CmtEffectClearTargetPlayerCrisis = yes
 # 		}
 # 	}
@@ -2542,8 +2554,8 @@ country_event = {
 # 			exists = event_target:CmtTargetManualPlayerCrisis2
 # 		}
 # 		hidden_effect = {
-# 			country_event = { id = CrisisManagerMenu.0100 }
-# 			event_target:CmtTargetManualPlayerCrisis2 = { country_event = { id = CrisisManagerControl.0511 } }
+# 			country_event = { id = CrisisManagerMenu.100 }
+# 			event_target:CmtTargetManualPlayerCrisis2 = { country_event = { id = CrisisManagerControl.511 } }
 # 			CmtEffectClearTargetPlayerCrisis = yes
 # 		}
 # 	}
@@ -2555,8 +2567,8 @@ country_event = {
 # 			exists = event_target:CmtTargetManualPlayerCrisis3
 # 		}
 # 		hidden_effect = {
-# 			country_event = { id = CrisisManagerMenu.0100 }
-# 			event_target:CmtTargetManualPlayerCrisis3 = { country_event = { id = CrisisManagerControl.0511 } }
+# 			country_event = { id = CrisisManagerMenu.100 }
+# 			event_target:CmtTargetManualPlayerCrisis3 = { country_event = { id = CrisisManagerControl.511 } }
 # 			CmtEffectClearTargetPlayerCrisis = yes
 # 		}
 # 	}
@@ -2568,8 +2580,8 @@ country_event = {
 # 			exists = event_target:CmtTargetManualPlayerCrisis4
 # 		}
 # 		hidden_effect = {
-# 			country_event = { id = CrisisManagerMenu.0100 }
-# 			event_target:CmtTargetManualPlayerCrisis4 = { country_event = { id = CrisisManagerControl.0511 } }
+# 			country_event = { id = CrisisManagerMenu.100 }
+# 			event_target:CmtTargetManualPlayerCrisis4 = { country_event = { id = CrisisManagerControl.511 } }
 # 			CmtEffectClearTargetPlayerCrisis = yes
 # 		}
 # 	}
@@ -2581,8 +2593,8 @@ country_event = {
 # 			exists = event_target:CmtTargetManualPlayerCrisis5
 # 		}
 # 		hidden_effect = {
-# 			country_event = { id = CrisisManagerMenu.0100 }
-# 			event_target:CmtTargetManualPlayerCrisis5 = { country_event = { id = CrisisManagerControl.0511 } }
+# 			country_event = { id = CrisisManagerMenu.100 }
+# 			event_target:CmtTargetManualPlayerCrisis5 = { country_event = { id = CrisisManagerControl.511 } }
 # 			CmtEffectClearTargetPlayerCrisis = yes
 # 		}
 # 	}
@@ -2594,8 +2606,8 @@ country_event = {
 # 			exists = event_target:CmtTargetManualPlayerCrisis6
 # 		}
 # 		hidden_effect = {
-# 			country_event = { id = CrisisManagerMenu.0100 }
-# 			event_target:CmtTargetManualPlayerCrisis6 = { country_event = { id = CrisisManagerControl.0511 } }
+# 			country_event = { id = CrisisManagerMenu.100 }
+# 			event_target:CmtTargetManualPlayerCrisis6 = { country_event = { id = CrisisManagerControl.511 } }
 # 			CmtEffectClearTargetPlayerCrisis = yes
 # 		}
 # 	}
@@ -2607,8 +2619,8 @@ country_event = {
 # 			exists = event_target:CmtTargetManualPlayerCrisis7
 # 		}
 # 		hidden_effect = {
-# 			country_event = { id = CrisisManagerMenu.0100 }
-# 			event_target:CmtTargetManualPlayerCrisis7 = { country_event = { id = CrisisManagerControl.0511 } }
+# 			country_event = { id = CrisisManagerMenu.100 }
+# 			event_target:CmtTargetManualPlayerCrisis7 = { country_event = { id = CrisisManagerControl.511 } }
 # 			CmtEffectClearTargetPlayerCrisis = yes
 # 		}
 # 	}
@@ -2620,8 +2632,8 @@ country_event = {
 # 			exists = event_target:CmtTargetManualPlayerCrisis8
 # 		}
 # 		hidden_effect = {
-# 			country_event = { id = CrisisManagerMenu.0100 }
-# 			event_target:CmtTargetManualPlayerCrisis8 = { country_event = { id = CrisisManagerControl.0511 } }
+# 			country_event = { id = CrisisManagerMenu.100 }
+# 			event_target:CmtTargetManualPlayerCrisis8 = { country_event = { id = CrisisManagerControl.511 } }
 # 			CmtEffectClearTargetPlayerCrisis = yes
 # 		}
 # 	}

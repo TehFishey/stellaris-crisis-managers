@@ -45,7 +45,7 @@ country_event = {
 		}
 	}
 	immediate = {
-		country_event = { id = CrisisManagerMenu.0003 }
+		country_event = { id = CrisisManagerMenu.3 }
 	}
 	after = {
 		if = { limit = { has_global_flag = dmm_mod_10_opened }

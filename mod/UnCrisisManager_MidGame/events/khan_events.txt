@@ -215,7 +215,7 @@ system_event = {
 	}
 }
 
-# Upgrate starbase
+# Upgrade starbase
 starbase_event = {
 	id = khan.302
 	hide_window = yes
@@ -1198,6 +1198,7 @@ country_event = {
 		if = { limit = { exists = event_target:marauder_rally_point }
 			clear_global_event_target = marauder_rally_point
 		}
+		set_global_flag = horde_triggered
 		destroy_country = yes
 		if = { limit = { exists = event_target:marauders_garrison_1 }
 			event_target:marauders_garrison_1 = {
@@ -1265,7 +1266,11 @@ country_event = {
 			random_owned_fleet = {
 				limit = { is_mobile = yes exists = leader }
 				set_owner = root
-				leader = { set_owner = root } # Recruit leader
+				# Recruit leader
+				leader = {
+					set_owner = root
+					set_timed_leader_flag = { flag = restored_admiral@prev days = 7 }
+				}
 				if = {
 					limit = { NOT = { is_ship_class = shipclass_transport } }
 					assign_leader = leader
@@ -1580,9 +1585,10 @@ fleet_event = {
 			if = {
 				limit = {
 					NAND = {
-						has_owner = yes						# exists = space_owner
+						has_owner = yes
+						# exists = space_owner
 						exists = starbase
-						is_owned_by = root.owner						# is_owned_by = root.owner
+						is_owned_by = root.owner
 					}
 				}
 				prev = {
@@ -1613,6 +1619,9 @@ fleet_event = {
 				}
 			}
 		}
+	}
+	after = {
+		fleet_event = { id = khan.613 days = 5 }
 	}
 }
 
@@ -1692,6 +1701,56 @@ country_event = {
 					}
 				}
 				system_event = { id = khan.622 days = 7 random = 14 }
+			}
+		}
+	}
+}
+
+# Try workaround for strange fleet behavior (on country transfer)
+fleet_event = {
+	id = khan.613
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		NOR = {
+			is_civilian = yes
+			exists = leader
+			is_ship_class = shipclass_transport
+		}
+		# exists = solar_system
+		# is_mobile = yes
+		# any_owned_ship = {
+		# 	OR = {
+		# 		is_ship_class = shipclass_military
+		# 		is_ship_class = shipclass_transport
+		# 	}
+		# }
+		exists = owner
+		owner = {
+			any_owned_leader = {
+				leader_class = admiral
+				OR = {
+					is_idle = yes
+					has_leader_flag = restored_admiral@root
+				}
+			}
+		}
+	}
+	immediate = {
+		owner = {
+			random_owned_leader = {
+				limit = { leader_class = admiral }
+				weights = {
+					base = 1
+					modifier = { add = 9 has_leader_flag = restored_admiral@root }
+					modifier = { add = 4 NOT = { exists = fleet } }
+					modifier = { add = 1 is_idle = yes }
+				}
+				root = {
+					set_leader = prev
+					assign_leader = prev
+					log = "Assign leader \\[Prev.GetName] to \\[This.GetName]"
+				}
 			}
 		}
 	}

@@ -65,46 +65,11 @@ CmtEffectCreateShip_AncestralGlory = {
 }
 
 CmtEffectCreateShip_KhanArmy = {
-	if = {
-		limit = {
-			prevprev.solar_system = { has_star_flag = marauder_capital_1 }
-			exists = event_target:marauder_country_1
-		}
-		create_army_transport = {
-			ship_name = "NAME_Pirate_Transport"
-			graphical_culture = "mammalian_01"
-			army_type = $TYPE|assault_army$
-			species = event_target:marauder_country_1.owner_species
-		}
-	} else_if = {
-		limit = {
-			prevprev.solar_system = { has_star_flag = marauder_capital_2 }
-			exists = event_target:marauder_country_2
-		}
-		create_army_transport = {
-			ship_name = "NAME_Pirate_Transport"
-			graphical_culture = "mammalian_01"
-			army_type = $TYPE|assault_army$
-			species = event_target:marauder_country_2.owner_species
-		}
-	} else_if = {
-		limit = {
-			prevprev.solar_system = { has_star_flag = marauder_capital_3 }
-			exists = event_target:marauder_country_3
-		}
-		create_army_transport = {
-			ship_name = "NAME_Pirate_Transport"
-			graphical_culture = "mammalian_01"
-			army_type = $TYPE|assault_army$
-			species = event_target:marauder_country_3.owner_species
-		}
-	} else = {
-		create_army_transport = {
-			ship_name = "NAME_Pirate_Transport"
-			graphical_culture = "mammalian_01"
-			army_type = $TYPE|assault_army$
-			species = prev.owner # event_target:raider_khanate
-		}
+	create_army_transport = {
+		ship_name = "NAME_Pirate_Transport"
+		graphical_culture = "mammalian_01"
+		army_type = $TYPE|assault_army$
+		species = event_target:marauder_species
 	}
 }
 

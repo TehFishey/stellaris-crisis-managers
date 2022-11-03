@@ -199,7 +199,7 @@ country_event = {
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
 		hidden_effect = {
 			set_country_flag = CmtFlagSPMenu
-			country_event = { id = CrisisManagerMenu.0100 }
+			country_event = { id = CrisisManagerMenu.100 }
 		}
 	}
 	option = {
@@ -2158,7 +2158,9 @@ country_event = {
 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Common value < 0.125 } } }
 	}
 	picture = GFX_evt_small_space_battle
+	diplomatic = yes
 	is_triggered_only = yes
+	custom_gui = sgm_ScrollbarEventWindow
 
 	after = {
 		hidden_effect = {
@@ -2310,7 +2312,9 @@ country_event = {
 	title = CrisisManagerMenu.6301.name
 	desc = CrisisManagerMenu.6301.desc
 	picture = GFX_evt_physics_research
+	diplomatic = yes
 	is_triggered_only = yes
+	custom_gui = sgm_ScrollbarEventWindow
 
 	after = {
 		hidden_effect = {
@@ -2443,7 +2447,9 @@ country_event = {
 	title = CrisisManagerMenu.6302.name
 	desc = CrisisManagerMenu.6302.desc
 	picture = GFX_evt_federation_fleet
+	diplomatic = yes
 	is_triggered_only = yes
+	custom_gui = sgm_ScrollbarEventWindow
 
 	after = {
 		hidden_effect = {
@@ -2576,7 +2582,9 @@ country_event = {
 	title = CrisisManagerMenu.6303.name
 	desc = CrisisManagerMenu.6303.desc
 	picture = GFX_evt_wormhole
+	diplomatic = yes
 	is_triggered_only = yes
+	custom_gui = sgm_ScrollbarEventWindow
 
 	after = {
 		hidden_effect = {
@@ -2709,7 +2717,9 @@ country_event = {
 	title = CrisisManagerMenu.6304.name
 	desc = CrisisManagerMenu.6304.desc
 	picture = GFX_evt_wormhole
+	diplomatic = yes
 	is_triggered_only = yes
+	custom_gui = sgm_ScrollbarEventWindow
 
 	after = {
 		hidden_effect = {
@@ -2842,7 +2852,9 @@ country_event = {
 	title = CrisisManagerMenu.6305.name
 	desc = CrisisManagerMenu.6305.desc
 	picture = GFX_evt_wormhole
+	diplomatic = yes
 	is_triggered_only = yes
+	custom_gui = sgm_ScrollbarEventWindow
 
 	after = {
 		hidden_effect = {
@@ -2975,7 +2987,9 @@ country_event = {
 	title = CrisisManagerMenu.6306.name
 	desc = CrisisManagerMenu.6306.desc
 	picture = GFX_evt_glitchy_matrix
+	diplomatic = yes
 	is_triggered_only = yes
+	custom_gui = sgm_ScrollbarEventWindow
 
 	after = {
 		hidden_effect = {
@@ -3107,7 +3121,9 @@ country_event = {
 	title = CrisisManagerMenu.6307.name
 	desc = CrisisManagerMenu.6307.desc
 	picture = GFX_evt_ringworld
+	diplomatic = yes
 	is_triggered_only = yes
+	custom_gui = sgm_ScrollbarEventWindow
 
 	after = {
 		hidden_effect = {
@@ -3243,7 +3259,9 @@ country_event = {
 	title = CrisisManagerMenu.6311.name
 	desc = CrisisManagerMenu.6311.desc
 	picture = GFX_evt_khan_throne_room
+	diplomatic = yes
 	is_triggered_only = yes
+	custom_gui = sgm_ScrollbarEventWindow
 
 	after = {
 		hidden_effect = {
@@ -3379,7 +3397,9 @@ country_event = {
 	title = CrisisManagerMenu.6312.name
 	desc = CrisisManagerMenu.6312.desc
 	picture = GFX_evt_gray_goo
+	diplomatic = yes
 	is_triggered_only = yes
+	custom_gui = sgm_ScrollbarEventWindow
 
 	after = {
 		hidden_effect = {
@@ -3512,7 +3532,9 @@ country_event = {
 	title = CrisisManagerMenu.6313.name
 	desc = CrisisManagerMenu.6313.desc
 	picture = GFX_evt_gray_goo_ships
+	diplomatic = yes
 	is_triggered_only = yes
+	custom_gui = sgm_ScrollbarEventWindow
 
 	after = {
 		hidden_effect = {
@@ -3656,7 +3678,9 @@ country_event = {
 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarArmyNumber_Common value < 0.125 } } }
 	}
 	picture = GFX_evt_ground_combat
+	diplomatic = yes
 	is_triggered_only = yes
+	custom_gui = sgm_ScrollbarEventWindow
 
 	after = {
 		hidden_effect = {
@@ -3808,7 +3832,9 @@ country_event = {
 	title = CrisisManagerMenu.6401.name
 	desc = CrisisManagerMenu.6401.desc
 	picture = GFX_evt_physics_research
+	diplomatic = yes
 	is_triggered_only = yes
+	custom_gui = sgm_ScrollbarEventWindow
 
 	after = {
 		hidden_effect = {
@@ -3941,7 +3967,9 @@ country_event = {
 	title = CrisisManagerMenu.6406.name
 	desc = CrisisManagerMenu.6406.desc
 	picture = GFX_evt_glitchy_matrix
+	diplomatic = yes
 	is_triggered_only = yes
+	custom_gui = sgm_ScrollbarEventWindow
 
 	after = {
 		hidden_effect = {
@@ -4077,7 +4105,9 @@ country_event = {
 	title = CrisisManagerMenu.6411.name
 	desc = CrisisManagerMenu.6411.desc
 	picture = GFX_evt_khan_throne_room
+	diplomatic = yes
 	is_triggered_only = yes
+	custom_gui = sgm_ScrollbarEventWindow
 
 	after = {
 		hidden_effect = {
@@ -4224,7 +4254,9 @@ country_event = {
 		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarConstructorNumber_Common value < 0.125 } } }
 	}
 	picture = GFX_evt_small_space_battle
+	diplomatic = yes
 	is_triggered_only = yes
+	custom_gui = sgm_ScrollbarEventWindow
 
 	after = {
 		hidden_effect = {
@@ -4376,7 +4408,9 @@ country_event = {
 	title = CrisisManagerMenu.6501.name
 	desc = CrisisManagerMenu.6501.desc
 	picture = GFX_evt_physics_research
+	diplomatic = yes
 	is_triggered_only = yes
+	custom_gui = sgm_ScrollbarEventWindow
 
 	after = {
 		hidden_effect = {
@@ -4509,7 +4543,9 @@ country_event = {
 	title = CrisisManagerMenu.6503.name
 	desc = CrisisManagerMenu.6503.desc
 	picture = GFX_evt_wormhole
+	diplomatic = yes
 	is_triggered_only = yes
+	custom_gui = sgm_ScrollbarEventWindow
 
 	after = {
 		hidden_effect = {
@@ -4642,7 +4678,9 @@ country_event = {
 	title = CrisisManagerMenu.6504.name
 	desc = CrisisManagerMenu.6504.desc
 	picture = GFX_evt_wormhole
+	diplomatic = yes
 	is_triggered_only = yes
+	custom_gui = sgm_ScrollbarEventWindow
 
 	after = {
 		hidden_effect = {
@@ -4775,7 +4813,9 @@ country_event = {
 	title = CrisisManagerMenu.6505.name
 	desc = CrisisManagerMenu.6505.desc
 	picture = GFX_evt_wormhole
+	diplomatic = yes
 	is_triggered_only = yes
+	custom_gui = sgm_ScrollbarEventWindow
 
 	after = {
 		hidden_effect = {
@@ -4908,7 +4948,9 @@ country_event = {
 	title = CrisisManagerMenu.6506.name
 	desc = CrisisManagerMenu.6506.desc
 	picture = GFX_evt_glitchy_matrix
+	diplomatic = yes
 	is_triggered_only = yes
+	custom_gui = sgm_ScrollbarEventWindow
 
 	after = {
 		hidden_effect = {
@@ -5044,7 +5086,9 @@ country_event = {
 	title = CrisisManagerMenu.6511.name
 	desc = CrisisManagerMenu.6511.desc
 	picture = GFX_evt_khan_throne_room
+	diplomatic = yes
 	is_triggered_only = yes
+	custom_gui = sgm_ScrollbarEventWindow
 
 	after = {
 		hidden_effect = {

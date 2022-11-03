@@ -9,6 +9,7 @@ country_event = {
 	id = crisis.199
 	hide_window = yes
 	is_triggered_only = yes
+	is_test_event = yes
 	trigger = { always = no }
 	immediate = {
 		set_global_flag = prethoryn_invasion_happened

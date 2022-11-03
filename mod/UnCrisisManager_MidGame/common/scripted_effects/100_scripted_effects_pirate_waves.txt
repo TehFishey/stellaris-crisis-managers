@@ -316,8 +316,10 @@ set_pirates_difficulty = {
 	# Checks the ship limit of this country.
 	if = {
 		limit = {
-			# OR = { NOT = { is_variable_set = pirate_waves_difficulty }
-			check_variable = { which = pirate_waves_difficulty value = 1 }
+			OR = {
+				NOT = { is_variable_set = pirate_waves_difficulty }
+				check_variable = { which = pirate_waves_difficulty value = 1 }
+			}
 		}
 		# set_variable = { which = pirate_waves_difficulty value = 1 }
 		set_country_flag = pirate_waves_easy
@@ -612,16 +614,18 @@ create_pirate_waves_fleet = {
 			multiply_variable = { which = pirates_f_tmp value = years_passed_tmp }
 			multiply_variable = { which = pirates_f_tmp value = 0.1585 }		# 1/sqrt(10,1.25)
 		}
-		set_variable = { which = pirates_f_tmp2 value = pirates_f_tmp }
+		set_variable	= { which = pirates_f_tmp2 value = pirates_f_tmp }
 		change_variable = { which = pirates_f_tmp2 value = 49 }
 		divide_variable = { which = pirates_f_tmp2 value = 100 }
 		divide_variable = { which = pirates_f_tmp value = pirates_f_tmp2 }
 		round_variable_to_closest = { which = pirates_f_tmp value = 0.01 }
 	}
-	set_variable = { which = pirates_fleet_factor value = prev.pirates_factor }
-	multiply_variable = { which = pirates_fleet_factor value = 140 } # 75
+	set_variable		= { which = pirates_fleet_factor value = prev.pirates_factor }
+	multiply_variable	= { which = pirates_fleet_factor value = 108 } # 75
+	change_variable		= { which = pirates_fleet_factor value = 72 }
+	divide_variable		= { which = pirates_fleet_factor value = 2 }
 	round_variable = pirates_fleet_factor
-	log = "pirates_fleet_factor [This.pirates_fleet_factor]"
+	# log = "pirates_fleet_factor [This.pirates_fleet_factor]"
 
 	# Corvettes: AVG 100 FP
 	while = {

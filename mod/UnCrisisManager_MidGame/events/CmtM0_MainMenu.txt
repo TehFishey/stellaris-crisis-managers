@@ -9,10 +9,10 @@ namespace = CrisisManagerMenu
 #############################################
 
 country_event = {
-	id = CrisisManagerMenu.0100
-	title = CrisisManagerMenu.0100.name
+	id = CrisisManagerMenu.100
+	title = CrisisManagerMenu.100.name
 	desc = {
-		text = CrisisManagerMenu.0100.desc1
+		text = CrisisManagerMenu.100.desc1
 		trigger = {
 			NOR = {
 				CmtTriggerAnyManagedEventTriggered = yes
@@ -21,11 +21,11 @@ country_event = {
 		}
 	}
 	desc = {
-		text = CrisisManagerMenu.0100.desc2
+		text = CrisisManagerMenu.100.desc2
 		trigger = { CmtTriggerAnyManagedEventTriggered = yes }
 	}
 	desc = {
-		text = CrisisManagerMenu.0100.desc3
+		text = CrisisManagerMenu.100.desc3
 		trigger = { has_global_flag = CmtFlagTemplateAppliedNow }
 	}
 	picture = GFX_evt_CmtMenuA
@@ -49,8 +49,8 @@ country_event = {
 
 	### Configurations Viewer
 	option = {
-		name = CrisisManagerMenu.0100.1000.name
-		custom_tooltip = CrisisManagerMenu.0100.1000.tooltip
+		name = CrisisManagerMenu.100.1000.name
+		custom_tooltip = CrisisManagerMenu.100.1000.tooltip
 		hidden_effect = {
 			if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1000 } } }
 				country_event = { id = CrisisManagerMenu.1000 }
@@ -61,8 +61,8 @@ country_event = {
 
 	### Trigger Configurations
 	option = {
-		name = CrisisManagerMenu.0100.3100.name
-		custom_tooltip = CrisisManagerMenu.0100.3100.tooltip
+		name = CrisisManagerMenu.100.3100.name
+		custom_tooltip = CrisisManagerMenu.100.3100.tooltip
 		trigger = {
 			has_global_flag = CmtFlagEndGameEdition
 			OR = {
@@ -80,8 +80,8 @@ country_event = {
 
 	### Expansion Configurations
 	option = {
-		name = CrisisManagerMenu.0100.3200.name
-		custom_tooltip = CrisisManagerMenu.0100.3200.tooltip
+		name = CrisisManagerMenu.100.3200.name
+		custom_tooltip = CrisisManagerMenu.100.3200.tooltip
 		trigger = { has_global_flag = CmtFlagEndGameEdition }
 		hidden_effect = {
 			if = {
@@ -96,8 +96,8 @@ country_event = {
 
 	### Advanced Configurations
 	option = {
-		name = CrisisManagerMenu.0100.4000.name
-		custom_tooltip = CrisisManagerMenu.0100.4000.tooltip
+		name = CrisisManagerMenu.100.4000.name
+		custom_tooltip = CrisisManagerMenu.100.4000.tooltip
 		hidden_effect = {
 			if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.4000 } } }
 				country_event = { id = CrisisManagerMenu.4000 }
@@ -108,8 +108,8 @@ country_event = {
 
 	### Crisis Power
 	option = {
-		name = CrisisManagerMenu.0100.6000.name
-		custom_tooltip = CrisisManagerMenu.0100.6000.tooltip
+		name = CrisisManagerMenu.100.6000.name
+		custom_tooltip = CrisisManagerMenu.100.6000.tooltip
 		trigger = {
 			OR = {
 				has_global_flag = CmtFlagMidGameEdition
@@ -134,8 +134,8 @@ country_event = {
 
 	### Manual Operations
 	option = {
-		name = CrisisManagerMenu.0100.7000.name
-		custom_tooltip = CrisisManagerMenu.0100.7000.tooltip
+		name = CrisisManagerMenu.100.7000.name
+		custom_tooltip = CrisisManagerMenu.100.7000.tooltip
 		hidden_effect = {
 			if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.7000 } } }
 				country_event = { id = CrisisManagerMenu.7000 }
@@ -174,8 +174,8 @@ country_event = {
 			if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.2000 } } }
 				country_event = { id = CrisisManagerMenu.2000 }
 			}
-			if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.0100 } } }
-				country_event = { id = CrisisManagerMenu.0100 }
+			if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.100 } } }
+				country_event = { id = CrisisManagerMenu.100 }
 			}
 		}
 	}
@@ -196,16 +196,16 @@ country_event = {
 			if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.2001 } } }
 				country_event = { id = CrisisManagerMenu.2001 }
 			}
-			if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.0100 } } }
-				country_event = { id = CrisisManagerMenu.0100 }
+			if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.100 } } }
+				country_event = { id = CrisisManagerMenu.100 }
 			}
 		}
 	}
 
 	### Other Configuration Templetes
 	option = {
-		name = CrisisManagerMenu.0100.2100.name
-		custom_tooltip = CrisisManagerMenu.0100.2100.tooltip
+		name = CrisisManagerMenu.100.2100.name
+		custom_tooltip = CrisisManagerMenu.100.2100.tooltip
 		trigger = {
 			OR = {
 				CmtTriggerAnyManagedEventTriggered = no
@@ -248,8 +248,8 @@ country_event = {
 
 	### Debug Menu
 	option = {
-		name = CrisisManagerMenu.0100.9000.name
-		custom_tooltip = CrisisManagerMenu.0100.9000.tooltip
+		name = CrisisManagerMenu.100.9000.name
+		custom_tooltip = CrisisManagerMenu.100.9000.tooltip
 		trigger = { has_global_flag = CmtFlagDebugMode }
 		hidden_effect = {
 			if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1000 } } }

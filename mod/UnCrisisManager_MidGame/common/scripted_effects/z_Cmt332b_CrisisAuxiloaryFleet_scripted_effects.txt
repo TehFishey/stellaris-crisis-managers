@@ -25,25 +25,6 @@
 
 CmtEffectCreateFleet_KhanArmy = {
 	# CmtEffectCreateGeneral_Marauder
-	if = {
-		limit = {
-			prev = { solar_system = { has_star_flag = marauder_capital_1 } }
-			exists = event_target:marauder_country_1
-		}
-		event_target:marauder_country_1.owner_species = { save_event_target_as = marauder_species }
-	} else_if = {
-		limit = {
-			prev = { solar_system = { has_star_flag = marauder_capital_2 } }
-			exists = event_target:marauder_country_2
-		}
-		event_target:marauder_country_2.owner_species = { save_event_target_as = marauder_species }
-	} else_if = {
-		limit = {
-			prev = { solar_system = { has_star_flag = marauder_capital_3 } }
-			exists = event_target:marauder_country_3
-		}
-		event_target:marauder_country_3.owner_species = { save_event_target_as = marauder_species }
-	}
 	create_leader = {
 		class = general
 		species = event_target:marauder_species

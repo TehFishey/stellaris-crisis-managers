@@ -848,6 +848,7 @@ country_event = {
 	id = CrisisManagerMenu.4590
 	hide_window = yes
 	is_triggered_only = yes
+	is_test_event = yes
 	trigger = { always = no }
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }
@@ -1655,6 +1656,7 @@ country_event = {
 	id = CrisisManagerMenu.4690
 	hide_window = yes
 	is_triggered_only = yes
+	is_test_event = yes
 	trigger = { always = no }
 	abort_trigger = { NOT = { has_country_flag = CmtFlagNowInMenu } }
 }

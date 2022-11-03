@@ -839,9 +839,51 @@ create_fourth_diadochi = {
 	}
 }
 
-# This = Root = Marauder
+# This = root = Marauder
 get_marauder_species = {
 	# log = "GET MARAUDER SPECIES"
+	[[PLANET]
+	if = { limit = { exists = prev prev = { is_scope_valid = yes is_scope_type = planet } }
+		log = "GET MARAUDER PLANET SPECIES"
+		if = {
+			limit = {
+				exists = event_target:marauder_country_1	# root = { has_country_flag = marauder_1 }
+				OR = {
+					prev.solar_system = { has_star_flag = marauder_capital_1 }
+					AND = {
+						exists = event_target:CmtTargetMarauderRallyPoint1
+						event_target:CmtTargetMarauderRallyPoint1 = { is_planet = prevprev }
+					}
+				}
+			}
+			event_target:marauder_country_1.owner_species = { save_event_target_as = marauder_species }
+		} else_if = {
+			limit = {
+				exists = event_target:marauder_country_2
+				OR = {
+					prev.solar_system = { has_star_flag = marauder_capital_2 }
+					AND = {
+						exists = event_target:CmtTargetMarauderRallyPoint2
+						event_target:CmtTargetMarauderRallyPoint2 = { is_planet = prevprev }
+					}
+				}
+			}
+			event_target:marauder_country_2.owner_species = { save_event_target_as = marauder_species }
+		} else_if = {
+			limit = {
+				exists = event_target:marauder_country_3
+				OR = {
+					prev.solar_system = { has_star_flag = marauder_capital_3 }
+					AND = {
+						exists = event_target:CmtTargetMarauderRallyPoint3
+						event_target:CmtTargetMarauderRallyPoint3 = { is_planet = prevprev }
+					}
+				}
+			}
+			event_target:marauder_country_3.owner_species = { save_event_target_as = marauder_species }
+		}
+	} ]
+
 	if = {
 		limit = {
 			OR = {
@@ -860,16 +902,16 @@ get_marauder_species = {
 				}
 			}
 		}
-		# random_owned_pop_species = {
-		random_owned_species = {
+		random_owned_pop_species = {
+		# random_owned_species = {
 			limit = {
 				is_scope_valid = yes
 				is_scope_type = species
 				OR = {
 					species_can_be_necrophaged = yes
 					AND = {
-						exists = owner_species
-						is_same_species = root.owner_species
+						exists = prev.owner_species
+						is_same_species = prev.owner_species
 					}
 				}
 				NOR = {
@@ -880,7 +922,7 @@ get_marauder_species = {
 			}
 			weights = {
 				base = 100
-				# complex_trigger_modifier = { #add 10 for each unhappy pop of this species
+				# complex_trigger_modifier = { # add 10 for each unhappy pop of this species
 				# 	trigger = count_owned_pop
 				# 	trigger_scope = root
 				# 	potential = {
@@ -888,22 +930,15 @@ get_marauder_species = {
 				# 	}
 				# 	parameters = {
 				# 		limit = {
-				# 			is_same_species = prevprev #prev should be root.target, prevprev the species
+				# 			is_same_species = prevprev # prev should be root.target, prevprev the species
 				# 			happiness > 0.5
 				# 		}
 				# 	}
 				# 	mode = add
 				# 	mult = 10
 				# }
-				complex_trigger_modifier = { #multiply it by the percentage of pops on the planet
-					trigger = pop_percentage
-					trigger_scope = root
-					parameters = {
-						limit = { is_same_species = prev }
-					}
-					mode = mult
-				}
-				modifier = { factor = 0.85 is_same_species = root.owner_species }
+				# modifier = { factor = 0.9 is_same_species = root.owner_species }
+				# # modifier = { add = 3 is_same_species = root.owner_species }
 				# modifier = {
 				# 	add = 1
 				# 	prev = {
@@ -931,22 +966,29 @@ get_marauder_species = {
 				# 		}
 				# 	}
 				# }
-				# # modifier = { add = 3 is_same_species = root.owner_species }
 				modifier = {
 					factor = 1.5
-					root = { exists = capital_scope capital_scope = { habitability = { who = prevprev value > 0.6 } } }
+					prev = { exists = capital_scope capital_scope = { habitability = { who = prevprev value > 0.6 } } }
 				}
 				modifier = {
 					factor = 2
-					root = { any_owned_planet = { is_homeworld = yes is_same_value = prevprev.home_planet } }
+					prev = { any_owned_planet = { is_homeworld = yes is_same_value = prevprev.home_planet } }
+				}
+				complex_trigger_modifier = { # multiply it by the percentage of pops of the country
+					trigger = pop_percentage
+					trigger_scope = prev
+					parameters = {
+						limit = { is_same_species = prev }
+					}
+					mode = mult
 				}
 			}
-			# log="RANDOM OWNED MARAUDER SPECIES"
+			log="RANDOM OWNED MARAUDER SPECIES"
 			save_event_target_as = marauder_species
-			root = {
-				change_dominant_species = { species = prev }
-				set_built_species = prev
-			}
+			# prev = {
+			# 	change_dominant_species = { species = prev }
+			# 	set_built_species = prev
+			# }
 		}
 	}
 
@@ -957,7 +999,7 @@ get_marauder_species = {
 				exists = owner_species
 				pop_percentage = {
 					percentage > 0.1
-					limit = { is_same_species = root.owner_species }
+					limit = { is_same_species = prev.owner_species }
 				}
 				pop_percentage = {
 					percentage > 0.1
@@ -973,7 +1015,7 @@ get_marauder_species = {
 					species_can_be_necrophaged = yes
 					AND = {
 						exists = owner_species
-						is_same_species = root.owner_species
+						is_same_species = prev.owner_species
 					}
 				}
 				NOR = {
@@ -983,37 +1025,37 @@ get_marauder_species = {
 				}
 			}
 			weights = {
-				base = 10
-				# complex_trigger_modifier = { #add 10 for each unhappy pop of this species
+				base = 100
+				# complex_trigger_modifier = { # add 10 for each unhappy pop of this species
 				# 	trigger = count_owned_pop
-				# 	trigger_scope = root
+				# 	trigger_scope = prev
 				# 	potential = {
-				# 		species_has_happiness_with_owner = root.owner
+				# 		species_has_happiness_with_owner = prev.owner
 				# 	}
 				# 	parameters = {
 				# 		limit = {
-				# 			is_same_species = prevprev #prev should be root.target, prevprev the species
+				# 			is_same_species = prevprev # prev should be prev.target, prevprev the species
 				# 			happiness > 0.5
 				# 		}
 				# 	}
 				# 	mode = add
 				# 	mult = 10
 				# }
-				complex_trigger_modifier = { #multiply it by the percentage of pops on the planet
+				complex_trigger_modifier = { # multiply it by the percentage of pops of the country
 					trigger = pop_percentage
-					trigger_scope = root
+					trigger_scope = prev
 					parameters = {
 						limit = { is_same_species = prev }
 					}
 					mode = mult
 				}
 			}
-		}
-		# log="OWNER DOMINANT SPECIES"
-		save_event_target_as = marauder_species
-		root = {
-			change_dominant_species = { species = prev }
-			set_built_species = prev
+			log="OWNER DOMINANT SPECIES"
+			save_event_target_as = marauder_species
+			prev = {
+				change_dominant_species = { species = prev }
+				set_built_species = prev
+			}
 		}
 	}
 	# Common Fallback

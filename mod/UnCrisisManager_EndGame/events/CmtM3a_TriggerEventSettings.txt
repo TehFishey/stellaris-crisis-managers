@@ -63,8 +63,8 @@ country_event = {
 			if = {
 				limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.0100 } } }
-					country_event = { id = CrisisManagerMenu.0100 }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.100 } } }
+					country_event = { id = CrisisManagerMenu.100 }
 				}
 			} else_if = {
 				limit = { has_country_flag = CmtFlagIndividual }
@@ -73,8 +73,8 @@ country_event = {
 				}
 			} else_if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMultiple value = 1 } } }
-				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.0100 } } }
-					country_event = { id = CrisisManagerMenu.0100 }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.100 } } }
+					country_event = { id = CrisisManagerMenu.100 }
 				}
 			} else_if = {
 				limit = {
@@ -710,8 +710,8 @@ country_event = {
 				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1010 } } }
 					country_event = { id = CrisisManagerMenu.1010 }
 				}
-			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.0100 } } }
-				country_event = { id = CrisisManagerMenu.0100 }
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.100 } } }
+				country_event = { id = CrisisManagerMenu.100 }
 			}
 		}
 	}

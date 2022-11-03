@@ -38,7 +38,7 @@ namespace = CrisisManagerControl
 #####################
 
 event = {
-	id = CrisisManagerControl.0400
+	id = CrisisManagerControl.400
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -48,12 +48,12 @@ event = {
 
 	immediate = {
 		event_target:CmtGlobalVar = {
-			country_event = { id = CrisisManagerControl.0412 days = @CmtConstSoundControlDate }
-			country_event = { id = CrisisManagerControl.0413 days = @CmtConstSoundControlDate }
-			country_event = { id = CrisisManagerControl.0414 days = @CmtConstSoundControlDate }
-			country_event = { id = CrisisManagerControl.0423 days = @CmtConstSoundControlDate }
-			country_event = { id = CrisisManagerControl.0422 days = @CmtConstSoundControlDate }
-			country_event = { id = CrisisManagerControl.0421 days = @CmtConstSoundControlDate }
+			country_event = { id = CrisisManagerControl.412 days = @CmtConstSoundControlDate }
+			country_event = { id = CrisisManagerControl.413 days = @CmtConstSoundControlDate }
+			country_event = { id = CrisisManagerControl.414 days = @CmtConstSoundControlDate }
+			country_event = { id = CrisisManagerControl.423 days = @CmtConstSoundControlDate }
+			country_event = { id = CrisisManagerControl.422 days = @CmtConstSoundControlDate }
+			country_event = { id = CrisisManagerControl.421 days = @CmtConstSoundControlDate }
 		}
 	}
 }
@@ -64,7 +64,7 @@ event = {
 
 ### Stage 1 -> 2
 country_event = {
-	id = CrisisManagerControl.0412
+	id = CrisisManagerControl.412
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -121,7 +121,7 @@ country_event = {
 
 ### Stage 2 -> 3
 country_event = {
-	id = CrisisManagerControl.0413
+	id = CrisisManagerControl.413
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -187,7 +187,7 @@ country_event = {
 
 ### Stage 3 -> 4
 country_event = {
-	id = CrisisManagerControl.0414
+	id = CrisisManagerControl.414
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -253,7 +253,7 @@ country_event = {
 
 ### Stage 2 -> 1
 country_event = {
-	id = CrisisManagerControl.0421
+	id = CrisisManagerControl.421
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -297,7 +297,7 @@ country_event = {
 
 ### Stage 3 -> 2
 country_event = {
-	id = CrisisManagerControl.0422
+	id = CrisisManagerControl.422
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -369,7 +369,7 @@ country_event = {
 
 ### Stage 4 -> 3
 country_event = {
-	id = CrisisManagerControl.0423
+	id = CrisisManagerControl.423
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -444,7 +444,7 @@ country_event = {
 ####################
 
 country_event = {
-	id = CrisisManagerControl.0430
+	id = CrisisManagerControl.430
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -499,9 +499,9 @@ country_event = {
 					set_crisis_sound = ai_empire_ambient_stage_1
 				}
 			}
-			country_event = { id = CrisisManagerControl.0412 }
-			country_event = { id = CrisisManagerControl.0413 }
-			country_event = { id = CrisisManagerControl.0414 }
+			country_event = { id = CrisisManagerControl.412 }
+			country_event = { id = CrisisManagerControl.413 }
+			country_event = { id = CrisisManagerControl.414 }
 		} else = {
 			stop_crisis_sound = yes
 			end_crisis = yes

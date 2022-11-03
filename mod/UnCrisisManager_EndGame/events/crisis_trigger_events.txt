@@ -26,6 +26,6 @@ event = {
 		# NOT = { has_global_flag = galactic_crisis_happened }
 	}
 	immediate = {
-		event_target:CmtGlobalVar = { country_event = { id = CrisisManagerControl.0011 } }
+		event_target:CmtGlobalVar = { country_event = { id = CrisisManagerControl.11 } }
 	}
 }

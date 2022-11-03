@@ -258,8 +258,8 @@ country_event = {
 		custom_tooltip = CmtTextGoBack.tooltip
 		hidden_effect = {
 			remove_country_flag = CmtFlagIndividual
-			if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.0100 } } }
-				country_event = { id = CrisisManagerMenu.0100 }
+			if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.100 } } }
+				country_event = { id = CrisisManagerMenu.100 }
 			}
 		}
 	}

@@ -10,21 +10,21 @@ namespace = CrisisManagerMenu
 #####################################
 ### Activation on Game Start
 event = {
-	id = CrisisManagerMenu.0001
+	id = CrisisManagerMenu.1
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
 		CmtEffectSetDetectedEdition = yes
 		## Initializing Variables
 		if = { limit = { is_scope_type = country is_country_type = global_event }
-			country_event = { id = CrisisManagerMenu.0021 }
+			country_event = { id = CrisisManagerMenu.21 }
 			# log="Game started global_event"
 		} else_if = { limit = { exists = event_target:global_event_country }
-			event_target:global_event_country = { country_event = { id = CrisisManagerMenu.0021 } }
+			event_target:global_event_country = { country_event = { id = CrisisManagerMenu.21 } }
 			# log="Game started global_event_country"
 		} else = {
 			random_country = { limit = { is_country_type = global_event }
-				country_event = { id = CrisisManagerMenu.0021 }
+				country_event = { id = CrisisManagerMenu.21 }
 			}
 		}
 		## Main Menu
@@ -37,17 +37,17 @@ event = {
 			}
 			if = { limit = { is_scope_type = country is_ai = no }
 				if = {
-					limit = { NOT = { has_active_event = { CrisisManagerMenu.0100 } } }
-					country_event = { id = CrisisManagerMenu.0100 }
+					limit = { NOT = { has_active_event = { CrisisManagerMenu.100 } } }
+					country_event = { id = CrisisManagerMenu.100 }
 				}
 				# log="Cmt Game started is_scope_type = country"
 			} else = {
 				random_playable_country = {
 					limit = {
 						is_ai = no
-						NOT = { has_active_event = { CrisisManagerMenu.0100 } }
+						NOT = { has_active_event = { CrisisManagerMenu.100 } }
 					}
-					country_event = { id = CrisisManagerMenu.0100 }
+					country_event = { id = CrisisManagerMenu.100 }
 					# log="Cmt Game started random_playable_country"
 				}
 			}
@@ -59,7 +59,7 @@ event = {
 
 ### Activation for Saved Game
 event = {
-	id = CrisisManagerMenu.0002
+	id = CrisisManagerMenu.2
 	hide_window = yes
 	is_triggered_only = yes
 	# Dayly MTTH for fire_only_once event is a big waste of performance, but there is still no other way.
@@ -72,16 +72,16 @@ event = {
 		if = {
 			limit = { CmtTriggerAnyManagedEventTriggered = yes }
 			every_playable_country = {
-				limit = { NOR = { is_ai = yes has_active_event = { CrisisManagerMenu.0012 } } }
-				country_event = { id = CrisisManagerMenu.0012 }		## Warning: Crisis Happened Already
+				limit = { NOR = { is_ai = yes has_active_event = { CrisisManagerMenu.12 } } }
+				country_event = { id = CrisisManagerMenu.12 }		## Warning: Crisis Happened Already
 			}
 		} else = {
 			event_target:global_event_country = {
-				country_event = { id = CrisisManagerMenu.0021 }		## Initializing Variables
+				country_event = { id = CrisisManagerMenu.21 }		## Initializing Variables
 			}
 			random_playable_country = {
-				limit = { NOR = { is_ai = yes has_active_event = { CrisisManagerMenu.0011 } } }
-				country_event = { id = CrisisManagerMenu.0011 }		## Activating Notification
+				limit = { NOR = { is_ai = yes has_active_event = { CrisisManagerMenu.11 } } }
+				country_event = { id = CrisisManagerMenu.11 }		## Activating Notification
 			}
 		}
 		# log="Cmt Save loaded 2" # \\[This.GetName]
@@ -90,7 +90,7 @@ event = {
 
 ### Manual Call Up (Called from 'Mod Menu')
 country_event = {
-	id = CrisisManagerMenu.0003	# Same as CrisisManagerMenu.3
+	id = CrisisManagerMenu.3	# Same as CrisisManagerMenu.3
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { is_ai = no }
@@ -101,27 +101,27 @@ country_event = {
 		}
 		if = {
 			limit = {
-				NOT = { has_active_event = { CrisisManagerMenu.0013 } }
+				NOT = { has_active_event = { CrisisManagerMenu.13 } }
 				any_playable_country = { is_ai = no has_country_flag = CmtFlagNowInMenu }
 			}
-			country_event = { id = CrisisManagerMenu.0013 }
+			country_event = { id = CrisisManagerMenu.13 }
 		} else_if = {
 			limit = {
 				NOR = {
 					is_ai = yes
-					has_active_event = { CrisisManagerMenu.0100 }
+					has_active_event = { CrisisManagerMenu.100 }
 				}
 			}
-			country_event = { id = CrisisManagerMenu.0100 }
+			country_event = { id = CrisisManagerMenu.100 }
 		}
 	}
 }
 
 ### Activating Notification (for only in-game install)
 country_event = {
-	id = CrisisManagerMenu.0011
-	title = CrisisManagerMenu.0011.name
-	desc = CrisisManagerMenu.0011.desc
+	id = CrisisManagerMenu.11
+	title = CrisisManagerMenu.11.name
+	desc = CrisisManagerMenu.11.desc
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
 	option = {
@@ -136,10 +136,10 @@ country_event = {
 					NOR = {
 						has_global_flag = CmtFlagNoCall
 						has_country_flag = CmtFlagNowInMenu
-						has_active_event = { CrisisManagerMenu.0100 }
+						has_active_event = { CrisisManagerMenu.100 }
 					}
 				}
-				country_event = { id = CrisisManagerMenu.0100 }
+				country_event = { id = CrisisManagerMenu.100 }
 			}
 		}
 	}
@@ -147,9 +147,9 @@ country_event = {
 
 ### Error: Crisis Happened Already (for only in-game install)
 country_event = {
-	id = CrisisManagerMenu.0012
-	title = CrisisManagerMenu.0012.name
-	desc = CrisisManagerMenu.0012.desc
+	id = CrisisManagerMenu.12
+	title = CrisisManagerMenu.12.name
+	desc = CrisisManagerMenu.12.desc
 	picture = GFX_evt_nuclear_explosion
 	is_triggered_only = yes
 	option = {
@@ -161,9 +161,9 @@ country_event = {
 
 ### Caution: Someone Opening Menu (for Manual Callup)
 country_event = {
-	id = CrisisManagerMenu.0013
-	title = CrisisManagerMenu.0013.name
-	desc = CrisisManagerMenu.0013.desc
+	id = CrisisManagerMenu.13
+	title = CrisisManagerMenu.13.name
+	desc = CrisisManagerMenu.13.desc
 	picture = GFX_evt_galactic_senate
 	is_triggered_only = yes
 	trigger = {
@@ -175,14 +175,14 @@ country_event = {
 		custom_tooltip = CmtTextOK.tooltip
 	}
 	option = {
-		name = CrisisManagerMenu.0013b.name
-		custom_tooltip = CrisisManagerMenu.0013b.tooltip
+		name = CrisisManagerMenu.13b.name
+		custom_tooltip = CrisisManagerMenu.13b.tooltip
 		hidden_effect = {
 			if = {
 				limit = {
-					NOT = { has_active_event = { CrisisManagerMenu.0100 } }
+					NOT = { has_active_event = { CrisisManagerMenu.100 } }
 				}
-				country_event = { id = CrisisManagerMenu.0100 }
+				country_event = { id = CrisisManagerMenu.100 }
 			}
 		}
 	}
@@ -190,9 +190,9 @@ country_event = {
 
 ### Warning: Do Not Advance Time.
 country_event = {
-	id = CrisisManagerMenu.0014
-	title = CrisisManagerMenu.0014.name
-	desc = CrisisManagerMenu.0014.desc
+	id = CrisisManagerMenu.14
+	title = CrisisManagerMenu.14.name
+	desc = CrisisManagerMenu.14.desc
 	picture = GFX_evt_galactic_senate
 	is_triggered_only = yes	# no?
 	trigger = {
@@ -205,15 +205,15 @@ country_event = {
 		custom_tooltip = CmtTextOK.tooltip
 	}
 	option = {
-		name = CrisisManagerMenu.0014b.name
-		custom_tooltip = CrisisManagerMenu.0014b.tooltip
+		name = CrisisManagerMenu.14b.name
+		custom_tooltip = CrisisManagerMenu.14b.tooltip
 		hidden_effect = { set_country_flag = CmtFlagNeverWarn14 }
 	}
 }
 
 ### Initializing Variables & Flags
 country_event = {
-	id = CrisisManagerMenu.0021
+	id = CrisisManagerMenu.21
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
@@ -263,11 +263,11 @@ country_event = {
 
 ### Redirect from Console Command
 country_event = {
-	id = CrisisManagerMenu.0900
+	id = CrisisManagerMenu.900
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { is_ai = no }
 	immediate = {
-		country_event = { id = CrisisManagerMenu.0003 }
+		country_event = { id = CrisisManagerMenu.3 }
 	}
 }

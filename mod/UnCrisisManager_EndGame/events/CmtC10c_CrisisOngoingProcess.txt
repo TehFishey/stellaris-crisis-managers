@@ -16,7 +16,7 @@ namespace = CrisisManagerControl
 
 ### Redirect only, Called by on_country_destroyed.
 country_event = {
-	id = CrisisManagerControl.0310
+	id = CrisisManagerControl.310
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -28,15 +28,15 @@ country_event = {
 
 	immediate = {
 		event_target:CmtGlobalVar = {
-			country_event = { id = CrisisManagerControl.0311 }
-			country_event = { id = CrisisManagerControl.0311 days = 3 }	## Backup
+			country_event = { id = CrisisManagerControl.311 }
+			country_event = { id = CrisisManagerControl.311 days = 3 }	## Backup
 		}
 	}
 }
 
 ### Flag Control for Crisis Interval.
 country_event = {
-	id = CrisisManagerControl.0311
+	id = CrisisManagerControl.311
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -52,7 +52,7 @@ country_event = {
 
 ### Dead End
 country_event = {
-	id = CrisisManagerControl.0320
+	id = CrisisManagerControl.320
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -84,7 +84,7 @@ country_event = {
 
 ### Occupy Planets by Ground Combat / Start Purging (Prethoryn, Contingency)
 country_event = {
-	id = CrisisManagerControl.0041
+	id = CrisisManagerControl.41
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -161,7 +161,7 @@ country_event = {
 
 ### Occupy Planets by Orbital Bombardmenet / Start Purging (Prethoryn, Contingency)
 planet_event = {
-	id = CrisisManagerControl.0042
+	id = CrisisManagerControl.42
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -236,7 +236,7 @@ planet_event = {
 
 ### Complete Purging (Exds)
 planet_event = {
-	id = CrisisManagerControl.0043
+	id = CrisisManagerControl.43
 	title = "crisis.1011.name"
 	desc = "crisis.1011.desc"
 	picture = GFX_evt_city_ruins
@@ -324,7 +324,7 @@ planet_event = {
 
 ### Auxiliary Process for Purging
 event = {
-	id = CrisisManagerControl.0044
+	id = CrisisManagerControl.44
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -336,8 +336,8 @@ event = {
 		event_target:CmtGlobalVar = {
 			if = {
 				limit = { check_variable = { which = CmtVarPurgeSpeed value = 5 } }
-				country_event = { id = CrisisManagerControl.0045 days = 10 }
-				country_event = { id = CrisisManagerControl.0045 days = 20 }
+				country_event = { id = CrisisManagerControl.45 days = 10 }
+				country_event = { id = CrisisManagerControl.45 days = 20 }
 			} else_if = {
 				limit = {
 					OR = {
@@ -345,22 +345,22 @@ event = {
 						check_variable = { which = CmtVarPurgeSpeed value = 7 }
 					}
 				}
-				country_event = { id = CrisisManagerControl.0045 days =  3 }
-				country_event = { id = CrisisManagerControl.0045 days =  6 }
-				country_event = { id = CrisisManagerControl.0045 days =  9 }
-				country_event = { id = CrisisManagerControl.0045 days = 12 }
-				country_event = { id = CrisisManagerControl.0045 days = 15 }
-				country_event = { id = CrisisManagerControl.0045 days = 18 }
-				country_event = { id = CrisisManagerControl.0045 days = 21 }
-				country_event = { id = CrisisManagerControl.0045 days = 24 }
-				country_event = { id = CrisisManagerControl.0045 days = 27 }
+				country_event = { id = CrisisManagerControl.45 days =  3 }
+				country_event = { id = CrisisManagerControl.45 days =  6 }
+				country_event = { id = CrisisManagerControl.45 days =  9 }
+				country_event = { id = CrisisManagerControl.45 days = 12 }
+				country_event = { id = CrisisManagerControl.45 days = 15 }
+				country_event = { id = CrisisManagerControl.45 days = 18 }
+				country_event = { id = CrisisManagerControl.45 days = 21 }
+				country_event = { id = CrisisManagerControl.45 days = 24 }
+				country_event = { id = CrisisManagerControl.45 days = 27 }
 			}
 		}
 	}
 }
 
 country_event = {
-	id = CrisisManagerControl.0045
+	id = CrisisManagerControl.45
 	hide_window = yes
 	is_triggered_only = yes
 
@@ -376,7 +376,7 @@ country_event = {
 				if = {
 					limit = { num_pops = 1 }
 					planet_event = { id = crisis.202 }		## Prethoryn
-					planet_event = { id = CrisisManagerControl.0043 }		## Exds
+					planet_event = { id = CrisisManagerControl.43 }		## Exds
 					planet_event = { id = crisis.2044 }		## Contingency
 				}
 				random_owned_pop = {
