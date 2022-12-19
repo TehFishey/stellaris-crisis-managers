@@ -161,7 +161,7 @@ country_event = {
 		hidden_effect = { CmtEffect1026TryCall4821 = yes }
 	}
 	option = {
-		name = CrisisManagerMenu.4821.Vt.name
+		name = CmtTextTemplateUnique.name
 		custom_tooltip = CrisisManagerMenu.4821.tooltip
 		trigger = {
 			event_target:CmtGlobalVar = {
@@ -1188,8 +1188,8 @@ country_event = {
 		hidden_effect = { CmtEffect1027TryCall4960 = yes }
 	}
 	option = {
-		name = CrisisManagerMenu.4960z.name
-		custom_tooltip = CrisisManagerMenu.4960z.tooltip
+		name = CrisisManagerMenu.4960x.name
+		custom_tooltip = CmtTextErrUndefined.tooltip
 		trigger = {
 			event_target:CmtGlobalVar = {
 				OR = {

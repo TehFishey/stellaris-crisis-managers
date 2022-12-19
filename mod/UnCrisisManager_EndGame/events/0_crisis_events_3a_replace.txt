@@ -59,6 +59,8 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
+	is_test_event = yes
+
 	trigger = { always = no }
 
 	immediate = {
@@ -1392,14 +1394,14 @@ country_event = {
 		}
 		CmtTriggerIsContingency = yes
 		OR = {
-			galaxy_percentage > 0.45
+			galaxy_percentage > 0.4
 			AND = {
 				NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCybrexResurfacing value = 2 } } }
-				galaxy_percentage > 0.20
+				endgame_crisis_large_size_trigger = yes # galaxy_percentage > 0.2
 			}
 			AND = {
 				event_target:CmtGlobalVar = { check_variable = { which = CmtVarCybrexResurfacing value = 4 } }
-				galaxy_percentage > 0.05
+				galaxy_percentage > 0.07
 			}
 			event_target:CmtGlobalVar = { check_variable = { which = CmtVarCybrexResurfacing value = 5 } }
 		}
@@ -1585,6 +1587,7 @@ country_event = {
 	id = crisis.2041
 	hide_window = yes
 	is_triggered_only = yes
+	is_test_event = yes
 	trigger = { always = no }
 }
 # Superfluous now
@@ -1592,5 +1595,6 @@ country_event = {
 	id = crisis.2045
 	hide_window = yes
 	is_triggered_only = yes
+	is_test_event = yes
 	trigger = { always = no }
 }

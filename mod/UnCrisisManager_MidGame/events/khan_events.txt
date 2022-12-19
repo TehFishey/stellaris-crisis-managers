@@ -1779,7 +1779,7 @@ system_event = {
 					has_planet_flag = megastructure
 					has_planet_flag = has_megastructure
 				}
-				is_ringworld = no
+				has_ringworld_output_boost = no
 
 			}
 			weights = { base = 1 modifier = { add = 2 is_a_planet = yes } }

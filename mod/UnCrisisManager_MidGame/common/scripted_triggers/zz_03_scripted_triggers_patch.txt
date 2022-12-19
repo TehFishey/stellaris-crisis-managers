@@ -89,17 +89,17 @@ is_subject_of_khan = {
 # this: system
 # root: great khan's horde (country)
 # Changed vanilla only for strange bug player lost systems to diadochi
-is_potential_diadochi_system = {
-	has_owner = yes
-	exists = space_owner
-	space_owner = { is_same_empire = root }
-	exists = starbase
-	exists = starbase.owner
-	starbase.owner = { is_same_empire = root }
-	NOR = {
-		has_star_flag = first_diadochi_system
-		has_star_flag = second_diadochi_system
-		has_star_flag = third_diadochi_system
-		has_star_flag = fourth_diadochi_system
-	}
-}
+# is_potential_diadochi_system = {
+# 	# has_owner = yes
+# 	exists = space_owner
+# 	space_owner = { is_same_empire = root }
+# 	# exists = starbase
+# 	# exists = starbase.owner
+# 	# starbase.owner = { is_same_empire = root }
+# 	NOR = {
+# 		has_star_flag = first_diadochi_system
+# 		has_star_flag = second_diadochi_system
+# 		has_star_flag = third_diadochi_system
+# 		has_star_flag = fourth_diadochi_system
+# 	}
+# }

@@ -23,7 +23,7 @@ country_event = {
 	trigger = {
 		has_crisis_stage_3 = yes
 		is_country_type = swarm
-		galaxy_percentage < 0.15
+		galaxy_percentage < 0.12
 	}
 
 	immediate = {

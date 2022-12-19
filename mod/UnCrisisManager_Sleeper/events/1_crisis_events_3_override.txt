@@ -270,9 +270,12 @@ country_event = {
 					every_playable_country = {
 						limit = {
 							is_galactic_community_member = yes
-							NOT = { is_same_empire = prev }
+							NOR = {
+								is_same_empire = prev
+								is_at_war_with = root
+							}
 						}
-						join_war = prev # Should use different	effect to ensure they only join the correct war
+						join_war = prev # Should use different effect to ensure they only join the correct war
 					}
 				}
 			}
@@ -298,9 +301,7 @@ country_event = {
 				}
 				effect = {
 					save_global_event_target_as = portal_holder_1
-					every_playable_country = {
-						establish_communications_no_message = event_target:portal_holder_1
-					}
+					every_playable_country = { establish_communications_no_message = event_target:portal_holder_1 }
 				}
 			}
 		}

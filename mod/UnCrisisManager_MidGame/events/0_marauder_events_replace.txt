@@ -3937,7 +3937,7 @@ country_event = {
 				hidden_trigger = {
 					OR = {
 						is_variable_set = "planets_lost_to_marauder"
-						from = { NOT = {  has_country_flag = raid_cooldown } }
+						from = { NOT = { has_country_flag = raid_cooldown } }
 						from = { is_overlord = yes }
 					}
 				}

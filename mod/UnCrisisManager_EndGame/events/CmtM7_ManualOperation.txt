@@ -27,8 +27,9 @@ country_event = {
 			limit = {
 				host_has_dlc = "Apocalypse"
 				has_global_flag = CmtFlagMidGameEdition
+				has_global_flag = marauder_crisis_started
 				has_global_flag = marauder_crisis_ongoing
-				NOT = { any_country = { is_country_type = awakened_marauders } } # CmtTriggerNowInKhanCrisis = no
+				NOT = { exists = event_target:raider_khanate } # CmtTriggerNowInKhanCrisis = no
 			}
 			remove_global_flag = marauder_crisis_ongoing
 		}
@@ -374,7 +375,7 @@ country_event = {
 		allow = { hidden_trigger = { always = no } }
 	}
 
-	### Terminate Eng-Game Crisis
+	### Terminate Mid/Eng-Game Crisis
 	option = {
 		name = CrisisManagerMenu.7000.7200.name
 		custom_tooltip = CrisisManagerMenu.7000.7200.tooltip

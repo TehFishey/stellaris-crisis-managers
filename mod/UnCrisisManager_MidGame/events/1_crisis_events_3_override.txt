@@ -232,14 +232,37 @@ planet_event = {
 
 # Declare Crisis (Used on desired Crisis Empire)
 country_event = {
-	id = crisis.4099
+	id = crisis.4099 # test event of resolution_declare_crisis = {
 	hide_window = yes
 	is_triggered_only = yes
-	# trigger = { always = no } Test only
+	# trigger = { always = no }
 	immediate = {
+		if = {
+			limit = { is_galactic_community_member = yes }
+			remove_from_galactic_community = yes
+		}
+		if = {
+			limit = {
+				is_galactic_council_established = yes
+				is_part_of_galactic_council = yes
+			}
+			remove_from_galactic_council = yes
+		}
+		every_subject = {
+			if = {
+				limit = { is_galactic_community_member = yes }
+				remove_from_galactic_community = yes
+			}
+			if = {
+				limit = {
+					is_galactic_council_established = yes
+					is_part_of_galactic_council = yes
+				}
+				remove_from_galactic_council = yes
+			}
+		}
 		set_country_flag = declared_crisis
 		save_event_target_as = new_crisis
-		country_event = { id = crisis.4105 } # Notify
 		every_playable_country = {
 			limit = { is_ai = no NOT = { is_same_empire = root } }
 			country_event = { id = crisis.4100 }
@@ -251,30 +274,63 @@ country_event = {
 					limit = { is_galactic_custodian = yes }
 					save_event_target_as = community_war_leader
 				}
+				country_event = { id = crisis.4105 } # Notify (Community)
+			} else_if = {
+				limit = { has_galactic_emperor = yes }
+				galactic_emperor = { save_event_target_as = community_war_leader }
+				country_event = { id = crisis.4106 } # Unused Notify (gal_emperor)??
 			} else = {
 				random_playable_country = {
 					limit = {
 						is_galactic_community_member = yes
-						galactic_community_rank = 1
+						# NOT = { is_in_federation_with = event_target:new_crisis }
+					}
+					weights = {
+						base = 1
+						modifier = {
+							add = 10000
+							galactic_community_rank = 1
+						}
+						modifier = {
+							add = 1000
+							galactic_community_rank = 2
+						}
+						modifier = {
+							add = 100
+							galactic_community_rank = 3
+						}
+						modifier = {
+							add = 10
+							is_galactic_council_established = yes
+							is_part_of_galactic_council = yes
+						}
 					}
 					save_event_target_as = community_war_leader
 				}
+				country_event = { id = crisis.4105 } # Notify (Community)
 			}
 			if = { limit = { exists = event_target:community_war_leader }
 				event_target:community_war_leader = {
-					declare_war = {
-						target = root
-						name = { key = "NAME_Declared_Crisis_War" variable_string = "This.MainDefender.GetAdj" }
-						attacker_war_goal = "wg_declared_crisis"
+					if = { limit = { is_in_federation_with = event_target:new_crisis }
+						event_target:new_crisis = { leave_alliance = { override_requirements = yes } }
 					}
-					every_playable_country = {
-						limit = {
-							is_galactic_community_member = yes
-							NOT = { is_same_empire = prev }
-						}
-						join_war = prev # Should use different	effect to ensure they only join the correct war
-					}
+					# declare_war = {
+					# 	target = root
+					# 	name = { key = "NAME_Declared_Crisis_War" variable_string = "This.MainDefender.GetAdj" }
+					# 	attacker_war_goal = "wg_declared_crisis"
+					# }
+					# every_playable_country = {
+					# 	limit = {
+					# 		is_galactic_community_member = yes
+					# 		NOR = {
+					# 			is_same_empire = prev
+					# 			is_at_war_with = root
+					# 		}
+					# 	}
+					# 	join_war = prev # Should use different effect to ensure they only join the correct war
+					# }
 				}
+				declare_crisis_war_effect = yes
 			}
 		}
 	}
@@ -298,9 +354,7 @@ country_event = {
 				}
 				effect = {
 					save_global_event_target_as = portal_holder_1
-					every_playable_country = {
-						establish_communications_no_message = event_target:portal_holder_1
-					}
+					every_playable_country = { establish_communications_no_message = event_target:portal_holder_1 }
 				}
 			}
 		}

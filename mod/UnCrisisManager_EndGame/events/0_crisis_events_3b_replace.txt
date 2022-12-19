@@ -20,7 +20,7 @@ country_event = {
 	id = crisis.2022
 	title = crisis.2022.name
 	desc = {
-		trigger = { NOT = { is_machine_empire = yes } }
+		trigger = { is_machine_empire = no }
 		text = crisis.2022.desc
 	}
 	desc = {

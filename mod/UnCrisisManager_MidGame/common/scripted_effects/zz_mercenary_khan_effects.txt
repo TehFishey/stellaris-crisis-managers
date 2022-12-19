@@ -529,18 +529,6 @@ create_first_diadochi = {
 			}
 			ignore_initial_colony_error = yes
 			effect = {
-				if = {
-					limit = {
-						exists = capital_scope
-						capital_scope = {
-							any_owned_species = { is_same_species_class = prevprev }
-						}
-					}
-					modify_species = {
-						species = this
-						ideal_planet_class = capital_scope
-					}
-				}
 				save_event_target_as = first_diadochi
 				set_country_flag = diadochi_1
 				set_name = random
@@ -619,18 +607,6 @@ create_second_diadochi = {
 			}
 			ignore_initial_colony_error = yes
 			effect = {
-				if = {
-					limit = {
-						exists = capital_scope
-						capital_scope = {
-							any_owned_species = { is_same_species_class = prevprev }
-						}
-					}
-					modify_species = {
-						species = this
-						ideal_planet_class = capital_scope
-					}
-				}
 				save_event_target_as = second_diadochi
 				set_country_flag = diadochi_2
 				set_name = random
@@ -710,18 +686,6 @@ create_third_diadochi = {
 			}
 			ignore_initial_colony_error = yes
 			effect = {
-				if = {
-					limit = {
-						exists = capital_scope
-						capital_scope = {
-							any_owned_species = { is_same_species_class = prevprev }
-						}
-					}
-					modify_species = {
-						species = this
-						ideal_planet_class = capital_scope
-					}
-				}
 				save_event_target_as = third_diadochi
 				set_country_flag = diadochi_3
 				set_name = random
@@ -800,18 +764,6 @@ create_fourth_diadochi = {
 			}
 			ignore_initial_colony_error = yes
 			effect = {
-				if = {
-					limit = {
-						exists = capital_scope
-						capital_scope = {
-							any_owned_species = { is_same_species_class = prevprev }
-						}
-					}
-					modify_species = {
-						species = this
-						ideal_planet_class = capital_scope
-					}
-				}
 				save_event_target_as = fourth_diadochi
 				set_country_flag = diadochi_4
 				set_name = random
@@ -844,7 +796,7 @@ get_marauder_species = {
 	# log = "GET MARAUDER SPECIES"
 	[[PLANET]
 	if = { limit = { exists = prev prev = { is_scope_valid = yes is_scope_type = planet } }
-		log = "GET MARAUDER PLANET SPECIES"
+		# log = "GET MARAUDER PLANET SPECIES"
 		if = {
 			limit = {
 				exists = event_target:marauder_country_1	# root = { has_country_flag = marauder_1 }
@@ -983,7 +935,7 @@ get_marauder_species = {
 					mode = mult
 				}
 			}
-			log="RANDOM OWNED MARAUDER SPECIES"
+			# log="RANDOM OWNED MARAUDER SPECIES"
 			save_event_target_as = marauder_species
 			# prev = {
 			# 	change_dominant_species = { species = prev }
@@ -996,13 +948,12 @@ get_marauder_species = {
 		limit = {
 			NAND = {
 				exists = event_target:marauder_species
-				exists = owner_species
 				pop_percentage = {
-					percentage > 0.1
+					percentage > 0.2
 					limit = { is_same_species = prev.owner_species }
 				}
 				pop_percentage = {
-					percentage > 0.1
+					percentage > 0.2
 					limit = { is_same_species = event_target:marauder_species }
 				}
 			}
@@ -1050,7 +1001,7 @@ get_marauder_species = {
 					mode = mult
 				}
 			}
-			log="OWNER DOMINANT SPECIES"
+			# log="OWNER DOMINANT SPECIES"
 			save_event_target_as = marauder_species
 			prev = {
 				change_dominant_species = { species = prev }
@@ -1154,4 +1105,9 @@ get_marauder_raid_source = {
 	event_target:raid_source = {
 		solar_system = { save_event_target_as = marauder_system }
 	}
+}
+
+# Override needless wasting vanilla effect
+set_diadochi_claims = {
+	optimize_memory
 }

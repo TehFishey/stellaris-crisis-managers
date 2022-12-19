@@ -191,7 +191,7 @@ CmtEffectSynthsActStrange = {
 			country_event = { id = crisis.2006 }
 		}
 		every_country = {
-			limit = { has_authority = auth_machine_intelligence }
+			limit = { is_machine_empire = yes }
 			country_event = { id = crisis.2500 }
 		}
 	}

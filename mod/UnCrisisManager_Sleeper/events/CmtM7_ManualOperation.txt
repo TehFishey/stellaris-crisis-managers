@@ -27,8 +27,9 @@ country_event = {
 			limit = {
 				host_has_dlc = "Apocalypse"
 				has_global_flag = CmtFlagMidGameEdition
+				has_global_flag = marauder_crisis_started
 				has_global_flag = marauder_crisis_ongoing
-				NOT = { any_country = { is_country_type = awakened_marauders } } # CmtTriggerNowInKhanCrisis = no
+				NOT = { exists = event_target:raider_khanate } # CmtTriggerNowInKhanCrisis = no
 			}
 			remove_global_flag = marauder_crisis_ongoing
 		}
@@ -191,17 +192,28 @@ country_event = {
 	# 	hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
 	# }
 
-	### Khan
+	### Call Khan
 	option = { # valid
 		name = CrisisManagerMenu.7000.7138.A.name
 		custom_tooltip = CrisisManagerMenu.7000.7138.A.tooltip
-		allow = { host_has_dlc = "Apocalypse" }
+		allow = {
+			host_has_dlc = "Apocalypse"
+			crisis_happened_and_defeated = no
+			hidden_trigger = {
+				OR = {
+					num_marauder_empires_to_spawn > 0
+					has_global_flag = pirate_waves_active # Mod
+					event_target:global_event_country = { has_country_flag = outer_bulwark_inactive } # Mod
+				}
+				NOR = {
+					has_global_flag = great_khan_wins
+					has_global_flag = war_in_heaven_started
+					any_country = { is_country_type = awakened_marauders } # CmtTriggerNowInKhanCrisis
+				}
+			}
+		}
 		trigger = {
 			has_global_flag = CmtFlagMidGameEdition
-			OR = {
-				num_marauder_empires_to_spawn > 0
-				event_target:global_event_country = { has_country_flag = outer_bulwark_inactive }
-			}
 			NOT = { has_global_flag = marauder_crisis_ongoing }
 			# CmtTriggerNowInKhanCrisis = no
 			OR = {
@@ -242,7 +254,9 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7000.7140.A.name
 		custom_tooltip = CrisisManagerMenu.7000.7140.A.tooltip
-		allow = { has_distar = yes }
+		allow = {
+			has_distar = yes
+		}
 		trigger = {
 			has_global_flag = CmtFlagMidGameEdition
 			any_megastructure = { CmtTriggerIsClosedLgate = yes }
@@ -361,7 +375,7 @@ country_event = {
 		allow = { hidden_trigger = { always = no } }
 	}
 
-	### Terminate Eng-Game Crisis
+	### Terminate Mid/Eng-Game Crisis
 	option = {
 		name = CrisisManagerMenu.7000.7200.name
 		custom_tooltip = CrisisManagerMenu.7000.7200.tooltip
@@ -1637,7 +1651,7 @@ country_event = {
 						}
 					}
 				}
-				# log="Manual marauder fallback 1 \\[former_marauder_capital.GetName]"
+				log="Manual marauder fallback 1 \\[former_marauder_capital.GetName]"
 			}
 			# Create very strong fallback (look for dead marauders)
 			if = {
@@ -1678,28 +1692,28 @@ country_event = {
 							modifier = { add = 2 is_a_planet = yes } # possible inconsisent due other mods
 						}
 						save_event_target_as = former_marauder_capital
-						# log="Manual marauder strong fallback \\[This.GetName]"
+						log="Manual marauder strong fallback \\[This.GetName]"
 					}
 				}
 			} else = { no_scope = { save_event_target_as = former_marauder_capital } } # clear
-		}
+		} else = { log="Manual Horde" }
 	}
 
 	after = {
-		# hidden_effect = {
-		# 	if = {
-		# 		limit = { exists = event_target:marauder_country_1 event_target:marauder_country_1 = { CmtTriggerHasPotentialKhanAwaking = no } }
-		# 		clear_global_event_target = marauder_country_1
-		# 	}
-		# 	if = {
-		# 		limit = { exists = event_target:marauder_country_2 event_target:marauder_country_2 = { CmtTriggerHasPotentialKhanAwaking = no } }
-		# 		clear_global_event_target = marauder_country_2
-		# 	}
-		# 	if = {
-		# 		limit = { exists = event_target:marauder_country_3 event_target:marauder_country_3 = { CmtTriggerHasPotentialKhanAwaking = no } }
-		# 		clear_global_event_target = marauder_country_3
-		# 	}
-		# }
+		hidden_effect = {
+			if = {
+				limit = { exists = event_target:marauder_country_1 event_target:marauder_country_1 = { CmtTriggerHasPotentialKhanAwaking = no } }
+				clear_global_event_target = marauder_country_1
+			}
+			if = {
+				limit = { exists = event_target:marauder_country_2 event_target:marauder_country_2 = { CmtTriggerHasPotentialKhanAwaking = no } }
+				clear_global_event_target = marauder_country_2
+			}
+			if = {
+				limit = { exists = event_target:marauder_country_3 event_target:marauder_country_3 = { CmtTriggerHasPotentialKhanAwaking = no } }
+				clear_global_event_target = marauder_country_3
+			}
+		}
 		# legacy
 		# if = {
 		# 	limit = { exists = event_target:CmtTargetManualMarauder1 }

@@ -95,7 +95,7 @@ CmtEffectCreateSleeperColossus = {
 CmtEffectApplyTemplate201 = {
 	every_country = {
 		limit = {
-			is_country_type = fallen_empire
+			merg_is_fallen_empire = yes
 			is_at_war = no
 		}
 		every_owned_ship = {

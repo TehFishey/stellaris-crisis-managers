@@ -2209,6 +2209,17 @@ country_event = {
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarReinforceCycle_Graygoo value = 5 } } }
 	}
 	option = {
+		name = CrisisManagerMenu.4960f.name
+		custom_tooltip = CrisisManagerMenu.4960f.tooltip
+		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarReinforceCycle_Graygoo value = 6 } } }
+	}
+	option = {
+		name = CrisisManagerMenu.4960z.name
+		custom_tooltip = CrisisManagerMenu.4960z.tooltip
+		trigger = { has_global_flag = CmtFlagDebugMode }
+		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarReinforceCycle_Graygoo value = 9 } } }
+	}
+	option = {
 		name = CmtTextGoBack.name
 		custom_tooltip = CmtTextGoBack.tooltip
 		trigger = { NOT = { has_country_flag = CmtFlagIndividual } }
