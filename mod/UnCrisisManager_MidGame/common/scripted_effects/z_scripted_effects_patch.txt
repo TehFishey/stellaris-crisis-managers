@@ -93,3 +93,12 @@ make_moderately_hostile = {
 		}
 	}
 }
+
+### Marauders ###
+create_marauder_starbase = {
+	optimize_memory
+	create_starbase = {
+		size = "starbase_marauder"
+		owner = event_target:marauder_starbase_owner
+	}
+}

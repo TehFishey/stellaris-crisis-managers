@@ -873,7 +873,7 @@ get_marauder_species = {
 				}
 			}
 			weights = {
-				base = 100
+				base = 2
 				# complex_trigger_modifier = { # add 10 for each unhappy pop of this species
 				# 	trigger = count_owned_pop
 				# 	trigger_scope = root
@@ -919,11 +919,11 @@ get_marauder_species = {
 				# 	}
 				# }
 				modifier = {
-					factor = 1.5
+					add = 2
 					prev = { exists = capital_scope capital_scope = { habitability = { who = prevprev value > 0.6 } } }
 				}
 				modifier = {
-					factor = 2
+					add = 6
 					prev = { any_owned_planet = { is_homeworld = yes is_same_value = prevprev.home_planet } }
 				}
 				complex_trigger_modifier = { # multiply it by the percentage of pops of the country
