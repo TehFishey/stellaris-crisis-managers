@@ -443,7 +443,7 @@ CmtTriggerForcedEocTargetList = {
 	}
 	OR = {
 		NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocTranscendence value = 1 } } }
-		has_ascension_perk = ap_transcendence
+		has_tradition = tr_psionics_psionic_assimilation
 	}
 }
 

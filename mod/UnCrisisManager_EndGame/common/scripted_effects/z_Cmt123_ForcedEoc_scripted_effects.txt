@@ -59,13 +59,13 @@ CmtEffectTargetingForcedEoc = {
 				check_variable = { which = CmtVarForcedEocTranscendence value = 2 }
 				any_country = {
 					CmtTriggerForcedEocTargetList = yes
-					has_ascension_perk = ap_transcendence
+					has_tradition = tr_psionics_psionic_assimilation
 				}
 			}
 			every_country = {
 				limit = {
 					CmtTriggerForcedEocTargetList = yes
-					has_ascension_perk = ap_transcendence
+					has_tradition = tr_psionics_psionic_assimilation
 				}
 				set_country_flag = CmtFlagForcedEocTargetList
 			} else = {

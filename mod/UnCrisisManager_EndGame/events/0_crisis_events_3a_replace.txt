@@ -771,7 +771,7 @@ planet_event = {
 
 	immediate = {
 		owner = { set_country_flag = synth_spaceport_bombing }
-		solar_system = { starbase = { fleet = { destroy_fleet = this } } }
+		solar_system = { starbase = { destroy_fleet = fleet } }
 	}
 
 	option = {
@@ -1131,7 +1131,7 @@ country_event = {
 				controller = { is_same_value = root }
 			}
 			save_event_target_as = space_port_hijacked_planet
-			solar_system = { starbase = { fleet = { destroy_fleet = this } } }
+			solar_system = { starbase = { destroy_fleet = fleet } }
 		}
 	}
 
