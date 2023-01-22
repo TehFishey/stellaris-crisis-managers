@@ -1,11 +1,11 @@
 
 ##################################################
 ##################################################
-#####                                        #####
-#####    Crisis Manager                      #####
-#####                                        #####
-#####    on_actions for Sleeper Awakening    #####
-#####                                        #####
+#####										#####
+#####	Crisis Manager					  #####
+#####										#####
+#####	on_actions for Sleeper Awakening	#####
+#####										#####
 ##################################################
 ##################################################
 
@@ -16,7 +16,7 @@ on_yearly_pulse = {
 	}
 }
 
-#This = destroyed country, From = destroying country
+# This = destroyed country, From = destroying country
 on_country_destroyed = {
 	events = {
 		CrisisManagerControl.5030		## Interval Countrol

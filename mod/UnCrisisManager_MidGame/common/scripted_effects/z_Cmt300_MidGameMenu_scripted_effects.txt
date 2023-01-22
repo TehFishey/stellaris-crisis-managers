@@ -25,7 +25,7 @@ CmtEffectDetectMidGameEdition = {
 CmtEffectTriggerMarauderManually = {
 	if = {
 		limit = {
-			count_owned_ship = {
+			count_owned_fleet = {
 				limit = { is_ship_size = marauder_void_dwelling }
 				count > 1
 			}

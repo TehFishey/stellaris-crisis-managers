@@ -2,11 +2,11 @@ namespace = CrisisManagerControl
 
 ##################################################
 ##################################################
-#####                                        #####
-#####    Crisis Manager                      #####
-#####                                        #####
-#####    Events for Awakening of Sleepers    #####
-#####                                        #####
+#####										#####
+#####	Crisis Manager					  #####
+#####										#####
+#####	Events for Awakening of Sleepers	#####
+#####										#####
 ##################################################
 ##################################################
 
@@ -688,7 +688,7 @@ country_event = {
 		# }
 		# Machine
 		# fallen_machine_empire = {
-			# possible = { host_has_dlc = "Synthetic Dawn Story Pack"
+			# possible = { has_synthethic_dawn = yes
 			# }
 			# 2 = {
 			# 	create_species = {
@@ -1144,7 +1144,7 @@ system_event = {
 				effect = {
 					set_owner = event_target:sleeper_deus_country
 					while = {
-						count = 1						#just to show-case that formation will tile
+						count = 1						# just to show-case that formation will tile
 						create_ship = {
 							name = ""
 							design = "NAME_Ancient_Vault"

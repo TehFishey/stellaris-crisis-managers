@@ -2,11 +2,11 @@ namespace = war_in_heaven
 
 ############################################
 ############################################
-#####                                  #####
-#####    Events for War in Heaven      #####
-#####                                  #####
-#####    Replaced by Crisis Manager    #####
-#####                                  #####
+#####								  #####
+#####	Events for War in Heaven	  #####
+#####								  #####
+#####	Replaced by Crisis Manager	#####
+#####								  #####
 ############################################
 ############################################
 
@@ -758,7 +758,6 @@ country_event = {
 			}
 		}
 
-
 		every_subject = {
 			limit = { merg_is_default_empire = yes }
 			join_war = root
@@ -1156,7 +1155,7 @@ country_event = {
 		}
 	}
 
-	#League leadership declined
+	# League leadership declined
 	option = {
 		name = war_in_heaven.13.b
 		ai_chance = {
@@ -1320,7 +1319,7 @@ country_event = {
 						override_requirements = yes
 					}
 					hidden_effect = {
-						if = { #end non-federation-sanctioned wars
+						if = { # end non-federation-sanctioned wars
 							limit = { is_at_war = yes }
 							every_war = { remove_war_participant = prev }
 							every_subject = { every_war = { remove_war_participant = prev } }
@@ -1334,7 +1333,7 @@ country_event = {
 								limit = { has_federation_perk = cohesion_join_1 }
 								add_cohesion = 50
 							} else = { add_cohesion = 100 }
-							add_federation_experience = 4200 #level 3 with some breathing room
+							add_federation_experience = 4200 # level 3 with some breathing room
 						}
 					}
 				}
@@ -1344,7 +1343,7 @@ country_event = {
 			else = {
 				from = {
 					set_timed_country_flag = { flag = ai_no_leave_fed years = 20 }
-					hidden_effect = { #end rivalries, wars
+					hidden_effect = { # end rivalries, wars
 						if = {
 							limit = {
 								any_rival_country = {
@@ -1535,8 +1534,8 @@ country_event = {
 ##########################
 
 # War in Heaven combatant defeated by nonaligned league
-#This = destroyed country
-#From = optional, destroyer (country)
+# This = destroyed country
+# From = optional, destroyer (country)
 country_event = {
 	id = war_in_heaven.10
 	hide_window = yes

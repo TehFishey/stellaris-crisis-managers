@@ -532,6 +532,9 @@ create_first_diadochi = {
 				save_event_target_as = first_diadochi
 				set_country_flag = diadochi_1
 				set_name = random
+				event_target:raider_khanate = {
+					set_faction_hostility = { target = prev set_friendly = yes }
+				}
 				shift_ethic = ethic_fanatic_militarist
 			}
 		}
@@ -540,17 +543,18 @@ create_first_diadochi = {
 			limit = {
 				has_star_flag = first_diadochi_system
 				exists = starbase
+				starbase = { is_owned_by = root }
 			}
 			starbase = { set_owner = event_target:first_diadochi }
 			# Flip Planets
 			every_system_colony = {
 				limit = { is_owned_by = root }
 				set_owner = event_target:first_diadochi
-				set_controller = event_target:first_diadochi
+				# set_controller = event_target:first_diadochi
 			}
 			remove_star_flag = first_diadochi_system
 		}
-		last_created_country = {
+		event_target:first_diadochi = {
 			country_event = { id = khan.610 days = -1 } # Handover some old stuff
 		}
 	}
@@ -610,6 +614,9 @@ create_second_diadochi = {
 				save_event_target_as = second_diadochi
 				set_country_flag = diadochi_2
 				set_name = random
+				event_target:raider_khanate = {
+					set_faction_hostility = { target = prev set_friendly = yes }
+				}
 				shift_ethic = ethic_fanatic_militarist
 			}
 		}
@@ -618,17 +625,18 @@ create_second_diadochi = {
 			limit = {
 				has_star_flag = second_diadochi_system
 				exists = starbase
+				starbase = { is_owned_by = root }
 			}
 			starbase = { set_owner = event_target:second_diadochi }
 			# Flip Planets
 			every_system_colony = {
 				limit = { is_owned_by = root }
 				set_owner = event_target:second_diadochi
-				set_controller = event_target:second_diadochi
+				# set_controller = event_target:second_diadochi
 			}
 			remove_star_flag = second_diadochi_system
 		}
-		last_created_country = {
+		event_target:second_diadochi = {
 			country_event = { id = khan.610 days = -1 } # Handover some old stuff
 		}
 	}
@@ -689,6 +697,9 @@ create_third_diadochi = {
 				save_event_target_as = third_diadochi
 				set_country_flag = diadochi_3
 				set_name = random
+				event_target:raider_khanate = {
+					set_faction_hostility = { target = prev set_friendly = yes }
+				}
 				shift_ethic = ethic_fanatic_militarist
 			}
 		}
@@ -697,17 +708,18 @@ create_third_diadochi = {
 			limit = {
 				has_star_flag = third_diadochi_system
 				exists = starbase
+				starbase = { is_owned_by = root }
 			}
 			starbase = { set_owner = event_target:third_diadochi }
 			# Flip Planets
 			every_system_colony = {
 				limit = { is_owned_by = root }
 				set_owner = event_target:third_diadochi
-				set_controller = event_target:third_diadochi
+				# set_controller = event_target:third_diadochi
 			}
 			remove_star_flag = third_diadochi_system
 		}
-		last_created_country = {
+		event_target:third_diadochi = {
 			country_event = { id = khan.610 days = -1 } # Handover some old stuff
 		}
 	}
@@ -767,6 +779,9 @@ create_fourth_diadochi = {
 				save_event_target_as = fourth_diadochi
 				set_country_flag = diadochi_4
 				set_name = random
+				event_target:raider_khanate = {
+					set_faction_hostility = { target = prev set_friendly = yes }
+				}
 				shift_ethic = ethic_fanatic_militarist
 			}
 		}
@@ -775,19 +790,51 @@ create_fourth_diadochi = {
 			limit = {
 				has_star_flag = fourth_diadochi_system
 				exists = starbase
+				starbase = { is_owned_by = root }
 			}
 			starbase = { set_owner = event_target:fourth_diadochi }
 			# Flip Planets
 			every_system_colony = {
 				limit = { is_owned_by = root }
 				set_owner = event_target:fourth_diadochi
-				set_controller = event_target:fourth_diadochi
+				# set_controller = event_target:fourth_diadochi
 			}
 			remove_star_flag = fourth_diadochi_system
 		}
-		last_created_country = {
+		event_target:fourth_diadochi = {
 			country_event = { id = khan.610 days = -1 } # Handover some old stuff
 		}
+	}
+}
+
+# This = System
+# Prev = old owner
+# PrevPrev = new owner = $EMPIRE$
+commit_system_to = {
+	if = {
+		limit = {
+			exists = starbase
+			NAND = {
+				exists = space_owner
+				space_owner = { is_same_empire = $EMPIRE$ }
+			}
+		}
+		set_timed_star_flag = { flag = switched_system days = 3 }
+		starbase = {
+			set_owner = $EMPIRE$
+		}
+		every_system_colony = {
+			limit = {
+				has_ground_combat = no
+				is_occupied_flag = no
+				is_owned_by = prev.starbase.owner
+			}
+			set_owner = $EMPIRE$
+			set_controller = $EMPIRE$
+		}
+		log="Balcanization preventation: Diadochi system \\[This.GetName] switched to \\[This.starbase.fleet.Owner.GetName]!"
+	} else = {
+		log="Fail: Diadochi system \\[This.GetName] has same old owner \\[This.starbase.fleet.Owner.GetName]"
 	}
 }
 

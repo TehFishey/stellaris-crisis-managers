@@ -249,6 +249,60 @@ country_event = {
 		}
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7000 } }
 	}
+	option = { # Make immortal - Possible (ongoing)
+		name = CrisisManagerMenu.4842f.title # CrisisManagerMenu.7000.7138.D.name
+		custom_tooltip = CrisisManagerMenu.4842.warn # CrisisManagerMenu.7000.7138.D.tooltip
+		allow = { host_has_dlc = "Apocalypse" }
+		trigger = {
+			has_global_flag = CmtFlagMidGameEdition
+			has_global_flag = marauder_crisis_ongoing
+			exists = event_target:raider_khanate
+			NOR = {
+				has_global_flag = khan_no_die
+				event_target:raider_khanate = { has_country_flag = CmtFlagKhanNoDieCountry }
+			}
+			# CmtTriggerNowInKhanCrisis = yes
+			# any_country = { CmtTriggerHasPotentialKhanAwaking = yes }
+		}
+		hidden_effect = {
+			set_global_flag = khan_no_die
+			event_target:raider_khanate = {
+				set_country_flag = marauder600_happened
+				set_country_flag = CmtFlagKhanNoDieCountry
+				set_country_flag = great_khan_defeated_once
+				set_country_flag = khan_dead_event_fine
+				set_variable = { which = "CmtVarKhanRemainingLive" value = 3 }
+			}
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
+	option = { # Remove immortal - Possible (ongoing)
+		name = CrisisManagerMenu.7000.7138.E.name
+		custom_tooltip = CrisisManagerMenu.7000.7138.E.tooltip
+		allow = { host_has_dlc = "Apocalypse" }
+		trigger = {
+			has_global_flag = CmtFlagMidGameEdition
+			has_global_flag = marauder_crisis_ongoing
+			exists = event_target:raider_khanate
+			OR = {
+				has_global_flag = khan_no_die
+				event_target:raider_khanate = { has_country_flag = CmtFlagKhanNoDieCountry }
+			}
+			# CmtTriggerNowInKhanCrisis = yes
+			# any_country = { CmtTriggerHasPotentialKhanAwaking = yes }
+		}
+		hidden_effect = {
+			remove_global_flag = khan_no_die
+			event_target:raider_khanate = {
+				remove_country_flag = marauder600_happened
+				remove_country_flag = CmtFlagKhanNoDieCountry
+				# remove_country_flag = great_khan_defeated_once
+				remove_country_flag = khan_dead_event_fine
+				clear_variable = CmtVarKhanRemainingLive
+			}
+			country_event = { id = CrisisManagerMenu.7000 }
+		}
+	}
 
 	### L-Gate
 	option = {
@@ -1632,7 +1686,7 @@ country_event = {
 						}
 					} else = { save_event_target_as = former_marauder_capital }
 				}
-				if = { limit = { NOT = { exists = event_target:former_marauder_capital } }
+				if = { limit = { NOT = { exists = event_target:former_marauder_capital } exists = capital_scope }
 					capital_scope.solar_system = {
 						save_event_target_as = former_marauder_capital
 					}
@@ -1695,7 +1749,10 @@ country_event = {
 						log="Manual marauder strong fallback \\[This.GetName]"
 					}
 				}
-			} else = { no_scope = { save_event_target_as = former_marauder_capital } } # clear
+			} else = { # clear?
+				no_scope = { save_event_target_as = former_marauder_capital save_global_event_target_as = former_marauder_capital }
+				clear_global_event_target = former_marauder_capital
+			}
 		} else = { log="Manual Horde" }
 	}
 

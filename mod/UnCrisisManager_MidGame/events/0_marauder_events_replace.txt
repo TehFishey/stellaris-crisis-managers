@@ -3932,8 +3932,18 @@ country_event = {
 			is_fallen_empire = no
 		}
 		allow = {
+			custom_tooltip_fail = {
+				text = 03_EMBASSY_HOSTILE # marauder.550.a_fail
+				hidden_trigger = {
+					OR = {
+						is_variable_set = "planets_lost_to_marauder"
+						from = { NOT = { has_country_flag = raid_cooldown } }
+						from = { is_overlord = yes }
+					}
+				}
+			}
 			custom_tooltip = {
-				fail_text = 03_EMBASSY_HOSTILE # marauder.550.a_fail
+				fail_text = 04_END_RIVALRY_NEUTRAL
 				hidden_trigger = {
 					OR = {
 						is_variable_set = "planets_lost_to_marauder"

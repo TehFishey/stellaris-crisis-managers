@@ -161,7 +161,7 @@ country_event = {
 		hidden_effect = { CmtEffect1026TryCall4821 = yes }
 	}
 	option = {
-		name = CrisisManagerMenu.4821.Vt.name
+		name = CmtTextTemplateUnique.name
 		custom_tooltip = CrisisManagerMenu.4821.tooltip
 		trigger = {
 			event_target:CmtGlobalVar = {

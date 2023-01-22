@@ -28,10 +28,13 @@ country_event = {
 			if = {
 				limit = { has_country_flag = CmtFlagSPMenu }
 				remove_country_flag = CmtFlagSPMenu
-			} else_if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1031 }
-			} else = { country_event = { id = CrisisManagerMenu.6000 } }
+			} else_if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1031 } } }
+					country_event = { id = CrisisManagerMenu.1031 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6000 } } }
+				country_event = { id = CrisisManagerMenu.6000 }
+			}
 		}
 	}
 
@@ -265,10 +268,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1031 }
-			} else = { country_event = { id = CrisisManagerMenu.6000 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1031 } } }
+					country_event = { id = CrisisManagerMenu.1031 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6000 } } }
+				country_event = { id = CrisisManagerMenu.6000 }
+			}
 		}
 	}
 
@@ -318,10 +324,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1031 }
-			} else = { country_event = { id = CrisisManagerMenu.6000 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1031 } } }
+					country_event = { id = CrisisManagerMenu.1031 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6000 } } }
+				country_event = { id = CrisisManagerMenu.6000 }
+			}
 		}
 	}
 
@@ -371,10 +380,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1031 }
-			} else = { country_event = { id = CrisisManagerMenu.6000 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1031 } } }
+					country_event = { id = CrisisManagerMenu.1031 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6000 } } }
+				country_event = { id = CrisisManagerMenu.6000 }
+			}
 		}
 	}
 
@@ -424,10 +436,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1031 }
-			} else = { country_event = { id = CrisisManagerMenu.6000 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1031 } } }
+					country_event = { id = CrisisManagerMenu.1031 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6000 } } }
+				country_event = { id = CrisisManagerMenu.6000 }
+			}
 		}
 	}
 
@@ -477,10 +492,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1031 }
-			} else = { country_event = { id = CrisisManagerMenu.6000 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1031 } } }
+					country_event = { id = CrisisManagerMenu.1031 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6000 } } }
+				country_event = { id = CrisisManagerMenu.6000 }
+			}
 		}
 	}
 
@@ -539,13 +557,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6000 }
-				break = yes
-			}
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6000 } } }
+					country_event = { id = CrisisManagerMenu.6000 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagSpMenu }
 				remove_country_flag = CmtFlagSpMenu
 				if = {
@@ -554,7 +572,9 @@ country_event = {
 				} else_if = {
 					limit = { has_global_flag = CmtFlagMidGameEdition }
 					country_event = { id = CrisisManagerMenu.6111 }
-				} else = { country_event = { id = CrisisManagerMenu.6000 } }
+				} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6000 } } }
+				country_event = { id = CrisisManagerMenu.6000 }
+			}
 				break = yes
 			}
 
@@ -568,9 +588,10 @@ country_event = {
 				}
 				CmtEffectApplyCommonPower_FleetPower = yes
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1031 }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1031 } } }
+					country_event = { id = CrisisManagerMenu.1031 }
+				}
 				break = yes
 			}
 			country_event = { id = CrisisManagerMenu.6200 }
@@ -663,14 +684,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6100 }
-				break = yes
-			}
-
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6100 } } }
+					country_event = { id = CrisisManagerMenu.6100 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
 			} else = {
@@ -680,10 +700,13 @@ country_event = {
 					set_variable = { which = CmtVarFleetPower_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1031 }
-			} else = { country_event = { id = CrisisManagerMenu.6102 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1031 } } }
+					country_event = { id = CrisisManagerMenu.1031 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6102 } } }
+				country_event = { id = CrisisManagerMenu.6102 }
+			}
 		}
 	}
 
@@ -766,14 +789,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6101 }
-				break = yes
-			}
-
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6101 } } }
+					country_event = { id = CrisisManagerMenu.6101 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
 			} else = {
@@ -783,10 +805,13 @@ country_event = {
 					set_variable = { which = CmtVarFleetPower_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1031 }
-			} else = { country_event = { id = CrisisManagerMenu.6103 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1031 } } }
+					country_event = { id = CrisisManagerMenu.1031 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6103 } } }
+				country_event = { id = CrisisManagerMenu.6103 }
+			}
 		}
 	}
 
@@ -869,14 +894,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6102 }
-				break = yes
-			}
-
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6102 } } }
+					country_event = { id = CrisisManagerMenu.6102 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
 			} else = {
@@ -886,10 +910,13 @@ country_event = {
 					set_variable = { which = CmtVarFleetPower_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1031 }
-			} else = { country_event = { id = CrisisManagerMenu.6104 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1031 } } }
+					country_event = { id = CrisisManagerMenu.1031 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6104 } } }
+				country_event = { id = CrisisManagerMenu.6104 }
+			}
 		}
 	}
 
@@ -972,14 +999,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6103 }
-				break = yes
-			}
-
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6103 } } }
+					country_event = { id = CrisisManagerMenu.6103 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
 			} else = {
@@ -989,10 +1015,13 @@ country_event = {
 					set_variable = { which = CmtVarFleetPower_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1031 }
-			} else = { country_event = { id = CrisisManagerMenu.6105 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1031 } } }
+					country_event = { id = CrisisManagerMenu.1031 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6105 } } }
+				country_event = { id = CrisisManagerMenu.6105 }
+			}
 		}
 	}
 
@@ -1075,14 +1104,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6104 }
-				break = yes
-			}
-
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6104 } } }
+					country_event = { id = CrisisManagerMenu.6104 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
 			} else = {
@@ -1092,10 +1120,13 @@ country_event = {
 					set_variable = { which = CmtVarFleetPower_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1031 }
-			} else = { country_event = { id = CrisisManagerMenu.6106 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1031 } } }
+					country_event = { id = CrisisManagerMenu.1031 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6106 } } }
+				country_event = { id = CrisisManagerMenu.6106 }
+			}
 		}
 	}
 
@@ -1178,14 +1209,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6105 }
-				break = yes
-			}
-
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6105 } } }
+					country_event = { id = CrisisManagerMenu.6105 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
 			} else = {
@@ -1195,10 +1225,13 @@ country_event = {
 					set_variable = { which = CmtVarFleetPower_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1031 }
-			} else = { country_event = { id = CrisisManagerMenu.6107 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1031 } } }
+					country_event = { id = CrisisManagerMenu.1031 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6107 } } }
+				country_event = { id = CrisisManagerMenu.6107 }
+			}
 		}
 	}
 
@@ -1281,14 +1314,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6106 }
-				break = yes
-			}
-
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6106 } } }
+					country_event = { id = CrisisManagerMenu.6106 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
 			} else = {
@@ -1298,13 +1330,16 @@ country_event = {
 					set_variable = { which = CmtVarFleetPower_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1031 }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1031 } } }
+					country_event = { id = CrisisManagerMenu.1031 }
+				}
 			} else_if = {
 				limit = { has_global_flag = CmtFlagMidGameEdition }
 				country_event = { id = CrisisManagerMenu.6111 }
-			} else = { country_event = { id = CrisisManagerMenu.6200 } }
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6200 } } }
+				country_event = { id = CrisisManagerMenu.6200 }
+			}
 		}
 	}
 
@@ -1393,7 +1428,9 @@ country_event = {
 				if = {
 					limit = { has_global_flag = CmtFlagEndGameEdition }
 					country_event = { id = CrisisManagerMenu.6107 }
-				} else = { country_event = { id = CrisisManagerMenu.6100 } }
+				} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6100 } } }
+				country_event = { id = CrisisManagerMenu.6100 }
+			}
 				break = yes
 			}
 
@@ -1407,10 +1444,13 @@ country_event = {
 					set_variable = { which = CmtVarFleetPower_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1031 }
-			} else = { country_event = { id = CrisisManagerMenu.6112 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1031 } } }
+					country_event = { id = CrisisManagerMenu.1031 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6112 } } }
+				country_event = { id = CrisisManagerMenu.6112 }
+			}
 		}
 	}
 
@@ -1509,10 +1549,13 @@ country_event = {
 					set_variable = { which = CmtVarFleetPower_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1031 }
-			} else = { country_event = { id = CrisisManagerMenu.6113 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1031 } } }
+					country_event = { id = CrisisManagerMenu.1031 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6113 } } }
+				country_event = { id = CrisisManagerMenu.6113 }
+			}
 		}
 	}
 
@@ -1611,10 +1654,11 @@ country_event = {
 					set_variable = { which = CmtVarFleetPower_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
 				country_event = { id = CrisisManagerMenu.1031 }
-			} else = { country_event = { id = CrisisManagerMenu.6200 } }
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6200 } } }
+				country_event = { id = CrisisManagerMenu.6200 }
+			}
 		}
 	}
 
@@ -1708,13 +1752,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6100 }
-				break = yes
-			}
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6100 } } }
+					country_event = { id = CrisisManagerMenu.6100 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagSpMenu }
 				remove_country_flag = CmtFlagSpMenu
 				country_event = { id = CrisisManagerMenu.6201 }
@@ -1729,11 +1773,11 @@ country_event = {
 				} else_if = {
 					limit = { has_global_flag = CmtFlagMidGameEdition }
 					country_event = { id = CrisisManagerMenu.6211 }
-				} else = { country_event = { id = CrisisManagerMenu.6000 } }
+				} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6000 } } }
+					country_event = { id = CrisisManagerMenu.6000 }
+				}
 				break = yes
-			}
-
-			if = {
+			} else_if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
 			} else = {
@@ -1743,10 +1787,13 @@ country_event = {
 				}
 				CmtEffectApplyCommonPower_ArmyPower = yes
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1031 }
-			} else = { country_event = { id = CrisisManagerMenu.6300 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1031 } } }
+					country_event = { id = CrisisManagerMenu.1031 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6300 } } }
+				country_event = { id = CrisisManagerMenu.6300 }
+			}
 		}
 	}
 
@@ -1836,14 +1883,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6200 }
-				break = yes
-			}
-
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6200 } } }
+					country_event = { id = CrisisManagerMenu.6200 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
 			} else = {
@@ -1853,10 +1899,13 @@ country_event = {
 					set_variable = { which = CmtVarArmyPower_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1031 }
-			} else = { country_event = { id = CrisisManagerMenu.6206 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1031 } } }
+					country_event = { id = CrisisManagerMenu.1031 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6206 } } }
+				country_event = { id = CrisisManagerMenu.6206 }
+			}
 		}
 	}
 
@@ -1939,14 +1988,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6201 }
-				break = yes
-			}
-
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6201 } } }
+					country_event = { id = CrisisManagerMenu.6201 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
 			} else = {
@@ -1956,13 +2004,16 @@ country_event = {
 					set_variable = { which = CmtVarArmyPower_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1031 }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1031 } } }
+					country_event = { id = CrisisManagerMenu.1031 }
+				}
 			} else_if = {
 				limit = { has_global_flag = CmtFlagMidGameEdition }
 				country_event = { id = CrisisManagerMenu.6211 }
-			} else = { country_event = { id = CrisisManagerMenu.6300 } }
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6300 } } }
+				country_event = { id = CrisisManagerMenu.6300 }
+			}
 		}
 	}
 
@@ -2051,7 +2102,9 @@ country_event = {
 				if = {
 					limit = { has_global_flag = CmtFlagEndGameEdition }
 					country_event = { id = CrisisManagerMenu.6206 }
-				} else = { country_event = { id = CrisisManagerMenu.6200 } }
+				} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6200 } } }
+				country_event = { id = CrisisManagerMenu.6200 }
+			}
 				break = yes
 			}
 
@@ -2065,10 +2118,13 @@ country_event = {
 					set_variable = { which = CmtVarArmyPower_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1031 }
-			} else = { country_event = { id = CrisisManagerMenu.6300 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1031 } } }
+					country_event = { id = CrisisManagerMenu.1031 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6300 } } }
+				country_event = { id = CrisisManagerMenu.6300 }
+			}
 		}
 	}
 
@@ -2164,13 +2220,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6200 }
-				break = yes
-			}
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6200 } } }
+					country_event = { id = CrisisManagerMenu.6200 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagSpMenu }
 				remove_country_flag = CmtFlagSpMenu
 				if = {
@@ -2179,7 +2235,9 @@ country_event = {
 				} else_if = {
 					limit = { has_global_flag = CmtFlagMidGameEdition }
 					country_event = { id = CrisisManagerMenu.6311 }
-				} else = { country_event = { id = CrisisManagerMenu.6000 } }
+				} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6000 } } }
+				country_event = { id = CrisisManagerMenu.6000 }
+			}
 				break = yes
 			}
 
@@ -2193,10 +2251,13 @@ country_event = {
 				}
 				CmtEffectApplyCommonPower_CombatFleetNumber = yes
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1032 }
-			} else = { country_event = { id = CrisisManagerMenu.6400 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1032 } } }
+					country_event = { id = CrisisManagerMenu.1032 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6400 } } }
+				country_event = { id = CrisisManagerMenu.6400 }
+			}
 		}
 	}
 
@@ -2318,14 +2379,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6300 }
-				break = yes
-			}
-
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6300 } } }
+					country_event = { id = CrisisManagerMenu.6300 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
 			} else = {
@@ -2335,10 +2395,13 @@ country_event = {
 					set_variable = { which = CmtVarCombatFleetNumber_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1032 }
-			} else = { country_event = { id = CrisisManagerMenu.6302 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1032 } } }
+					country_event = { id = CrisisManagerMenu.1032 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6302 } } }
+				country_event = { id = CrisisManagerMenu.6302 }
+			}
 		}
 	}
 
@@ -2453,14 +2516,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6301 }
-				break = yes
-			}
-
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6301 } } }
+					country_event = { id = CrisisManagerMenu.6301 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
 			} else = {
@@ -2470,10 +2532,13 @@ country_event = {
 					set_variable = { which = CmtVarCombatFleetNumber_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1032 }
-			} else = { country_event = { id = CrisisManagerMenu.6303 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1032 } } }
+					country_event = { id = CrisisManagerMenu.1032 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6303 } } }
+				country_event = { id = CrisisManagerMenu.6303 }
+			}
 		}
 	}
 
@@ -2588,14 +2653,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6302 }
-				break = yes
-			}
-
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6302 } } }
+					country_event = { id = CrisisManagerMenu.6302 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
 			} else = {
@@ -2605,10 +2669,13 @@ country_event = {
 					set_variable = { which = CmtVarCombatFleetNumber_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1032 }
-			} else = { country_event = { id = CrisisManagerMenu.6304 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1032 } } }
+					country_event = { id = CrisisManagerMenu.1032 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6304 } } }
+				country_event = { id = CrisisManagerMenu.6304 }
+			}
 		}
 	}
 
@@ -2723,14 +2790,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6303 }
-				break = yes
-			}
-
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6303 } } }
+					country_event = { id = CrisisManagerMenu.6303 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
 			} else = {
@@ -2740,10 +2806,13 @@ country_event = {
 					set_variable = { which = CmtVarCombatFleetNumber_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1032 }
-			} else = { country_event = { id = CrisisManagerMenu.6305 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1032 } } }
+					country_event = { id = CrisisManagerMenu.1032 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6305 } } }
+				country_event = { id = CrisisManagerMenu.6305 }
+			}
 		}
 	}
 
@@ -2858,14 +2927,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6304 }
-				break = yes
-			}
-
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6304 } } }
+					country_event = { id = CrisisManagerMenu.6304 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
 			} else = {
@@ -2875,10 +2943,13 @@ country_event = {
 					set_variable = { which = CmtVarCombatFleetNumber_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1032 }
-			} else = { country_event = { id = CrisisManagerMenu.6306 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1032 } } }
+					country_event = { id = CrisisManagerMenu.1032 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6306 } } }
+				country_event = { id = CrisisManagerMenu.6306 }
+			}
 		}
 	}
 
@@ -2993,13 +3064,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6305 }
-				break = yes
-			}
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6305 } } }
+					country_event = { id = CrisisManagerMenu.6305 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
 			} else = {
@@ -3009,10 +3080,13 @@ country_event = {
 					set_variable = { which = CmtVarCombatFleetNumber_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1032 }
-			} else = { country_event = { id = CrisisManagerMenu.6307 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1032 } } }
+					country_event = { id = CrisisManagerMenu.1032 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6307 } } }
+				country_event = { id = CrisisManagerMenu.6307 }
+			}
 		}
 	}
 
@@ -3127,14 +3201,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6306 }
-				break = yes
-			}
-
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6306 } } }
+					country_event = { id = CrisisManagerMenu.6306 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
 			} else = {
@@ -3144,13 +3217,16 @@ country_event = {
 					set_variable = { which = CmtVarCombatFleetNumber_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1032 }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1032 } } }
+					country_event = { id = CrisisManagerMenu.1032 }
+				}
 			} else_if = {
 				limit = { has_global_flag = CmtFlagMidGameEdition }
 				country_event = { id = CrisisManagerMenu.6311 }
-			} else = { country_event = { id = CrisisManagerMenu.6400 } }
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6400 } } }
+				country_event = { id = CrisisManagerMenu.6400 }
+			}
 		}
 	}
 
@@ -3271,7 +3347,9 @@ country_event = {
 				if = {
 					limit = { has_global_flag = CmtFlagEndGameEdition }
 					country_event = { id = CrisisManagerMenu.6307 }
-				} else = { country_event = { id = CrisisManagerMenu.6300 } }
+				} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6300 } } }
+				country_event = { id = CrisisManagerMenu.6300 }
+			}
 				break = yes
 			}
 
@@ -3285,10 +3363,13 @@ country_event = {
 					set_variable = { which = CmtVarArmyPower_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1032 }
-			} else = { country_event = { id = CrisisManagerMenu.6312 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1032 } } }
+					country_event = { id = CrisisManagerMenu.1032 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6312 } } }
+				country_event = { id = CrisisManagerMenu.6312 }
+			}
 		}
 	}
 
@@ -3403,14 +3484,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6311 }
-				break = yes
-			}
-
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6311 } } }
+					country_event = { id = CrisisManagerMenu.6311 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
 			} else = {
@@ -3420,10 +3500,13 @@ country_event = {
 					set_variable = { which = CmtVarArmyPower_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1032 }
-			} else = { country_event = { id = CrisisManagerMenu.6313 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1032 } } }
+					country_event = { id = CrisisManagerMenu.1032 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6313 } } }
+				country_event = { id = CrisisManagerMenu.6313 }
+			}
 		}
 	}
 
@@ -3538,14 +3621,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6312 }
-				break = yes
-			}
-
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6312 } } }
+					country_event = { id = CrisisManagerMenu.6312 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
 			} else = {
@@ -3555,10 +3637,13 @@ country_event = {
 					set_variable = { which = CmtVarArmyPower_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1032 }
-			} else = { country_event = { id = CrisisManagerMenu.6400 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1032 } } }
+					country_event = { id = CrisisManagerMenu.1032 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6400 } } }
+				country_event = { id = CrisisManagerMenu.6400 }
+			}
 		}
 	}
 
@@ -3684,13 +3769,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6300 }
-				break = yes
-			}
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6300 } } }
+					country_event = { id = CrisisManagerMenu.6300 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagSpMenu }
 				remove_country_flag = CmtFlagSpMenu
 				if = {
@@ -3699,7 +3784,9 @@ country_event = {
 				} else_if = {
 					limit = { has_global_flag = CmtFlagMidGameEdition }
 					country_event = { id = CrisisManagerMenu.6411 }
-				} else = { country_event = { id = CrisisManagerMenu.6000 } }
+				} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6000 } } }
+				country_event = { id = CrisisManagerMenu.6000 }
+			}
 				break = yes
 			}
 
@@ -3713,10 +3800,13 @@ country_event = {
 				}
 				CmtEffectApplyCommonPower_ArmyNumber = yes
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1032 }
-			} else = { country_event = { id = CrisisManagerMenu.6500 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1032 } } }
+					country_event = { id = CrisisManagerMenu.1032 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6500 } } }
+				country_event = { id = CrisisManagerMenu.6500 }
+			}
 		}
 	}
 
@@ -3838,14 +3928,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6400 }
-				break = yes
-			}
-
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6400 } } }
+					country_event = { id = CrisisManagerMenu.6400 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
 			} else = {
@@ -3855,10 +3944,13 @@ country_event = {
 					set_variable = { which = CmtVarArmyNumber_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1032 }
-			} else = { country_event = { id = CrisisManagerMenu.6406 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1032 } } }
+					country_event = { id = CrisisManagerMenu.1032 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6406 } } }
+				country_event = { id = CrisisManagerMenu.6406 }
+			}
 		}
 	}
 
@@ -3973,14 +4065,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6401 }
-				break = yes
-			}
-
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6401 } } }
+					country_event = { id = CrisisManagerMenu.6401 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
 			} else = {
@@ -3990,13 +4081,16 @@ country_event = {
 					set_variable = { which = CmtVarArmyNumber_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1032 }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1032 } } }
+					country_event = { id = CrisisManagerMenu.1032 }
+				}
 			} else_if = {
 				limit = { has_global_flag = CmtFlagMidGameEdition }
 				country_event = { id = CrisisManagerMenu.6411 }
-			} else = { country_event = { id = CrisisManagerMenu.6500 } }
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6500 } } }
+				country_event = { id = CrisisManagerMenu.6500 }
+			}
 		}
 	}
 
@@ -4117,7 +4211,9 @@ country_event = {
 				if = {
 					limit = { has_global_flag = CmtFlagEndGameEdition }
 					country_event = { id = CrisisManagerMenu.6406 }
-				} else = { country_event = { id = CrisisManagerMenu.6400 } }
+				} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6400 } } }
+				country_event = { id = CrisisManagerMenu.6400 }
+			}
 				break = yes
 			}
 
@@ -4131,10 +4227,13 @@ country_event = {
 					set_variable = { which = CmtVarArmyPower_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1032 }
-			} else = { country_event = { id = CrisisManagerMenu.6500 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1032 } } }
+					country_event = { id = CrisisManagerMenu.1032 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6500 } } }
+				country_event = { id = CrisisManagerMenu.6500 }
+			}
 		}
 	}
 
@@ -4260,13 +4359,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6400 }
-				break = yes
-			}
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6400 } } }
+					country_event = { id = CrisisManagerMenu.6400 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagSpMenu }
 				remove_country_flag = CmtFlagSpMenu
 				if = {
@@ -4275,7 +4374,9 @@ country_event = {
 				} else_if = {
 					limit = { has_global_flag = CmtFlagMidGameEdition }
 					country_event = { id = CrisisManagerMenu.6511 }
-				} else = { country_event = { id = CrisisManagerMenu.6000 } }
+				} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6000 } } }
+				country_event = { id = CrisisManagerMenu.6000 }
+			}
 				break = yes
 			}
 
@@ -4289,10 +4390,13 @@ country_event = {
 				}
 				CmtEffectApplyCommonPower_ConstructorNumber = yes
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1033 }
-			} else = { country_event = { id = CrisisManagerMenu.6000 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1033 } } }
+					country_event = { id = CrisisManagerMenu.1033 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6000 } } }
+				country_event = { id = CrisisManagerMenu.6000 }
+			}
 		}
 	}
 
@@ -4414,14 +4518,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6500 }
-				break = yes
-			}
-
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6500 } } }
+					country_event = { id = CrisisManagerMenu.6500 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
 			} else = {
@@ -4431,10 +4534,13 @@ country_event = {
 					set_variable = { which = CmtVarConstructorNumber_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1033 }
-			} else = { country_event = { id = CrisisManagerMenu.6503 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1033 } } }
+					country_event = { id = CrisisManagerMenu.1033 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6503 } } }
+				country_event = { id = CrisisManagerMenu.6503 }
+			}
 		}
 	}
 
@@ -4549,14 +4655,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6501 }
-				break = yes
-			}
-
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6501 } } }
+					country_event = { id = CrisisManagerMenu.6501 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
 			} else = {
@@ -4566,10 +4671,13 @@ country_event = {
 					set_variable = { which = CmtVarConstructorNumber_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1033 }
-			} else = { country_event = { id = CrisisManagerMenu.6504 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1033 } } }
+					country_event = { id = CrisisManagerMenu.1033 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6504 } } }
+				country_event = { id = CrisisManagerMenu.6504 }
+			}
 		}
 	}
 
@@ -4684,14 +4792,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6503 }
-				break = yes
-			}
-
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6503 } } }
+					country_event = { id = CrisisManagerMenu.6503 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
 			} else = {
@@ -4701,10 +4808,13 @@ country_event = {
 					set_variable = { which = CmtVarConstructorNumber_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1033 }
-			} else = { country_event = { id = CrisisManagerMenu.6505 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1033 } } }
+					country_event = { id = CrisisManagerMenu.1033 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6505 } } }
+				country_event = { id = CrisisManagerMenu.6505 }
+			}
 		}
 	}
 
@@ -4819,14 +4929,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6504 }
-				break = yes
-			}
-
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6504 } } }
+					country_event = { id = CrisisManagerMenu.6504 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
 			} else = {
@@ -4836,10 +4945,13 @@ country_event = {
 					set_variable = { which = CmtVarConstructorNumber_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1033 }
-			} else = { country_event = { id = CrisisManagerMenu.6506 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1033 } } }
+					country_event = { id = CrisisManagerMenu.1033 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6506 } } }
+				country_event = { id = CrisisManagerMenu.6506 }
+			}
 		}
 	}
 
@@ -4954,14 +5066,13 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			if = {
-				limit = { has_country_flag = CmtFlagGoBack }
+			if = { limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
-				country_event = { id = CrisisManagerMenu.6505 }
-				break = yes
-			}
-
-			if = {
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6505 } } }
+					country_event = { id = CrisisManagerMenu.6505 }
+					break = yes
+				}
+			} else_if = {
 				limit = { has_country_flag = CmtFlagKeepCurrent }
 				remove_country_flag = CmtFlagKeepCurrent
 			} else = {
@@ -4971,13 +5082,16 @@ country_event = {
 					set_variable = { which = CmtVarConstructorNumber_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1033 }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1033 } } }
+					country_event = { id = CrisisManagerMenu.1033 }
+				}
 			} else_if = {
 				limit = { has_global_flag = CmtFlagMidGameEdition }
 				country_event = { id = CrisisManagerMenu.6511 }
-			} else = { country_event = { id = CrisisManagerMenu.6000 } }
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6000 } } }
+				country_event = { id = CrisisManagerMenu.6000 }
+			}
 		}
 	}
 
@@ -5098,7 +5212,9 @@ country_event = {
 				if = {
 					limit = { has_global_flag = CmtFlagEndGameEdition }
 					country_event = { id = CrisisManagerMenu.6506 }
-				} else = { country_event = { id = CrisisManagerMenu.6500 } }
+				} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6500 } } }
+				country_event = { id = CrisisManagerMenu.6500 }
+			}
 				break = yes
 			}
 
@@ -5112,10 +5228,13 @@ country_event = {
 					set_variable = { which = CmtVarArmyPower_Common value = 0 }
 				}
 			}
-			if = {
-				limit = { has_country_flag = CmtFlagIndividual }
-				country_event = { id = CrisisManagerMenu.1033 }
-			} else = { country_event = { id = CrisisManagerMenu.6000 } }
+			if = { limit = { has_country_flag = CmtFlagIndividual }
+				if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1033 } } }
+					country_event = { id = CrisisManagerMenu.1033 }
+				}
+			} else_if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.6000 } } }
+				country_event = { id = CrisisManagerMenu.6000 }
+			}
 		}
 	}
 

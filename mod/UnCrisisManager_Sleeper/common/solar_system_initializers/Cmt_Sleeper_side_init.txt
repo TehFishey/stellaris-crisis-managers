@@ -98,8 +98,8 @@ cmt_gaia_resistors_init = {
 					name = random # TODO "NAME_sleeper_Gaia_Resistors"
 					type = primitive
 					auto_delete = no
-					#authority = auth_democratic
-					#civics = {
+					# authority = auth_democratic
+					# civics = {
 					#	civic = civic_free_haven
 					#	civic = civic_post_apocalyptic
 					#}
@@ -177,11 +177,11 @@ cmt_gaia_resistors_init = {
 						name = random # TODO "NAME_sleeper_Highlander_Dominator"
 						type = primitive
 						auto_delete = no
-						#authority = auth_imperial
-						#civics = {
+						# authority = auth_imperial
+						# civics = {
 						#	civic = civic_imperial_cult
 						#	civic = civic_life_seeded
-						#}
+						# }
 						species = event_target:cmt_sleeper_highlander_species
 						ethos = {
 							ethic = ethic_xenophobe
