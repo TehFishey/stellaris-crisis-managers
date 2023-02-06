@@ -652,15 +652,24 @@ country_event = {
 		exists = from
 	}
 	immediate = {
-		from = { save_event_target_as = former_opponent } # because 'from' deploys error somehow
+		from = {
+			save_event_target_as = former_opponent # because 'from' deploys error somehow
+		}
 		remove_country_flag = attacking_fleets_stopped
 		every_controlled_fleet = {
 			limit = {
 				is_mobile = yes
 				is_ship_class = shipclass_military
-				is_disabled = yes
+				exists = solar_system
+				OR = {
+					is_disabled = yes
+					any_owned_ship = { is_disabled = yes }
+				}
 			}
-			every_owned_ship = { set_disabled = no }
+			every_owned_ship = {
+				limit = { is_disabled = yes }
+				set_disabled = no
+			}
 			set_event_locked = no
 		}
 		# Also armies (using owner hack)
@@ -673,6 +682,24 @@ country_event = {
 			remove_army_flag = attacking_fleets_stopped@event_target:former_opponent
 			if = { limit = { fleet = { NOT = { is_owned_by = event_target:former_opponent } } }
 				fleet = { set_owner = event_target:former_opponent set_event_locked = no }
+			}
+		}
+		event_target:former_opponent = {
+			every_controlled_fleet = {
+				limit = {
+					is_mobile = yes
+					is_ship_class = shipclass_military
+					exists = solar_system
+					OR = {
+						is_disabled = yes
+						any_owned_ship = { is_disabled = yes }
+					}
+				}
+				every_owned_ship = {
+					limit = { is_disabled = yes }
+					set_disabled = no
+				}
+				set_event_locked = no
 			}
 		}
 	}
@@ -697,11 +724,11 @@ country_event = {
 				is_in_combat = yes
 				is_ship_class = shipclass_military
 				is_disabled = no
+				exists = solar_system
 				# any_owned_ship = {
 				# 	is_ship_class = shipclass_military
 				# 	is_disabled = no
 				# }
-				exists = solar_system
 				any_combatant_fleet = {
 					exists = owner
 					is_owned_by = from
@@ -728,11 +755,11 @@ country_event = {
 					is_in_combat = yes
 					is_ship_class = shipclass_military
 					is_disabled = no
+					exists = solar_system
 					# any_owned_ship = {
 					# 	is_ship_class = shipclass_military
 					# 	is_disabled = no
 					# }
-					exists = solar_system
 					any_combatant_fleet = {
 						exists = owner
 						is_owned_by = root
@@ -757,12 +784,7 @@ country_event = {
 		}
 
 		add_trust = { amount = 90 who = from }
-		set_faction_hostility = {
-			target = from
-			set_hostile = no
-			set_neutral = no
-			set_friendly = yes
-		}
+		set_faction_hostility = { target = from set_hostile = no set_neutral = no set_friendly = yes }
 		random_agreement = {
 			limit = {
 				is_owned_by = event_target:raider_khanate
@@ -776,12 +798,7 @@ country_event = {
 				if = {
 					limit = { NOT = { is_same_empire = root } is_hostile = root }
 					add_trust = { amount = 90 who = root }
-					set_faction_hostility = {
-						target = root
-						set_hostile = no
-						set_neutral = no
-						set_friendly = yes
-					}
+					set_faction_hostility = { target = root set_hostile = no set_neutral = no set_friendly = yes }
 					root = {
 						add_trust = { amount = 90 who = prev }
 						# set_faction_hostility = { # Superfluous?
@@ -794,20 +811,11 @@ country_event = {
 				}
 				if = { limit = { NOT = { is_same_empire = from } is_hostile = from }
 					add_trust = { amount = 90 who = from }
-					set_faction_hostility = {
-						target = from
-						set_hostile = no
-						set_neutral = no
-						set_friendly = yes
-					}
+					set_faction_hostility = { target = from set_hostile = no set_neutral = no set_friendly = yes }
 					from = {
 						add_trust = { amount = 90 who = prev }
-						# set_faction_hostility = { # Superfluous?
-						# 	target = prev
-						# 	set_hostile = no
-						# 	set_neutral = no
-						# 	set_friendly = yes
-						# }
+						# Superfluous?
+						# set_faction_hostility = { target = prev set_friendly = yes }
 					}
 				}
 				random_agreement = {
@@ -828,16 +836,10 @@ country_event = {
 			}
 			from = { # Superfluous?
 				add_trust = { amount = 90 who = root }
-				set_faction_hostility = {
-					target = root
-					set_hostile = no
-					set_neutral = no
-					set_friendly = yes
-				}
+				set_faction_hostility = { target = root set_hostile = no set_neutral = no set_friendly = yes }
 			}
 		}
-
-		set_country_flag = attacking_fleets_stopped
+		set_timed_country_flag = { flag = attacking_fleets_stopped days = 7 }
 		country_event = { id = khan.307 days = 3 scopes = { from = from } } # Just reenable
 	}
 }
@@ -861,16 +863,15 @@ country_event = {
 				}
 				every_attacker = {
 					limit = { is_hostile = prevprev }
-					set_faction_hostility = {
-						target = prevprev
-						set_friendly = yes
+					# set_faction_hostility = { target = prevprev set_friendly = yes }
+					root = {
+						country_event = { id = khan.308 scopes = { from = prev } days = -1 } # Set friendly
 					}
 				}
 				every_defender = {
 					limit = { NOT = { is_hostile = prevprev } }
-					set_faction_hostility = {
-						target = prevprev
-						set_hostile = yes
+					root = {
+						set_faction_hostility = { target = prev set_hostile = yes }
 					}
 				}
 			}
@@ -880,16 +881,15 @@ country_event = {
 				}
 				every_defender = {
 					limit = { is_hostile = prevprev }
-					set_faction_hostility = {
-						target = prevprev
-						set_friendly = yes
+					# set_faction_hostility = { target = prevprev set_friendly = yes }
+					root = {
+						country_event = { id = khan.308 scopes = { from = prev } days = -1 } # Set friendly
 					}
 				}
 				every_attacker = {
 					limit = { NOT = { is_hostile = prevprev } }
-					set_faction_hostility = {
-						target = prevprev
-						set_hostile = yes
+					root = {
+						set_faction_hostility = { target = prev set_hostile = yes }
 					}
 				}
 			}
@@ -925,6 +925,52 @@ country_event = {
 							prevprev = { is_hostile = prev }
 						}
 						prevprev = {
+							country_event = { id = khan.308 days = -1 scopes = { from = prev } } # Set friendly
+						}
+					}
+				}
+			}
+		}
+
+		if = { limit = { exists = event_target:marauders_garrison_1 }
+			event_target:marauders_garrison_1 = {
+				prev = {
+					every_country = {
+						limit = {
+							has_communications = prev
+							OR = {
+								is_friendly_to = prev
+								is_neutral_to = prev
+								prevprev = { is_hostile_to = prev }
+							}
+							NOR = {
+								is_hostile_to = prev
+								is_same_empire = prev
+								is_same_empire = prevprev
+								has_attitude_behavior = { target = prev behavior = attack }
+							}
+						}
+						prevprev = { set_faction_hostility = { target = prev set_hostile = no set_neutral = yes } }
+					}
+					every_relation = {
+						limit = {
+							merg_is_default_empire = yes
+							OR = {
+								is_hostile_to = prev
+								has_attitude_behavior = { target = prev behavior = attack }
+							}
+							NOR = {
+								is_friendly_to = prev
+								is_same_empire = prev
+								is_same_empire = prevprev
+								prevprev = { is_hostile_to = prev }
+							}
+						}
+						prevprev = { set_faction_hostility = { target = prev set_hostile = yes set_neutral = no set_friendly = no } }
+					}
+					prev = {
+						if = { limit = { NOT = { is_friendly_to = prev } }
+							# set_faction_hostility = { target = prev set_hostile = no set_neutral = no set_friendly = yes }
 							country_event = { id = khan.308 days = -1 scopes = { from = prev } } # Set friendly
 						}
 					}
@@ -1032,7 +1078,7 @@ country_event = {
 		if = { limit = { NOT = { exists = event_target:marauders_garrison_1 } }
 			create_country = {
 				name = root
-				type = faction # marauders_garrison
+				type = faction # marauders_garrison do later
 				flag = {
 					icon = { category = "pirate" file = "flag_pirate_11.dds" }
 					background = { category = "backgrounds" file = "00_solid.dds" }
@@ -1051,31 +1097,31 @@ country_event = {
 				released_by_country = root
 				released_from_country = root
 				effect = {
+					set_faction_hostility = { target = root set_friendly = yes }
 					save_global_event_target_as = marauders_garrison_1
 					set_country_flag = marauders_garrison_1
 					set_relation_flag = { who = root flag = marauders_garrison_1 }
 					copy_ethos_and_authority = root
 				}
 			}
-
+			every_playable_country = {
+				limit = { has_communications = root }
+				event_target:marauders_garrison_1 = {
+					set_faction_hostility = { target = prev set_hostile = yes }
+					establish_communications_no_message = prev
+					establish_contact = { who = prev }
+				}
+				establish_communications_no_message = event_target:marauders_garrison_1
+				establish_contact = { who = event_target:marauders_garrison_1 } # location = event_target:capital_planet
+			}
 			last_created_country = {
+				if = { limit = { has_global_flag = gf_great_khan_active }
+					set_country_type = marauders_garrison
+				}
 				root = {
 					establish_communications_no_message = prev
 					# establish_contact = { who = event_target:marauders_garrison_1 } # location = event_target:capital_planet
-					set_faction_hostility = {
-						target = prev
-						# set_hostile = no
-						# set_neutral = no
-						set_friendly = yes
-					}
-					prev = {
-						set_faction_hostility = {
-							target = prev
-							# set_hostile = no
-							# set_neutral = no
-							set_friendly = yes
-						}
-					}
+					set_faction_hostility = { target = prev set_friendly = yes }
 					every_subject = {
 						# limit = { is_hostile = prev }
 						prevprev = {
@@ -1114,7 +1160,6 @@ country_event = {
 				}
 			}
 		}
-
 		if = { limit = { has_federation = yes }
 			federation = {
 				every_member = {
@@ -1129,7 +1174,6 @@ country_event = {
 				}
 			}
 		}
-
 		every_country = {
 			limit = {
 				NOR = {
@@ -1143,7 +1187,6 @@ country_event = {
 				country_event = { id = khan.308 days = -1 scopes = { from = prev } } # Set friendly
 			}
 		}
-
 		every_controlled_fleet = {
 			limit = {
 				exists = solar_system
@@ -1157,11 +1200,6 @@ country_event = {
 			if = { limit = { exists = leader }
 				leader = { set_owner = event_target:marauders_garrison_1 }
 			}
-		}
-		every_playable_country = {
-			limit = { has_communications = root }
-			establish_communications_no_message = event_target:marauders_garrison_1
-			establish_contact = { who = event_target:marauders_garrison_1 } # location = event_target:capital_planet
 		}
 	}
 }
