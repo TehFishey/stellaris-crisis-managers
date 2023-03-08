@@ -3621,18 +3621,14 @@ country_event = {
 	id = marauder.520
 	hide_window = yes
 	is_triggered_only = yes
-
 	trigger = { CmtTriggerIsKhanCountry = yes }
-
 	immediate = {
 		event_target:CmtGlobalVar = {
 			if = {
 				limit = {
-					NOR = {
-						check_variable = { which = CmtVarReinforceCycle_Khan value = 2 }
-						check_variable = { which = CmtVarReinforceCycle_Khan value = 3 }
-						check_variable = { which = CmtVarReinforceCycle_Khan value = 4 }
-					}
+					check_variable = { which = CmtVarReinforceCycle_Khan value != 2 }
+					check_variable = { which = CmtVarReinforceCycle_Khan value != 3 }
+					check_variable = { which = CmtVarReinforceCycle_Khan value != 4 }
 				}
 				CmtEffectKhanReinforceOnCapital = yes
 				root = { country_event = { id = marauder.520 days = 340 } }

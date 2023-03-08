@@ -3145,7 +3145,7 @@ country_event = {
 		custom_tooltip = CrisisManagerMenu.7208b.tooltip
 		trigger = { any_country = { CmtTriggerIsKhanCountry = yes } }
 		hidden_effect = {
-			every_country = {
+			random_country = {
 				limit = { CmtTriggerIsKhanCountry = yes }
 				country_event = { id = marauder.512 }
 				set_country_flag = khan_dead_assassin

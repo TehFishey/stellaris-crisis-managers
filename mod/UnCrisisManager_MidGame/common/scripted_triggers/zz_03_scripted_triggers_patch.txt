@@ -3,8 +3,8 @@
 
 is_fallen_empire = {
 	OR = {
-		is_country_type = fallen_empire
-		is_country_type = awakened_fallen_empire
+		merg_is_fallen_empire = yes # hopefully not included is_fallen_empire itself
+		merg_is_awakened_fe = yes # is_country_type = awakened_fallen_empire
 		AND = {
 			has_global_flag = a_deadly_tempest_mod_active
 			is_country_type = awakened_gate_builders
@@ -16,7 +16,11 @@ has_total_war_cb = {
 	OR = {
 		# Attacker checks
 		AND = {
-			merg_is_standard_empire = yes
+			OR = {
+				# is_country_type_with_subjects = yes
+				merg_is_default_empire = yes
+				is_fallen_empire = yes
+			}
 			OR = {
 				merg_is_awakened_fe = yes
 				has_valid_civic = civic_hive_devouring_swarm
@@ -35,7 +39,7 @@ has_total_war_cb = {
 		AND = {
 			merg_is_default_empire = yes
 			NOR = {
-				# merg_is_awakened_fe = yes meaningless
+				# is_country_type = awakened_fallen_empire meaningless
 				has_valid_civic = civic_fanatic_purifiers
 				has_valid_civic = civic_hive_devouring_swarm
 				has_valid_civic = civic_machine_assimilator
@@ -43,7 +47,7 @@ has_total_war_cb = {
 			}
 			from = {
 				OR = {
-					merg_is_awakened_fe = yes
+					merg_is_awakened_fe = yes # is_country_type = awakened_fallen_empire
 					has_valid_civic = civic_fanatic_purifiers
 					has_valid_civic = civic_hive_devouring_swarm
 					has_valid_civic = civic_machine_assimilator
@@ -61,10 +65,7 @@ is_subject_of_khan = {
 	exists = overlord
 	exists = event_target:raider_khanate
 	# overlord = { is_same_empire = prevprev }
-	overlord = {
-		is_same_empire = event_target:raider_khanate
-		# is_country_type = awakened_marauders
-	}
+	overlord = { is_same_empire = event_target:raider_khanate }
 	merg_is_default_empire = yes
 	# has_modifier = "satrapy_of_horde"
 	# OR = { # Only to be sure

@@ -267,10 +267,12 @@ CmtTriggerIsMarauder = {
 CmtTriggerIsKhanCountry = {
 	OR = {
 		is_country_type = awakened_marauders
-		is_same_value = event_target:raider_khanate
+		AND = {
+			exists = event_target:raider_khanate
+			is_same_empire = event_target:raider_khanate
+		}
 	}
-	# CmtFlagKhanDeadCountry replaced with vanilla
-	NOT = { has_country_flag = khan_dead_event_fine }
+	NOT = { has_country_flag = khan_dead_event_fine } # CmtFlagKhanDeadCountry replaced with vanilla
 }
 
 CmtTriggerIsGraygoo = {

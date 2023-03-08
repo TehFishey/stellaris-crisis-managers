@@ -647,14 +647,10 @@ country_event = {
 	id = khan.307	# Same as a_deadly_tempest.13007
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = {
-		has_country_flag = attacking_fleets_stopped
-		exists = from
-	}
+	# trigger = {
+	# 	has_country_flag = attacking_fleets_stopped
+	# }
 	immediate = {
-		from = {
-			save_event_target_as = former_opponent # because 'from' deploys error somehow
-		}
 		remove_country_flag = attacking_fleets_stopped
 		every_controlled_fleet = {
 			limit = {
@@ -672,34 +668,22 @@ country_event = {
 			}
 			set_event_locked = no
 		}
-		# Also armies (using owner hack)
-		every_owned_army = {
-			limit = {
-				exists = fleet
-				has_army_flag = attacking_fleets_stopped@event_target:former_opponent
+		if = {
+			limit = { exists = from }
+			from = {
+				save_event_target_as = former_opponent # because 'from' deploys error somehow
 			}
-			set_owner = event_target:former_opponent
-			remove_army_flag = attacking_fleets_stopped@event_target:former_opponent
-			if = { limit = { fleet = { NOT = { is_owned_by = event_target:former_opponent } } }
-				fleet = { set_owner = event_target:former_opponent set_event_locked = no }
-			}
-		}
-		event_target:former_opponent = {
-			every_controlled_fleet = {
+			# Also armies (using owner hack)
+			every_owned_army = {
 				limit = {
-					is_mobile = yes
-					is_ship_class = shipclass_military
-					exists = solar_system
-					OR = {
-						is_disabled = yes
-						any_owned_ship = { is_disabled = yes }
-					}
+					exists = fleet
+					has_army_flag = attacking_fleets_stopped@event_target:former_opponent
 				}
-				every_owned_ship = {
-					limit = { is_disabled = yes }
-					set_disabled = no
+				set_owner = event_target:former_opponent
+				remove_army_flag = attacking_fleets_stopped@event_target:former_opponent
+				if = { limit = { fleet = { NOT = { is_owned_by = event_target:former_opponent } } }
+					fleet = { set_owner = event_target:former_opponent set_event_locked = no }
 				}
-				set_event_locked = no
 			}
 		}
 	}
@@ -713,42 +697,31 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
+		exists = from
 		NOT = { is_same_empire = from }
+		NAND = {
+			from = { has_country_flag = attacking_fleets_stopped }
+			has_country_flag = attacking_fleets_stopped
+		}
 	}
 	immediate = {
 		# log = "Fix ongoing hostility"		# \\[This.GetName]
 		# Before we need to stop fleets attacking.
-		every_controlled_fleet = {
+		if = {
 			limit = {
-				is_mobile = yes
-				is_in_combat = yes
-				is_ship_class = shipclass_military
-				is_disabled = no
-				exists = solar_system
-				# any_owned_ship = {
-				# 	is_ship_class = shipclass_military
-				# 	is_disabled = no
-				# }
-				any_combatant_fleet = {
-					exists = owner
-					is_owned_by = from
+				any_controlled_fleet = {
+					is_mobile = yes
+					is_in_combat = yes
+					is_ship_class = shipclass_military
+					is_disabled = no
+					exists = solar_system
+					any_combatant_fleet = {
+						exists = owner
+						is_owned_by = root
+					}
 				}
 			}
-			every_owned_ship = { set_disabled = yes }
-		}
-		# Also armies!?
-		every_owned_planet = {
-			limit = {
-				has_ground_combat = yes
-				any_ground_combat_attacker = { is_owned_by = from }
-			}
-			every_planet_army = {
-				limit = { is_owned_by = from }
-				set_army_flag = attacking_fleets_stopped@from
-				set_owner = prev
-			}
-		}
-		from = {
+			set_timed_country_flag = { flag = attacking_fleets_stopped days = 7 }
 			every_controlled_fleet = {
 				limit = {
 					is_mobile = yes
@@ -762,29 +735,94 @@ country_event = {
 					# }
 					any_combatant_fleet = {
 						exists = owner
-						is_owned_by = root
+						is_owned_by = from
 					}
 				}
 				every_owned_ship = { set_disabled = yes }
 			}
-			# Also armies
-			every_owned_planet = {
-				limit = {
+		}
+		# Also armies
+		if = {
+			limit = {
+				any_owned_planet = {
 					has_ground_combat = yes
 					any_ground_combat_attacker = { is_owned_by = root }
 				}
+			}
+			set_timed_country_flag = { flag = attacking_fleets_stopped days = 7 }
+			every_owned_planet = {
+				limit = {
+					has_ground_combat = yes
+					any_ground_combat_attacker = { is_owned_by = from }
+				}
 				every_planet_army = {
-					limit = { is_owned_by = root }
-					set_army_flag = attacking_fleets_stopped@root
+					limit = { is_owned_by = from }
+					set_army_flag = attacking_fleets_stopped@from
 					set_owner = prev
 				}
 			}
-			set_country_flag = attacking_fleets_stopped
-			country_event = { id = khan.307 days = 3 } # Just reenable
 		}
-
-		add_trust = { amount = 90 who = from }
+		from = {
+			if = {
+				limit = {
+					any_controlled_fleet = {
+						is_mobile = yes
+						is_in_combat = yes
+						is_ship_class = shipclass_military
+						is_disabled = no
+						exists = solar_system
+						any_combatant_fleet = {
+							exists = owner
+							is_owned_by = root
+						}
+					}
+				}
+				set_timed_country_flag = { flag = attacking_fleets_stopped days = 7 }
+				every_controlled_fleet = {
+					limit = {
+						is_mobile = yes
+						is_in_combat = yes
+						is_ship_class = shipclass_military
+						is_disabled = no
+						exists = solar_system
+						# any_owned_ship = {
+						# 	is_ship_class = shipclass_military
+						# 	is_disabled = no
+						# }
+						any_combatant_fleet = {
+							exists = owner
+							is_owned_by = root
+						}
+					}
+					every_owned_ship = { set_disabled = yes }
+				}
+			}
+			if = { # Also armies
+				limit = {
+					any_owned_planet = {
+						has_ground_combat = yes
+						any_ground_combat_attacker = { is_owned_by = root }
+					}
+				}
+				set_timed_country_flag = { flag = attacking_fleets_stopped days = 7 }
+				every_owned_planet = {
+					limit = {
+						has_ground_combat = yes
+						any_ground_combat_attacker = { is_owned_by = root }
+					}
+					every_planet_army = {
+						limit = { is_owned_by = root }
+						set_army_flag = attacking_fleets_stopped@root
+						set_owner = prev
+					}
+				}
+			}
+			if = { limit = { has_country_flag = attacking_fleets_stopped }
+				country_event = { id = khan.307 days = 3 scopes = { from = root } } # Just reenable
+			}
+		}
 		set_faction_hostility = { target = from set_hostile = no set_neutral = no set_friendly = yes }
+		add_trust = { amount = 90 who = from }
 		random_agreement = {
 			limit = {
 				is_owned_by = event_target:raider_khanate
@@ -795,27 +833,17 @@ country_event = {
 
 		if = { limit = { exists = event_target:marauders_garrison_1 }
 			event_target:marauders_garrison_1 = {
-				if = {
-					limit = { NOT = { is_same_empire = root } is_hostile = root }
-					add_trust = { amount = 90 who = root }
+				if = { limit = { is_hostile = root NOT = { is_same_empire = root } }
 					set_faction_hostility = { target = root set_hostile = no set_neutral = no set_friendly = yes }
-					root = {
-						add_trust = { amount = 90 who = prev }
-						# set_faction_hostility = { # Superfluous?
-						# 	target = prev
-						# 	set_hostile = no
-						# 	set_neutral = no
-						# 	set_friendly = yes
-						# }
-					}
+					add_trust = { amount = 90 who = root }
+					root = { add_trust = { amount = 90 who = prev } }
 				}
-				if = { limit = { NOT = { is_same_empire = from } is_hostile = from }
-					add_trust = { amount = 90 who = from }
+				if = { limit = { is_hostile = root.from NOT = { is_same_empire = root.from }  }
 					set_faction_hostility = { target = from set_hostile = no set_neutral = no set_friendly = yes }
-					from = {
+					add_trust = { amount = 90 who = root.from }
+					root.from = {
 						add_trust = { amount = 90 who = prev }
-						# Superfluous?
-						# set_faction_hostility = { target = prev set_friendly = yes }
+						# set_faction_hostility = { target = prev set_friendly = yes } # Superfluous?
 					}
 				}
 				random_agreement = {
@@ -839,8 +867,9 @@ country_event = {
 				set_faction_hostility = { target = root set_hostile = no set_neutral = no set_friendly = yes }
 			}
 		}
-		set_timed_country_flag = { flag = attacking_fleets_stopped days = 7 }
-		country_event = { id = khan.307 days = 3 scopes = { from = from } } # Just reenable
+		if = { limit = { has_country_flag = attacking_fleets_stopped }
+			country_event = { id = khan.307 days = 3 scopes = { from = from } } # Just reenable
+		}
 	}
 }
 
@@ -870,8 +899,9 @@ country_event = {
 				}
 				every_defender = {
 					limit = { NOT = { is_hostile = prevprev } }
-					root = {
-						set_faction_hostility = { target = prev set_hostile = yes }
+					root = { set_faction_hostility = { target = prev set_hostile = yes } }
+					if = { limit = { exists = event_target:marauders_garrison_1 }
+						event_target:marauders_garrison_1 = { set_faction_hostility = { target = prev set_hostile = yes } }
 					}
 				}
 			}
@@ -888,8 +918,9 @@ country_event = {
 				}
 				every_attacker = {
 					limit = { NOT = { is_hostile = prevprev } }
-					root = {
-						set_faction_hostility = { target = prev set_hostile = yes }
+					root = { set_faction_hostility = { target = prev set_hostile = yes } }
+					if = { limit = { exists = event_target:marauders_garrison_1 }
+						event_target:marauders_garrison_1 = { set_faction_hostility = { target = prev set_hostile = yes } }
 					}
 				}
 			}
@@ -930,48 +961,65 @@ country_event = {
 					}
 				}
 			}
-		}
 
-		if = { limit = { exists = event_target:marauders_garrison_1 }
-			event_target:marauders_garrison_1 = {
-				prev = {
-					every_country = {
-						limit = {
-							has_communications = prev
-							OR = {
-								is_friendly_to = prev
-								is_neutral_to = prev
-								prevprev = { is_hostile_to = prev }
-							}
-							NOR = {
-								is_hostile_to = prev
-								is_same_empire = prev
-								is_same_empire = prevprev
-								has_attitude_behavior = { target = prev behavior = attack }
-							}
-						}
-						prevprev = { set_faction_hostility = { target = prev set_hostile = no set_neutral = yes } }
-					}
-					every_relation = {
-						limit = {
-							merg_is_default_empire = yes
-							OR = {
-								is_hostile_to = prev
-								has_attitude_behavior = { target = prev behavior = attack }
-							}
-							NOR = {
-								is_friendly_to = prev
-								is_same_empire = prev
-								is_same_empire = prevprev
-								prevprev = { is_hostile_to = prev }
-							}
-						}
-						prevprev = { set_faction_hostility = { target = prev set_hostile = yes set_neutral = no set_friendly = no } }
-					}
+			if = { limit = { exists = event_target:marauders_garrison_1 }
+				event_target:marauders_garrison_1 = {
 					prev = {
-						if = { limit = { NOT = { is_friendly_to = prev } }
-							# set_faction_hostility = { target = prev set_hostile = no set_neutral = no set_friendly = yes }
-							country_event = { id = khan.308 days = -1 scopes = { from = prev } } # Set friendly
+						every_country = {
+							limit = {
+								has_communications = prev
+								# OR = {
+								# 	is_friendly_to = prev
+								# 	is_neutral_to = prev
+								# 	# prevprev = { is_hostile = prev }
+								# 	# is_subject_of_khan = yes
+								# }
+								NOR = {
+									is_same_empire = prev
+									is_same_empire = prevprev
+									is_hostile = prev
+									has_attitude_behavior = { target = prev behavior = attack }
+								}
+							}
+							prevprev = { set_faction_hostility = { target = prev set_hostile = no set_neutral = yes } }
+						}
+						every_relation = {
+							limit = {
+								merg_is_default_empire = yes
+								OR = {
+									is_hostile = prev
+									has_attitude_behavior = { target = prev behavior = attack }
+								}
+								NOR = {
+									is_same_empire = prev
+									is_same_empire = prevprev
+									is_friendly_to = prev
+									prevprev = { is_hostile = prev }
+									is_subject_of_khan = yes
+								}
+							}
+							prevprev = { set_faction_hostility = { target = prev set_hostile = yes set_neutral = no set_friendly = no } }
+						}
+						prev = {
+							if = { limit = { is_hostile = prev }
+								set_faction_hostility = { target = prev set_hostile = no set_neutral = no set_friendly = yes }
+								country_event = { id = khan.308 scopes = { from = prev } } # Set friendly
+							}
+						}
+						every_subject = {
+							limit = {
+								# is_subject_of_khan = yes
+								NOT = { has_country_flag = rebelling_satrapy }
+								OR = {
+									is_hostile = prevprev
+									prevprev = { is_hostile = prev }
+								}
+							}
+							log = "Fix Garrison hostility for \\[This.GetName]"
+							prevprev = {
+								set_faction_hostility = { target = prev set_hostile = no set_neutral = no set_friendly = yes }
+								country_event = { id = khan.308 scopes = { from = prev } } # Set friendly
+							}
 						}
 					}
 				}
@@ -1150,6 +1198,7 @@ country_event = {
 					}
 				}
 				set_subject_of = { who = prev preset = preset_bulwark }
+				set_faction_hostility = { target = root set_friendly = yes }
 				# set_subject_of = { who = prev preset = preset_vassal }
 				random_agreement = {
 					limit = {
