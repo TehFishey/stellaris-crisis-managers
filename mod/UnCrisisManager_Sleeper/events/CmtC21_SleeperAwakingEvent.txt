@@ -474,7 +474,7 @@ country_event = {
 								}
 							}
 							order_forced_return = yes
-						} else = { set_mia = yes }
+						} else = { set_mia = mia_return_home }
 					}
 				}
 			}
@@ -1363,14 +1363,14 @@ system_event = {
 						}
 					}
 					last_created_country = {
-						set_primitive_age = late_medieval_age
+						set_pre_ftl_age = late_medieval_age
 						save_global_event_target_as = sleeper_deus_country
 						set_country_flag = sleeper_deus_country_scion
 						set_country_flag = late_medieval_age
 						set_country_flag = recently_advanced
 					}
 				}
-				setup_primitive_planet = yes
+				setup_pre_ftl_planet = yes
 				add_modifier = { modifier = "planet_population_control" days = -1 }
 				add_building = building_primitive_farm
 				add_deposit = d_junk_wastes

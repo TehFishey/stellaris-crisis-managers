@@ -111,13 +111,13 @@ cmt_gaia_resistors_init = {
 					}
 				}
 				last_created_country = {
-					set_primitive_age = machine_age
+					set_pre_ftl_age = machine_age
 					save_global_event_target_as = sleeper_gaia_country
 					set_country_flag = sleeper_gaia_country
 					set_country_flag = machine_age
 				}
 			}
-			setup_primitive_planet = yes
+			setup_pre_ftl_planet = yes
 			add_modifier = { modifier = "planet_population_control" days = -1 }
 			add_modifier = { modifier = "neutron_bombarded" days = -1 }
 			set_planet_flag = has_megastructure
@@ -190,13 +190,13 @@ cmt_gaia_resistors_init = {
 						}
 					}
 					last_created_country = {
-						set_primitive_age = atomic_age
+						set_pre_ftl_age = atomic_age
 						save_global_event_target_as = sleeper_highlander_country
 						set_country_flag = sleeper_highlander_country
 						set_country_flag = atomic_age
 					}
 				}
-				setup_primitive_planet = yes
+				setup_pre_ftl_planet = yes
 				add_building = building_urban_dwellings
 				add_building = building_primitive_farm
 				add_modifier = { modifier = "planet_population_control" days = -1 }

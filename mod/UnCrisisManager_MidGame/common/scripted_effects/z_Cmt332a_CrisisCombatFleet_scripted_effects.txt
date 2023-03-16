@@ -507,7 +507,7 @@ CmtEffectCreateFleet_KhanSubReinforcement1 = {
 	create_fleet = {
 		name = {
 			key = "NAME_Horde_Auxiliary_Fleet"
-			variable_string = "satrapy_species.GetName"
+			variable_string = "[satrapy_species.GetName]"
 		}
 		effect = {
 			set_owner = prev
@@ -548,7 +548,7 @@ CmtEffectCreateFleet_KhanSubReinforcement2 = {
 	create_fleet = {
 		name = {
 			key = "NAME_Horde_Auxiliary_Fleet"
-			variable_string = "satrapy_species.GetName"
+			variable_string = "[satrapy_species.GetName]"
 		}
 		effect = {
 			set_owner = prev
@@ -592,7 +592,7 @@ CmtEffectCreateFleet_KhanSubReinforcement3 = {
 	create_fleet = {
 		name = {
 			key = "NAME_Horde_Auxiliary_Fleet"
-			variable_string = "satrapy_species.GetName"
+			variable_string = "[satrapy_species.GetName]"
 		}
 		effect = {
 			set_owner = prev
@@ -636,7 +636,7 @@ CmtEffectCreateFleet_KhanSubReinforcement4 = {
 	create_fleet = {
 		name = {
 			key = "NAME_Horde_Auxiliary_Fleet"
-			variable_string = "satrapy_species.GetName"
+			variable_string = "[satrapy_species.GetName]"
 		}
 		effect = {
 			set_owner = prev
@@ -680,7 +680,7 @@ CmtEffectCreateFleet_KhanSubReinforcement5 = {
 	create_fleet = {
 		name = {
 			key = "NAME_Horde_Auxiliary_Fleet"
-			variable_string = "satrapy_species.GetName"
+			variable_string = "[satrapy_species.GetName]"
 		}
 		effect = {
 			set_owner = prev

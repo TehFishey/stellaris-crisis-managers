@@ -1066,7 +1066,7 @@ country_event = {
 					root.capital_star.starbase = { is_owned_by = root }
 				}
 				set_home_base = root.capital_star.starbase
-				set_mia = yes
+				set_mia = mia_return_home
 			} else = { set_location = root.capital_scope }
 			fleet_event = { id = marauder.50 days = 1800 }
 		}

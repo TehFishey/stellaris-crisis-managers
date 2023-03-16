@@ -183,7 +183,7 @@ country_event = {
 					target = event_target:FE_outrager
 					name = {
 						key = "NAME_Holy_World_War"
-						variable_string = "This.MainAttacker.GetAdj"
+						variable_string = "[This.MainAttacker.GetAdj]"
 					}
 					# "[This.MainAttacker.GetAdj] Holy World War"
 					attacker_war_goal = wg_subjugation

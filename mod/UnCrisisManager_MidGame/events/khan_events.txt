@@ -2025,7 +2025,7 @@ fleet_event = {
 							remove_auto_move_target = yes
 							clear_fleet_actions = this
 							# log="set_mia \\[This.GetName]"
-							set_mia = yes
+							set_mia = mia_return_home
 						}
 					} else = {
 						# log="order_forced_return \\[This.GetName]"

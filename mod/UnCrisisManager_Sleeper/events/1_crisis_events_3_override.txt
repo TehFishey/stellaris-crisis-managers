@@ -316,7 +316,7 @@ country_event = {
 					}
 					# declare_war = {
 					# 	target = root
-					# 	name = { key = "NAME_Declared_Crisis_War" variable_string = "This.MainDefender.GetAdj" }
+					# 	name = { key = "NAME_Declared_Crisis_War" variable_string = "[This.MainDefender.GetAdj]" }
 					# 	attacker_war_goal = "wg_declared_crisis"
 					# }
 					# every_playable_country = {
