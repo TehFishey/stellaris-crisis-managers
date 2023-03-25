@@ -1,0 +1,119 @@
+## For Compatibility
+# Overrides HFE, ZoFE
+# Gets overridden by the merger of rules.
+## Shared with: The Great Khan Expanded, A Deadly Tempest, Unique Ascension Perks, Crisis Managers
+
+has_total_war_cb = {
+	OR = {
+		# Attacker checks
+		AND = {
+			OR = {
+				merg_is_standard_empire = yes
+				is_progenitor_empires = yes # ACOT
+			}
+			OR = {
+				merg_is_awakened_fe = yes
+				has_valid_civic = civic_hive_devouring_swarm
+				has_valid_civic = civic_machine_assimilator
+				AND = {
+					has_valid_civic = civic_machine_terminator
+					from = { is_synthetic_empire = no }
+				}
+				AND = {
+					has_valid_civic = civic_fanatic_purifiers
+					NOT = { is_same_species = from }
+				}
+				is_progenitor_empires = yes # ACOT
+			}
+		}
+		# End threat checks
+		AND = {
+			OR = {
+				merg_is_default_empire = yes
+				is_progenitor_empires = yes # ACOT
+			}
+			NOR = {
+				# is_country_type = awakened_fallen_empire meaningless
+				is_homicidal = yes
+				has_valid_civic = civic_machine_assimilator
+			}
+			from = {
+				OR = {
+					merg_is_awakened_fe = yes # is_country_type = awakened_fallen_empire
+					is_homicidal = yes
+					has_valid_civic = civic_machine_assimilator
+					is_progenitor_empires = yes # ACOT
+				}
+			}
+		}
+	}
+}
+
+planet_is_hostile_or_crisis = {
+	exists = owner
+	owner = {
+		OR = {
+			is_at_war_with = from.owner
+			is_crisis_faction = yes
+			from.owner = { # Aggressive Crisis Engine
+				is_hostile = prev				# Fix for empires which cannot be at war (crises).
+				OR = {
+					has_country_flag = acemod_can_target_hostile_with_colossus					# Fallback flag in case needed.
+					is_crisis_faction = yes					# Narrow down to just crises as to not alter more than needed.
+				}
+			}
+		}
+	}
+}
+
+# Workaround: as is_overlord_to is not working for Khan.
+# This = Satrapy
+is_subject_of_khan = {
+	is_subject = yes
+	exists = overlord
+	exists = event_target:raider_khanate
+	# overlord = { is_same_empire = prevprev }
+	overlord = { is_same_empire = event_target:raider_khanate }
+	merg_is_default_empire = yes
+	# has_modifier = "satrapy_of_horde"
+	# OR = { # Only to be sure
+	# 	any_agreement = { agreement_preset = preset_machinesmith_satrapy }
+	# 	any_agreement = { agreement_preset = preset_satrapy }
+	# 	any_agreement = { agreement_preset = preset_fabricator_satrapy }
+	# 	any_agreement = { agreement_preset = preset_war_satrapy }
+	# 	# any_agreement = { agreement_preset = preset_nsc_freebooter_satrapy } ### NSC SUPPORT has_global_flag = has_nsc_active
+	# }
+}
+
+is_fallen_empire = {
+	OR = {
+		merg_is_fallen_empire = yes # hopefully not included is_fallen_empire itself
+		merg_is_awakened_fe = yes # is_country_type = awakened_fallen_empire
+		AND = {
+			has_global_flag = a_deadly_tempest_mod_active
+			is_country_type = awakened_gate_builders
+		}
+	}
+}
+
+is_regular_empire = {
+	is_gestalt = no # NOT = { has_ethic = ethic_gestalt_consciousness }
+	merg_is_standard_empire = yes
+	# OR = {
+	# 	is_country_type = default
+	# 	is_fallen_empire = yes
+	# 	# Ethics & Civics Infinity
+	# 	# is_country_type = uo_une_member_active
+	# 	hfe_trigger_is_human_fallen = yes # is_country_type = hfe_fallen HFE mod compat. hack
+	# 	hfe_trigger_insane_admiral_trait = yes # is_country_type = hfe_pirate HFE mod compat. hack
+	# 	# prevents these special countries from destroying their own buildings and districts in their colonies
+	# 	is_country_type = gate_builders
+	# 	is_country_type = awakened_marauders
+	# 	# ZOFE
+	# 	is_zofe_country = yes # ZoFE mod compat. hack
+	# 	# # The Empty Vagrant
+	# 	# is_country_type = default_ev
+	# 	# is_country_type = fallen_empire_ev
+	# 	# is_country_type = awakened_fallen_empire_ev
+	# }
+}

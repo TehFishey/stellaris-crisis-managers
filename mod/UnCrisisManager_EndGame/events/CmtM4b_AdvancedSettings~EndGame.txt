@@ -1596,19 +1596,19 @@ country_event = {
 	title = CrisisManagerMenu.4430.name
 	desc = {
 		text = CrisisManagerMenu.4430.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocTranscendence value = 1 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocTranscendence value = 1 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4430.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocTranscendence value = 2 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocTranscendence value = 2 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4430.desc3
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocTranscendence value = 3 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocTranscendence value = 3 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4430.desc
-		trigger = {
+		exclusive_trigger = {
 			event_target:CmtGlobalVar = {
 				OR = {
 					check_variable = { which = CmtVarForcedEocTranscendence value < 1 }

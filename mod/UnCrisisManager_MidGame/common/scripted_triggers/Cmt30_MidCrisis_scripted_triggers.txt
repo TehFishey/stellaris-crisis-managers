@@ -57,6 +57,10 @@ CmtTriggerHasPotentialKhanAwaking = {
 	# }
 	OR = {
 		AND = {
+			is_ai = no
+			has_country_flag = new_khanate_flag # Human player hack
+		}
+		AND = {
 			has_country_flag = marauder_1
 			any_system_within_border = {
 				has_star_flag = marauder_system
