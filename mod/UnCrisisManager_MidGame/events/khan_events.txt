@@ -830,20 +830,35 @@ country_event = {
 			}
 			add_loyalty = 25
 		}
-
-		if = { limit = { exists = event_target:marauders_garrison_1 }
+		# Why here?
+		if = {
+			limit = {
+				exists = event_target:marauders_garrison_1
+				event_target:marauders_garrison_1 = {
+					NOR = {
+						is_same_empire = root
+						is_same_empire = root.from
+					}
+				}
+				OR = {
+					CmtTriggerIsKhanCountry = yes
+					from = { CmtTriggerIsKhanCountry = yes }
+				}
+			}
 			event_target:marauders_garrison_1 = {
-				if = { limit = { is_hostile = root NOT = { is_same_empire = root } }
+				if = { limit = { root = { is_hostile_to = prev } }
 					set_faction_hostility = { target = root set_hostile = no set_neutral = no set_friendly = yes }
 					add_trust = { amount = 90 who = root }
-					root = { add_trust = { amount = 90 who = prev } }
+					root = {
+						add_trust = { amount = 90 who = prev }
+					}
 				}
-				if = { limit = { is_hostile = root.from NOT = { is_same_empire = root.from }  }
+				if = { limit = { root.from = { is_hostile_to = prev } }
 					set_faction_hostility = { target = from set_hostile = no set_neutral = no set_friendly = yes }
 					add_trust = { amount = 90 who = root.from }
 					root.from = {
 						add_trust = { amount = 90 who = prev }
-						# set_faction_hostility = { target = prev set_friendly = yes } # Superfluous?
+						set_faction_hostility = { target = prev set_friendly = yes } # Superfluous?
 					}
 				}
 				random_agreement = {
@@ -855,17 +870,9 @@ country_event = {
 				}
 			}
 		}
-		if = {
-			limit = {
-				NAND = {
-					exists = event_target:marauders_garrison_1
-					from = { is_same_empire = event_target:marauders_garrison_1 }
-				}
-			}
-			from = { # Superfluous?
-				add_trust = { amount = 90 who = root }
-				set_faction_hostility = { target = root set_hostile = no set_neutral = no set_friendly = yes }
-			}
+		from = { # Superfluous?
+			add_trust = { amount = 90 who = root }
+			set_faction_hostility = { target = root set_hostile = no set_neutral = no set_friendly = yes }
 		}
 		if = { limit = { has_country_flag = attacking_fleets_stopped }
 			country_event = { id = khan.307 days = 3 scopes = { from = from } } # Just reenable
@@ -964,7 +971,7 @@ country_event = {
 
 			if = { limit = { exists = event_target:marauders_garrison_1 }
 				event_target:marauders_garrison_1 = {
-					prev = {
+					root = {
 						every_country = {
 							limit = {
 								has_communications = prev
@@ -1000,7 +1007,7 @@ country_event = {
 							}
 							prevprev = { set_faction_hostility = { target = prev set_hostile = yes set_neutral = no set_friendly = no } }
 						}
-						prev = {
+						prev = { # Garrison always friendly
 							if = { limit = { is_hostile = prev }
 								set_faction_hostility = { target = prev set_hostile = no set_neutral = no set_friendly = yes }
 								country_event = { id = khan.308 scopes = { from = prev } } # Set friendly
