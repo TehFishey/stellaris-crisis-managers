@@ -19,12 +19,10 @@ country_event = {
 	id = CrisisManagerMenu.1010
 	title = CrisisManagerMenu.1010.name
 	desc = {
-		text = CrisisManagerMenu.1010.desc1
-		trigger = { CmtTriggerCrisisConfig = yes }
-	}
-	desc = {
-		text = CrisisManagerMenu.1010.desc2
-		trigger = { CmtTriggerCrisisConfig = no }
+		trigger = {
+			success_text = { text = CrisisManagerMenu.1010.desc1 CmtTriggerCrisisConfig = yes }
+			success_text = { text = CrisisManagerMenu.1010.desc2 CmtTriggerCrisisConfig = no }
+		}
 	}
 	picture = GFX_evt_spymaster
 	is_triggered_only = yes
@@ -741,12 +739,10 @@ country_event = {
 	id = CrisisManagerMenu.1021
 	title = CrisisManagerMenu.1021.name
 	desc = {
-		text = CrisisManagerMenu.1021.desc1
-		trigger = { CmtTriggerPrethorynConfig = yes }
-	}
-	desc = {
-		text = CrisisManagerMenu.1021.desc2
-		trigger = { CmtTriggerPrethorynConfig = no }
+		trigger = {
+			success_text = { text = CrisisManagerMenu.1021.desc1 CmtTriggerPrethorynConfig = yes }
+			success_text = { text = CrisisManagerMenu.1021.desc2 CmtTriggerPrethorynConfig = no }
+		}
 	}
 	picture = GFX_evt_physics_research
 	is_triggered_only = yes
@@ -998,21 +994,9 @@ country_event = {
 	id = CrisisManagerMenu.1022
 	title = CrisisManagerMenu.1022.name
 	desc = {
-		text = CrisisManagerMenu.1022.desc1
 		trigger = {
-			OR = {
-				CmtTriggerExdsConfig = yes
-				CmtTriggerForcedEocConfig = yes
-			}
-		}
-	}
-	desc = {
-		text = CrisisManagerMenu.1022.desc2
-		trigger = {
-			NOR = {
-				CmtTriggerExdsConfig = yes
-				CmtTriggerForcedEocConfig = yes
-			}
+			success_text = { text = CrisisManagerMenu.1022.desc1 OR = { CmtTriggerExdsConfig = yes CmtTriggerForcedEocConfig = yes } }
+			success_text = { text = CrisisManagerMenu.1022.desc2 NOR = { CmtTriggerExdsConfig = yes CmtTriggerForcedEocConfig = yes } }
 		}
 	}
 	picture = GFX_evt_wormhole
@@ -1392,12 +1376,10 @@ country_event = {
 	id = CrisisManagerMenu.1023
 	title = CrisisManagerMenu.1023.name
 	desc = {
-		text = CrisisManagerMenu.1023.desc1
-		trigger = { CmtTriggerContingencyConfig = yes }
-	}
-	desc = {
-		text = CrisisManagerMenu.1023.desc2
-		trigger = { CmtTriggerContingencyConfig = no }
+		trigger = {
+			success_text = { text = CrisisManagerMenu.1023.desc1 CmtTriggerContingencyConfig = yes }
+			success_text = { text = CrisisManagerMenu.1023.desc2 CmtTriggerContingencyConfig = no }
+		}
 	}
 	picture = GFX_evt_glitchy_matrix
 	is_triggered_only = yes
