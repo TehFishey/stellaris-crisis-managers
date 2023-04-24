@@ -22,9 +22,13 @@ disco_gray_cat = {
 			add = 8
 			is_planet_class = pc_gray_goo
 			solar_system = { has_star_flag = lcluster }
-			event_target:CmtGlobalVar = {
-				check_variable = { which = CmtVarLgateAloneGrayCondition value != 1 }
+			event_target:global_event_target = {
+				NAND = {
+					is_variable_set = CmtVarLgateAloneGrayCondition
+					check_variable = { which = CmtVarLgateAloneGrayCondition value = 1 }
+				}
 				OR = {
+					NOT = { is_variable_set = CmtVarLgateAloneGrayCondition }
 					NOR = {
 						has_global_flag = dragon_season
 						has_global_flag = gray_goo_empire_set

@@ -272,13 +272,10 @@ set_pirates_difficulty = {
 	if = { limit = { is_variable_set = pirate_waves_difficulty }
 		set_variable = { which = pirate_waves_difficulty value = 5 } # reset
 	} else = {
-		if = { limit = { is_difficulty > 3 }
-			set_variable = { which = pirate_waves_difficulty value = 2 }
-		} else_if = { limit = { is_difficulty > 2 }
-			set_variable = { which = pirate_waves_difficulty value = 1 }
-		} else = {
-			set_variable = { which = pirate_waves_difficulty value = 0 }
-		}
+		if		= { limit = { is_difficulty > 5 } set_variable = { which = pirate_waves_difficulty value = 3 } }
+		else_if = { limit = { is_difficulty > 4 } set_variable = { which = pirate_waves_difficulty value = 2 } }
+		else_if = { limit = { is_difficulty > 3 } set_variable = { which = pirate_waves_difficulty value = 1 } }
+		else = { set_variable = { which = pirate_waves_difficulty value = 0 } }
 	}
 	if = {
 		limit = { is_multiplayer = yes }
@@ -413,12 +410,12 @@ set_pirates_difficulty = {
 				}
 			}
 			if = { limit = { check_variable = { which = pirates_factor value > 1 } }
-				divide_variable = { which = pirates_factor value = 1.5 }
+				multiply_variable = { which = pirates_factor value = 0.666 }
 			} else = {
 				multiply_variable = { which = pirates_factor value = 2 }
 			}
 		}
-		divide_variable = { which = pirates_factor value = 2 }		# Only half
+		multiply_variable = { which = pirates_factor value = 0.5 }		# Only half
 		# switch = { # full
 		# 	trigger = has_country_flag
 		# 	pirate_waves_very_easy = {
@@ -503,8 +500,9 @@ add_pirate_waves_pirate_event_chain = {
 #	300 * 100 = 24525
 #	Max fleet power: 100000
 # Creates a pirate waves fleet of ships.
-# prev = owner country
+# prev = owner pirate country
 # scope = fleet
+# root = wave_location
 create_pirate_waves_fleet = {
 	# Save wave location - ToDo: bit hacky!? (test the custom targets are needed)
 	if = {
@@ -623,7 +621,7 @@ create_pirate_waves_fleet = {
 	set_variable		= { which = pirates_fleet_factor value = prev.pirates_factor }
 	multiply_variable	= { which = pirates_fleet_factor value = 108 } # 75
 	change_variable		= { which = pirates_fleet_factor value = 72 }
-	divide_variable		= { which = pirates_fleet_factor value = 2 }
+	multiply_variable	= { which = pirates_fleet_factor value = 0.5 }
 	round_variable = pirates_fleet_factor
 	# log = "pirates_fleet_factor [This.pirates_fleet_factor]"
 

@@ -1,5 +1,11 @@
 # Replaced graphical_culture = prev.owner # "madd_01"
 # Not really necessary, as vanilla graphical_culture gets ignored if invalid.
+## Vanilla fixed
+# [effect_on_blob] Invalid center target at file: scripted effect assign_first_diadochi_planets
+# [effect_on_blob] Invalid center target at file: scripted effect assign_second_diadochi_planets
+# [effect_on_blob] Invalid center target at file: scripted effect assign_third_diadochi_planets
+# [effect_on_blob] Invalid center target at file: scripted effect assign_fourth_diadochi_planets
+
 # This = Fleet
 create_dyn_marauder_fleet = {
 	# default: OUTRIDER = 18 LANCER = 12 CHAMPION = 6 GLORY = 1
@@ -454,7 +460,10 @@ create_marauder_successor_fleet = {
 # 				has_owner = yes
 # 				is_owned_by = root
 # 				merg_is_habitat = no
-# 				num_pops > 5
+# 				OR = {
+# 					is_sector_capital = yes
+# 					num_pops > 5
+# 				}
 # 			}
 # 		}
 # 		set_star_flag = $NUM$_diadochi_system
@@ -477,36 +486,39 @@ create_marauder_successor_fleet = {
 # 	}
 # }
 
-# assign_first_diadochi_planets = {
-# 	optimize_memory
-# 	random_system_within_border = {
-# 		limit = {
-# 			is_potential_diadochi_system = yes
-# 			any_system_colony = {
-# 				has_owner = yes
-# 				is_owned_by = root
-# 				merg_is_habitat = no
-# 				num_pops > 5
-# 			}
-# 		}
-# 		set_star_flag = first_diadochi_system
-# 		save_event_target_as = first_diadochi_origin
-# 		prev = {
-# 			effect_on_blob = {
-# 				center = prev
-# 				owned_planets_percentage = 0.25
-# 				planet_limit = {
-# 					solar_system = {
-# 						is_potential_diadochi_system = yes
-# 					}
-# 				}
-# 				effect = {
-# 					set_star_flag = first_diadochi_system
-# 				}
-# 			}
-# 		}
-# 	}
-# }
+assign_first_diadochi_planets = {
+	optimize_memory
+	random_system_within_border = {
+		limit = {
+			is_potential_diadochi_system = yes
+			any_system_colony = {
+				has_owner = yes
+				is_owned_by = root
+				merg_is_habitat = no
+				OR = {
+					is_sector_capital = yes
+					num_pops > 5
+				}
+			}
+		}
+		set_star_flag = first_diadochi_system
+		save_event_target_as = first_diadochi_origin
+		prev = {
+			effect_on_blob = {
+				center = prev
+				owned_planets_percentage = 0.25
+				planet_limit = {
+					solar_system = {
+						is_potential_diadochi_system = yes
+					}
+				}
+				effect = {
+					set_star_flag = first_diadochi_system
+				}
+			}
+		}
+	}
+}
 
 # Used only once
 create_first_diadochi = {
@@ -560,36 +572,39 @@ create_first_diadochi = {
 	}
 }
 
-# assign_second_diadochi_planets = {
-# 	optimize_memory
-# 	random_system_within_border = {
-# 		limit = {
-# 			is_potential_diadochi_system = yes
-# 			any_system_colony = {
-# 				has_owner = yes
-# 				is_owned_by = root
-# 				merg_is_habitat = no
-# 				num_pops > 5
-# 			}
-# 		}
-# 		set_star_flag = second_diadochi_system
-# 		save_event_target_as = second_diadochi_origin
-# 		prev = {
-# 			effect_on_blob = {
-# 				center = prev
-# 				owned_planets_percentage = 0.33
-# 				planet_limit = {
-# 					solar_system = {
-# 						is_potential_diadochi_system = yes
-# 					}
-# 				}
-# 				effect = {
-# 					set_star_flag = second_diadochi_system
-# 				}
-# 			}
-# 		}
-# 	}
-# }
+assign_second_diadochi_planets = {
+	optimize_memory
+	random_system_within_border = {
+		limit = {
+			is_potential_diadochi_system = yes
+			any_system_colony = {
+				has_owner = yes
+				is_owned_by = root
+				merg_is_habitat = no
+				OR = {
+					is_sector_capital = yes
+					num_pops > 5
+				}
+			}
+		}
+		set_star_flag = second_diadochi_system
+		save_event_target_as = second_diadochi_origin
+		prev = {
+			effect_on_blob = {
+				center = prev
+				owned_planets_percentage = 0.33
+				planet_limit = {
+					solar_system = {
+						is_potential_diadochi_system = yes
+					}
+				}
+				effect = {
+					set_star_flag = second_diadochi_system
+				}
+			}
+		}
+	}
+}
 
 create_second_diadochi = {
 	optimize_memory
@@ -643,36 +658,39 @@ create_second_diadochi = {
 }
 
 # # Used only once
-# assign_third_diadochi_planets = {
-# 	optimize_memory
-# 	random_system_within_border = {
-# 		limit = {
-# 			is_potential_diadochi_system = yes
-# 			any_system_colony = {
-# 				has_owner = yes
-# 				is_owned_by = root
-# 				merg_is_habitat = no
-# 				num_pops > 5
-# 			}
-# 		}
-# 		set_star_flag = third_diadochi_system
-# 		save_event_target_as = third_diadochi_origin
-# 		prev = {
-# 			effect_on_blob = {
-# 				center = prev
-# 				owned_planets_percentage = 0.5
-# 				planet_limit = {
-# 					solar_system = {
-# 						is_potential_diadochi_system = yes
-# 					}
-# 				}
-# 				effect = {
-# 					set_star_flag = third_diadochi_system
-# 				}
-# 			}
-# 		}
-# 	}
-# }
+assign_third_diadochi_planets = {
+	optimize_memory
+	random_system_within_border = {
+		limit = {
+			is_potential_diadochi_system = yes
+			any_system_colony = {
+				has_owner = yes
+				is_owned_by = root
+				merg_is_habitat = no
+				OR = {
+					is_sector_capital = yes
+					num_pops > 5
+				}
+			}
+		}
+		set_star_flag = third_diadochi_system
+		save_event_target_as = third_diadochi_origin
+		prev = {
+			effect_on_blob = {
+				center = prev
+				owned_planets_percentage = 0.5
+				planet_limit = {
+					solar_system = {
+						is_potential_diadochi_system = yes
+					}
+				}
+				effect = {
+					set_star_flag = third_diadochi_system
+				}
+			}
+		}
+	}
+}
 
 create_third_diadochi = {
 	optimize_memory
@@ -725,36 +743,39 @@ create_third_diadochi = {
 	}
 }
 
-# assign_fourth_diadochi_planets = {
-# 	optimize_memory
-# 	random_system_within_border = {
-# 		limit = {
-# 			is_potential_diadochi_system = yes
-# 			any_system_colony = {
-# 				has_owner = yes
-# 				is_owned_by = root
-# 				merg_is_habitat = no
-# 				num_pops > 5
-# 			}
-# 		}
-# 		set_star_flag = fourth_diadochi_system
-# 		save_event_target_as = fourth_diadochi_origin
-# 		prev = {
-# 			effect_on_blob = {
-# 				center = prev
-# 				owned_planets_percentage = 1
-# 				planet_limit = {
-# 					solar_system = {
-# 						is_potential_diadochi_system = yes
-# 					}
-# 				}
-# 				effect = {
-# 					set_star_flag = fourth_diadochi_system
-# 				}
-# 			}
-# 		}
-# 	}
-# }
+assign_fourth_diadochi_planets = {
+	optimize_memory
+	random_system_within_border = {
+		limit = {
+			is_potential_diadochi_system = yes
+			any_system_colony = {
+				has_owner = yes
+				is_owned_by = root
+				merg_is_habitat = no
+				OR = {
+					is_sector_capital = yes
+					num_pops > 5
+				}
+			}
+		}
+		set_star_flag = fourth_diadochi_system
+		save_event_target_as = fourth_diadochi_origin
+		prev = {
+			effect_on_blob = {
+				center = prev
+				owned_planets_percentage = 1
+				planet_limit = {
+					solar_system = {
+						is_potential_diadochi_system = yes
+					}
+				}
+				effect = {
+					set_star_flag = fourth_diadochi_system
+				}
+			}
+		}
+	}
+}
 
 create_fourth_diadochi = {
 	optimize_memory
@@ -809,7 +830,7 @@ create_fourth_diadochi = {
 
 # This = System
 # Prev = old owner
-# PrevPrev = new owner = $EMPIRE$
+# prevprev = new owner = $EMPIRE$
 commit_system_to = {
 	if = {
 		limit = {
@@ -900,6 +921,26 @@ get_marauder_species = {
 					}
 				}
 			}
+			any_owned_pop_species = {
+				is_scope_valid = yes
+				is_scope_type = species
+				OR = {
+					species_can_be_necrophaged = yes
+					AND = {
+						exists = event_target:great_khan
+						is_same_species = event_target:great_khan.species
+					}
+					AND = {
+						exists = prev.owner_species
+						is_same_species = prev.owner_species
+					}
+				}
+				NOR = {
+					is_archetype = LITHOID
+					is_species_class = PLANT
+					is_species_class = FUN
+				}
+			}
 		}
 		random_owned_pop_species = {
 		# random_owned_species = {
@@ -908,6 +949,10 @@ get_marauder_species = {
 				is_scope_type = species
 				OR = {
 					species_can_be_necrophaged = yes
+					AND = {
+						exists = event_target:great_khan
+						is_same_species = event_target:great_khan.species
+					}
 					AND = {
 						exists = prev.owner_species
 						is_same_species = prev.owner_species
@@ -936,17 +981,16 @@ get_marauder_species = {
 				# 	mode = add
 				# 	mult = 10
 				# }
-				# modifier = { factor = 0.9 is_same_species = root.owner_species }
-				# # modifier = { add = 3 is_same_species = root.owner_species }
-				# modifier = {
-				# 	add = 1
-				# 	prev = {
-				# 		count_owned_pop = {
-				# 			count > 5
-				# 			limit = { is_same_species = prevprev }
-				# 		}
-				# 	}
-				# }
+				modifier = {
+					add = 6
+					OR = {
+						AND = {
+							exists = event_target:great_khan
+							is_same_species = event_target:great_khan.species
+						}
+						is_same_species = root.owner_species
+					}
+				}
 				# modifier = {
 				# 	add = 2
 				# 	prev = {
@@ -956,15 +1000,15 @@ get_marauder_species = {
 				# 		}
 				# 	}
 				# }
-				# modifier = {
-				# 	add = 3
-				# 	prev = {
-				# 		count_owned_pop = {
-				# 			count > 17
-				# 			limit = { is_same_species = prevprev }
-				# 		}
-				# 	}
-				# }
+				modifier = {
+					add = 3
+					prev = {
+						count_owned_pop = {
+							count > 17
+							limit = { is_same_species = prevprev }
+						}
+					}
+				}
 				modifier = {
 					add = 2
 					prev = { exists = capital_scope capital_scope = { habitability = { who = prevprev value > 0.6 } } }
@@ -996,21 +1040,41 @@ get_marauder_species = {
 			NAND = {
 				exists = event_target:marauder_species
 				pop_percentage = {
-					percentage > 0.2
+					percentage > 0.3
 					limit = { is_same_species = prev.owner_species }
 				}
 				pop_percentage = {
-					percentage > 0.2
+					percentage > 0.3
 					limit = { is_same_species = event_target:marauder_species }
+				}
+			}
+			any_owned_species = {
+				OR = {
+					species_can_be_necrophaged = yes
+					AND = {
+						exists = event_target:great_khan
+						is_same_species = event_target:great_khan.species
+					}
+					AND = {
+						exists = owner_species
+						is_same_species = prev.owner_species
+					}
+				}
+				NOR = {
+					is_archetype = LITHOID
+					is_species_class = PLANT
+					is_species_class = FUN
 				}
 			}
 		}
 		random_owned_species = {
 			limit = {
-				# is_scope_valid = yes
-				# is_scope_type = species
 				OR = {
 					species_can_be_necrophaged = yes
+					AND = {
+						exists = event_target:great_khan
+						is_same_species = event_target:great_khan.species
+					}
 					AND = {
 						exists = owner_species
 						is_same_species = prev.owner_species
@@ -1023,7 +1087,7 @@ get_marauder_species = {
 				}
 			}
 			weights = {
-				base = 100
+				base = 10
 				# complex_trigger_modifier = { # add 10 for each unhappy pop of this species
 				# 	trigger = count_owned_pop
 				# 	trigger_scope = prev
@@ -1039,6 +1103,16 @@ get_marauder_species = {
 				# 	mode = add
 				# 	mult = 10
 				# }
+				modifier = {
+					add = 6
+					OR = {
+						AND = {
+							exists = event_target:great_khan
+							is_same_species = event_target:great_khan.species
+						}
+						is_same_species = root.owner_species
+					}
+				}
 				complex_trigger_modifier = { # multiply it by the percentage of pops of the country
 					trigger = pop_percentage
 					trigger_scope = prev

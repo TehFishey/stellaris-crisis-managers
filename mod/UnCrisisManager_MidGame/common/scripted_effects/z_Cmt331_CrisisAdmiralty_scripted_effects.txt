@@ -446,7 +446,7 @@ CmtEffectInitFleetUpperLimit = {
 	divide_variable = { which = CmtVarFleetAngle value = CmtVarCapitalDefenceNumber }
 	# We need integer not float.
 	round_variable = CmtVarFleetAngle
-	# divide_variable = { which = CmtVarFleetAngle value = 10 } # For more precise rounding
+	# multiply_variable = { which = CmtVarFleetAngle value = 0.1 } # For more precise rounding
 	# multiply_variable = { which = CmtVarFleetAngle value = 100000 }
 	set_variable = { which = CmtVarWhileFleetAngle value = 0 }
 	# log = "Dessanu CmtVarFleetAngle [This.CmtVarFleetAngle] - CmtVarCapitalDefenceNumber [This.CmtVarCapitalDefenceNumber], Ships = [CmtGlobalVar. ], this = [This.GetName]"

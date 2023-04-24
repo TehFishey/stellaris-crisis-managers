@@ -78,16 +78,24 @@ merg_is_habitat = {
 	}
 }
 
+is_pd_hive_world = {
+	always = no
+	# OR = {
+	# 	is_planet_class = pc_pdhive1
+	# 	is_planet_class = pc_pdhive2
+	# 	is_planet_class = pc_hivetidallylocked
+	# 	is_planet_class = pc_necrohive
+	# }
+}
+
 # (upd v3.4.3)
 merg_is_hive_world = {
 	OR = {
 		is_planet_class = pc_hive
-		# Gigastructural Engineering & More
-		is_planet_class = pc_ringworld_hive
-		# Planetary Diversity
-		is_planet_class = pc_pdhive1
-		is_planet_class = pc_pdhive2
-		is_planet_class = pc_necrohive
+		is_planet_class = pc_ringworld_hive # Gigastructural Engineering & More
+		is_pd_hive_world = yes # Planetary Diversity
+		is_pd_hive_arcology = yes # Planetary Diversity
+		uses_district_set = hive_world
 	}
 }
 
@@ -122,13 +130,29 @@ merg_is_machine_world = {
 }
 
 merg_is_arcology = {
-	is_pd_arcology = yes
+	OR = {
+		is_pd_arcology = yes # is_planet_class = pc_ecocity ### (Mod) Planetary Diversity - compatibility
+		is_pd_hive_arcology = yes # is_planet_class = pc_bioforge ### (Mod) Planetary Diversity - More Arcologies - compatibility
+		is_pd_robot_arcology = yes # is_planet_class = pc_machine_factory ### (Mod) Planetary Diversity - More Arcologies - compatibility
+	}
+}
+
+merg_is_relic_world = {
+	is_planet_class = pc_relic
+	# OR = {
+	# 	is_planet_class = pc_relic
+	# 	# is_planet_class = pc_midas_relic # Midas
+	# }
 }
 
 gpm_is_planet_class_city = {
-	optimize_memory
 	OR = {
 		merg_is_arcology = yes
-		is_planet_class = pc_relic
+		merg_is_relic_world = yes
+		# is_pd_arcology = yes # is_planet_class = pc_ecocity ### (Mod) Planetary Diversity - compatibility
+		is_pd_hive_arcology = yes # is_planet_class = pc_bioforge ### (Mod) Planetary Diversity - More Arcologies - compatibility
+		is_pd_robot_arcology = yes # is_planet_class = pc_machine_factory ### (Mod) Planetary Diversity - More Arcologies - compatibility
+		is_planet_class = pc_matryoshka ### (Mod) Additional Mega Planets merged into Forgotten Queens - compatibility
+		is_planet_class = pc_hollow ### (Mod) Additional Mega Planets merged into Forgotten Queens - compatibility
 	}
 }

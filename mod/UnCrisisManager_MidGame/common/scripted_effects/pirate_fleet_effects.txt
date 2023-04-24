@@ -680,13 +680,13 @@ create_privateer_fleet = {
 			set_variable = { which = pirates_f_tmp value = pirates_factor }
 			# Time passed based modifiers
 			get_galaxy_setup_value = { which = mid_year setting = mid_game_year } # 100%
-			divide_variable = { which = mid_year value = 2 }
+			multiply_variable = { which = mid_year value = 0.5 }
 			set_variable = { which = current_year_factor value = trigger:years_passed }
 			# Only partial =  (cy/my*1.25 + 0.75)/2
 			divide_variable = { which = current_year_factor value = mid_year }
 			multiply_variable = { which = pirates_f_tmp value = 1.25 }
 			change_variable = { which = pirates_f_tmp value = 0.75 }
-			divide_variable = { which = current_year_factor value = 2 }
+			multiply_variable = { which = current_year_factor value = 0.5 }
 			multiply_variable = { which = pirates_f_tmp value = current_year_factor }
 			# round_variable_to_closest = { which = pirates_f_tmp value = 0.001 }
 		} else = {

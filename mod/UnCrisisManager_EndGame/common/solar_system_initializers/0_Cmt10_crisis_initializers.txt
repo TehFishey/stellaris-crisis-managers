@@ -53,7 +53,7 @@ sentinel_system = {
 					ethic = "ethic_egalitarian"
 				}
 				effect = {
-					save_global_event_target_as = sentinels
+					save_global_event_target_as = crisis_sentinels
 					add_resource = {
 						minerals = 5000
 						energy = 5000
@@ -61,7 +61,7 @@ sentinel_system = {
 					}
 				}
 			}
-			every_country = { establish_communications = event_target:crisis_sentinels }
+			every_playable_country = { establish_communications = event_target:crisis_sentinels }
 
 			create_fleet = {
 				effect = {
@@ -76,19 +76,92 @@ sentinel_system = {
 						angle = 210
 					}
 					save_global_event_target_as = sentinel_alpha
+					event_target:crisis_sentinels = {
+						set_custom_capital_location = prev
+					}
 				}
 			}
 
 			# CmtEffectCreateAdmiralty_SentinelCapitalDefense = yes < 3.2
 			event_target:crisis_sentinels = {
-				CmtEffectCreateFleet_SentinelCapitalDefense = yes
+				# CmtEffectCreateFleet_SentinelCapitalDefense = yes < 3.8
+				create_leader = {
+					class = admiral
+					species = owner_species
+					name = random
+					skill = 5
+					traits = {
+						trait = leader_trait_sentinel
+						trait = random_trait
+					}
+				}
+				create_fleet = {
+					name = "NAME_Sentinel_Defense_Fleet"
+					effect = {
+						set_owner = prev
+						event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Sentinel } }
+						prev = { CmtEffectResetLoop = yes }
+						while = {
+							limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+							event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+
+							while = { count =  2 CmtEffectCreateShip_BladeReptilian = yes }
+							while = { count =  2 CmtEffectCreateShip_BladeAvian = yes }
+							while = { count =  2 CmtEffectCreateShip_BladeArthropoid = yes }
+								CmtEffectCreateShip_BugCrusherMammalian = yes
+								CmtEffectCreateShip_BugCrusherReptilian = yes
+								CmtEffectCreateShip_BugCrusherAvian = yes
+
+							prev = {
+								CmtEffectProgressLoop4 = yes
+								switch = {
+									trigger = has_country_flag
+									CmtFlagLoopA = { prev = {
+										while = { count =  3 CmtEffectCreateShip_DeathsHeadMolluscoid = yes }
+										while = { count =  2 CmtEffectCreateShip_SpearheadArthoropoid = yes }
+										while = { count =  4 CmtEffectCreateShip_SentinelGamma = yes }
+										CmtEffectCreateShip_SentinelBeta = yes
+									} }
+									CmtFlagLoopB = { prev = {
+										while = { count =  3 CmtEffectCreateShip_DeathsHeadArthropoid = yes }
+										while = { count =  2 CmtEffectCreateShip_SpearheadMammalian = yes }
+										while = { count =  4 CmtEffectCreateShip_SentinelGamma = yes }
+										CmtEffectCreateShip_SentinelBeta = yes
+									} }
+									CmtFlagLoopC = { prev = {
+										while = { count =  3 CmtEffectCreateShip_DeathsHeadMammalian = yes }
+										while = { count =  2 CmtEffectCreateShip_SpearheadAvian = yes }
+										while = { count =  4 CmtEffectCreateShip_SentinelGamma = yes }
+										CmtEffectCreateShip_SentinelAlpha = yes
+									} }
+									CmtFlagLoopZ = { prev = {
+										while = { count =  3 CmtEffectCreateShip_DeathsHeadAvian = yes }
+										while = { count =  2 CmtEffectCreateShip_SpearheadMolluscoid = yes }
+										while = { count =  4 CmtEffectCreateShip_SentinelGamma = yes }
+										CmtEffectCreateShip_SentinelBeta = yes
+									} }
+								}
+							}
+						}
+						### 	Alpha		:  1 ->  1
+						### 	Beta		:  3 ->  3
+						### 	Gamma		: 16 -> 16
+						### 	Sperhead	:  8 ->  8
+						### 	DeathHead	: 12 -> 12
+						### 	BugCrusher	: 12 -> 12
+						### 	Blade		: 24 -> 24
+						CmtFleetSetAuxParam_SentinelGarisson = yes
+						assign_leader = last_created_leader
+					}
+					settings = { garrison = yes }
+				}
 			}
 
 			create_fleet = {
 				effect = {
 					set_owner = event_target:crisis_sentinels
 					create_ship = {
-						name = "NAME_Early_Warning_X-34"
+						name = "NAME_Early_Warning_X_34"
 						design = "NAME_Sentry"
 					}
 					set_location = {
@@ -102,7 +175,7 @@ sentinel_system = {
 				effect = {
 					set_owner = event_target:crisis_sentinels
 					create_ship = {
-						name = "NAME_Early_Warning_X-35"
+						name = "NAME_Early_Warning_X_35"
 						design = "NAME_Sentry"
 					}
 					set_location = {
@@ -116,7 +189,7 @@ sentinel_system = {
 				effect = {
 					set_owner = event_target:crisis_sentinels
 					create_ship = {
-						name = "NAME_Early_Warning_X-36"
+						name = "NAME_Early_Warning_X_36"
 						design = "NAME_Sentry"
 					}
 					set_location = {
@@ -130,7 +203,7 @@ sentinel_system = {
 				effect = {
 					set_owner = event_target:crisis_sentinels
 					create_ship = {
-						name = "NAME_Early_Warning_X-37"
+						name = "NAME_Early_Warning_X_37"
 						design = "NAME_Sentry"
 					}
 					set_location = {
@@ -144,7 +217,7 @@ sentinel_system = {
 				effect = {
 					set_owner = event_target:crisis_sentinels
 					create_ship = {
-						name = "NAME_Early_Warning_X-38"
+						name = "NAME_Early_Warning_X_38"
 						design = "NAME_Sentry"
 					}
 					set_location = {

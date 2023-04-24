@@ -1054,18 +1054,20 @@ system_event = {
 		if = {
 			limit = {
 				exists = starbase
-				exists = owner # has_owner = yes
-				owner = { is_subject_of_khan = no }
+				NAND = {
+					exists = owner
+					owner = { is_subject_of_khan = yes }
+				}
 			}
-			delete_fleet = starbase.fleet
-			# if = { limit = { NOT = { has_star_flag = starbase_destroyed } }
-			# 	system_event = { id = khan.310 days = 2 scopes = { fromfrom = fromfrom } }
-			# 	set_timed_star_flag = { flag = starbase_destroyed days = 5 }
-			# 	log="khan.310 exists = starbase \\[former_starbase_owner.GetName] or \\[Fromfrom.Owner.GetName]"
-			# }
-			# break = yes
+			destroy_fleet = starbase.fleet
+			if = { limit = { NOT = { has_star_flag = starbase_destroyed } }
+				system_event = { id = khan.310 days = 2 scopes = { fromfrom = fromfrom } }
+				set_timed_star_flag = { flag = starbase_destroyed days = 5 }
+				log="khan.310 starbase owned by \\[event_target:former_starbase_owner.GetName] or \\[Fromfrom.Owner.GetName]"
+			}
+			break = yes
 		}
-		if = {
+		else_if = {
 			limit = {
 				NAND = {
 					exists = fromfrom
@@ -1081,7 +1083,8 @@ system_event = {
 					starbase_event = { id = khan.302 days = 20 } # workaround
 				}
 			}
-		} else = {
+		}
+		else = {
 			create_starbase = {
 				size = "starbase_citadel"
 				owner = event_target:former_starbase_owner
@@ -1340,7 +1343,7 @@ country_event = {
 		if = { limit = { check_variable = { which = "planets_lost_to_marauder" value < 6 } }
 			set_variable = { which = "planets_lost_to_marauder" value = 6 }
 		}
-		divide_variable = { which = "planets_lost_to_marauder" value = 2 }
+		multiply_variable = { which = "planets_lost_to_marauder" value = 0.5 }
 
 		if = { limit = { is_overlord = yes }
 			every_subject = {
@@ -1373,7 +1376,7 @@ country_event = {
 		}
 
 		# Can't rebel for a year after submitting.
-		set_timed_country_flag = { flag = rebellion_cooldown days = 360 }
+		set_timed_country_flag = { flag = rebellion_cooldown years = 1 }
 		save_event_target_as = new_satrapy
 		every_playable_country = { # Notify
 			limit = {
@@ -1538,7 +1541,7 @@ country_event = {
 	}
 }
 
-# Handover parts of marauder country for Diadochi (HIDDEN)
+# Handover parts of marauder country for Diadochi (HIDDEN) SET_DIADOCHI_LEADERS_AND_FLEET
 # Maybe buggy because to late and raider_khanate not exists
 # Via marauder.601 and marauder.609
 # This = Diadochi
@@ -1555,11 +1558,7 @@ country_event = {
 		set_country_flag = first_alien_life
 		set_country_flag = has_encountered_other_empire
 		log="Handover raider_khanate \\[From.GetName] to Diadochi \\[This.GetName]."
-
-		every_controlled_fleet = {
-			limit = { is_mobile = yes is_leased = yes }
-			end_fleet_contract = { initiator = prev reason = cancelled }
-		}
+		from = { save_event_target_as = raider_khanate }
 		# Return colonies that have only the starbase conquered.
 		every_system_within_border = {
 			limit = {
@@ -1568,6 +1567,8 @@ country_event = {
 					NOR = {
 						is_owned_by = root
 						is_controlled_by = root
+						is_owned_by = event_target:raider_khanate
+						is_controlled_by = event_target:raider_khanate
 						merg_is_habitat = yes
 					}
 				}
@@ -1585,10 +1586,18 @@ country_event = {
 				}
 			}
 			random_system_colony = {
-				limit = { NOR = { is_owned_by = root is_controlled_by = root } }
+				limit = {
+					NOR = {
+						is_owned_by = root
+						is_controlled_by = root
+						is_owned_by = event_target:raider_khanate
+						is_controlled_by = event_target:raider_khanate
+						merg_is_habitat = yes
+					}
+				}
 				log="Give system \\[Prev.GetName] back to \\[This.Owner.GetName]"
 				prev = {
-					commit_system_to = { EMPIRE = prevprev.planet_owner } # the target scope is sovled there (so add 1 more prev)
+					commit_system_to = { EMPIRE = prevprev.planet_owner } # the target scope is solved there (so add 1 more prev)
 					add_claims = { who = root num_of_claims = 1 show_notification = no }
 				}
 			}
@@ -1605,13 +1614,8 @@ country_event = {
 		}
 
 		from = {
-			every_controlled_fleet = {
-				limit = { is_mobile = yes is_leased = yes }
-				end_fleet_contract = { initiator = prev reason = cancelled }
-			}
 			if = {
 				limit = { NOT = { has_global_flag = marauder_crisis_ongoing } count_owned_fleet = { count > 1 limit = { is_mobile = yes } } }
-				# random_owned_fleet = { pre 3.1
 				ordered_owned_fleet = {
 					limit = {
 						is_mobile = yes
@@ -1624,15 +1628,6 @@ country_event = {
 					}
 					position = 2
 					order_by = trigger:fleet_power
-					# weights = { pre 3.1
-					# 	base = 1
-					# 	# modifier = { add = 1 num_ships > 5 }
-					# 	# modifier = { add = 2 num_ships > 10 }
-					# 	# modifier = { add = 3 num_ships > 20 }
-					# 	modifier = { add = 1 fleet_power > 5500 }
-					# 	modifier = { add = 2 fleet_power > 11000 }
-					# 	modifier = { add = 3 fleet_power > 22000 }
-					# }
 					if = { limit = { exists = leader }
 						leader = { set_owner = root }
 					}
@@ -1674,12 +1669,12 @@ country_event = {
 			}
 			prev = {
 				add_resource = {
-					minerals = 20000
-					energy = 40000
-					alloys = 20000
 					consumer_goods = 20000
-					food = 20000
-					influence = 1000
+					minerals =		20000
+					energy =		40000
+					alloys =		20000
+					food =			20000
+					influence =		1000
 				}
 				copy_techs_from = { target = prev }
 				if = { limit = { prev = { num_owned_relics > 0 } }
@@ -1724,12 +1719,18 @@ country_event = {
 				}
 			}
 			# Survey Own Space
-			root = {
-				every_planet_within_border = {
-					set_surveyed = { surveyed = yes surveyor = root }
-				}
-			}
+			# root = {
+			# 	every_planet_within_border = {
+			# 		limit = { is_surveyed = { who = root status = no } }
+			# 		set_surveyed = { surveyed = yes surveyor = root }
+			# 	}
+			# }
 			# (Survey Rest of Horde's Space later, because we don't know yet)
+			# survey host's surveyed planets
+			every_galaxy_planet = {
+				limit = { is_surveyed = { who = root.from status = yes } }
+				set_surveyed = { surveyed = yes surveyor = root }
+			}
 
 			# Mining and Research Stations
 			every_planet_within_border = {
@@ -1854,7 +1855,7 @@ country_event = {
 					}
 				}
 			}
-			position = 1
+			position = 0
 			order_by = trigger:num_pops
 			set_capital = yes
 			save_event_target_as = new_diadochi_capital
@@ -1936,6 +1937,7 @@ country_event = {
 
 		give_tech_no_error_effect = { MESSAGE = no TECH = tech_hyper_drive_1 }
 		give_tech_no_error_effect = { MESSAGE = no TECH = tech_hyper_drive_2 }
+		give_tech_no_error_effect = { MESSAGE = no TECH = tech_starbase_3 }
 		give_tech_no_error_effect = { MESSAGE = no TECH = tech_wormhole_stabilization }
 		set_country_flag = encountered_first_wormhole
 		add_seen_bypass_type = wormhole
@@ -1949,6 +1951,14 @@ country_event = {
 			planet_event = { id = game_start.21 days = 120	random = 40 } # Upgrade colony shelter on additional colonies.
 			planet_event = { id = game_start.22 days = 180	random = 60 } # Set up additional buildings (mines, farms, power plants)
 			planet_event = { id = game_start.23 days = 360	random = 90 } # Add additional pops
+			starbase = {
+				if = { limit = { has_starbase_size < starbase_starhold }
+					set_starbase_size = starbase_starhold
+				}
+				set_starbase_module = { slot = 1 module = shipyard }
+				set_starbase_module = { slot = 2 module = shipyard }
+				set_starbase_module = { slot = 3 module = shipyard }
+			}
 		}
 
 		# # event_target:second_diadochi_origin

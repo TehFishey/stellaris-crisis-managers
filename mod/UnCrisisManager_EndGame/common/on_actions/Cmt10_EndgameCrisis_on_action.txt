@@ -11,8 +11,8 @@
 
 on_monthly_pulse = {
 	events = {
-		CrisisManagerControl.0044		## Auxiliary Process for Purging
-		CrisisManagerControl.0400		## Sound Control
+		CrisisManagerControl.44		## Auxiliary Process for Purging
+		CrisisManagerControl.400		## Sound Control
 	}
 }
 
@@ -32,29 +32,29 @@ on_ship_destroyed_victim = {
 # this = destroyed country, from = destroying country
 on_country_destroyed = {
 	events = {
-		CrisisManagerControl.0310		## Post-Crisis Process
-		CrisisManagerControl.0320		## DEAD END (All empires are destroyed)
-		CrisisManagerControl.0430		## Crisis Sound Control
+		CrisisManagerControl.310		## Post-Crisis Process
+		CrisisManagerControl.320		## DEAD END (All empires are destroyed)
+		CrisisManagerControl.430		## Crisis Sound Control
 	}
 }
 
 # this = country (attacker), from = country (planet owner), fromfrom = planet
 on_planet_attackers_win = {
 	events = {
-		CrisisManagerControl.0041		## Occupy Planets by Army
+		CrisisManagerControl.41		## Occupy Planets by Army
 	}
 }
 
 # this = Planet, from = Bombarder(country)
 on_planet_bombarded = {
 	events = {
-		CrisisManagerControl.0042		## Occupy Planets by Orbital Bombardment.
+		CrisisManagerControl.42		## Occupy Planets by Orbital Bombardment.
 	}
 }
 
 # this = Planet, from = Country, fromfrom = Pop
 on_pop_purged = {
 	events = {
-		CrisisManagerControl.0043		## Purge by Exds Complete
+		CrisisManagerControl.43		## Purge by Exds Complete
 	}
 }
