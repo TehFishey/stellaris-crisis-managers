@@ -21,126 +21,35 @@ event = {
 	is_triggered_only = yes
 
 	trigger = {
-		NOT = { has_global_flag = marauder_crisis_started }
+		NOR = {
+			has_global_flag = marauder_crisis_ongoing
+			has_global_flag = horde_triggered
+			has_global_flag = great_khan_dead
+			has_global_flag = great_khan_wins
+		}
 		event_target:CmtGlobalVar = {
 			mid_game_years_passed > CmtVarKhanEarliestMgpy	# Check Earliest Year
 			end_game_years_passed < CmtVarKhanLatestEgpy	# Check Latest Year
 			CmtTriggerKhanAwakingMultipleCheck = yes
-			# Pre 3.0 legacy
-			### Check Earliest Year
-			# OR = {
-			# 	check_variable = { which = CmtVarKhanEarliestMgpy value =< @CmtConstKhanEarliestMgpy_T1 }
-			# 	AND = {
-			# 		check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T2 } # -87.5
-			# 		mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V1 # -100
-			# 	}
-			# 	AND = {
-			# 		check_variable = { which = CmtVarKhanEarliestMgpy value > @CmtConstKhanEarliestMgpy_T2 } # -87.5
-			# 		check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T3 } # -62.5
-			# 		mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V2 # -75
-			# 	}
-			# 	AND = {
-			# 		check_variable = { which = CmtVarKhanEarliestMgpy value > @CmtConstKhanEarliestMgpy_T3 } # -62.5
-			# 		check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T4 } # -37.5
-			# 		mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V3 # -50
-			# 	}
-			# 	AND = {
-			# 		check_variable = { which = CmtVarKhanEarliestMgpy value > @CmtConstKhanEarliestMgpy_T4 }
-			# 		check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T5 }
-			# 		mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V4
-			# 	}
-			# 	AND = {
-			# 		check_variable = { which = CmtVarKhanEarliestMgpy value > @CmtConstKhanEarliestMgpy_T5 }
-			# 		check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T6 }
-			# 		mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V5
-			# 	}
-			# 	AND = {
-			# 		check_variable = { which = CmtVarKhanEarliestMgpy value > @CmtConstKhanEarliestMgpy_T6 }
-			# 		check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T7 }
-			# 		mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V6
-			# 	}
-			# 	AND = {
-			# 		check_variable = { which = CmtVarKhanEarliestMgpy value > @CmtConstKhanEarliestMgpy_T7 }
-			# 		check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T8 }
-			# 		mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V7
-			# 	}
-			# 	AND = {
-			# 		check_variable = { which = CmtVarKhanEarliestMgpy value > @CmtConstKhanEarliestMgpy_T8 }
-			# 		check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_T9 }
-			# 		mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V8
-			# 	}
-			# 	AND = {
-			# 		check_variable = { which = CmtVarKhanEarliestMgpy value > @CmtConstKhanEarliestMgpy_T9 }
-			# 		check_variable = { which = CmtVarKhanEarliestMgpy value < @CmtConstKhanEarliestMgpy_TA }
-			# 		mid_game_years_passed >= @CmtConstKhanEarliestMgpy_V9
-			# 	}
-			# 	AND = {
-			# 		check_variable = { which = CmtVarKhanEarliestMgpy value > @CmtConstKhanEarliestMgpy_TA }
-			# 		mid_game_years_passed >= @CmtConstTUnq_ConstKhanEarliestMgpy
-			# 	}
-			# }
-			### Check Latest Year
-			# OR = {
-			# 	check_variable = { which = CmtVarKhanLatestEgpy value >= @CmtConstKhanLatestEgpy_TA }
-			# 	AND = {
-			# 		check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T1 }
-			# 		end_game_years_passed <= @CmtConstTUnq_ConstKhanLatestEgpy
-			# 	}
-			# 	AND = {
-			# 		check_variable = { which = CmtVarKhanLatestEgpy value > @CmtConstKhanLatestEgpy_T1 }
-			# 		check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T2 }
-			# 		end_game_years_passed <= @CmtConstKhanLatestEgpy_V1
-			# 	}
-			# 	AND = {
-			# 		check_variable = { which = CmtVarKhanLatestEgpy value > @CmtConstKhanLatestEgpy_T2 }
-			# 		check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T3 }
-			# 		end_game_years_passed <= @CmtConstKhanLatestEgpy_V2
-			# 	}
-			# 	AND = {
-			# 		check_variable = { which = CmtVarKhanLatestEgpy value > @CmtConstKhanLatestEgpy_T3 }
-			# 		check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T4 }
-			# 		end_game_years_passed <= @CmtConstKhanLatestEgpy_V3
-			# 	}
-			# 	AND = {
-			# 		check_variable = { which = CmtVarKhanLatestEgpy value > @CmtConstKhanLatestEgpy_T4 }
-			# 		check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T5 }
-			# 		end_game_years_passed <= @CmtConstKhanLatestEgpy_V4
-			# 	}
-			# 	AND = {
-			# 		check_variable = { which = CmtVarKhanLatestEgpy value > @CmtConstKhanLatestEgpy_T5 }
-			# 		check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T6 }
-			# 		end_game_years_passed <= @CmtConstKhanLatestEgpy_V5
-			# 	}
-			# 	AND = {
-			# 		check_variable = { which = CmtVarKhanLatestEgpy value > @CmtConstKhanLatestEgpy_T6 }
-			# 		check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T7 }
-			# 		end_game_years_passed <= @CmtConstKhanLatestEgpy_V6
-			# 	}
-			# 	AND = {
-			# 		check_variable = { which = CmtVarKhanLatestEgpy value > @CmtConstKhanLatestEgpy_T7 }
-			# 		check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T8 }
-			# 		end_game_years_passed <= @CmtConstKhanLatestEgpy_V7
-			# 	}
-			# 	AND = {
-			# 		check_variable = { which = CmtVarKhanLatestEgpy value > @CmtConstKhanLatestEgpy_T8 }
-			# 		check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_T9 }
-			# 		end_game_years_passed <= @CmtConstKhanLatestEgpy_V8
-			# 	}
-			# 	AND = {
-			# 		check_variable = { which = CmtVarKhanLatestEgpy value > @CmtConstKhanLatestEgpy_T9 }
-			# 		check_variable = { which = CmtVarKhanLatestEgpy value < @CmtConstKhanLatestEgpy_TA }
-			# 		end_game_years_passed <= @CmtConstKhanLatestEgpy_V9
-			# 	}
-			# }
 		}
 	}
 
 	immediate = {
-		event_target:CmtGlobalVar = {
-			if = {
-				limit = { NOT = { has_global_flag = CmtFlagCheckKhanFirstChance } }
-				set_global_flag = CmtFlagCheckKhanFirstChance
-				country_event = { id = CrisisManagerControl.6111 days = 17990 }	## 50 yr - 10 d
+		if = { limit = { NOT = { has_global_flag = CmtFlagCheckKhanFirstChance } }
+			set_global_flag = CmtFlagCheckKhanFirstChance
+			event_target:CmtGlobalVar = {
+				# TODO make more dynamically
+				export_trigger_value_to_variable = { trigger = end_game_years_passed variable = CmtFlagCheckKhanLastChance }
+				change_variable = { which = CmtFlagCheckKhanLastChance value = CmtVarKhanLatestEgpy }
+				change_variable = { which = CmtFlagCheckKhanLastChance value = -1 }
+				multiply_variable = { which = CmtFlagCheckKhanLastChance value = 360 }
+				# Because var with days parameter not working (v3.8)
+				# CmtFlagCheckKhanLastChance = { DAYS = CmtFlagCheckKhanLastChance }
+				if		= { limit = { check_variable = { which = CmtFlagCheckKhanLastChance value >= @CmtConstKhanInterval_D5 } } country_event = { id = CrisisManagerControl.6111 days = @CmtConstKhanInterval_D5 } } # 35992
+				else_if = { limit = { check_variable = { which = CmtFlagCheckKhanLastChance value >= @CmtConstKhanInterval_D4 } } country_event = { id = CrisisManagerControl.6111 days = @CmtConstKhanInterval_D4 } } # 26992
+				else_if = { limit = { check_variable = { which = CmtFlagCheckKhanLastChance value >= @CmtConstKhanInterval_D3 } } country_event = { id = CrisisManagerControl.6111 days = @CmtConstKhanInterval_D3 } } # 17992 ~ 50yr - 10d
+				else_if = { limit = { check_variable = { which = CmtFlagCheckKhanLastChance value >= @CmtConstKhanInterval_D2 } } country_event = { id = CrisisManagerControl.6111 days = @CmtConstKhanInterval_D2 } } # 8992
+				else_if = { limit = { check_variable = { which = CmtFlagCheckKhanLastChance value >= @CmtConstKhanInterval_D1 } } country_event = { id = CrisisManagerControl.6111 days = @CmtConstKhanInterval_D1 } } # 3592
 			}
 		}
 
@@ -148,15 +57,14 @@ event = {
 		every_country = {
 			limit = { CmtTriggerHasPotentialKhanAwaking = yes }
 			random_list = {
-				2 = {		## MTTH = 100 yr
+				4 = {		## MTTH = 100 yr
 					modifier = {		## >= Earliest Year + 50 yr
-						factor = 1.5
+						factor = 2
 						has_global_flag = CmtFlagKhanProbabilityIncrease
 					}
 					modifier = {
 						factor = 0.67
 						count_country = {
-							# limit = { CmtTriggerIsSleepingMarauder = yes }
 							limit = {
 								is_country_type = dormant_marauders
 								NOT = { has_country_flag = restored_marauders_flag }
@@ -165,9 +73,8 @@ event = {
 						}
 					}
 					modifier = {
-						factor = 0.50
+						factor = 0.5
 						count_country = {
-							# limit = { CmtTriggerIsSleepingMarauder = yes }
 							limit = {
 								is_country_type = dormant_marauders
 								NOT = { has_country_flag = restored_marauders_flag }
@@ -184,14 +91,17 @@ event = {
 					set_timed_global_flag = { flag = CmtFlagKillDoubleBookingKhan days = 5 }
 					country_event = { id = marauder.500 days = 2 random = 358 }
 				}
-				98 = {
+				96 = {
 					modifier = {
 						factor = 3
 						event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanTriggerProbability value = 1 } }
 					}
 					modifier = {
 						factor = 0.33
-						event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanTriggerProbability value = 3 } }
+						OR = {
+							event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanTriggerProbability value = 3 } }
+							has_global_flag = CmtFlagKhanProbabilityIncrease
+						}
 					}
 					modifier = {
 						factor = 0.1
@@ -216,8 +126,8 @@ country_event = {
 	id = CrisisManagerControl.6111
 	hide_window = yes
 	is_triggered_only = yes
-
 	immediate = {
 		set_global_flag = CmtFlagKhanProbabilityIncrease
+		remove_global_flag = CmtFlagCheckKhanFirstChance
 	}
 }

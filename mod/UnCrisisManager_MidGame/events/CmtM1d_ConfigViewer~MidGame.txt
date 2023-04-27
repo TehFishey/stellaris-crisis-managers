@@ -241,8 +241,8 @@ country_event = {
 
 	option = {
 		name = CrisisManagerMenu.4823.VA.name
-		custom_tooltip = CrisisManagerMenu.4823.VA.tooltip
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLatestEgpy value > @CmtConstKhanLatestEgpy_TA } } }
+		# custom_tooltip = CrisisManagerMenu.4823.VA.tooltip
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanLatestEgpy value >= @CmtConstKhanLatestEgpy_VA } } }
 		hidden_effect = { CmtEffect1026TryCall4823 = yes }
 	}
 	option = {

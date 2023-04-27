@@ -1585,7 +1585,7 @@ country_event = {
 					}
 				}
 			}
-			random_system_colony = {
+			ordered_system_colony = {
 				limit = {
 					NOR = {
 						is_owned_by = root
@@ -1595,9 +1595,13 @@ country_event = {
 						merg_is_habitat = yes
 					}
 				}
+				position = 0
+				order_by = trigger:num_pops
 				log="Give system \\[Prev.GetName] back to \\[This.Owner.GetName]"
+				owner = { save_event_target_as = planet_owner }
 				prev = {
-					commit_system_to = { EMPIRE = prevprev.planet_owner } # the target scope is solved there (so add 1 more prev)
+					# commit_system_to = { EMPIRE = prevprev.planet_owner } # the target scope is solved there (so add 1 more prev)
+					commit_system_to = { EMPIRE = event_target:planet_owner }
 					add_claims = { who = root num_of_claims = 1 show_notification = no }
 				}
 			}

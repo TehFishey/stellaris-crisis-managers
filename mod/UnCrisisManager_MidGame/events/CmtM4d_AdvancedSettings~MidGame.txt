@@ -402,7 +402,7 @@ country_event = {
 	}
 	option = {
 		name = CrisisManagerMenu.4823.VA.name
-		custom_tooltip = CrisisManagerMenu.4823.VA.tooltip
+		# custom_tooltip = CrisisManagerMenu.4823.VA.tooltip
 		hidden_effect = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarKhanLatestEgpy value = @CmtConstKhanLatestEgpy_VA } } }
 	}
 	option = {
