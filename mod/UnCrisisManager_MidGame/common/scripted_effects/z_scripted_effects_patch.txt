@@ -102,3 +102,42 @@ create_marauder_starbase = {
 		owner = event_target:marauder_starbase_owner
 	}
 }
+
+create_marauder_merc_admiral = {
+	create_leader = {
+		class = admiral
+		species = event_target:marauder_species
+		name = random
+		event_leader = yes
+		skill = 3
+		leader_age_min = 25
+		leader_age_max = 45
+		traits = {
+			0 = leader_trait_mercenary_warrior
+		}
+		background_ethic = "ethic_militarist"
+		skip_background_generation = yes
+		custom_description = "custom_mercenary_admiral_desc"
+	}
+	last_created_leader = {
+		set_leader_flag = marauder_merc_leader
+	}
+}
+
+create_marauder_general = {
+	create_leader = {
+		class = general
+		species = event_target:marauder_species
+		name = random
+		event_leader = yes
+		skill = 3
+		leader_age_min = 25
+		leader_age_max = 45
+		traits = {
+			0 = leader_trait_mercenary_warrior
+		}
+		background_ethic = "ethic_militarist"
+		skip_background_generation = yes
+		custom_description = "custom_mercenary_admiral_desc"
+	}
+}

@@ -24,19 +24,6 @@
 ##############
 
 CmtEffectCreateAdmiral_MarauderStandard = {
-	create_leader = {
-		class = admiral
-		species = event_target:marauder_species
-		name = random
-		skill = 3
-		leader_age_min = 25
-		leader_age_max = 45
-		traits = {
-			trait = random_trait
-			trait = leader_trait_mercenary_warrior
-			trait = random_trait
-		}
-	}
 	if = {
 		limit = {
 			prev = {
@@ -46,8 +33,17 @@ CmtEffectCreateAdmiral_MarauderStandard = {
 				}
 			}
 		}
-		last_created_leader = {
-			set_leader_flag = marauder_merc_leader
+		create_marauder_merc_admiral = yes
+	} else = {
+		create_leader = {
+			class = admiral
+			species = event_target:marauder_species
+			name = random
+			skill = 3
+			leader_age_min = 25
+			leader_age_max = 45
+			background_ethic = "ethic_militarist"
+			traits = { 0 = leader_trait_mercenary_warrior }
 		}
 	}
 }
@@ -59,15 +55,14 @@ CmtEffectCreateAdmiral_MarauderEncourager = {
 		name = random
 		leader_age_min = 34
 		leader_age_max = 45
-		traits = { trait = random_trait }
 	}
 }
 
 #################
-###- Dessanu -###
+###- Common -###
 #################
 
-CmtEffectCreateAdmiral_DessanuStandard = {
+CmtEffectCreateAdmiral_OwnerStandard = {
 	create_leader = {
 		class = admiral
 		species = owner_species
@@ -75,6 +70,5 @@ CmtEffectCreateAdmiral_DessanuStandard = {
 		skill = 3
 		leader_age_min = 25
 		leader_age_max = 45
-		traits = { trait = random_trait }
 	}
 }

@@ -1274,14 +1274,13 @@ planet_event = {
 	}
 	trigger = {
 		# has_global_flag = marauder_crisis_ongoing
-		exists = sector
-		NOT = { exists = sector.leader }
+		NOT = { exists = leader }
 		exists = owner
 		owner = {
 			CmtTriggerIsMarauder = yes
 			any_owned_leader = {
 				leader_class = governor
-				NOT = { exists = sector }
+				NOT = { exists = planet }
 			}
 		}
 		# NOT = { has_global_flag = great_khan_wins }
@@ -1291,9 +1290,10 @@ planet_event = {
 			random_owned_leader = {
 				limit = {
 					leader_class = governor
-					NOT = { exists = sector }
+					NOT = { exists = planet }
 				}
-				root.sector = { assign_leader = prev }
+				# root.sector = { assign_leader = prev } replaced in v.3.8
+				root = { assign_leader = prev }
 			}
 		}
 	}
@@ -1347,7 +1347,7 @@ country_event = {
 
 		if = { limit = { is_overlord = yes }
 			every_subject = {
-				limit = { merg_is_standard_empire = yes }
+				limit = { is_default_or_fallen = yes }
 				set_subject_of = { who = none }
 				change_variable = { which = "planets_lost_to_marauder" value = 1 }
 				if = {
@@ -1637,6 +1637,12 @@ country_event = {
 					}
 					if = { limit = { num_ships > 0 }
 						set_owner = root
+						set_fleet_settings = {
+							can_upgrade = yes
+							can_disband = yes
+							can_change_composition = yes
+							can_change_leader = yes
+						}
 					}
 				}
 			}
@@ -1646,6 +1652,12 @@ country_event = {
 				# Recruit leader
 				leader = {
 					set_owner = root
+					set_fleet_settings = {
+						can_upgrade = yes
+						can_disband = yes
+						can_change_composition = yes
+						can_change_leader = yes
+					}
 					set_timed_leader_flag = { flag = restored_admiral@prev days = 7 }
 				}
 				if = { limit = { NOT = { is_ship_class = shipclass_transport } }
@@ -1661,6 +1673,12 @@ country_event = {
 					is_civilian = no is_ship_class = shipclass_military
 				}
 				set_owner = root
+				set_fleet_settings = {
+					can_upgrade = yes
+					can_disband = yes
+					can_change_composition = yes
+					can_change_leader = yes
+				}
 				# Recruit leader
 				leader = {
 					set_owner = root

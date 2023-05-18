@@ -25,17 +25,7 @@
 
 CmtEffectCreateFleet_KhanArmy = {
 	# CmtEffectCreateGeneral_Marauder
-	create_leader = {
-		class = general
-		species = event_target:marauder_species
-		name = random
-		skill = 3
-		traits = {
-			trait = random_trait
-			trait = leader_trait_general_mercenary_warrior
-			trait = random_trait
-		}
-	}
+	create_marauder_general = yes
 
 	create_fleet = {
 		effect = {

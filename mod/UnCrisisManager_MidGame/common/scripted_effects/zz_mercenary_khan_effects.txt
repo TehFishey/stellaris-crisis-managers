@@ -74,7 +74,8 @@ create_1st_khan_fleet = {
 					}
 				}
 				create_dyn_marauder_fleet = { OUTRIDER = 36 LANCER = 24 CHAMPION = 12 }
-			} else = {
+			}
+			else = {
 				create_dyn_marauder_fleet = { GLORY = 0 }
 			}
 			set_location = {
@@ -116,7 +117,8 @@ create_2nd_khan_fleet = {
 					}
 				}
 				create_dyn_marauder_fleet = { OUTRIDER = 36 LANCER = 24 CHAMPION = 12 }
-			} else = { create_dyn_marauder_fleet = yes }
+			}
+			else = { create_dyn_marauder_fleet = yes }
 
 			set_location = {
 				target = event_target:marauder_rally_point
@@ -137,19 +139,7 @@ create_2nd_khan_fleet = {
 
 create_marauder_fleet = {
 	optimize_memory # as replaced and not used by this mod
-	create_leader = {
-		class = admiral
-		species = owner_species
-		name = random
-		skill = 3
-		leader_age_min = 25
-		leader_age_max = 45
-		traits = {
-			trait = random_trait
-			trait = leader_trait_mercenary_warrior
-			trait = random_trait
-		}
-	}
+	CmtEffectCreateAdmiral_MarauderStandard = yes
 	create_fleet = {
 		effect = {
 			random_list = {
@@ -163,7 +153,8 @@ create_marauder_fleet = {
 							}
 						}
 						create_dyn_marauder_fleet = { OUTRIDER = 32 LANCER = 16 CHAMPION = 12 }
-					} else = {
+					}
+					else = {
 						create_dyn_marauder_fleet = { OUTRIDER = 16 LANCER = 8 }
 					}
 				}
@@ -220,14 +211,7 @@ create_marauder_fleet = {
 
 create_small_marauder_auxiliaries = {
 	optimize_memory
-	create_leader = {
-		class = admiral
-		species = event_target:satrapy_species
-		name = random
-		leader_age_min = 34
-		leader_age_max = 45
-		traits = { trait = random_trait }
-	}
+	CmtEffectCreateAdmiral_MarauderEncourager = yes
 	create_fleet = {
 		name = {
 			key = "NAME_Horde_Auxiliary_Fleet"
@@ -244,7 +228,8 @@ create_small_marauder_auxiliaries = {
 					}
 				}
 				create_dyn_marauder_fleet = { OUTRIDER = 20 LANCER = 8 CHAMPION = 4 GLORY = 0 }
-			} else = {
+			}
+			else = {
 				create_dyn_marauder_fleet = { OUTRIDER = 10 LANCER = 4 CHAMPION = 2 GLORY = 0 }
 			}
 			assign_leader = last_created_leader
@@ -267,14 +252,7 @@ create_small_marauder_auxiliaries = {
 
 create_medium_marauder_auxiliaries = {
 	optimize_memory
-	create_leader = {
-		class = admiral
-		species = event_target:satrapy_species
-		name = random
-		leader_age_min = 34
-		leader_age_max = 45
-		traits = { trait = random_trait }
-	}
+	CmtEffectCreateAdmiral_MarauderEncourager = yes
 	create_fleet = {
 		name = {
 			key = "NAME_Horde_Auxiliary_Fleet"
@@ -291,7 +269,8 @@ create_medium_marauder_auxiliaries = {
 					}
 				}
 				create_dyn_marauder_fleet = { OUTRIDER = 32 LANCER = 16 CHAMPION = 12 }
-			} else = { create_dyn_marauder_fleet = yes }
+			}
+			else = { create_dyn_marauder_fleet = yes }
 			assign_leader = last_created_leader
 			set_location = {
 				target = root
@@ -312,14 +291,7 @@ create_medium_marauder_auxiliaries = {
 
 create_large_marauder_auxiliaries = {
 	optimize_memory
-	create_leader = {
-		class = admiral
-		species = event_target:satrapy_species
-		name = random
-		leader_age_min = 34
-		leader_age_max = 45
-		traits = { trait = random_trait }
-	}
+	CmtEffectCreateAdmiral_MarauderEncourager = yes
 	create_fleet = {
 		name = {
 			key = "NAME_Horde_Auxiliary_Fleet"
@@ -336,7 +308,8 @@ create_large_marauder_auxiliaries = {
 					}
 				}
 				create_dyn_marauder_fleet = { OUTRIDER = 44 LANCER = 24 CHAMPION = 16 }
-			} else = {
+			}
+			else = {
 				create_dyn_marauder_fleet = { OUTRIDER = 22 LANCER = 12 CHAMPION = 8 }
 			}
 			assign_leader = last_created_leader
@@ -359,13 +332,7 @@ create_large_marauder_auxiliaries = {
 
 create_very_large_marauder_auxiliaries = {
 	optimize_memory
-	create_leader = {
-		class = admiral
-		species = event_target:satrapy_species
-		name = random
-		traits = { trait = random_trait }
-	}
-	last_created_leader = { set_age = 37 }
+	CmtEffectCreateAdmiral_MarauderEncourager = yes
 	create_fleet = {
 		name = {
 			key = "NAME_Horde_Auxiliary_Fleet"
@@ -382,7 +349,8 @@ create_very_large_marauder_auxiliaries = {
 					}
 				}
 				create_dyn_marauder_fleet = { OUTRIDER = 52 LANCER = 36 CHAMPION = 24 }
-			} else = {
+			}
+			else = {
 				create_dyn_marauder_fleet = { OUTRIDER = 26 LANCER = 18 CHAMPION = 12 }
 			}
 			assign_leader = last_created_leader
@@ -413,11 +381,7 @@ create_marauder_successor_fleet = {
 		skill = 3
 		leader_age_min = 25
 		leader_age_max = 45
-		traits = {
-			trait = random_trait
-			trait = leader_trait_mercenary_warrior
-			trait = random_trait
-		}
+		traits = { 0 = leader_trait_mercenary_warrior }
 	}
 	create_fleet = {
 		effect = {
@@ -430,7 +394,8 @@ create_marauder_successor_fleet = {
 					}
 				}
 				create_dyn_marauder_fleet = { OUTRIDER = 32 LANCER = 16 CHAMPION = 12 }
-			} else = {
+			}
+			else = {
 				create_dyn_marauder_fleet = { OUTRIDER = 16 LANCER = 8 }
 			}
 			assign_leader = last_created_leader
@@ -508,13 +473,9 @@ assign_first_diadochi_planets = {
 				center = prev
 				owned_planets_percentage = 0.25
 				planet_limit = {
-					solar_system = {
-						is_potential_diadochi_system = yes
-					}
+					solar_system = { is_potential_diadochi_system = yes }
 				}
-				effect = {
-					set_star_flag = first_diadochi_system
-				}
+				effect = { set_star_flag = first_diadochi_system }
 			}
 		}
 	}
@@ -594,13 +555,9 @@ assign_second_diadochi_planets = {
 				center = prev
 				owned_planets_percentage = 0.33
 				planet_limit = {
-					solar_system = {
-						is_potential_diadochi_system = yes
-					}
+					solar_system = { is_potential_diadochi_system = yes }
 				}
-				effect = {
-					set_star_flag = second_diadochi_system
-				}
+				effect = { set_star_flag = second_diadochi_system }
 			}
 		}
 	}
@@ -680,13 +637,9 @@ assign_third_diadochi_planets = {
 				center = prev
 				owned_planets_percentage = 0.5
 				planet_limit = {
-					solar_system = {
-						is_potential_diadochi_system = yes
-					}
+					solar_system = { is_potential_diadochi_system = yes }
 				}
-				effect = {
-					set_star_flag = third_diadochi_system
-				}
+				effect = { set_star_flag = third_diadochi_system }
 			}
 		}
 	}
@@ -765,13 +718,9 @@ assign_fourth_diadochi_planets = {
 				center = prev
 				owned_planets_percentage = 1
 				planet_limit = {
-					solar_system = {
-						is_potential_diadochi_system = yes
-					}
+					solar_system = { is_potential_diadochi_system = yes }
 				}
-				effect = {
-					set_star_flag = fourth_diadochi_system
-				}
+				effect = { set_star_flag = fourth_diadochi_system }
 			}
 		}
 	}
@@ -841,9 +790,7 @@ commit_system_to = {
 			}
 		}
 		set_timed_star_flag = { flag = switched_system days = 3 }
-		starbase = {
-			set_owner = $EMPIRE$
-		}
+		starbase = { set_owner = $EMPIRE$ }
 		every_system_colony = {
 			limit = {
 				has_ground_combat = no
@@ -854,9 +801,8 @@ commit_system_to = {
 			set_controller = $EMPIRE$
 		}
 		log="Balcanization preventation: Diadochi system \\[This.GetName] switched to \\[This.starbase.fleet.Owner.GetName]!"
-	} else = {
-		log="Fail: Diadochi system \\[This.GetName] has same old owner \\[This.starbase.fleet.Owner.GetName]"
 	}
+	else = { log="Fail: Diadochi system \\[This.GetName] has same old owner \\[This.starbase.fleet.Owner.GetName]" }
 }
 
 # This = root = Marauder
@@ -877,7 +823,8 @@ get_marauder_species = {
 				}
 			}
 			event_target:marauder_country_1.owner_species = { save_event_target_as = marauder_species }
-		} else_if = {
+		}
+		else_if = {
 			limit = {
 				exists = event_target:marauder_country_2
 				OR = {
@@ -889,7 +836,8 @@ get_marauder_species = {
 				}
 			}
 			event_target:marauder_country_2.owner_species = { save_event_target_as = marauder_species }
-		} else_if = {
+		}
+		else_if = {
 			limit = {
 				exists = event_target:marauder_country_3
 				OR = {
@@ -1004,7 +952,7 @@ get_marauder_species = {
 					add = 3
 					prev = {
 						count_owned_pop = {
-							count > 17
+							count > 22
 							limit = { is_same_species = prevprev }
 						}
 					}
@@ -1028,10 +976,6 @@ get_marauder_species = {
 			}
 			# log="RANDOM OWNED MARAUDER SPECIES"
 			save_event_target_as = marauder_species
-			# prev = {
-			# 	change_dominant_species = { species = prev }
-			# 	set_built_species = prev
-			# }
 		}
 	}
 
@@ -1040,11 +984,11 @@ get_marauder_species = {
 			NAND = {
 				exists = event_target:marauder_species
 				pop_percentage = {
-					percentage > 0.3
+					percentage > 0.2
 					limit = { is_same_species = prev.owner_species }
 				}
 				pop_percentage = {
-					percentage > 0.3
+					percentage > 0.4
 					limit = { is_same_species = event_target:marauder_species }
 				}
 			}
@@ -1124,15 +1068,36 @@ get_marauder_species = {
 			}
 			# log="OWNER DOMINANT SPECIES"
 			save_event_target_as = marauder_species
-			prev = {
-				change_dominant_species = { species = prev }
-				set_built_species = prev
-			}
 		}
 	}
 	# Common Fallback
 	if = { limit = { NOT = { exists = event_target:marauder_species } }
 		owner_species = { save_event_target_as = marauder_species }
+	} else_if = {
+		limit = {
+			pop_percentage = {
+				limit = { is_same_species = event_target:marauder_species }
+				percentage > 0.65
+			}
+			OR = {
+				AND = {
+					exists = event_target:great_khan
+					pop_percentage = {
+						limit = { is_same_species = event_target:great_khan.species }
+						percentage < 0.2
+					}
+				}
+				AND = {
+					NOT = { exists = event_target:great_khan.species }
+					pop_percentage = {
+						limit = { is_same_species = owner_species }
+						percentage < 0.25
+					}
+				}
+			}
+		}
+		change_dominant_species = { species = event_target:marauder_species }
+		set_built_species = event_target:marauder_species
 	}
 }
 

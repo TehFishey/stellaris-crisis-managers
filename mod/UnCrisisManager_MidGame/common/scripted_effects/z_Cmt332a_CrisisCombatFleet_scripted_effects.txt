@@ -782,7 +782,7 @@ CmtEffectCreateElement_DessanuStandard = {
 
 ### Fleet
 CmtEffectCreateFleet_DessanuGarryson = {
-	CmtEffectCreateAdmiral_DessanuStandard = yes
+	CmtEffectCreateAdmiral_OwnerStandard = yes
 	create_fleet = {
 		name = "NAME_Dessanu_Fleet"
 		effect = {
@@ -800,7 +800,7 @@ CmtEffectCreateFleet_DessanuGarryson = {
 }
 
 CmtEffectCreateFleet_DessanuRoamer = {
-	CmtEffectCreateAdmiral_DessanuStandard = yes
+	CmtEffectCreateAdmiral_OwnerStandard = yes
 	create_fleet = {
 		name = "NAME_Dessanu_Fleet_2"
 		effect = {
