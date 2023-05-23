@@ -198,7 +198,7 @@ country_event = {
 		}
 
 		every_country = {
-			limit = { merg_is_standard_empire = yes }
+			limit = { is_default_or_fallen = yes }
 			if = {
 				limit = {
 					intel_level = { level < high system = event_target:extradimensional_system }

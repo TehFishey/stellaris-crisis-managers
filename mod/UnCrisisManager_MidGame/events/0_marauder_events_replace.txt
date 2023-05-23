@@ -2489,7 +2489,7 @@ country_event = {
 		}
 		else = {
 			species = {
-				modify_species = { add_trait_no_notify = trait_conformists }
+				modify_species = { add_trait = trait_conformists }
 			}
 		}
 

@@ -19,7 +19,7 @@
 # Merger of Rules scripted triggers, very similar to vanilla is_country_type_with_subjects
 # Extended Merger of Rules with Nomads: The wondering Void Farers
 # These triggers are also meant as a library for modders who want to reuse them in their own mods.
-merg_is_standard_empire = {
+is_default_or_fallen = {
 	OR = {
 		# is_country_type_with_subjects = yes
 		merg_is_default_empire = yes # is_country_type = default

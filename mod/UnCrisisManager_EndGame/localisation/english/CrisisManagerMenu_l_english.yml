@@ -198,7 +198,7 @@
 
  CrisisManagerMenu.100.name: "$CrisisManagerTitleB$ Menu"
  CrisisManagerMenu.100.desc1: "$CmtTextTransitionalBetaFull$Here you can configure parameters of the crises.\nMost of configurations can be changed until the corresponding events happen.\n\n$CmtDescTooltipInfo$"
- CrisisManagerMenu.100.desc2: "§HAny events controlled by this mod have been triggered already.§!\nSo, some of configurations can be changed no more.\n\n$CmtDescTooltipInfo$"
+ CrisisManagerMenu.100.desc2: "§HAn event controlled by this mod has already been triggered.§!\nTherefore, some settings cannot be changed anymore.\n\n$CmtDescTooltipInfo$"
  CrisisManagerMenu.100.desc3: "$CrisisManagerMenu.0100.desc1$\n\n§WThis template was applied: [CmtGlobalVar.GetName_LastAppliedTemplate]§!"
  CrisisManagerMenu.100.1000.name:1 "$CrisisManagerMenu.1000.title$"
  CrisisManagerMenu.100.1000.tooltip: "For Checking current configurations and configuring individually."
@@ -2144,7 +2144,7 @@
  CrisisManagerMenu.4823.VA.title: "Awakening Chance §HNever Terminate§!"
  CrisisManagerMenu.4823.VC.title: "§YEGSY [CmtGlobalVar.GetSign_CmtVarKhanLatestEgpy][CmtGlobalVar.CmtVarKhanLatestEgpy] Years§!"
  CrisisManagerMenu.4823x.title:1 "$CrisisManagerMenu.4823.title$: "
- CrisisManagerMenu.4823.VA.tooltip:1 ""
+ # CrisisManagerMenu.4823.VA.tooltip:1 ""
  CrisisManagerMenu.4823.V9.tooltip:1 "$CmtDescEgsy$"
  CrisisManagerMenu.4823.V8.tooltip:1 "$CmtDescEgsy$"
  CrisisManagerMenu.4823.V7.tooltip:1 "$CmtDescEgsy$"

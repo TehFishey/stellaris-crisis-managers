@@ -149,12 +149,12 @@ country_event = {
 		### Reckoning Former Country
 		capital_scope = { save_event_target_as = former_capital }
 		kill_leader = {
-			type = ruler
+			ruler = yes
 			show_notification = no
 			heir = yes
 		}
 		kill_leader = {
-			type = ruler
+			ruler = yes
 			show_notification = no
 			heir = no
 		}
@@ -242,7 +242,7 @@ country_event = {
 				}
 			}
 			create_leader = {
-				class = ruler
+				class = random_ruler
 				species = root.owner_species
 				name = random
 				skill = 5

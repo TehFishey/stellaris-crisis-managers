@@ -44,7 +44,7 @@ country_event = {
 
 		# The Arrival
 		every_country = {
-			limit = { merg_is_standard_empire = yes }
+			limit = { is_default_or_fallen = yes }
 			country_event = { id = crisis.2022 }
 		}
 
@@ -128,7 +128,7 @@ planet_event = {
 			effect = {
 				save_global_event_target_as = AI_crisis
 				create_leader = {
-					class = ruler
+					class = random_ruler
 					species = event_target:contingency_bot
 					name = random
 					effect = { save_event_target_as = contingency_ruler }
@@ -184,7 +184,7 @@ planet_event = {
 			country_event = { id = crisis.2030 }
 		}
 		every_country = {
-			limit = { merg_is_standard_empire = yes }
+			limit = { is_default_or_fallen = yes }
 			establish_communications_no_message = event_target:AI_crisis
 		}
 		every_playable_country = {
@@ -868,10 +868,7 @@ country_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		kill_leader = {
-			type = ruler
-			show_notification = no
-		}
+		ruler = { kill_leader = { show_notification = no } }
 	}
 
 	option = {

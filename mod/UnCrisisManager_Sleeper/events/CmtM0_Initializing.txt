@@ -127,7 +127,7 @@ country_event = {
 	option = {
 		name = "graygoo.504.d"
 		custom_tooltip = CmtTextOK.tooltip
-		hidden_effect = { CmtEffectExitMenu = yes }
+		CmtEffectExitMenu = yes
 	}
 	after = {
 		hidden_effect = {
@@ -155,7 +155,7 @@ country_event = {
 	option = {
 		name = "graygoo.504.d"
 		custom_tooltip = CmtTextOK.tooltip
-		hidden_effect = { CmtEffectExitMenu = yes }
+		CmtEffectExitMenu = yes
 	}
 }
 

@@ -8,7 +8,7 @@ has_total_war_cb = {
 		# Attacker checks
 		AND = {
 			OR = {
-				merg_is_standard_empire = yes
+				is_default_or_fallen = yes
 				is_progenitor_empires = yes # ACOT
 			}
 			OR = {
@@ -98,7 +98,7 @@ is_fallen_empire = {
 
 is_regular_empire = {
 	is_gestalt = no # NOT = { has_ethic = ethic_gestalt_consciousness }
-	merg_is_standard_empire = yes
+	is_default_or_fallen = yes
 	# OR = {
 	# 	is_country_type = default
 	# 	is_fallen_empire = yes

@@ -61,7 +61,7 @@ sentinel_system = {
 					}
 				}
 			}
-			every_country = { limit = { merg_is_standard_empire = yes } establish_communications = event_target:crisis_sentinels }
+			every_country = { limit = { is_default_or_fallen = yes } establish_communications = event_target:crisis_sentinels }
 
 			create_fleet = {
 				effect = {
@@ -92,7 +92,6 @@ sentinel_system = {
 					skill = 5
 					traits = {
 						trait = leader_trait_sentinel
-						trait = random_trait
 					}
 				}
 				create_fleet = {

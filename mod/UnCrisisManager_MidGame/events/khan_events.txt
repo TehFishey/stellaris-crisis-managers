@@ -1594,6 +1594,8 @@ country_event = {
 						is_controlled_by = event_target:raider_khanate
 						merg_is_habitat = yes
 					}
+					exists = owner
+					owner = { is_default_or_fallen = yes }
 				}
 				position = 0
 				order_by = trigger:num_pops
@@ -1648,17 +1650,17 @@ country_event = {
 			}
 			random_owned_fleet = {
 				limit = { is_mobile = yes exists = leader }
-				set_owner = root
 				# Recruit leader
 				leader = {
 					set_owner = root
-					set_fleet_settings = {
-						can_upgrade = yes
-						can_disband = yes
-						can_change_composition = yes
-						can_change_leader = yes
-					}
 					set_timed_leader_flag = { flag = restored_admiral@prev days = 7 }
+				}
+				set_owner = root
+				set_fleet_settings = {
+					can_upgrade = yes
+					can_disband = yes
+					can_change_composition = yes
+					can_change_leader = yes
 				}
 				if = { limit = { NOT = { is_ship_class = shipclass_transport } }
 					assign_leader = leader

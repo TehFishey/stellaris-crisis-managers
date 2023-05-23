@@ -1047,7 +1047,7 @@ country_event = {
 	immediate = {
 		set_country_flag = sentinel_anatomy_files
 		every_country = {
-			limit = { merg_is_standard_empire = yes }
+			limit = { is_default_or_fallen = yes }
 			country_event = { id = crisis.78 }
 		}
 	}
@@ -1947,7 +1947,7 @@ country_event = {
 		# Crisis reward is handled through Galactic Focus if the community exists.
 		if = { limit = { NOT = { has_global_flag = galactic_community_formed } }
 			every_country = {
-				limit = { merg_is_standard_empire = yes }
+				limit = { is_default_or_fallen = yes }
 				country_event = { id = crisis.211 }
 			}
 		}

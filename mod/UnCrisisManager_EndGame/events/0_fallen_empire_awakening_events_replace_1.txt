@@ -74,7 +74,7 @@ country_event = {
 		### Communications
 		every_country = {
 			limit = {
-				merg_is_standard_empire = yes
+				is_default_or_fallen = yes
 				NOT = { has_communications = root }
 			}
 			establish_communications_no_message = root

@@ -358,13 +358,13 @@ country_event = {
 				}
 			}
 		}
-		# if = {
-		#	limit = { NOT = { any_country = { is_country_type = extradimensional has_country_flag = unbidden } } }
-		random_country = {
-			limit = { is_country_type = extradimensional }
-			set_country_flag = unbidden
+		if = {
+			limit = { NOT = { any_country = { is_country_type = extradimensional has_country_flag = unbidden } } }
+			random_country = {
+				limit = { is_country_type = extradimensional }
+				set_country_flag = unbidden
+			}
 		}
-		#}
 		random_country = {
 			limit = { is_country_type = portal_holder }
 			random_owned_ship = { set_ship_flag = unbidden_portal }

@@ -204,9 +204,7 @@ CmtTriggerIsOrganicSleeper = {
 	## Change to CmtTriggerSleeperPotentialAwakening
 	merg_is_fallen_empire = yes # is_country_type = fallen_empire
 	OR = {
-		NOT = {
-			has_global_flag = gigastructures_enabled
-		}
+		NOT = { has_global_flag = gigastructures_enabled }
 		NOR = {
 			has_ai_personality = fallen_empire_gamers
 			has_ai_personality = fallen_empire_pouchkinn

@@ -55,7 +55,7 @@ CmtEffectCreatePrethorynCountry = {
 
 	### Communications and Opinion Modifiers
 	every_country = {
-		limit = { merg_is_standard_empire = yes }
+		limit = { is_default_or_fallen = yes }
 		establish_communications_no_message = event_target:prethoryn
 		add_opinion_modifier = {
 			who = event_target:prethoryn
@@ -110,7 +110,7 @@ CmtEffectCallSentinel = {
 			limit = { is_fallen_empire = yes }
 			save_global_event_target_as = sentinel_fallen_empire
 		}
-		every_country = { limit = { merg_is_standard_empire = yes } establish_communications = event_target:sentinel_fallen_empire }
+		every_country = { limit = { is_default_or_fallen = yes } establish_communications = event_target:sentinel_fallen_empire }
 	}
 	every_playable_country = {
 		limit = { is_ai = no }
@@ -164,7 +164,7 @@ CmtEffectCallAberrant = {
 	CmtEffectFriendlyCrisis = yes
 
 	every_country = {
-		limit = { merg_is_standard_empire = yes }
+		limit = { is_default_or_fallen = yes }
 		country_event = { id = crisis.1110 days = 1 }
 	}
 	random_country = {
@@ -339,7 +339,7 @@ CmtEffectCallVehement = {
 	CmtEffectFriendlyCrisis = yes
 
 	every_country = {
-		limit = { merg_is_standard_empire = yes }
+		limit = { is_default_or_fallen = yes }
 		country_event = { id = crisis.1210 days = 1 }
 	}
 	every_country = {

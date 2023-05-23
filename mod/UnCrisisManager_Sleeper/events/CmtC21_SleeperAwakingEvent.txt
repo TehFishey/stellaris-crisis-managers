@@ -1104,7 +1104,7 @@ system_event = {
 				}
 				# last_created_species = { save_event_target_as = sleeper_machina_species }
 				create_leader = {
-					class = ruler
+					class = random_ruler
 					species = last_created_species
 					name = random # TODO NAME_sleeper_machina"
 					skill = 10
@@ -1113,7 +1113,7 @@ system_event = {
 				}
 				set_leader = last_created_leader
 				# last_created_leader = {
-				# add_ruler_trait = leader_trait_sleeper_machina
+				# add_trait = leader_trait_sleeper_machina
 				# }
 			}
 			create_colony = {
@@ -1395,7 +1395,7 @@ system_event = {
 						}
 					}
 					create_leader = {
-						class = ruler
+						class = random_ruler
 						species = last_created_species
 						name = random # TODO NAME_sleeper_machina"
 						skill = 10
