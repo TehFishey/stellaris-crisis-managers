@@ -2,8 +2,8 @@
 
 # List of all habitable ringworld sections.
 merg_is_hab_ringworld = {
-	habitable_structure = yes  # Exlcude some ringworld entities is_artificial = yes
-	is_ringworld = yes
+	habitable_structure = yes # Exlcude some ringworld entities is_artificial = yes
+	has_ringworld_output_boost = yes
 	NOR = {
 		uses_district_set = habitat
 		# has_planet_flag = has_megastructure
@@ -47,10 +47,10 @@ merg_is_hab_ringworld = {
 
 # Listing habitats (upd v3.4.3)
 merg_is_habitat = {
-	habitable_structure = yes  # Exlcude some entities is_artificial = yes
+	habitable_structure = yes # Exlcude some entities is_artificial = yes
 	OR = {
 		is_planet_class = pc_habitat
-		# is_ringworld = no # there are mods which trigger habitats as ringworlds like Giga
+		# has_ringworld_output_boost = no # there are mods which trigger habitats as ringworlds like Giga
 		is_pd_habitat = yes # Planetary Diversity
 		# uses_district_set = pdplanethab # Planetary Diversity
 		is_planet_class = pc_interstellar_habitat ### (Mod) Gigastructural Engineering & More - compatibility
@@ -149,9 +149,6 @@ gpm_is_planet_class_city = {
 	OR = {
 		merg_is_arcology = yes
 		merg_is_relic_world = yes
-		# is_pd_arcology = yes # is_planet_class = pc_ecocity ### (Mod) Planetary Diversity - compatibility
-		is_pd_hive_arcology = yes # is_planet_class = pc_bioforge ### (Mod) Planetary Diversity - More Arcologies - compatibility
-		is_pd_robot_arcology = yes # is_planet_class = pc_machine_factory ### (Mod) Planetary Diversity - More Arcologies - compatibility
 		is_planet_class = pc_matryoshka ### (Mod) Additional Mega Planets merged into Forgotten Queens - compatibility
 		is_planet_class = pc_hollow ### (Mod) Additional Mega Planets merged into Forgotten Queens - compatibility
 	}

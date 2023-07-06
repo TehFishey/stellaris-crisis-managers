@@ -2,8 +2,9 @@
 # Overrides HFE, ZoFE
 # Gets overridden by the merger of rules.
 ## Shared with: The Great Khan Expanded, A Deadly Tempest, Unique Ascension Perks, Crisis Managers
-
+# from  = target country
 has_total_war_cb = {
+	exists = from
 	OR = {
 		# Attacker checks
 		AND = {
@@ -69,8 +70,7 @@ planet_is_hostile_or_crisis = {
 # Workaround: as is_overlord_to is not working for Khan.
 # This = Satrapy
 is_subject_of_khan = {
-	is_subject = yes
-	exists = overlord
+	is_subject = yes # exists = overlord
 	exists = event_target:raider_khanate
 	# overlord = { is_same_empire = prevprev }
 	overlord = { is_same_empire = event_target:raider_khanate }

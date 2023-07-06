@@ -14,6 +14,7 @@
 ######################
 
 CmtEffectExitMenu = {
+	optimize_memory
 	default_hide_option = yes
 	hidden_effect = {
 		remove_global_flag = CmtFlagTemplateAppliedNow
@@ -23,6 +24,7 @@ CmtEffectExitMenu = {
 
 ### For ''We are Crisis''
 CmtEffectSaveOriginalCountry = {
+	optimize_memory
 	if = { limit = { merg_is_default_empire = yes }
 		if = { limit = { exists = event_target:OriginalCountry }
 			clear_global_event_target = OriginalCountry
@@ -36,6 +38,7 @@ CmtEffectSaveOriginalCountry = {
 ###########################
 
 CmtEffectManualTargetSleepers = {
+	optimize_memory
 	every_country = {
 		limit = { is_fallen_empire = yes is_ai = yes }
 		switch = { trigger = has_country_flag
@@ -49,6 +52,7 @@ CmtEffectManualTargetSleepers = {
 }
 
 CmtEffectClearTargetSleepers = {
+	optimize_memory
 	if = { limit = { exists = event_target:CmtTargetManualSleeper1 }
 		clear_global_event_target = CmtTargetManualSleeper1
 	}
@@ -67,6 +71,7 @@ CmtEffectClearTargetSleepers = {
 }
 
 CmtEffectManualTargetLgates = {
+	optimize_memory
 	random_system = {
 		limit = {
 			has_star_flag = lgate
@@ -134,6 +139,7 @@ CmtEffectManualTargetLgates = {
 }
 
 CmtEffectClearTargetLgates = {
+	optimize_memory
 	every_system = {
 		limit = { has_star_flag = CmtFlagListedLgateSystem }
 		remove_star_flag = CmtFlagListedLgateSystem
@@ -391,18 +397,19 @@ CmtEffectClearTargetLgates = {
 
 ### Scope: this = country using Crisis Manager menu for configurations
 
-### Trigger Event
+### Trigger Event (v.3.8)
 # CALL = target event id
 # FROM = source event id
 # CmtEffectTryCallEvent = { CALL = 3110 FROM = 1010 }
 CmtEffectTryCallEvent = {
+	optimize_memory
 	set_variable = { which = tmp_call value = $CALL$ }
-	# 1010
+	### Basic Crisis 1010
 	if = { limit = { check_variable = { which = tmp_call value > 3100 } check_variable = { which = tmp_call value < 3200 } }
 		if = { limit = { CmtTriggerCrisisConfig = yes }
 			set_variable = { which = tmp_call value = 1 }
 		}
-	} # 1010
+	} ### Crises - Total War 1010
 	else_if = { limit = {  check_variable = { which = tmp_call value > 3200 } check_variable = { which = tmp_call value < 3300 } }
 		set_variable = { which = tmp_call value = 1 }
 	} ### Prethoryn 1021

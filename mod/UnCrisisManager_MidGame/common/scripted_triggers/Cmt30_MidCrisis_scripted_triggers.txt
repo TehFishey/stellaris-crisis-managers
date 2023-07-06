@@ -24,7 +24,7 @@ CmtTriggerKhanAwakingMultipleCheck = {
 			NOT = { has_global_flag = marauder_crisis_started } # NOT = { has_global_flag = CmtFlagKhanTriggered
 			AND = {
 				check_variable = { which = CmtVarKhanMultiple value = 3 }
-				NOT = { any_country = { is_country_type = awakened_marauders } } # CmtTriggerNowInKhanCrisis = no
+				CmtTriggerNowInKhanCrisis = no
 			}
 		}
 		any_country = { CmtTriggerHasPotentialKhanAwaking = yes }

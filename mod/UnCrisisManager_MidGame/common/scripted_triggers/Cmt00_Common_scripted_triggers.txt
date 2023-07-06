@@ -40,87 +40,6 @@ CmtTriggerSpawnableSystem = {
 	}
 }
 
-# DEPRECATED
-# CmtTriggerIsStarbase = {
-# 	optimize_memory		## Scope: this = ship
-# 	OR = {
-# 		is_ship_size = starbase_outpost
-# 		is_ship_size = starbase_starport
-# 		is_ship_size = starbase_starhold
-# 		is_ship_size = starbase_starfortress
-# 		is_ship_size = starbase_citadel
-# 		is_ship_size = starbase_swarm
-# 		is_ship_size = starbase_exd
-# 		is_ship_size = starbase_ai
-# 		is_ship_size = starbase_marauder
-# 	}
-# }
-
-############################
-###- Check Country Type -###
-############################
-# TODO DEPRECATED (merg_is_default_empire)
-### Standard
-# CmtTriggerIsPlayableEmpire = {
-# 	merg_is_default_empire = yes
-# 	# OR = {		## Written in also Cmt40 and Cmt50.
-# 	# 	is_country_type = default
-# 	# 	is_zofe_country = yes # is_zofe_compatible
-# 	# }
-# }
-# TODO DEPRECATED (is_fallen_empire)
-# CmtTriggerIsFallenEmpire = {
-# 	OR = {
-# 		merg_is_fallen_empire # is_zofe_fe = yes # is_country_type = fallen_empire
-# 		merg_is_awakened_fe # is_zofe_ae = yes # is_country_type = awakened_fallen_empire
-# 	}
-# }
-
-# TODO DEPRECATED (merg_is_standard_empire)
-# CmtTriggerIsEmpire = {		## Written in also Cmt50
-# 	OR = {
-# 		# merg_is_default_empire = yes
-# 		# is_fallen_empire = yes
-# 		# is_country_type = default
-# 		# is_zofe_country = yes # is_zofe_compatible
-# 		merg_is_default_empire = yes
-# 		# is_ai = no
-# 		# is_country_type = fallen_empire
-# 		# is_country_type = awakened_fallen_empire
-# 		is_fallen_empire = yes
-# 	}
-# }
-
-### Standard For ZoFE - Legacy (replaced by own trigger)
-# CmtTriggerIsLostEmpire = { always = no }
-# CmtTrigggerIsAscendedEmpire = { always = no }
-# CmtTriggerIsZofeEmpireA = { always = no }
-
-is_zofe_fe = {
-	is_country_type = fallen_empire
-	# always = no
-	# OR = {
-	# 	is_country_type = fallen_empire
-	# 	is_country_type = lost_empire
-	# }
-}
-is_zofe_ae = {
-	is_country_type = awakened_fallen_empire
-	# always = no
-	# OR = {
-	# 	is_country_type = awakened_fallen_empire
-	# 	is_country_type = ascended_empire
-	# }
-}
-
-is_zofe_country = {
-	is_ai = no
-	# OR = {
-	# 	is_country_type = ascended_empire
-	# 	is_country_type = lost_empire
-	# }
-}
-
 ### End-Game Crises ###
 CmtTriggerIsPrethoryn = {
 	optimize_memory
@@ -261,15 +180,10 @@ CmtTriggerIsMarauder = {
 # 	is_country_type = dormant_marauders
 # 	NOT = { has_country_flag = restored_marauders_flag }
 # }
-
 CmtTriggerIsKhanCountry = {
-	OR = {
-		is_country_type = awakened_marauders
-		AND = {
-			exists = event_target:raider_khanate
-			is_same_empire = event_target:raider_khanate
-		}
-	}
+	# OR = { is_country_type = awakened_marauders AND = {
+	exists = event_target:raider_khanate
+	is_same_empire = event_target:raider_khanate
 	NOT = { has_country_flag = khan_dead_event_fine } # CmtFlagKhanDeadCountry replaced with vanilla
 }
 
@@ -313,7 +227,7 @@ CmtTriggerExistCrisisCountry = {
 	any_country = { CmtTriggerIsCrisisCountry = yes }
 }
 
-### Mid-Game Crisis
+### Mid-Game Crisis: replaced by CmtTriggerNowInKhanCrisis
 # CmtTriggerExistKhanCountry = {
 # 	any_country = { CmtTriggerIsKhanCountry = yes }
 # }
@@ -358,9 +272,15 @@ CmtTriggerNowSleeperStayup = {
 	}
 }
 
-# CmtTriggerNowInKhanCrisis = {
-# 	any_country = { is_country_type = awakened_marauders }
-# }
+# Replaced CmtTriggerExistKhanCountry
+CmtTriggerNowInKhanCrisis = {
+	any_country = { CmtTriggerIsKhanCountry = yes }
+	# exists = event_target:raider_khanate
+	# any_country = {
+	# 	is_country_type = awakened_marauders
+	# 	is_same_empire = event_target:raider_khanate
+	# }
+}
 
 #################################
 ###- Trigger Check of Events -###

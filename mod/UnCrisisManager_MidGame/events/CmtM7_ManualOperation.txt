@@ -208,7 +208,7 @@ country_event = {
 				NOR = {
 					has_global_flag = great_khan_wins
 					has_global_flag = war_in_heaven_started
-					any_country = { is_country_type = awakened_marauders } # CmtTriggerNowInKhanCrisis
+					CmtTriggerNowInKhanCrisis = yes
 				}
 			}
 		}
@@ -2810,7 +2810,7 @@ country_event = {
 			has_global_flag = CmtFlagMidGameEdition
 			has_global_flag = marauder_crisis_ongoing
 		}
-		allow = { any_country = { CmtTriggerIsKhanCountry = yes } }
+		allow = { CmtTriggerNowInKhanCrisis = yes }
 		hidden_effect = { country_event = { id = CrisisManagerMenu.7208 } }
 	}
 
@@ -3143,7 +3143,7 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.7208b.name
 		custom_tooltip = CrisisManagerMenu.7208b.tooltip
-		trigger = { any_country = { CmtTriggerIsKhanCountry = yes } }
+		trigger = { CmtTriggerNowInKhanCrisis = yes }
 		hidden_effect = {
 			random_country = {
 				limit = { CmtTriggerIsKhanCountry = yes }

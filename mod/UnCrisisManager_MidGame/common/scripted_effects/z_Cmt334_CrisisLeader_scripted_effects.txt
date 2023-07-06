@@ -42,8 +42,8 @@ CmtEffectCreateAdmiral_MarauderStandard = {
 			skill = 3
 			leader_age_min = 25
 			leader_age_max = 45
-			background_ethic = "ethic_militarist"
-			traits = { 0 = leader_trait_mercenary_warrior }
+			background_ethic = "ethic_fanatic_militarist"
+			traits = { trait = leader_trait_mercenary_warrior }
 		}
 	}
 }

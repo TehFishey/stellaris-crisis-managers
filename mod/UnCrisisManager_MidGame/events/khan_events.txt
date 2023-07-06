@@ -17,6 +17,7 @@ event = {
 		# Config only for minimal compatibility Crisis Manager.
 		if = {
 			limit = {
+				exists = event_target:global_event_country
 				NOT = { has_global_flag = CmtFlagActivated }
 				NAND = {
 					exists = event_target:CmtGlobalVar
@@ -24,11 +25,11 @@ event = {
 					event_target:CmtGlobalVar = { is_variable_set = CmtVarFleetPower_Khan }
 				}
 			}
-			if = { limit = { NOT = { exists = event_target:global_event_country } }
-				random_country = { limit = { is_country_type = global_event }
-					save_global_event_target_as = global_event_country
-				}
-			}
+			# if = { limit = { NOT = { exists = event_target:global_event_country } }
+			# 	random_country = { limit = { is_country_type = global_event }
+			# 		save_global_event_target_as = global_event_country
+			# 	}
+			# }
 			event_target:global_event_country = {
 				set_variable = { which = CmtVarKhanMultiple value = 2 }
 				set_variable = { which = CmtVarKhanInterval value = 0 }
@@ -89,11 +90,17 @@ system_event = {
 	immediate = {
 		if = {
 			limit = {
-				NAND = {
-					exists = starbase
-					starbase = { has_starbase_size >= starbase_citadel }
+				NOR = {
+					has_star_flag = marauder_starbase_destroyed
+					has_star_flag = starbase_destroyed
+				}
+				OR = {
+					NOT = { exists = starbase }
+					starbase = { has_starbase_size < starbase_citadel }
 				}
 			}
+			set_timed_star_flag = { flag = marauder_starbase_destroyed months = 2 }
+			set_timed_star_flag = { flag = marauder_starbase_destroyed days = 10 }
 			# space_owner = {
 			# 	if = {
 			# 		limit = { graphical_culture = pirate_01 }
@@ -210,14 +217,14 @@ starbase_event = {
 		NOT = { has_starbase_size = starbase_marauder }
 	}
 	immediate = {
-		if = {
-			limit = {
-				exists = event_target:raider_khanate
-				NOT = { is_owned_by = event_target:raider_khanate }
-				has_global_flag = marauder_crisis_ongoing
-			}
-			set_owner = event_target:raider_khanate
-		}
+		# if = {# Removed in 3.8.3
+		# 	limit = {
+		# 		exists = event_target:raider_khanate
+		# 		NOT = { is_owned_by = event_target:raider_khanate }
+		# 		has_global_flag = marauder_crisis_ongoing
+		# 	}
+		# 	set_owner = event_target:raider_khanate
+		# }
 		# TODO needs free slot check somehow: "Building slot is invalid."
 		if = {
 			limit = {
@@ -374,7 +381,10 @@ ship_event = {
 									NOT = { is_hostile_to = from.owner }
 									OR = {
 										has_country_flag = former_owner@prev
-										prev = { is_planet = prev.home_planet }
+										AND = {
+											exists = home_planet
+											prev = { is_planet = prev.home_planet }
+										}
 									}
 								}
 								AND = {
@@ -412,23 +422,22 @@ ship_event = {
 						limit = {
 							any_system_planet = {
 								# colonizable_planet = yes
-								any_playable_country = { prev = { is_planet = prev.home_planet } }
+								any_playable_country = { exists = home_planet prev = { is_planet = prev.home_planet } }
 							}
 						}
 						random_system_planet = {
 							limit = {
 								# colonizable_planet = yes
-								any_playable_country = { prev = { is_planet = prev.home_planet } }
+								any_playable_country = { exists = home_planet prev = { is_planet = prev.home_planet } }
 							}
 							random_playable_country = {
-								limit = { prev = { is_planet = prev.home_planet } }
+								limit = { exists = home_planet prev = { is_planet = prev.home_planet } }
 								root.fleet = { set_owner = prev }
 							}
 						}
 					} else_if = {
 						limit = {
 							any_system_colony = {
-								is_colony = yes
 								NOT = { is_owned_by = root.owner }
 								NAND = {
 									exists = controller
@@ -1364,7 +1373,7 @@ country_event = {
 				}
 			}
 			leave_alliance = { override_requirements = yes }
-		} else_if = { limit = { is_subject = yes exists = overlord }
+		} else_if = { limit = { is_subject = yes }
 			overlord = { # Much less likely
 				change_variable = { which = "planets_lost_to_marauder" value = 2 }
 			}
@@ -1397,7 +1406,11 @@ country_event = {
 			if = {
 				limit = {
 					count_playable_country = {
-						limit = { is_subject = no }
+						limit = {
+							is_subject = no
+							has_been_declared_crisis = no
+							fleet_power > 40000
+						}
 						count < 3
 					}
 					has_global_flag = gf_great_khan_active
@@ -1451,7 +1464,6 @@ country_event = {
 					NOT = {
 						any_system_within_border = {
 							any_system_colony = {
-								has_owner = yes
 								is_owned_by = root
 								is_under_colonization = no
 								uses_habitat_capitals = no
@@ -2128,12 +2140,22 @@ country_event = {
 			random_system_within_border = {
 				limit = {
 					exists = starbase
-					any_system_planet = {
-						is_star = no
-						NOR = {
-							has_planet_flag = megastructure
-							has_planet_flag = has_megastructure
+					NOT = {
+						any_system_planet = {
+							OR = {
+								has_planet_flag = habitat
+								has_planet_flag = megastructure
+								has_planet_flag = has_megastructure
+							}
 						}
+					}
+					any_system_planet = {
+						# is_star = no
+						is_a_planet = yes # possible inconsisent due other mods
+						# NOR = {
+						# 	has_planet_flag = megastructure
+						# 	has_planet_flag = has_megastructure
+						# }
 					}
 				}
 				weights = {
@@ -2142,11 +2164,6 @@ country_event = {
 					modifier = { add = 1 starbase = { has_starbase_size >= starbase_starhold } }
 					modifier = { add = 3
 						any_system_planet = {
-							is_a_planet = yes # possible inconsisent due other mods
-							NOR = {
-								has_planet_flag = megastructure
-								has_planet_flag = has_megastructure
-							}
 							OR = {
 								is_colony = yes
 								has_planet_flag = marauder_rally_point
@@ -2188,13 +2205,19 @@ fleet_event = {
 					is_idle = yes
 					has_leader_flag = restored_admiral@root
 				}
+				is_councilor = no
+				is_ruler = no
 			}
 		}
 	}
 	immediate = {
 		owner = {
 			random_owned_leader = {
-				limit = { leader_class = admiral }
+				limit = {
+					leader_class = admiral
+					is_councilor = no
+					is_ruler = no
+				}
 				weights = {
 					base = 1
 					modifier = { add = 9 has_leader_flag = restored_admiral@root }
@@ -2245,8 +2268,13 @@ system_event = {
 					type = "habitat_0"
 					planet = prev
 					owner = from # space_owner
-					graphical_culture = "mammalian_01"
+					graphical_culture = from # "mammalian_01"
 				}
+				# set_planet_entity = {
+				# 	entity = "habitat_phase_02_entity"
+				# 	graphical_culture = from
+				# }
+
 				# set_star_flag = marauder_habitat_placed
 			}
 			# Populate marauder habitat
@@ -2269,6 +2297,8 @@ system_event = {
 				# 	3 = { set_planet_flag = energy_habitat }
 				# }
 				change_planet_size = 2
+				set_planet_flag = advanced_habitat
+
 				while = {
 					count = 5
 					create_pop = {
@@ -2325,7 +2355,7 @@ system_event = {
 						add = 3
 						OR = {
 							uses_district_set = habitat
-							uses_district_set = ring_world
+							has_ringworld_output_boost = yes
 						}
 					}
 				}
@@ -2335,6 +2365,10 @@ system_event = {
 					# ethos = owner
 				}
 			}
+		}
+		random_system_planet = {
+			limit = { has_deposit_for = shipclass_mining_station }
+			create_mining_station = { owner = prevprev.owner }
 		}
 	}
 }

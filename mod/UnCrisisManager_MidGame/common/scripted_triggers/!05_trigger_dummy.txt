@@ -16,19 +16,46 @@ hfe_trigger_is_human_fallen = {
 	# 	is_country_type = hfe_fallen
 	# }
 }
+
 # ZOFE
-is_zofe_country = {
-	is_ai = no
+is_zofe_fe = {
+	is_country_type = fallen_empire
 	# always = no
+	# OR = {
+	# 	is_country_type = fallen_empire
+	# 	is_country_type = lost_empire
+	# }
+}
+is_zofe_ae = {
+	is_country_type = awakened_fallen_empire
+	# always = no
+	# OR = {
+	# 	is_country_type = awakened_fallen_empire
+	# 	is_country_type = ascended_empire
+	# }
+}
+is_zofe_country = {
+	always = no # is_ai = no
 	# OR = {
 	# 	is_country_type = ascended_empire
 	# 	is_country_type = lost_empire
 	# }
 }
+
 # PD
 is_planetary_diversity_ringworld = { always = no }
 is_pd_habitat = { always = no }
-is_pd_hive_arcology = { always = no }
+is_pd_hive_arcology = {
+	always = no
+	# OR = {
+	# 	is_planet_class = pc_bioforge
+	# 	is_planet_class = pc_biocapital
+	# 	is_planet_class = pc_biofort
+	# 	is_planet_class = pc_megafloracapital
+	# 	is_planet_class = pc_megafloraforge
+	# 	is_planet_class = pc_megaflorafort
+	# }
+}
 is_pd_robot_arcology = { always = no }
 is_pd_machine = { is_planet_class = pc_machine }
 
@@ -47,3 +74,4 @@ is_pd_arcology = { is_planet_class = pc_city }
 # }
 
 is_progenitor_empires = { always = no } # ACOT
+has_bug_branch = { always = no } # E&C Bug Branch

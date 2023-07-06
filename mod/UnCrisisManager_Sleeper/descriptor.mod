@@ -1,4 +1,4 @@
-version="3.8.2.1"
+version="3.8.2.3"
 name="Crisis Manager - Sleeper Edition (3.8.¢)"
 tags={
 	"Balance"

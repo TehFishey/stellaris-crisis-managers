@@ -24,9 +24,6 @@
 ##############
 
 CmtEffectCreateFleet_KhanArmy = {
-	# CmtEffectCreateGeneral_Marauder
-	create_marauder_general = yes
-
 	create_fleet = {
 		effect = {
 			set_owner = prev
@@ -92,7 +89,58 @@ CmtEffectCreateFleet_KhanArmy = {
 			}
 		}
 	}
-	last_created_army = { assign_leader = last_created_leader }
+
+	# CmtEffectCreateGeneral_Marauder
+	# Fix unlimited leader creation (they get anyway spamt by create_marauder_armies)
+	if = {
+		limit = {
+			NOR = {
+				count_owned_leader = {
+					count > 10
+					limit = {
+						leader_class = general
+						# is_event_leader = no
+					}
+				}
+				any_owned_leader = {
+					leader_class = general
+					is_idle = yes
+					# is_event_leader = no
+					is_councilor = no
+					is_ruler = no
+				}
+			}
+		}
+		# CREATE_MARAUDER_GENERAL
+		create_leader = {
+			class = general
+			species = event_target:marauder_species
+			name = random
+			skill = 3
+			leader_age_min = 25
+			leader_age_max = 45
+			traits = {
+				trait = leader_trait_mercenary_warrior
+			}
+			background_ethic = "ethic_fanatic_militarist"
+			skip_background_generation = yes
+			custom_description = "custom_mercenary_admiral_desc"
+		}
+		last_created_army = { assign_leader = last_created_leader }
+	}
+	else = {
+		random_owned_leader = {
+			limit = {
+				leader_class = general
+				is_idle = yes
+				# is_event_leader = no
+				is_councilor = no
+				is_ruler = no
+			}
+			weights = { base = 1 modifier = { add = 4 NOR = { exists = fleet exists = planet } } }
+			last_created_army = { assign_leader = prev }
+		}
+	}
 }
 
 CmtEffectCreateFleet_KhanConstructor = {

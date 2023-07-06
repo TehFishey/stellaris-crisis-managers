@@ -435,8 +435,8 @@ fleet_event = {
 					# distance_compare = { MAX = "[root.raid_target_distance]" }
 					# distance = {
 					# 	source = event_target:raid_planet
-					# 	min_distance > 5
-					# 	max_distance < root.raid_target_distance
+					# 	min_distance = 5
+					# 	max_distance = root.raid_target_distance
 					# 	type = hyperlane
 					# 	bypass_empire = root.owner
 					# 	# min_jumps = 1
@@ -3189,6 +3189,7 @@ country_event = {
 							owner = root
 							species = event_target:marauder_country_1.owner_species
 							type = "occupation_army"
+							land_army = yes
 						}
 						change_variable = { which = CmtVarTemp value = -1 }
 					}
@@ -3201,6 +3202,7 @@ country_event = {
 							owner = root
 							species = event_target:marauder_country_2.owner_species
 							type = "occupation_army"
+							land_army = yes
 						}
 						change_variable = { which = CmtVarTemp value = -1 }
 					}
@@ -3213,6 +3215,7 @@ country_event = {
 							owner = root
 							species = event_target:marauder_country_3.owner_species
 							type = "occupation_army"
+							land_army = yes
 						}
 						change_variable = { which = CmtVarTemp value = -1 }
 					}
@@ -3224,6 +3227,7 @@ country_event = {
 						owner = root
 						species = root.species
 						type = "occupation_army"
+						land_army = yes
 					}
 					change_variable = { which = CmtVarTemp value = -1 }
 				}

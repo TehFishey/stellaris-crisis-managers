@@ -33,10 +33,7 @@ CmtFleetSetAuxParam_KhanCombat = {
 			prev = {
 				OR = {
 					is_country_type = dormant_marauders
-					AND = {
-						exists = event_target:raider_khanate
-						CmtTriggerIsKhanCountry = yes
-					}
+					CmtTriggerIsKhanCountry = yes
 				}
 			}
 		}
