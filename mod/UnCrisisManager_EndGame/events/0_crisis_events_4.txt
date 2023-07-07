@@ -277,7 +277,7 @@ country_event = {
 				remove_planet = yes
 			} else_if = {
 				limit = {
-					is_planet_class = pc_ringworld_habitable
+					merg_is_hab_ringworld = yes
 				}
 				change_pc = pc_ringworld_habitable_damaged
 				clear_planet_modifiers = yes

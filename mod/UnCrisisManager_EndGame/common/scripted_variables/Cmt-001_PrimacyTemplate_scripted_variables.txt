@@ -1,4 +1,3 @@
-
 ##################################
 ##################################
 #####						#####
@@ -9,9 +8,9 @@
 ##################################
 ##################################
 #
-#	this template can be applied automatially on game start.
+#	This template can be applied automatially on game start.
 #	You can omit set configurations on game start if you activate this template and set value.
-#
+#	How to use: See ''ReadMe_for_making_template.txt''
 
 ################################
 ###  Activation of Template  ###
@@ -32,7 +31,7 @@
 		### yes: Crisis Maneger menu is opened automatically on game start. (Default)
 		### no : Crisis Maneger menu is NOT opened automatically on game start.
 
-### The version of Crisis Manager. this template corresponds to:
+### The version of Crisis Manager. This template corresponds to:
 	@CmtT001_ConstVersionInfo = 1.11
 		### Never change this value.
 		### For example, ''1.03'' means ''ver.1.3'' but not ''ver.1.0.3''
@@ -70,7 +69,7 @@
 
 ### Equalization of Probability
 	@CmtT001_ConstEqualizingProbability = 1
-		### No = 1 (Default), Weak = 2, Strong = 3, Completely = 4
+		### no = 1 (Default), Weak = 2, Strong = 3, Completely = 4
 
 ### Progress Speed of Opening Event Chain.
 	@CmtT001_ConstOpeningEventSpeed = 3
