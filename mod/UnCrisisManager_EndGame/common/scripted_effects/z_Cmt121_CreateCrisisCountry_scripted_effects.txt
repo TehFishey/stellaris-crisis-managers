@@ -151,16 +151,154 @@ CmtEffectCallAberrant = {
 					owner = { is_country_type = extradimensional }
 				}
 			}
-			CmtEffectCreateCountryAberrant = yes
+			save_event_target_as = second_portal_system # CmtEffectCreateCountryAberrant = yes
 		}
 	} else = {
 		event_target:extradimensionals = {
 			random_system_within_border = {
 				limit = { CmtTriggerSpawnableSystem = yes }
-				CmtEffectCreateCountryAberrant = yes
+				save_event_target_as = second_portal_system # CmtEffectCreateCountryAberrant = yes
 			}
 		}
 	}
+	event_target:second_portal_system = {
+		# CmtEffectCreateCountryAberrant
+		set_star_flag = extradimensional_second_portal_system
+
+		random_system_planet = {
+			create_species = {
+				name = "NAME_Aberrant"
+				class = EXD
+				namelist = "Extradimensional"
+				portrait = exd2
+				traits = random
+				effect = { save_global_event_target_as = extradimensional_hunters_species }
+			}
+			create_country = {
+				name = "NAME_Aberrant"
+				type = "extradimensional_2"
+				species = event_target:extradimensional_hunters_species
+				name_list = "Extradimensional"
+				flag = {
+					icon= {
+						category = "special"
+						file = "extradimensional_02.dds"
+					}
+					background= {
+						category = "backgrounds"
+						file = "triangle_split.dds"
+					}
+					colors={ "brown" "orange" "null" "null" }
+				}
+				effect = {
+					set_country_flag = aberrant
+					create_ship_design = { design = "NAME_Void_Former" }
+					add_ship_design = last_created_design
+					create_ship_design = { design = "NAME_Aberrant_Anchor" }
+					add_ship_design = last_created_design
+
+					set_graphical_culture = extra_dimensional_02
+					save_global_event_target_as = extradimensionals2
+					save_event_target_as = extradimensional_hunters
+					establish_communications_no_message = event_target:portal_holder_1
+					set_faction_hostility = {
+						target = event_target:portal_holder_1
+						set_hostile = no
+					}
+				}
+			}
+			event_target:extradimensionals2 = {
+				create_fleet = {
+					name = "NAME_Dimensional_Portal"
+					effect = {
+						set_owner = prev
+						create_ship = {
+							name = random
+							design = "NAME_Aberrant_Portal"
+							graphical_culture = "extra_dimensional_02"
+							effect = { set_ship_flag = aberrant_portal }
+						}
+						set_location = {
+							target = prevprev
+							distance = 40
+							angle = random
+						}
+						save_event_target_as = second_portal
+						fleet_event = { id = crisis.1103 days = 1 } # Fleet Arrives
+						fleet_event = { id = crisis.1103 days = 5 } # Fleet Arrives
+						fleet_event = { id = crisis.1103 days = 15 } # Fleet Arrives
+						fleet_event = { id = crisis.1103 days = 30 } # Fleet Arrives
+						fleet_event = { id = crisis.1103 days = 45 } # Fleet Arrives
+						fleet_event = { id = crisis.1103 days = 60 } # Fleet Arrives
+						fleet_event = { id = crisis.1103 days = 150 } # Fleet Arrives
+						fleet_event = { id = crisis.1103 days = 350 } # Fleet Arrives
+						fleet_event = { id = crisis.1106 days = 20 } # Constructor Arrives
+						fleet_event = { id = crisis.1106 days = 25 } # Constructor Arrives
+						fleet_event = { id = crisis.1106 days = 90 } # Constructor Arrives
+						fleet_event = { id = crisis.1106 days = 210 } # Constructor Arrives
+						event_target:extradimensional_hunters = { country_event = { id = crisis.1260 days = 550 } } # Spawn Cycle starts
+						# CmtEffectCreateAdmiralty_AberrantCapitalDefense = yes
+					}
+				}
+				# CmtEffectCreateFleet_AberrantCapitalDefense
+				CmtEffectCreateAdmiral_Aberrant = yes
+				create_fleet = {
+					effect = {
+						set_owner = prev
+						event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Aberrant } }
+						prev = { CmtEffectResetLoop = yes }
+						while = {
+							limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+							event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+
+							while = { count = 11 CmtEffectCreateShip_Predator = yes }		## 45 -> 45
+							while = { count =  7 CmtEffectCreateShip_Assassin = yes }		## 30 -> 30
+							while = { count =  5 CmtEffectCreateShip_Huntress = yes }		## 21 -> 21
+
+							prev = {
+								CmtEffectProgressLoop4 = yes
+								switch = {
+									trigger = has_country_flag
+									CmtFlagLoopA = { prev = { CmtEffectCreateShip_Predator = yes } }
+									CmtFlagLoopB = { prev = { CmtEffectCreateShip_Assassin = yes } }
+									CmtFlagLoopC = { prev = { CmtEffectCreateShip_Huntress = yes } }
+									CmtFlagLoopZ = { prev = { CmtEffectCreateShip_Assassin = yes } }
+								}
+							}
+						}
+						CmtFleetSetAuxParam_ExdsCombat = yes
+						assign_leader = last_created_leader
+					}
+				}
+			}
+		}
+		CmtEffectDestroySystemStarbase = yes
+		create_starbase = {
+			size = starbase_exd
+			owner = event_target:extradimensionals2
+		}
+
+		### 2.7 Create ambient audio (ToDo: Move to scripted effect)
+		star = {
+			create_ambient_object = {
+				type = "extradimensional_2"
+				location = this
+			}
+			last_created_ambient_object = {
+				set_ambient_object_flag = extradimensional_system_effect_2
+				set_location = {
+					target = prev
+					distance = 0
+					angle = random
+				}
+			}
+		}
+
+		event_target:extradimensionals2 = {
+			random_owned_ship = { limit = { NOT = { is_ship_size = dimensional_portal_ed } } ship_event = { id = crisis.1280 } }
+		}
+	}
+
 	CmtEffectFriendlyCrisis = yes
 
 	every_country = {
@@ -182,113 +320,10 @@ CmtEffectCallAberrant = {
 	}
 }
 
+# Transcluded in 3.9
 ## Scope: this = Stellar System
-CmtEffectCreateCountryAberrant = {
-	set_star_flag = extradimensional_second_portal_system
-	save_event_target_as = second_portal_system
-	random_system_planet = {
-		create_species = {
-			name = "NAME_Aberrant"
-			class = EXD
-			namelist = "Extradimensional"
-			portrait = exd2
-			traits = random
-			effect = { save_global_event_target_as = extradimensional_hunters_species }
-		}
-		create_country = {
-			name = "NAME_Aberrant"
-			type = "extradimensional_2"
-			species = event_target:extradimensional_hunters_species
-			name_list = "Extradimensional"
-			flag = {
-				icon= {
-					category = "special"
-					file = "extradimensional_02.dds"
-				}
-				background= {
-					category = "backgrounds"
-					file = "triangle_split.dds"
-				}
-				colors={ "brown" "orange" "null" "null" }
-			}
-			effect = {
-				set_country_flag = aberrant
-				create_ship_design = { design = "NAME_Void_Former" }
-				add_ship_design = last_created_design
-				create_ship_design = { design = "NAME_Aberrant_Anchor" }
-				add_ship_design = last_created_design
-
-				set_graphical_culture = extra_dimensional_02
-				save_global_event_target_as = extradimensionals2
-				save_event_target_as = extradimensional_hunters
-				establish_communications_no_message = event_target:portal_holder_1
-				set_faction_hostility = {
-					target = event_target:portal_holder_1
-					set_hostile = no
-				}
-			}
-		}
-		event_target:extradimensionals2 = {
-			create_fleet = {
-				name = "NAME_Dimensional_Portal"
-				effect = {
-					set_owner = prev
-					create_ship = {
-						name = random
-						design = "NAME_Aberrant_Portal"
-						graphical_culture = "extra_dimensional_02"
-						effect = { set_ship_flag = aberrant_portal }
-					}
-					set_location = {
-						target = prevprev
-						distance = 40
-						angle = random
-					}
-					save_event_target_as = second_portal
-					fleet_event = { id = crisis.1103 days = 1 } # Fleet Arrives
-					fleet_event = { id = crisis.1103 days = 5 } # Fleet Arrives
-					fleet_event = { id = crisis.1103 days = 15 } # Fleet Arrives
-					fleet_event = { id = crisis.1103 days = 30 } # Fleet Arrives
-					fleet_event = { id = crisis.1103 days = 45 } # Fleet Arrives
-					fleet_event = { id = crisis.1103 days = 60 } # Fleet Arrives
-					fleet_event = { id = crisis.1103 days = 150 } # Fleet Arrives
-					fleet_event = { id = crisis.1103 days = 350 } # Fleet Arrives
-					fleet_event = { id = crisis.1106 days = 20 } # Constructor Arrives
-					fleet_event = { id = crisis.1106 days = 25 } # Constructor Arrives
-					fleet_event = { id = crisis.1106 days = 90 } # Constructor Arrives
-					fleet_event = { id = crisis.1106 days = 210 } # Constructor Arrives
-					event_target:extradimensional_hunters = { country_event = { id = crisis.1260 days = 550 } } # Spawn Cycle starts
-					CmtEffectCreateAdmiralty_AberrantCapitalDefense = yes
-				}
-			}
-		}
-	}
-	CmtEffectDestroySystemStarbase = yes
-	create_starbase = {
-		size = starbase_exd
-		owner = event_target:extradimensionals2
-	}
-
-	### 2.7 Create ambient audio (ToDo: Move to scripted effect)
-	star = {
-		create_ambient_object = {
-			type = "extradimensional_2"
-			location = this
-		}
-		last_created_ambient_object = {
-			set_ambient_object_flag = extradimensional_system_effect_2
-			set_location = {
-				target = prev
-				distance = 0
-				angle = random
-			}
-		}
-	}
-
-	event_target:extradimensionals2 = {
-		random_owned_ship = { limit = { NOT = { is_ship_size = dimensional_portal_ed } } ship_event = { id = crisis.1280 } }
-	}
-}
+# CmtEffectCreateCountryAberrant = {
+# }
 
 ##################
 ###  Vehement  ###
@@ -326,16 +361,155 @@ CmtEffectCallVehement = {
 					}
 				}
 			}
-			CmtEffectCreateCountryVehement = yes
+			save_event_target_as = third_portal_system # CmtEffectCreateCountryVehement = yes
 		}
 	} else = {
 		event_target:extradimensionals = {
 			random_system_within_border = {
 				limit = { CmtTriggerSpawnableSystem = yes }
-				CmtEffectCreateCountryVehement = yes
+				save_event_target_as = third_portal_system # CmtEffectCreateCountryVehement = yes
 			}
 		}
 	}
+
+	event_target:third_portal_system = {
+		#CmtEffectCreateCountryVehement = {	## Scope = Stellar System
+		set_star_flag = extradimensional_third_portal_system
+
+		random_system_planet = {
+			create_species = {
+				name = "NAME_Vehement"
+				class = EXD
+				namelist = "Extradimensional"
+				portrait = exd3
+				traits = random
+				effect = { save_global_event_target_as = extradimensional_trespassers_species }
+			}
+			create_country = {
+				name = "NAME_Vehement"
+				type = "extradimensional_3"
+				species = event_target:extradimensional_trespassers_species
+				name_list = "Extradimensional"
+				flag = {
+					icon= {
+						category = "special"
+						file = "extradimensional_03.dds"
+					}
+					background= {
+						category = "backgrounds"
+						file = "stripe.dds"
+					}
+					colors={ "green" "teal" "null" "null" }
+				}
+				effect = {
+					set_country_flag = vehement
+					create_ship_design = { design = "NAME_Void_Weaver" }
+					add_ship_design = last_created_design
+					create_ship_design = { design = "NAME_Vehement_Anchor" }
+					add_ship_design = last_created_design
+
+					set_graphical_culture = extra_dimensional_03
+					save_global_event_target_as = extradimensionals3
+					# save_event_target_as = extradimensional_trespassers # Vanilla bug not needed
+					establish_communications_no_message = event_target:portal_holder_1
+					set_faction_hostility = {
+						target = event_target:portal_holder_1
+						set_hostile = no
+					}
+				}
+			}
+			event_target:extradimensionals3 = {
+				create_fleet = {
+					name = "NAME_Dimensional_Portal"
+					effect = {
+						set_owner = prev
+						create_ship = {
+							name = random
+							design = "NAME_Vehement_Portal"
+							graphical_culture = "extra_dimensional_03"
+							effect = { set_ship_flag = vehement_portal }
+						}
+						set_location = {
+							target = prevprev
+							distance = 40
+							angle = random
+						}
+						save_event_target_as = third_portal
+						fleet_event = { id = crisis.1203 days = 1 } # Fleet Arrives
+						fleet_event = { id = crisis.1203 days = 5 } # Fleet Arrives
+						fleet_event = { id = crisis.1203 days = 15 } # Fleet Arrives
+						fleet_event = { id = crisis.1203 days = 30 } # Fleet Arrives
+						fleet_event = { id = crisis.1203 days = 45 } # Fleet Arrives
+						fleet_event = { id = crisis.1203 days = 60 } # Fleet Arrives
+						fleet_event = { id = crisis.1203 days = 150 } # Fleet Arrives
+						fleet_event = { id = crisis.1203 days = 350 } # Fleet Arrives
+						fleet_event = { id = crisis.1206 days = 20 } # Constructor Arrives
+						fleet_event = { id = crisis.1206 days = 25 } # Constructor Arrives
+						fleet_event = { id = crisis.1206 days = 90 } # Constructor Arrives
+						fleet_event = { id = crisis.1206 days = 210 } # Constructor Arrives
+						prev = { country_event = { id = crisis.1260 days = 550 } } # Spawn Cycle starts
+						# CmtEffectCreateAdmiralty_VehementCapitalDefense
+					}
+				}
+				# CmtEffectCreateFleet_VehementCapitalDefense
+				CmtEffectCreateAdmiral_Vehement = yes
+				create_fleet = {
+					effect = {
+						set_owner = prev
+						event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Vehement } }
+						prev = { CmtEffectResetLoop = yes }
+						while = {
+							limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+							event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+
+							while = { count = 11 CmtEffectCreateShip_Obliterator = yes }		## 45 -> 45
+							while = { count =  7 CmtEffectCreateShip_Annihilator = yes }		## 30 -> 30
+							while = { count =  5 CmtEffectCreateShip_Eradicator = yes } 		## 21 -> 21
+
+							prev = {
+								CmtEffectProgressLoop4 = yes
+								switch = {
+									trigger = has_country_flag
+									CmtFlagLoopA = { prev = { CmtEffectCreateShip_Obliterator = yes } }
+									CmtFlagLoopB = { prev = { CmtEffectCreateShip_Annihilator = yes } }
+									CmtFlagLoopC = { prev = { CmtEffectCreateShip_Eradicator = yes } }
+									CmtFlagLoopZ = { prev = { CmtEffectCreateShip_Annihilator = yes } }
+								}
+							}
+						}
+						CmtFleetSetAuxParam_ExdsCombat = yes
+						assign_leader = last_created_leader
+					}
+				}
+			}
+		}
+		CmtEffectDestroySystemStarbase = yes
+		create_starbase = {
+			size = starbase_exd
+			owner = event_target:extradimensionals3
+		}
+
+		### 2.7 Create ambient audio (ToDo: Move to scripted effect)
+		star = {
+			create_ambient_object = {
+				type = "extradimensional_2"
+				location = this
+			}
+			last_created_ambient_object = {
+				set_ambient_object_flag = extradimensional_system_effect_2
+				set_location = {
+					target = prev
+					distance = 0
+					angle = random
+				}
+			}
+		}
+
+		event_target:extradimensionals3 = {
+			random_owned_ship = { limit = { NOT = { is_ship_size = dimensional_portal_ed } } ship_event = { id = crisis.1280 } }
+		}
+	}
+
 	CmtEffectFriendlyCrisis = yes
 
 	every_country = {
@@ -354,112 +528,8 @@ CmtEffectCallVehement = {
 	observer_event = { id = observer.38 }
 }
 
-CmtEffectCreateCountryVehement = {	## Scope = Stellar System
-	set_star_flag = extradimensional_third_portal_system
-	save_event_target_as = third_portal_system
-	random_system_planet = {
-		create_species = {
-			name = "NAME_Vehement"
-			class = EXD
-			namelist = "Extradimensional"
-			portrait = exd3
-			traits = random
-			effect = { save_global_event_target_as = extradimensional_trespassers_species }
-		}
-		create_country = {
-			name = "NAME_Vehement"
-			type = "extradimensional_3"
-			species = event_target:extradimensional_trespassers_species
-			name_list = "Extradimensional"
-			flag = {
-				icon= {
-					category = "special"
-					file = "extradimensional_03.dds"
-				}
-				background= {
-					category = "backgrounds"
-					file = "stripe.dds"
-				}
-				colors={ "green" "teal" "null" "null" }
-			}
-			effect = {
-				set_country_flag = vehement
-				create_ship_design = { design = "NAME_Void_Weaver" }
-				add_ship_design = last_created_design
-				create_ship_design = { design = "NAME_Vehement_Anchor" }
-				add_ship_design = last_created_design
-
-				set_graphical_culture = extra_dimensional_03
-				save_global_event_target_as = extradimensionals3
-				# save_event_target_as = extradimensional_trespassers # Vanilla bug not needed
-				establish_communications_no_message = event_target:portal_holder_1
-				set_faction_hostility = {
-					target = event_target:portal_holder_1
-					set_hostile = no
-				}
-			}
-		}
-		event_target:extradimensionals3 = {
-			create_fleet = {
-				name = "NAME_Dimensional_Portal"
-				effect = {
-					set_owner = prev
-					create_ship = {
-						name = random
-						design = "NAME_Vehement_Portal"
-						graphical_culture = "extra_dimensional_03"
-						effect = { set_ship_flag = vehement_portal }
-					}
-					set_location = {
-						target = prevprev
-						distance = 40
-						angle = random
-					}
-					save_event_target_as = third_portal
-					fleet_event = { id = crisis.1203 days = 1 } # Fleet Arrives
-					fleet_event = { id = crisis.1203 days = 5 } # Fleet Arrives
-					fleet_event = { id = crisis.1203 days = 15 } # Fleet Arrives
-					fleet_event = { id = crisis.1203 days = 30 } # Fleet Arrives
-					fleet_event = { id = crisis.1203 days = 45 } # Fleet Arrives
-					fleet_event = { id = crisis.1203 days = 60 } # Fleet Arrives
-					fleet_event = { id = crisis.1203 days = 150 } # Fleet Arrives
-					fleet_event = { id = crisis.1203 days = 350 } # Fleet Arrives
-					fleet_event = { id = crisis.1206 days = 20 } # Constructor Arrives
-					fleet_event = { id = crisis.1206 days = 25 } # Constructor Arrives
-					fleet_event = { id = crisis.1206 days = 90 } # Constructor Arrives
-					fleet_event = { id = crisis.1206 days = 210 } # Constructor Arrives
-					prev = { country_event = { id = crisis.1260 days = 550 } } # Spawn Cycle starts
-					CmtEffectCreateAdmiralty_VehementCapitalDefense = yes
-				}
-			}
-		}
-	}
-	CmtEffectDestroySystemStarbase = yes
-	create_starbase = {
-		size = starbase_exd
-		owner = event_target:extradimensionals3
-	}
-
-	### 2.7 Create ambient audio (ToDo: Move to scripted effect)
-	star = {
-		create_ambient_object = {
-			type = "extradimensional_2"
-			location = this
-		}
-		last_created_ambient_object = {
-			set_ambient_object_flag = extradimensional_system_effect_2
-			set_location = {
-				target = prev
-				distance = 0
-				angle = random
-			}
-		}
-	}
-
-	event_target:extradimensionals3 = {
-		random_owned_ship = { limit = { NOT = { is_ship_size = dimensional_portal_ed } } ship_event = { id = crisis.1280 } }
-	}
-}
+# Transcluded in 3.9
+# CmtEffectCreateCountryVehement =
 
 ################
 ###  Cybrex  ###

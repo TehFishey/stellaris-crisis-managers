@@ -832,7 +832,7 @@ event = {
 		event_target:prethoryn = {
 			CmtTriggerIsPrethoryn = yes
 			num_ships > 10
-			count_owned_ship = {
+			count_owned_fleet = {
 				limit = { is_ship_size = colony_ship_swarm }
 				count < @CmtConstPrethorynColonizerStdNum
 			}

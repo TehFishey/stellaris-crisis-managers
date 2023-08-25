@@ -204,16 +204,16 @@ CmtEffectCreateAdmiral_SentinelAttacker = {
 ###########################
 
 ### Unbidden
-
-CmtEffectCreateAdmiral_UnbiddenCapital = {
-	create_leader = {
-		class = admiral
-		species = event_target:extradimensional_shabanash_species
-		name = random
-		skill = 3
-		traits = { trait = leader_trait_ethereal }
-	}
-}
+# Transcluded in 3.9
+# CmtEffectCreateAdmiral_UnbiddenCapital = {
+# 	create_leader = {
+# 		class = admiral
+# 		species = event_target:extradimensional_shabanash_species
+# 		name = random
+# 		skill = 3
+# 		traits = { trait = leader_trait_ethereal }
+# 	}
+# }
 
 CmtEffectCreateAdmiral_UnbiddenStandard = {
 	random_list = {

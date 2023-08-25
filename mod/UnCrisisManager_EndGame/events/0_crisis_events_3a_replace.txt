@@ -888,7 +888,13 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		any_owned_leader = { leader_class = scientist }
+		any_owned_leader = {
+			leader_class = scientist
+			NOR = {
+				has_leader_flag = renowned_leader
+				has_leader_flag = legendary_leader
+			}
+		}
 		OR = {
 			CmtTriggerRepeatableTerror = yes
 			NOT = { has_country_flag = synth_scientist_exposure }
@@ -898,7 +904,13 @@ country_event = {
 	immediate = {
 		set_country_flag = synth_scientist_exposure
 		random_owned_leader = {
-			limit = { leader_class = scientist }
+			limit = {
+				leader_class = scientist
+				NOR = {
+					has_leader_flag = renowned_leader
+					has_leader_flag = legendary_leader
+				}
+			}
 			save_event_target_as = scientist
 			kill_leader = { show_notification = no }
 		}
@@ -921,7 +933,13 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		any_owned_leader = { leader_class = admiral }
+		any_owned_leader = {
+			leader_class = admiral
+			NOR = {
+				has_leader_flag = renowned_leader
+				has_leader_flag = legendary_leader
+			}
+		}
 		OR = {
 			CmtTriggerRepeatableTerror = yes
 			NOT = { has_country_flag = synth_admiral_exposure }
@@ -931,7 +949,13 @@ country_event = {
 	immediate = {
 		set_country_flag = synth_admiral_exposure
 		random_owned_leader = {
-			limit = { leader_class = admiral }
+			limit = {
+				leader_class = admiral
+				NOR = {
+					has_leader_flag = renowned_leader
+					has_leader_flag = legendary_leader
+				}
+			}
 			save_event_target_as = admiral
 			kill_leader = { show_notification = no }
 		}
@@ -1154,12 +1178,24 @@ country_event = {
 			NOT = { has_country_flag = machine_scientist_terminated }
 			CmtTriggerRepeatableTerror = yes
 		}
-		any_owned_leader = { leader_class = scientist }
+		any_owned_leader = {
+			leader_class = scientist
+			NOR = {
+				has_leader_flag = renowned_leader
+				has_leader_flag = legendary_leader
+			}
+		}
 	}
 
 	immediate = {
 		random_owned_leader = {
-			limit = { leader_class = scientist }
+			limit = {
+				leader_class = scientist
+				NOR = {
+					has_leader_flag = renowned_leader
+					has_leader_flag = legendary_leader
+				}
+			}
 			save_event_target_as = scientist
 			kill_leader = { show_notification = no }
 		}
@@ -1188,12 +1224,24 @@ country_event = {
 			NOT = { has_country_flag = machine_admiral_terminated }
 			CmtTriggerRepeatableTerror = yes
 		}
-		any_owned_leader = { leader_class = admiral }
+		any_owned_leader = {
+			leader_class = admiral
+			NOR = {
+				has_leader_flag = renowned_leader
+				has_leader_flag = legendary_leader
+			}
+		}
 	}
 
 	immediate = {
 		random_owned_leader = {
-			limit = { leader_class = admiral }
+			limit = {
+				leader_class = admiral
+				NOR = {
+					has_leader_flag = renowned_leader
+					has_leader_flag = legendary_leader
+				}
+			}
 			save_event_target_as = admiral
 			kill_leader = { show_notification = no }
 		}
@@ -1587,11 +1635,11 @@ country_event = {
 	is_test_event = yes
 	trigger = { always = no }
 }
-# Superfluous now
-country_event = {
-	id = crisis.2045
-	hide_window = yes
-	is_triggered_only = yes
-	is_test_event = yes
-	trigger = { always = no }
-}
+# Superfluous now - vanilla fully removed in v.3.9
+# country_event = {
+# 	id = crisis.2045
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	is_test_event = yes
+# 	trigger = { always = no }
+# }

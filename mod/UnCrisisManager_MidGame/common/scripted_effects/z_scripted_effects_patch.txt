@@ -6,7 +6,6 @@ end_war_effect = {
 	if = { # Is defenders
 		# Because strange log behavior
 		limit = {
-			# years_passed > 1 # Try to omit error.log
 			exists = this
 			is_scope_valid = yes
 			is_scope_type = war

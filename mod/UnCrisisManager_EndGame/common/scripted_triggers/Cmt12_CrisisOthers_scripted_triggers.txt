@@ -28,7 +28,8 @@ CmtTriggerPrethoryn1stTarget = {
 		}
 	}
 	# No neighboring fallen empires
-	NOT = {
+	NOR = {
+		has_star_flag = crisis_spawn_exclude # v.3.8
 		any_neighbor_system = {
 			exists = space_owner
 			space_owner = { is_fallen_empire = yes }
@@ -131,158 +132,10 @@ CmtTriggerHasExdPortal = {
 	}
 }
 
-CmtTriggerExistExdPortal = {
-	any_country = {
-		CmtTriggerIsExpExds = yes
-		any_owned_ship = { is_ship_size = dimensional_portal_ed }
-	}
-}
-
-CmtTriggerAnchorForPortalCreate = {		## this = Country (Exds)
-	OR = {
-		AND = {
-			event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T0 } }
-			count_owned_ship = { limit = { is_ship_size = starbase_exd } count >= @CmtConstTUnq_ExdsPortalStability }
-		}
-		AND = {
-			event_target:CmtGlobalVar = {
-				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T0 } }
-				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T1 }
-			}
-			count_owned_ship = { limit = { is_ship_size = starbase_exd } count >= @CmtConstPortalStability_R1 }
-		}
-		AND = {
-			event_target:CmtGlobalVar = {
-				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T1 } }
-				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T2 }
-			}
-			count_owned_ship = { limit = { is_ship_size = starbase_exd } count >= @CmtConstPortalStability_R2 }
-		}
-		AND = {
-			event_target:CmtGlobalVar = {
-				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T2 } }
-				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T3 }
-			}
-			count_owned_ship = { limit = { is_ship_size = starbase_exd } count >= @CmtConstPortalStability_R3 }
-		}
-		AND = {
-			event_target:CmtGlobalVar = {
-				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T3 } }
-				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T4 }
-			}
-			count_owned_ship = { limit = { is_ship_size = starbase_exd } count >= @CmtConstPortalStability_R4 }
-		}
-		AND = {
-			event_target:CmtGlobalVar = {
-				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T4 } }
-				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T5 }
-			}
-			count_owned_ship = { limit = { is_ship_size = starbase_exd } count >= @CmtConstPortalStability_R5 }
-		}
-		AND = {
-			event_target:CmtGlobalVar = {
-				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T5 } }
-				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T6 }
-			}
-			count_owned_ship = { limit = { is_ship_size = starbase_exd } count >= @CmtConstPortalStability_R6 }
-		}
-		AND = {
-			event_target:CmtGlobalVar = {
-				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T6 } }
-				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T7 }
-			}
-			count_owned_ship = { limit = { is_ship_size = starbase_exd } count >= @CmtConstPortalStability_R7 }
-		}
-		AND = {
-			event_target:CmtGlobalVar = {
-				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T7 } }
-				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T8 }
-			}
-			count_owned_ship = { limit = { is_ship_size = starbase_exd } count >= @CmtConstPortalStability_R8 }
-		}
-		AND = {
-			event_target:CmtGlobalVar = {
-				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T8 } }
-				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T9 }
-			}
-			count_owned_ship = { limit = { is_ship_size = starbase_exd } count >= @CmtConstPortalStability_R9 }
-		}
-		event_target:CmtGlobalVar = { NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T9 } } }
-	}
-}
-
-CmtTriggerAnchorForPortalDestroy = {		## this = Country (Exds)
-	NOR = {
-		AND = {
-			event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T0 } }
-			count_owned_ship = { limit = { is_ship_size = starbase_exd } count > @CmtConstTUnq_ExdsPortalStability }
-		}
-		AND = {
-			event_target:CmtGlobalVar = {
-				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T0 } }
-				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T1 }
-			}
-			count_owned_ship = { limit = { is_ship_size = starbase_exd } count > @CmtConstPortalStability_R1 }
-		}
-		AND = {
-			event_target:CmtGlobalVar = {
-				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T1 } }
-				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T2 }
-			}
-			count_owned_ship = { limit = { is_ship_size = starbase_exd } count > @CmtConstPortalStability_R2 }
-		}
-		AND = {
-			event_target:CmtGlobalVar = {
-				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T2 } }
-				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T3 }
-			}
-			count_owned_ship = { limit = { is_ship_size = starbase_exd } count > @CmtConstPortalStability_R3 }
-		}
-		AND = {
-			event_target:CmtGlobalVar = {
-				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T3 } }
-				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T4 }
-			}
-			count_owned_ship = { limit = { is_ship_size = starbase_exd } count > @CmtConstPortalStability_R4 }
-		}
-		AND = {
-			event_target:CmtGlobalVar = {
-				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T4 } }
-				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T5 }
-			}
-			count_owned_ship = { limit = { is_ship_size = starbase_exd } count > @CmtConstPortalStability_R5 }
-		}
-		AND = {
-			event_target:CmtGlobalVar = {
-				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T5 } }
-				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T6 }
-			}
-			count_owned_ship = { limit = { is_ship_size = starbase_exd } count > @CmtConstPortalStability_R6 }
-		}
-		AND = {
-			event_target:CmtGlobalVar = {
-				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T6 } }
-				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T7 }
-			}
-			count_owned_ship = { limit = { is_ship_size = starbase_exd } count > @CmtConstPortalStability_R7 }
-		}
-		AND = {
-			event_target:CmtGlobalVar = {
-				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T7 } }
-				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T8 }
-			}
-			count_owned_ship = { limit = { is_ship_size = starbase_exd } count > @CmtConstPortalStability_R8 }
-		}
-		AND = {
-			event_target:CmtGlobalVar = {
-				NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T8 } }
-				check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T9 }
-			}
-			count_owned_ship = { limit = { is_ship_size = starbase_exd } count > @CmtConstPortalStability_R9 }
-		}
-		event_target:CmtGlobalVar = { NOT = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T9 } } }
-	}
-}
+# Transcluded in 3.9
+# CmtTriggerExistExdPortal = {
+# CmtTriggerAnchorForPortalCreate = {		## this = Country (Exds)
+# CmtTriggerAnchorForPortalDestroy = {		## this = Country (Exds)
 
 #####################
 ###  Contingency  ###
@@ -455,25 +308,18 @@ CmtTriggerFeocExileCandidate = {
 	NOT = { has_modifier = covenant_shroud_marked }
 }
 
-CmtTriggerFeocExile1stPrioritySystem = {
-	OR = {
-		NOT = { exists = starbase.owner }
-		starbase.owner = { is_same_empire = root }
-	}
-	CmtTriggerFeocExile3rdPrioritySystem = yes
-}
+# CmtTriggerFeocExile1stPrioritySystem = {
+# 	OR = {
+# 		NOT = { exists = starbase.owner }
+# 		starbase.owner = { is_same_empire = root }
+# 	}
+# 	CmtTriggerFeocExile3rdPrioritySystem = yes
+# }
 
-CmtTriggerFeocExile2ndPrioritySystem = {
-	any_system_planet = { CmtTriggerFeocExileCandidate = yes }
-	NOT = {
-		any_system_planet = {
-			OR = {
-				is_colony = yes
-				has_modifier = covenant_shroud_marked
-			}
-		}
-	}
-}
+# CmtTriggerFeocExile2ndPrioritySystem = {
+# 	CmtTriggerFeocExile3rdPrioritySystem = yes
+# 	NOT = { any_system_colony = {  } }
+# }
 
 CmtTriggerFeocExile3rdPrioritySystem = {
 	any_system_planet = { CmtTriggerFeocExileCandidate = yes }

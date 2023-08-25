@@ -17,31 +17,31 @@ merg_is_hab_ringworld = {
 		is_planet_class = pc_ringworld_habitable
 		is_planet_class = pc_shattered_ring_habitable
 		is_planetary_diversity_ringworld = yes
-		# Gigastructural Engineering & More
-		is_planet_class = pc_gigaorbital_ring
-		is_planet_class = pc_interstellar_ringworld_habitable
-		is_planet_class = pc_ringworld_city
-		is_planet_class = pc_squareworld_habitable
-		is_planet_class = pc_giga_penrose_habitable
-		is_planet_class = pc_ringworld_machine
-		is_planet_class = pc_ringworld_hive
-		# Ancient Empire
-		# Listed planet types are for colors only, they're all ideal
-		is_planet_class = pc_ag_ringworld_desert
-		is_planet_class = pc_ag_ringworld_arid
-		is_planet_class = pc_ag_ringworld_savannah
-		is_planet_class = pc_ag_ringworld_ocean
-		is_planet_class = pc_ag_ringworld_continental
-		is_planet_class = pc_ag_ringworld_tropical
-		is_planet_class = pc_ag_ringworld_tundra
-		is_planet_class = pc_ag_ringworld_arctic
-		is_planet_class = pc_ag_ringworld_alpine
-		is_planet_class = pc_ag_ringworld_machine
-		is_planet_class = pc_ag_ringworld_city
-		is_planet_class = pc_ag_ringworld_gaia
-		# Warship Girls and MIST species.
-		is_planet_class = pc_ringworld_habitable_sh
-		is_planet_class = pc_ringworld_habitable_wsg
+		# # Gigastructural Engineering & More
+		# is_planet_class = pc_gigaorbital_ring
+		# is_planet_class = pc_interstellar_ringworld_habitable
+		# is_planet_class = pc_ringworld_city
+		# is_planet_class = pc_squareworld_habitable
+		# is_planet_class = pc_giga_penrose_habitable
+		# is_planet_class = pc_ringworld_machine
+		# is_planet_class = pc_ringworld_hive
+		# # Ancient Empire
+		# # Listed planet types are for colors only, they're all ideal
+		# is_planet_class = pc_ag_ringworld_desert
+		# is_planet_class = pc_ag_ringworld_arid
+		# is_planet_class = pc_ag_ringworld_savannah
+		# is_planet_class = pc_ag_ringworld_ocean
+		# is_planet_class = pc_ag_ringworld_continental
+		# is_planet_class = pc_ag_ringworld_tropical
+		# is_planet_class = pc_ag_ringworld_tundra
+		# is_planet_class = pc_ag_ringworld_arctic
+		# is_planet_class = pc_ag_ringworld_alpine
+		# is_planet_class = pc_ag_ringworld_machine
+		# is_planet_class = pc_ag_ringworld_city
+		# is_planet_class = pc_ag_ringworld_gaia
+		# # Warship Girls and MIST species.
+		# is_planet_class = pc_ringworld_habitable_sh
+		# is_planet_class = pc_ringworld_habitable_wsg
 	}
 }
 
@@ -149,7 +149,7 @@ gpm_is_planet_class_city = {
 	OR = {
 		merg_is_arcology = yes
 		merg_is_relic_world = yes
-		is_planet_class = pc_matryoshka ### (Mod) Additional Mega Planets merged into Forgotten Queens - compatibility
-		is_planet_class = pc_hollow ### (Mod) Additional Mega Planets merged into Forgotten Queens - compatibility
+		# is_planet_class = pc_matryoshka ### (Mod) Additional Mega Planets merged into Forgotten Queens - compatibility
+		# is_planet_class = pc_hollow ### (Mod) Additional Mega Planets merged into Forgotten Queens - compatibility
 	}
 }

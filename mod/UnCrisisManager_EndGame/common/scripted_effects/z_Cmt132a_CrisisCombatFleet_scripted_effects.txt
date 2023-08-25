@@ -418,38 +418,8 @@ CmtEffectCreateAdmiraltyDonation_SentinelTaskforce = {
 ##################
 ###  Unbidden  ###
 ##################
-
-CmtEffectCreateFleet_UnbiddenCapitalDefense = {
-	CmtEffectCreateAdmiral_UnbiddenCapital = yes
-	create_fleet = {
-		effect = {
-			set_owner = prev
-			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Unbidden } }
-			prev = { CmtEffectResetLoop = yes }
-			while = {
-				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
-				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
-
-				while = { count = 11 CmtEffectCreateShip_Wraith = yes } 		## 45 -> 45
-				while = { count =  7 CmtEffectCreateShip_Phantom = yes }		## 30 -> 30
-				while = { count =  5 CmtEffectCreateShip_Revenant = yes }		## 21 -> 21
-
-				prev = {
-					CmtEffectProgressLoop4 = yes
-					switch = {
-						trigger = has_country_flag
-						CmtFlagLoopA = { prev = { CmtEffectCreateShip_Wraith = yes } }
-						CmtFlagLoopB = { prev = { CmtEffectCreateShip_Phantom = yes } }
-						CmtFlagLoopC = { prev = { CmtEffectCreateShip_Revenant = yes } }
-						CmtFlagLoopZ = { prev = { CmtEffectCreateShip_Phantom = yes } }
-					}
-				}
-			}
-			CmtFleetSetAuxParam_ExdsCombat = yes
-			assign_leader = last_created_leader
-		}
-	}
-}
+# Transcluded in 3.9
+# CmtEffectCreateFleet_UnbiddenCapitalDefense = {
 
 CmtEffectCreateFleet_UnbiddenVanguard = {
 	CmtEffectCreateAdmiral_UnbiddenStandard = yes
@@ -513,37 +483,37 @@ CmtEffectCreateFleet_UnbiddenReinforcement = {
 ###  Aberrant  ###
 ##################
 
-CmtEffectCreateFleet_AberrantCapitalDefense = {
-	CmtEffectCreateAdmiral_Aberrant = yes
-	create_fleet = {
-		effect = {
-			set_owner = prev
-			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Aberrant } }
-			prev = { CmtEffectResetLoop = yes }
-			while = {
-				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
-				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+# CmtEffectCreateFleet_AberrantCapitalDefense = {
+# 	CmtEffectCreateAdmiral_Aberrant = yes
+# 	create_fleet = {
+# 		effect = {
+# 			set_owner = prev
+# 			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Aberrant } }
+# 			prev = { CmtEffectResetLoop = yes }
+# 			while = {
+# 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+# 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
 
-				while = { count = 11 CmtEffectCreateShip_Predator = yes }		## 45 -> 45
-				while = { count =  7 CmtEffectCreateShip_Assassin = yes }		## 30 -> 30
-				while = { count =  5 CmtEffectCreateShip_Huntress = yes }		## 21 -> 21
+# 				while = { count = 11 CmtEffectCreateShip_Predator = yes }		## 45 -> 45
+# 				while = { count =  7 CmtEffectCreateShip_Assassin = yes }		## 30 -> 30
+# 				while = { count =  5 CmtEffectCreateShip_Huntress = yes }		## 21 -> 21
 
-				prev = {
-					CmtEffectProgressLoop4 = yes
-					switch = {
-						trigger = has_country_flag
-						CmtFlagLoopA = { prev = { CmtEffectCreateShip_Predator = yes } }
-						CmtFlagLoopB = { prev = { CmtEffectCreateShip_Assassin = yes } }
-						CmtFlagLoopC = { prev = { CmtEffectCreateShip_Huntress = yes } }
-						CmtFlagLoopZ = { prev = { CmtEffectCreateShip_Assassin = yes } }
-					}
-				}
-			}
-			CmtFleetSetAuxParam_ExdsCombat = yes
-			assign_leader = last_created_leader
-		}
-	}
-}
+# 				prev = {
+# 					CmtEffectProgressLoop4 = yes
+# 					switch = {
+# 						trigger = has_country_flag
+# 						CmtFlagLoopA = { prev = { CmtEffectCreateShip_Predator = yes } }
+# 						CmtFlagLoopB = { prev = { CmtEffectCreateShip_Assassin = yes } }
+# 						CmtFlagLoopC = { prev = { CmtEffectCreateShip_Huntress = yes } }
+# 						CmtFlagLoopZ = { prev = { CmtEffectCreateShip_Assassin = yes } }
+# 					}
+# 				}
+# 			}
+# 			CmtFleetSetAuxParam_ExdsCombat = yes
+# 			assign_leader = last_created_leader
+# 		}
+# 	}
+# }
 
 CmtEffectCreateFleet_AberrantVanguard = {
 	CmtEffectCreateAdmiral_Aberrant = yes
@@ -606,38 +576,8 @@ CmtEffectCreateFleet_AberrantReinforcement = {
 ##################
 ###  Vehement  ###
 ##################
-
-CmtEffectCreateFleet_VehementCapitalDefense = {
-	CmtEffectCreateAdmiral_Vehement = yes
-	create_fleet = {
-		effect = {
-			set_owner = prev
-			event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Vehement } }
-			prev = { CmtEffectResetLoop = yes }
-			while = {
-				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
-				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
-
-				while = { count = 11 CmtEffectCreateShip_Obliterator = yes }		## 45 -> 45
-				while = { count =  7 CmtEffectCreateShip_Annihilator = yes }		## 30 -> 30
-				while = { count =  5 CmtEffectCreateShip_Eradicator = yes } 		## 21 -> 21
-
-				prev = {
-					CmtEffectProgressLoop4 = yes
-					switch = {
-						trigger = has_country_flag
-						CmtFlagLoopA = { prev = { CmtEffectCreateShip_Obliterator = yes } }
-						CmtFlagLoopB = { prev = { CmtEffectCreateShip_Annihilator = yes } }
-						CmtFlagLoopC = { prev = { CmtEffectCreateShip_Eradicator = yes } }
-						CmtFlagLoopZ = { prev = { CmtEffectCreateShip_Annihilator = yes } }
-					}
-				}
-			}
-			CmtFleetSetAuxParam_ExdsCombat = yes
-			assign_leader = last_created_leader
-		}
-	}
-}
+# Transcluded in 3.9
+# CmtEffectCreateFleet_VehementCapitalDefense = {
 
 CmtEffectCreateFleet_VehementVanguard = {
 	CmtEffectCreateAdmiral_Vehement = yes
