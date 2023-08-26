@@ -85,15 +85,7 @@ CmtEffectCreateShroudManifestation = {
 			while = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
-				random_list = {
-					100 = {
-						create_ship = {
-							name = NAME_Fragment
-							design = NAME_Shroud_Manifestation
-						}
-					}
-					300 = { }
-				}
+				random = { chance = 25 create_ship = { name = NAME_Fragment design = NAME_Shroud_Manifestation } }
 			}
 
 			set_location = prev
@@ -162,4 +154,3 @@ CmtEffectCreateShroudTheEnd = {
 		}
 	}
 }
-

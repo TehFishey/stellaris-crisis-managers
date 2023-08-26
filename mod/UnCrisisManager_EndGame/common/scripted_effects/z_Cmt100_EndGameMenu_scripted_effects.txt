@@ -22,77 +22,77 @@ CmtEffectDetectEndGameEdition = {
 ###  Manual Operation: Forced Termination of Crisis  ###
 ########################################################
 
-CmtEffectDestroyPrethoryn = {
-	every_country = {
-		limit = { CmtTriggerIsPrethoryn = yes }
-		destroy_country = yes
-	}
-}
+# CmtEffectDestroyPrethoryn = {
+# 	every_country = {
+# 		limit = { CmtTriggerIsPrethoryn = yes }
+# 		destroy_country = yes
+# 	}
+# }
 
-CmtEffectDestroyExds = {
-	every_country = {
-		limit = { is_country_type = portal_holder }
-		destroy_country = yes
-	}
-	every_country = {
-		limit = { CmtTriggerIsExds = yes }
-		destroy_country = yes
-	}
-}
+# CmtEffectDestroyExds = {
+# 	every_country = {
+# 		limit = { is_country_type = portal_holder }
+# 		destroy_country = yes
+# 	}
+# 	every_country = {
+# 		limit = { CmtTriggerIsExds = yes }
+# 		destroy_country = yes
+# 	}
+# }
+# Only used once
+# CmtEffectDestroyContingency = {
+# 	every_country = {
+# 		limit = { CmtTriggerIsContingency = yes }
+# 		set_global_flag = ai_invasion_defeated
+# 		### Destroy Four Machine Worlds
+# 		every_planet_within_border = {
+# 			limit = { is_planet_class = pc_ai } # has_planet_flag = crisis_vital_planet
+# 			destroy_machine_world = yes # planet_event = { id = crisis.2040 }
+# 		}
+# 		### Destroy Final Machine World
+# 		if = {
+# 			limit = { NOT = { exists = event_target:AI_lair } }
+# 			random_system = {
+# 				limit = { has_star_flag = AI_lair }
+# 				save_event_target_as = AI_lair
+# 			}
+# 		}
+# 		if = {
+# 			limit = { exists = event_target:AI_lair }
+# 			event_target:AI_lair = {
+# 				random_system_planet = {
+# 					limit = { is_planet_class = pc_ai has_planet_flag = machine_lair }
+# 					add_planet_devastation = 100
+# 					planet_event = { id = crisis.2043 days = 5 }
+# 					planet_event = { id = crisis.2043 days = 15 } ## Backup
+# 				}
+# 			}
+# 		} else_if = {
+# 			limit = { any_galaxy_planet = { is_planet_class = pc_ai } }
+# 			random_galaxy_planet = {
+# 				limit = { is_planet_class = pc_ai } # has_planet_flag = machine_lair
+# 				planet_event = { id = crisis.2046 days = 3 }
+# 			}
+# 		} else = {
+# 			random_galaxy_planet = {
+# 				limit = { has_planet_flag = crisis_vital_planet }
+# 				planet_event = { id = crisis.2046 }
+# 			}
+# 		 }
+# 	}
+# }
 
-CmtEffectDestroyContingency = {
-	every_country = {
-		limit = { CmtTriggerIsContingency = yes }
-		set_global_flag = ai_invasion_defeated
-		### Destroy Four Machine Worlds
-		every_planet_within_border = {
-			limit = { is_planet_class = pc_ai } # has_planet_flag = crisis_vital_planet
-			destroy_machine_world = yes # planet_event = { id = crisis.2040 }
-		}
-		### Destroy Final Machine World
-		if = {
-			limit = { NOT = { exists = event_target:AI_lair } }
-			random_system = {
-				limit = { has_star_flag = AI_lair }
-				save_event_target_as = AI_lair
-			}
-		}
-		if = {
-			limit = { exists = event_target:AI_lair }
-			event_target:AI_lair = {
-				random_system_planet = {
-					limit = { is_planet_class = pc_ai has_planet_flag = machine_lair }
-					add_planet_devastation = 100
-					planet_event = { id = crisis.2043 days = 5 }
-					planet_event = { id = crisis.2043 days = 15 } ## Backup
-				}
-			}
-		} else_if = {
-			limit = { any_galaxy_planet = { is_planet_class = pc_ai } }
-			random_galaxy_planet = {
-				limit = { is_planet_class = pc_ai } # has_planet_flag = machine_lair
-				planet_event = { id = crisis.2046 days = 3 }
-			}
-		} else = {
-			random_galaxy_planet = {
-				limit = { has_planet_flag = crisis_vital_planet }
-				planet_event = { id = crisis.2046 }
-			}
-		 }
-	}
-}
-
-CmtEffectDestroyShroudSpirits = {
-	every_country = {
-		limit = { CmtTriggerIsShroudSpirit = yes }
-		every_owned_ship = {
-			limit = {
-				OR = {
-					is_ship_size = warped_consciousness
-					is_ship_size = shroud_manifestation
-				}
-			}
-			delete_ship = this
-		}
-	}
-}
+# CmtEffectDestroyShroudSpirits = {
+# 	every_country = {
+# 		limit = { CmtTriggerIsShroudSpirit = yes }
+# 		every_owned_fleet = {
+# 			limit = {
+# 				OR = {
+# 					is_ship_size = warped_consciousness
+# 					is_ship_size = shroud_manifestation
+# 				}
+# 			}
+# 			delete_fleet = this
+# 		}
+# 	}
+# }

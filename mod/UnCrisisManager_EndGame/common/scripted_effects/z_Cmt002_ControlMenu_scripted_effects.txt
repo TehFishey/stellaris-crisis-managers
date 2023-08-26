@@ -15,11 +15,11 @@
 
 CmtEffectExitMenu = {
 	optimize_memory
-	default_hide_option = yes
 	hidden_effect = {
 		remove_global_flag = CmtFlagTemplateAppliedNow
 		every_playable_country = { remove_country_flag = CmtFlagNowInMenu }
 	}
+	default_hide_option = yes
 }
 
 ### For ''We are Crisis''
@@ -40,7 +40,7 @@ CmtEffectSaveOriginalCountry = {
 CmtEffectManualTargetSleepers = {
 	optimize_memory
 	every_country = {
-		limit = { is_fallen_empire = yes is_ai = yes }
+		limit = { is_ai = yes is_fallen_empire = yes }
 		switch = { trigger = has_country_flag
 			fallen_empire_1			= { save_global_event_target_as = CmtTargetManualSleeper1 } # Materialist
 			fallen_empire_2			= { save_global_event_target_as = CmtTargetManualSleeper2 } # Spiritualist

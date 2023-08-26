@@ -200,7 +200,7 @@ country_event = {
 			}
 			# Make portal invincible
 			event_target:extradimensionals = {
-				random_owned_ship = { limit = { NOT = { is_ship_size = dimensional_portal_ed } } ship_event = { id = crisis.1280 } }
+				random_owned_fleet = { limit = { NOT = { is_ship_size = dimensional_portal_ed } } ship_event = { id = crisis.1280 } }
 			}
 		}
 		CmtEffectFriendlyCrisis = yes
@@ -592,7 +592,7 @@ country_event = {
 				set_variable = { which = CmtVarTemp value = @CmtConstExdsConstructorStdNum }
 				multiply_variable = { which = CmtVarTemp value = CmtVarConstructorNumber_Unbidden }
 			}
-			every_owned_ship = {
+			every_owned_fleet = {
 				limit = { is_ship_size = construction_ship_ed }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } }
 			}
@@ -610,7 +610,7 @@ country_event = {
 				set_variable = { which = CmtVarTemp value = @CmtConstExdsConstructorStdNum }
 				multiply_variable = { which = CmtVarTemp value = CmtVarConstructorNumber_Aberrant }
 			}
-			every_owned_ship = {
+			every_owned_fleet = {
 				limit = { is_ship_size = construction_ship_ed }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } }
 			}
@@ -628,7 +628,7 @@ country_event = {
 				set_variable = { which = CmtVarTemp value = @CmtConstExdsConstructorStdNum }
 				multiply_variable = { which = CmtVarTemp value = CmtVarConstructorNumber_Vehement }
 			}
-			every_owned_ship = {
+			every_owned_fleet = {
 				limit = { is_ship_size = construction_ship_ed }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } }
 			}
@@ -929,7 +929,7 @@ country_event = {
 
 			}
 			event_target:portal_holder_1 = {
-				random_owned_ship = {
+				random_owned_fleet = {
 					limit = {
 						is_ship_size = dimensional_portal_ed
 						OR = {

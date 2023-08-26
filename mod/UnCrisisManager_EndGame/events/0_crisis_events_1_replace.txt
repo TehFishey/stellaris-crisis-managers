@@ -45,7 +45,8 @@ country_event = {
 				set_star_flag = swarm_invasion_target_1
 				save_event_target_as = prethoryn_invasion_system
 			}
-		} else = {
+		}
+		else = {
 			random_rim_system = {
 				limit = { CmtTriggerPrethoryn1stTarget = yes }
 				set_star_flag = swarm_invasion_target_1
@@ -126,7 +127,8 @@ country_event = {
 				limit = { CmtTriggerPrethoryn1stTarget = yes }
 				set_star_flag = swarm_invasion_target_1
 			}
-		} else = {
+		}
+		else = {
 			random_rim_system = {
 				limit = { CmtTriggerPrethoryn1stTarget = yes }
 				set_star_flag = swarm_invasion_target_1
@@ -586,7 +588,8 @@ country_event = {
 		# Custodian/Emperor Announcements (3.0.2)
 		event_target:prethoryn = {
 			save_event_target_as = crisis_country
-			if = { limit = { NOT = { exists = event_target:prethoryn_species } }
+			if = {
+				limit = { NOT = { exists = event_target:prethoryn_species } }
 				species = { save_global_event_target_as = prethoryn_species }
 			}
 		}
@@ -610,8 +613,11 @@ country_event = {
 			limit = { has_star_flag = swarm_invasion_target_1 }
 			if = {
 				limit = {
-					event_target:prethoryn = { NOT = { any_owned_ship = { is_ship_class = shipclass_starbase } } }
-					any_fleet_in_system = { is_ship_class = shipclass_starbase }
+					exists = starbase
+					event_target:prethoryn = {
+						num_starbases < 2 # NOT = { any_owned_fleet = { is_ship_class = shipclass_starbase } }
+					}
+					# any_fleet_in_system = { is_ship_class = shipclass_starbase }
 				}
 				CmtEffectDestroySystemStarbase = yes
 			}
@@ -707,9 +713,7 @@ country_event = {
 		}
 	}
 
-	option = {
-		name = crisis.20.a
-	}
+	option = { name = crisis.20.a }
 }
 
 ####################################
@@ -726,7 +730,7 @@ event = {
 		exists = event_target:prethoryn
 		event_target:prethoryn = {
 			CmtTriggerIsPrethoryn = yes
-			any_system_within_border = { exists = starbase }
+			num_starbases > 0 # any_system_within_border = { exists = starbase }
 		}
 		NOT = { has_global_flag = CmtFlagNowHappen206 }		## To avoid double calling of on_yearly_pulse and on_bi_yearly_pulse.
 	}
@@ -739,7 +743,7 @@ event = {
 			multiply_variable = { which = CmtVarTemp value = CmtVarCombatFleetNumber_Prethoryn }
 		}
 		event_target:prethoryn = {
-			every_owned_ship = { event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } } }
+			every_owned_fleet = { event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } } }
 
 			if = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value > 0 } } }
@@ -763,18 +767,8 @@ country_event = {
 		if = {
 			limit = { galaxy_percentage > 0.20 }
 			random_list = {
-				50 = {
-					random_system_within_border = {
-						limit = { exists = starbase }
-						starbase = { CmtEffectCreateAdmiralty_PrethorynReinforcement = yes }
-					}
-				}
-				50 = {
-					modifier = {
-						factor = 0
-						galaxy_percentage > 0.40
-					}
-				}
+				50 = { random_system_within_border = { limit = { exists = starbase } starbase = { CmtEffectCreateAdmiralty_PrethorynReinforcement = yes } } }
+				50 = { modifier = { factor = 0 galaxy_percentage > 0.40 } }
 			}
 		}
 	}
@@ -810,8 +804,9 @@ event = {
 						limit = { is_planet_class = pc_infested }
 						CmtEffectCreateAdmiralty_PrethorynArmy = yes
 					}
-				} else = {
-					random_owned_ship = {
+				}
+				else = {
+					random_owned_fleet = {
 						limit = { exists = solar_system }
 						CmtEffectCreateAdmiralty_PrethorynArmy = yes
 					}
@@ -843,7 +838,7 @@ event = {
 		event_target:prethoryn = {
 			while = {
 				count = @CmtConstPrethorynColonizerStdNum
-				random_owned_ship = {
+				random_owned_fleet = {
 					limit = { exists = solar_system }
 					prev = { CmtEffectCreateFleet_PrethorynColonyzer = yes }
 				}
@@ -872,7 +867,7 @@ event = {
 			multiply_variable = { which = CmtVarTemp value = CmtVarConstructorNumber_Prethoryn }
 		}
 		event_target:prethoryn = {
-			every_owned_ship = {
+			every_owned_fleet = {
 				limit = { is_ship_size = construction_ship_swarm }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } }
 			}
@@ -880,7 +875,7 @@ event = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value > 0 } } }
 				while = {
 					count = @CmtConstPrethorynConstructorStdNum
-					random_owned_ship = {
+					random_owned_fleet = {
 						limit = { exists = solar_system }
 						prev = { CmtEffectCreateFleet_PrethorynConstructor = yes }
 					}
@@ -928,17 +923,15 @@ country_event = {
 			factor = 5
 			event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 2 } }
 		}
-		modifier = {
-			factor = 0.1
-			has_global_flag = CmtFlagDebugMode
-		}
+		modifier = { factor = 0.1 has_global_flag = CmtFlagDebugMode }
 	}
 
 	immediate = {
 		if = {
 			limit = { has_global_flag = CmtFlagWaitEvent }
 			country_event = { id = crisis.50 days = 2 }
-		} else = {
+		}
+		else = {
 			set_timed_global_flag = { flag = CmtFlagWaitEvent days = 2 }
 			CmtEffectCallSentinel = yes
 		}
@@ -954,15 +947,13 @@ fleet_event = {
 		has_global_flag = ongoing_prethoryn_invasion
 		has_global_flag = sentinels_founded
 		owner = { is_country_type = sentinels }
+		exists = event_target:sentinel_alpha
 		is_same_value = event_target:sentinel_alpha
 	}
 
 	mean_time_to_happen = {
 		months = 100
-		modifier = {
-			factor = 0.01
-			has_global_flag = CmtFlagDebugMode
-		}
+		modifier = { factor = 0.01 has_global_flag = CmtFlagDebugMode }
 	}
 
 	immediate = {
@@ -971,7 +962,7 @@ fleet_event = {
 			multiply_variable = { which = CmtVarTemp value = CmtVarFleetPower_Sentinel }
 			multiply_variable = { which = CmtVarTemp value = CmtVarCombatFleetNumber_Sentinel }
 		}
-		owner = { every_owned_ship = { event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } } } }
+		owner = { every_owned_fleet = { event_target:CmtGlobalVar = { change_variable = { which = CmtVarTemp value = -1 } } } }
 		if = {
 			limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTemp value > 0 } } }
 			# CmtEffectCreateAdmiralty_SentinelAttacker = yes < 3.2
@@ -985,12 +976,9 @@ fleet_event = {
 				while = {
 					limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
 					event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
-					random_list = {
-						100 = {
-							event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = 0 } }
-							CmtEffectCreateFleet_SentinelAttacker = yes
-						}
-						300 = { }
+					random = { chance = 25
+						event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = 0 } }
+						CmtEffectCreateFleet_SentinelAttacker = yes
 					}
 				}
 			}
@@ -1038,10 +1026,7 @@ country_event = {
 			factor = 5
 			event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 2 } }
 		}
-		modifier = {
-			factor = 0.1
-			has_global_flag = CmtFlagDebugMode
-		}
+		modifier = { factor = 0.1 has_global_flag = CmtFlagDebugMode }
 	}
 
 	immediate = {
@@ -1073,27 +1058,21 @@ country_event = {
 		check_variable = { which = swarm_fleet_kills value > 6 }
 		exists = event_target:crisis_sentinels
 		event_target:crisis_sentinels = {
-			count_owned_ship = { count > 30 }
+			count_owned_fleet = { count > 30 }
 			root = { NOT = { is_at_war_with = prev } }
 		}
 	}
 
-	mean_time_to_happen = {
-		months = 100
-	}
+	mean_time_to_happen = { months = 100 }
 
-	immediate = {
-		set_country_flag = sentinel_donation
-	}
+	immediate = { set_country_flag = sentinel_donation }
 
 	option = {
 		name = crisis.71.a
 		response_text = crisis.71.a.response
 		custom_tooltip = sentinel_fleet_gift
 		hidden_effect = {
-			capital_scope = {
-				CmtEffectCreateAdmiraltyDonation_SentinelTaskforce = yes
-			}
+			capital_scope = { CmtEffectCreateAdmiraltyDonation_SentinelTaskforce = yes }
 		}
 	}
 	option = {
@@ -1140,13 +1119,13 @@ country_event = {
 	trigger = {
 		has_global_flag = prethoryn_main_invasion
 		NOT = { has_global_flag = injured_swarm_queen_global }
-
 		CmtTriggerIsPrethoryn = yes
 		NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPrethorynQueen value = 1 } } }
-		any_system = {
-			exists = owner
-			owner = { CmtTriggerIsPrethoryn = yes }
-		}
+		# any_system = {
+		# 	exists = owner
+		# 	owner = { CmtTriggerIsPrethoryn = yes }
+		# }
+		num_starbases > 0
 	}
 
 	## Also called by crisis.19 if CmtVarPrethorynQueen = 4
@@ -1156,10 +1135,7 @@ country_event = {
 			factor = 0.15
 			event_target:CmtGlobalVar = { check_variable = { which = CmtVarPrethorynQueen value = 3 } }
 		}
-		modifier = {
-			factor = 0.002
-			has_global_flag = CmtFlagDebugMode
-		}
+		modifier = { factor = 0.002 has_global_flag = CmtFlagDebugMode }
 	}
 
 	immediate = {
@@ -1172,9 +1148,7 @@ country_event = {
 				location = solar_system
 			}
 			last_created_ambient_object = { save_event_target_as = injured_queen }
-			create_ambient_object = {
-				type = "large_debris_object"
-			}
+			create_ambient_object = { type = "large_debris_object" }
 			last_created_ambient_object = {
 				set_location = {
 					target = event_target:injured_queen
@@ -1183,9 +1157,7 @@ country_event = {
 				}
 				set_ambient_object_flag = dead_prethoryn
 			}
-			create_ambient_object = {
-				type = "dead_swarm_small_object"
-			}
+			create_ambient_object = { type = "dead_swarm_small_object" }
 			last_created_ambient_object = {
 				set_location = {
 					target = event_target:injured_queen
@@ -1194,9 +1166,7 @@ country_event = {
 				}
 				set_ambient_object_flag = dead_prethoryn
 			}
-			create_ambient_object = {
-				type = "dead_swarm_small_object"
-			}
+			create_ambient_object = { type = "dead_swarm_small_object" }
 			last_created_ambient_object = {
 				set_location = {
 					target = event_target:injured_queen
@@ -1205,9 +1175,7 @@ country_event = {
 				}
 				set_ambient_object_flag = dead_prethoryn
 			}
-			create_ambient_object = {
-				type = "dead_swarm_small_object"
-			}
+			create_ambient_object = { type = "dead_swarm_small_object" }
 			last_created_ambient_object = {
 				set_location = {
 					target = event_target:injured_queen
@@ -1216,9 +1184,7 @@ country_event = {
 				}
 				set_ambient_object_flag = dead_prethoryn
 			}
-			create_ambient_object = {
-				type = "dead_swarm_large_object"
-			}
+			create_ambient_object = { type = "dead_swarm_large_object" }
 			last_created_ambient_object = {
 				set_location = {
 					target = event_target:injured_queen
@@ -1227,9 +1193,7 @@ country_event = {
 				}
 				set_ambient_object_flag = dead_prethoryn
 			}
-			create_ambient_object = {
-				type = "dead_swarm_large_object"
-			}
+			create_ambient_object = { type = "dead_swarm_large_object" }
 			last_created_ambient_object = {
 				set_location = {
 					target = event_target:injured_queen
@@ -1238,9 +1202,7 @@ country_event = {
 				}
 				set_ambient_object_flag = dead_prethoryn
 			}
-			create_ambient_object = {
-				type = "dead_swarm_large_object"
-			}
+			create_ambient_object = { type = "dead_swarm_large_object" }
 			last_created_ambient_object = {
 				set_location = {
 					target = event_target:injured_queen
@@ -1295,8 +1257,36 @@ ship_event = {
 		name = crisis.105.a
 		hidden_effect = {
 			owner = {
-				CmtEffectCreateAdmiral_PetQueen = yes
-				CmtEffectCreateFleet_PrethorynPetQueen = yes
+				# CmtEffectCreateAdmiral_PetQueen
+				create_leader = {
+					class = admiral
+					species = event_target:swarm_species
+					name = "NAME_Fleet_Consciousness"
+					skill = 8
+					event_leader = yes		# Prevents this leader from leading factions and winning elections.
+					immortal = yes		# can't be killed (not even in battle, unless fleet is destroyed)
+					effect = { set_leader_flag = captured_queen }
+				}
+				# CmtEffectCreateFleet_PrethorynPetQueen
+				create_fleet = {
+					name = "NAME_Domesticated_Prethoryn"
+					effect = {
+						set_fleet_flag = pet_queen
+						set_owner = prev
+
+							CmtEffectCreateShip_PetQueenMother = yes
+
+						assign_leader = last_created_leader
+						CmtFleetSetAuxParam_PrethorynAuxiliary = yes
+					}
+					settings = {
+						can_upgrade = no
+						can_disband = no
+						can_change_composition = no
+						can_change_leader = no
+						uses_naval_capacity = no
+					}
+				}
 			}
 			solar_system = {
 				every_system_ambient_object = {
@@ -1380,14 +1370,8 @@ country_event = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
 				random_list = {
-					34 = {
-						event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = 0 } }
-						CmtEffectCreateShip_PetQueenLarge = yes
-					}
-					66 = {
-						event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = 0 } }
-						CmtEffectCreateShip_PetQueenSmall = yes
-					}
+					34 = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = 0 } } CmtEffectCreateShip_PetQueenLarge = yes }
+					66 = { event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = 0 } } CmtEffectCreateShip_PetQueenSmall = yes }
 					300 = { }
 				}
 			}
@@ -1417,15 +1401,10 @@ country_event = {
 
 	mean_time_to_happen = {
 		years = 100
-		modifier = {
-			factor = 0.3
-			has_global_flag = CmtFlagPrethorynUnlimitedFlavor
-		}
+		modifier = { factor = 0.3 has_global_flag = CmtFlagPrethorynUnlimitedFlavor }
 	}
 
-	immediate = {
-		set_country_flag = crisis.234
-	}
+	immediate = { set_country_flag = crisis.234 }
 
 	option = {
 		name = crisis.234.a
@@ -1451,7 +1430,40 @@ country_event = {
 	option = {
 		name = GOOD
 		hidden_effect = {
-			capital_scope = { prev = { CmtEffectCreateFleet_PrethorynRelicQueen = yes } }
+			capital_scope = {
+				prev = {
+					# CmtEffectCreateFleet_PrethorynRelicQueen
+					create_fleet = {
+						name = "NAME_Loyal_Brood"
+						effect = {
+							set_owner = prev
+							event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlShip value = CmtVarFleetPower_Prethoryn } }
+							prev = { CmtEffectResetLoop = yes }
+							while = {
+								limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
+								event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
+									CmtEffectCreateShip_SwarmLarge = yes	## 6
+								while = { count =  4 CmtEffectCreateShip_SwarmSmall = yes } 		## 16
+
+								prev = {
+									CmtEffectProgressLoop2 = yes
+									switch = {
+										trigger = has_country_flag
+										CmtFlagLoopA = { prev = { CmtEffectCreateShip_SwarmLarge = yes } }
+										CmtFlagLoopZ = {}
+									}
+								}
+							}
+							CmtFleetSetAuxParam_PrethorynAuxiliary = yes
+						}
+						settings = {
+							can_change_composition = yes
+							uses_naval_capacity = no
+							can_disband = yes
+						}
+					}
+				}
+			}
 		}
 	}
 }
@@ -1472,10 +1484,12 @@ country_event = {
 		if = {
 			limit = { check_variable = { which = CmtVarFeralPrethoryn value = 2 } }
 			set_timed_global_flag = { flag = feral_prethoryn_can_spawn years = 10 }	## 10 yr
-		} else_if = {
+		}
+		else_if = {
 			limit = { check_variable = { which = CmtVarFeralPrethoryn value = 4 } }
 			set_timed_global_flag = { flag = feral_prethoryn_can_spawn years = 50 }	## 50 yr
-		} else_if = {
+		}
+		else_if = {
 			limit = { check_variable = { which = CmtVarFeralPrethoryn value != 1 } }
 			set_timed_global_flag = { flag = feral_prethoryn_can_spawn years = 15 }	## 15 yr
 		}
@@ -1530,14 +1544,8 @@ event = {
 							species = event_target:feral_prethoryn_species
 							name_list = "Prethoryn"
 							flag = {
-								icon= {
-									category = "special"
-									file = "the_swarm.dds"
-								}
-								background= {
-									category = "backgrounds"
-									file = "new_dawn.dds"
-								}
+								icon = { category = "special" file = "the_swarm.dds" }
+								background = { category = "backgrounds" file = "new_dawn.dds" }
 								colors={ "red_orange" "grey" "null" "null" }
 							}
 							effect = {
@@ -1562,7 +1570,8 @@ event = {
 						set_global_flag = feral_prethoryn_appeared
 					}
 					CmtEffectFriendlyCrisis = yes
-				} else_if = {
+				}
+				else_if = {
 					limit = { any_country = { is_country_type = feral_prethoryn } }
 					random_system = {
 						limit = { CmtTriggerFeralPrethorynSpawnableSystem = yes }
@@ -1606,8 +1615,24 @@ event = {
 		random_list = {
 			50 = {
 				event_target:feral_prethoryn = {
-					random_system_within_border = {
-						random_system_planet = { CmtEffectCreateAdmiralty_FeralPrethorynRoaming1 = yes }
+					random_planet_within_border = {
+						# CmtEffectCreateAdmiralty_FeralPrethorynRoaming1
+						prev = {
+							event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Prethoryn } }
+							while = {
+								limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
+								event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -1 } }
+								CmtEffectCreateFleet_FeralPrethorynRoaming1 = yes
+							}
+							while = {
+								limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
+								event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
+								random = { chance = 25
+									event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = 0 } }
+									CmtEffectCreateFleet_FeralPrethorynRoaming1 = yes
+								}
+							}
+						}
 					}
 				}
 			}
@@ -1637,12 +1662,7 @@ event = {
 
 	immediate = {
 		random_list = {
-			10 = {
-				random_country = {
-					limit = { is_country_type = feral_prethoryn }
-					country_event = { id = crisis.124 }
-				}
-			}
+			10 = { random_country = { limit = { is_country_type = feral_prethoryn } country_event = { id = crisis.124 } } }
 			90 = {
 				modifier = {
 					factor = 2
@@ -1944,19 +1964,17 @@ country_event = {
 		set_global_flag = prethoryn_invasion_defeated
 		event_target:CmtGlobalVar = { country_event = { id = crisis.119 days = 360 } }		## Feral Prethoryn
 
-		# Crisis reward is handled through Galactic Focus if the community exists.
-		if = { limit = { NOT = { has_global_flag = galactic_community_formed } }
-			every_country = {
-				limit = { is_default_or_fallen = yes }
-				country_event = { id = crisis.211 }
-			}
+		every_country = {
+			limit = { is_default_or_fallen = yes }
+			country_event = { id = crisis.211 }
 		}
 
 		observer_event = { id = observer.33 }
 		if = {
 			limit = { exists = event_target:crisis_sentinels }
 			event_target:crisis_sentinels = { country_event = { id = crisis.75 days = 15 random = 10 } }
-		} else_if = { # Backward compat. < 3.3
+		}
+		else_if = { # Backward compat. < 3.3
 			limit = { exists = event_target:sentinels }
 			event_target:sentinels = { country_event = { id = crisis.75 days = 15 random = 10 } }
 		}

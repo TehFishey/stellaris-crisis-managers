@@ -3188,8 +3188,7 @@ country_event = {
 							name = random
 							owner = root
 							species = event_target:marauder_country_1.owner_species
-							type = "occupation_army"
-							land_army = yes
+							type = "occupation_army"
 						}
 						change_variable = { which = CmtVarTemp value = -1 }
 					}
@@ -3201,8 +3200,7 @@ country_event = {
 							name = random
 							owner = root
 							species = event_target:marauder_country_2.owner_species
-							type = "occupation_army"
-							land_army = yes
+							type = "occupation_army"
 						}
 						change_variable = { which = CmtVarTemp value = -1 }
 					}
@@ -3214,8 +3212,7 @@ country_event = {
 							name = random
 							owner = root
 							species = event_target:marauder_country_3.owner_species
-							type = "occupation_army"
-							land_army = yes
+							type = "occupation_army"
 						}
 						change_variable = { which = CmtVarTemp value = -1 }
 					}
@@ -3226,8 +3223,7 @@ country_event = {
 						name = random
 						owner = root
 						species = root.species
-						type = "occupation_army"
-						land_army = yes
+						type = "occupation_army"
 					}
 					change_variable = { which = CmtVarTemp value = -1 }
 				}

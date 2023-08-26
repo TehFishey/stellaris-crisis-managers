@@ -1,5 +1,5 @@
-version="3.8.4.0"
-name="Crisis Manager - End-Game Edition (3.8.¢)"
+version="3.9.0.1"
+name="Crisis Manager - End-Game Edition (3.9.¢)"
 tags={
 	"Balance"
 	"Events"
@@ -8,5 +8,5 @@ tags={
 	"Crisis"
 }
 picture="thumbnail.png"
-supported_version="3.8.*"
+supported_version="3.9.*"
 remote_file_id="2558262194"

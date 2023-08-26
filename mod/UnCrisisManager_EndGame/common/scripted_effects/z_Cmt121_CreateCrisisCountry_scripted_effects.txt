@@ -295,7 +295,7 @@ CmtEffectCallAberrant = {
 		}
 
 		event_target:extradimensionals2 = {
-			random_owned_ship = { limit = { NOT = { is_ship_size = dimensional_portal_ed } } ship_event = { id = crisis.1280 } }
+			random_owned_fleet = { limit = { NOT = { is_ship_size = dimensional_portal_ed } } ship_event = { id = crisis.1280 } }
 		}
 	}
 
@@ -320,7 +320,7 @@ CmtEffectCallAberrant = {
 	}
 }
 
-# Transcluded in 3.9
+# Transcluded in v.3.9
 ## Scope: this = Stellar System
 # CmtEffectCreateCountryAberrant = {
 # }
@@ -506,7 +506,7 @@ CmtEffectCallVehement = {
 		}
 
 		event_target:extradimensionals3 = {
-			random_owned_ship = { limit = { NOT = { is_ship_size = dimensional_portal_ed } } ship_event = { id = crisis.1280 } }
+			random_owned_fleet = { limit = { NOT = { is_ship_size = dimensional_portal_ed } } ship_event = { id = crisis.1280 } }
 		}
 	}
 
@@ -528,7 +528,7 @@ CmtEffectCallVehement = {
 	observer_event = { id = observer.38 }
 }
 
-# Transcluded in 3.9
+# Transcluded in v.3.9
 # CmtEffectCreateCountryVehement =
 
 ################

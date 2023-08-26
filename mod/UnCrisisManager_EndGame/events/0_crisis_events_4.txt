@@ -197,15 +197,15 @@ country_event = {
 		} else_if = {
 			limit = {
 				any_system = {
-					CmtTriggerFeocExile3rdPrioritySystem = yes
 					NOT = { any_system_colony = {  } }
+					CmtTriggerFeocExile3rdPrioritySystem = yes
 				}
 			}
 			random_system = {
 				limit = {
 					any_system = {
-						CmtTriggerFeocExile3rdPrioritySystem = yes
 						NOT = { any_system_colony = {  } }
+						CmtTriggerFeocExile3rdPrioritySystem = yes
 					}
 				}
 				random_system_planet = {
@@ -362,8 +362,8 @@ country_event = {
 		fromfrom = { is_ship_size = warped_consciousness }
 		NOT = {
 			any_owned_ship = {
-				is_ship_size = warped_consciousness
 				NOT = { is_same_value = fromfrom }
+				is_ship_size = warped_consciousness
 			}
 		}
 	}

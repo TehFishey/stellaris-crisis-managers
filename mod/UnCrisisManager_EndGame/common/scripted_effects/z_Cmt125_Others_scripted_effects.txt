@@ -21,19 +21,24 @@ CmtEffectSetIntervalFlag = {
 			if = {
 				limit = { check_variable = { which = CmtVarTriggerInterval value < @CmtConstCrisisInterval_T1 } }
 				set_timed_global_flag = { flag = CmtFlagNowInInterval days = @CmtConstCrisisInterval_D1 }
-			} else_if = {
+			}
+			else_if = {
 				limit = { check_variable = { which = CmtVarTriggerInterval value < @CmtConstCrisisInterval_T2 } }
 				set_timed_global_flag = { flag = CmtFlagNowInInterval days = @CmtConstCrisisInterval_D2 }
-			} else_if = {
+			}
+			else_if = {
 				limit = { check_variable = { which = CmtVarTriggerInterval value < @CmtConstCrisisInterval_T3 } }
 				set_timed_global_flag = { flag = CmtFlagNowInInterval days = @CmtConstCrisisInterval_D3 }
-			} else_if = {
+			}
+			else_if = {
 				limit = { check_variable = { which = CmtVarTriggerInterval value < @CmtConstCrisisInterval_T4 } }
 				set_timed_global_flag = { flag = CmtFlagNowInInterval days = @CmtConstCrisisInterval_D4 }
-			} else_if = {
+			}
+			else_if = {
 				limit = { check_variable = { which = CmtVarTriggerInterval value < @CmtConstCrisisInterval_T5 } }
 				set_timed_global_flag = { flag = CmtFlagNowInInterval days = @CmtConstCrisisInterval_D5 }
-			} else = { set_timed_global_flag = { flag = CmtFlagNowInInterval days = @CmtConstTUnq_ConstCrisisInterval } }
+			}
+			else = { set_timed_global_flag = { flag = CmtFlagNowInInterval days = @CmtConstTUnq_ConstCrisisInterval } }
 		}
 	}
 }
@@ -44,7 +49,7 @@ CmtEffectFriendlyCrisis = {
 			limit = { check_variable = { which = CmtVarFriendlyCrisis value = 2 } }
 			every_country = {
 				limit = { CmtTriggerIsExpExds = yes }
-				every_country = {
+				random_country = {
 					limit = {
 						CmtTriggerIsExpExds = yes
 						NOT = { is_same_empire = prev }
@@ -57,7 +62,8 @@ CmtEffectFriendlyCrisis = {
 					}
 				}
 			}
-		} else_if = {
+		}
+		else_if = {
 			limit = {
 				OR = {
 					check_variable = { which = CmtVarFriendlyCrisis value = 3 }
@@ -66,7 +72,7 @@ CmtEffectFriendlyCrisis = {
 			}
 			every_country = {
 				limit = { CmtTriggerIsExpCrisisCountry = yes }
-				every_country = {
+				random_country = {
 					limit = {
 						CmtTriggerIsExpCrisisCountry = yes
 						NOT = { is_same_empire = prev }
@@ -83,7 +89,7 @@ CmtEffectFriendlyCrisis = {
 				limit = { check_variable = { which = CmtVarFriendlyCrisis value = 3 } }
 				every_country = {
 					limit = { CmtTriggerIsExpExds = yes }
-					every_country = {
+					random_country = {
 						limit = {
 							CmtTriggerIsExpExds = yes
 							NOT = { is_same_empire = prev }
@@ -97,10 +103,11 @@ CmtEffectFriendlyCrisis = {
 					}
 				}
 			}
-		} else = {
+		}
+		else = {
 			every_country = {
 				limit = { CmtTriggerIsExpCrisisCountry = yes }
-				every_country = {
+				random_country = {
 					limit = {
 						CmtTriggerIsExpCrisisCountry = yes
 						NOT = { is_same_empire = prev }
@@ -120,7 +127,7 @@ CmtEffectFriendlyCrisis = {
 CmtEffectHostileCrisis = {
 	every_country = {
 		limit = { CmtTriggerIsExpCrisisCountry = yes }
-		every_country = {
+		random_country = {
 			limit = {
 				CmtTriggerIsExpCrisisCountry = yes
 				NOT = { is_same_empire = prev }
@@ -135,7 +142,7 @@ CmtEffectHostileCrisis = {
 	}
 	every_country = {
 		limit = { is_country_type = portal_holder }
-		every_country = {
+		random_country = {
 			limit = {
 				CmtTriggerIsExds = yes
 				NOT = { is_same_empire = prev }
@@ -150,7 +157,7 @@ CmtEffectHostileCrisis = {
 	}
 	every_country = {
 		limit = { CmtTriggerIsExds = yes }
-		every_country = {
+		random_country = {
 			limit = {
 				is_country_type = portal_holder
 				NOT = { is_same_empire = prev }
@@ -172,65 +179,85 @@ CmtEffectHostileCrisis = {
 ## Vanilla fix
 ## Scope: this = Owner Country (Exds)
 CmtEffectSaveTargetExdPortal = {
-	if = {
-		limit = { is_country_type = extradimensional }
-		random_owned_ship = {
-			limit = { has_ship_flag = unbidden_portal }
-			save_event_target_as = dimensional_portal
-		}
-		if = { limit = { NOT = { exists = event_target:dimensional_portal } }
-			every_country = {
-				limit = { is_country_type = portal_holder }
-				random_owned_ship = {
-					limit = { has_ship_flag = unbidden_portal }
-					save_event_target_as = dimensional_portal
+	switch = { trigger = is_country_type
+		extradimensional = {
+			random_owned_fleet = {
+				limit = { has_ship_flag = unbidden_portal }
+				save_event_target_as = dimensional_portal
+			}
+			if = {
+				limit = { NOT = { exists = event_target:dimensional_portal } }
+				random_country = {
+					limit = {
+						is_country_type = portal_holder
+						any_owned_fleet = { has_ship_flag = unbidden_portal }
+					}
+					random_owned_fleet = {
+						limit = { has_ship_flag = unbidden_portal }
+						save_event_target_as = dimensional_portal
+					}
 				}
 			}
 		}
-	} else_if = {
-		limit = { is_country_type = extradimensional_2 }
-		random_owned_ship = {
-			limit = { has_ship_flag = aberrant_portal }
-			save_event_target_as = dimensional_portal
-		}
-		if = { limit = { NOT = { exists = event_target:dimensional_portal } }
-			every_country = {
-				limit = { is_country_type = portal_holder }
-				random_owned_ship = {
-					limit = { has_ship_flag = aberrant_portal }
-					save_event_target_as = dimensional_portal
+		extradimensional_2 = {
+			random_owned_fleet = {
+				limit = { has_ship_flag = aberrant_portal }
+				save_event_target_as = dimensional_portal
+			}
+			if = {
+				limit = { NOT = { exists = event_target:dimensional_portal } }
+				random_country = {
+					limit = {
+						is_country_type = portal_holder
+						any_owned_fleet = { has_ship_flag = aberrant_portal }
+					}
+					random_owned_fleet = {
+						limit = { has_ship_flag = aberrant_portal }
+						save_event_target_as = dimensional_portal
+					}
 				}
 			}
 		}
-	} else_if = {
-		limit = { is_country_type = extradimensional_3 }
-		random_owned_ship = {
-			limit = { has_ship_flag = vehement_portal }
-			save_event_target_as = dimensional_portal
-		}
-		if = { limit = { NOT = { exists = event_target:dimensional_portal } }
-			every_country = {
-				limit = { is_country_type = portal_holder }
-				random_owned_ship = {
-					limit = { has_ship_flag = vehement_portal }
-					save_event_target_as = dimensional_portal
+		extradimensional_3 = {
+			random_owned_fleet = {
+				limit = { has_ship_flag = vehement_portal }
+				save_event_target_as = dimensional_portal
+			}
+			if = {
+				limit = { NOT = { exists = event_target:dimensional_portal } }
+				random_country = {
+					limit = {
+						is_country_type = portal_holder
+						any_owned_fleet = { has_ship_flag = vehement_portal }
+					}
+					random_owned_fleet = {
+						limit = { has_ship_flag = vehement_portal }
+						save_event_target_as = dimensional_portal
+					}
 				}
 			}
 		}
 	}
 	# Superfluous fallback
-	if = { limit = { NOT = { exists = event_target:dimensional_portal } }
-		random_country = {
-			limit = { is_country_type = portal_holder }
-			random_owned_ship = {
+	if = {
+		limit = { NOT = { exists = event_target:dimensional_portal } }
+		if = {
+			limit = { any_owned_fleet = { is_ship_size = dimensional_portal_ed } }
+			random_owned_fleet = {
 				limit = { is_ship_size = dimensional_portal_ed }
 				save_event_target_as = dimensional_portal
 			}
 		}
-		if = { limit = { NOT = { exists = event_target:dimensional_portal } }
-			random_owned_ship = {
-				limit = { is_ship_size = dimensional_portal_ed }
-				save_event_target_as = dimensional_portal
+		else = {
+			random_country = {
+				limit = {
+					is_country_type = portal_holder
+					any_owned_fleet = { is_ship_size = dimensional_portal_ed }
+				}
+				random_owned_fleet = {
+					limit = { is_ship_size = dimensional_portal_ed }
+					save_event_target_as = dimensional_portal
+				}
 			}
 		}
 	}
@@ -243,14 +270,69 @@ CmtEffectSaveTargetExdPortal = {
 
 CmtEffectReinforcementExdCombat = {		## Scope: this = Owner Country (Exds)
 	CmtEffectSaveTargetExdPortal = yes		## save_event_target_as = dimensional_portal
-	if = {
-		limit = { is_country_type = extradimensional }
-		event_target:dimensional_portal = { CmtEffectCreateAdmiralty_UnbiddenReinforcement = yes }
-	} else_if = {
-		limit = { is_country_type = extradimensional_2 }
-		event_target:dimensional_portal = { CmtEffectCreateAdmiralty_AberrantReinforcement = yes }
-	} else_if = {
-		limit = { is_country_type = extradimensional_3 }
-		event_target:dimensional_portal = { CmtEffectCreateAdmiralty_VehementReinforcement = yes }
+	switch = { trigger = is_country_type
+		extradimensional = {
+			event_target:dimensional_portal = {
+				# CmtEffectCreateAdmiralty_UnbiddenReinforcement
+				prev = {
+					event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Unbidden } }
+					while = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
+						event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -1 } }
+						CmtEffectCreateFleet_UnbiddenReinforcement = yes
+					}
+					while = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
+						event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
+						random = { chance = 25
+							event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = 0 } }
+							CmtEffectCreateFleet_UnbiddenReinforcement = yes
+						}
+					}
+				}
+			}
+		}
+		extradimensional_2 = {
+			event_target:dimensional_portal = {
+				# CmtEffectCreateAdmiralty_AberrantReinforcement
+				prev = {
+					event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Aberrant } }
+					while = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
+						event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -1 } }
+						CmtEffectCreateFleet_AberrantReinforcement = yes
+					}
+					while = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
+						event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
+						random = { chance = 25
+							event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = 0 } }
+							CmtEffectCreateFleet_AberrantReinforcement = yes
+						}
+					}
+				}
+			}
+		}
+		extradimensional_3 = {
+			event_target:dimensional_portal = {
+				# CmtEffectCreateAdmiralty_VehementReinforcement
+				prev = {
+					event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Vehement } }
+					while = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
+						event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -1 } }
+						CmtEffectCreateFleet_VehementReinforcement = yes
+					}
+					while = {
+						limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
+						event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
+						random = { chance = 25
+							event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = 0 } }
+							CmtEffectCreateFleet_VehementReinforcement = yes
+						}
+					}
+				}
+			}
+		}
 	}
 }

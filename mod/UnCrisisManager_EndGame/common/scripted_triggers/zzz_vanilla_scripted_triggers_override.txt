@@ -63,6 +63,11 @@ planet_is_hostile_or_crisis = {
 					is_crisis_faction = yes					# Narrow down to just crises as to not alter more than needed.
 				}
 			}
+			# Safety Off (used in ACE)
+			AND = {
+				has_global_flag = has_pk_safety_off # has_safety_off = yes
+				is_same_empire = from.owner
+			}
 		}
 	}
 }
@@ -124,7 +129,7 @@ is_pirate_system = {
 		is_ship_class = shipclass_military_station
 		OR = {
 			is_ship_size = pirate_station
-			is_ship_size = marauser_station
+			is_ship_size = marauder_station
 		}
 		exists = owner
 		owner = { is_pirate = yes }

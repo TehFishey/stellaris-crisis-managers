@@ -340,8 +340,7 @@ country_event = {
 				create_army = {
 					owner = event_target:event_target:graygoo_country
 					species = last_created_species
-					type = defense_army
-					land_army = yes
+					type = defense_army
 				}
 				CmtEffectCreateAdmiralty_DessanuGarryson = yes
 			}

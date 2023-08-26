@@ -8,7 +8,7 @@ namespace = crisis
 country_event = {
 	id = crisis.199
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # vfix
 	is_test_event = yes
 	trigger = { always = no }
 	immediate = {

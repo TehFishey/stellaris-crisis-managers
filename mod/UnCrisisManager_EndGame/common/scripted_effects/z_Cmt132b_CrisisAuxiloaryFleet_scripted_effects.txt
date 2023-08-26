@@ -74,47 +74,9 @@ CmtEffectCreateFleet_PrethorynColonyzer = {
 ###  Extradimensionals  ###
 ###########################
 
-CmtEffectCreateFleet_UnbiddenConstructor = {
-	event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarConstructorNumber_Unbidden } }
-	while = {
-		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
-		event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -1 } }
-		CmtEffectCreateShip_UnbiddenConstructor = yes
-	}
-	while = {
-		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
-		event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
-		random = { chance = 25 CmtEffectCreateShip_UnbiddenConstructor = yes }
-	}
-}
-
-CmtEffectCreateFleet_AberrantConstructor = {
-	event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarConstructorNumber_Aberrant } }
-	while = {
-		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
-		event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -1 } }
-		CmtEffectCreateShip_AberrantConstructor = yes
-	}
-	while = {
-		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
-		event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
-		random = { chance = 25 CmtEffectCreateShip_AberrantConstructor = yes }
-	}
-}
-
-CmtEffectCreateFleet_VehementConstructor = {
-	event_target:CmtGlobalVar = { set_variable = { which = CmtVarWhileControlFleet value = CmtVarConstructorNumber_Vehement } }
-	while = {
-		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.875 } } }
-		event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -1 } }
-		CmtEffectCreateShip_VehementConstructor = yes
-	}
-	while = {
-		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlFleet value > 0.125 } } }
-		event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlFleet value = -0.25 } }
-		random = { chance = 25 CmtEffectCreateShip_VehementConstructor = yes }
-	}
-}
+# CmtEffectCreateFleet_UnbiddenConstructor
+# CmtEffectCreateFleet_AberrantConstructor
+# CmtEffectCreateFleet_VehementConstructor
 
 #####################
 ###  Contingency  ###

@@ -40,16 +40,15 @@ CmtTriggerPrethoryn1stTarget = {
 }
 
 CmtTriggerFeralPrethorynSpawnableSystem = {
-	has_owner = no
-	is_capital_system = no
 	NOR = {
+		has_owner = yes
+		is_capital_system = yes
 		has_star_flag = feral_prethoryn_system
 		has_star_flag = extradimensional_origin_system
 		has_star_flag = extradimensional_second_portal_system
 		has_star_flag = extradimensional_third_portal_system
 		has_star_flag = AI_hub		## Machiene World 1-4, cf. planet_flag = machine_world_1
 		has_star_flag = AI_lair		## Final MAchiene World, cf. planet flag = machine_lair
-		# is_capital_system = yes
 	}
 	any_system_planet = { has_planet_flag = previously_infested }
 }
@@ -132,7 +131,7 @@ CmtTriggerHasExdPortal = {
 	}
 }
 
-# Transcluded in 3.9
+# Transcluded in v.3.9
 # CmtTriggerExistExdPortal = {
 # CmtTriggerAnchorForPortalCreate = {		## this = Country (Exds)
 # CmtTriggerAnchorForPortalDestroy = {		## this = Country (Exds)
