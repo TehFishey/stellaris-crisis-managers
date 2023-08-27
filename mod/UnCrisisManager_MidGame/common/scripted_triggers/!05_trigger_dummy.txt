@@ -35,7 +35,7 @@ is_zofe_ae = {
 	# }
 }
 is_zofe_country = {
-	always = no # is_ai = no
+	always = no
 	# OR = {
 	# 	is_country_type = ascended_empire
 	# 	is_country_type = lost_empire
@@ -75,3 +75,4 @@ is_pd_arcology = { is_planet_class = pc_city }
 
 is_progenitor_empires = { always = no } # ACOT
 has_bug_branch = { always = no } # E&C Bug Branch
+has_life_engineering_installed = { always = no }

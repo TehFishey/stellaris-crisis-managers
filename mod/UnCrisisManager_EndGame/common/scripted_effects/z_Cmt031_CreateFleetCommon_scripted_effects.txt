@@ -67,7 +67,6 @@ CmtEffectProgressLoop2 = {
 ### Apply Modifier
 
 CmtEffectFasterPrethorynConstructor = {
-	set_fleet_stance = evasive
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 2 } } }
 		add_modifier = { modifier = CmtModifierShipSpeed_PrethorynConstructor2 }
@@ -84,7 +83,6 @@ CmtEffectFasterPrethorynConstructor = {
 }
 
 CmtEffectFasterUnbiddenConstructor = {
-	set_fleet_stance = evasive
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 2 } } }
 		add_modifier = { modifier = CmtModifierShipSpeed_UnbiddenConstructor2 }
@@ -101,7 +99,6 @@ CmtEffectFasterUnbiddenConstructor = {
 }
 
 CmtEffectFasterAberrantConstructor = {
-	set_fleet_stance = evasive
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 2 } } }
 		add_modifier = { modifier = CmtModifierShipSpeed_AberrantConstructor2 }
@@ -118,7 +115,6 @@ CmtEffectFasterAberrantConstructor = {
 }
 
 CmtEffectFasterVehementConstructor = {
-	set_fleet_stance = evasive
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 2 } } }
 		add_modifier = { modifier = CmtModifierShipSpeed_VehementConstructor2 }
@@ -135,7 +131,6 @@ CmtEffectFasterVehementConstructor = {
 }
 
 CmtEffectFasterContingencyConstructor = {
-	set_fleet_stance = evasive
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterConstructor_Common value = 2 } } }
 		add_modifier = { modifier = CmtModifierShipSpeed_ContingencyConstructor2 }
@@ -152,7 +147,6 @@ CmtEffectFasterContingencyConstructor = {
 }
 
 CmtEffectFasterPrethorynCombatShip = {
-	set_fleet_stance = aggressive
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 2 } } }
 		add_modifier = { modifier = CmtModifierShipSpeed_PrethorynCombatShip2 }
@@ -169,7 +163,6 @@ CmtEffectFasterPrethorynCombatShip = {
 }
 
 CmtEffectFasterSentinelCombatShip = {
-	set_fleet_stance = aggressive
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 2 } } }
 		add_modifier = { modifier = CmtModifierShipSpeed_SentinelCombatShip2 }
@@ -186,7 +179,6 @@ CmtEffectFasterSentinelCombatShip = {
 }
 
 CmtEffectFasterUnbiddenCombatShip = {
-	set_fleet_stance = aggressive
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 2 } } }
 		add_modifier = { modifier = CmtModifierShipSpeed_UnbiddenCombatShip2 }
@@ -203,7 +195,6 @@ CmtEffectFasterUnbiddenCombatShip = {
 }
 
 CmtEffectFasterAberrantCombatShip = {
-	set_fleet_stance = aggressive
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 2 } } }
 		add_modifier = { modifier = CmtModifierShipSpeed_AberrantCombatShip2 }
@@ -220,7 +211,6 @@ CmtEffectFasterAberrantCombatShip = {
 }
 
 CmtEffectFasterVehementCombatShip = {
-	set_fleet_stance = aggressive
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 2 } } }
 		add_modifier = { modifier = CmtModifierShipSpeed_VehementCombatShip2 }
@@ -237,7 +227,6 @@ CmtEffectFasterVehementCombatShip = {
 }
 
 CmtEffectFasterContingencyCombatShip = {
-	set_fleet_stance = aggressive
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 2 } } }
 		add_modifier = { modifier = CmtModifierShipSpeed_ContingencyCombatShip2 }
@@ -254,7 +243,6 @@ CmtEffectFasterContingencyCombatShip = {
 }
 
 CmtEffectFasterCybrexCombatShip = {
-	set_fleet_stance = aggressive
 	if = {
 		limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFasterCombatFleet_Common value = 2 } } }
 		add_modifier = { modifier = CmtModifierShipSpeed_CybrexCombatShip2 }

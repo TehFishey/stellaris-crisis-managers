@@ -37,14 +37,14 @@ CmtFleetSetAuxParam_PrethorynCombat = {
 	set_aggro_range_measure_from = self
 	set_fleet_bombardment_stance = armageddon
 }
-
-CmtFleetSetAuxParam_FeralPrethorynInfighter = {
-	set_location = {
-		target = prevprev
-		distance = 80
-		angle = 0
-	}
-}
+# TODO not used?
+# CmtFleetSetAuxParam_FeralPrethorynInfighter = {
+# 	set_location = {
+# 		target = prevprev
+# 		distance = 80
+# 		angle = 0
+# 	}
+# }
 
 CmtFleetSetAuxParam_PrethorynAuxiliary = {
 	set_location = {
@@ -52,7 +52,7 @@ CmtFleetSetAuxParam_PrethorynAuxiliary = {
 		distance = 20	## Paramaters averaging vanilla, was 5 - 45
 		angle = random
 	}
-	# set_fleet_stance = evasive
+	set_fleet_stance = evasive
 }
 
 ###################
@@ -114,7 +114,7 @@ CmtFleetSetAuxParam_ExdsAuxiliary = {
 		distance = 5
 		angle = random
 	}
-	# set_fleet_stance = evasive
+	set_fleet_stance = evasive
 }
 
 #####################

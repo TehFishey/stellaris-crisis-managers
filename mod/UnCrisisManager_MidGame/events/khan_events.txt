@@ -94,13 +94,13 @@ system_event = {
 					has_star_flag = marauder_starbase_destroyed
 					has_star_flag = starbase_destroyed
 				}
-				OR = {
-					NOT = { exists = starbase }
-					starbase = { has_starbase_size < starbase_citadel }
+				NAND = {
+					exists = starbase
+					starbase = { has_starbase_size > starbase_starfortress }
 				}
 			}
 			set_timed_star_flag = { flag = marauder_starbase_destroyed months = 2 }
-			set_timed_star_flag = { flag = marauder_starbase_destroyed days = 10 }
+			set_timed_star_flag = { flag = starbase_destroyed days = 10 }
 			# space_owner = {
 			# 	if = {
 			# 		limit = { graphical_culture = pirate_01 }
@@ -1405,19 +1405,22 @@ country_event = {
 			# Khan wins immediately
 			if = {
 				limit = {
-					count_playable_country = {
-						limit = {
-							is_subject = no
-							has_been_declared_crisis = no
-							fleet_power > 40000
-						}
-						count < 3
-					}
 					has_global_flag = gf_great_khan_active
+					OR = {
+						galaxy_percentage > 0.5
+						count_playable_country = {
+							limit = {
+								is_subject = no
+								has_been_declared_crisis = no
+								fleet_power > 40000
+							}
+							count < 3
+						}
+					}
 				}
 				country_event = { id = khan.298 days = 7 } # Notify global
 				set_global_flag = great_khan_wins
-				country_event = { id = khan.296 days = 300 random = 60 }
+				country_event = { id = khan.296 days = 330 random = 80 }
 			}
 			add_opinion_modifier = { who = prev modifier = opinion_imperial_overlord_ai_opinion }
 			prev = {
@@ -1570,7 +1573,10 @@ country_event = {
 		set_country_flag = first_alien_life
 		set_country_flag = has_encountered_other_empire
 		log="Handover raider_khanate \\[From.GetName] to Diadochi \\[This.GetName]."
-		from = { save_event_target_as = raider_khanate }
+		from = {
+			save_event_target_as = raider_khanate
+			set_faction_hostility = { target = prev set_friendly = yes }
+		}
 		# Return colonies that have only the starbase conquered.
 		every_system_within_border = {
 			limit = {
@@ -2142,6 +2148,8 @@ country_event = {
 					exists = starbase
 					NOT = {
 						any_system_planet = {
+							is_star = no
+							is_artificial = yes
 							OR = {
 								has_planet_flag = habitat
 								has_planet_flag = megastructure
@@ -2150,12 +2158,7 @@ country_event = {
 						}
 					}
 					any_system_planet = {
-						# is_star = no
 						is_a_planet = yes # possible inconsisent due other mods
-						# NOR = {
-						# 	has_planet_flag = megastructure
-						# 	has_planet_flag = has_megastructure
-						# }
 					}
 				}
 				weights = {
@@ -2264,24 +2267,86 @@ system_event = {
 			# log = "--- Habitat build site chosen on planet \\[This.GetName], proceeding..."
 			prev = {
 				# Spawn marauder habitat
-				spawn_megastructure = {
-					type = "habitat_0"
-					planet = prev
-					owner = from # space_owner
-					graphical_culture = from # "mammalian_01"
-				}
+				# spawn_megastructure = { < v.3.9
+				# 	type = "habitat_0" major_orbital
+				# 	planet = prev
+				# 	owner = from # space_owner
+				# 	graphical_culture = from # "mammalian_01"
+				# }
 				# set_planet_entity = {
 				# 	entity = "habitat_phase_02_entity"
 				# 	graphical_culture = from
 				# }
-
+				spawn_planet = {
+					class = pc_habitat
+					location = prev
+					orbit_location = yes
+					orbit_angle_offset = 45
+					orbit_distance_offset = 9.899
+					size = 6
+					has_ring = no
+					init_effect = {
+						set_planet_flag = megastructure
+						set_planet_flag = habitat
+						set_planet_flag = habitat_level_1
+						set_planet_entity = {
+							entity = habitat_phase_03_entity
+							graphical_culture = from
+						}
+						set_surveyed = {
+							surveyed = yes
+							surveyor = from
+						}
+						set_all_comms_surveyed = yes
+						clear_blockers = yes
+						# if = {
+						# 	limit = {
+						# 		prev = {
+						# 			NOT = { has_star_flag = research_habitat_spawned }
+						# 		}
+						# 	}
+						# 	prev = { set_star_flag = research_habitat_spawned }
+						# 	add_deposit = d_hab_crystal_2
+						# 	add_modifier = {
+						# 		modifier = paradisiacal_habitat_science
+						# 	}
+						# }
+						# else_if = {
+						# 	limit = {
+						# 		prev = {
+						# 			NOT = { has_star_flag = mining_habitat_spawned }
+						# 		}
+						# 	}
+						# 	prev = { set_star_flag = mining_habitat_spawned }
+						# 	add_deposit = d_hab_alloy_4
+						# 	add_deposit = d_hab_mote_2
+						# 	add_modifier = {
+						# 		modifier = paradisiacal_habitat_mining
+						# 	}
+						# }
+						# else_if = {
+						# 	limit = {
+						# 		prev = {
+						# 			NOT = { has_star_flag = energy_habitat_spawned }
+						# 		}
+						# 	}
+						# 	prev = { set_star_flag = energy_habitat_spawned }
+						# 	add_deposit = d_hab_alloy_4
+						# 	add_deposit = d_hab_gas_2
+						# 	add_modifier = {
+						# 		modifier = paradisiacal_habitat_energy
+						# 	}
+						# }
+					}
+				}
+				set_star_flag = has_habitat
 				# set_star_flag = marauder_habitat_placed
 			}
 			# Populate marauder habitat
 			random_moon = {
 				limit = {
-					uses_district_set = habitat
-					# merg_is_habitat = yes
+					# uses_district_set = habitat
+					merg_is_habitat = yes
 					is_colony = no
 					is_colonizable = yes
 				}
@@ -2296,7 +2361,7 @@ system_event = {
 				# 	2 = { set_planet_flag = research_habitat }
 				# 	3 = { set_planet_flag = energy_habitat }
 				# }
-				change_planet_size = 2
+				# change_planet_size = 2
 				set_planet_flag = advanced_habitat
 
 				while = {
@@ -2341,6 +2406,7 @@ system_event = {
 					# ethos = random
 				}
 			}
+			set_planet_flag = has_megastructure
 		}
 		# Unknown "Unexpected token: country_event, near line: 3543
 		from = {

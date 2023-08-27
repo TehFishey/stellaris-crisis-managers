@@ -63,6 +63,11 @@ planet_is_hostile_or_crisis = {
 					is_crisis_faction = yes					# Narrow down to just crises as to not alter more than needed.
 				}
 			}
+			# Safety Off (used in ACE)
+			AND = {
+				has_global_flag = has_pk_safety_off # has_safety_off = yes
+				is_same_empire = from.owner
+			}
 		}
 	}
 }
@@ -98,8 +103,8 @@ is_fallen_empire = {
 
 is_regular_empire = {
 	is_gestalt = no # NOT = { has_ethic = ethic_gestalt_consciousness }
-	is_default_or_fallen = yes
-	# OR = {
+	OR = {
+		is_default_or_fallen = yes
 	# 	is_country_type = default
 	# 	is_fallen_empire = yes
 	# 	# Ethics & Civics Infinity
@@ -108,14 +113,14 @@ is_regular_empire = {
 	# 	hfe_trigger_insane_admiral_trait = yes # is_country_type = hfe_pirate HFE mod compat. hack
 	# 	# prevents these special countries from destroying their own buildings and districts in their colonies
 	# 	is_country_type = gate_builders
-	# 	is_country_type = awakened_marauders
+		is_country_type = awakened_marauders
 	# 	# ZOFE
 	# 	is_zofe_country = yes # ZoFE mod compat. hack
 	# 	# # The Empty Vagrant
 	# 	# is_country_type = default_ev
 	# 	# is_country_type = fallen_empire_ev
 	# 	# is_country_type = awakened_fallen_empire_ev
-	# }
+	}
 }
 
 is_pirate_system = {

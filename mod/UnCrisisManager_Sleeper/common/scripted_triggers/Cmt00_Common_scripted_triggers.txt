@@ -37,6 +37,7 @@ CmtTriggerSpawnableSystem = {
 		has_star_flag = lgate
 		has_star_flag = lcluster
 		has_star_flag = sealed_system		## The system with no hyperlanes.
+		has_star_flag = crisis_spawn_exclude # v.3.8
 	}
 }
 
@@ -81,7 +82,7 @@ CmtTriggerIsContingency = {
 CmtTriggerIsShroudSpirit = {
 	optimize_memory
 	is_country_type = shroud_spirits
-	any_owned_ship = {
+	any_owned_fleet = {
 		OR = {
 			is_ship_size = warped_consciousness
 			is_ship_size = shroud_manifestation

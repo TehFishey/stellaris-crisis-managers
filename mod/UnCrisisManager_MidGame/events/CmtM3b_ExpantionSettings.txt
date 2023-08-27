@@ -458,7 +458,81 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			CmtEffectFasterCombatShipChanged = yes
+			# CmtEffectFasterCombatShipChanged
+			every_country = {
+				if = {
+					limit = { CmtTriggerIsExpPrethoryn = yes }
+					every_owned_ship = {
+						limit = { is_ship_class = shipclass_military }
+						remove_modifier = CmtModifierShipSpeed_PrethorynCombatShip2
+						remove_modifier = CmtModifierShipSpeed_PrethorynCombatShip3
+						remove_modifier = CmtModifierShipSpeed_PrethorynCombatShip4
+						remove_modifier = CmtModifierShipSpeed_PrethorynCombatShip5
+						CmtEffectFasterPrethorynCombatShip = yes
+					}
+				} else_if = {
+					limit = { is_country_type = sentinels }
+					every_owned_ship = {
+						limit = { is_ship_class = shipclass_military }
+						remove_modifier = CmtModifierShipSpeed_SentinelCombatShip2
+						remove_modifier = CmtModifierShipSpeed_SentinelCombatShip3
+						remove_modifier = CmtModifierShipSpeed_SentinelCombatShip4
+						remove_modifier = CmtModifierShipSpeed_SentinelCombatShip5
+						CmtEffectFasterSentinelCombatShip = yes
+					}
+				} else_if = {
+					limit = { is_country_type = extradimensional }
+					every_owned_ship = {
+						limit = { is_ship_class = shipclass_military }
+						remove_modifier = CmtModifierShipSpeed_UnbiddenCombatShip2
+						remove_modifier = CmtModifierShipSpeed_UnbiddenCombatShip3
+						remove_modifier = CmtModifierShipSpeed_UnbiddenCombatShip4
+						remove_modifier = CmtModifierShipSpeed_UnbiddenCombatShip5
+						CmtEffectFasterUnbiddenCombatShip = yes
+					}
+				} else_if = {
+					limit = { is_country_type = extradimensional_2 }
+					every_owned_ship = {
+						limit = { is_ship_class = shipclass_military }
+						remove_modifier = CmtModifierShipSpeed_AberrantCombatShip2
+						remove_modifier = CmtModifierShipSpeed_AberrantCombatShip3
+						remove_modifier = CmtModifierShipSpeed_AberrantCombatShip4
+						remove_modifier = CmtModifierShipSpeed_AberrantCombatShip5
+						CmtEffectFasterAberrantCombatShip = yes
+					}
+				} else_if = {
+					limit = { is_country_type = extradimensional_3 }
+					every_owned_ship = {
+						limit = { is_ship_class = shipclass_military }
+						remove_modifier = CmtModifierShipSpeed_VehementCombatShip2
+						remove_modifier = CmtModifierShipSpeed_VehementCombatShip3
+						remove_modifier = CmtModifierShipSpeed_VehementCombatShip4
+						remove_modifier = CmtModifierShipSpeed_VehementCombatShip5
+						CmtEffectFasterVehementCombatShip = yes
+					}
+				} else_if = {
+					limit = { CmtTriggerIsContingency = yes }
+					every_owned_ship = {
+						limit = { is_ship_class = shipclass_military }
+						remove_modifier = CmtModifierShipSpeed_ContingencyCombatShip2
+						remove_modifier = CmtModifierShipSpeed_ContingencyCombatShip3
+						remove_modifier = CmtModifierShipSpeed_ContingencyCombatShip4
+						remove_modifier = CmtModifierShipSpeed_ContingencyCombatShip5
+						CmtEffectFasterContingencyCombatShip = yes
+					}
+				} else_if = {
+					limit = { is_country_type = cybrex_empire }
+					every_owned_ship = {
+						limit = { is_ship_class = shipclass_military }
+						remove_modifier = CmtModifierShipSpeed_CybrexCombatShip2
+						remove_modifier = CmtModifierShipSpeed_CybrexCombatShip3
+						remove_modifier = CmtModifierShipSpeed_CybrexCombatShip4
+						remove_modifier = CmtModifierShipSpeed_CybrexCombatShip5
+						CmtEffectFasterCybrexCombatShip = yes
+					}
+				}
+			}
+
 			if = {
 				limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
@@ -551,7 +625,66 @@ country_event = {
 
 	after = {
 		hidden_effect = {
-			CmtEffectFasterConstructorChanged = yes
+			# CmtEffectFasterConstructorChanged
+			every_country = {
+				if = {
+					limit = { CmtTriggerIsExpPrethoryn = yes }
+					every_owned_fleet = {
+						limit = {
+							OR = {
+								is_ship_class = shipclass_constructor
+								is_ship_class = shipclass_colonizer
+							}
+						}
+						remove_modifier = CmtModifierShipSpeed_PrethorynConstructor2
+						remove_modifier = CmtModifierShipSpeed_PrethorynConstructor3
+						remove_modifier = CmtModifierShipSpeed_PrethorynConstructor4
+						remove_modifier = CmtModifierShipSpeed_PrethorynConstructor5
+						CmtEffectFasterPrethorynConstructor = yes
+					}
+				} else_if = {
+					limit = { is_country_type = extradimensional }
+					every_owned_fleet = {
+						limit = { is_ship_class = shipclass_constructor }
+						remove_modifier = CmtModifierShipSpeed_UnbiddenConstructor2
+						remove_modifier = CmtModifierShipSpeed_UnbiddenConstructor3
+						remove_modifier = CmtModifierShipSpeed_UnbiddenConstructor4
+						remove_modifier = CmtModifierShipSpeed_UnbiddenConstructor5
+						CmtEffectFasterUnbiddenConstructor = yes
+					}
+				} else_if = {
+					limit = { is_country_type = extradimensional_2 }
+					every_owned_fleet = {
+						limit = { is_ship_class = shipclass_constructor }
+						remove_modifier = CmtModifierShipSpeed_AberrantConstructor2
+						remove_modifier = CmtModifierShipSpeed_AberrantConstructor3
+						remove_modifier = CmtModifierShipSpeed_AberrantConstructor4
+						remove_modifier = CmtModifierShipSpeed_AberrantConstructor5
+						CmtEffectFasterAberrantConstructor = yes
+					}
+				} else_if = {
+					limit = { is_country_type = extradimensional_3 }
+					every_owned_fleet = {
+						limit = { is_ship_class = shipclass_constructor }
+						remove_modifier = CmtModifierShipSpeed_VehementConstructor2
+						remove_modifier = CmtModifierShipSpeed_VehementConstructor3
+						remove_modifier = CmtModifierShipSpeed_VehementConstructor4
+						remove_modifier = CmtModifierShipSpeed_VehementConstructor5
+						CmtEffectFasterVehementConstructor = yes
+					}
+				} else_if = {
+					limit = { CmtTriggerIsContingency = yes }
+					every_owned_fleet = {
+						limit = { is_ship_class = shipclass_constructor }
+						remove_modifier = CmtModifierShipSpeed_ContingencyConstructor2
+						remove_modifier = CmtModifierShipSpeed_ContingencyConstructor3
+						remove_modifier = CmtModifierShipSpeed_ContingencyConstructor4
+						remove_modifier = CmtModifierShipSpeed_ContingencyConstructor5
+						CmtEffectFasterContingencyConstructor = yes
+					}
+				}
+			}
+
 			if = {
 				limit = { has_country_flag = CmtFlagGoBack }
 				remove_country_flag = CmtFlagGoBack
