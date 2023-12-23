@@ -50,6 +50,7 @@ has_total_war_cb = {
 	}
 }
 
+# Sync with Merger
 planet_is_hostile_or_crisis = {
 	exists = owner
 	owner = {
@@ -63,36 +64,18 @@ planet_is_hostile_or_crisis = {
 					is_crisis_faction = yes					# Narrow down to just crises as to not alter more than needed.
 				}
 			}
-			# Safety Off (used in ACE)
-			AND = {
-				has_global_flag = has_pk_safety_off # has_safety_off = yes
-				is_same_empire = from.owner
-			}
+			## Safety Off for Planet Killer Weapons (used in ACE) but here on the wrong place as it breaks megastructure built like in Giga mod
+			# AND = {
+			# 	has_global_flag = has_pk_safety_off # has_safety_off = yes
+			# 	is_same_empire = from.owner
+			# }
 		}
 	}
 }
 
-# Workaround: as is_overlord_to is not working for Khan.
-# This = Satrapy
-is_subject_of_khan = {
-	is_subject = yes # exists = overlord
-	exists = event_target:raider_khanate
-	# overlord = { is_same_empire = prevprev }
-	overlord = { is_same_empire = event_target:raider_khanate }
-	merg_is_default_empire = yes
-	# has_modifier = "satrapy_of_horde"
-	# OR = { # Only to be sure
-	# 	any_agreement = { agreement_preset = preset_machinesmith_satrapy }
-	# 	any_agreement = { agreement_preset = preset_satrapy }
-	# 	any_agreement = { agreement_preset = preset_fabricator_satrapy }
-	# 	any_agreement = { agreement_preset = preset_war_satrapy }
-	# 	# any_agreement = { agreement_preset = preset_nsc_freebooter_satrapy } ### NSC SUPPORT has_global_flag = has_nsc_active
-	# }
-}
-
 is_fallen_empire = {
 	OR = {
-		merg_is_fallen_empire = yes # hopefully not included is_fallen_empire itself
+		merg_is_fallen_empire = yes # Hopefully not included is_fallen_empire itself
 		merg_is_awakened_fe = yes # is_country_type = awakened_fallen_empire
 		AND = {
 			has_global_flag = a_deadly_tempest_mod_active
@@ -111,7 +94,7 @@ is_regular_empire = {
 	# 	# is_country_type = uo_une_member_active
 	# 	hfe_trigger_is_human_fallen = yes # is_country_type = hfe_fallen HFE mod compat. hack
 	# 	hfe_trigger_insane_admiral_trait = yes # is_country_type = hfe_pirate HFE mod compat. hack
-	# 	# prevents these special countries from destroying their own buildings and districts in their colonies
+	# 	# Prevents these special countries from destroying their own buildings and districts in their colonies
 	# 	is_country_type = gate_builders
 		is_country_type = awakened_marauders
 	# 	# ZOFE
@@ -132,6 +115,6 @@ is_pirate_system = {
 			is_ship_size = marauder_station
 		}
 		exists = owner
-		owner = { is_pirate = yes }
+		owner = { is_pirate_country = yes }
 	}
 }

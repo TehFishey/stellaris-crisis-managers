@@ -471,10 +471,13 @@ country_event = {
 									is_in_combat = yes
 									has_fleet_order = merge_fleet_order
 									has_fleet_order = land_armies_order
+									can_go_mia = no
 								}
 							}
 							order_forced_return = yes
-						} else = { set_mia = mia_return_home }
+						} else = {
+							set_mia = mia_return_home
+						}
 					}
 				}
 			}

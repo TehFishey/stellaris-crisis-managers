@@ -4,7 +4,7 @@
 #####	Crisis Manager									#####
 #####													#####
 #####	Scripted Effects for Creating Combat Fleets		#####
-#####	of End-Game Crises Excluding Armies				#####
+#####	Of End-Game Crises Excluding Armies				#####
 #####													#####
 #############################################################
 #############################################################
@@ -61,6 +61,7 @@ CmtEffectCreateAdmiralty_Khan1stFleet = {		### Exception: Leader = event_target:
 				can_change_composition = no
 				can_change_leader = no
 				uses_naval_capacity = no
+				spawn_debris = no # yes?
 			}
 		}
 	}
@@ -105,6 +106,7 @@ CmtEffectCreateFleet_Khan2ndFleet = {	### Exception: Leader = exiled_khan
 			can_change_composition = no
 			can_change_leader = no
 			uses_naval_capacity = no
+			spawn_debris = no # yes?
 		}
 	}
 }

@@ -340,18 +340,26 @@ country_event = {
 				create_army = {
 					owner = event_target:event_target:graygoo_country
 					species = last_created_species
-					type = defense_army
+					type = defense_army
+
 				}
 				CmtEffectCreateAdmiralty_DessanuGarryson = yes
 			}
 		}
 		event_target:graygoo_country = {
 			every_planet_within_border = {
+				limit = {
+					has_owner = no
+					OR = {
+						has_deposit_for = shipclass_mining_station
+						has_deposit_for = shipclass_research_station
+					}
+				}
 				if = {
-					limit = { has_deposit_for = shipclass_mining_station }
+					limit = { has_deposit_for = shipclass_mining_station has_mining_station = no }
 					create_mining_station = { owner = event_target:graygoo_country }
 				} else_if = {
-					limit = { has_deposit_for = shipclass_research_station }
+					limit = { has_deposit_for = shipclass_research_station has_research_station = no }
 					create_research_station = { owner = event_target:graygoo_country }
 				}
 			}

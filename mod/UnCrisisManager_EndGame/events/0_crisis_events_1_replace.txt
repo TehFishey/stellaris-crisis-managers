@@ -727,6 +727,7 @@ event = {
 	is_triggered_only = yes
 
 	trigger = {
+		has_global_flag = prethoryn_invasion_happened
 		exists = event_target:prethoryn
 		event_target:prethoryn = {
 			CmtTriggerIsPrethoryn = yes

@@ -37,7 +37,7 @@ CmtTriggerHasPotentialKhanAwaking = {
 	OR = {
 		is_country_type = dormant_marauders
 		AND = {
-			is_pirate = yes
+			is_pirate_country = yes
 			has_country_flag = restored_marauders_flag
 		}
 		AND = { # Fallback

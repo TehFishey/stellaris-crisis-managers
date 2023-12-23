@@ -45,6 +45,14 @@ guiTypes = {
 		#	clicksound = "back_click"
 		#}
 
+		buttonType = {
+			name = "tts_button"
+			position = { x = 254 y = -5 }
+			spriteType = "GFX_button_tts_start"
+			buttonFont = "cg_16b"
+			shortCut = "t"
+		}
+
 		instantTextBoxType = {
 			name = "heading"
 			font = "malgun_goth_24"

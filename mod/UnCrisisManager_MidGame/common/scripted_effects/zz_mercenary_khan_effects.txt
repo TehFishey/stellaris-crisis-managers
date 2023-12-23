@@ -178,7 +178,8 @@ create_marauder_fleet = {
 							graphical_culture = root
 						}
 					}
-					if = { limit = { root = { any_owned_design = { is_ship_size = cruiser } } }
+					if = {
+						limit = { root = { any_owned_design = { is_ship_size = cruiser } } }
 						while = {
 							count = 3
 							create_ship = {
@@ -213,10 +214,7 @@ create_small_marauder_auxiliaries = {
 	optimize_memory
 	CmtEffectCreateAdmiral_MarauderEncourager = yes
 	create_fleet = {
-		name = {
-			key = "NAME_Horde_Auxiliary_Fleet"
-			variable_string = "\\[satrapy_species.GetName\\]"
-		}
+		name = { key = "NAME_Horde_Auxiliary_Fleet" variable_string = "\\[satrapy_species.GetName\\]" }
 		effect = {
 			set_owner = event_target:raider_khanate
 			set_fleet_flag = horde_auxuliaries
@@ -254,10 +252,7 @@ create_medium_marauder_auxiliaries = {
 	optimize_memory
 	CmtEffectCreateAdmiral_MarauderEncourager = yes
 	create_fleet = {
-		name = {
-			key = "NAME_Horde_Auxiliary_Fleet"
-			variable_string = "\\[satrapy_species.GetName\\]"
-		}
+		name = { key = "NAME_Horde_Auxiliary_Fleet" variable_string = "\\[satrapy_species.GetName\\]" }
 		effect = {
 			set_owner = event_target:raider_khanate
 			set_fleet_flag = horde_auxuliaries
@@ -293,10 +288,7 @@ create_large_marauder_auxiliaries = {
 	optimize_memory
 	CmtEffectCreateAdmiral_MarauderEncourager = yes
 	create_fleet = {
-		name = {
-			key = "NAME_Horde_Auxiliary_Fleet"
-			variable_string = "\\[satrapy_species.GetName\\]"
-		}
+		name = { key = "NAME_Horde_Auxiliary_Fleet" variable_string = "\\[satrapy_species.GetName\\]" }
 		effect = {
 			set_owner = event_target:raider_khanate
 			set_fleet_flag = horde_auxuliaries
@@ -334,10 +326,7 @@ create_very_large_marauder_auxiliaries = {
 	optimize_memory
 	CmtEffectCreateAdmiral_MarauderEncourager = yes
 	create_fleet = {
-		name = {
-			key = "NAME_Horde_Auxiliary_Fleet"
-			variable_string = "\\[satrapy_species.GetName\\]"
-		}
+		name = { key = "NAME_Horde_Auxiliary_Fleet" variable_string = "\\[satrapy_species.GetName\\]" }
 		effect = {
 			set_owner = event_target:raider_khanate
 			set_fleet_flag = horde_auxuliaries
@@ -408,10 +397,7 @@ create_marauder_successor_fleet = {
 			NOR = {
 				count_owned_leader = {
 					count > 12
-					limit = {
-						leader_class = admiral
-						is_event_leader = no
-					}
+					limit = { leader_class = admiral is_event_leader = no }
 				}
 				any_owned_leader = {
 					leader_class = admiral
@@ -493,10 +479,7 @@ assign_first_diadochi_planets = {
 			any_system_colony = {
 				is_owned_by = root
 				merg_is_habitat = no
-				OR = {
-					is_sector_capital = yes
-					num_pops > 5
-				}
+				OR = { is_sector_capital = yes num_pops > 5 }
 			}
 		}
 		set_star_flag = first_diadochi_system
@@ -517,7 +500,8 @@ assign_first_diadochi_planets = {
 # Used only once
 create_first_diadochi = {
 	optimize_memory
-	if = { limit = { exists = event_target:first_diadochi_origin }
+	if = {
+		limit = { exists = event_target:first_diadochi_origin }
 		reroll_random = yes
 		get_marauder_species = yes
 		create_country = {
@@ -557,7 +541,8 @@ create_first_diadochi = {
 			}
 			remove_star_flag = first_diadochi_system
 		}
-		if = { limit = { exists = event_target:raider_khanate }
+		if = {
+			limit = { exists = event_target:raider_khanate }
 			event_target:first_diadochi = {
 
 				country_event = { id = khan.610 days = -1 } # Handover some old stuff
@@ -574,10 +559,7 @@ assign_second_diadochi_planets = {
 			any_system_colony = {
 				is_owned_by = root
 				merg_is_habitat = no
-				OR = {
-					is_sector_capital = yes
-					num_pops > 5
-				}
+				OR = { is_sector_capital = yes num_pops > 5 }
 			}
 		}
 		set_star_flag = second_diadochi_system
@@ -597,7 +579,8 @@ assign_second_diadochi_planets = {
 
 create_second_diadochi = {
 	optimize_memory
-	if = { limit = { exists = event_target:second_diadochi_origin }
+	if = {
+		limit = { exists = event_target:second_diadochi_origin }
 		reroll_random = yes
 		get_marauder_species = yes
 		create_country = {
@@ -637,7 +620,8 @@ create_second_diadochi = {
 			}
 			remove_star_flag = second_diadochi_system
 		}
-		if = { limit = { exists = event_target:raider_khanate }
+		if = {
+			limit = { exists = event_target:raider_khanate }
 			event_target:second_diadochi = {
 				country_event = { id = khan.610 days = -1 } # Handover some old stuff
 			}
@@ -654,10 +638,7 @@ assign_third_diadochi_planets = {
 			any_system_colony = {
 				is_owned_by = root
 				merg_is_habitat = no
-				OR = {
-					is_sector_capital = yes
-					num_pops > 5
-				}
+				OR = { is_sector_capital = yes num_pops > 5 }
 			}
 		}
 		set_star_flag = third_diadochi_system
@@ -677,7 +658,8 @@ assign_third_diadochi_planets = {
 
 create_third_diadochi = {
 	optimize_memory
-	if = { limit = { exists = event_target:third_diadochi_origin }
+	if = {
+		limit = { exists = event_target:third_diadochi_origin }
 		reroll_random = yes
 		get_marauder_species = yes
 		create_country = {
@@ -717,7 +699,8 @@ create_third_diadochi = {
 			}
 			remove_star_flag = third_diadochi_system
 		}
-		if = { limit = { exists = event_target:raider_khanate }
+		if = {
+			limit = { exists = event_target:raider_khanate }
 			event_target:third_diadochi = {
 				country_event = { id = khan.610 days = -1 } # Handover some old stuff
 			}
@@ -733,10 +716,7 @@ assign_fourth_diadochi_planets = {
 			any_system_colony = {
 				is_owned_by = root
 				merg_is_habitat = no
-				OR = {
-					is_sector_capital = yes
-					num_pops > 5
-				}
+				OR = { is_sector_capital = yes num_pops > 5 }
 			}
 		}
 		set_star_flag = fourth_diadochi_system
@@ -756,7 +736,8 @@ assign_fourth_diadochi_planets = {
 
 create_fourth_diadochi = {
 	optimize_memory
-	if = { limit = { exists = event_target:fourth_diadochi_origin }
+	if = {
+		limit = { exists = event_target:fourth_diadochi_origin }
 		reroll_random = yes
 		get_marauder_species = yes
 		create_country = {
@@ -796,7 +777,8 @@ create_fourth_diadochi = {
 			}
 			remove_star_flag = fourth_diadochi_system
 		}
-		if = { limit = { exists = event_target:raider_khanate }
+		if = {
+			limit = { exists = event_target:raider_khanate }
 			event_target:fourth_diadochi = {
 				country_event = { id = khan.610 days = -1 } # Handover some old stuff
 			}
@@ -906,10 +888,7 @@ get_marauder_species = {
 				is_scope_type = species
 				OR = {
 					species_can_be_necrophaged = yes
-					AND = {
-						exists = event_target:great_khan
-						is_same_species = event_target:great_khan.species
-					}
+					AND = { exists = event_target:great_khan is_same_species = event_target:great_khan.species }
 					AND = {
 						exists = prev.owner_species
 						is_same_species = prev.owner_species
@@ -929,10 +908,7 @@ get_marauder_species = {
 				is_scope_type = species
 				OR = {
 					species_can_be_necrophaged = yes
-					AND = {
-						exists = event_target:great_khan
-						is_same_species = event_target:great_khan.species
-					}
+					AND = { exists = event_target:great_khan is_same_species = event_target:great_khan.species }
 					AND = {
 						exists = prev.owner_species
 						is_same_species = prev.owner_species
@@ -964,10 +940,7 @@ get_marauder_species = {
 				modifier = {
 					add = 6
 					OR = {
-						AND = {
-							exists = event_target:great_khan
-							is_same_species = event_target:great_khan.species
-						}
+						AND = { exists = event_target:great_khan is_same_species = event_target:great_khan.species }
 						is_same_species = root.owner_species
 					}
 				}
@@ -1019,10 +992,7 @@ get_marauder_species = {
 			any_owned_species = {
 				OR = {
 					species_can_be_necrophaged = yes
-					AND = {
-						exists = event_target:great_khan
-						is_same_species = event_target:great_khan.species
-					}
+					AND = { exists = event_target:great_khan is_same_species = event_target:great_khan.species }
 					AND = {
 						exists = owner_species
 						is_same_species = prev.owner_species
@@ -1039,10 +1009,7 @@ get_marauder_species = {
 			limit = {
 				OR = {
 					species_can_be_necrophaged = yes
-					AND = {
-						exists = event_target:great_khan
-						is_same_species = event_target:great_khan.species
-					}
+					AND = { exists = event_target:great_khan is_same_species = event_target:great_khan.species }
 					AND = {
 						exists = owner_species
 						is_same_species = prev.owner_species
@@ -1074,10 +1041,7 @@ get_marauder_species = {
 				modifier = {
 					add = 6
 					OR = {
-						AND = {
-							exists = event_target:great_khan
-							is_same_species = event_target:great_khan.species
-						}
+						AND = { exists = event_target:great_khan is_same_species = event_target:great_khan.species }
 						is_same_species = root.owner_species
 					}
 				}
@@ -1095,9 +1059,11 @@ get_marauder_species = {
 		}
 	}
 	# Common Fallback
-	if = { limit = { NOT = { exists = event_target:marauder_species } }
+	if = {
+		limit = { NOT = { exists = event_target:marauder_species } }
 		owner_species = { save_event_target_as = marauder_species }
-	} else_if = {
+	}
+	else_if = {
 		limit = {
 			pop_percentage = {
 				limit = { is_same_species = event_target:marauder_species }
@@ -1138,9 +1104,9 @@ get_marauder_raid_source = {
 	}
 
 	### Rally Point Fallback
-	if = { limit = { NOT = { exists = event_target:raid_source } }
-		switch = {
-			trigger = has_country_flag
+	if = {
+		limit = { NOT = { exists = event_target:raid_source } }
+		switch = { trigger = has_country_flag
 			marauder_1 = {
 				random_system = {
 					limit = { has_star_flag = marauder_capital_1 }
@@ -1218,6 +1184,110 @@ get_marauder_raid_source = {
 }
 
 # Override needless wasting vanilla effect
-set_diadochi_claims = {
-	optimize_memory
+set_diadochi_claims = { optimize_memory }
+
+# Update zz_diplo_vanilla_scripted_effects.txt from "Expanded Espionage and Diplomacy"
+create_privateer_fleet = {
+	# Event targtes created by create_privateer_country.
+	event_target:privateer_band = {
+		if = {
+			limit = {
+				has_global_flag = pirate_waves_active
+				NOT = { has_global_flag = pirate_waves_PRIVATEER_inactive }
+			}
+			set_pirates_difficulty = yes
+			set_variable = { which = pirates_f_tmp value = pirates_factor }
+			# Time passed based modifiers
+			get_galaxy_setup_value = { which = mid_year setting = mid_game_year } # 100%
+			multiply_variable = { which = mid_year value = 0.5 }
+			set_variable = { which = current_year_factor value = trigger:years_passed }
+			# Only partial =  (cy/my*1.25 + 0.75)/2
+			divide_variable = { which = current_year_factor value = mid_year }
+			multiply_variable = { which = pirates_f_tmp value = 1.25 }
+			change_variable = { which = pirates_f_tmp value = 0.75 }
+			multiply_variable = { which = current_year_factor value = 0.5 }
+			multiply_variable = { which = pirates_f_tmp value = current_year_factor }
+			# round_variable_to_closest = { which = pirates_f_tmp value = 0.001 }
+		}
+		else = {
+			set_variable = { which = pirates_f_tmp value = 1 }
+		}
+
+		create_leader = {
+			class = admiral
+			species = owner_species
+			name = random
+			skill = 1
+		}
+		create_fleet = {
+			name = "NAME_Privateers"
+			effect = {
+				set_owner = prev
+				event_target:target_country = {
+					switch = { trigger = fleet_power
+						300 < { prev = { create_dyn_pirate_fleet = { Brigand = 1 } } }
+						600 < { prev = { create_dyn_pirate_fleet = { Reaver = 2 } } }
+						1000 < { prev = { create_dyn_pirate_fleet = { Reaver = 4 Brigand = 2 } } }
+						2000 < { prev = { create_dyn_pirate_fleet = { Skull = 7 } } }
+						4000 < { prev = { create_dyn_pirate_fleet = { Skull = 11 } } }
+						8000 < { prev = { create_dyn_pirate_fleet = { Skull = 10 Corsair = 4 } } }
+						12000 < { prev = { create_dyn_pirate_fleet = { Skull = 6 Brigand = 6 Corsair = 6 Black_Earl = 2 } } }
+						20000 < { prev = { create_dyn_pirate_fleet = { Skull = 6 Brigand = 6 Marauder = 4 Corsair = 4 Black_Earl = 6 } } }
+						30000 < { prev = { create_dyn_pirate_fleet = { Skull = 8 Brigand = 6 Marauder = 4 Corsair = 8 Black_Earl = 8 } } }
+						50000 < { prev = { create_dyn_pirate_fleet = { Pirate_Galleon = 1 Corsair = 5 Black_Earl = 3 } } }
+						80000 < { prev = { create_dyn_pirate_fleet = { Pirate_Galleon = 1 Skull = 6 Brigand = 6 Corsair = 10 Black_Earl = 6 } } }
+						100000 < { prev = { create_dyn_pirate_fleet = { Pirate_Galleon = 2 Skull = 4 Brigand = 4 Corsair = 4 Black_Earl = 3 } } }
+						200000 < { prev = { create_dyn_pirate_fleet = { Pirate_Galleon = 2 Skull = 8 Brigand = 8 Corsair = 12 Black_Earl = 8 } } }
+						300000 < { prev = { create_dyn_pirate_fleet = { Pirate_Galleon = 3 Skull = 12 Brigand = 12 Corsair = 18 Black_Earl = 12 } } }
+						300000 >= { prev = { create_dyn_pirate_fleet = { Pirate_Galleon = 4 Skull = 16 Brigand = 16 Corsair = 24 Black_Earl = 16 } } }
+					}
+				}
+				assign_leader = last_created_leader
+				set_location = event_target:privateer_home
+				set_fleet_stance = aggressive
+				set_aggro_range_measure_from = self
+				set_aggro_range = 800
+				queue_actions = {
+					find_closest_planet = {
+						trigger = { id = privateer.x1.trigger.1 is_star = yes }
+						found_planet = {
+							orbit_planet = this
+							wait = { duration = 5 random = 5 }
+						}
+					}
+					repeat = {
+						find_closest_system = {
+							trigger = {
+								id = privateer.x1.trigger.2
+								NOR = {
+									has_star_flag = hostile_system
+									has_star_flag = recent_privateer_visit
+								}
+								exists = starbase
+								starbase = {
+									has_starbase_size = starbase_starport
+									exists = space_owner
+									space_owner = { is_playable = yes }
+								}
+							}
+							found_system = { move_to = this }
+						}
+						find_closest_planet = {
+							trigger = { id = privateer.x1.trigger.3 is_star = yes }
+							found_planet = {
+								orbit_planet = this
+								wait = { duration = 5 random = 5 }
+								effect = {
+									id = create_pirate_fleet_npc.1
+									solar_system = {
+										set_timed_star_flag = { flag = recent_privateer_visit years = 3 }
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }

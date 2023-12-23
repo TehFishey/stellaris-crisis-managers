@@ -1,0 +1,31 @@
+## For Compatibility
+## Shared with: The Great Khan Expanded, A Deadly Tempest, Realistic Pirates, Daemonic Incursion, UAP
+
+# Workaround: as is_overlord_to is not working for Khan.
+# This = Satrapy
+is_subject_of_khan = {
+	is_subject = yes # exists = overlord
+	exists = event_target:raider_khanate
+	# overlord = { is_same_empire = prevprev }
+	overlord = { is_same_empire = event_target:raider_khanate }
+	merg_is_default_empire = yes
+	# has_modifier = "satrapy_of_horde"
+	# OR = { # Only to be sure
+	# 	any_agreement = { agreement_preset = preset_machinesmith_satrapy }
+	# 	any_agreement = { agreement_preset = preset_satrapy }
+	# 	any_agreement = { agreement_preset = preset_fabricator_satrapy }
+	# 	any_agreement = { agreement_preset = preset_war_satrapy }
+	# 	# any_agreement = { agreement_preset = preset_nsc_freebooter_satrapy } ### NSC SUPPORT has_global_flag = has_nsc_active
+	# }
+}
+
+# Workaround: As 'is_pirate' is bugged (only shorthand for is_country_type = pirate)
+# Was fixed in 3.4 but is again only a shorthand since 3.8 (or earlier)
+is_pirate_country = {
+	OR = {
+		is_country_type = pirate_waves_country
+		is_country_type = dormant_marauders
+		is_country_type = ruined_marauders
+		is_pirate = yes # is_country_type = pirate
+	}
+}

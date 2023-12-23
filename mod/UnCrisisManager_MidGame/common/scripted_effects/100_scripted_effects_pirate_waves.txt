@@ -244,7 +244,7 @@ create_pirate_waves_countries = {
 			}
 		}
 		every_country = {
-			limit = { is_pirate = yes }
+			limit = { is_pirate_country = yes }
 			set_faction_hostility = {
 				target = prev
 				set_hostile = no
@@ -407,6 +407,7 @@ set_pirates_difficulty = {
 			limit = {
 				exists = root
 				root = {
+					is_scope_valid = yes
 					is_scope_type = country
 					is_ai = no
 				}

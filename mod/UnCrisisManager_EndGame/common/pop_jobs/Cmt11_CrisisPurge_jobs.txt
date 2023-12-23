@@ -27,9 +27,9 @@ CmtPurge = {
 		planet = { exists = controller }
 		planet.controller = { CmtTriggerIsBasicCrisisCountry = yes }
 		NAND = {
+			planet.controller = { CmtTriggerIsContingency = yes }
 			exists = event_target:custodian_bot
 			species = { is_same_value = event_target:custodian_bot }
-			planet.controller = { CmtTriggerIsContingency = yes }
 		}
 	}
 
@@ -52,4 +52,3 @@ CmtPurge = {
 	}
 	weight = { weight = 999999 }		## Must Greater than crisis_purge (19998)
 }
-

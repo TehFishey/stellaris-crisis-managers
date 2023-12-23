@@ -37,12 +37,14 @@ namespace = CrisisManagerControl
 ###  Pulse Event  ###
 #####################
 
+# (on_monthly_pulse)
 event = {
 	id = CrisisManagerControl.400
 	hide_window = yes
 	is_triggered_only = yes
 
 	trigger = {
+		has_global_flag = galactic_crisis_happened
 		has_crisis = yes
 	}
 

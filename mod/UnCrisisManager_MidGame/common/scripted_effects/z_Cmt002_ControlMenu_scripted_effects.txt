@@ -17,12 +17,15 @@ CmtEffectExitMenu = {
 	optimize_memory
 	hidden_effect = {
 		remove_global_flag = CmtFlagTemplateAppliedNow
-		every_playable_country = { remove_country_flag = CmtFlagNowInMenu }
+		every_playable_country = {
+			limit = { has_country_flag = CmtFlagNowInMenu }
+			remove_country_flag = CmtFlagNowInMenu
+		}
 	}
-	default_hide_option = yes
+	# default_hide_option = yes
 }
 
-### For ''We are Crisis''
+###	For ''We are Crisis''
 CmtEffectSaveOriginalCountry = {
 	optimize_memory
 	if = { limit = { merg_is_default_empire = yes }

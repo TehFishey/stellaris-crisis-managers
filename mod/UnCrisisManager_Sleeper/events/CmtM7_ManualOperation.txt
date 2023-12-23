@@ -746,7 +746,6 @@ country_event = {
 	}
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-
 	option = {
 		name = CrisisManagerMenu.71xxa.name
 		custom_tooltip = CrisisManagerMenu.71xxa.tooltip
@@ -801,7 +800,6 @@ country_event = {
 	desc = CrisisManagerMenu.7112.desc
 	picture = GFX_evt_physics_research
 	is_triggered_only = yes
-
 	option = {
 		name = CrisisManagerMenu.71xxa.name
 		custom_tooltip = CrisisManagerMenu.71xxa.tooltip
@@ -832,7 +830,6 @@ country_event = {
 	desc = CrisisManagerMenu.7122.desc
 	picture = GFX_evt_physics_research
 	is_triggered_only = yes
-
 	option = {
 		name = CmtTextOK.name
 		custom_tooltip = CmtTextOK.tooltip
@@ -854,7 +851,6 @@ country_event = {
 	desc = CrisisManagerMenu.7113.desc
 	picture = GFX_evt_federation_fleet
 	is_triggered_only = yes
-
 	option = {
 		name = CrisisManagerMenu.71xxa.name
 		custom_tooltip = CrisisManagerMenu.71xxa.tooltip
@@ -878,7 +874,6 @@ country_event = {
 	desc = CrisisManagerMenu.7114.desc
 	picture = GFX_evt_wormhole
 	is_triggered_only = yes
-
 	option = {
 		name = CrisisManagerMenu.71xxa.name
 		custom_tooltip = CrisisManagerMenu.71xxa.tooltip
@@ -931,7 +926,6 @@ country_event = {
 	desc = CrisisManagerMenu.7115.desc
 	picture = GFX_evt_wormhole
 	is_triggered_only = yes
-
 	option = {
 		name = CrisisManagerMenu.71xxa.name
 		custom_tooltip = CrisisManagerMenu.71xxa.tooltip
@@ -976,7 +970,6 @@ country_event = {
 	desc = CrisisManagerMenu.7116.desc
 	picture = GFX_evt_wormhole
 	is_triggered_only = yes
-
 	option = {
 		name = CrisisManagerMenu.71xxa.name
 		custom_tooltip = CrisisManagerMenu.71xxa.tooltip
@@ -1021,7 +1014,6 @@ country_event = {
 	desc = CrisisManagerMenu.7117.desc
 	picture = GFX_evt_glitchy_matrix
 	is_triggered_only = yes
-
 	option = {
 		name = CrisisManagerMenu.71xxa.name
 		custom_tooltip = CrisisManagerMenu.71xxa.tooltip
@@ -1052,7 +1044,6 @@ country_event = {
 	desc = CrisisManagerMenu.7127.desc
 	picture = GFX_evt_glitchy_matrix
 	is_triggered_only = yes
-
 	option = {
 		name = CmtTextOK.name
 		custom_tooltip = CmtTextOK.tooltip
@@ -1074,7 +1065,6 @@ country_event = {
 	desc = CrisisManagerMenu.7118.desc
 	picture = GFX_evt_ringworld
 	is_triggered_only = yes
-
 	option = {
 		name = CrisisManagerMenu.71xxa.name
 		custom_tooltip = CrisisManagerMenu.71xxa.tooltip
@@ -1098,7 +1088,6 @@ country_event = {
 	desc = CrisisManagerMenu.7119.desc
 	picture = GFX_evt_unspeakable_horror
 	is_triggered_only = yes
-
 	option = {
 		name = CrisisManagerMenu.71xxa.name
 		custom_tooltip = CrisisManagerMenu.71xxa.tooltip
@@ -1134,7 +1123,6 @@ country_event = {
 	desc = CrisisManagerMenu.7129.desc
 	picture = GFX_evt_unspeakable_horror
 	is_triggered_only = yes
-
 	option = {
 		name = CmtTextOK.name
 		custom_tooltip = CmtTextOK.tooltip
@@ -1156,7 +1144,6 @@ country_event = {
 	desc = CrisisManagerMenu.7135.desc
 	picture = GFX_evt_fallen_empire_awakes
 	is_triggered_only = yes
-
 	immediate = { CmtEffectManualTargetSleepers = yes }
 	after = {
 		hidden_effect = {
@@ -1284,7 +1271,7 @@ country_event = {
 			}
 		}
 	}
-	option = { # Create New FE
+	option = { # Create New Deus Ex Machina FE (Sleeper Edition)
 		name = CrisisManagerMenu.7135c7.name # CREATE_NEW_EMPIRE
 		custom_tooltip = CrisisManagerMenu.7135c.tooltip
 		trigger = {
@@ -1742,7 +1729,7 @@ country_event = {
 						weights = {
 							base = 1
 							modifier = { add = 3 has_planet_flag = marauder_rally_point }
-							modifier = { add = 2 is_a_planet = yes } # possible inconsisent due other mods
+							modifier = { add = 2 is_a_planet = yes } # Possible inconsisent due other mods
 						}
 						save_event_target_as = former_marauder_capital
 						log="Manual marauder strong fallback \\[This.GetName]"
@@ -2950,18 +2937,20 @@ country_event = {
 							planet_event = { id = crisis.2043 days = 15 } ## Backup
 						}
 					}
-				} else_if = {
+				}
+				else_if = {
 					limit = { any_galaxy_planet = { is_planet_class = pc_ai } }
 					random_galaxy_planet = {
 						limit = { is_planet_class = pc_ai } # has_planet_flag = machine_lair
 						planet_event = { id = crisis.2046 days = 3 }
 					}
-				} else = {
+				}
+				else = {
 					random_galaxy_planet = {
 						limit = { has_planet_flag = crisis_vital_planet }
 						planet_event = { id = crisis.2046 }
 					}
-				 }
+			 }
 			}
 			# country_event = { id = CrisisManagerMenu.7000 }
 		}
@@ -3012,9 +3001,7 @@ country_event = {
 	desc = CrisisManagerMenu.7205.desc
 	picture = GFX_evt_fallen_empire_awakes
 	is_triggered_only = yes
-
 	immediate = { CmtEffectManualTargetSleepers = yes }
-
 	after = {
 		hidden_effect = { CmtEffectClearTargetSleepers = yes }
 		country_event = { id = CrisisManagerMenu.7200 }

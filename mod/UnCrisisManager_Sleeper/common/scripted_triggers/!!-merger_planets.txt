@@ -50,7 +50,7 @@ merg_is_habitat = {
 	habitable_structure = yes # Exlcude some entities is_artificial = yes
 	OR = {
 		is_planet_class = pc_habitat
-		# has_ringworld_output_boost = no # there are mods which trigger habitats as ringworlds like Giga
+		# has_ringworld_output_boost = no # There are mods which trigger habitats as ringworlds like Giga
 		is_pd_habitat = yes # Planetary Diversity
 		# uses_district_set = pdplanethab # Planetary Diversity
 		is_planet_class = pc_interstellar_habitat ### (Mod) Gigastructural Engineering & More - compatibility

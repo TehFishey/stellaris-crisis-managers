@@ -13,7 +13,7 @@
 ###- Basic Trigger -###
 #######################
 
-### For Spawning Each Countries, Scope: this = Stellar System
+###	For Spawning Each Countries, Scope: this = Stellar System
 CmtTriggerSpawnableSystem = {
 	optimize_memory
 	NOR = {
@@ -29,7 +29,7 @@ CmtTriggerSpawnableSystem = {
 		has_star_flag = extradimensional_second_portal_system
 		has_star_flag = extradimensional_third_portal_system
 		has_star_flag = AI_hub		## Machiene World 1-4, cf. planet_flag = machine_world_1
-		has_star_flag = AI_lair		## Final MAchiene World, cf. planet flag = machine_lair
+		has_star_flag = AI_lair		## Final MAchiene World, cf. Planet flag = machine_lair
 		has_star_flag = cybrex_beta
 		has_star_flag = marauder_capital_1
 		has_star_flag = marauder_capital_2
@@ -172,6 +172,7 @@ CmtTriggerIsMarauder = {
 		is_country_type = dormant_marauders
 		is_country_type = ruined_marauders
 		is_country_type = awakened_marauders
+		is_country_type = awakened_marauders_ev
 		is_country_type = marauder_raiders
 	}
 }

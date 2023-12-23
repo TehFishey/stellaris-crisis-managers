@@ -1,0 +1,19 @@
+# Placeholder since 3.9.1 (parser crashes if missing)
+namespace = CrisisManagerControl # not really needed but to omit error.log
+country_event = {
+	id = CrisisManagerControl.7205
+	hide_window = yes
+	is_triggered_only = yes
+	is_test_event = yes
+	trigger = { always = no }
+	immediate = {  }
+}
+namespace = extra_sleeper_deus
+country_event = {
+	id = extra_sleeper_deus.1
+	hide_window = yes
+	is_triggered_only = yes
+	is_test_event = yes
+	trigger = { always = no }
+	immediate = {  }
+}

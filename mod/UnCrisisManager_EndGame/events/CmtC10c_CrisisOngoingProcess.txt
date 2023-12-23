@@ -45,9 +45,7 @@ country_event = {
 		CmtTriggerInCrisisNow = no
 	}
 
-	immediate = {
-		CmtEffectSetIntervalFlag = yes
-	}
+	immediate = { CmtEffectSetIntervalFlag = yes }
 }
 
 ### Dead End
@@ -67,9 +65,7 @@ country_event = {
 		}
 	}
 
-	immediate = {
-		CmtEffectHostileCrisis = yes
-	}
+	immediate = { CmtEffectHostileCrisis = yes }
 }
 
 ###################################################
@@ -82,13 +78,15 @@ country_event = {
 #	Contingency:	crisis.2041, 2044
 #
 
-### Occupy Planets by Ground Combat / Start Purging (Prethoryn, Contingency)
+### Occupy Planets by Ground Combat / Start Purging (Prethoryn, Contingency - on_planet_attackers_win)
+# this = country (attacker), from = country (planet owner), fromfrom = planet
 country_event = {
 	id = CrisisManagerControl.41
 	hide_window = yes
 	is_triggered_only = yes
 
 	trigger = {
+		has_global_flag = galactic_crisis_happened
 		OR = {
 			CmtTriggerIsPrethoryn = yes
 			CmtTriggerIsContingency = yes
@@ -101,8 +99,7 @@ country_event = {
 			add_threat = { who = root amount = 2 }
 			set_controller = root
 			# ^ maxes out purge job weight
-			# Create and kill a pop to force job assignment updates.
-			create_pop = {}
+			create_pop = {} # Create and kill a pop to force job assignment updates.
 			last_created_pop = { kill_pop = yes }
 		}
 
@@ -133,9 +130,7 @@ country_event = {
 					}
 				}
 			}
-			fromfrom = {
-				conquer = root
-			}
+			fromfrom = { conquer = root }
 		}
 		if = {
 			limit = {
@@ -271,7 +266,8 @@ planet_event = {
 					amount = 1
 				}
 			}
-		} else_if = {
+		}
+		else_if = {
 			limit = { controller = { is_country_type = extradimensional_2 } }
 			every_playable_country = {
 				limit = { has_event_chain = extradimensional_invasion_chain_2 }
@@ -281,7 +277,8 @@ planet_event = {
 					amount = 1
 				}
 			}
-		} else_if = {
+		}
+		else_if = {
 			limit = { controller = { is_country_type = extradimensional_3 } }
 			every_playable_country = {
 				limit = { has_event_chain = extradimensional_invasion_chain_3 }
@@ -296,40 +293,43 @@ planet_event = {
 		### Change Planet Class, etc.
 		destroy_colony = yes
 		if = {
-			limit = {
-				is_artificial = no
-			}
+			limit = { is_artificial = no }
 			random_list = {
 				50 = { change_pc = pc_barren }
 				50 = { change_pc = pc_barren_cold }
 			}
 			reset_planet = yes
 			add_modifier = { modifier = terraforming_candidate }
-		} else = {
+		}
+		else = {
 			if = {
-				limit = { merg_is_hab_ringworld = yes }
+				limit = { is_ringworld = yes }
 				change_pc = pc_ringworld_habitable_damaged
 				reset_planet = yes
-			} else_if = {
+			}
+			else_if = {
 				limit = { merg_is_habitat = yes }
 				remove_planet = yes
 			}
 		}
 	}
 
-	option = {
-		name = crisis.1011.a
-	}
+	option = { name = crisis.1011.a }
 }
 
-### Auxiliary Process for Purging
+### Auxiliary Process for Purging (on_monthly_pulse)
 event = {
 	id = CrisisManagerControl.44
 	hide_window = yes
 	is_triggered_only = yes
 
 	trigger = {
+		has_global_flag = galactic_crisis_happened
 		event_target:CmtGlobalVar = { check_variable = { which = CmtVarPurgeSpeed value > 4.5 } }
+		OR = {
+			crisis_happened_and_defeated = no
+			any_country = { CmtTriggerIsBasicCrisisCountry = yes }
+		}
 	}
 
 	immediate = {
@@ -338,7 +338,8 @@ event = {
 				limit = { check_variable = { which = CmtVarPurgeSpeed value = 5 } }
 				country_event = { id = CrisisManagerControl.45 days = 10 }
 				country_event = { id = CrisisManagerControl.45 days = 20 }
-			} else_if = {
+			}
+			else_if = {
 				limit = {
 					OR = {
 						check_variable = { which = CmtVarPurgeSpeed value = 6 }
@@ -367,28 +368,30 @@ country_event = {
 	trigger = {
 		is_country_type = global_event
 		check_variable = { which = CmtVarPurgeSpeed value > 4.5 }
+		any_country = { CmtTriggerIsBasicCrisisCountry = yes }
 	}
 
 	immediate = {
-		every_country = {
-			limit = { CmtTriggerIsBasicCrisisCountry = yes }
+		random_country = {
+			limit = {
+				CmtTriggerIsBasicCrisisCountry = yes
+				any_controlled_planet = { num_pops = 1 }
+			}
 			every_controlled_planet = {
 				if = {
-					limit = { num_pops = 1 }
+					limit = {
+						num_pops = 1
+						NAND = {
+							exists = event_target:custodian_bot
+							controller = { CmtTriggerIsContingency = yes }
+							any_owned_species = { is_same_species = event_target:custodian_bot }
+						}
+					}
 					planet_event = { id = crisis.202 }		## Prethoryn
 					planet_event = { id = CrisisManagerControl.43 }		## Exds
 					planet_event = { id = crisis.2044 }		## Contingency
 				}
-				random_owned_pop = {
-					limit = {
-						NAND = {
-							exists = event_target:custodian_bot
-							species = { is_same_value = event_target:custodian_bot }
-							planet.controller = { CmtTriggerIsContingency = yes }
-						}
-					}
-					kill_pop = yes
-				}
+				random_owned_pop = { kill_pop = yes }
 			}
 		}
 	}

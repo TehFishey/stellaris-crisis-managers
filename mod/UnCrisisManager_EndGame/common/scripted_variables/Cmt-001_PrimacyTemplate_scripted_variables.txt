@@ -191,7 +191,7 @@
 	@CmtT001_ConstExdsChaserAnywhere = no
 		### yes: Spawn anywhere in the galaxy
 		### no : Spawn only inside border of Unbidden (Default)
-		### Caution: this option must be set ''yes'' if ''@CmtT001_ConstExdsChaserCondition = 6'' (Avenger) is selected.
+		### Caution: This option must be set ''yes'' if ''@CmtT001_ConstExdsChaserCondition = 6'' (Avenger) is selected.
 
 ### Less Reinforcement on Starbases Built.
 	@CmtT001_ConstReinforceCycle_OnExdAnchorBuilt = 1
@@ -314,7 +314,7 @@
 		### Short = 4, As Soon as Condition Satisfied = 5
 
 ### Fleet Power of Young for Awakening.
-	@CmtT001_ConstSleeperFleetPowerYoung = 70
+	@CmtT001_ConstSleeperFleetPowerYoung = 90
 		### Set Fleet Power in ** k. For example, ''10'' means 10 k
 		### It must be -1, 15, 25, 35, 50, 70, 90, 140, 210, 350 or 999 (Default = 70).
 		### Exception: -1 means ''Unlimited''
@@ -414,7 +414,7 @@
 	@CmtT001_ConstDoubleGurdian = 1
 		### Forbidden = 1 (Default), Low Probability = 2, High Probability = 3, Forced = 4
 		### Only Materialist Can Awaken = 1.1, Only Xenophile Can Awaken = 1.1
-		### * Fallen Machine Empire Igore this Configuration
+		### * Fallen Machine Empire ignore this Configuration
 
 ### Worn-Out Guardians
 	@CmtT001_ConstGuardianWornOut = 1
@@ -434,7 +434,7 @@
 #
 
 ### Multiple Great Khans
-	@CmtT001_ConstKhanMultiple = 5
+	@CmtT001_ConstKhanMultiple = 3
 		### No Khan = 1, Single Khan = 2 (Default), Multiple Khans = 3
 		### N/A = 4, Great Great Khan = 5 (Beta)
 
@@ -482,7 +482,7 @@
 		### Critical = 1, Fleeting = 2, Standard Lifespan = 3 (Default)
 		### Enduring = 4, Venerable = 5, Immortality = 6
 
-### Latent Strength of Horde in Adversity.
+### Latent Strength of Horde in Adversity (SEEMS a bit BETA).
 	@CmtT001_ConstReinforceCycle_Khan = 1
 		### Disable = 1 (Default), Weak = 2, Middle = 3, Strong = 4
 
@@ -562,14 +562,13 @@
 		### Can Terraformed for Any L-Cluster = 6
 
 ######################
-###  Crisis Power  ###
+###- Crisis Power -###
 ######################
 #
 #	Required for activating: Crisis Manager - End-Game Edition and/or Mid-Game Edition
 #	Required for activating: @CmtT001_ConstActivatedFleetPower = yes
 #
 
-### Template of Crisis Power
 ### Template of Crisis Power
 	@CmtT001_ConstCrisisStrengthEnd = 2		## For End-Game Crisis
 	@CmtT001_ConstCrisisStrengthMid = 2		## For Mid-Game Crisis (Khan & Gray Tempest)

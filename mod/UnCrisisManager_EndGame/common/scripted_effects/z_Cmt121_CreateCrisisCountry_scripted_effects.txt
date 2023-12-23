@@ -373,7 +373,7 @@ CmtEffectCallVehement = {
 	}
 
 	event_target:third_portal_system = {
-		#CmtEffectCreateCountryVehement = {	## Scope = Stellar System
+		# CmtEffectCreateCountryVehement = {	## Scope = Stellar System
 		set_star_flag = extradimensional_third_portal_system
 
 		random_system_planet = {

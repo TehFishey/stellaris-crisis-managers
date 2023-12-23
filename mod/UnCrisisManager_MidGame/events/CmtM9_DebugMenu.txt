@@ -18,18 +18,17 @@ country_event = {
 	desc = CrisisManagerMenu.9000.desc
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
+	trigger = { has_global_flag = CmtFlagDebugMode }
 
 	## Variable Checker
 	option = {
 		name = CrisisManagerMenu.9000.9100.name
-		trigger = { has_global_flag = CmtFlagDebugMode }
 		country_event = { id = CrisisManagerMenu.9100 }
 	}
 
 	## Flag Controller
 	option = {
 		name = CrisisManagerMenu.9000.9200.name
-		trigger = { has_global_flag = CmtFlagDebugMode }
 		country_event = { id = CrisisManagerMenu.9200 }
 	}
 
@@ -44,28 +43,24 @@ country_event = {
 	## Count Triggered Crisis
 	option = {
 		name = CrisisManagerMenu.9000.9310.name
-		trigger = { has_global_flag = CmtFlagDebugMode }
 		country_event = { id = CrisisManagerMenu.9310 }
 	}
 
 	## Count Awakening of Sleeper
 	option = {
 		name = CrisisManagerMenu.9000.9320.name
-		trigger = { has_global_flag = CmtFlagDebugMode }
 		country_event = { id = CrisisManagerMenu.9320 }
 	}
 
 	## Count Ancient Rival
 	option = {
 		name = CrisisManagerMenu.9000.9330.name
-		trigger = { has_global_flag = CmtFlagDebugMode }
 		country_event = { id = CrisisManagerMenu.9330 }
 	}
 
 	## Count Guardians of Galaxy
 	option = {
 		name = CrisisManagerMenu.9000.9340.name
-		trigger = { has_global_flag = CmtFlagDebugMode }
 		country_event = { id = CrisisManagerMenu.9340 }
 	}
 
@@ -80,14 +75,12 @@ country_event = {
 	## FIOS/LIOS Test
 	option = {
 		name = CrisisManagerMenu.9000.9910.name
-		trigger = { has_global_flag = CmtFlagDebugMode }
 		country_event = { id = CrisisManagerMenu.9910 }
 	}
 
 	## If/Else Test
 	option = {
 		name = CrisisManagerMenu.9000.9920.name
-		trigger = { has_global_flag = CmtFlagDebugMode }
 		country_event = { id = CrisisManagerMenu.9920 }
 	}
 
@@ -223,7 +216,7 @@ country_event = {
 	desc = CrisisManagerMenu.9310.desc
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-
+	is_test_event = yes
 	option = {
 		name = CrisisManagerMenu.9310a.name
 		while = {
@@ -280,7 +273,7 @@ country_event = {
 	desc = CrisisManagerMenu.9320.desc
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-
+	is_test_event = yes
 	option = {
 		name = CrisisManagerMenu.9320a1.name
 		every_country = {
@@ -348,7 +341,7 @@ country_event = {
 	desc = CrisisManagerMenu.9330.desc
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
-
+	is_test_event = yes
 	option = {
 		name = CrisisManagerMenu.9330a.name
 		random_country = {

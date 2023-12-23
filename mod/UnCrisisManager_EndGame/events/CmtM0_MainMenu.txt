@@ -255,9 +255,9 @@ country_event = {
 			if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.1000 } } }
 				country_event = { id = CrisisManagerMenu.1000 }
 			}
-			if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.9000 } } }
-				country_event = { id = CrisisManagerMenu.9000 }
-			}
+			# if = { limit = { NOT = { has_active_event = { CrisisManagerMenu.9000 } } }
+			# 	country_event = { id = CrisisManagerMenu.9000 }
+			# }
 			remove_global_flag = CmtFlagTemplateAppliedNow
 		}
 	}

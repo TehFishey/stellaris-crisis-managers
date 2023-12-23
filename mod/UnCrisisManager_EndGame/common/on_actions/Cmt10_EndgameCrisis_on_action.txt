@@ -11,14 +11,14 @@
 
 on_monthly_pulse = {
 	events = {
-		CrisisManagerControl.44		## Auxiliary Process for Purging
+		CrisisManagerControl.44			## Auxiliary Process for Purging
 		CrisisManagerControl.400		## Sound Control
 	}
 }
 
 on_yearly_pulse = {
 	events = {
-		crisis.206		## Reinforcement of Prethoryn
+		crisis.206			## Reinforcement of Prethoryn
 	}
 }
 
