@@ -1260,7 +1260,7 @@ ship_event = {
 			owner = {
 				# CmtEffectCreateAdmiral_PetQueen
 				create_leader = {
-					class = admiral
+					class = commander
 					species = event_target:swarm_species
 					name = "NAME_Fleet_Consciousness"
 					skill = 8
@@ -1712,7 +1712,7 @@ country_event = {
 
 	option = {
 		name = crisis.16.a
-		trigger = { owner_species = { NOT = { has_trait = trait_hive_mind } } }
+		trigger = { owner_species = { is_hive_species = no } }
 	}
 
 	option = {

@@ -48,7 +48,7 @@ CmtTriggerFeralPrethorynSpawnableSystem = {
 		has_star_flag = extradimensional_second_portal_system
 		has_star_flag = extradimensional_third_portal_system
 		has_star_flag = AI_hub		## Machiene World 1-4, cf. planet_flag = machine_world_1
-		has_star_flag = AI_lair		## Final MAchiene World, cf. planet flag = machine_lair
+		has_star_flag = AI_lair		## Final MAchiene World, cf. Planet flag = machine_lair
 	}
 	any_system_planet = { has_planet_flag = previously_infested }
 }
@@ -242,7 +242,7 @@ CmtTriggerEmpireAwakenableGuardians = {
 ### Trigger FEoC
 
 CmtTriggerPotentialForcedEoc = {	## Used for Trigger Lottery (Modify 'Nothing')
-	host_has_dlc = "Utopia"
+	has_utopia = yes
 	has_global_flag = CmtFlagAllowForcedEoc
 }
 
@@ -262,7 +262,7 @@ CmtTriggerForbiddenForcedEoc = {	## Used for Trigger Lottery (Modify 'FEoc')
 }
 
 CmtTriggerAllowedManualForcedEoc = {
-	host_has_dlc = "Utopia"
+	has_utopia = yes
 	NOR = {
 		has_global_flag = end_of_the_cycle
 		has_global_flag = end_of_the_cycle_complete

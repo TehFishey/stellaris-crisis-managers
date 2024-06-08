@@ -6,7 +6,7 @@ namespace = CrisisManagerMenu
 #####	Crisis Manager				#####
 #####								#####
 #####	Advanced Congigurations		#####
-#####	for End-Game Crisis			#####
+#####	For End-Game Crisis			#####
 #####								#####
 #########################################
 #########################################
@@ -101,23 +101,23 @@ country_event = {
 	title = CrisisManagerMenu.4120.name
 	desc = {
 		text = CrisisManagerMenu.4120.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPrethorynQueen value = 1 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPrethorynQueen value = 1 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4120.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPrethorynQueen value = 2 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPrethorynQueen value = 2 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4120.desc3
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPrethorynQueen value = 3 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPrethorynQueen value = 3 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4120.desc4
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPrethorynQueen value = 4 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarPrethorynQueen value = 4 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4120.desc
-		trigger = {
+		exclusive_trigger = {
 			event_target:CmtGlobalVar = {
 				OR = {
 					check_variable = { which = CmtVarPrethorynQueen value < 1 }
@@ -181,27 +181,27 @@ country_event = {
 	title = CrisisManagerMenu.4130.name
 	desc = {
 		text = CrisisManagerMenu.4130.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 1 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 1 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4130.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 2 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 2 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4130.desc3
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 3 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 3 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4130.desc4
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 4 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 4 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4130.desc5
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 5 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSentinelRise value = 5 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4130.desc
-		trigger = {
+		exclusive_trigger = {
 			event_target:CmtGlobalVar = {
 				OR = {
 					check_variable = { which = CmtVarSentinelRise value < 1 }
@@ -328,23 +328,23 @@ country_event = {
 	title = CrisisManagerMenu.4150.name
 	desc = {
 		text = CrisisManagerMenu.4150.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFeralPrethoryn value = 1 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFeralPrethoryn value = 1 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4150.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFeralPrethoryn value = 2 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFeralPrethoryn value = 2 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4150.desc3
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFeralPrethoryn value = 3 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFeralPrethoryn value = 3 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4150.desc4
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFeralPrethoryn value = 4 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFeralPrethoryn value = 4 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4150.desc
-		trigger = {
+		exclusive_trigger = {
 			event_target:CmtGlobalVar = {
 				OR = {
 					check_variable = { which = CmtVarFeralPrethoryn value < 1 }
@@ -572,31 +572,31 @@ country_event = {
 	title = CrisisManagerMenu.4220.name
 	desc = {
 		text = CrisisManagerMenu.4220.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 1 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 1 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4220.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 2 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 2 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4220.desc3
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 3 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 3 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4220.desc4
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 4 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 4 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4220.desc5
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 5 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 5 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4220.desc6
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 6 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 6 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4220.desc
-		trigger = {
+		exclusive_trigger = {
 			event_target:CmtGlobalVar = {
 				OR = {
 					check_variable = { which = CmtVarExdsChaserCondition value < 1 }
@@ -716,7 +716,7 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.4230a1.name
 		custom_tooltip = CrisisManagerMenu.4230a1.tooltip
-		trigger = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value = 6 } } } }
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsChaserCondition value != 6 } } }
 		hidden_effect = { remove_global_flag = CmtFlagExdsChaserAnywhere }
 	}
 	option = {
@@ -749,7 +749,7 @@ country_event = {
 	}
 	desc = {
 		text = CrisisManagerMenu.4240.descn
-		trigger = {
+		exclusive_trigger = {
 			event_target:CmtGlobalVar = {
 				NOT = { check_variable = { which = CmtVarReinforceCycle_OnExdAnchorBuilt value > 510 } }
 				check_variable = { which = CmtVarReinforceCycle_OnExdAnchorBuilt value > 1.5 }
@@ -758,7 +758,7 @@ country_event = {
 	}
 	desc = {
 		text = CrisisManagerMenu.4240.desc6
-		trigger = {
+		exclusive_trigger = {
 			event_target:CmtGlobalVar = {
 				NOT = { check_variable = { which = CmtVarReinforceCycle_OnExdAnchorBuilt value > 1.5 } }
 				check_variable = { which = CmtVarReinforceCycle_OnExdAnchorBuilt value > 0.5 }
@@ -767,7 +767,7 @@ country_event = {
 	}
 	desc = {
 		text = CrisisManagerMenu.4240.desc
-		trigger = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarReinforceCycle_OnExdAnchorBuilt value > 0.5 } } } }
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarReinforceCycle_OnExdAnchorBuilt value <= 0.5 } } }
 	}
 	picture = GFX_evt_wormhole
 	is_triggered_only = yes
@@ -844,11 +844,11 @@ country_event = {
 	title = CrisisManagerMenu.4250.name
 	desc = {
 		text = CrisisManagerMenu.4250.desc0
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsPortalStability value > @CmtConstPortalStability_T9 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsPortalStability value > @CmtConstPortalStability_T9 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4250.desc1
-		trigger = {
+		exclusive_trigger = {
 			event_target:CmtGlobalVar = {
 				NOR = {
 					check_variable = { which = CmtVarExdsPortalStability value > @CmtConstPortalStability_T9 }
@@ -859,7 +859,7 @@ country_event = {
 	}
 	desc = {
 		text = CrisisManagerMenu.4250.desct
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T0 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarExdsPortalStability value < @CmtConstPortalStability_T0 } } }
 	}
 	picture = GFX_evt_wormhole
 	is_triggered_only = yes
@@ -1030,27 +1030,27 @@ country_event = {
 	title = CrisisManagerMenu.4330.name
 	desc = {
 		text = CrisisManagerMenu.4330.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 1 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4330.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 2 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4330.desc3
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 3 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 3 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4330.desc4
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 4 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4330.desc5
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGhostStrength value = 5 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4330.desc
-		trigger = {
+		exclusive_trigger = {
 			event_target:CmtGlobalVar = {
 				OR = {
 					check_variable = { which = CmtVarGhostStrength value < 1 }
@@ -1119,27 +1119,27 @@ country_event = {
 	title = CrisisManagerMenu.4340.name
 	desc = {
 		text = CrisisManagerMenu.4340.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 1 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 1 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4340.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 2 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 2 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4340.desc3
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 3 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 3 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4340.desc4
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 4 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 4 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4340.desc5
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 5 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarSynthTerrorEventSpeed value = 5 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4340.desc
-		trigger = {
+		exclusive_trigger = {
 			event_target:CmtGlobalVar = {
 				OR = {
 					check_variable = { which = CmtVarSynthTerrorEventSpeed value < 1 }
@@ -1211,27 +1211,27 @@ country_event = {
 	title = CrisisManagerMenu.4350.name
 	desc = {
 		text = CrisisManagerMenu.4350.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFreqTerror value = 1 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFreqTerror value = 1 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4350.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFreqTerror value = 2 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFreqTerror value = 2 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4350.desc3
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFreqTerror value = 3 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFreqTerror value = 3 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4350.desc4
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFreqTerror value = 4 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFreqTerror value = 4 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4350.desc5
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFreqTerror value = 5 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFreqTerror value = 5 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4350.desc
-		trigger = {
+		exclusive_trigger = {
 			event_target:CmtGlobalVar = {
 				OR = {
 					check_variable = { which = CmtVarFreqTerror value < 1 }
@@ -1351,27 +1351,27 @@ country_event = {
 	title = CrisisManagerMenu.4370.name
 	desc = {
 		text = CrisisManagerMenu.4370.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCybrexResurfacing value = 1 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCybrexResurfacing value = 1 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4370.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCybrexResurfacing value = 2 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCybrexResurfacing value = 2 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4370.desc3
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCybrexResurfacing value = 3 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCybrexResurfacing value = 3 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4370.desc4
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCybrexResurfacing value = 4 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCybrexResurfacing value = 4 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4370.desc5
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCybrexResurfacing value = 5 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCybrexResurfacing value = 5 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4370.desc
-		trigger = {
+		exclusive_trigger = {
 			event_target:CmtGlobalVar = {
 				OR = {
 					check_variable = { which = CmtVarCybrexResurfacing value < 1 }
@@ -1525,19 +1525,19 @@ country_event = {
 	title = CrisisManagerMenu.4420.name
 	desc = {
 		text = CrisisManagerMenu.4420.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocTargetPlayer value = 1 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocTargetPlayer value = 1 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4420.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocTargetPlayer value = 2 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocTargetPlayer value = 2 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4420.desc3
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocTargetPlayer value = 3 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocTargetPlayer value = 3 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4420.desc
-		trigger = {
+		exclusive_trigger = {
 			event_target:CmtGlobalVar = {
 				OR = {
 					check_variable = { which = CmtVarForcedEocTargetPlayer value < 1 }
@@ -1667,23 +1667,23 @@ country_event = {
 	title = CrisisManagerMenu.4440.name
 	desc = {
 		text = CrisisManagerMenu.4440.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocCountryStrength value = 1 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocCountryStrength value = 1 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4440.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocCountryStrength value = 2 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocCountryStrength value = 2 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4440.desc3
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocCountryStrength value = 3 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocCountryStrength value = 3 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4440.desc4
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocCountryStrength value = 4 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarForcedEocCountryStrength value = 4 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4440.desc
-		trigger = {
+		exclusive_trigger = {
 			event_target:CmtGlobalVar = {
 				OR = {
 					check_variable = { which = CmtVarForcedEocCountryStrength value < 1 }
@@ -1836,23 +1836,23 @@ country_event = {
 	title = CrisisManagerMenu.4710.name
 	desc = {
 		text = CrisisManagerMenu.4710.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGuardiansProbability value = 1 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGuardiansProbability value = 1 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4710.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGuardiansProbability value = 2 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGuardiansProbability value = 2 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4710.desc3
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGuardiansProbability value = 3 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGuardiansProbability value = 3 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4710.desc4
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGuardiansProbability value = 4 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGuardiansProbability value = 4 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4710.desc
-		trigger = {
+		exclusive_trigger = {
 			event_target:CmtGlobalVar = {
 				OR = {
 					check_variable = { which = CmtVarGuardiansProbability value < 1 }
@@ -1919,23 +1919,23 @@ country_event = {
 	title = CrisisManagerMenu.4720.name
 	desc = {
 		text = CrisisManagerMenu.4720.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTimingAwakingGuardians value = 1 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTimingAwakingGuardians value = 1 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4720.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTimingAwakingGuardians value = 2 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTimingAwakingGuardians value = 2 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4720.desc3
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTimingAwakingGuardians value = 3 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTimingAwakingGuardians value = 3 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4720.desc4
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTimingAwakingGuardians value = 4 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarTimingAwakingGuardians value = 4 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4720.desc
-		trigger = {
+		exclusive_trigger = {
 			event_target:CmtGlobalVar = {
 				OR = {
 					check_variable = { which = CmtVarTimingAwakingGuardians value < 1 }
@@ -1999,31 +1999,31 @@ country_event = {
 	title = CrisisManagerMenu.4730.name
 	desc = {
 		text = CrisisManagerMenu.4730.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarDoubleGurdian value = 1 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarDoubleGurdian value = 1 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4730.desc11
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarDoubleGurdian value = 1.1 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarDoubleGurdian value = 1.1 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4730.desc12
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarDoubleGurdian value = 1.2 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarDoubleGurdian value = 1.2 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4730.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarDoubleGurdian value = 2 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarDoubleGurdian value = 2 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4730.desc3
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarDoubleGurdian value = 3 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarDoubleGurdian value = 3 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4730.desc4
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarDoubleGurdian value = 4 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarDoubleGurdian value = 4 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4730.desc
-		trigger = {
+		exclusive_trigger = {
 			event_target:CmtGlobalVar = {
 				OR = {
 					check_variable = { which = CmtVarDoubleGurdian value < 1 }
@@ -2097,19 +2097,19 @@ country_event = {
 	title = CrisisManagerMenu.4740.name
 	desc = {
 		text = CrisisManagerMenu.4740.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGuardianWornOut value = 1 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGuardianWornOut value = 1 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4740.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGuardianWornOut value = 2 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGuardianWornOut value = 2 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4740.desc3
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGuardianWornOut value = 3 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarGuardianWornOut value = 3 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4740.desc
-		trigger = {
+		exclusive_trigger = {
 			event_target:CmtGlobalVar = {
 				NOR = {
 					check_variable = { which = CmtVarGuardianWornOut value = 1 }
@@ -2169,23 +2169,23 @@ country_event = {
 	title = CrisisManagerMenu.4750.name
 	desc = {
 		text = CrisisManagerMenu.4750.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMechFeAwaking value = 1 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMechFeAwaking value = 1 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4750.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMechFeAwaking value = 2 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMechFeAwaking value = 2 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4750.desc3
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMechFeAwaking value = 3 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMechFeAwaking value = 3 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4750.desc4
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMechFeAwaking value = 4 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMechFeAwaking value = 4 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.4750.desc
-		trigger = {
+		exclusive_trigger = {
 			event_target:CmtGlobalVar = {
 				OR = {
 					check_variable = { which = CmtVarMechFeAwaking value < 1 }

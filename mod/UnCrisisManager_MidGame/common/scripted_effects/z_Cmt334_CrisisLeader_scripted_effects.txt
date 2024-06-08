@@ -5,7 +5,7 @@
 #####	Crisis Manager							#####
 #####											#####
 #####	Scripted Effects for Creating Leader	#####
-#####	of End-Game Crises						#####
+#####	Of End-Game Crises						#####
 #####											#####
 ######################################################
 ######################################################
@@ -36,7 +36,7 @@ CmtEffectCreateAdmiral_MarauderStandard = {
 		create_marauder_merc_admiral = yes
 	} else = {
 		create_leader = {
-			class = admiral
+			class = commander
 			species = event_target:marauder_species
 			name = random
 			skill = 3
@@ -50,7 +50,7 @@ CmtEffectCreateAdmiral_MarauderStandard = {
 
 CmtEffectCreateAdmiral_MarauderEncourager = {
 	create_leader = {
-		class = admiral
+		class = commander
 		species = event_target:satrapy_species
 		name = random
 		leader_age_min = 34
@@ -64,7 +64,7 @@ CmtEffectCreateAdmiral_MarauderEncourager = {
 
 CmtEffectCreateAdmiral_OwnerStandard = {
 	create_leader = {
-		class = admiral
+		class = commander
 		species = owner_species
 		name = random
 		skill = 3

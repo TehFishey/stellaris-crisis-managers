@@ -53,6 +53,26 @@
 #	Encourager	: { 22, 14,		8, 0} =		82
 #	Reinforce 2	: {		-,		-,		-, -} =		26 - 180
 #
+@CmtConstKhanConstructorUpperLimit =	5		## -1
+@CmtConstKhanArmyUpperLimit =			40		## -1
+@CmtConstKhanFleetPowerUpperLimit_Base = 100000		## 100 k
+
+@CmtConstKhanFleetPowerUpperLimit_V1 =	25000		##		25 k
+@CmtConstKhanFleetPowerUpperLimit_V2 =	50000		##		50 k
+@CmtConstKhanFleetPowerUpperLimit_V3 =	75000		##		75 k
+@CmtConstKhanFleetPowerUpperLimit_V4 =	100000		##		100 k
+@CmtConstKhanFleetPowerUpperLimit_V5 =	150000		##		150 k
+@CmtConstKhanFleetPowerUpperLimit_V6 =	250000		##		250 k
+@CmtConstKhanFleetPowerUpperLimit_V7 =	500000		##		500 k
+@CmtConstKhanFleetPowerUpperLimit_V8 =	1000000		## 1000 k
+
+@CmtConstKhanFleetPowerUpperLimit_T1 =	37500		##		37.5 k
+@CmtConstKhanFleetPowerUpperLimit_T2 =	62500		##		62.5 k
+@CmtConstKhanFleetPowerUpperLimit_T3 =	87500		##		87.5 k
+@CmtConstKhanFleetPowerUpperLimit_T4 =	125000		##		125 k
+@CmtConstKhanFleetPowerUpperLimit_T5 =	200000		##		200 k
+@CmtConstKhanFleetPowerUpperLimit_T6 =	375000		##		375 k
+@CmtConstKhanFleetPowerUpperLimit_T7 =	750000		##		750 k
 
 ###############
 ### Scripts ###
@@ -60,40 +80,178 @@
 
 ## Scope: root = Country (Khan)
 # this = event_target:CmtGlobalVar
-
+# 3.10 transcluding CmtEffectCreateAdmiralty_KhanReinforcement
 CmtEffectKhanReinforceOnCapital = {
+	optimize_memory
 	if = {
 		limit = {
-			calc_true_if = {
-				amount >= 2
-				check_variable = { which = CmtVarKhanMultiple value = 5 }
-				AND = {
-					exists = event_target:CmtTargetMarauderRallyPoint3
-					event_target:CmtTargetMarauderRallyPoint3 = { is_within_borders_of = root }
-				}
-				AND = {
-					exists = event_target:CmtTargetMarauderRallyPoint2
-					event_target:CmtTargetMarauderRallyPoint2 = { is_within_borders_of = root }
-				}
-				AND = {
-					exists = event_target:CmtTargetMarauderRallyPoint1
-					event_target:CmtTargetMarauderRallyPoint1 = { is_within_borders_of = root }
+			OR = {
+				AND = { exists = event_target:marauder_rally_point.solar_system.owner event_target:marauder_rally_point.solar_system.owner = { is_same_empire = root } }
+				calc_true_if = { amount >= 2
+					check_variable = { which = CmtVarKhanMultiple value = 5 }
+					AND = { exists = event_target:CmtTargetMarauderRallyPoint3 event_target:CmtTargetMarauderRallyPoint3 = { is_within_borders_of = root } }
+					AND = { exists = event_target:CmtTargetMarauderRallyPoint2 event_target:CmtTargetMarauderRallyPoint2 = { is_within_borders_of = root } }
+					AND = { exists = event_target:CmtTargetMarauderRallyPoint1 event_target:CmtTargetMarauderRallyPoint1 = { is_within_borders_of = root } }
 				}
 			}
 		}
 		root = {
-			every_planet_within_border = {
-				limit = { has_planet_flag = CmtFlagMarauderExpRallyPoint }
-				CmtEffectCreateAdmiralty_KhanReinforcement = yes
+			if = {
+				limit = { any_planet_within_border = { has_planet_flag = CmtFlagMarauderExpRallyPoint } }
+				random_planet_within_border = {
+					limit = { has_planet_flag = CmtFlagMarauderExpRallyPoint }
+					prev = { get_marauder_species = { PLANET = prev } }
+				}
+			}
+			else_if = {
+				limit = {
+					exists = event_target:marauder_rally_point.solar_system.owner
+					event_target:marauder_rally_point.solar_system.owner = { is_same_empire = prev }
+				}
+				event_target:marauder_rally_point = {
+					prev = { get_marauder_species = { PLANET = prev } }
+					set_timed_planet_flag = { flag = CmtFlagMarauderExpRallyPoint years = 1 }
+				}
+			}
+			export_trigger_value_to_variable = {
+				trigger = count_planet_within_border
+				parameters = { limit = { has_planet_flag = CmtFlagMarauderExpRallyPoint } }
+				variable = varTmp_ExpRallyPoints
+			}
+			if = {
+				limit = { check_variable = { which = varTmp_ExpRallyPoints value <= 0 } }
+				break = yes
 			}
 		}
-	} else_if = {
-		limit = {
-			exists = event_target:marauder_rally_point.solar_system.owner
-			event_target:marauder_rally_point.solar_system.owner = { is_same_empire = root }
+
+		# CmtEffectCreateAdmiralty_KhanReinforcement
+		### Reinforcement (Capital/Sub-Capital)
+		set_variable = { which = CmtVarTemp_Const value = @CmtConstKhanConstructorUpperLimit }		### Constructor
+		set_variable = { which = CmtVarTemp_Army value = @CmtConstKhanArmyUpperLimit }				### Army
+		set_variable = { which = CmtVarTemp_Navy value = @CmtConstKhanFleetPowerUpperLimit_Base }	### NavyFleet
+		if = {
+			limit = { check_variable = { which = CmtVarKhanMultiple value = 5 } }
+			multiply_variable = { which = CmtVarTemp_Const	value = root.varTmp_ExpRallyPoints }	### Constructor
+			multiply_variable = { which = CmtVarTemp_Army	value = root.varTmp_ExpRallyPoints }	### Army
+			multiply_variable = { which = CmtVarTemp_Navy	value = root.varTmp_ExpRallyPoints }	### NavyFleet
 		}
-		event_target:marauder_rally_point = { CmtEffectCreateAdmiralty_KhanReinforcement = yes }
+
+		root = {
+			### Constructor
+			export_trigger_value_to_variable = {
+				trigger = count_owned_fleet
+				parameters = { limit = { is_ship_size = constructor } }
+				variable = varTmp_Const
+			}
+			prev = { # event_target:CmtGlobalVar
+				multiply_variable = { which = CmtVarTemp_Const value = CmtVarConstructorNumber_Khan }
+				subtract_variable = { which = CmtVarTemp_Const value = root.varTmp_Const }
+			}
+			# every_owned_fleet = { limit = { is_ship_size = constructor } prevprev = { change_variable = { which = CmtVarTemp_Const value = -1 } } }
+			if = {
+				limit = { prev = { check_variable = { which = CmtVarTemp_Const value > 0 } } }
+				every_planet_within_border = {
+					limit = { has_planet_flag = CmtFlagMarauderExpRallyPoint }
+					while = { count = prevprev.CmtVarConstructorNumber_Khan prev = { CmtEffectCreateFleet_KhanConstructor = yes } }
+					prevprev = {
+						set_variable = { which = CmtVarWhileControlFleet value = CmtVarConstructorNumber_Khan }
+						modulo_variable = { which = CmtVarWhileControlFleet value = 1 }
+						multiply_variable = { which = CmtVarWhileControlFleet value = 100 }
+					}
+					random = { chance = CmtVarWhileControlFleet prev = { CmtEffectCreateFleet_KhanConstructor = yes } }
+				}
+			}
+			### Army
+			export_trigger_value_to_variable = {
+				trigger = count_owned_army
+				parameters = { limit = { is_defensive_army = no } }
+				variable = varTmp_Army
+			}
+			prev = { # event_target:CmtGlobalVar
+				multiply_variable = { which = CmtVarTemp_Army value = CmtVarArmyPower_Khan }
+				multiply_variable = { which = CmtVarTemp_Army value = CmtVarArmyNumber_Khan }
+				subtract_variable = { which = CmtVarTemp_Army value = root.varTmp_Army }
+			}
+			# every_owned_army = { prevprev = { change_variable = { which = CmtVarTemp_Army value = -1 } } }
+			if = {
+				limit = { prev = { check_variable = { which = CmtVarTemp_Army value > 0 } } }
+				every_planet_within_border = {
+					limit = { has_planet_flag = CmtFlagMarauderExpRallyPoint }
+					while = { count = prevprev.CmtVarArmyNumber_Khan prev = { CmtEffectCreateFleet_KhanArmy = yes } }
+					prevprev = {
+						set_variable = { which = CmtVarWhileControlFleet value = CmtVarArmyNumber_Khan }
+						modulo_variable = { which = CmtVarWhileControlFleet value = 1 }
+						multiply_variable = { which = CmtVarWhileControlFleet value = 100 }
+					}
+					random = { chance = prevprev.CmtVarWhileControlFleet prev = { CmtEffectCreateFleet_KhanArmy = yes } }
+				}
+			}
+			### Navy Fleet
+			prev = { # event_target:CmtGlobalVar
+				multiply_variable = { which = CmtVarTemp_Navy value = CmtVarFleetPower_Khan }
+				multiply_variable = { which = CmtVarTemp_Navy value = CmtVarCombatFleetNumber_Khan }
+			}
+			if = {
+				limit = {
+					OR = {
+						fleet_power < @CmtConstKhanFleetPowerUpperLimit_V1
+						AND = {
+							prev = { check_variable = { which = CmtVarTemp_Navy value > @CmtConstKhanFleetPowerUpperLimit_T1 } }
+							fleet_power < @CmtConstKhanFleetPowerUpperLimit_V2
+						}
+						AND = {
+							prev = { check_variable = { which = CmtVarTemp_Navy value > @CmtConstKhanFleetPowerUpperLimit_T2 } }
+							fleet_power < @CmtConstKhanFleetPowerUpperLimit_V3
+						}
+						AND = {
+							prev = { check_variable = { which = CmtVarTemp_Navy value > @CmtConstKhanFleetPowerUpperLimit_T3 } }
+							fleet_power < @CmtConstKhanFleetPowerUpperLimit_V4
+						}
+						AND = {
+							prev = { check_variable = { which = CmtVarTemp_Navy value > @CmtConstKhanFleetPowerUpperLimit_T4 } }
+							fleet_power < @CmtConstKhanFleetPowerUpperLimit_V5
+						}
+						AND = {
+							prev = { check_variable = { which = CmtVarTemp_Navy value > @CmtConstKhanFleetPowerUpperLimit_T5 } }
+							fleet_power < @CmtConstKhanFleetPowerUpperLimit_V6
+						}
+						AND = {
+							prev = { check_variable = { which = CmtVarTemp_Navy value > @CmtConstKhanFleetPowerUpperLimit_T6 } }
+							fleet_power < @CmtConstKhanFleetPowerUpperLimit_V7
+						}
+						AND = {
+							prev = { check_variable = { which = CmtVarTemp_Navy value > @CmtConstKhanFleetPowerUpperLimit_T7 } }
+							fleet_power < @CmtConstKhanFleetPowerUpperLimit_V8
+						}
+					}
+				}
+				every_planet_within_border = {
+					limit = { has_planet_flag = CmtFlagMarauderExpRallyPoint }
+					while = { count = prevprev.CmtVarCombatFleetNumber_Khan prev = { CmtEffectCreateFleet_KhanStandard = yes } }
+					prevprev = {
+						set_variable = { which = CmtVarWhileControlFleet value = CmtVarCombatFleetNumber_Khan }
+						modulo_variable = { which = CmtVarWhileControlFleet value = 1 }
+						multiply_variable = { which = CmtVarWhileControlFleet value = 100 }
+					}
+					random = { chance = prevprev.CmtVarWhileControlFleet prev = { CmtEffectCreateFleet_KhanStandard = yes } }
+				}
+			}
+			clear_variable = varTmp_Const
+			clear_variable = varTmp_Army
+			clear_variable = varTmp_ExpRallyPoints
+		}
+		clear_variable = CmtVarTemp_Const
+		clear_variable = CmtVarTemp_Army
+		clear_variable = CmtVarTemp_Navy
+		clear_variable = CmtVarWhileControlFleet
 	}
+	# else_if = {
+	# 	limit = {
+	# 		exists = event_target:marauder_rally_point.solar_system.owner
+	# 		event_target:marauder_rally_point.solar_system.owner = { is_same_empire = root }
+	# 	}
+	# 	event_target:marauder_rally_point = { CmtEffectCreateAdmiralty_KhanReinforcement = yes }
+	# }
 }
 
 ## Scope: this = Strage of Variable = CmtGlobalVar (from marauder.520)
@@ -106,8 +264,7 @@ CmtEffectKhanIncreasementReinforcementCycle = {
 	prev = {
 		every_owned_ship = {
 			limit = { is_ship_class = shipclass_military }
-			switch = {
-				trigger = is_ship_size
+			switch = { trigger = is_ship_size
 				marauder_corvette	= { prevprev = { change_variable = { which = CmtVarTemp value = 1 } } }
 				marauder_destroyer	= { prevprev = { change_variable = { which = CmtVarTemp value = 2 } } }
 				marauder_cruiser	= { prevprev = { change_variable = { which = CmtVarTemp value = 4 } } }
@@ -149,48 +306,64 @@ CmtEffectKhanIncreasementReinforcementCycle = {
 		if = {
 			limit = { check_variable = { which = CmtVarTemp value < @CmtConstReinforceCycle_KhanTd } }
 			root = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan2d } }
-		} else_if = {
+		}
+		else_if = {
 			limit = { check_variable = { which = CmtVarTemp value < @CmtConstReinforceCycle_KhanTc } }
 			root = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan2c } }
-		} else_if = {
+		}
+		else_if = {
 			limit = { check_variable = { which = CmtVarTemp value < @CmtConstReinforceCycle_KhanTb } }
 			root = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan2b } }
-		} else_if = {
+		}
+		else_if = {
 			limit = { check_variable = { which = CmtVarTemp value < @CmtConstReinforceCycle_KhanTa } }
 			root = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan2a } }
-		} else = { root = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan1a } } }
-	} else_if = {
+		}
+		else = { root = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan1a } } }
+	}
+	else_if = {
 		limit = { check_variable = { which = CmtVarReinforceCycle_Khan value = 3 } }
 		if = {
 			limit = { check_variable = { which = CmtVarTemp value < @CmtConstReinforceCycle_KhanTd } }
 			root = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan3d } }
-		} else_if = {
+		}
+		else_if = {
 			limit = { check_variable = { which = CmtVarTemp value < @CmtConstReinforceCycle_KhanTc } }
 			root = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan3c } }
-		} else_if = {
+		}
+		else_if = {
 			limit = { check_variable = { which = CmtVarTemp value < @CmtConstReinforceCycle_KhanTb } }
 			root = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan3b } }
-		} else_if = {
+		}
+		else_if = {
 			limit = { check_variable = { which = CmtVarTemp value < @CmtConstReinforceCycle_KhanTa } }
 			root = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan3a } }
-		} else = { root = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan1a } } }
-	} else_if = {
+		}
+		else = { root = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan1a } } }
+	}
+	else_if = {
 		limit = { check_variable = { which = CmtVarReinforceCycle_Khan value = 4 } }
 		if = {
 			limit = { check_variable = { which = CmtVarTemp value < @CmtConstReinforceCycle_KhanTd } }
 			root = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan4d } }
-		} else_if = {
+		}
+		else_if = {
 			limit = { check_variable = { which = CmtVarTemp value < @CmtConstReinforceCycle_KhanTc } }
 			root = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan4c } }
-		} else_if = {
+		}
+		else_if = {
 			limit = { check_variable = { which = CmtVarTemp value < @CmtConstReinforceCycle_KhanTb } }
 			root = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan4b } }
-		} else_if = {
+		}
+		else_if = {
 			limit = { check_variable = { which = CmtVarTemp value < @CmtConstReinforceCycle_KhanTa } }
 			root = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan4a } }
-		} else = { root = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan1a } } }
-	} else = { root = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan1a } } }
-	if = { limit = { has_global_flag = CmtFlagDebugMode }
+		}
+		else = { root = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan1a } } }
+	}
+	else = { root = { change_variable = { which = CmtVarKhanReinforcementCounter value = @CmtConstReinforceCycle_Khan1a } } }
+	if = {
+		limit = { has_global_flag = CmtFlagDebugMode }
 		log = "Cycle = \\[Prev.GetValue.CmtVarKhanReinforcementCounter], Ships = \\[CmtGlobalVar.GetValue.CmtVarTemp], Root = \\[This.GetName]"
 	}
 	# clear_variable = CmtVarTemp is used all the time anyway

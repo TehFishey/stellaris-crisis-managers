@@ -1,4 +1,4 @@
-version="3.9.0.0"
+version="3.12.4.0"
 tags={
 	"Balance"
 	"Events"
@@ -6,6 +6,6 @@ tags={
 	"Utilities"
 	"Crisis"
 }
-name="Crisis Manager - Mid-Game Edition (3.9.¢)"
-supported_version="3.9.*"
+name="Crisis Manager - Mid-Game Edition (3.12.¢)"
+supported_version="3.12.*"
 remote_file_id="2491573516"

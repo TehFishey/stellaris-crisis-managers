@@ -99,6 +99,7 @@ CmtEffectCreateFleet_Khan2ndFleet = {	### Exception: Leader = exiled_khan
 			CmtFleetSetAuxParam_KhanCombat = yes
 			set_leader = exiled_khan
 			set_fleet_flag = khan_fleet
+			save_event_target_as = khan_fleet
 		}
 		settings = {
 			can_upgrade = no
@@ -437,8 +438,8 @@ CmtEffectCreateFleet_KhanOrderEternalNight = {
 				limit = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarWhileControlShip value > 0.125 } } }
 				event_target:CmtGlobalVar = { change_variable = { which = CmtVarWhileControlShip value = -0.25 } }
 
-				while = { count = 3 CmtEffectCreateShip_Outrider = yes }			## 12
-				CmtEffectCreateShip_Lancer = yes									## 6
+				while = { count = 3 CmtEffectCreateShip_Outrider = yes }		## 12
+				CmtEffectCreateShip_Lancer = yes								## 6
 				CmtEffectCreateShip_VoidChampion = yes							## 4
 				prev = {
 					CmtEffectProgressLoop2 = yes
@@ -449,7 +450,6 @@ CmtEffectCreateFleet_KhanOrderEternalNight = {
 					}
 				}
 			}
-
 			CmtFleetSetAuxParam_KhanCombat = yes
 			assign_leader = last_created_leader
 		}

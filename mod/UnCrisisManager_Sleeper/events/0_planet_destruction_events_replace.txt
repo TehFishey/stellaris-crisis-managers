@@ -22,7 +22,7 @@ planet_event = {
 	trigger = {
 		has_modifier = holy_planet
 		any_country = {
-			has_ai_personality_behaviour = holy_planets # not awakened
+			has_ai_personality_behaviour = holy_planets # Not awakened
 			NOT = { is_at_war_with = from.owner }
 		}
 	}
@@ -30,7 +30,7 @@ planet_event = {
 	immediate = {
 		random_country = {
 			limit = {
-				has_ai_personality_behaviour = holy_planets # not awakened
+				has_ai_personality_behaviour = holy_planets # Not awakened
 				NOT = { is_at_war_with = from.owner }
 			}
 			save_event_target_as = outraged_FE

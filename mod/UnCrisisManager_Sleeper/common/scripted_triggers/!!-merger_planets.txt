@@ -45,7 +45,7 @@ merg_is_hab_ringworld = {
 	}
 }
 
-# Listing habitats (upd v3.4.3)
+# Listing habitats (upd v.3.4.3)
 merg_is_habitat = {
 	habitable_structure = yes # Exlcude some entities is_artificial = yes
 	OR = {
@@ -88,7 +88,7 @@ is_pd_hive_world = {
 	# }
 }
 
-# (upd v3.4.3)
+# (upd v.3.4.3)
 merg_is_hive_world = {
 	OR = {
 		is_planet_class = pc_hive
@@ -111,7 +111,7 @@ merg_is_hive_world = {
 # 	}
 # }
 
-# (upd v3.4.3)
+# (upd v.3.4.3)
 merg_is_gas_giant = {
 	OR = {
 		is_planet_class = pc_gas_giant

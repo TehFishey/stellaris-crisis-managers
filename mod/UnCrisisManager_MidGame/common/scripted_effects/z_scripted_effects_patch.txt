@@ -74,7 +74,7 @@ make_moderately_hostile = {
 				is_country_type = guardian_sphere
 				is_country_type = ratlings
 				is_country_type = ldragon_country
-				is_primitive = yes
+				# is_primitive = yes
 			}
 			OR = {
 				is_hostile = prev
@@ -98,47 +98,108 @@ make_moderately_hostile = {
 ### Marauders ###
 create_marauder_starbase = {
 	optimize_memory
-	create_starbase = {
-		size = "starbase_marauder"
-		owner = event_target:marauder_starbase_owner
-	}
+	create_starbase = { size = "starbase_marauder" owner = event_target:marauder_starbase_owner }
 }
 
 create_marauder_merc_admiral = {
 	create_leader = {
-		class = admiral
+		class = commander
 		species = event_target:marauder_species
 		name = random
 		event_leader = yes
 		skill = 3
 		leader_age_min = 25
 		leader_age_max = 45
-		traits = {
-			trait = leader_trait_mercenary_warrior
-		}
+		traits = { trait = leader_trait_mercenary_warrior }
 		background_ethic = "ethic_fanatic_militarist"
 		skip_background_generation = yes
 		custom_description = "custom_mercenary_admiral_desc"
-		effect = {
-			set_leader_flag = marauder_merc_leader
-		}
+		effect = { set_leader_flag = marauder_merc_leader }
 	}
 }
 
 create_marauder_merc_general = {
 	create_leader = {
-		class = general
+		class = commander
 		species = event_target:marauder_species
 		name = random
 		event_leader = yes
 		skill = 3
 		leader_age_min = 25
 		leader_age_max = 45
-		traits = {
-			trait = leader_trait_mercenary_warrior
-		}
+		traits = { trait = leader_trait_mercenary_warrior }
 		background_ethic = "ethic_fanatic_militarist"
 		skip_background_generation = yes
 		custom_description = "custom_mercenary_admiral_desc"
+	}
+}
+
+# THIS and ROOT are the Situation
+# Vanilla Bug Fix (v.3.11) for syncretic species https://forum.paradoxplaza.com/forum/threads/stellaris-massive-overlooked-issue-with-syncretic-evolution-origin.1622715/
+deduce_planetary_separatism_species = {
+	target = {
+		random_owned_species = {
+			limit = {
+				is_sapient = yes
+				OR = {
+					species_has_happiness_with_owner = root.owner
+					NOT = {
+						prev = {
+							any_owned_species = { species_has_happiness_with_owner = root.owner }
+						}
+					}
+				}
+				OR = {
+					root = {
+						NOT = { has_situation_flag = slave_revolt }
+					}
+					has_citizenship_type = { type = citizenship_slavery country = root.owner }
+				}
+			}
+			weights = { base = 100
+				complex_trigger_modifier = { # add 10 for each unhappy pop of this species
+					trigger = count_owned_pop
+					trigger_scope = root.target
+					potential = { species_has_happiness_with_owner = root.owner }
+					parameters = {
+						limit = {
+							is_same_species = prevprev # prev should be root.target, prevprev the species
+							happiness < 0.3
+						}
+					}
+					mode = add
+					mult = 10
+				}
+				complex_trigger_modifier = { # multiply it by the percentage of pops on the planet
+					trigger = pop_percentage
+					trigger_scope = root.target
+					parameters = {
+						limit = { is_same_species = prevprev }
+					}
+					mode = mult
+				}
+				modifier = { # it looks unusual for a species to rebel against itself
+					factor = 0.5
+					is_same_species = root.owner
+				}
+			}
+			save_event_target_as = rebellion_species
+			set_species_flag = rebellion_species@root
+			# Vanilla Bug Fix (v.3.11)
+			if = {
+				limit = { has_trait = trait_syncretic_proles }
+				prev = {
+					modify_species = {
+						species = prev
+						remove_trait = trait_syncretic_proles
+						change_scoped_species = no
+						effect = {
+							save_event_target_as = rebellion_species
+							log="Fixed rebelling syncretic owner_main_species from [Prev.GetName]"
+						}
+					}
+				}
+			}
+		}
 	}
 }

@@ -1,0 +1,74 @@
+	Updated file: z_Cmt211_TriggerEvent_scripted_effects.txt on b'if = { limit = { has_global_flag = sleepers_awake_rival_waking } remove_global_flag = sleepers_awake_rival_waking } # for WiH MTTH' (at line 51) with b'if = { limit = { has_global_flag = sleepers_awake_rival_waking } remove_global_flag = sleepers_awake_rival_waking } # For WiH MTTH'
+
+	WRITE FILE: b'C:\\Users\\Max\\Documents\\Paradox Interactive\\Stellaris\\mod\\CrisisManager_Sleeper\\common\\scripted_effects\\z_Cmt211_TriggerEvent_scripted_effects.txt'
+	Updated file: Cmt-201_TemplateSleeperInitialization_scripted_variables.txt on b'#\tThis template controls the initialization for the fleets of fallen empires.' (at line 11) with b'#\tthis template controls the initialization for the fleets of fallen empires.'
+
+	Updated file: Cmt-201_TemplateSleeperInitialization_scripted_variables.txt on b'#\tthis template controls the initialization for the fleets of fallen empires.' (at line 11) with b'# This template controls the initialization for the fleets of fallen empires.'
+
+	WRITE FILE: b'C:\\Users\\Max\\Documents\\Paradox Interactive\\Stellaris\\mod\\CrisisManager_Sleeper\\common\\scripted_variables\\Cmt-201_TemplateSleeperInitialization_scripted_variables.txt'
+	Updated file: Cmt20_Sleeper_war_goals.txt on b'#\t\tpotential = { always = no }\t\t## event only' (at line 33) with b'#\t\tpotential = { always = no }\t\t## Event only'
+
+	Updated file: Cmt20_Sleeper_war_goals.txt on b'potential = { always = no }\t\t## event only' (at line 62) with b'potential = { always = no }\t\t## Event only'
+
+	Updated file: Cmt20_Sleeper_war_goals.txt on b'potential = { always = no }\t\t## event only' (at line 94) with b'potential = { always = no }\t\t## Event only'
+
+	Updated file: Cmt20_Sleeper_war_goals.txt on b'potential = { always = no }\t\t## event only' (at line 124) with b'potential = { always = no }\t\t## Event only'
+
+	Updated file: Cmt20_Sleeper_war_goals.txt on b'potential = { always = no }\t\t## event only' (at line 154) with b'potential = { always = no }\t\t## Event only'
+
+	WRITE FILE: b'C:\\Users\\Max\\Documents\\Paradox Interactive\\Stellaris\\mod\\CrisisManager_Sleeper\\common\\war_goals\\Cmt20_Sleeper_war_goals.txt'
+	Updated file: 01_fallen_empire_awakening_events_replace_0.txt on b'# legacy: add_awakened_fallen_empire_fleet = yes # also some more fleet' (at line 125) with b'# legacy: add_awakened_fallen_empire_fleet = yes # Also some more fleet'
+
+	WRITE FILE: b'C:\\Users\\Max\\Documents\\Paradox Interactive\\Stellaris\\mod\\CrisisManager_Sleeper\\events\\01_fallen_empire_awakening_events_replace_0.txt'
+	Updated file: 0_planet_destruction_events_replace.txt on b'has_ai_personality_behaviour = holy_planets # not awakened' (at line 24) with b'has_ai_personality_behaviour = holy_planets # Not awakened'
+
+	Updated file: 0_planet_destruction_events_replace.txt on b'has_ai_personality_behaviour = holy_planets # not awakened' (at line 32) with b'has_ai_personality_behaviour = holy_planets # Not awakened'
+
+	WRITE FILE: b'C:\\Users\\Max\\Documents\\Paradox Interactive\\Stellaris\\mod\\CrisisManager_Sleeper\\events\\0_planet_destruction_events_replace.txt'
+	Updated file: 0_war_in_heaven_events_replace.txt on b'# legacy: add_awakened_fallen_empire_fleet = yes # also some more fleet' (at line 185) with b'# legacy: add_awakened_fallen_empire_fleet = yes # Also some more fleet'
+
+	Updated file: 0_war_in_heaven_events_replace.txt on b'if = { # end non-federation-sanctioned wars' (at line 1321) with b'if = { # End non-federation-sanctioned wars'
+
+	Updated file: 0_war_in_heaven_events_replace.txt on b'add_federation_experience = 4200 # level 3 with some breathing room' (at line 1335) with b'add_federation_experience = 4200 # Level 3 with some breathing room'
+
+	Updated file: 0_war_in_heaven_events_replace.txt on b'hidden_effect = { # end rivalries, wars' (at line 1345) with b'hidden_effect = { # End rivalries, wars'
+
+	Updated file: 0_war_in_heaven_events_replace.txt on b"# counteract the -100 cohesion you'd normally get for new members" (at line 1382) with b"# Counteract the -100 cohesion you'd normally get for new members"
+
+	Updated file: 0_war_in_heaven_events_replace.txt on b'# for reuse' (at line 1642) with b'# For reuse'
+
+	Updated file: 0_war_in_heaven_events_replace.txt on b'# for reuse' (at line 1741) with b'# For reuse'
+
+	WRITE FILE: b'C:\\Users\\Max\\Documents\\Paradox Interactive\\Stellaris\\mod\\CrisisManager_Sleeper\\events\\0_war_in_heaven_events_replace.txt'
+	Updated file: CmtC21_SleeperAwakingEvent.txt on b'# cf. modified planet_destruction.600' (at line 372) with b'# cf. Modified planet_destruction.600'
+
+	Updated file: CmtC21_SleeperAwakingEvent.txt on b'# must initialize global designs here' (at line 551) with b'# Must initialize global designs here'
+
+	Updated file: CmtC21_SleeperAwakingEvent.txt on b'# must initialize global designs here' (at line 593) with b'# Must initialize global designs here'
+
+	Updated file: CmtC21_SleeperAwakingEvent.txt on b'# must initialize global designs here' (at line 635) with b'# Must initialize global designs here'
+
+	Updated file: CmtC21_SleeperAwakingEvent.txt on b'# must initialize global designs here' (at line 678) with b'# Must initialize global designs here'
+
+	Updated file: CmtC21_SleeperAwakingEvent.txt on b'# possible = { has_synthethic_dawn = yes' (at line 693) with b'# possible = { host_has_dlc = "Synthetic Dawn Story Pack"'
+
+	Updated file: CmtC21_SleeperAwakingEvent.txt on b'# \t\t\t# must initialize global designs here' (at line 729) with b'# \t\t\t# Must initialize global designs here'
+
+	Updated file: CmtC21_SleeperAwakingEvent.txt on b'orbit_angle = 360\t\t\t\t# range of the randomization' (at line 995) with b'orbit_angle = 360\t\t\t\t# Range of the randomization'
+
+	Updated file: CmtC21_SleeperAwakingEvent.txt on b'# \t\torbit_angle = 360\t\t\t\t# range of the randomization' (at line 1044) with b'# \t\torbit_angle = 360\t\t\t\t# Range of the randomization'
+
+	Updated file: CmtC21_SleeperAwakingEvent.txt on b'count = 1\t\t\t\t\t\t# just to show-case that formation will tile' (at line 1149) with b'count = 1\t\t\t\t\t\t# Just to show-case that formation will tile'
+
+	Updated file: CmtC21_SleeperAwakingEvent.txt on b'# \t# \tclass = governor' (at line 1428) with b'# \t# \tclass = official'
+
+	WRITE FILE: b'C:\\Users\\Max\\Documents\\Paradox Interactive\\Stellaris\\mod\\CrisisManager_Sleeper\\events\\CmtC21_SleeperAwakingEvent.txt'
+	Updated file: CmtM7_ManualOperation.txt on b'#\t\thas_synthethic_dawn = yes' (at line 373) with b'#\t\thost_has_dlc = "Synthetic Dawn Story Pack"'
+
+	Updated file: CmtM7_ManualOperation.txt on b'#\t\thas_synthethic_dawn = yes' (at line 383) with b'#\t\thost_has_dlc = "Synthetic Dawn Story Pack"'
+
+	WRITE FILE: b'C:\\Users\\Max\\Documents\\Paradox Interactive\\Stellaris\\mod\\CrisisManager_Sleeper\\events\\CmtM7_ManualOperation.txt'
+\nMain Version = 3.12 (version_len = 4)
+b'Crisis Manager - Sleeper Edition (3.9.\xc2\xa2)' version 3.9.0.0 on 'descriptor.mod' updated to 3.12.3!
+
+Done! b'C:/Users/Max/Documents/Paradox Interactive/Stellaris/mod/CrisisManager_Sleeper'

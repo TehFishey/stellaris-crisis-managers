@@ -18,7 +18,7 @@
 ####  Version Information  ###
 ##############################
 #
-#	this description
+# This description
 #		23/Jun/2018: Items "3.2", "3.3" and "5.1" are updated.
 #		 1/Jul/2018: Footnote is updated
 #		13/Jul/2018: An item "5.1" is updated.

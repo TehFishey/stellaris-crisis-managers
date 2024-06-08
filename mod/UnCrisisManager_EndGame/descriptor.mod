@@ -1,5 +1,5 @@
-version="3.9.2.0"
-name="Crisis Manager - End-Game Edition (3.9.¢)"
+version="3.12.4.0"
+name="Crisis Manager - End-Game Edition (3.12.¢)"
 tags={
 	"Balance"
 	"Events"
@@ -8,9 +8,9 @@ tags={
 	"Crisis"
 }
 dependencies={
-	"Crisis Manager - Mid-Game Edition (3.9.¢)"
-	"Crisis Manager - Sleeper Edition (3.9.¢)"
+	"Crisis Manager - Mid-Game Edition (3.12.¢)"
+	"Crisis Manager - Sleeper Edition (3.12.¢)"
 }
 picture="thumbnail.png"
-supported_version="3.9.*"
+supported_version="3.12.*"
 remote_file_id="2558262194"

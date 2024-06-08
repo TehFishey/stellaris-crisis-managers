@@ -104,10 +104,7 @@ tech_repeatable_lcluster_clue = {
 		}
 		modifier = {
 			factor = 0.75
-			research_leader = {
-				area = engineering
-				NOT = { has_trait = "leader_trait_expertise_voidcraft" }
-			}
+			NOT = { has_trait_in_council = { TRAIT = leader_trait_expertise_voidcraft } }
 		}
 	}
 

@@ -20,7 +20,7 @@ is_subject_of_khan = {
 }
 
 # Workaround: As 'is_pirate' is bugged (only shorthand for is_country_type = pirate)
-# Was fixed in 3.4 but is again only a shorthand since 3.8 (or earlier)
+# Was fixed in v.3.4 but is again only a shorthand since v.3.8 (or earlier)
 is_pirate_country = {
 	OR = {
 		is_country_type = pirate_waves_country

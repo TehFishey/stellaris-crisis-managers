@@ -1,0 +1,118 @@
+	Updated file: z_scripted_effects_patch.txt on b'complex_trigger_modifier = { #add 10 for each unhappy pop of this species' (at line 159) with b'complex_trigger_modifier = { # add 10 for each unhappy pop of this species'
+
+	Updated file: z_scripted_effects_patch.txt on b'is_same_species = prevprev #prev should be root.target, prevprev the species' (at line 165) with b'is_same_species = prevprev # prev should be root.target, prevprev the species'
+
+	Updated file: z_scripted_effects_patch.txt on b'complex_trigger_modifier = { #multiply it by the percentage of pops on the planet' (at line 172) with b'complex_trigger_modifier = { # multiply it by the percentage of pops on the planet'
+
+	Updated file: z_scripted_effects_patch.txt on b'modifier = { #it looks unusual for a species to rebel against itself' (at line 180) with b'modifier = { # it looks unusual for a species to rebel against itself'
+
+	WRITE FILE: b'C:\\Users\\Max\\Documents\\Paradox Interactive\\Stellaris\\mod\\CrisisManager_MidGame\\common\\scripted_effects\\z_scripted_effects_patch.txt'
+	Updated file: Cmt-xxx_Unique_scripted_variables.txt on b'#\tonly if corresponding parameter is set in each template file.' (at line 14) with b'# Only if corresponding parameter is set in each template file.'
+
+	Updated file: Cmt-xxx_Unique_scripted_variables.txt on b'#\tThis value is shared by every template.' (at line 16) with b'#\tthis value is shared by every template.'
+
+	Updated file: Cmt-xxx_Unique_scripted_variables.txt on b'#\tthis value is shared by every template.' (at line 16) with b'# This value is shared by every template.'
+
+	WRITE FILE: b'C:\\Users\\Max\\Documents\\Paradox Interactive\\Stellaris\\mod\\CrisisManager_MidGame\\common\\scripted_variables\\Cmt-xxx_Unique_scripted_variables.txt'
+ WARNING potential outdated or removed syntax (Leads to CTD in v.3.12.3! Obsolete since v.3.8): b'\t\t\tresearch_leader' in line 106 file z_Cmt_lcluster_tech_replace.txt
+
+Match:
+ research_leader = {
+				area = engineering
+				NOT = { has_trait = "leader_trait_expertise_voidcraft" }
+			}
+Multiline replace:
+ NOT = { has_trait_in_council = { TRAIT = leader_trait_expertise_voidcraft } }
+	WRITE FILE: b'C:\\Users\\Max\\Documents\\Paradox Interactive\\Stellaris\\mod\\CrisisManager_MidGame\\common\\technology\\z_Cmt_lcluster_tech_replace.txt'
+ WARNING potential outdated or removed syntax (Can be possibly replaced with 'num_sapient_pops' in v.3.10 (planet, country)): b'\t\t\tlimit = { any_system_colony = { is_owned_by = from num_pops' in line 286 file 0_marauder_events_replace.txt
+
+ WARNING potential outdated or removed syntax (Can be possibly replaced with 'num_sapient_pops' in v.3.10 (planet, country)): b'\t\t\t\tlimit = { is_owned_by = from num_pops' in line 288 file 0_marauder_events_replace.txt
+
+ WARNING potential outdated or removed syntax (Can be possibly replaced with 'num_sapient_pops' in v.3.10 (planet, country)): b'\t\t\t\tany_system_colony = { is_owned_by = from num_pops' in line 322 file 0_marauder_events_replace.txt
+
+ WARNING potential outdated or removed syntax (Can be possibly replaced with 'num_sapient_pops' in v.3.10 (planet, country)): b'\t\t\t\tlimit = { is_owned_by = from num_pops' in line 326 file 0_marauder_events_replace.txt
+
+ WARNING potential outdated or removed syntax (Can be possibly replaced with 'num_sapient_pops' in v.3.10 (planet, country)): b'\t\t\t\t\tany_system_colony = { is_owned_by = from num_pops' in line 367 file 0_marauder_events_replace.txt
+
+ WARNING potential outdated or removed syntax (Can be possibly replaced with 'num_sapient_pops' in v.3.10 (planet, country)): b'\t\t\t\t\t\t\t\tnum_pops' in line 1505 file 0_marauder_events_replace.txt
+
+ WARNING potential outdated or removed syntax (Can be possibly replaced with 'num_sapient_pops' in v.3.10 (planet, country)): b'\t\t\t\t\t\t\t\tnum_pops' in line 1515 file 0_marauder_events_replace.txt
+
+	Updated file: 0_marauder_events_replace.txt on b'planet_event = { id = marauder.104 } # taking resources' (at line 1565) with b'planet_event = { id = marauder.104 } # Taking resources'
+
+ WARNING potential outdated or removed syntax (Can be possibly replaced with 'num_sapient_pops' in v.3.10 (planet, country)): b'\t\t\t\t\tmodifier = { factor = 0 num_pops' in line 1568 file 0_marauder_events_replace.txt
+
+	Updated file: 0_marauder_events_replace.txt on b'planet_event = { id = marauder.105 } # taking Pops' (at line 1569) with b'planet_event = { id = marauder.105 } # Taking Pops'
+
+ WARNING potential outdated or removed syntax (Can be possibly replaced with 'num_sapient_pops' in v.3.10 (planet, country)): b'\t\t\tlimit = { num_pops' in line 1644 file 0_marauder_events_replace.txt
+
+ WARNING potential outdated or removed syntax (Can be possibly replaced with 'num_sapient_pops' in v.3.10 (planet, country)): b'\t\t\tlimit = { num_pops' in line 1705 file 0_marauder_events_replace.txt
+
+ WARNING potential outdated or removed syntax (Can be possibly replaced with 'num_sapient_pops' in v.3.10 (planet, country)): b'\t\t\t\t\t\t\t\tany_system_colony = { is_owned_by = event_target:marauder_target num_pops' in line 1894 file 0_marauder_events_replace.txt
+
+ WARNING potential outdated or removed syntax (Can be possibly replaced with 'num_sapient_pops' in v.3.10 (planet, country)): b'\t\t\t\t\t\t\t\tlimit = { is_owned_by = event_target:marauder_target num_pops' in line 1898 file 0_marauder_events_replace.txt
+
+	Updated file: 0_marauder_events_replace.txt on b'modifier = { add = 1 is_a_planet = yes } # possible inconsisent due other mods' (at line 1964) with b'modifier = { add = 1 is_a_planet = yes } # Possible inconsisent due other mods'
+
+	Updated file: 0_marauder_events_replace.txt on b'# modifier = { add = 1 is_a_planet = yes } # possible inconsisent due other mods' (at line 1979) with b'# modifier = { add = 1 is_a_planet = yes } # Possible inconsisent due other mods'
+
+	Updated file: 0_marauder_events_replace.txt on b'# modifier = { add = 1 is_a_planet = yes } # possible inconsisent due other mods' (at line 2041) with b'# modifier = { add = 1 is_a_planet = yes } # Possible inconsisent due other mods'
+
+	Updated file: 0_marauder_events_replace.txt on b'modifier = { add = 1 is_a_planet = yes } # possible inconsisent due other mods' (at line 2087) with b'modifier = { add = 1 is_a_planet = yes } # Possible inconsisent due other mods'
+
+	Updated file: 0_marauder_events_replace.txt on b'# modifier = { add = 1 is_a_planet = yes } # possible inconsisent due other mods' (at line 2102) with b'# modifier = { add = 1 is_a_planet = yes } # Possible inconsisent due other mods'
+
+	Updated file: 0_marauder_events_replace.txt on b'weights = { base = 1 modifier = { add = 2 is_a_planet = yes } } # possible inconsisent due other mods' (at line 2315) with b'weights = { base = 1 modifier = { add = 2 is_a_planet = yes } } # Possible inconsisent due other mods'
+
+	Updated file: 0_marauder_events_replace.txt on b'class = admiral' (at line 2587) with b'class = commander'
+
+	Updated file: 0_marauder_events_replace.txt on b'# traits are cleared only (vanilla bug?)' (at line 2593) with b'# Traits are cleared only (vanilla bug?)'
+
+	Updated file: 0_marauder_events_replace.txt on b'# \t\tclass = admiral' (at line 2601) with b'# \t\tclass = commander'
+
+	Updated file: 0_marauder_events_replace.txt on b'class = admiral' (at line 2609) with b'class = commander'
+
+	Updated file: 0_marauder_events_replace.txt on b'can_see_in_list = yes' (at line 2613) with b'hide_leader = no'
+
+	Updated file: 0_marauder_events_replace.txt on b'# traits are cleared only (vanilla bug?)' (at line 2615) with b'# Traits are cleared only (vanilla bug?)'
+
+	Updated file: 0_marauder_events_replace.txt on b'add_trait_no_notify = subclass_admiral_aggressor # councilor no' (at line 2625) with b'add_trait_no_notify = subclass_commander_admiral # councilor no'
+
+	Updated file: 0_marauder_events_replace.txt on b'add_trait_no_notify = subclass_commander_admiral # councilor no' (at line 2625) with b'add_trait_no_notify = subclass_commander_admiral # Councilor no'
+
+	Updated file: 0_marauder_events_replace.txt on b'add_trait_no_notify = leader_trait_demolisher_destiny' (at line 2633) with b'add_trait_no_notify = leader_trait_demolisher'
+
+	Updated file: 0_marauder_events_replace.txt on b'### Compat. replace hack for CM.' (at line 2673) with b'### Compat. Replace hack for CM.'
+
+ WARNING potential outdated or removed syntax (Can be possibly replaced with 'num_sapient_pops' in v.3.10 (planet, country)): b'\t\t\t\t\tlimit = { num_pops' in line 2901 file 0_marauder_events_replace.txt
+
+ WARNING potential outdated or removed syntax (Can be possibly replaced with 'num_sapient_pops' in v.3.10 (planet, country)): b'\t\t\t\tif = { limit = { num_pops' in line 2932 file 0_marauder_events_replace.txt
+
+	Updated file: 0_marauder_events_replace.txt on b'any_owned_leader = { leader_class = admiral has_leader_flag = great_khan }' (at line 3185) with b'any_owned_leader = { leader_class = commander has_leader_flag = great_khan }'
+
+	Updated file: 0_marauder_events_replace.txt on b'remove_global_flag = marauder_crisis_ongoing\t# must be removed before' (at line 4501) with b'remove_global_flag = marauder_crisis_ongoing\t# Must be removed before'
+
+Match:
+ any_system_colony = {
+								has_owner = yes
+								
+Multiline replace:
+ any_system_colony = {
+								
+	WRITE FILE: b'C:\\Users\\Max\\Documents\\Paradox Interactive\\Stellaris\\mod\\CrisisManager_MidGame\\events\\0_marauder_events_replace.txt'
+Match:
+ 
+			random_country = { limit = { is_country_type = global_event }
+Multiline replace:
+ 
+			event_target:global_event_country = {
+	WRITE FILE: b'C:\\Users\\Max\\Documents\\Paradox Interactive\\Stellaris\\mod\\CrisisManager_MidGame\\events\\CmtM0_Initializing.txt'
+	Updated file: CmtM7_ManualOperation.txt on b'#\t\thas_synthethic_dawn = yes' (at line 373) with b'#\t\thost_has_dlc = "Synthetic Dawn Story Pack"'
+
+	Updated file: CmtM7_ManualOperation.txt on b'#\t\thas_synthethic_dawn = yes' (at line 383) with b'#\t\thost_has_dlc = "Synthetic Dawn Story Pack"'
+
+	WRITE FILE: b'C:\\Users\\Max\\Documents\\Paradox Interactive\\Stellaris\\mod\\CrisisManager_MidGame\\events\\CmtM7_ManualOperation.txt'
+\nMain Version = 3.12 (version_len = 4)
+b'Crisis Manager - Mid-Game Edition (3.9.\xc2\xa2)' version 3.9.0.0 on 'descriptor.mod' updated to 3.12.3!
+
+Done! b'C:/Users/Max/Documents/Paradox Interactive/Stellaris/mod/CrisisManager_MidGame'

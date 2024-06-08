@@ -23,7 +23,8 @@ event = {
 			event_target:global_event_country = { country_event = { id = CrisisManagerMenu.21 } }
 			# log="Game started global_event_country"
 		} else = {
-			random_country = { limit = { is_country_type = global_event }
+			random_country = { # Should never happen
+				limit = { is_country_type = global_event }
 				country_event = { id = CrisisManagerMenu.21 }
 			}
 		}
@@ -224,7 +225,7 @@ country_event = {
 		save_global_event_target_as = CmtGlobalVar
 		# CmtEffectHardCoatedSettings = yes
 		remove_global_flag = CmtFlagDebugMode
-		# country_event = { id = CrisisManagerControl.9011 }	## For only debugging
+		# country_event = { id = CrisisManagerControl.9011 }	##	For only debugging
 		country_event = { id = CrisisManagerMenu.2000 }			## Apply Vanilla Template
 		country_event = { id = CrisisManagerMenu.2001 }			## Auto apply of Template
 		if = {

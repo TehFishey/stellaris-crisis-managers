@@ -371,7 +371,7 @@ country_event = {
 	#	name = CrisisManagerMenu.7000.7146.A.name
 	#	custom_tooltip = CrisisManagerMenu.7000.7146.A.tooltip
 	#	trigger = {
-	#		has_synthethic_dawn = yes
+	#		host_has_dlc = "Synthetic Dawn Story Pack"
 	#		has_global_flag = CmtFlagUprisingEdition
 	#		any_country = { CmtTriggerUprisingPotentialManually = yes }
 	#	}
@@ -381,7 +381,7 @@ country_event = {
 	#	name = CrisisManagerMenu.7000.7146.B.name
 	#	custom_tooltip = CrisisManagerMenu.7000.7146.B.tooltip
 	#	trigger = {
-	#		has_synthethic_dawn = yes
+	#		host_has_dlc = "Synthetic Dawn Story Pack"
 	#		has_global_flag = CmtFlagUprisingEdition
 	#		NOT = { any_country = { CmtTriggerUprisingPotentialManually = yes } }
 	#	}
@@ -738,11 +738,11 @@ country_event = {
 	title = CrisisManagerMenu.7111.name
 	desc = {
 		text = CrisisManagerMenu.7111.desc1
-		trigger = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMultiple value = 5 } } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMultiple value != 5 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.7111.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMultiple value = 5 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMultiple value = 5 } } }
 	}
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
@@ -770,11 +770,11 @@ country_event = {
 	title = CrisisManagerMenu.7121.name
 	desc = {
 		text = CrisisManagerMenu.7121.desc1
-		trigger = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMultiple value = 5 } } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMultiple value != 5 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.7121.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMultiple value = 5 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarMultiple value = 5 } } }
 	}
 	picture = GFX_evt_CmtMenuA
 	is_triggered_only = yes
@@ -2033,11 +2033,11 @@ country_event = {
 	title = CrisisManagerMenu.7141.name
 	desc = {
 		text = CrisisManagerMenu.7141.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualLgate value <= 8 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualLgate value <= 8 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.7141.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualLgate value > 8 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualLgate value > 8 } } }
 	}
 	picture = GFX_evt_l-gateway
 	is_triggered_only = yes
@@ -4209,11 +4209,11 @@ country_event = {
 	title = CrisisManagerMenu.7500.name
 	desc = {
 		text = CrisisManagerMenu.7500.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualLgate value = 0 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualLgate value = 0 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.7500.desc2
-		trigger = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualLgate value = 0 } } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualLgate value != 0 } } }
 	}
 	picture = GFX_evt_l-gateway
 	is_triggered_only = yes
@@ -4462,11 +4462,11 @@ country_event = {
 	title = CrisisManagerMenu.7523.name
 	desc = {
 		text = CrisisManagerMenu.7523.desc1
-		trigger = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualLgate value > 8 } } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualLgate value <= 8 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.7523.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualLgate value > 8 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarManualLgate value > 8 } } }
 	}
 	picture = GFX_evt_l-gateway
 	is_triggered_only = yes

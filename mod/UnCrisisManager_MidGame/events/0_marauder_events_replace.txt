@@ -1499,7 +1499,6 @@ planet_event = {
 					closest_system = {
 						limit = {
 							any_system_colony = {
-								has_owner = yes
 								is_owned_by = event_target:raid_victim
 								is_occupied_flag = no
 								NOT = { has_planet_flag = planet_raided }
@@ -1563,11 +1562,11 @@ planet_event = {
 			limit = { owner = { is_gestalt = no } }
 			random_list = {
 				50 = {
-					planet_event = { id = marauder.104 } # taking resources
+					planet_event = { id = marauder.104 } # Taking resources
 				}
 				50 = {
 					modifier = { factor = 0 num_pops = 1 }
-					planet_event = { id = marauder.105 } # taking Pops
+					planet_event = { id = marauder.105 } # Taking Pops
 				}
 			}
 		}
@@ -1962,7 +1961,7 @@ country_event = {
 								limit = { is_star = no }
 								weights = {
 									base = 1
-									modifier = { add = 1 is_a_planet = yes } # possible inconsisent due other mods
+									modifier = { add = 1 is_a_planet = yes } # Possible inconsisent due other mods
 									modifier = { add = 2 is_colony = yes }
 									modifier = { add = 1 is_colonizable = yes }
 								}
@@ -1977,7 +1976,7 @@ country_event = {
 						limit = { is_star = no }
 						weights = {
 							base = 1
-							# modifier = { add = 1 is_a_planet = yes } # possible inconsisent due other mods
+							# modifier = { add = 1 is_a_planet = yes } # Possible inconsisent due other mods
 							modifier = { add = 3 has_planet_flag = raid_source }
 							modifier = { add = 2 is_colony = yes }
 							modifier = { add = 1 is_colonizable = yes }
@@ -2039,7 +2038,7 @@ country_event = {
 						limit = { is_star = no }
 						weights = {
 							base = 1
-							# modifier = { add = 1 is_a_planet = yes } # possible inconsisent due other mods
+							# modifier = { add = 1 is_a_planet = yes } # Possible inconsisent due other mods
 							modifier = { add = 3 has_planet_flag = raid_source }
 							modifier = { add = 2 is_colony = yes }
 							modifier = { add = 1 is_colonizable = yes }
@@ -2085,7 +2084,7 @@ country_event = {
 								limit = { is_star = no }
 								weights = {
 									base = 1
-									modifier = { add = 1 is_a_planet = yes } # possible inconsisent due other mods
+									modifier = { add = 1 is_a_planet = yes } # Possible inconsisent due other mods
 									modifier = { add = 2 is_colony = yes }
 									modifier = { add = 1 is_colonizable = yes }
 								}
@@ -2100,7 +2099,7 @@ country_event = {
 						limit = { is_star = no }
 						weights = {
 							base = 1
-							# modifier = { add = 1 is_a_planet = yes } # possible inconsisent due other mods
+							# modifier = { add = 1 is_a_planet = yes } # Possible inconsisent due other mods
 							modifier = { add = 3 has_planet_flag = raid_source }
 							modifier = { add = 2 is_colony = yes }
 							modifier = { add = 1 is_colonizable = yes }
@@ -2313,7 +2312,7 @@ country_event = {
 			limit = { NOT = { exists = event_target:marauder_rally_point } }
 			random_planet_within_border = {
 				limit = { is_star = no }
-				weights = { base = 1 modifier = { add = 2 is_a_planet = yes } } # possible inconsisent due other mods
+				weights = { base = 1 modifier = { add = 2 is_a_planet = yes } } # Possible inconsisent due other mods
 				save_global_event_target_as = marauder_rally_point
 				set_planet_flag = marauder_rally_point
 				set_planet_flag = CmtFlagMarauderExpRallyPoint
@@ -2585,13 +2584,13 @@ country_event = {
 			limit = { is_ai = yes }
 			clone_leader = {
 				target = event_target:great_khan_ruler
-				class = admiral
+				class = commander
 				skill = 10
 				event_leader = yes
 				can_manually_change_location = no
 				hide_leader = yes
 				randomize_traits = no
-				# traits are cleared only (vanilla bug?)
+				# Traits are cleared only (vanilla bug?)
 				traits = { 0 = leader_trait_great_khan 0 = leader_trait_chosen }
 		}
 		}
@@ -2599,7 +2598,7 @@ country_event = {
 		# 	limit = { has_global_flag = has_nsc_active }
 		# 	clone_leader = {
 		# 		target = ruler
-		# 		class = admiral
+		# 		class = commander
 		# 		traits = { trait = nsc_freebooter_admiral_trait_great_khan }
 		# 		skill = 7
 		# 	}
@@ -2607,13 +2606,13 @@ country_event = {
 		else = {
 			clone_leader = {
 				target = event_target:great_khan_ruler
-				class = admiral
+				class = commander
 				skill = 6
 				event_leader = yes
 				can_manually_change_location = no
-				can_see_in_list = yes
+				hide_leader = no
 				randomize_traits = no
-				# traits are cleared only (vanilla bug?)
+				# Traits are cleared only (vanilla bug?)
 				traits = { 0 = leader_trait_great_khan 0 = leader_trait_chosen }
 			}
 		}
@@ -2623,7 +2622,7 @@ country_event = {
 			recruitable = no
 			add_trait_no_notify = leader_trait_great_khan
 			add_trait_no_notify = leader_trait_chosen
-			add_trait_no_notify = subclass_admiral_aggressor # councilor no
+			add_trait_no_notify = subclass_commander_admiral # Councilor no
 			add_trait_no_notify = leader_trait_armada_logistician_3
 			if = {
 				limit = { owner = { has_country_flag = marauder_1 } }
@@ -2631,7 +2630,7 @@ country_event = {
 			}
 			if = {
 				limit = { owner = { has_country_flag = marauder_2 } }
-				add_trait_no_notify = leader_trait_demolisher_destiny
+				add_trait_no_notify = leader_trait_demolisher
 			}
 			if = {
 				limit = { owner = { has_country_flag = marauder_3 } }
@@ -2671,7 +2670,7 @@ country_event = {
 			event_target:marauder_rally_point = { CmtEffectCreateAdmiralty_KhanStarterPack = yes }
 		}
 
-		### Compat. replace hack for CM.
+		### Compat. Replace hack for CM.
 		event_target:great_khan.fleet = {
 			create_ship = {
 				design = "NAME_JuukTidir"
@@ -3183,7 +3182,7 @@ country_event = {
 					exists = event_target:great_khan
 					prev = {
 						# has_country_flag = khan_dead_event_fine
-						any_owned_leader = { leader_class = admiral has_leader_flag = great_khan }
+						any_owned_leader = { leader_class = commander has_leader_flag = great_khan }
 					}
 			}
 		}
@@ -4499,7 +4498,7 @@ country_event = {
 		remove_global_flag = great_khan_announcement
 		remove_global_flag = horde_triggered
 		remove_country_flag = CmtFlagKhanNoDieCountry
-		remove_global_flag = marauder_crisis_ongoing	# must be removed before
+		remove_global_flag = marauder_crisis_ongoing	# Must be removed before
 		room_name_override = ""
 
 		if = {

@@ -5,7 +5,7 @@
 #####	Crisis Manager						  #####
 #####											#####
 #####	Scripted Effects for Creating Leader	#####
-#####	of End-Game Crises					  #####
+##### Of End-Game Crises					  #####
 #####											#####
 ######################################################
 ######################################################
@@ -37,7 +37,7 @@
 # CmtEffectCreateAdmiral_SentinelCapitalDefense = {
 # 	event_target:sentinels = {
 # 		create_leader = {
-# 			class = admiral
+# 			class = commander
 # 			species = owner_species
 # 			name = random
 # 			skill = 5
@@ -56,7 +56,7 @@
 # Transcluded in v.3.9
 # CmtEffectCreateAdmiral_UnbiddenCapital = {
 # 	create_leader = {
-# 		class = admiral
+# 		class = commander
 # 		species = event_target:extradimensional_shabanash_species
 # 		name = random
 # 		skill = 3
@@ -68,7 +68,7 @@ CmtEffectCreateAdmiral_UnbiddenStandard = {
 	random_list = {
 		25 = {
 			create_leader = {
-				class = admiral
+				class = commander
 				species = event_target:extradimensional_shabanash_species
 				name = random
 				skill = 3
@@ -77,7 +77,7 @@ CmtEffectCreateAdmiral_UnbiddenStandard = {
 		}
 		25 = {
 			create_leader = {
-				class = admiral
+				class = commander
 				species = event_target:extradimensional_shabanash_species
 				name = random
 				skill = 3
@@ -86,7 +86,7 @@ CmtEffectCreateAdmiral_UnbiddenStandard = {
 		}
 		50 = {
 			create_leader = {
-				class = admiral
+				class = commander
 				species = event_target:extradimensional_shabanash_species
 				name = random
 				skill = 3
@@ -100,7 +100,7 @@ CmtEffectCreateAdmiral_Aberrant = {
 	random_list = {
 		25 = {
 			create_leader = {
-				class = admiral
+				class = commander
 				species = event_target:extradimensional_hunters_species
 				name = random
 				skill = 3
@@ -109,7 +109,7 @@ CmtEffectCreateAdmiral_Aberrant = {
 		}
 		25 = {
 			create_leader = {
-				class = admiral
+				class = commander
 				species = event_target:extradimensional_hunters_species
 				name = random
 				skill = 3
@@ -118,7 +118,7 @@ CmtEffectCreateAdmiral_Aberrant = {
 		}
 		50 = {
 			create_leader = {
-				class = admiral
+				class = commander
 				species = event_target:extradimensional_hunters_species
 				name = random
 				skill = 3
@@ -132,7 +132,7 @@ CmtEffectCreateAdmiral_Vehement = {
 	random_list = {
 		25 = {
 			create_leader = {
-				class = admiral
+				class = commander
 				species = event_target:extradimensional_trespassers_species
 				name = random
 				skill = 3
@@ -141,7 +141,7 @@ CmtEffectCreateAdmiral_Vehement = {
 		}
 		25 = {
 			create_leader = {
-				class = admiral
+				class = commander
 				species = event_target:extradimensional_trespassers_species
 				name = random
 				skill = 3
@@ -150,7 +150,7 @@ CmtEffectCreateAdmiral_Vehement = {
 		}
 		50 = {
 			create_leader = {
-				class = admiral
+				class = commander
 				species = event_target:extradimensional_trespassers_species
 				name = random
 				skill = 3
@@ -165,7 +165,7 @@ CmtEffectCreateAdmiral_Vehement = {
 
 CmtEffectCreateAdmiral_Contingency = {
 	create_leader = {
-		class = admiral
+		class = commander
 		species = owner_species		## 2.2.4: event_target:contingency_bot
 		name = random
 		skill = 3
@@ -182,7 +182,7 @@ CmtEffectCreateAdmiral_Contingency = {
 
 CmtEffectCreateAdmiral_Cybrex = {
 	create_leader = {
-		class = admiral
+		class = commander
 		species = owner_species
 		name = random
 		skill = 5

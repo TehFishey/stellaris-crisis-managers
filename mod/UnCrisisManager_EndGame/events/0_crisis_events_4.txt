@@ -301,7 +301,7 @@ country_event = {
 				remove_planet = yes
 			} else_if = {
 				limit = {
-					is_ringworld = yes
+					has_ringworld_output_boost = yes
 				}
 				change_pc = pc_ringworld_habitable_damaged
 				clear_planet_modifiers = yes
@@ -334,7 +334,7 @@ country_event = {
 		### Notification
 		every_playable_country = {
 			limit = {
-				NOT = { is_same_value = root }
+				NOT = { is_same_empire = root }
 			}
 			set_country_flag = end_of_the_cycle_reckoning
 			add_opinion_modifier = { modifier = opinion_doomed_us_all who = root }

@@ -6,7 +6,7 @@ namespace = CrisisManagerMenu
 #####	Crisis Manager			#####
 #####							#####
 #####	Configutation Viewer	#####
-#####	for End-Game Crisis		#####
+#####	For End-Game Crisis		#####
 #####							#####
 #####################################
 #####################################
@@ -1183,7 +1183,7 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.4240z.name
 		custom_tooltip = CrisisManagerMenu.4240z.tooltip
-		trigger = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarReinforceCycle_OnExdAnchorBuilt value > 0.5 } } } }
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarReinforceCycle_OnExdAnchorBuilt value <= 0.5 } } }
 		hidden_effect = { CmtEffectTryCallEvent = { CALL = 4240 FROM = 1022 } }
 	}
 

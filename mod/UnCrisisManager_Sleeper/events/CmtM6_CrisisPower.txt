@@ -546,11 +546,11 @@ country_event = {
 	title = CrisisManagerMenu.6100.name
 	desc = {
 		text = CrisisManagerMenu.6100.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Common value > 0.125 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Common value > 0.125 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.6100.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Common value < 0.125 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarFleetPower_Common value < 0.125 } } }
 	}
 	picture = GFX_evt_small_space_battle
 	is_triggered_only = yes
@@ -1741,11 +1741,11 @@ country_event = {
 	title = CrisisManagerMenu.6200.name
 	desc = {
 		text = CrisisManagerMenu.6200.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarArmyPower_Common value > 0.125 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarArmyPower_Common value > 0.125 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.6200.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarArmyPower_Common value < 0.125 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarArmyPower_Common value < 0.125 } } }
 	}
 	picture = GFX_evt_ground_combat
 	is_triggered_only = yes
@@ -2207,11 +2207,11 @@ country_event = {
 	title = CrisisManagerMenu.6300.name
 	desc = {
 		text = CrisisManagerMenu.6300.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Common value > 0.125 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Common value > 0.125 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.6300.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Common value < 0.125 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarCombatFleetNumber_Common value < 0.125 } } }
 	}
 	picture = GFX_evt_small_space_battle
 	diplomatic = yes
@@ -3756,11 +3756,11 @@ country_event = {
 	title = CrisisManagerMenu.6400.name
 	desc = {
 		text = CrisisManagerMenu.6400.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarArmyNumber_Common value > 0.125 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarArmyNumber_Common value > 0.125 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.6400.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarArmyNumber_Common value < 0.125 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarArmyNumber_Common value < 0.125 } } }
 	}
 	picture = GFX_evt_ground_combat
 	diplomatic = yes
@@ -4346,11 +4346,11 @@ country_event = {
 	title = CrisisManagerMenu.6500.name
 	desc = {
 		text = CrisisManagerMenu.6500.desc1
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarConstructorNumber_Common value > 0.125 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarConstructorNumber_Common value > 0.125 } } }
 	}
 	desc = {
 		text = CrisisManagerMenu.6500.desc2
-		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarConstructorNumber_Common value < 0.125 } } }
+		exclusive_trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarConstructorNumber_Common value < 0.125 } } }
 	}
 	picture = GFX_evt_small_space_battle
 	diplomatic = yes

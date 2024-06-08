@@ -303,7 +303,7 @@ planet_event = {
 		}
 		else = {
 			if = {
-				limit = { is_ringworld = yes }
+				limit = { has_ringworld_output_boost = yes }
 				change_pc = pc_ringworld_habitable_damaged
 				reset_planet = yes
 			}

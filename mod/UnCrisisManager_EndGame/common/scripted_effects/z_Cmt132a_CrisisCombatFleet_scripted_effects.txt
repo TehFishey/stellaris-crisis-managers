@@ -4,7 +4,7 @@
 #####	Crisis Manager								 #####
 #####												   #####
 #####	Scripted Effects for Creating Combat Fleets	#####
-#####	of End-Game Crises Excluding Armies			#####
+##### Of End-Game Crises Excluding Armies			#####
 #####												   #####
 #############################################################
 #############################################################
@@ -24,7 +24,7 @@ CmtEffectCreateFleet_PrethorynVanguard = {
 	random_list = {
 		10 = {
 			create_leader = {
-				class = admiral
+				class = commander
 				species = event_target:prethoryn_species
 				name = random
 				skill = 3
@@ -34,7 +34,7 @@ CmtEffectCreateFleet_PrethorynVanguard = {
 		}
 		10 = {
 			create_leader = {
-				class = admiral
+				class = commander
 				species = event_target:prethoryn_species
 				name = random
 				skill = 3
@@ -44,7 +44,7 @@ CmtEffectCreateFleet_PrethorynVanguard = {
 		}
 		10 = {
 			create_leader = {
-				class = admiral
+				class = commander
 				species = event_target:prethoryn_species
 				name = random
 				skill = 3
@@ -54,7 +54,7 @@ CmtEffectCreateFleet_PrethorynVanguard = {
 		}
 		10 = {
 			create_leader = {
-				class = admiral
+				class = commander
 				species = event_target:prethoryn_species
 				name = random
 				skill = 3
@@ -64,7 +64,7 @@ CmtEffectCreateFleet_PrethorynVanguard = {
 		}
 		10 = {
 			create_leader = {
-				class = admiral
+				class = commander
 				species = event_target:prethoryn_species
 				name = random
 				skill = 3
@@ -74,7 +74,7 @@ CmtEffectCreateFleet_PrethorynVanguard = {
 		}
 		10 = {
 			create_leader = {
-				class = admiral
+				class = commander
 				species = event_target:prethoryn_species
 				name = random
 				skill = 3
@@ -84,7 +84,7 @@ CmtEffectCreateFleet_PrethorynVanguard = {
 		}
 		10 = {
 			create_leader = {
-				class = admiral
+				class = commander
 				species = event_target:prethoryn_species
 				name = random
 				skill = 3
@@ -94,7 +94,7 @@ CmtEffectCreateFleet_PrethorynVanguard = {
 		}
 		10 = {
 			create_leader = {
-				class = admiral
+				class = commander
 				species = event_target:prethoryn_species
 				name = random
 				skill = 3
@@ -104,7 +104,7 @@ CmtEffectCreateFleet_PrethorynVanguard = {
 		}
 		10 = {
 			create_leader = {
-				class = admiral
+				class = commander
 				species = event_target:prethoryn_species
 				name = random
 				skill = 3
@@ -114,7 +114,7 @@ CmtEffectCreateFleet_PrethorynVanguard = {
 		}
 		10 = {
 			create_leader = {
-				class = admiral
+				class = commander
 				species = event_target:prethoryn_species
 				name = random
 				skill = 3
@@ -144,7 +144,7 @@ CmtEffectCreateFleet_PrethorynBrood = {
 	random_list = {
 		75 = {
 			create_leader = {
-				class = admiral
+				class = commander
 				species = event_target:prethoryn_species
 				name = random
 				skill = 3
@@ -153,7 +153,7 @@ CmtEffectCreateFleet_PrethorynBrood = {
 		}
 		25 = {
 			create_leader = {
-				class = admiral
+				class = commander
 				species = event_target:prethoryn_species
 				name = random
 				skill = 3
@@ -310,7 +310,7 @@ CmtEffectCreateFleet_SentinelAttacker = {
 		owner_species = { save_event_target_as = random_species }
 	}
 	create_leader = {
-		class = admiral
+		class = commander
 		species = event_target:random_species
 		name = random
 		skill = 3

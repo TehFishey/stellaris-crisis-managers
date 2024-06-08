@@ -6,7 +6,7 @@ namespace = CrisisManagerMenu
 #####	Crisis Manager			#####
 #####							#####
 #####	Configutation Viewer	#####
-#####	for Mid-Game Crisis		#####
+#####	For Mid-Game Crisis		#####
 #####							#####
 #####################################
 #####################################
@@ -416,7 +416,7 @@ country_event = {
 	option = {
 		name = CrisisManagerMenu.4841e.name
 		custom_tooltip = CrisisManagerMenu.4841e.tooltip
-		trigger = { NOT = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanResurgence value < 510 } } } }
+		trigger = { event_target:CmtGlobalVar = { check_variable = { which = CmtVarKhanResurgence value >= 510 } } }
 		hidden_effect = { CmtEffectTryCallEvent = { CALL = 4841 FROM = 1026 } }
 	}
 	option = {

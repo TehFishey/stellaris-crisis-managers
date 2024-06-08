@@ -48,7 +48,7 @@ start_lcluster_chain = {
 					if = { limit = { has_global_flag = expanded_events_active }
 						set_variable = { which = defaultMaxLgateClues value = 8 }  # Mod "Expanded Events" has max = 8
 					} else = {
-						set_variable = { which = defaultMaxLgateClues value = 7 } # default vanilla
+						set_variable = { which = defaultMaxLgateClues value = 7 } # Default vanilla
 					}
 					if = { # Zero can't be set, so take default
 						limit = { check_variable = { which = CmtVarLgateReqClues value < 0.5 } }
@@ -68,7 +68,7 @@ start_lcluster_chain = {
 				if = { limit = { check_variable = { which = CmtVarLgateReqClues value > 2 } }
 					change_variable = { which = CmtVarLgateReqClues value = -2 } # Use for later Warning
 				}
-				# set_variable = { which = num_lcluster_clues value = 0 }		## For Liquidation?
+				# set_variable = { which = num_lcluster_clues value = 0 }		##	For Liquidation?
 				event_target:CmtGlobalVar = {
 					clear_variable = CmtVarTemp
 					clear_variable = defaultMaxLgateClues

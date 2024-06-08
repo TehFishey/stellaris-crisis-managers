@@ -183,7 +183,7 @@ country_event = {
 			limit = { CmtTriggerCheckYoungsFleetPower = yes }
 			country_event = { id = fallen_empires.13 }
 		}
-		# legacy: add_awakened_fallen_empire_fleet = yes # also some more fleet
+		# legacy: add_awakened_fallen_empire_fleet = yes # Also some more fleet
 
 		### Establish communications / Notification
 		every_country = {
@@ -1319,7 +1319,7 @@ country_event = {
 						override_requirements = yes
 					}
 					hidden_effect = {
-						if = { # end non-federation-sanctioned wars
+						if = { # End non-federation-sanctioned wars
 							limit = { is_at_war = yes }
 							every_war = { remove_war_participant = prev }
 							every_subject = { every_war = { remove_war_participant = prev } }
@@ -1333,7 +1333,7 @@ country_event = {
 								limit = { has_federation_perk = cohesion_join_1 }
 								add_cohesion = 50
 							} else = { add_cohesion = 100 }
-							add_federation_experience = 4200 # level 3 with some breathing room
+							add_federation_experience = 4200 # Level 3 with some breathing room
 						}
 					}
 				}
@@ -1343,7 +1343,7 @@ country_event = {
 			else = {
 				from = {
 					set_timed_country_flag = { flag = ai_no_leave_fed years = 20 }
-					hidden_effect = { # end rivalries, wars
+					hidden_effect = { # End rivalries, wars
 						if = {
 							limit = {
 								any_rival_country = {
@@ -1380,7 +1380,7 @@ country_event = {
 						override_requirements = yes
 					}
 					hidden_effect = {
-						# counteract the -100 cohesion you'd normally get for new members
+						# Counteract the -100 cohesion you'd normally get for new members
 						root.federation = {
 							if = { limit = { has_federation_perk = cohesion_join_1 }
 								add_cohesion = 50
@@ -1640,7 +1640,7 @@ country_event = {
 			}
 			remove_global_flag = war_in_heaven_ongoing
 			set_global_flag = war_in_heaven_ended
-			# for reuse
+			# For reuse
 			remove_country_flag = sleepers_awake_first_sleeper
 			remove_country_flag = sleepers_awake_ancient_rival
 			remove_country_flag = war_in_heaven_timer
@@ -1739,7 +1739,7 @@ country_event = {
 			limit = { NOT = { has_global_flag = war_in_heaven_ended } }
 			remove_global_flag = war_in_heaven_ongoing
 			set_global_flag = war_in_heaven_ended
-			# for reuse
+			# For reuse
 			remove_country_flag = sleepers_awake_first_sleeper
 			remove_country_flag = sleepers_awake_ancient_rival
 			remove_country_flag = war_in_heaven_timer

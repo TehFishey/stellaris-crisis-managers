@@ -370,7 +370,7 @@ country_event = {
 }
 
 ### Clock Event, Attension! Scope: this = Cracker (country), but not global_event
-# cf. modified planet_destruction.600
+# cf. Modified planet_destruction.600
 country_event = {
 	id = CrisisManagerControl.5101
 	hide_window = yes
@@ -475,9 +475,7 @@ country_event = {
 								}
 							}
 							order_forced_return = yes
-						} else = {
-							set_mia = mia_return_home
-						}
+						} else = { set_mia = mia_return_home }
 					}
 				}
 			}
@@ -549,7 +547,7 @@ country_event = {
 					effect = {
 						set_country_flag = fallen_empire_1
 						set_graphical_culture = "fallen_empire_02"
-						# must initialize global designs here
+						# Must initialize global designs here
 						add_global_ship_design = "NAME_Enforcer"
 						add_global_ship_design = "NAME_Savant"
 						add_global_ship_design = "NAME_Scholar"
@@ -591,7 +589,7 @@ country_event = {
 					effect = {
 						set_country_flag = fallen_empire_2
 						set_graphical_culture = "fallen_empire_01"
-						# must initialize global designs here
+						# Must initialize global designs here
 						add_global_ship_design = "NAME_Cleanser"
 						add_global_ship_design = "NAME_Eternal"
 						add_global_ship_design = "NAME_Avatar"
@@ -633,7 +631,7 @@ country_event = {
 					effect = {
 						set_country_flag = fallen_empire_3
 						set_graphical_culture = "fallen_empire_03"
-						# must initialize global designs here
+						# Must initialize global designs here
 						add_global_ship_design = "NAME_Adjuster"
 						add_global_ship_design = "NAME_Keeper"
 						add_global_ship_design = "NAME_Custodian"
@@ -676,7 +674,7 @@ country_event = {
 					effect = {
 						set_country_flag = fallen_empire_4
 						set_graphical_culture = "fallen_empire_04"
-						# must initialize global designs here
+						# Must initialize global designs here
 						add_global_ship_design = "NAME_Reaper"
 						add_global_ship_design = "NAME_Imperium"
 						add_global_ship_design = "NAME_Supremacy"
@@ -691,7 +689,7 @@ country_event = {
 		# }
 		# Machine
 		# fallen_machine_empire = {
-			# possible = { has_synthethic_dawn = yes
+			# possible = { host_has_dlc = "Synthetic Dawn Story Pack"
 			# }
 			# 2 = {
 			# 	create_species = {
@@ -727,7 +725,7 @@ country_event = {
 			# 				limit = { host_has_dlc = "Apocalypse" }
 			# 				give_technology = { tech = tech_colossus message = no }
 			# 			}
-			# 			# must initialize global designs here
+			# 			# Must initialize global designs here
 			# 			add_global_ship_design = "NAME_Omega"
 			# 			add_global_ship_design = "NAME_Alpha"
 			# 			add_global_ship_design = "NAME_Beta"
@@ -993,7 +991,7 @@ country_event = {
 				type = "gateway_ruined"
 				random_pos = yes
 				owner = root
-				orbit_angle = 360				# range of the randomization
+				orbit_angle = 360				# Range of the randomization
 			}
 			system_event = { id = extra_sleeper_deus.4 } # primitives
 			system_event = { id = extra_sleeper_deus.3 }
@@ -1042,7 +1040,7 @@ country_event = {
 		# 	spawn_megastructure = {
 		# 		type = "gateway_ruined"
 		# 		random_pos = yes
-		# 		orbit_angle = 360				# range of the randomization
+		# 		orbit_angle = 360				# Range of the randomization
 		# 	}
 		# }
 
@@ -1147,7 +1145,7 @@ system_event = {
 				effect = {
 					set_owner = event_target:sleeper_deus_country
 					while = {
-						count = 1						# just to show-case that formation will tile
+						count = 1						# Just to show-case that formation will tile
 						create_ship = {
 							name = ""
 							design = "NAME_Ancient_Vault"
@@ -1417,7 +1415,7 @@ system_event = {
 				save_global_event_target_as = sleeper_global_deus
 				create_leader = {
 					name = random
-					class = governor
+					class = official
 					species = last_created_species # event_target:sleeper_deus_species
 					gender = male
 					skill = random
@@ -1426,7 +1424,7 @@ system_event = {
 				last_created_leader = { save_global_event_target_as = sleeper_deus_male }
 				# create_leader = {
 				# 	name = random
-				# 	class = governor
+				# 	class = official
 				# 	species = last_created_species # event_target:sleeper_deus_species
 				# 	gender = female
 				# 	skill = random

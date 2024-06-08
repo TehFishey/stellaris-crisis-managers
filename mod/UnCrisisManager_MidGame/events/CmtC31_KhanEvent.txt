@@ -43,7 +43,7 @@ event = {
 				change_variable = { which = CmtFlagCheckKhanLastChance value = CmtVarKhanLatestEgpy }
 				change_variable = { which = CmtFlagCheckKhanLastChance value = -1 }
 				multiply_variable = { which = CmtFlagCheckKhanLastChance value = 360 }
-				# Because var with days parameter not working (v3.8)
+				# Because var with days parameter not working (v.3.8)
 				# CmtFlagCheckKhanLastChance = { DAYS = CmtFlagCheckKhanLastChance }
 				if		= { limit = { check_variable = { which = CmtFlagCheckKhanLastChance value >= @CmtConstKhanInterval_D5 } } country_event = { id = CrisisManagerControl.6111 days = @CmtConstKhanInterval_D5 } } # 35992
 				else_if = { limit = { check_variable = { which = CmtFlagCheckKhanLastChance value >= @CmtConstKhanInterval_D4 } } country_event = { id = CrisisManagerControl.6111 days = @CmtConstKhanInterval_D4 } } # 26992
